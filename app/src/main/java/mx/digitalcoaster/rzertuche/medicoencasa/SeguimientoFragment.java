@@ -3,10 +3,18 @@ package mx.digitalcoaster.rzertuche.medicoencasa;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
+
+import java.util.ArrayList;
+
+import io.realm.Realm;
+import io.realm.RealmResults;
+import mx.digitalcoaster.rzertuche.medicoencasa.models.User;
 
 
 /**
@@ -65,6 +73,19 @@ public class SeguimientoFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_seguimiento, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        GridView gridView = (GridView) view.findViewById(R.id.gridusers);
+
+        Realm realm = Realm.getDefaultInstance();
+        RealmResults<User> users = realm.where(User.class).findAll();
+
+        ArrayList<User> usersArray = new ArrayList(users);
+        gridView.setAdapter(new UsersAdapter(this.getActivity(), usersArray));
     }
 
     // TODO: Rename method, update argument and hook method into UI event

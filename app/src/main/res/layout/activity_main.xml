@@ -54,15 +54,15 @@
                 android:padding="20dp">
 
                 <ImageButton
-                    android:id="@+id/imageButton"
+                    android:id="@+id/imageButton3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@android:color/transparent"
-                    android:onClick="inicio"
+                    android:onClick="seguimiento"
                     android:padding="30dp"
-                    android:scaleType="fitXY"
-                    app:srcCompat="@drawable/inicio_black" />
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/pacientes_black" />
 
                 <ImageButton
                     android:id="@+id/imageButton2"
@@ -72,19 +72,8 @@
                     android:background="@android:color/transparent"
                     android:onClick="registros"
                     android:padding="30dp"
-                    android:scaleType="fitXY"
+                    android:scaleType="fitCenter"
                     app:srcCompat="@drawable/nuevo_black" />
-
-                <ImageButton
-                    android:id="@+id/imageButton3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@android:color/transparent"
-                    android:onClick="seguimiento"
-                    android:padding="30dp"
-                    android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/seguimiento_black" />
 
                 <ImageButton
                     android:id="@+id/imageButton4"
@@ -92,9 +81,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@android:color/transparent"
+                    android:onClick="sincronizacion"
                     android:padding="30dp"
-                    android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/sincronizacion_black" />
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/registros_black" />
 
             </LinearLayout>
 
