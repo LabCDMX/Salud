@@ -29,6 +29,7 @@ import io.realm.Realm;
 import io.realm.RealmQuery;
 import io.realm.RealmResults;
 import mx.digitalcoaster.rzertuche.medicoencasa.models.Contexto;
+import mx.digitalcoaster.rzertuche.medicoencasa.models.HistoriaClinica;
 import mx.digitalcoaster.rzertuche.medicoencasa.models.Question;
 import mx.digitalcoaster.rzertuche.medicoencasa.models.User;
 
@@ -39,6 +40,7 @@ public class QuestionsFragment extends Fragment {
 
     TextView question;
     TextView title;
+    TextView category;
     RadioGroup multiples1;
     RadioGroup multiples2;
     RadioButton multiple1;
@@ -54,14 +56,18 @@ public class QuestionsFragment extends Fragment {
     LinearLayout multiple;
     LinearLayout open;
     LinearLayout finish;
+    LinearLayout review;
 
     ImageButton next;
     ImageView imageLogo;
+    ImageView imageIcon2;
 
     String checking = "personales";
 
     User user;
     Contexto contexto;
+    HistoriaClinica historiaClinica;
+    String random_uuid = "";
 
     public void setPersonales(RealmResults<Question> questions) {
         this.personales = questions;
@@ -88,6 +94,21 @@ public class QuestionsFragment extends Fragment {
     }
     RealmResults<Question> alimentacion;
 
+    public void setAntecedentesFamiliares(RealmResults<Question> questions) {
+        this.antecedentesFamiliares = questions;
+    }
+    RealmResults<Question> antecedentesFamiliares;
+
+    public void setAntecedentes(RealmResults<Question> questions) {
+        this.antecedentes = questions;
+    }
+    RealmResults<Question> antecedentes;
+
+    public void setInterrogatorio(RealmResults<Question> questions) {
+        this.interrogatorio = questions;
+    }
+    RealmResults<Question> interrogatorio;
+
     public void setQuestions(ArrayList<Question> questions) {
         this.questions = questions;
     }
@@ -110,6 +131,7 @@ public class QuestionsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         Realm realm = Realm.getDefaultInstance();
 
         RealmQuery<Question> query = realm.where(Question.class);
@@ -355,6 +377,75 @@ public class QuestionsFragment extends Fragment {
                 realm.commitTransaction();
             }
 
+            ArrayList<String> familiares = new ArrayList<String>();
+            familiares.add("Enfermedades Cardiovasculares");
+            familiares.add("HTA");
+            familiares.add("Diabetes");
+            familiares.add("Dislipidemias");
+            familiares.add("Obesidad");
+            familiares.add("Enfermedades Cerebrovascular");
+
+            for(int i = 0; i<familiares.size(); i++){
+                realm.beginTransaction();
+                final Question question = realm.createObject(Question.class);
+                question.setCategory("familiares");
+                question.setOrder(i);
+                question.setQuestion(familiares.get(i));
+                question.setMultiple(true);
+                question.setMultiple1("Abuelos");
+                question.setMultiple2("Padres");
+                question.setMultiple3("Tios");
+                question.setMultiple4("Hermanos");
+                question.setMultiple5("Ninguno");
+                realm.commitTransaction();
+            }
+
+            ArrayList<String> antecedentes = new ArrayList<String>();
+            antecedentes.add("Enfermedades Cerebrovascular");
+            antecedentes.add("Sobrepeso");
+            antecedentes.add("VIH");
+            antecedentes.add("Enfermedades Cardiovascules");
+            antecedentes.add("Tabaquismo");
+            antecedentes.add("Tuberculosis");
+            antecedentes.add("Sedentarismo");
+            antecedentes.add("Alcoholismo");
+            antecedentes.add("Post Menopausia");
+
+            for(int i = 0; i<antecedentes.size(); i++){
+                realm.beginTransaction();
+                final Question question = realm.createObject(Question.class);
+                question.setCategory("antecedentes");
+                question.setOrder(i);
+                question.setQuestion(antecedentes.get(i));
+                question.setMultiple(true);
+                question.setMultiple1("sí");
+                question.setMultiple2("no");
+                realm.commitTransaction();
+            }
+
+            ArrayList<String> sistemas = new ArrayList<String>();
+            sistemas.add("Respiratorio");
+            sistemas.add("Cardiovascular");
+            sistemas.add("Digestivo");
+            sistemas.add("Urinario");
+            sistemas.add("Reproductor");
+            sistemas.add("Hemolinfático");
+            sistemas.add("Endocrino");
+            sistemas.add("Sistema Nervioso");
+            sistemas.add("Músculo esquelético");
+            sistemas.add("Piel y anexos");
+
+            for(int i = 0; i<sistemas.size(); i++){
+                realm.beginTransaction();
+                final Question question = realm.createObject(Question.class);
+                question.setCategory("sistemas");
+                question.setOrder(i);
+                question.setQuestion(sistemas.get(i));
+                question.setMultiple(false);
+                realm.commitTransaction();
+            }
+
+
 
         } else {
             Log.d("Realm", "We have questions saved");
@@ -376,13 +467,24 @@ public class QuestionsFragment extends Fragment {
         RealmResults<Question> alimentacion = realm.where(Question.class).equalTo("category","alimentacion").findAll();
         setAlimentacion(alimentacion);
 
-        String random_uuid = UUID.randomUUID().toString();
+        RealmResults<Question> familiareas = realm.where(Question.class).equalTo("category","familiares").findAll();
+        setAntecedentesFamiliares(familiareas);
+
+        RealmResults<Question> antecendentes = realm.where(Question.class).equalTo("category","antecedentes").findAll();
+        setAntecedentes(antecendentes);
+
+        RealmResults<Question> sistemas = realm.where(Question.class).equalTo("category","sistemas").findAll();
+        setInterrogatorio(sistemas);
+
+        random_uuid = UUID.randomUUID().toString();
 
         user = new User();
         user.setUserUUID(random_uuid);
         user.fecha = new Date();
         contexto = new Contexto();
         contexto.setUserUUID(random_uuid);
+        historiaClinica = new HistoriaClinica();
+        historiaClinica.setUserUUID(random_uuid);
     }
 
     @Override
@@ -401,11 +503,13 @@ public class QuestionsFragment extends Fragment {
         open = (LinearLayout) view.findViewById(R.id.open);
         multiple = (LinearLayout) view.findViewById(R.id.multiple);
         finish = (LinearLayout) view.findViewById(R.id.finishLayout);
+        review = (LinearLayout) view.findViewById(R.id.ReviewLayout);
 
 
         question = (TextView) view.findViewById(R.id.question);
         title = (TextView) view.findViewById(R.id.title);
         answer = (EditText) view.findViewById(R.id.answer);
+        category = (TextView) view.findViewById(R.id.category);
         multiple1 = (RadioButton) view.findViewById(R.id.multiple1);
         multiple2 = (RadioButton) view.findViewById(R.id.multiple2);
         multiple3 = (RadioButton) view.findViewById(R.id.multiple3);
@@ -428,6 +532,9 @@ public class QuestionsFragment extends Fragment {
         next.setOnClickListener(nextOnClickListener);
 
         imageLogo = (ImageView) view.findViewById(R.id.imageView8);
+        imageIcon2 = (ImageView) view.findViewById(R.id.icon2);
+
+        category.setText("Personales");
     }
 
     private RadioGroup.OnCheckedChangeListener listener1 = new RadioGroup.OnCheckedChangeListener() {
@@ -467,8 +574,7 @@ public class QuestionsFragment extends Fragment {
                     Toast.makeText(activity,
                             "Por favor selecciona una opción", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(activity,
-                            selectedRadioButton.getText(), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(activity,selectedRadioButton.getText(), Toast.LENGTH_SHORT).show();
 
                     if (checking == "domiciliarios"){
                         if (indexCurrentQuestion==3){user.setEstado_civil(selectedRadioButton.getText().toString());}
@@ -498,6 +604,25 @@ public class QuestionsFragment extends Fragment {
                     if (checking == "alimentacion"){
                         if (indexCurrentQuestion==0){contexto.setComidas(selectedRadioButton.getText().toString());}
                     }
+                    if (checking == "familiares"){
+                        if (indexCurrentQuestion==0){historiaClinica.setEnfermedades_cardio(selectedRadioButton.getText().toString());}
+                        if (indexCurrentQuestion==1){historiaClinica.setEnfermedades_hta(selectedRadioButton.getText().toString());}
+                        if (indexCurrentQuestion==2){historiaClinica.setEnfermedades_diabetes(selectedRadioButton.getText().toString());}
+                        if (indexCurrentQuestion==3){historiaClinica.setEnfermedades_dislipidemias(selectedRadioButton.getText().toString());}
+                        if (indexCurrentQuestion==4){historiaClinica.setEnfermedades_obesidad(selectedRadioButton.getText().toString());}
+                        if (indexCurrentQuestion==5){historiaClinica.setEnfermedades_cerebrovascular(selectedRadioButton.getText().toString());}
+                    }
+                    if (checking == "antecedentes"){
+                        if (indexCurrentQuestion==0){historiaClinica.setCerebrovascular(selectedRadioButton.getText().toString());}
+                        if (indexCurrentQuestion==1){historiaClinica.setSobrepeso(selectedRadioButton.getText().toString());}
+                        if (indexCurrentQuestion==2){historiaClinica.setVih(selectedRadioButton.getText().toString());}
+                        if (indexCurrentQuestion==3){historiaClinica.setEnfermedades_cardiovascules(selectedRadioButton.getText().toString());}
+                        if (indexCurrentQuestion==4){historiaClinica.setTabaquismo(selectedRadioButton.getText().toString());}
+                        if (indexCurrentQuestion==5){historiaClinica.setTuberculosis(selectedRadioButton.getText().toString());}
+                        if (indexCurrentQuestion==6){historiaClinica.setSedentarismo(selectedRadioButton.getText().toString());}
+                        if (indexCurrentQuestion==7){historiaClinica.setAlcoholismo(selectedRadioButton.getText().toString());}
+                        if (indexCurrentQuestion==8){historiaClinica.setPost_menopausia(selectedRadioButton.getText().toString());}
+                    }
 
                     indexCurrentQuestion++;
                     if (indexCurrentQuestion < questions.size()){
@@ -505,6 +630,7 @@ public class QuestionsFragment extends Fragment {
                     } else {
                         if (checking.equals("personales")){
                             checking = "domiciliarios";
+                            category.setText("Domiciliarios");
                             title.setText(checking.toUpperCase());
                             imageLogo.setImageResource(R.drawable.icon_domiciliarios);
                             setQuestions(new ArrayList(domiciliarios));
@@ -512,6 +638,8 @@ public class QuestionsFragment extends Fragment {
                             loadQuestion();
                         } else if (checking.equals("domiciliarios")){
                             checking = "sociales";
+                            category.setText("Antecedentes no Patológicos");
+                            imageIcon2.setImageResource(R.drawable.number_two_pink);
                             title.setText(checking.toUpperCase());
                             imageLogo.setImageResource(R.drawable.icon_interrogatorio);
                             setQuestions(new ArrayList(sociales));
@@ -519,6 +647,7 @@ public class QuestionsFragment extends Fragment {
                             loadQuestion();
                         } else if (checking.equals("sociales")){
                             checking = "condiciones";
+                            category.setText("Condiciones y Servicios del Hogar");
                             title.setText(checking.toUpperCase());
                             imageLogo.setImageResource(R.drawable.icon_condiciones);
                             setQuestions(new ArrayList(condiciones));
@@ -526,13 +655,38 @@ public class QuestionsFragment extends Fragment {
                             loadQuestion();
                         } else if (checking.equals("condiciones")){
                             checking = "alimentación";
+                            category.setText("Alimentación");
                             title.setText(checking.toUpperCase());
                             imageLogo.setImageResource(R.drawable.icon_alimentacion);
                             setQuestions(new ArrayList(alimentacion));
                             indexCurrentQuestion = 0;
                             loadQuestion();
+                        } else if (checking.equals("alimentación")){
+                            checking = "familiares";
+                            category.setText("Antecedentes (familiares)");
+                            title.setText(checking.toUpperCase());
+                            imageLogo.setImageResource(R.drawable.icon_antecedentes);
+                            setQuestions(new ArrayList(antecedentesFamiliares));
+                            indexCurrentQuestion = 0;
+                            loadQuestion();
+                        } else if (checking.equals("familiares")){
+                            checking = "antecedentes";
+                            category.setText("Antecedentes (personales)");
+                            title.setText(checking.toUpperCase());
+                            imageLogo.setImageResource(R.drawable.icon_antecedentes);
+                            setQuestions(new ArrayList(antecedentes));
+                            indexCurrentQuestion = 0;
+                            loadQuestion();
+                        } else if (checking.equals("antecedentes")) {
+                            checking = "sistemas";
+                            category.setText("Interrogatorio por Sistemas");
+                            title.setText(checking.toUpperCase());
+                            imageLogo.setImageResource(R.drawable.icon_interrogatorio);
+                            setQuestions(new ArrayList(interrogatorio));
+                            indexCurrentQuestion = 0;
+                            loadQuestion();
                         } else{
-                            finish.setVisibility(View.VISIBLE);
+
 
                             Realm realm = Realm.getDefaultInstance();
 
@@ -550,8 +704,17 @@ public class QuestionsFragment extends Fragment {
                                 }
                             });
 
-                            Toast.makeText(activity,
-                                    "No more", Toast.LENGTH_SHORT).show();
+//                            String[] textArray = {"One", "Two", "Three", "Four"};
+//                            for( int i = 0; i < textArray.length; i++ )
+//                            {
+//                                TextView textView = new TextView(getActivity());
+//                                textView.setText(textArray[i]);
+//                                review.addView(textView);
+//                            }
+
+                            finish.setVisibility(View.VISIBLE);
+
+                            //Toast.makeText(activity,"No more", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
@@ -584,6 +747,18 @@ public class QuestionsFragment extends Fragment {
                 if (checking.equals("alimentacion")){
                     if (indexCurrentQuestion==0){contexto.setTipo_de_alimentos(answer.getText().toString());}
                 }
+                if (checking == "sistemas"){
+                    if (indexCurrentQuestion==0){historiaClinica.setRespiratorio(answer.getText().toString());}
+                    if (indexCurrentQuestion==1){historiaClinica.setCardiovascular(answer.getText().toString());}
+                    if (indexCurrentQuestion==2){historiaClinica.setDigestivo(answer.getText().toString());}
+                    if (indexCurrentQuestion==3){historiaClinica.setUrinario(answer.getText().toString());}
+                    if (indexCurrentQuestion==4){historiaClinica.setReproductor(answer.getText().toString());}
+                    if (indexCurrentQuestion==5){historiaClinica.setHemolinfatico(answer.getText().toString());}
+                    if (indexCurrentQuestion==6){historiaClinica.setEndocrino(answer.getText().toString());}
+                    if (indexCurrentQuestion==7){historiaClinica.setSistema_nervioso(answer.getText().toString());}
+                    if (indexCurrentQuestion==8){historiaClinica.setMusculo_esqueletico(answer.getText().toString());}
+                    if (indexCurrentQuestion==9){historiaClinica.setPiel_y_anexos(answer.getText().toString());}
+                }
 
                 indexCurrentQuestion++;
                 if (indexCurrentQuestion < questions.size()){
@@ -591,6 +766,7 @@ public class QuestionsFragment extends Fragment {
                 } else {
                     if (checking.equals("personales")){
                         checking = "domiciliarios";
+                        category.setText("Domiciliarios");
                         title.setText(checking.toUpperCase());
                         imageLogo.setImageResource(R.drawable.icon_domiciliarios);
                         setQuestions(new ArrayList(domiciliarios));
@@ -598,13 +774,17 @@ public class QuestionsFragment extends Fragment {
                         loadQuestion();
                     } else if (checking.equals("domiciliarios")){
                         checking = "sociales";
+                        imageLogo.setImageResource(R.drawable.icon_interrogatorio);
+                        category.setText("Antecedentes no Patológicos");
                         title.setText(checking.toUpperCase());
+                        imageIcon2.setImageResource(R.drawable.number_two_pink);
                         imageLogo.setImageResource(R.drawable.icon_interrogatorio);
                         setQuestions(new ArrayList(sociales));
                         indexCurrentQuestion = 0;
                         loadQuestion();
                     } else if (checking.equals("sociales")){
                         checking = "condiciones";
+                        category.setText("Condiciones y Servicios del Hogar");
                         title.setText(checking.toUpperCase());
                         imageLogo.setImageResource(R.drawable.icon_condiciones);
                         setQuestions(new ArrayList(condiciones));
@@ -612,13 +792,37 @@ public class QuestionsFragment extends Fragment {
                         loadQuestion();
                     } else if (checking.equals("condiciones")){
                         checking = "alimentación";
+                        category.setText("Alimentación");
                         title.setText(checking.toUpperCase());
                         imageLogo.setImageResource(R.drawable.icon_alimentacion);
                         setQuestions(new ArrayList(alimentacion));
                         indexCurrentQuestion = 0;
                         loadQuestion();
+                    }  else if (checking.equals("alimentación")){
+                        checking = "familiares";
+                        category.setText("Antecedentes (familiares)");
+                        title.setText(checking.toUpperCase());
+                        imageLogo.setImageResource(R.drawable.icon_antecedentes);
+                        setQuestions(new ArrayList(antecedentesFamiliares));
+                        indexCurrentQuestion = 0;
+                        loadQuestion();
+                    } else if (checking.equals("familiares")){
+                        checking = "antecedentes";
+                        category.setText("Antecedentes (personales)");
+                        title.setText(checking.toUpperCase());
+                        imageLogo.setImageResource(R.drawable.icon_antecedentes);
+                        setQuestions(new ArrayList(antecedentes));
+                        indexCurrentQuestion = 0;
+                        loadQuestion();
+                    } else if (checking.equals("antecedentes")) {
+                        checking = "sistemas";
+                        category.setText("Interrogatorio por Sistemas");
+                        title.setText(checking.toUpperCase());
+                        imageLogo.setImageResource(R.drawable.icon_interrogatorio);
+                        setQuestions(new ArrayList(interrogatorio));
+                        indexCurrentQuestion = 0;
+                        loadQuestion();
                     } else{
-                        finish.setVisibility(View.VISIBLE);
 
                         Realm realm = Realm.getDefaultInstance();
 
@@ -636,8 +840,29 @@ public class QuestionsFragment extends Fragment {
                             }
                         });
 
-                        Toast.makeText(activity,
-                                "No more", Toast.LENGTH_SHORT).show();
+//
+//                        for( int i = 0; i < personales.size(); i++ )
+//                        {
+//                            LinearLayout horizontal = new LinearLayout(getActivity());
+//                            horizontal.setOrientation(LinearLayout.HORIZONTAL);
+//
+//                            LinearLayout vertical = new LinearLayout(getActivity());
+//                            vertical.setOrientation(LinearLayout.VERTICAL);
+//
+//                            TextView textView = new TextView(getActivity());
+//                            textView.setText(personales.get(i).getQuestion());
+//
+//                            EditText textView2 = new EditText(getActivity());
+//                            textView2.setText(user.getcURP());
+//
+//                            vertical.addView(textView);
+//                            vertical.addView(textView2);
+//                            horizontal.addView(vertical);
+//                            review.addView(horizontal);
+//                        }
+
+                        finish.setVisibility(View.VISIBLE);
+                        //Toast.makeText(activity, "No more", Toast.LENGTH_SHORT).show();
                     }
                 }
             }

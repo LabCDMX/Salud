@@ -5,12 +5,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageButton;
 
 import java.util.ArrayList;
 
@@ -22,12 +21,12 @@ import mx.digitalcoaster.rzertuche.medicoencasa.models.User;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link SeguimientoFragment.OnFragmentInteractionListener} interface
+ * {@link InicioFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link SeguimientoFragment#newInstance} factory method to
+ * Use the {@link InicioFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SeguimientoFragment extends Fragment {
+public class InicioFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -38,10 +37,8 @@ public class SeguimientoFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
-    ArrayList<User> usersArray = new ArrayList<User>();
-    User selectedUser = new User();
 
-    public SeguimientoFragment() {
+    public InicioFragment() {
         // Required empty public constructor
     }
 
@@ -54,8 +51,8 @@ public class SeguimientoFragment extends Fragment {
      * @return A new instance of fragment HomeFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static SeguimientoFragment newInstance(String param1, String param2) {
-        SeguimientoFragment fragment = new SeguimientoFragment();
+    public static InicioFragment newInstance(String param1, String param2) {
+        InicioFragment fragment = new InicioFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -76,28 +73,22 @@ public class SeguimientoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_seguimiento, container, false);
+        return inflater.inflate(R.layout.fragment_inicio, container, false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        GridView gridView = (GridView) view.findViewById(R.id.gridusers);
-
-        Realm realm = Realm.getDefaultInstance();
-        RealmResults<User> users = realm.where(User.class).findAll();
-
-        usersArray = new ArrayList(users);
-        gridView.setAdapter(new UsersAdapter(this.getActivity(), usersArray));
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        ImageButton nuevo = (ImageButton) view.findViewById(R.id.imageButton2);
+        nuevo.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> arg0, View v, int position, long arg3) {
-                selectedUser = (User) usersArray.get(position);
-                Log.d("User", "USERUUID:"+selectedUser.getUserUUID());
-                ((MainActivity)getActivity()).paciente(selectedUser.getUserUUID());
+            public void onClick(View v) {
+                ((MainActivity)getActivity()).activityRegistros();
             }
         });
+
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event

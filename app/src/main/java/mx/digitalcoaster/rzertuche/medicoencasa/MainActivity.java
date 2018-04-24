@@ -16,9 +16,14 @@ import android.widget.Button;
 import io.realm.Realm;
 
 public class MainActivity extends AppCompatActivity implements
+        InicioFragment.OnFragmentInteractionListener,
         SeguimientoFragment.OnFragmentInteractionListener,
         QuestionsFragment.OnFragmentInteractionListener,
-        SincronizacionFragment.OnFragmentInteractionListener{
+        SincronizacionFragment.OnFragmentInteractionListener,
+        PacienteFragment.OnFragmentInteractionListener,
+        VisitaFragment.OnFragmentInteractionListener{
+
+    public String patientID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements
         Realm.init(this);
 
         //Home Fragment
-        SeguimientoFragment fragment = new SeguimientoFragment();
+        InicioFragment fragment = new InicioFragment();
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.fragmentHolder, fragment);
@@ -60,6 +65,14 @@ public class MainActivity extends AppCompatActivity implements
 
     }
 
+    public void inicio(View v){
+        InicioFragment fragment = new InicioFragment();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.fragmentHolder, fragment);
+        transaction.commit();
+    }
+
     public void registros(View v){
         QuestionsFragment fragment = new QuestionsFragment();
         FragmentManager manager = getSupportFragmentManager();
@@ -67,6 +80,15 @@ public class MainActivity extends AppCompatActivity implements
         transaction.replace(R.id.fragmentHolder, fragment);
         transaction.commit();
     }
+
+    public void activityRegistros(){
+        QuestionsFragment fragment = new QuestionsFragment();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.fragmentHolder, fragment);
+        transaction.commit();
+    }
+
 
     public void seguimiento(View v){
         SeguimientoFragment fragment = new SeguimientoFragment();
@@ -76,7 +98,42 @@ public class MainActivity extends AppCompatActivity implements
         transaction.commit();
     }
 
+    public void activitySeguimiento(){
+        SeguimientoFragment fragment = new SeguimientoFragment();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.fragmentHolder, fragment);
+        transaction.commit();
+    }
+
+    public void paciente(String useruuid){
+        PacienteFragment fragment = new PacienteFragment();
+        fragment.userID = useruuid;
+        patientID = useruuid;
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.fragmentHolder, fragment);
+        transaction.commit();
+    }
+
+    public void visita(View v){
+        VisitaFragment fragment = new VisitaFragment();
+        fragment.userID = patientID;
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.fragmentHolder, fragment);
+        transaction.commit();
+    }
+
     public void sincronizacion(View v){
+        SincronizacionFragment fragment = new SincronizacionFragment();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.fragmentHolder, fragment);
+        transaction.commit();
+    }
+
+    public void activitySincronizacion(){
         SincronizacionFragment fragment = new SincronizacionFragment();
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
