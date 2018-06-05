@@ -12,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import io.realm.Realm;
 
@@ -21,9 +22,11 @@ public class MainActivity extends AppCompatActivity implements
         QuestionsFragment.OnFragmentInteractionListener,
         SincronizacionFragment.OnFragmentInteractionListener,
         PacienteFragment.OnFragmentInteractionListener,
-        VisitaFragment.OnFragmentInteractionListener{
+        VisitaFragment.OnFragmentInteractionListener,
+        InicioFragmentMain.OnFragmentInteractionListener{
 
     public String patientID;
+    public static ImageView inicio, registros, seguimiento, sincronizacion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +38,19 @@ public class MainActivity extends AppCompatActivity implements
         // Initialize Realm
         Realm.init(this);
 
+
+        //Initialize ImageView to set change with onclick
+        inicio = (ImageView) findViewById(R.id.imageButton);
+        registros = (ImageView) findViewById(R.id.imageButton2);
+        seguimiento = (ImageView) findViewById(R.id.imageButton3);
+        sincronizacion = (ImageView) findViewById(R.id.imageButton4);
+
+
+
+
+
         //Home Fragment
-        InicioFragment fragment = new InicioFragment();
+        InicioFragmentMain fragment = new InicioFragmentMain();
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.fragmentHolder, fragment);
@@ -71,6 +85,11 @@ public class MainActivity extends AppCompatActivity implements
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.fragmentHolder, fragment);
         transaction.commit();
+
+        restartImageButtons();
+        inicio.setImageDrawable(getResources().getDrawable(R.drawable.inicio_pink));
+
+
     }
 
     public void registros(View v){
@@ -79,6 +98,9 @@ public class MainActivity extends AppCompatActivity implements
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.fragmentHolder, fragment);
         transaction.commit();
+
+        restartImageButtons();
+        registros.setImageDrawable(getResources().getDrawable(R.drawable.nuevo_pink));
     }
 
     public void activityRegistros(){
@@ -87,6 +109,7 @@ public class MainActivity extends AppCompatActivity implements
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.fragmentHolder, fragment);
         transaction.commit();
+
     }
 
 
@@ -96,6 +119,10 @@ public class MainActivity extends AppCompatActivity implements
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.fragmentHolder, fragment);
         transaction.commit();
+
+        restartImageButtons();
+        seguimiento.setImageDrawable(getResources().getDrawable(R.drawable.pacientes_pink));
+
     }
 
     public void activitySeguimiento(){
@@ -123,6 +150,7 @@ public class MainActivity extends AppCompatActivity implements
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.fragmentHolder, fragment);
         transaction.commit();
+
     }
 
     public void sincronizacion(View v){
@@ -131,6 +159,10 @@ public class MainActivity extends AppCompatActivity implements
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.fragmentHolder, fragment);
         transaction.commit();
+
+        restartImageButtons();
+        sincronizacion.setImageDrawable(getResources().getDrawable(R.drawable.registros_pink));
+
     }
 
     public void activitySincronizacion(){
@@ -139,6 +171,14 @@ public class MainActivity extends AppCompatActivity implements
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.fragmentHolder, fragment);
         transaction.commit();
+    }
+
+    public void restartImageButtons(){
+        inicio.setImageDrawable(getResources().getDrawable(R.drawable.inicio_black));
+        seguimiento.setImageDrawable(getResources().getDrawable(R.drawable.pacientes_black));
+        registros.setImageDrawable(getResources().getDrawable(R.drawable.nuevo_black));
+        sincronizacion.setImageDrawable(getResources().getDrawable(R.drawable.registros_black));
+
     }
 
     @Override
