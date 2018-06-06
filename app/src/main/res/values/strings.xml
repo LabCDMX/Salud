@@ -4,4 +4,6 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="brigadista">BRIGADISTA              \n     ID-100</string>
+    <string name="antecedentes_patologicos">Antecedentes \n no Patológicos</string>
+
 </resources>
