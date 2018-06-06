@@ -26,7 +26,8 @@ public class MainActivity extends AppCompatActivity implements
         VisitaFragment.OnFragmentInteractionListener,
         InicioFragmentMain.OnFragmentInteractionListener,
         NewPatientFragment.OnFragmentInteractionListener,
-        QuestionDomFragment.OnFragmentInteractionListener{
+        QuestionDomFragment.OnFragmentInteractionListener,
+        DatosGeneralesFragment.OnFragmentInteractionListener{
 
     public String patientID;
     public static ImageView inicio, registros, seguimiento, sincronizacion;
@@ -192,6 +193,14 @@ public class MainActivity extends AppCompatActivity implements
 
     public void fragmentDomiciliarios(){
         QuestionDomFragment fragment = new QuestionDomFragment();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.fragmentHolder, fragment);
+        transaction.commit();
+    }
+
+    public void fragmentDatosGenerales(){
+        DatosGeneralesFragment fragment = new DatosGeneralesFragment();
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.fragmentHolder, fragment);

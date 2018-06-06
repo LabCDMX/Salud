@@ -2,788 +2,392 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#ffffff"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <TextView
-        android:id="@+id/textViewCliente"
+        android:id="@+id/textViewDatosGenerales"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:textStyle="bold"
         android:textColor="@android:color/black"
-        android:textSize="15sp"
+        android:textSize="30dp"
+        android:layout_marginTop="40dp"
         android:text="DATOS GENERALES"/>
+
+
+    <TextView
+        android:id="@+id/textViewPersonales"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_below="@id/textViewDatosGenerales"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="40dp"
+        android:textSize="15sp"
+        android:layout_marginLeft="50dp"
+        android:text="Personales"/>
 
     <View
         android:id="@+id/divider"
-        android:layout_below="@id/textViewCliente"
+        android:layout_below="@id/textViewPersonales"
         android:layout_width="match_parent"
         android:layout_height="2dp"
+        android:layout_marginLeft="50dp"
         android:layout_marginBottom="3dp"
         android:layout_marginTop="3dp"
-        android:background="#074566" />
+        android:background="#E91A8D" />
 
     <ScrollView
         android:id="@+id/cuerpo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
         android:layout_below="@+id/divider" >
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
-
-            <TextView
-                android:id="@+id/tvCuenta"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:textSize="12sp"
-                android:text="Nombre"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:textColor="@android:color/black" />
-
-            <TextView
-                android:id="@+id/textViewCuenta"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:textSize="12sp"
-                android:text="@string/dama"
-                android:textColor="@android:color/black"
-                android:layout_toRightOf="@+id/tvReferencia"
-                android:layout_toEndOf="@+id/tvReferencia"
-                android:layout_marginLeft="13dp"
-                android:layout_marginStart="13dp" />
-
-            <TextView
-                android:id="@+id/tvDigito"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:text="@string/digito"
-                android:textColor="@android:color/black"
-                android:layout_alignBaseline="@+id/textViewDigito"
-                android:layout_alignBottom="@+id/textViewDigito"
-                android:layout_marginRight="15dp"
-                android:layout_marginEnd="15dp"
-                android:layout_toLeftOf="@+id/textViewDigito"
-                android:layout_toStartOf="@+id/textViewDigito" />
-
-            <TextView
-                android:id="@+id/textViewDigito"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:text="@string/digito"
-                android:textColor="@android:color/black"
-                android:layout_above="@+id/textViewNombre"
-                android:layout_marginRight="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
 
             <TextView
                 android:id="@+id/tvNombre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/textViewCuenta"
                 android:layout_marginTop="5dp"
                 android:textSize="12sp"
-                android:text="@string/name"
+                android:text="Nombre:"
                 android:layout_marginLeft="10dp"
                 android:layout_marginStart="10dp"
+                android:textStyle="bold"
                 android:textColor="@android:color/black" />
 
-            <TextView
+            <EditText
                 android:id="@+id/textViewNombre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/textViewCuenta"
                 android:layout_marginTop="5dp"
                 android:textSize="12sp"
-                android:text="@string/name"
+                android:text="Nombre"
+                android:background="#00000000"
                 android:textColor="@android:color/black"
-                android:layout_toRightOf="@+id/tvReferencia"
-                android:layout_toEndOf="@+id/tvReferencia"
-                android:layout_marginLeft="13dp"
-                android:layout_marginStart="13dp" />
+                android:layout_toRightOf="@+id/tvApellidoP"
+                android:layout_toEndOf="@+id/tvApellidoP"
+                android:layout_marginLeft="23dp"
+                android:layout_marginStart="60dp" />
+
+            <ImageButton
+                android:id="@+id/btn_edit"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_toRightOf="@+id/textViewNombre"
+                android:layout_marginLeft="600dp"
+                android:scaleType= "fitCenter"
+                app:srcCompat="@drawable/pencil_pink"/>
+
 
             <TextView
-                android:id="@+id/tvDomicilio"
+                android:id="@+id/tvApellidoP"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textViewNombre"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:textSize="12sp"
-                android:text="@string/domicilio"
+                android:text="Apellido Paterno:"
+                android:textStyle="bold"
                 android:layout_marginLeft="10dp"
                 android:layout_marginStart="10dp"
                 android:textColor="@android:color/black" />
 
-            <TextView
-                android:id="@+id/textViewDomicilio"
+            <EditText
+                android:id="@+id/textViewApellidoP"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textViewNombre"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:textSize="12sp"
-                android:text="@string/domicilio"
+                android:text="Apellido Paterno"
+                android:background="#00000000"
                 android:textColor="@android:color/black"
-                android:layout_toRightOf="@+id/tvReferencia"
-                android:layout_toEndOf="@+id/tvReferencia"
+                android:layout_toRightOf="@+id/tvApellidoP"
+                android:layout_toEndOf="@+id/tvApellidoP"
                 android:layout_marginLeft="13dp"
                 android:layout_marginStart="13dp" />
 
+            <ImageButton
+                android:id="@+id/btn_edit2"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_toRightOf="@+id/textViewApellidoP"
+                android:layout_below="@+id/btn_edit"
+                android:layout_marginLeft="600dp"
+                android:layout_marginTop="4dp"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/pencil_pink"/>
+
             <TextView
-                android:id="@+id/tvReferencia"
+                android:id="@+id/tvApellidoM"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/textViewDomicilio"
-                android:layout_marginTop="5dp"
+                android:layout_below="@id/textViewApellidoP"
+                android:layout_marginTop="10dp"
                 android:textSize="12sp"
-                android:text="@string/referencia"
+                android:text="Apellido Materno:"
+                android:textStyle="bold"
                 android:layout_marginLeft="10dp"
                 android:layout_marginStart="10dp"
                 android:textColor="@android:color/black" />
 
-            <TextView
-                android:id="@+id/textViewReferencia"
+            <EditText
+                android:id="@+id/textViewApellidoM"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/textViewDomicilio"
-                android:layout_marginTop="5dp"
+                android:layout_below="@id/textViewApellidoP"
+                android:layout_marginTop="10dp"
                 android:textSize="12sp"
-                android:text="@string/referencia"
+                android:text="Apellido Materno"
+                android:background="#00000000"
                 android:textColor="@android:color/black"
-                android:layout_toRightOf="@+id/tvReferencia"
-                android:layout_toEndOf="@+id/tvReferencia"
+                android:layout_toRightOf="@+id/tvApellidoM"
+                android:layout_toEndOf="@+id/tvApellidoM"
                 android:layout_marginLeft="13dp"
                 android:layout_marginStart="13dp" />
 
+            <ImageButton
+                android:id="@+id/btn_edit3"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_toRightOf="@+id/textViewApellidoM"
+                android:layout_below="@+id/btn_edit2"
+                android:layout_marginLeft="595dp"
+                android:layout_marginTop="4dp"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/pencil_pink"/>
+
+
+
+            <TextView
+                android:id="@+id/tvDomiciliarios"
+                android:layout_marginTop="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewApellidoM"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:textSize="15sp"
+                android:text="Domiciliarios"/>
+
+            <View
+                android:id="@+id/divider2"
+                android:layout_below="@id/tvDomiciliarios"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
+                android:background="#E91A8D" />
             <TextView
                 android:id="@+id/tvEstado"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/textViewReferencia"
-                android:layout_marginTop="5dp"
+                android:layout_below="@id/tvDomiciliarios"
+                android:layout_marginTop="10dp"
                 android:textSize="12sp"
-                android:text="@string/state"
+                android:text="Estado:"
+                android:textStyle="bold"
                 android:layout_marginLeft="10dp"
                 android:layout_marginStart="10dp"
                 android:textColor="@android:color/black" />
 
-            <TextView
+            <EditText
                 android:id="@+id/textViewEstado"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/textViewReferencia"
-                android:layout_marginTop="5dp"
+                android:layout_below="@id/tvDomiciliarios"
+                android:layout_marginTop="10dp"
                 android:textSize="12sp"
-                android:text="@string/state"
+                android:text="Estado"
+                android:background="#00000000"
                 android:textColor="@android:color/black"
-                android:layout_toRightOf="@+id/tvReferencia"
-                android:layout_toEndOf="@+id/tvReferencia"
-                android:layout_marginLeft="13dp"
-                android:layout_marginStart="13dp" />
+                android:layout_toRightOf="@+id/tvEstado"
+                android:layout_toEndOf="@+id/tvEstado"
+                android:layout_marginLeft="40dp"
+                android:layout_marginStart="80dp" />
+
 
             <TextView
-                android:id="@+id/tvCiudad"
+                android:id="@+id/tvMunicipio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textViewEstado"
                 android:layout_marginTop="5dp"
                 android:textSize="12sp"
-                android:text="@string/municipality"
+                android:text="Municipio:"
+                android:textStyle="bold"
                 android:layout_marginLeft="10dp"
                 android:layout_marginStart="10dp"
                 android:textColor="@android:color/black" />
 
-            <TextView
-                android:id="@+id/textViewCiudad"
+            <EditText
+                android:id="@+id/textViewMunicipio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textViewEstado"
                 android:layout_marginTop="5dp"
                 android:textSize="12sp"
-                android:text="@string/municipality"
+                android:text="Municipio"
+                android:background="#00000000"
                 android:textColor="@android:color/black"
-                android:layout_toRightOf="@+id/tvReferencia"
-                android:layout_toEndOf="@+id/tvReferencia"
+                android:layout_toRightOf="@+id/tvMunicipio"
+                android:layout_toEndOf="@+id/tvMunicipio"
                 android:layout_marginLeft="13dp"
-                android:layout_marginStart="13dp" />
+                android:layout_marginStart="70dp" />
 
             <TextView
-                android:id="@+id/tvColonia"
+                android:id="@+id/tvLocalidad"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/textViewCiudad"
+                android:layout_below="@id/textViewMunicipio"
                 android:layout_marginTop="5dp"
                 android:textSize="12sp"
-                android:text="@string/colony"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:textColor="@android:color/black" />
-
-            <TextView
-                android:id="@+id/textViewColonia"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textViewCiudad"
-                android:layout_marginTop="5dp"
-                android:textSize="12sp"
-                android:text="@string/colony"
-                android:textColor="@android:color/black"
-                android:layout_toRightOf="@+id/tvReferencia"
-                android:layout_toEndOf="@+id/tvReferencia"
-                android:layout_marginLeft="13dp"
-                android:layout_marginStart="13dp" />
-
-
-            <TextView
-                android:id="@+id/tvDatosFinancieros"
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textViewColonia"
-                android:textAlignment="center"
+                android:text="Localidad:"
                 android:textStyle="bold"
-                android:textColor="@android:color/black"
-                android:textSize="15sp"
-                android:text="@string/datos"/>
-
-            <View
-                android:id="@+id/viewDatosFinancieros"
-                android:layout_below="@id/tvDatosFinancieros"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginBottom="3dp"
-                android:layout_marginTop="3dp"
-                android:background="#0ecff1" />
-            <TextView
-                android:id="@+id/tvFacturado"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvDatosFinancieros"
-                android:layout_marginTop="10dp"
-                android:textSize="12sp"
-                android:text="@string/facturado"
                 android:layout_marginLeft="10dp"
                 android:layout_marginStart="10dp"
                 android:textColor="@android:color/black" />
 
-            <TextView
-                android:id="@+id/textViewFacturado"
+            <EditText
+                android:id="@+id/textViewLocalidad"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tvDatosFinancieros"
-                android:layout_marginTop="10dp"
+                android:layout_below="@id/textViewMunicipio"
+                android:layout_marginTop="5dp"
                 android:textSize="12sp"
-                android:text="@string/facturado"
+                android:text="Localidad"
+                android:background="#00000000"
                 android:textColor="@android:color/black"
-                android:layout_toRightOf="@+id/tvReferencia"
-                android:layout_toEndOf="@+id/tvReferencia"
+                android:layout_toRightOf="@+id/tvMunicipio"
+                android:layout_toEndOf="@+id/tvMunicipio"
                 android:layout_marginLeft="13dp"
-                android:layout_marginStart="13dp" />
-
-            <TextView
-                android:id="@+id/tvAnio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvDatosFinancieros"
-                android:layout_marginTop="10dp"
-                android:textSize="12sp"
-                android:text="@string/anio"
-                android:textColor="@android:color/black"
-                android:layout_alignBaseline="@+id/textViewAnio"
-                android:layout_alignBottom="@+id/textViewAnio"
-                android:layout_marginRight="15dp"
-                android:layout_marginEnd="15dp"
-                android:layout_toLeftOf="@+id/textViewCampana"
-                android:layout_toStartOf="@+id/textViewCampana" />
-
-            <TextView
-                android:id="@+id/textViewAnio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvDatosFinancieros"
-                android:layout_marginTop="10dp"
-                android:textSize="12sp"
-                android:text="@string/anio"
-                android:textColor="@android:color/black"
-                android:layout_marginRight="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
-
-            <TextView
-                android:id="@+id/tvSaldo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textViewAnio"
-                android:layout_marginTop="5dp"
-                android:textSize="12sp"
-                android:text="@string/saldo"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:textColor="@android:color/black" />
-
-            <TextView
-                android:id="@+id/textViewSaldo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textViewAnio"
-                android:layout_marginTop="5dp"
-                android:textSize="12sp"
-                android:text="@string/saldo"
-                android:textColor="@android:color/black"
-                android:layout_toRightOf="@+id/tvReferencia"
-                android:layout_toEndOf="@+id/tvReferencia"
-                android:layout_marginLeft="13dp"
-                android:layout_marginStart="13dp" />
-
-            <TextView
-                android:id="@+id/tvCampana"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textViewAnio"
-                android:layout_marginTop="5dp"
-                android:textSize="12sp"
-                android:text="@string/campana"
-                android:textColor="@android:color/black"
-                android:layout_alignBaseline="@+id/textViewCampana"
-                android:layout_alignBottom="@+id/textViewCampana"
-                android:layout_marginRight="15dp"
-                android:layout_marginEnd="15dp"
-                android:layout_toLeftOf="@+id/textViewCampana"
-                android:layout_toStartOf="@+id/textViewCampana" />
-
-            <TextView
-                android:id="@+id/textViewCampana"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textViewAnio"
-                android:layout_marginTop="5dp"
-                android:textSize="12sp"
-                android:text="@string/campana"
-                android:textColor="@android:color/black"
-                android:layout_marginRight="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
+                android:layout_marginStart="70dp" />
 
 
-            <TextView
-                android:id="@+id/tvAdicional"
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textViewCampana"
-                android:textAlignment="center"
-                android:textStyle="bold"
-                android:textColor="@android:color/black"
-                android:textSize="15sp"
-                android:text="@string/info_adicional"/>
 
-            <View
-                android:id="@+id/viewAdicional"
-                android:layout_below="@id/tvAdicional"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginBottom="3dp"
-                android:layout_marginTop="3dp"
-                android:background="#0ed3f1" />
 
-            <LinearLayout
-                android:id="@+id/llAdicional"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/viewAdicional">
-                <TextView
-                    android:id="@+id/tvCa"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textSize="12sp"
-                    android:gravity="center"
-                    android:text="@string/ca"
-                    android:textColor="@android:color/black" />
-                <TextView
-                    android:id="@+id/tvPo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textSize="12sp"
-                    android:gravity="center"
-                    android:text="@string/po"
-                    android:textColor="@android:color/black" />
-                <TextView
-                    android:id="@+id/tvRe"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textSize="12sp"
-                    android:gravity="center"
-                    android:text="@string/re"
-                    android:textColor="@android:color/black" />
-                <TextView
-                    android:id="@+id/tvCau"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textSize="12sp"
-                    android:gravity="center"
-                    android:text="@string/cau"
-                    android:textColor="@android:color/black" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/linearLayoutAdicional"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/llAdicional">
-                <TextView
-                    android:id="@+id/textViewCa"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textSize="12sp"
-                    android:gravity="center"
-                    android:textColor="@android:color/black" />
-                <TextView
-                    android:id="@+id/textViewPo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textSize="12sp"
-                    android:gravity="center"
-                    android:textColor="@android:color/black" />
-                <TextView
-                    android:id="@+id/textViewRe"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textSize="12sp"
-                    android:gravity="center"
-                    android:textColor="@android:color/black" />
-                <TextView
-                    android:id="@+id/textViewCau"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textSize="12sp"
-                    android:gravity="center"
-                    android:textColor="@android:color/black" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/llAdicional1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_below="@id/linearLayoutAdicional">
-                <TextView
-                    android:id="@+id/tvSitPreliq"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textSize="12sp"
-                    android:gravity="center"
-                    android:text="@string/sit_preliq"
-                    android:textColor="@android:color/black" />
-                <TextView
-                    android:id="@+id/tvSitCie"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textSize="12sp"
-                    android:gravity="center"
-                    android:text="@string/sit_cie"
-                    android:textColor="@android:color/black" />
-                <TextView
-                    android:id="@+id/tvCamioneta"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textSize="12sp"
-                    android:gravity="center"
-                    android:text="@string/camioneta"
-                    android:textColor="@android:color/black" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/linearLayoutAdicional1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/llAdicional1">
-                <TextView
-                    android:id="@+id/textViewSitPreliq"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textSize="12sp"
-                    android:gravity="center"
-                    android:textColor="@android:color/black" />
-                <TextView
-                    android:id="@+id/textViewSitCie"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textSize="12sp"
-                    android:gravity="center"
-                    android:textColor="@android:color/black" />
-                <TextView
-                    android:id="@+id/textViewCamioneta"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textSize="12sp"
-                    android:gravity="center"
-                    android:textColor="@android:color/black" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/llAdicional2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_below="@id/linearLayoutAdicional1">
-                <TextView
-                    android:id="@+id/tvPosicion"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textSize="12sp"
-                    android:gravity="center"
-                    android:text="@string/posicion"
-                    android:textColor="@android:color/black" />
-                <TextView
-                    android:id="@+id/tvSeccion"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textSize="12sp"
-                    android:gravity="center"
-                    android:text="@string/seccion"
-                    android:textColor="@android:color/black" />
-                <TextView
-                    android:id="@+id/tvTipo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textSize="12sp"
-                    android:gravity="center"
-                    android:text="@string/tipo"
-                    android:textColor="@android:color/black" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/linearLayoutAdicional2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/llAdicional2">
-                <TextView
-                    android:id="@+id/textViewPosicion"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textSize="12sp"
-                    android:gravity="center"
-                    android:textColor="@android:color/black" />
-                <TextView
-                    android:id="@+id/textViewSeccion"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textSize="12sp"
-                    android:gravity="center"
-                    android:textColor="@android:color/black" />
-                <TextView
-                    android:id="@+id/textViewTipo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textSize="12sp"
-                    android:gravity="center"
-                    android:textColor="@android:color/black" />
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/tvInformacion"
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/linearLayoutAdicional2"
-                android:textAlignment="center"
-                android:textStyle="bold"
-                android:textColor="@android:color/black"
-                android:textSize="15sp"
-                android:text="@string/info"/>
-
-            <View
-                android:id="@+id/viewInformacion"
-                android:layout_below="@id/tvInformacion"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginBottom="3dp"
-                android:layout_marginTop="3dp"
-                android:background="#0ef1f1" />
-
-            <TextView
-                android:id="@+id/tvDivision"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/viewInformacion"
-                android:layout_marginTop="5dp"
-                android:textSize="12sp"
-                android:text="@string/division"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:textColor="@android:color/black" />
-
-            <TextView
-                android:id="@+id/textViewDivision"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/viewInformacion"
-                android:layout_marginTop="5dp"
-                android:textSize="12sp"
-                android:text="@string/division"
-                android:textColor="@android:color/black"
-                android:layout_toRightOf="@+id/tvCobrador"
-                android:layout_toEndOf="@+id/tvCobrador"
-                android:layout_marginLeft="13dp"
-                android:layout_marginStart="13dp" />
-
-            <TextView
-                android:id="@+id/tvCobrador"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textViewDivision"
-                android:layout_marginTop="5dp"
-                android:textSize="12sp"
-                android:text="@string/cobrador"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:textColor="@android:color/black" />
-
-            <TextView
-                android:id="@+id/textViewCobrador"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textViewDivision"
-                android:layout_marginTop="5dp"
-                android:textSize="12sp"
-                android:text="@string/cobrador"
-                android:textColor="@android:color/black"
-                android:layout_toRightOf="@+id/tvCobrador"
-                android:layout_toEndOf="@+id/tvCobrador"
-                android:layout_marginLeft="13dp"
-                android:layout_marginStart="13dp" />
-
-            <TextView
-                android:id="@+id/tvZona"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textViewCobrador"
-                android:layout_marginTop="5dp"
-                android:textSize="12sp"
-                android:text="@string/zona"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:textColor="@android:color/black" />
-
-            <TextView
-                android:id="@+id/textViewZona"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textViewCobrador"
-                android:layout_marginTop="5dp"
-                android:textSize="12sp"
-                android:text="@string/zona"
-                android:textColor="@android:color/black"
-                android:layout_toRightOf="@+id/tvCobrador"
-                android:layout_toEndOf="@+id/tvCobrador"
-                android:layout_marginLeft="13dp"
-                android:layout_marginStart="13dp" />
-
-            <TextView
-                android:id="@+id/tvGtezona"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textViewZona"
-                android:layout_marginTop="5dp"
-                android:textSize="12sp"
-                android:text="@string/gtezona"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:textColor="@android:color/black" />
-
-            <TextView
-                android:id="@+id/textViewGtezona"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textViewZona"
-                android:layout_marginTop="5dp"
-                android:textSize="12sp"
-                android:text="@string/gtezona"
-                android:textColor="@android:color/black"
-                android:layout_toRightOf="@+id/tvCobrador"
-                android:layout_toEndOf="@+id/tvCobrador"
-                android:layout_marginLeft="13dp"
-                android:layout_marginStart="13dp" />
-
-            <TextView
-                android:id="@+id/tvContacto"
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textViewGtezona"
-                android:textAlignment="center"
-                android:textStyle="bold"
-                android:textColor="@android:color/black"
-                android:textSize="15sp"
-                android:text="@string/contacto"/>
-
-            <View
-                android:id="@+id/viewContacto"
-                android:layout_below="@id/tvContacto"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginBottom="3dp"
-                android:layout_marginTop="3dp"
-                android:background="#0edef1" />
-
-            <TextView
-                android:id="@+id/tvTelefono"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/viewContacto"
-                android:layout_marginTop="5dp"
-                android:textSize="12sp"
-                android:text="@string/telefono"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:textColor="@android:color/black" />
-
-            <TextView
-                android:id="@+id/textViewTelefono"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/viewContacto"
-                android:layout_marginTop="5dp"
-                android:textSize="12sp"
-                android:text="@string/telefono"
-                android:textColor="@android:color/black"
-                android:layout_toRightOf="@+id/tvTelefono"
-                android:layout_toEndOf="@+id/tvTelefono"
-                android:layout_marginLeft="13dp"
-                android:layout_marginStart="13dp" />
 
         </RelativeLayout>
     </ScrollView>
+
+    <View
+        android:id="@+id/divider3"
+        android:layout_below="@id/cuerpo"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginBottom="3dp"
+        android:layout_marginTop="95dp"
+        android:background="#b60065" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:gravity="bottom|right"
+        android:orientation="horizontal">
+
+
+        <ImageButton
+            android:id="@+id/next"
+            android:layout_width="140dp"
+            android:layout_height="45dp"
+            android:background="@android:color/transparent"
+            android:padding="10dp"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/siguiente" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|center_horizontal|center"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical|center_horizontal|center"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:scaleType="fitXY"
+                android:visibility="visible"
+                app:srcCompat="@drawable/number_one_pink" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:text="DATOS GENERALES"
+                android:textAlignment="center"
+                android:visibility="visible" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_weight="1"
+            android:background="#DEDED8"
+            android:gravity="center_vertical|center_horizontal|center"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical|center_horizontal|center"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <ImageView
+                android:id="@+id/icon2"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:scaleType="fitXY"
+                android:visibility="visible"
+                app:srcCompat="@drawable/number_two_grey" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:text="CONTEXTO SOCIAL"
+                android:textAlignment="center"
+                android:visibility="visible" />
+        </LinearLayout>
+
+    </LinearLayout>
+    </LinearLayout>
 
 </RelativeLayout>
