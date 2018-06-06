@@ -1,6 +1,7 @@
 package mx.digitalcoaster.rzertuche.medicoencasa;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.net.Uri;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -23,10 +24,14 @@ public class MainActivity extends AppCompatActivity implements
         SincronizacionFragment.OnFragmentInteractionListener,
         PacienteFragment.OnFragmentInteractionListener,
         VisitaFragment.OnFragmentInteractionListener,
-        InicioFragmentMain.OnFragmentInteractionListener{
+        InicioFragmentMain.OnFragmentInteractionListener,
+        NewPatientFragment.OnFragmentInteractionListener,
+        QuestionDomFragment.OnFragmentInteractionListener{
 
     public String patientID;
     public static ImageView inicio, registros, seguimiento, sincronizacion;
+    public static Context appContext;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_main);
 
         getSupportActionBar().setTitle("");
+        appContext = getApplicationContext();
 
         // Initialize Realm
         Realm.init(this);
@@ -93,7 +99,18 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     public void registros(View v){
-        QuestionsFragment fragment = new QuestionsFragment();
+        NewPatientFragment fragment = new NewPatientFragment();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.fragmentHolder, fragment);
+        transaction.commit();
+
+        restartImageButtons();
+        registros.setImageDrawable(getResources().getDrawable(R.drawable.nuevo_pink));
+    }
+
+    public void activityNewPatient(){
+        NewPatientFragment fragment = new NewPatientFragment();
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.fragmentHolder, fragment);
@@ -167,6 +184,14 @@ public class MainActivity extends AppCompatActivity implements
 
     public void activitySincronizacion(){
         SincronizacionFragment fragment = new SincronizacionFragment();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.fragmentHolder, fragment);
+        transaction.commit();
+    }
+
+    public void fragmentDomiciliarios(){
+        QuestionDomFragment fragment = new QuestionDomFragment();
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.fragmentHolder, fragment);

@@ -72,7 +72,7 @@
                 android:paddingLeft="25dp"
                 android:paddingRight="25dp"
                 android:paddingTop="40dp"
-                app:srcCompat="@drawable/icon_personales" />
+                app:srcCompat="@drawable/icon_domiciliarios" />
 
             <TextView
                 android:id="@+id/category"
@@ -83,7 +83,7 @@
                 android:lines="4"
                 android:maxLines="4"
                 android:padding="20dp"
-                android:text="Personales"
+                android:text="Domiciliarios"
                 android:textAlignment="center"
                 android:textSize="27sp" />
 
@@ -131,13 +131,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:text="1.- Nombre"
+                    android:text="1.- Estado"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/answer"
-                    android:layout_width="700dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
@@ -145,18 +145,18 @@
                     android:hint="Escribir respuesta aquí." />
 
                 <TextView
-                    android:id="@+id/question2"
+                    android:id="@+id/question1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="30dp"
-                    android:text="2.- Apellido Paterno"
+                    android:text="2.- Municipio"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/answer2"
-                    android:layout_width="700dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
@@ -170,14 +170,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:text="3.- Apellido Materno"
+                    android:text="3.- Localidad"
                     android:layout_marginTop="30dp"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/answer3"
-                    android:layout_width="700dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"

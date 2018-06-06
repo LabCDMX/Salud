@@ -2,12 +2,10 @@ package mx.digitalcoaster.rzertuche.medicoencasa;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,27 +14,19 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.UUID;
 
-import io.realm.Realm;
-import io.realm.RealmQuery;
-import io.realm.RealmResults;
 import mx.digitalcoaster.rzertuche.medicoencasa.models.Contexto;
 import mx.digitalcoaster.rzertuche.medicoencasa.models.HistoriaClinica;
 import mx.digitalcoaster.rzertuche.medicoencasa.models.Question;
 import mx.digitalcoaster.rzertuche.medicoencasa.models.User;
 
 
-public class QuestionsFragment extends Fragment {
+public class QuestionDomFragment extends Fragment {
+
 
     Question currentQuestion;
 
@@ -69,7 +59,7 @@ public class QuestionsFragment extends Fragment {
 
 
 
-    private OnFragmentInteractionListener mListener;
+    private QuestionsFragment.OnFragmentInteractionListener mListener;
     PaymentServicesSharedPreferences sharedPreferences;
 
 
@@ -94,7 +84,7 @@ public class QuestionsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        return inflater.inflate(R.layout.dialog_question, container, false);
+        return inflater.inflate(R.layout.dialog_question_domiciliarios, container, false);
     }
 
     @Override
@@ -129,9 +119,9 @@ public class QuestionsFragment extends Fragment {
         sharedPreferences = PaymentServicesSharedPreferences.getInstance();
 
 
-        String sharedNombre = sharedPreferences.getStringData("NombrePatient");
-        String sharedApellidoP = sharedPreferences.getStringData("ApellidoP");
-        String sharedApellidoM = sharedPreferences.getStringData("ApellidoM");
+        String sharedNombre = sharedPreferences.getStringData("Estado");
+        String sharedApellidoP = sharedPreferences.getStringData("Municipio");
+        String sharedApellidoM = sharedPreferences.getStringData("Localidad");
 
         if(!sharedNombre.isEmpty() && !sharedApellidoM.isEmpty() && !sharedApellidoM.isEmpty() ){
             answer.setText(sharedNombre);
@@ -139,13 +129,11 @@ public class QuestionsFragment extends Fragment {
             answer3.setText(sharedApellidoM);
         }
 
-
-
         ImageButton back = (ImageButton) view.findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity)getActivity()).activityNewPatient();
+                ((MainActivity)getActivity()).activityRegistros();
 
             }
         });
@@ -162,12 +150,12 @@ public class QuestionsFragment extends Fragment {
 
 
                 if(checkName(nombre)){
-                    sharedPreferences.setStringData("NombrePatient",nombre);
+                    sharedPreferences.setStringData("Estado",nombre);
                     if(checkAP(apeP)){
-                        sharedPreferences.setStringData("ApellidoP",apeP);
+                        sharedPreferences.setStringData("Municipio",apeP);
                         if(checkAM(apeM)){
-                            sharedPreferences.setStringData("ApellidoM",apeM);
-                            ((MainActivity)getActivity()).fragmentDomiciliarios();
+                            sharedPreferences.setStringData("Localidad",apeM);
+
                         }else{
                             answer3.setError("Campo faltante");
                             answer3.requestFocus();
@@ -237,8 +225,8 @@ public class QuestionsFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
+        if (context instanceof QuestionsFragment.OnFragmentInteractionListener) {
+            mListener = (QuestionsFragment.OnFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
