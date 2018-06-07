@@ -1,4 +1,4 @@
-package mx.digitalcoaster.rzertuche.medicoencasa;
+package mx.digitalcoaster.rzertuche.medicoencasa.Fragments;
 
 import android.content.Context;
 import android.net.Uri;
@@ -8,14 +8,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridView;
-import android.widget.ImageButton;
 
-import java.util.ArrayList;
-
-import io.realm.Realm;
-import io.realm.RealmResults;
-import mx.digitalcoaster.rzertuche.medicoencasa.models.User;
+import mx.digitalcoaster.rzertuche.medicoencasa.R;
 
 
 /**

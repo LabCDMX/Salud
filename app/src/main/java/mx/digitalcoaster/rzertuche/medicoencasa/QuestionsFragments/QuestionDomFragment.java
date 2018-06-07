@@ -1,4 +1,4 @@
-package mx.digitalcoaster.rzertuche.medicoencasa;
+package mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments;
 
 import android.app.Activity;
 import android.content.Context;
@@ -19,6 +19,9 @@ import android.widget.TextView;
 import java.util.Date;
 import java.util.UUID;
 
+import mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity;
+import mx.digitalcoaster.rzertuche.medicoencasa.Utils.SharedPreferences;
+import mx.digitalcoaster.rzertuche.medicoencasa.R;
 import mx.digitalcoaster.rzertuche.medicoencasa.models.Contexto;
 import mx.digitalcoaster.rzertuche.medicoencasa.models.HistoriaClinica;
 import mx.digitalcoaster.rzertuche.medicoencasa.models.Question;
@@ -60,7 +63,7 @@ public class QuestionDomFragment extends Fragment {
 
 
     private QuestionsFragment.OnFragmentInteractionListener mListener;
-    PaymentServicesSharedPreferences sharedPreferences;
+    SharedPreferences sharedPreferences;
 
 
 
@@ -116,7 +119,7 @@ public class QuestionDomFragment extends Fragment {
 
         category.setText("Personales");
 
-        sharedPreferences = PaymentServicesSharedPreferences.getInstance();
+        sharedPreferences = SharedPreferences.getInstance();
 
 
         String sharedNombre = sharedPreferences.getStringData("Estado");

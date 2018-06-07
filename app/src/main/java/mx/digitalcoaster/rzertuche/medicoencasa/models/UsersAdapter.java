@@ -1,4 +1,4 @@
-package mx.digitalcoaster.rzertuche.medicoencasa;
+package mx.digitalcoaster.rzertuche.medicoencasa.models;
 
 import android.content.Context;
 import android.util.Log;
@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import mx.digitalcoaster.rzertuche.medicoencasa.R;
 import mx.digitalcoaster.rzertuche.medicoencasa.models.User;
 
 /**

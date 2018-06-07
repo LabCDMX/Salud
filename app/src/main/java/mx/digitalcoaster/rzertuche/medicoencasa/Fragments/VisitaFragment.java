@@ -1,4 +1,4 @@
-package mx.digitalcoaster.rzertuche.medicoencasa;
+package mx.digitalcoaster.rzertuche.medicoencasa.Fragments;
 
 import android.app.Activity;
 import android.content.Context;
@@ -26,6 +26,7 @@ import java.util.UUID;
 import io.realm.Realm;
 import io.realm.RealmQuery;
 import io.realm.RealmResults;
+import mx.digitalcoaster.rzertuche.medicoencasa.R;
 import mx.digitalcoaster.rzertuche.medicoencasa.models.Contexto;
 import mx.digitalcoaster.rzertuche.medicoencasa.models.HistoriaClinica;
 import mx.digitalcoaster.rzertuche.medicoencasa.models.Question;

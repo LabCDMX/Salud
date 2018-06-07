@@ -1,4 +1,4 @@
-package mx.digitalcoaster.rzertuche.medicoencasa;
+package mx.digitalcoaster.rzertuche.medicoencasa.Activitys;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -9,6 +9,8 @@ import android.view.Window;
 
 import java.util.Timer;
 import java.util.TimerTask;
+
+import mx.digitalcoaster.rzertuche.medicoencasa.R;
 
 
 public class SplashScreenActivity extends AppCompatActivity {

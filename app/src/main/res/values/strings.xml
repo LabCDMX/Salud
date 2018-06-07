@@ -6,6 +6,8 @@
     <string name="brigadista">BRIGADISTA              \n     ID-100</string>
     <string name="antecedentes_patologicos">Antecedentes \n no Patológicos</string>
     <string name="condiciones_servicios">Condiciones y \n Servicios del \n Hogar </string>
+    <string name="fase_1">FASE 1 \n COMPLETADA </string>
+
 
 
 </resources>

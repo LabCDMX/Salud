@@ -1,4 +1,4 @@
-package mx.digitalcoaster.rzertuche.medicoencasa;
+package mx.digitalcoaster.rzertuche.medicoencasa.Fragments;
 
 import android.content.Context;
 import android.net.Uri;
@@ -8,25 +8,20 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
-import io.realm.Realm;
-import io.realm.RealmResults;
-import mx.digitalcoaster.rzertuche.medicoencasa.models.Question;
-import mx.digitalcoaster.rzertuche.medicoencasa.models.User;
+import mx.digitalcoaster.rzertuche.medicoencasa.Utils.SharedPreferences;
+import mx.digitalcoaster.rzertuche.medicoencasa.R;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link SincronizacionFragment.OnFragmentInteractionListener} interface
+ * {@link InicioFragmentMain.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link SincronizacionFragment#newInstance} factory method to
+ * Use the {@link InicioFragmentMain#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SincronizacionFragment extends Fragment {
+public class InicioFragmentMain extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -36,14 +31,10 @@ public class SincronizacionFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public TextView total;
-    public TextView verde;
-    public TextView amarillo;
-    public TextView rojo;
-
     private OnFragmentInteractionListener mListener;
+    SharedPreferences sharedPreferences;
 
-    public SincronizacionFragment() {
+    public InicioFragmentMain() {
         // Required empty public constructor
     }
 
@@ -56,8 +47,8 @@ public class SincronizacionFragment extends Fragment {
      * @return A new instance of fragment HomeFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static SincronizacionFragment newInstance(String param1, String param2) {
-        SincronizacionFragment fragment = new SincronizacionFragment();
+    public static InicioFragmentMain newInstance(String param1, String param2) {
+        InicioFragmentMain fragment = new InicioFragmentMain();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -78,24 +69,19 @@ public class SincronizacionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_registros, container, false);
+        return inflater.inflate(R.layout.fragment_sincronizar_inicio, container, false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Realm realm = Realm.getDefaultInstance();
+        sharedPreferences = SharedPreferences.getInstance();
+        sharedPreferences.clearPreferences();
 
-        RealmResults<User> users = realm.where(User.class).findAll();
 
 
-        total = (TextView) view.findViewById(R.id.total);
-        verde = (TextView) view.findViewById(R.id.verde);
-        amarillo = (TextView) view.findViewById(R.id.amarillo);
-        rojo = (TextView) view.findViewById(R.id.rojo);
 
-        total.setText(users.size()+"");
     }
 
     // TODO: Rename method, update argument and hook method into UI event

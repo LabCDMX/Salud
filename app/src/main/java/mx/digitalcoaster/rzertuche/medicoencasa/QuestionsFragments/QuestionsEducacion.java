@@ -1,20 +1,22 @@
-package mx.digitalcoaster.rzertuche.medicoencasa;
+package mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments;
 
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+
+import mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity;
+import mx.digitalcoaster.rzertuche.medicoencasa.Utils.SharedPreferences;
+import mx.digitalcoaster.rzertuche.medicoencasa.R;
 
 
 public class QuestionsEducacion extends Fragment {
@@ -29,7 +31,7 @@ public class QuestionsEducacion extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    PaymentServicesSharedPreferences sharedPreferences;
+    SharedPreferences sharedPreferences;
     private RadioButton primaria,secundaria,preparatoria,licenciatura,posgrado,sinEsc;
     private RadioGroup radioEsc;
     private ImageButton next;
@@ -69,7 +71,7 @@ public class QuestionsEducacion extends Fragment {
         next = (ImageButton) getActivity().findViewById(R.id.next);
 
 
-        sharedPreferences = PaymentServicesSharedPreferences.getInstance();
+        sharedPreferences = SharedPreferences.getInstance();
 
 
 

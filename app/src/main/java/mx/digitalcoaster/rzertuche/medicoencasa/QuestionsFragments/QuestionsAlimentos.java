@@ -1,4 +1,4 @@
-package mx.digitalcoaster.rzertuche.medicoencasa;
+package mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments;
 
 import android.content.Context;
 import android.net.Uri;
@@ -9,41 +9,49 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
+import mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity;
+import mx.digitalcoaster.rzertuche.medicoencasa.R;
+import mx.digitalcoaster.rzertuche.medicoencasa.Utils.SharedPreferences;
 
 
-public class QuestionsContextElectro extends Fragment {
+public class QuestionsAlimentos extends Fragment {
+    // TODO: Rename parameter arguments, choose names that match
+    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
 
-
+    // TODO: Rename and change types of parameters
+    private String mParam1;
+    private String mParam2;
 
     private OnFragmentInteractionListener mListener;
 
-    PaymentServicesSharedPreferences sharedPreferences;
-    private CheckBox estufa,refrigerador,lavadora,telefono,horno,televisor;
+    SharedPreferences sharedPreferences;
+    private RadioButton alimentos1,alimentos2,alimentos3;
+    private RadioGroup radioEsc;
     private ImageButton next;
-    public static List<String> listElectro = new ArrayList<String>();
-
 
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        if (getArguments() != null) {
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
+        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.dialog_question_electro, container, false);
+        return inflater.inflate(R.layout.dialog_question_alimentacion, container, false);
     }
 
     @Override
@@ -51,45 +59,27 @@ public class QuestionsContextElectro extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        estufa = (CheckBox) getActivity().findViewById(R.id.estufa);
-        lavadora = (CheckBox) getActivity().findViewById(R.id.lavadora);
-        refrigerador = (CheckBox) getActivity().findViewById(R.id.refrigerador);
-        telefono = (CheckBox) getActivity().findViewById(R.id.telefono);
-        televisor = (CheckBox) getActivity().findViewById(R.id.tele);
-        horno = (CheckBox) getActivity().findViewById(R.id.horno);
+        alimentos1 = (RadioButton) getActivity().findViewById(R.id.alimentos1);
+        alimentos2 = (RadioButton) getActivity().findViewById(R.id.alimentos2);
+        alimentos3= (RadioButton) getActivity().findViewById(R.id.alimentos3);
 
 
-
-
-
-
+        radioEsc = (RadioGroup) getActivity().findViewById(R.id.radioEsc);
 
         next = (ImageButton) getActivity().findViewById(R.id.next);
+
+
+        sharedPreferences = SharedPreferences.getInstance();
+
+
+
+
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(estufa.isChecked() || refrigerador.isChecked() || lavadora.isChecked() || telefono.isChecked() || horno.isChecked() || televisor.isChecked() ){
-                    if(estufa.isChecked()){
-                        listElectro.add("Estufa");
-                    }
-                    if(refrigerador.isChecked()){
-                        listElectro.add("Refrigerador");
-                    }
-                    if(lavadora.isChecked()){
-                        listElectro.add("Lavadora");
-                    }
-                    if(telefono.isChecked()){
-                        listElectro.add("Telefono");
-                    }
-                    if(horno.isChecked()){
-                        listElectro.add("Horno");
-                    }
-                    if(televisor.isChecked()){
-                        listElectro.add("Televisor");
-                    }
-
-                    Log.e("VALUES LIST", listElectro.toString());
-                    ((MainActivity)getActivity()).activityRegistros();
+                if(alimentos1.isChecked() || alimentos2.isChecked() || alimentos3.isChecked() ){
+                    Log.e("VALUES RADIO", sharedPreferences.getStringData("Alimentos"));
+                    ((MainActivity)getActivity()).fragmentQuestionsContexto();
                 }else{
                     Toast.makeText(getActivity(),"Selecciona una opcion antes de continuar",Toast.LENGTH_SHORT).show();
                 }
@@ -97,11 +87,32 @@ public class QuestionsContextElectro extends Fragment {
             }
         });
 
+        radioEsc.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
+
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                // TODO Auto-generated method stub
+                if (checkedId == R.id.alimentos1){
+
+                    sharedPreferences.setStringData("Alimentos","Menos de 3");
+                    Log.e("RadioGroup","Primaria");
 
 
+                }else if (checkedId == R.id.alimentos2){
 
+                    sharedPreferences.setStringData("Alimentos","3 a 5");
+                    Log.e("RadioGroup","Sec");
 
-        sharedPreferences = PaymentServicesSharedPreferences.getInstance();
+                }else if (checkedId == R.id.alimentos3){
+
+                    sharedPreferences.setStringData("Alimentos","Más de 5");
+                    Log.e("RadioGroup","prepa");
+
+                }
+
+            }
+
+        });
 
     }
 

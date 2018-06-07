@@ -1,4 +1,4 @@
-package mx.digitalcoaster.rzertuche.medicoencasa;
+package mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments;
 
 import android.content.Context;
 import android.net.Uri;
@@ -13,10 +13,18 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity;
+import mx.digitalcoaster.rzertuche.medicoencasa.R;
+import mx.digitalcoaster.rzertuche.medicoencasa.Utils.SharedPreferences;
+
+import static mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsContextElectro.listElectro;
 
 
-public class DatosGeneralesFragment extends Fragment {
+public class ContextoSocialFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -27,10 +35,12 @@ public class DatosGeneralesFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
-    PaymentServicesSharedPreferences sharedPreferences;
+    SharedPreferences sharedPreferences;
 
-    EditText nombre, apellidoP, apellidoM, estado, municipio, localidad;
-    ImageButton btnedit,btnedit1,btnedit2,btnedit3,btnedit4,btnedit5,next ;
+    EditText nombre, apellidoP, estado, municipio;
+    ImageButton btnedit,btnedit1,btnedit3,btnedit4,next;
+
+
 
 
     @Override
@@ -46,7 +56,7 @@ public class DatosGeneralesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_datos_generales, container, false);
+        return inflater.inflate(R.layout.fragment_contexto_social, container, false);
     }
 
     @Override
@@ -55,37 +65,29 @@ public class DatosGeneralesFragment extends Fragment {
 
         nombre = (EditText) getActivity().findViewById(R.id.textViewNombre);
         apellidoP = (EditText) getActivity().findViewById(R.id.textViewApellidoP);
-        apellidoM = (EditText) getActivity().findViewById(R.id.textViewApellidoM);
         estado = (EditText) getActivity().findViewById(R.id.textViewEstado);
-        municipio = (EditText) getActivity().findViewById(R.id.textViewMunicipio);
-        localidad = (EditText) getActivity().findViewById(R.id.textViewLocalidad);
+        municipio = (EditText) getActivity().findViewById(R.id.textCantidades);
 
         btnedit = (ImageButton) getActivity().findViewById(R.id.btn_edit);
         btnedit1 = (ImageButton) getActivity().findViewById(R.id.btn_edit2);
-        btnedit2 = (ImageButton) getActivity().findViewById(R.id.btn_edit3);
         btnedit3 = (ImageButton) getActivity().findViewById(R.id.btn_edit4);
         btnedit4 = (ImageButton) getActivity().findViewById(R.id.btn_edit5);
-        btnedit5 = (ImageButton) getActivity().findViewById(R.id.btn_edit6);
 
         next = (ImageButton) getActivity().findViewById(R.id.next);
-
-
-
-
-
 
         nombre.setSingleLine(true);
 
         //Obtencion de datos del sharedPreferences
-        sharedPreferences = PaymentServicesSharedPreferences.getInstance();
+        sharedPreferences = SharedPreferences.getInstance();
 
-        nombre.setText(sharedPreferences.getStringData("NombrePatient"));
-        apellidoP.setText(sharedPreferences.getStringData("ApellidoP"));
-        apellidoM.setText(sharedPreferences.getStringData("ApellidoM"));
+        nombre.setText(sharedPreferences.getStringData("Escolaridad"));
+        apellidoP.setText("Sin Layout");
 
-        estado.setText(sharedPreferences.getStringData("Estado"));
-        municipio.setText(sharedPreferences.getStringData("Municipio"));
-        localidad.setText(sharedPreferences.getStringData("Localidad"));
+        String listElectroAux = listElectro.toString().replace("[","").replace("]","").replace(",","\n");
+
+
+        estado.setText(listElectroAux);
+        municipio.setText(sharedPreferences.getStringData("Alimentos"));
 
         lockEditText();
 
@@ -161,41 +163,6 @@ public class DatosGeneralesFragment extends Fragment {
         });
 
 
-        btnedit2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                apellidoM.setText("");
-                apellidoM.setEnabled(true);
-                apellidoM.requestFocus();
-                InputMethodManager imm = (InputMethodManager) // con esto abres el teclado despues de ubicar el foco en tu editText
-                        getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.showSoftInput(apellidoM, InputMethodManager.SHOW_IMPLICIT);
-            }
-        });
-        apellidoM.setOnKeyListener(new View.OnKeyListener()
-        {
-            public boolean onKey(View v, int keyCode, KeyEvent event)
-            {
-                if (event.getAction() == KeyEvent.ACTION_DOWN)
-                {
-                    switch (keyCode)
-                    {
-                        case KeyEvent.KEYCODE_DPAD_CENTER:
-                        case KeyEvent.KEYCODE_ENTER:
-                            Log.e("DETECTAR ENTER", "Works super cute");
-                            apellidoM.setEnabled(false);
-                            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                            imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
-
-                            return true;
-                        default:
-                            break;
-                    }
-                }
-                return false;
-            }
-        });
-
 
         btnedit3.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -268,45 +235,11 @@ public class DatosGeneralesFragment extends Fragment {
             }
         });
 
-        btnedit5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                localidad.setText("");
-                localidad.setEnabled(true);
-                localidad.requestFocus();
-                InputMethodManager imm = (InputMethodManager) // con esto abres el teclado despues de ubicar el foco en tu editText
-                        getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.showSoftInput(localidad, InputMethodManager.SHOW_IMPLICIT);
-            }
-        });
-        localidad.setOnKeyListener(new View.OnKeyListener()
-        {
-            public boolean onKey(View v, int keyCode, KeyEvent event)
-            {
-                if (event.getAction() == KeyEvent.ACTION_DOWN)
-                {
-                    switch (keyCode)
-                    {
-                        case KeyEvent.KEYCODE_DPAD_CENTER:
-                        case KeyEvent.KEYCODE_ENTER:
-                            Log.e("DETECTAR ENTER", "Works super cute");
-                            localidad.setEnabled(false);
-                            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                            imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
-
-                            return true;
-                        default:
-                            break;
-                    }
-                }
-                return false;
-            }
-        });
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((MainActivity)getActivity()).fragmentQuestionsEsc();
+                ((MainActivity)getActivity()).fragmentSucceded();
             }
         });
 
@@ -355,18 +288,14 @@ public class DatosGeneralesFragment extends Fragment {
     public void lockEditText(){
         nombre.setEnabled(false);
         apellidoP.setEnabled(false);
-        apellidoM.setEnabled(false);
         estado.setEnabled(false);
         municipio.setEnabled(false);
-        localidad.setEnabled(false);
     }
 
     public void focusViews(){
         nombre.setEnabled(true);
         apellidoP.setEnabled(true);
-        apellidoM.setEnabled(true);
         estado.setEnabled(true);
         municipio.setEnabled(true);
-        localidad.setEnabled(true);
     }
 }

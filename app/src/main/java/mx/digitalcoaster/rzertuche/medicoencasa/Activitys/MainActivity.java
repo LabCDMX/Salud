@@ -1,9 +1,7 @@
-package mx.digitalcoaster.rzertuche.medicoencasa;
+package mx.digitalcoaster.rzertuche.medicoencasa.Activitys;
 
-import android.app.Fragment;
 import android.content.Context;
 import android.net.Uri;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -12,10 +10,25 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 
 import io.realm.Realm;
+import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.InicioFragment;
+import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.InicioFragmentMain;
+import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.NewPatientFragment;
+import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.PacienteFragment;
+import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.SeguimientoFragment;
+import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.SincronizacionFragment;
+import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.SuccededFragment;
+import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.VisitaFragment;
+import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.ContextoSocialFragment;
+import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.DatosGeneralesFragment;
+import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionDomFragment;
+import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsAlimentos;
+import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsContextElectro;
+import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsEducacion;
+import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsFragment;
+import mx.digitalcoaster.rzertuche.medicoencasa.R;
 
 public class MainActivity extends AppCompatActivity implements
         InicioFragment.OnFragmentInteractionListener,
@@ -29,7 +42,10 @@ public class MainActivity extends AppCompatActivity implements
         QuestionDomFragment.OnFragmentInteractionListener,
         DatosGeneralesFragment.OnFragmentInteractionListener,
         QuestionsEducacion.OnFragmentInteractionListener,
-        QuestionsContextElectro.OnFragmentInteractionListener{
+        QuestionsContextElectro.OnFragmentInteractionListener,
+        QuestionsAlimentos.OnFragmentInteractionListener,
+        ContextoSocialFragment.OnFragmentInteractionListener,
+        SuccededFragment.OnFragmentInteractionListener{
 
     public String patientID;
     public static ImageView inicio, registros, seguimiento, sincronizacion;
@@ -219,6 +235,32 @@ public class MainActivity extends AppCompatActivity implements
 
     public void fragmentQuestionsEsc(){
         QuestionsEducacion fragment = new QuestionsEducacion();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.fragmentHolder, fragment);
+        transaction.commit();
+    }
+
+
+    public void fragmentQuestionsAlimentos(){
+        QuestionsAlimentos fragment = new QuestionsAlimentos();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.fragmentHolder, fragment);
+        transaction.commit();
+    }
+
+    public void fragmentSucceded(){
+        SuccededFragment fragment = new SuccededFragment();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.fragmentHolder, fragment);
+        transaction.commit();
+    }
+
+
+    public void fragmentQuestionsContexto(){
+        ContextoSocialFragment fragment = new ContextoSocialFragment();
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.fragmentHolder, fragment);

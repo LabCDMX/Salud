@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textViewDatosGenerales"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:textSize="30dp"
+        android:layout_marginTop="40dp"
+        android:text="CONTEXTO SOCIAL"/>
+
+
+    <TextView
+        android:id="@+id/textViewPersonales"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_below="@id/textViewDatosGenerales"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="10dp"
+        android:textSize="30sp"
+        android:layout_marginLeft="50dp"
+        android:text="Antecedentes no Patológicos"/>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_below="@id/textViewPersonales"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginBottom="3dp"
+        android:layout_marginTop="3dp"
+        android:background="#E91A8D" />
+
+    <ScrollView
+        android:id="@+id/cuerpo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_below="@+id/divider" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/tvNombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textSize="20sp"
+                android:text="Escolaridad Máxima:"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewNombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textSize="20sp"
+                android:text="Nombre"
+                android:background="#00000000"
+                android:textColor="@android:color/black"
+                android:layout_toRightOf="@+id/tvApellidoP"
+                android:layout_toEndOf="@+id/tvApellidoP"
+                android:layout_marginLeft="23dp"
+                android:layout_marginStart="60dp" />
+
+            <ImageButton
+                android:id="@+id/btn_edit"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="600dp"
+                android:scaleType= "fitCenter"
+                app:srcCompat="@drawable/pencil_pink"/>
+
+
+            <TextView
+                android:id="@+id/tvApellidoP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewNombre"
+                android:layout_marginTop="40dp"
+                android:textSize="20sp"
+                android:text="Tiempo de escuela/trabajo:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewApellidoP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewNombre"
+                android:layout_marginTop="40dp"
+                android:textSize="20sp"
+                android:text="Apellido Paterno"
+                android:inputType="text"
+                android:background="#00000000"
+                android:textColor="@android:color/black"
+                android:layout_toRightOf="@+id/tvApellidoP"
+                android:layout_toEndOf="@+id/tvApellidoP"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="60dp" />
+
+            <ImageButton
+                android:id="@+id/btn_edit2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="600dp"
+                android:scaleType= "fitCenter"
+                android:layout_below="@+id/btn_edit"
+                app:srcCompat="@drawable/pencil_pink"/>
+
+            <TextView
+                android:id="@+id/tvDomiciliarios"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewApellidoP"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:textSize="30sp"
+                android:text="Condiciones y Servicios del Hogar"/>
+
+            <View
+                android:id="@+id/divider2"
+                android:layout_below="@id/tvDomiciliarios"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
+                android:background="#E91A8D" />
+            <TextView
+                android:id="@+id/tvEstado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvDomiciliarios"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="Equipo Electrodomésticos:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewEstado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvDomiciliarios"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="Estado"
+                android:inputType="text"
+                android:background="#00000000"
+                android:textColor="@android:color/black"
+                android:layout_toRightOf="@+id/tvEstado"
+                android:layout_toEndOf="@+id/tvEstado"
+                android:layout_marginLeft="40dp"
+                android:layout_marginStart="100dp" />
+
+            <ImageButton
+                android:id="@+id/btn_edit4"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="600dp"
+                android:scaleType= "fitCenter"
+                android:layout_below="@+id/divider2"
+                app:srcCompat="@drawable/pencil_pink"/>
+
+
+            <TextView
+                android:id="@+id/tvAlimentos"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvEstado"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:textSize="30sp"
+                android:text="Condiciones y Servicios del Hogar"/>
+
+            <View
+                android:id="@+id/divider4"
+                android:layout_below="@id/tvAlimentos"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
+                android:background="#E91A8D" />
+            <TextView
+                android:id="@+id/tvCantidades"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/divider4"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="Cantidad de comidas consumidas al día:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textCantidades"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/divider4"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="Estado"
+                android:inputType="text"
+                android:background="#00000000"
+                android:textColor="@android:color/black"
+                android:layout_toRightOf="@+id/tvCantidades"
+                android:layout_toEndOf="@+id/tvCantidades"
+                android:layout_marginLeft="40dp"
+                android:layout_marginStart="110dp" />
+
+            <ImageButton
+                android:id="@+id/btn_edit5"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="600dp"
+                android:scaleType= "fitCenter"
+                android:layout_below="@+id/divider4"
+                app:srcCompat="@drawable/pencil_pink"/>
+
+
+
+
+
+
+
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <View
+        android:id="@+id/divider3"
+        android:layout_below="@id/cuerpo"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginBottom="3dp"
+        android:layout_marginTop="95dp"
+        android:background="#b60065" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:gravity="bottom|right"
+        android:orientation="horizontal">
+
+
+        <ImageButton
+            android:id="@+id/next"
+            android:layout_width="140dp"
+            android:layout_height="45dp"
+            android:background="@android:color/transparent"
+            android:padding="10dp"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/siguiente" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|center_horizontal|center"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical|center_horizontal|center"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:scaleType="fitXY"
+                android:visibility="visible"
+                app:srcCompat="@drawable/number_one_pink" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:text="DATOS GENERALES"
+                android:textAlignment="center"
+                android:visibility="visible" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_weight="1"
+            android:background="#DEDED8"
+            android:gravity="center_vertical|center_horizontal|center"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical|center_horizontal|center"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <ImageView
+                android:id="@+id/icon2"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:scaleType="fitXY"
+                android:visibility="visible"
+                app:srcCompat="@drawable/number_two_grey" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:text="CONTEXTO SOCIAL"
+                android:textAlignment="center"
+                android:visibility="visible" />
+        </LinearLayout>
+
+    </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

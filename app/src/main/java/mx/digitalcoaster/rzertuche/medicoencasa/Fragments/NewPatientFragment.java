@@ -1,4 +1,4 @@
-package mx.digitalcoaster.rzertuche.medicoencasa;
+package mx.digitalcoaster.rzertuche.medicoencasa.Fragments;
 
 import android.content.Context;
 import android.net.Uri;
@@ -8,17 +8,22 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+
+import mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity;
+import mx.digitalcoaster.rzertuche.medicoencasa.Utils.SharedPreferences;
+import mx.digitalcoaster.rzertuche.medicoencasa.R;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link InicioFragmentMain.OnFragmentInteractionListener} interface
+ * {@link NewPatientFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link InicioFragmentMain#newInstance} factory method to
+ * Use the {@link NewPatientFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class InicioFragmentMain extends Fragment {
+public class NewPatientFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -29,9 +34,10 @@ public class InicioFragmentMain extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
-    PaymentServicesSharedPreferences sharedPreferences;
 
-    public InicioFragmentMain() {
+    SharedPreferences sharedPreferences;
+
+    public NewPatientFragment() {
         // Required empty public constructor
     }
 
@@ -44,8 +50,8 @@ public class InicioFragmentMain extends Fragment {
      * @return A new instance of fragment HomeFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static InicioFragmentMain newInstance(String param1, String param2) {
-        InicioFragmentMain fragment = new InicioFragmentMain();
+    public static NewPatientFragment newInstance(String param1, String param2) {
+        NewPatientFragment fragment = new NewPatientFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -66,15 +72,25 @@ public class InicioFragmentMain extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sincronizar_inicio, container, false);
+        return inflater.inflate(R.layout.fragment_new_patient, container, false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        sharedPreferences = PaymentServicesSharedPreferences.getInstance();
+        sharedPreferences = SharedPreferences.getInstance();
         sharedPreferences.clearPreferences();
+
+
+        ImageButton nuevo = (ImageButton) view.findViewById(R.id.imageButton2);
+        nuevo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((MainActivity)getActivity()).activityRegistros();
+            }
+        });
+
 
 
 
