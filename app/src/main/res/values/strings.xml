@@ -5,5 +5,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="brigadista">BRIGADISTA              \n     ID-100</string>
     <string name="antecedentes_patologicos">Antecedentes \n no Patológicos</string>
+    <string name="condiciones_servicios">Condiciones y \n Servicios del \n Hogar </string>
+
 
 </resources>

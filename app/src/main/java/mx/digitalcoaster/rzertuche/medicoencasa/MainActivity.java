@@ -27,7 +27,9 @@ public class MainActivity extends AppCompatActivity implements
         InicioFragmentMain.OnFragmentInteractionListener,
         NewPatientFragment.OnFragmentInteractionListener,
         QuestionDomFragment.OnFragmentInteractionListener,
-        DatosGeneralesFragment.OnFragmentInteractionListener{
+        DatosGeneralesFragment.OnFragmentInteractionListener,
+        QuestionsEducacion.OnFragmentInteractionListener,
+        QuestionsContextElectro.OnFragmentInteractionListener{
 
     public String patientID;
     public static ImageView inicio, registros, seguimiento, sincronizacion;
@@ -201,6 +203,22 @@ public class MainActivity extends AppCompatActivity implements
 
     public void fragmentDatosGenerales(){
         DatosGeneralesFragment fragment = new DatosGeneralesFragment();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.fragmentHolder, fragment);
+        transaction.commit();
+    }
+
+    public void fragmentContextElectro(){
+        QuestionsContextElectro fragment = new QuestionsContextElectro();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.fragmentHolder, fragment);
+        transaction.commit();
+    }
+
+    public void fragmentQuestionsEsc(){
+        QuestionsEducacion fragment = new QuestionsEducacion();
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.fragmentHolder, fragment);

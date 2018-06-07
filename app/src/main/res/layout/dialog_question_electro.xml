@@ -72,7 +72,7 @@
                 android:paddingLeft="25dp"
                 android:paddingRight="25dp"
                 android:paddingTop="40dp"
-                app:srcCompat="@drawable/icon_personales" />
+                app:srcCompat="@drawable/icon_condiciones" />
 
             <TextView
                 android:id="@+id/category"
@@ -83,7 +83,7 @@
                 android:lines="4"
                 android:maxLines="4"
                 android:padding="20dp"
-                android:text="@string/antecedentes_patologicos"
+                android:text="@string/condiciones_servicios"
                 android:textAlignment="center"
                 android:textSize="27sp" />
 
@@ -132,85 +132,66 @@
                     android:layout_marginBottom="10dp"
                     android:layout_marginLeft="230dp"
                     android:layout_marginTop="30dp"
-                    android:text="1.- Escolaridad Máxima"
+                    android:text="1.- Electrodomésticos con los que cuenta el hogar"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
-                <RadioGroup
-                    android:id="@+id/radioEsc"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
 
 
-
-                    <RadioButton
-                        android:id="@+id/primaria_rb"
+                    <CheckBox
+                        android:id="@+id/estufa"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:buttonTint="#E91A8D"
                         android:paddingLeft="40dip"
-                        android:text="Primaria"
+                        android:text="Estufa"
                         android:textColor="#000000" />
 
-                    <RadioButton
-                        android:id="@+id/licenciatura_rb"
+                    <CheckBox
+                        android:id="@+id/refrigerador"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:buttonTint="#E91A8D"
                         android:paddingLeft="40dip"
-                        android:text="Licenciatura"
+                        android:text="Refrigerador"
                         android:textColor="#000000" />
 
 
-                    <RadioButton
-                        android:id="@+id/secundaria_rb"
+                    <CheckBox
+                        android:id="@+id/lavadora"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:buttonTint="#E91A8D"
                         android:paddingLeft="40dip"
-                        android:text="Secundaria"
+                        android:text="Lavadora"
                         android:textColor="#000000" />
 
-                    <RadioButton
-                        android:id="@+id/posgrado_rb"
+                    <CheckBox
+                        android:id="@+id/telefono"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:buttonTint="#E91A8D"
                         android:paddingLeft="40dip"
-                        android:text="Posgrado"
+                        android:text="Teléfono fijo o celular"
                         android:textColor="#000000" />
 
-                    <RadioButton
-                        android:id="@+id/media_rb"
+                    <CheckBox
+                        android:id="@+id/horno"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:buttonTint="#E91A8D"
                         android:paddingLeft="40dip"
-                        android:text="Media Superior"
+                        android:text="Horno de Microondas"
                         android:textColor="#000000" />
 
-                    <RadioButton
-                        android:id="@+id/sin_esc_rb"
+                    <CheckBox
+                        android:id="@+id/tele"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:buttonTint="#E91A8D"
                         android:paddingLeft="40dip"
-                        android:text="Sin Escolaridad"
+                        android:text="Televisión"
                         android:textColor="#000000" />
-
-
-
-
-
-
-
-
-                </RadioGroup>
-
-
-
-
-
 
             </LinearLayout>
 

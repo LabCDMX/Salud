@@ -72,7 +72,7 @@
                 android:paddingLeft="25dp"
                 android:paddingRight="25dp"
                 android:paddingTop="40dp"
-                app:srcCompat="@drawable/icon_personales" />
+                app:srcCompat="@drawable/icon_alimentacion" />
 
             <TextView
                 android:id="@+id/category"
@@ -83,7 +83,7 @@
                 android:lines="4"
                 android:maxLines="4"
                 android:padding="20dp"
-                android:text="@string/antecedentes_patologicos"
+                android:text="Alimentación"
                 android:textAlignment="center"
                 android:textSize="27sp" />
 
@@ -132,7 +132,7 @@
                     android:layout_marginBottom="10dp"
                     android:layout_marginLeft="230dp"
                     android:layout_marginTop="30dp"
-                    android:text="1.- Escolaridad Máxima"
+                    android:text="1.- Cantidad de comidas consumidas al día"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
@@ -144,71 +144,34 @@
 
 
                     <RadioButton
-                        android:id="@+id/primaria_rb"
+                        android:id="@+id/alimentos1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:buttonTint="#E91A8D"
                         android:paddingLeft="40dip"
-                        android:text="Primaria"
+                        android:text="Menos de 3"
                         android:textColor="#000000" />
 
                     <RadioButton
-                        android:id="@+id/licenciatura_rb"
+                        android:id="@+id/alimentos2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:buttonTint="#E91A8D"
                         android:paddingLeft="40dip"
-                        android:text="Licenciatura"
+                        android:text="3 a 5"
                         android:textColor="#000000" />
 
 
                     <RadioButton
-                        android:id="@+id/secundaria_rb"
+                        android:id="@+id/alimentos3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:buttonTint="#E91A8D"
                         android:paddingLeft="40dip"
-                        android:text="Secundaria"
+                        android:text="Más de 5"
                         android:textColor="#000000" />
-
-                    <RadioButton
-                        android:id="@+id/posgrado_rb"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:buttonTint="#E91A8D"
-                        android:paddingLeft="40dip"
-                        android:text="Posgrado"
-                        android:textColor="#000000" />
-
-                    <RadioButton
-                        android:id="@+id/media_rb"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:buttonTint="#E91A8D"
-                        android:paddingLeft="40dip"
-                        android:text="Media Superior"
-                        android:textColor="#000000" />
-
-                    <RadioButton
-                        android:id="@+id/sin_esc_rb"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:buttonTint="#E91A8D"
-                        android:paddingLeft="40dip"
-                        android:text="Sin Escolaridad"
-                        android:textColor="#000000" />
-
-
-
-
-
-
-
 
                 </RadioGroup>
-
-
-
 
 
 
