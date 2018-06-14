@@ -72,7 +72,7 @@
                 android:paddingLeft="25dp"
                 android:paddingRight="25dp"
                 android:paddingTop="40dp"
-                app:srcCompat="@drawable/icon_personales" />
+                app:srcCompat="@drawable/icon_domiciliarios" />
 
             <TextView
                 android:id="@+id/category"
@@ -83,7 +83,7 @@
                 android:lines="4"
                 android:maxLines="4"
                 android:padding="20dp"
-                android:text="Personales"
+                android:text="Domiciliarios"
                 android:textAlignment="center"
                 android:textSize="27sp" />
 
@@ -127,84 +127,232 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/question4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:text="1.- CURP"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/answer4"
-                    android:layout_width="700dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:maxLength="18"
-                    android:inputType="textCapCharacters"
-                    android:hint="Escribir respuesta aquí." />
-
-                <TextView
                     android:id="@+id/question"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:layout_marginTop="10dp"
-                    android:text="2.- Nombre"
+                    android:text="4.- Cantidad de comidas consumidas al día"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
-                <EditText
-                    android:id="@+id/answer"
-                    android:layout_width="700dp"
+                <RadioGroup
+                    android:id="@+id/radioEsc"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/estado_civil"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:inputType="textCapCharacters"
-                    android:hint="Escribir respuesta aquí." />
+                    android:buttonTint="#E91A8D"
+                    android:text="Soltero"
+                    android:textColor="#000000" />
+
+                <RadioButton
+                    android:id="@+id/estado_civil2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="#E91A8D"
+                    android:layout_marginLeft="40dp"
+                    android:text="Casado"
+                    android:textColor="#000000" />
+
+
+                <RadioButton
+                    android:id="@+id/estado_civil3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="#E91A8D"
+                    android:layout_marginLeft="40dp"
+                    android:text="Divorciado"
+                    android:textColor="#000000" />
+
+                <RadioButton
+                    android:id="@+id/estado_civil4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="#E91A8D"
+                    android:text="Viudo"
+                    android:layout_marginLeft="40dp"
+                    android:textColor="#000000" />
+
+                </RadioGroup>
+
+
 
                 <TextView
                     android:id="@+id/question2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:layout_marginTop="30dp"
-                    android:text="3.- Apellido Paterno"
+                    android:text="5.- Actividad laboral/educativa actual"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
-                <EditText
-                    android:id="@+id/answer2"
-                    android:layout_width="700dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:hint="Escribir respuesta aquí."
-                    android:inputType="textCapCharacters"
+                <RadioGroup
+                    android:id="@+id/radioAct"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
-                    />
+                    <RadioButton
+                        android:id="@+id/actividad"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#E91A8D"
+                        android:text="Empleado"
+                        android:textColor="#000000" />
+
+                    <RadioButton
+                        android:id="@+id/actividad2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#E91A8D"
+                        android:layout_marginLeft="40dp"
+                        android:text="Profesionista"
+                        android:textColor="#000000" />
+
+
+                    <RadioButton
+                        android:id="@+id/actividad3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#E91A8D"
+                        android:layout_marginLeft="40dp"
+                        android:text="Estudiante"
+                        android:textColor="#000000" />
+
+
+                </RadioGroup>
+
 
                 <TextView
                     android:id="@+id/question3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:text="4.- Apellido Materno"
-                    android:layout_marginTop="30dp"
+                    android:text="6.- Si el sujeto evaluado se encuentra registrado dentro de algún programa de salud o cobertura médica privada o pública: IMSS, ISSSTE, SS, etc.
+"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
-                <EditText
-                    android:id="@+id/answer3"
-                    android:layout_width="700dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:hint="Escribir respuesta aquí."
-                    android:inputType="textCapCharacters"
+                <RadioGroup
+                    android:id="@+id/radioSeguro"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
-                    />
+                    <RadioButton
+                        android:id="@+id/seguro"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#E91A8D"
+                        android:text="Si"
+                        android:textColor="#000000" />
+
+                    <RadioButton
+                        android:id="@+id/seguro2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#E91A8D"
+                        android:layout_marginLeft="40dp"
+                        android:text="No"
+                        android:textColor="#000000" />
+
+                </RadioGroup>
+
+
+                <RelativeLayout
+                    android:id="@+id/linearYes"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="200dp">
+
+                    <TextView
+                        android:id="@+id/question4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="No de Folio o Aseguramiento:"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/answer4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLength="20"
+                        android:layout_toRightOf="@id/question4"
+                        android:hint="Escribir respuesta aquí."
+                        android:inputType="textCapCharacters"
+                        />
+
+                    <TextView
+                        android:id="@+id/question5"
+                        android:layout_marginTop="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/question4"
+                        android:text="Derechohabiencia"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <RadioGroup
+                        android:id="@+id/radioDerecho"
+                        android:layout_below="@id/question5"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/derecho"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="#E91A8D"
+                            android:text="IMSS"
+                            android:textColor="#000000" />
+
+                        <RadioButton
+                            android:id="@+id/derecho2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="#E91A8D"
+                            android:layout_marginLeft="40dp"
+                            android:text="ISSSTE"
+                            android:textColor="#000000" />
+                        <RadioButton
+                            android:id="@+id/derecho3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="#E91A8D"
+                            android:layout_marginLeft="40dp"
+                            android:text="OTROS"
+                            android:textColor="#000000" />
+                        <RadioButton
+                            android:id="@+id/derecho4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="#E91A8D"
+                            android:layout_marginLeft="40dp"
+                            android:text="GRATUIDAD"
+                            android:textColor="#000000" />
+                        <RadioButton
+                            android:id="@+id/derecho5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="#E91A8D"
+                            android:layout_marginLeft="40dp"
+                            android:text="SEGURO POPULAR"
+                            android:textColor="#000000" />
+
+                    </RadioGroup>
+
+
+
+
+
+                </RelativeLayout>
 
             </LinearLayout>
 

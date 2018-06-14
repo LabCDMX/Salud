@@ -26,8 +26,10 @@ import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.DatosGenerale
 import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionDomFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsAlimentos;
 import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsContextElectro;
+import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsDomFragmentTwo;
 import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsEducacion;
 import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsFragment;
+import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsFragmentTwo;
 import mx.digitalcoaster.rzertuche.medicoencasa.R;
 
 public class MainActivity extends AppCompatActivity implements
@@ -45,7 +47,9 @@ public class MainActivity extends AppCompatActivity implements
         QuestionsContextElectro.OnFragmentInteractionListener,
         QuestionsAlimentos.OnFragmentInteractionListener,
         ContextoSocialFragment.OnFragmentInteractionListener,
-        SuccededFragment.OnFragmentInteractionListener{
+        SuccededFragment.OnFragmentInteractionListener,
+        QuestionsFragmentTwo.OnFragmentInteractionListener,
+        QuestionsDomFragmentTwo.OnFragmentInteractionListener{
 
     public String patientID;
     public static ImageView inicio, registros, seguimiento, sincronizacion;
@@ -69,9 +73,6 @@ public class MainActivity extends AppCompatActivity implements
         registros = (ImageView) findViewById(R.id.imageButton2);
         seguimiento = (ImageView) findViewById(R.id.imageButton3);
         sincronizacion = (ImageView) findViewById(R.id.imageButton4);
-
-
-
 
 
         //Home Fragment
@@ -141,6 +142,24 @@ public class MainActivity extends AppCompatActivity implements
 
     public void activityRegistros(){
         QuestionsFragment fragment = new QuestionsFragment();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.fragmentHolder, fragment);
+        transaction.commit();
+
+    }
+
+    public void questionFragmentTwo(){
+        QuestionsFragmentTwo fragment = new QuestionsFragmentTwo();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.fragmentHolder, fragment);
+        transaction.commit();
+
+    }
+
+    public void questionDomTwo(){
+        QuestionsDomFragmentTwo fragment = new QuestionsDomFragmentTwo();
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.fragmentHolder, fragment);

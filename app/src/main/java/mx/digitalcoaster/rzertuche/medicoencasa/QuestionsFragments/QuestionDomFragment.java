@@ -158,7 +158,7 @@ public class QuestionDomFragment extends Fragment {
                         sharedPreferences.setStringData("Municipio",apeP);
                         if(checkAM(apeM)){
                             sharedPreferences.setStringData("Localidad",apeM);
-                            ((MainActivity)getActivity()).fragmentDatosGenerales();
+                            ((MainActivity)getActivity()).questionDomTwo();
                         }else{
                             answer3.setError("Campo faltante");
                             answer3.requestFocus();

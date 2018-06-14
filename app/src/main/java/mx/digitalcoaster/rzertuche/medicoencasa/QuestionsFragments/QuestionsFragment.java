@@ -159,7 +159,7 @@ public class QuestionsFragment extends Fragment {
                         sharedPreferences.setStringData("ApellidoP",apeP);
                         if(checkAM(apeM)){
                             sharedPreferences.setStringData("ApellidoM",apeM);
-                            ((MainActivity)getActivity()).fragmentDomiciliarios();
+                            ((MainActivity)getActivity()).questionFragmentTwo();
                         }else{
                             answer3.setError("Campo faltante");
                             answer3.requestFocus();

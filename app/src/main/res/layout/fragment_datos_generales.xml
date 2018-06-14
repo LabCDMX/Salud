@@ -6,46 +6,17 @@
     android:background="#ffffff"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textViewDatosGenerales"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:textStyle="bold"
-        android:textColor="@android:color/black"
-        android:textSize="30dp"
-        android:layout_marginTop="40dp"
-        android:text="DATOS GENERALES"/>
-
-
-    <TextView
-        android:id="@+id/textViewPersonales"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:layout_below="@id/textViewDatosGenerales"
-        android:textColor="@android:color/black"
-        android:layout_marginTop="10dp"
-        android:textSize="30sp"
-        android:layout_marginLeft="50dp"
-        android:text="Personales"/>
-
-    <View
-        android:id="@+id/divider"
-        android:layout_below="@id/textViewPersonales"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginBottom="3dp"
-        android:layout_marginTop="3dp"
-        android:background="#E91A8D" />
 
     <ScrollView
         android:id="@+id/cuerpo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_below="@+id/divider" >
+        android:layout_marginLeft="50dp">
+
+
+
+
+
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -53,11 +24,44 @@
             android:layout_marginTop="10dp">
 
             <TextView
+                android:id="@+id/textViewDatosGenerales"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:textSize="30dp"
+                android:layout_marginTop="40dp"
+                android:text="DATOS GGGGENERALES"/>
+
+
+            <TextView
+                android:id="@+id/textViewPersonales"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_below="@id/textViewDatosGenerales"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="10dp"
+                android:textSize="30sp"
+                android:text="Personales"/>
+
+            <View
+                android:id="@+id/divider"
+                android:layout_below="@id/textViewPersonales"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
+                android:background="#E91A8D" />
+
+            <TextView
                 android:id="@+id/tvNombre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:textSize="20sp"
+                android:layout_below="@+id/divider"
                 android:text="Nombre:"
                 android:layout_marginLeft="10dp"
                 android:layout_marginStart="10dp"
@@ -69,8 +73,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
+                android:inputType="textCapCharacters"
                 android:textSize="20sp"
                 android:text="Nombre"
+                android:layout_below="@+id/divider"
                 android:background="#00000000"
                 android:textColor="@android:color/black"
                 android:layout_toRightOf="@+id/tvApellidoP"
@@ -80,10 +86,11 @@
 
             <ImageButton
                 android:id="@+id/btn_edit"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_below="@+id/divider"
                 android:layout_marginLeft="600dp"
-                android:scaleType= "fitCenter"
+                android:background="#FFF"
                 app:srcCompat="@drawable/pencil_pink"/>
 
 
@@ -108,7 +115,7 @@
                 android:layout_marginTop="40dp"
                 android:textSize="20sp"
                 android:text="Apellido Paterno"
-                android:inputType="text"
+                android:inputType="textCapCharacters"
                 android:background="#00000000"
                 android:textColor="@android:color/black"
                 android:layout_toRightOf="@+id/tvApellidoP"
@@ -118,10 +125,10 @@
 
             <ImageButton
                 android:id="@+id/btn_edit2"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_marginLeft="600dp"
-                android:scaleType= "fitCenter"
+                android:background="#FFF"
                 android:layout_below="@+id/btn_edit"
                 app:srcCompat="@drawable/pencil_pink"/>
 
@@ -145,7 +152,7 @@
                 android:layout_below="@id/textViewApellidoP"
                 android:layout_marginTop="40dp"
                 android:textSize="20sp"
-                android:inputType="text"
+                android:inputType="textCapCharacters"
                 android:text="Apellido Materno"
                 android:background="#00000000"
                 android:textColor="@android:color/black"
@@ -156,10 +163,10 @@
 
             <ImageButton
                 android:id="@+id/btn_edit3"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_marginLeft="600dp"
-                android:scaleType= "fitCenter"
+                android:background="#FFF"
                 android:layout_below="@+id/btn_edit2"
                 app:srcCompat="@drawable/pencil_pink"/>
 
@@ -205,7 +212,7 @@
                 android:layout_marginTop="20dp"
                 android:textSize="20sp"
                 android:text="Estado"
-                android:inputType="text"
+                android:inputType="textCapCharacters"
                 android:background="#00000000"
                 android:textColor="@android:color/black"
                 android:layout_toRightOf="@+id/tvEstado"
@@ -215,10 +222,10 @@
 
             <ImageButton
                 android:id="@+id/btn_edit4"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_marginLeft="600dp"
-                android:scaleType= "fitCenter"
+                android:background="#FFF"
                 android:layout_below="@+id/divider2"
                 app:srcCompat="@drawable/pencil_pink"/>
 
@@ -245,7 +252,7 @@
                 android:textSize="20sp"
                 android:text="Municipio"
                 android:background="#00000000"
-                android:inputType="text"
+                android:inputType="textCapCharacters"
                 android:textColor="@android:color/black"
                 android:layout_toRightOf="@+id/tvMunicipio"
                 android:layout_toEndOf="@+id/tvMunicipio"
@@ -254,10 +261,10 @@
 
             <ImageButton
                 android:id="@+id/btn_edit5"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_marginLeft="600dp"
-                android:scaleType= "fitCenter"
+                android:background="#FFF"
                 android:layout_below="@+id/btn_edit4"
                 app:srcCompat="@drawable/pencil_pink"/>
 
@@ -282,7 +289,7 @@
                 android:layout_marginTop="30dp"
                 android:textSize="20sp"
                 android:text="Localidad"
-                android:inputType="text"
+                android:inputType="textCapCharacters"
                 android:background="#00000000"
                 android:textColor="@android:color/black"
                 android:layout_toRightOf="@+id/tvMunicipio"
@@ -292,15 +299,29 @@
 
             <ImageButton
                 android:id="@+id/btn_edit6"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_marginLeft="600dp"
-                android:scaleType= "fitCenter"
+                android:background="#FFF"
                 android:layout_below="@+id/btn_edit5"
                 app:srcCompat="@drawable/pencil_pink"/>
 
+
+
         </RelativeLayout>
+
+
+
+
     </ScrollView>
+
+
+
+
+
+
+
+
 
     <View
         android:id="@+id/divider3"
