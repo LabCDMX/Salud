@@ -29,5 +29,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.12'
+    compile 'com.android.support:cardview-v7:23.1.0'
+
 
 }

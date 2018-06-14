@@ -1,6 +1,10 @@
 package mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,7 +18,11 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import org.json.JSONException;
+
 import mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity;
+import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseDB;
+import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseHelper;
 import mx.digitalcoaster.rzertuche.medicoencasa.Utils.SharedPreferences;
 import mx.digitalcoaster.rzertuche.medicoencasa.R;
 
@@ -33,7 +41,11 @@ public class DatosGeneralesFragment extends Fragment {
     SharedPreferences sharedPreferences;
 
     EditText nombre, apellidoP, apellidoM, estado, municipio, localidad;
-    ImageButton btnedit,btnedit1,btnedit2,btnedit3,btnedit4,btnedit5,next ;
+    ImageButton btnedit,btnedit1,btnedit2,btnedit3,btnedit4,btnedit5,next;
+
+    private SQLiteDatabase db = null;      // Objeto para utilizar la base de datos
+    private DataBaseHelper sqliteHelper;   // Objeto para abrir la base de Datos
+    private Cursor c = null;
 
 
     @Override
@@ -309,7 +321,55 @@ public class DatosGeneralesFragment extends Fragment {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+                db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE ,null);
+                db.delete(DataBaseDB.TABLE_NAME_PACIENTES,null,null);
+
+                String nameComplet = sharedPreferences.getStringData("NombrePatient") + sharedPreferences.getStringData("ApellidoP") + sharedPreferences.getStringData("ApellidoM");
+                String curp = sharedPreferences.getStringData("CURP");
+                String direccion = sharedPreferences.getStringData("Direccion");
+
+
+
+
+                        /*------------------------- Revisar si existe ------------------------*/
+                c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES, null);
+                try {
+                    if(c.moveToFirst()) {
+                        ContentValues values = new ContentValues();
+                        values.put(DataBaseDB.PACIENTES_NOMBRE, nameComplet);
+                        values.put(DataBaseDB.PACIENTES_CURP, curp);
+                        values.put(DataBaseDB.PACIENTES_DIRECCION, direccion);
+
+                        db.insert(DataBaseDB.TABLE_NAME_PACIENTES, null, values);
+                        System.out.println("Productos insertados correctamente");
+                    }
+                    else {
+                        ContentValues values = new ContentValues();
+                        values.put(DataBaseDB.PACIENTES_NOMBRE, nameComplet);
+                        values.put(DataBaseDB.PACIENTES_CURP, curp);
+                        values.put(DataBaseDB.PACIENTES_DIRECCION, direccion);
+
+                        db.insert(DataBaseDB.TABLE_NAME_PACIENTES, null, values);
+                        System.out.println("Productos insertados correctamente");
+
+                    }
+                    c.close();
+                } catch (SQLException ex) {
+                    System.out.println("Error al insertar productos: " + ex);
+                }
+
+                db.close();
+
+
+
+
+
+
                 ((MainActivity)getActivity()).fragmentQuestionsEsc();
+
+
             }
         });
 

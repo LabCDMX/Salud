@@ -35,7 +35,7 @@ public class QuestionsFragment extends Fragment {
     TextView question,question2,question3;
     TextView title;
     TextView category;
-    EditText answer,answer2,answer3;
+    EditText answer,answer2,answer3,answer4;
 
     LinearLayout multiple;
     LinearLayout open;
@@ -107,6 +107,8 @@ public class QuestionsFragment extends Fragment {
         answer = (EditText) view.findViewById(R.id.answer);
         answer2 = (EditText) view.findViewById(R.id.answer2);
         answer3 = (EditText) view.findViewById(R.id.answer3);
+        answer4 = (EditText) view.findViewById(R.id.answer4);
+
 
         category = (TextView) view.findViewById(R.id.category);
 
@@ -151,6 +153,8 @@ public class QuestionsFragment extends Fragment {
                 String nombre = answer.getText().toString();
                 String apeP = answer2.getText().toString();
                 String apeM = answer3.getText().toString();
+                String curp = answer4.getText().toString();
+
 
 
                 if(checkName(nombre)){
@@ -159,6 +163,7 @@ public class QuestionsFragment extends Fragment {
                         sharedPreferences.setStringData("ApellidoP",apeP);
                         if(checkAM(apeM)){
                             sharedPreferences.setStringData("ApellidoM",apeM);
+                            sharedPreferences.setStringData("CURP",curp);
                             ((MainActivity)getActivity()).questionFragmentTwo();
                         }else{
                             answer3.setError("Campo faltante");

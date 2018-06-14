@@ -32,7 +32,7 @@
                 android:textColor="@android:color/black"
                 android:textSize="30dp"
                 android:layout_marginTop="40dp"
-                android:text="DATOS GGGGENERALES"/>
+                android:text="DATOS GENERALES"/>
 
 
             <TextView
@@ -99,7 +99,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textViewNombre"
-                android:layout_marginTop="40dp"
                 android:textSize="20sp"
                 android:text="Apellido Paterno:"
                 android:textStyle="bold"
@@ -112,7 +111,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textViewNombre"
-                android:layout_marginTop="40dp"
                 android:textSize="20sp"
                 android:text="Apellido Paterno"
                 android:inputType="textCapCharacters"
@@ -137,7 +135,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textViewApellidoP"
-                android:layout_marginTop="40dp"
                 android:textSize="20sp"
                 android:text="Apellido Materno:"
                 android:textStyle="bold"
@@ -150,7 +147,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textViewApellidoP"
-                android:layout_marginTop="40dp"
                 android:textSize="20sp"
                 android:inputType="textCapCharacters"
                 android:text="Apellido Materno"
@@ -235,7 +231,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textViewEstado"
-                android:layout_marginTop="30dp"
                 android:textSize="20sp"
                 android:text="Municipio:"
                 android:textStyle="bold"
@@ -248,7 +243,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textViewEstado"
-                android:layout_marginTop="30dp"
                 android:textSize="20sp"
                 android:text="Municipio"
                 android:background="#00000000"
@@ -273,7 +267,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textViewMunicipio"
-                android:layout_marginTop="30dp"
                 android:textSize="20sp"
                 android:text="Localidad:"
                 android:textStyle="bold"
@@ -286,7 +279,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textViewMunicipio"
-                android:layout_marginTop="30dp"
                 android:textSize="20sp"
                 android:text="Localidad"
                 android:inputType="textCapCharacters"

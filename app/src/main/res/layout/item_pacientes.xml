@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/products"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
+    android:gravity="center">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardBackgroundColor="@color/colorWhite"
+        card_view:cardElevation="0dp"
+        card_view:cardMaxElevation="0dp"
+        card_view:cardPreventCornerOverlap="false"
+        android:id="@+id/card_view">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+
+            <ImageView
+                android:id="@+id/imgLogoCompany"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/ic_item"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="20dp"/>
+
+            <TextView
+                android:id="@+id/tvNombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:textColor="#000"
+                android:text="Nombre:"
+                android:singleLine="true"
+                android:layout_toRightOf="@id/imgLogoCompany"
+                android:layout_marginTop="10dp" />
+
+
+
+
+
+            <TextView
+                android:id="@+id/tv_datos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:textColor="#000"
+                android:text="DATOS GENERALES"
+                android:layout_marginTop="10dp"
+                android:singleLine="true"
+                android:layout_toRightOf="@id/imgLogoCompany"
+                android:layout_below="@+id/tvNombre"/>
+
+            <View
+                android:id="@+id/divider"
+                android:layout_below="@id/tv_datos"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginLeft="190dp"
+                android:background="#E91A8D" />
+
+
+
+            <TextView
+                android:id="@+id/tvCurp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:textColor="#000"
+                android:text="CURP:"
+                android:singleLine="true"
+                android:layout_toRightOf="@id/imgLogoCompany"
+                android:layout_below="@+id/divider"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:id="@+id/tv_curp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:textColor="#000"
+                android:text="CURP:"
+                android:singleLine="true"
+                android:layout_marginLeft="10dp"
+                android:layout_below="@id/divider"
+                android:layout_toRightOf="@id/tvCurp"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:id="@+id/tvDireccion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:textColor="#000"
+                android:text="DIRECCIÓN:"
+                android:singleLine="true"
+                android:layout_toRightOf="@id/imgLogoCompany"
+                android:layout_below="@+id/tvCurp"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:id="@+id/tv_direccion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:textColor="#000"
+                android:text="DIRECCION"
+                android:inputType="textMultiLine"
+                android:layout_marginLeft="10dp"
+                android:layout_below="@id/tv_curp"
+                android:layout_toRightOf="@id/tvDireccion"
+                android:layout_marginTop="10dp" />
+
+
+
+
+
+
+
+
+
+
+
+
+        </RelativeLayout>
+
+
+
+
+    </android.support.v7.widget.CardView>
+</LinearLayout>

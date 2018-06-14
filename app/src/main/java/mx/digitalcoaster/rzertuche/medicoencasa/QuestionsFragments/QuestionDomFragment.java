@@ -126,6 +126,7 @@ public class QuestionDomFragment extends Fragment {
         String sharedApellidoP = sharedPreferences.getStringData("Municipio");
         String sharedApellidoM = sharedPreferences.getStringData("Localidad");
 
+
         if(!sharedNombre.isEmpty() && !sharedApellidoM.isEmpty() && !sharedApellidoM.isEmpty() ){
             answer.setText(sharedNombre);
             answer2.setText(sharedApellidoP);
@@ -158,6 +159,8 @@ public class QuestionDomFragment extends Fragment {
                         sharedPreferences.setStringData("Municipio",apeP);
                         if(checkAM(apeM)){
                             sharedPreferences.setStringData("Localidad",apeM);
+                            sharedPreferences.setStringData("Direccion", nombre + apeP + apeM);
+
                             ((MainActivity)getActivity()).questionDomTwo();
                         }else{
                             answer3.setError("Campo faltante");

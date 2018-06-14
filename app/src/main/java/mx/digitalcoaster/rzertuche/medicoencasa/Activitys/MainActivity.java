@@ -1,6 +1,8 @@
 package mx.digitalcoaster.rzertuche.medicoencasa.Activitys;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -13,10 +15,13 @@ import android.view.View;
 import android.widget.ImageView;
 
 import io.realm.Realm;
+import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseDB;
+import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseHelper;
 import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.InicioFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.InicioFragmentMain;
 import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.NewPatientFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.PacienteFragment;
+import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.RegistroFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.SeguimientoFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.SincronizacionFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.SuccededFragment;
@@ -26,6 +31,7 @@ import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.DatosGenerale
 import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionDomFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsAlimentos;
 import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsContextElectro;
+import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsDomFragmentThree;
 import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsDomFragmentTwo;
 import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsEducacion;
 import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsFragment;
@@ -49,11 +55,19 @@ public class MainActivity extends AppCompatActivity implements
         ContextoSocialFragment.OnFragmentInteractionListener,
         SuccededFragment.OnFragmentInteractionListener,
         QuestionsFragmentTwo.OnFragmentInteractionListener,
-        QuestionsDomFragmentTwo.OnFragmentInteractionListener{
+        QuestionsDomFragmentTwo.OnFragmentInteractionListener,
+        QuestionsDomFragmentThree.OnFragmentInteractionListener,
+        RegistroFragment.OnFragmentInteractionListener{
 
     public String patientID;
     public static ImageView inicio, registros, seguimiento, sincronizacion;
     public static Context appContext;
+
+    /*---------------------------------- Objetos de Base de Datos --------------------------------*/
+    private SQLiteDatabase db = null;      // Objeto para utilizar la base de datos
+    private DataBaseHelper sqliteHelper;   // Objeto para abrir la base de Datos
+    private Cursor c = null;
+
 
 
     @Override
@@ -74,6 +88,9 @@ public class MainActivity extends AppCompatActivity implements
         seguimiento = (ImageView) findViewById(R.id.imageButton3);
         sincronizacion = (ImageView) findViewById(R.id.imageButton4);
 
+        sqliteHelper = new DataBaseHelper(this, DataBaseDB.DB_NAME, null, DataBaseDB.VERSION);
+        db = sqliteHelper.getWritableDatabase();
+        db.close();
 
         //Home Fragment
         InicioFragmentMain fragment = new InicioFragmentMain();
@@ -160,6 +177,24 @@ public class MainActivity extends AppCompatActivity implements
 
     public void questionDomTwo(){
         QuestionsDomFragmentTwo fragment = new QuestionsDomFragmentTwo();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.fragmentHolder, fragment);
+        transaction.commit();
+
+    }
+
+    public void questionDomThree(){
+        QuestionsDomFragmentThree fragment = new QuestionsDomFragmentThree();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.fragmentHolder, fragment);
+        transaction.commit();
+
+    }
+
+    public void historiaClinica(){
+        RegistroFragment fragment = new RegistroFragment();
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.fragmentHolder, fragment);

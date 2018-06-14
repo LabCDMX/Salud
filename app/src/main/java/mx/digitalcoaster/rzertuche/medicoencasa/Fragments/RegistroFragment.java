@@ -1,29 +1,36 @@
 package mx.digitalcoaster.rzertuche.medicoencasa.Fragments;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
+import android.widget.ListView;
 
-import mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity;
-import mx.digitalcoaster.rzertuche.medicoencasa.Utils.SharedPreferences;
+import java.util.ArrayList;
+import java.util.List;
+
+import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseDB;
 import mx.digitalcoaster.rzertuche.medicoencasa.R;
+import mx.digitalcoaster.rzertuche.medicoencasa.models.Item;
+import mx.digitalcoaster.rzertuche.medicoencasa.models.ItemAdapter;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link NewPatientFragment.OnFragmentInteractionListener} interface
+ * {@link RegistroFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link NewPatientFragment#newInstance} factory method to
+ * Use the {@link RegistroFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class NewPatientFragment extends Fragment {
+public class RegistroFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -35,9 +42,16 @@ public class NewPatientFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    SharedPreferences sharedPreferences;
+    public static Context appContext;
 
-    public NewPatientFragment() {
+    protected ListView lista;
+    private List<Item> items = null;
+
+    private SQLiteDatabase db = null;   // Objeto para usar la base de datos local
+    private Cursor c = null;            // Objeto para hacer consultas a la base de datos
+
+
+    public RegistroFragment() {
         // Required empty public constructor
     }
 
@@ -50,8 +64,8 @@ public class NewPatientFragment extends Fragment {
      * @return A new instance of fragment HomeFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static NewPatientFragment newInstance(String param1, String param2) {
-        NewPatientFragment fragment = new NewPatientFragment();
+    public static RegistroFragment newInstance(String param1, String param2) {
+        RegistroFragment fragment = new RegistroFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -71,40 +85,43 @@ public class NewPatientFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_new_patient, container, false);
+        return inflater.inflate(R.layout.fragment_registro, container, false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        sharedPreferences = SharedPreferences.getInstance();
-        sharedPreferences.clearPreferences();
+
+        lista = (ListView) getActivity().findViewById(R.id.customListView);
+
+        items = new ArrayList<>();
+        getProductos();
+        lista.setAdapter(new ItemAdapter(getActivity().getApplicationContext(), items));
 
 
-        ImageButton nuevo = (ImageButton) view.findViewById(R.id.imageButton2);
-        nuevo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((MainActivity)getActivity()).activityRegistros();
+
+    }
+
+
+    private void getProductos() {
+
+        db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, android.content.Context.MODE_PRIVATE, null);
+        try {
+            c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES, null);
+            if (c.moveToFirst()) {
+                do {
+                    items.add(new Item(c.getString(1), c.getString(2), c.getString(3)));
+                }while (c.moveToNext());
+            } else {
+                System.out.println("No existen PACIENTES");
             }
-        });
-
-        ImageButton historia_clinica = (ImageButton) view.findViewById(R.id.imageButton3);
-        historia_clinica.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((MainActivity)getActivity()).historiaClinica();
-            }
-        });
-
-
-
-
-
-
-
+            c.close();
+        } catch (Exception ex) {
+            Log.e("Error", ex.toString());
+        } finally {
+            db.close();
+        }
     }
 
     // TODO: Rename method, update argument and hook method into UI event
