@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -44,7 +45,7 @@ public class RegistroFragment extends Fragment {
 
     public static Context appContext;
 
-    protected ListView lista;
+    protected GridView lista;
     private List<Item> items = null;
 
     private SQLiteDatabase db = null;   // Objeto para usar la base de datos local
@@ -93,11 +94,13 @@ public class RegistroFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        lista = (ListView) getActivity().findViewById(R.id.customListView);
+        lista = (GridView) getActivity().findViewById(R.id.gridview);
 
         items = new ArrayList<>();
         getProductos();
+        lista.setNumColumns(3);
         lista.setAdapter(new ItemAdapter(getActivity().getApplicationContext(), items));
+
 
 
 

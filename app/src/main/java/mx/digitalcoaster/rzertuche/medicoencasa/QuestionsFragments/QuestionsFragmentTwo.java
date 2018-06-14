@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -103,6 +104,9 @@ public class QuestionsFragmentTwo extends Fragment {
             }
         });
 
+        final TextView date = (TextView) getActivity().findViewById(R.id.answer4);
+        final EditText estadoNacimiento = (EditText) getActivity().findViewById(R.id.answer);
+        final EditText nacionalidad = (EditText) getActivity().findViewById(R.id.answer3);
 
 
         ImageButton next = (ImageButton) view.findViewById(R.id.next);
@@ -110,7 +114,30 @@ public class QuestionsFragmentTwo extends Fragment {
             @Override
             public void onClick(View v) {
 
-                ((MainActivity)getActivity()).fragmentDomiciliarios();
+                String sexo = sp.getSelectedItem().toString();
+
+
+                if(!date.getText().toString().equals("")){
+                    if(!estadoNacimiento.getText().toString().isEmpty()){
+                        if(!sexo.isEmpty()){
+                            if(!nacionalidad.getText().toString().isEmpty()){
+
+                                ((MainActivity)getActivity()).fragmentDomiciliarios();
+
+
+                            }else{
+                                nacionalidad.setError("Campo requerido");
+                            }
+                        }else{
+                            Toast.makeText(getActivity(), "Selecciona los campos faltantes", Toast.LENGTH_LONG).show();
+                        }
+                    }else{
+                        estadoNacimiento.setError("Campo requerido");
+                    }
+                }else{
+                    date.setError("Campo requerido");
+                }
+
 
             }
         });
@@ -119,17 +146,37 @@ public class QuestionsFragmentTwo extends Fragment {
         text_date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setDate();
+                // calender class's instance and get current date , month and year from calender
+                final Calendar c = Calendar.getInstance();
+                dateFormatter = new SimpleDateFormat("dd/MM/yyyy");
+
+
+                int mYear = c.get(Calendar.YEAR); // current year
+                int mMonth = c.get(Calendar.MONTH); // current month
+                int mDay = c.get(Calendar.DAY_OF_MONTH); // current day
+                // date picker dialog
+                datePickerDialog = new DatePickerDialog(getActivity(),
+                        new DatePickerDialog.OnDateSetListener() {
+
+                            @Override
+                            public void onDateSet(DatePicker view, int year,
+                                                  int monthOfYear, int dayOfMonth) {
+                                // set day of month , month and year value in the edit text
+                                text_date.setText(dayOfMonth + "/"
+                                        + (monthOfYear + 1) + "/" + year);
+
+                            }
+                        }, mYear, mMonth, mDay);
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+                datePickerDialog.getDatePicker().setSpinnersShown(false);
+                datePickerDialog.setCancelable(false);
                 datePickerDialog.show();
 
 
-
-                if (!date.equals("")) {
-                    text_date.setText(date);
-                }
-
             }
         });
+
+
 
         getSpinnerOptions();
 
@@ -140,36 +187,15 @@ public class QuestionsFragmentTwo extends Fragment {
     public void getSpinnerOptions(){
         ArrayList<String> category = new ArrayList<String>();
 
-        category.add("Masculino");
-        category.add("Femenino");
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), android.R.layout.simple_list_item_1, category);
+        category.add("HOMBRE");
+        category.add("MUJER");
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), R.layout.spinner_item, category);
         dataAdapter.setDropDownViewResource(R.layout.spinner_item);
         sp.setAdapter(dataAdapter);
         dataAdapter.notifyDataSetChanged();
 
     }
 
-    public void setDate(){
-        Calendar newCalendar = Calendar.getInstance();
-        dateFormatter = new SimpleDateFormat("dd/MM/yyyy");
-
-
-        datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
-
-            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                Calendar newDate = Calendar.getInstance();
-
-                text_date.setVisibility(View.VISIBLE);
-                text_date.setText(dateFormatter.format(newDate.getTime()));
-                date = text_date.getText().toString().trim();
-
-            }
-
-        }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
-
-        datePickerDialog.getDatePicker().setSpinnersShown(true);
-        datePickerDialog.setCancelable(false);
-    }
 
 
 

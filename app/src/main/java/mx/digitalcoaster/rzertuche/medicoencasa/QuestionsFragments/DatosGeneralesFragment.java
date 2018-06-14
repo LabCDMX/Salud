@@ -324,10 +324,13 @@ public class DatosGeneralesFragment extends Fragment {
 
 
                 db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE ,null);
-                db.delete(DataBaseDB.TABLE_NAME_PACIENTES,null,null);
 
-                String nameComplet = sharedPreferences.getStringData("NombrePatient") + sharedPreferences.getStringData("ApellidoP") + sharedPreferences.getStringData("ApellidoM");
+                String nameComplet = sharedPreferences.getStringData("NombrePatient") + " " +
+                        " " + sharedPreferences.getStringData("ApellidoP")  +
+                        " " + sharedPreferences.getStringData("ApellidoM");
+
                 String curp = sharedPreferences.getStringData("CURP");
+
                 String direccion = sharedPreferences.getStringData("Direccion");
 
 

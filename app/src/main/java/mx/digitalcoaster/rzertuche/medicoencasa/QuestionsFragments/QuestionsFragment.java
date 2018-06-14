@@ -126,11 +126,14 @@ public class QuestionsFragment extends Fragment {
         String sharedNombre = sharedPreferences.getStringData("NombrePatient");
         String sharedApellidoP = sharedPreferences.getStringData("ApellidoP");
         String sharedApellidoM = sharedPreferences.getStringData("ApellidoM");
+        String curp = sharedPreferences.getStringData("CURP");
 
-        if(!sharedNombre.isEmpty() && !sharedApellidoM.isEmpty() && !sharedApellidoM.isEmpty() ){
+        if(!sharedNombre.isEmpty() && !sharedApellidoM.isEmpty() && !sharedApellidoM.isEmpty() && !curp.isEmpty() ){
             answer.setText(sharedNombre);
             answer2.setText(sharedApellidoP);
             answer3.setText(sharedApellidoM);
+            answer4.setText(curp);
+
         }
 
 
@@ -155,40 +158,50 @@ public class QuestionsFragment extends Fragment {
                 String apeM = answer3.getText().toString();
                 String curp = answer4.getText().toString();
 
-
-
-                if(checkName(nombre)){
-                    sharedPreferences.setStringData("NombrePatient",nombre);
-                    if(checkAP(apeP)){
-                        sharedPreferences.setStringData("ApellidoP",apeP);
-                        if(checkAM(apeM)){
-                            sharedPreferences.setStringData("ApellidoM",apeM);
-                            sharedPreferences.setStringData("CURP",curp);
-                            ((MainActivity)getActivity()).questionFragmentTwo();
+                if(checkNull(curp)){
+                    sharedPreferences.setStringData("CURP",curp);
+                    if(checkNull(nombre)){
+                        sharedPreferences.setStringData("NombrePatient",nombre);
+                        if(checkNull(apeP)){
+                            sharedPreferences.setStringData("ApellidoP",apeP);
+                            if(checkNull(apeM)){
+                                sharedPreferences.setStringData("ApellidoM",apeM);
+                                ((MainActivity)getActivity()).questionFragmentTwo();
+                            }else{
+                                answer3.setError("Campo faltante");
+                                answer3.requestFocus();
+                                InputMethodManager imm = (InputMethodManager) // con esto abres el teclado despues de ubicar el foco en tu editText
+                                        getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                                imm.showSoftInput(answer3, InputMethodManager.SHOW_IMPLICIT);
+                            }
                         }else{
-                            answer3.setError("Campo faltante");
-                            answer3.requestFocus();
+                            answer2.setError("Campo faltante");
+                            answer2.requestFocus();
                             InputMethodManager imm = (InputMethodManager) // con esto abres el teclado despues de ubicar el foco en tu editText
                                     getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                            imm.showSoftInput(answer3, InputMethodManager.SHOW_IMPLICIT);
+                            imm.showSoftInput(answer2, InputMethodManager.SHOW_IMPLICIT);
+
                         }
                     }else{
-                        answer2.setError("Campo faltante");
-                        answer2.requestFocus();
+
+                        answer.setError("Campo faltante");
+                        answer.requestFocus();
                         InputMethodManager imm = (InputMethodManager) // con esto abres el teclado despues de ubicar el foco en tu editText
                                 getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                        imm.showSoftInput(answer2, InputMethodManager.SHOW_IMPLICIT);
+                        imm.showSoftInput(answer, InputMethodManager.SHOW_IMPLICIT);
 
                     }
+
                 }else{
 
-                    answer.setError("Campo faltante");
-                    answer.requestFocus();
+                    answer4.setError("Campo faltante");
+                    answer4.requestFocus();
                     InputMethodManager imm = (InputMethodManager) // con esto abres el teclado despues de ubicar el foco en tu editText
                             getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.showSoftInput(answer, InputMethodManager.SHOW_IMPLICIT);
+                    imm.showSoftInput(answer4, InputMethodManager.SHOW_IMPLICIT);
 
                 }
+
 
 
 
@@ -200,7 +213,7 @@ public class QuestionsFragment extends Fragment {
     }
 
 
-    public Boolean checkName(String name){
+    public Boolean checkNull(String name){
         if(name.isEmpty() || name == null){
             return false;
         }else{
@@ -208,21 +221,6 @@ public class QuestionsFragment extends Fragment {
         }
     }
 
-    public Boolean checkAP(String name){
-        if(name.isEmpty() || name == null){
-            return false;
-        }else{
-            return true;
-        }
-    }
-
-    public Boolean checkAM(String name){
-        if(name.isEmpty() || name == null){
-            return false;
-        }else{
-            return true;
-        }
-    }
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

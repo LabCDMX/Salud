@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
@@ -32,12 +33,14 @@ public class QuestionsDomFragmentTwo extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
+
     SharedPreferences sharedPreferences;
     private RadioButton seguro,seguro2;
     private RadioGroup radioEsc;
     private ImageButton next;
     private RelativeLayout relativeSeguro;
-
+    private LinearLayout questions,questions2,questions3;
+    private int count = 0;
 
 
     @Override
@@ -64,10 +67,16 @@ public class QuestionsDomFragmentTwo extends Fragment {
         seguro = (RadioButton) getActivity().findViewById(R.id.seguro);
         seguro2 = (RadioButton) getActivity().findViewById(R.id.seguro2);
 
-
         radioEsc = (RadioGroup) getActivity().findViewById(R.id.radioSeguro);
 
         next = (ImageButton) getActivity().findViewById(R.id.next);
+
+        relativeSeguro = (RelativeLayout) getActivity().findViewById(R.id.linearYes);
+        questions = (LinearLayout) getActivity().findViewById(R.id.questions);
+        questions2 = (LinearLayout) getActivity().findViewById(R.id.questions2);
+        questions3 = (LinearLayout) getActivity().findViewById(R.id.questions3);
+
+
 
 
         sharedPreferences = SharedPreferences.getInstance();
@@ -78,12 +87,30 @@ public class QuestionsDomFragmentTwo extends Fragment {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                count++;
+
+                if(count == 1){
+                    questions.setVisibility(View.GONE);
+                    questions2.setVisibility(View.VISIBLE);
+                }
+
+                if(count == 2){
+                    questions2.setVisibility(View.GONE);
+                    questions3.setVisibility(View.VISIBLE);
+                }
+
+                if(count == 3){
 
                     ((MainActivity)getActivity()).questionDomThree();
+
+                }
+
+
+
             }
         });
 
-        relativeSeguro = (RelativeLayout) getActivity().findViewById(R.id.linearYes);
+
 
 
 

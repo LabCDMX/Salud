@@ -107,15 +107,12 @@
                     android:id="@+id/title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
                     android:layout_marginTop="20dp"
                     android:paddingBottom="20dp"
                     android:text="DATOS GENERALES"
                     android:textAlignment="center"
                     android:textSize="32sp"
                     android:textStyle="bold" />
-
-
 
             </LinearLayout>
 
@@ -130,7 +127,6 @@
                     android:id="@+id/question4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
                     android:text="1.- CURP"
                     android:textSize="24sp"
                     android:textStyle="bold" />
@@ -149,8 +145,7 @@
                     android:id="@+id/question"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="20dp"
                     android:text="2.- Nombre"
                     android:textSize="24sp"
                     android:textStyle="bold" />
@@ -168,9 +163,8 @@
                     android:id="@+id/question2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="30dp"
                     android:text="3.- Apellido Paterno"
+                    android:layout_marginTop="20dp"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
@@ -189,9 +183,8 @@
                     android:id="@+id/question3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
                     android:text="4.- Apellido Materno"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="20dp"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 

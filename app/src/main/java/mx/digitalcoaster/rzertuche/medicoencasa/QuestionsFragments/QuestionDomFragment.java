@@ -159,7 +159,7 @@ public class QuestionDomFragment extends Fragment {
                         sharedPreferences.setStringData("Municipio",apeP);
                         if(checkAM(apeM)){
                             sharedPreferences.setStringData("Localidad",apeM);
-                            sharedPreferences.setStringData("Direccion", nombre + apeP + apeM);
+                            sharedPreferences.setStringData("Direccion", nombre + " " +  apeP + " " + apeM);
 
                             ((MainActivity)getActivity()).questionDomTwo();
                         }else{
