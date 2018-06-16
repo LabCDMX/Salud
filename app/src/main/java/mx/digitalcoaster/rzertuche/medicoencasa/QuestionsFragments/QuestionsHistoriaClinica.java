@@ -5,24 +5,23 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity;
-import mx.digitalcoaster.rzertuche.medicoencasa.Utils.SharedPreferences;
 import mx.digitalcoaster.rzertuche.medicoencasa.R;
+import mx.digitalcoaster.rzertuche.medicoencasa.Utils.SharedPreferences;
 
 
-public class QuestionsContextElectro extends Fragment {
+public class QuestionsHistoriaClinica extends Fragment {
 
 
 
@@ -33,7 +32,8 @@ public class QuestionsContextElectro extends Fragment {
     private ImageButton next;
     public static List<String> listElectro = new ArrayList<String>();
 
-    private LinearLayout questions,questions2,questions3,questions4;
+    private LinearLayout questions,questions3,questions4;
+    private TextView questions2;
     private int count = 0;
 
 
@@ -49,7 +49,7 @@ public class QuestionsContextElectro extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.dialog_question_electro, container, false);
+        return inflater.inflate(R.layout.dialog_question_historia_clinica, container, false);
     }
 
     @Override
@@ -57,18 +57,7 @@ public class QuestionsContextElectro extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        estufa = (CheckBox) getActivity().findViewById(R.id.estufa);
-        lavadora = (CheckBox) getActivity().findViewById(R.id.lavadora);
-        refrigerador = (CheckBox) getActivity().findViewById(R.id.refrigerador);
-        telefono = (CheckBox) getActivity().findViewById(R.id.telefono);
-        televisor = (CheckBox) getActivity().findViewById(R.id.tele);
-        horno = (CheckBox) getActivity().findViewById(R.id.horno);
 
-
-        questions = (LinearLayout) getActivity().findViewById(R.id.questions);
-        questions2 = (LinearLayout) getActivity().findViewById(R.id.questions2);
-        questions3 = (LinearLayout) getActivity().findViewById(R.id.questions3);
-        questions4 = (LinearLayout) getActivity().findViewById(R.id.questions4);
 
 
 
@@ -78,54 +67,8 @@ public class QuestionsContextElectro extends Fragment {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                count++;
 
-
-
-                if(estufa.isChecked() || refrigerador.isChecked() || lavadora.isChecked() || telefono.isChecked() || horno.isChecked() || televisor.isChecked() ){
-                    if(estufa.isChecked()){
-                        listElectro.add("Estufa");
-                    }
-                    if(refrigerador.isChecked()){
-                        listElectro.add("Refrigerador");
-                    }
-                    if(lavadora.isChecked()){
-                        listElectro.add("Lavadora");
-                    }
-                    if(telefono.isChecked()){
-                        listElectro.add("Telefono");
-                    }
-                    if(horno.isChecked()){
-                        listElectro.add("Horno");
-                    }
-                    if(televisor.isChecked()){
-                        listElectro.add("Televisor");
-                    }
-
-                    Log.e("VALUES LIST", listElectro.toString());
-                }
-
-
-                if(count == 1){
-                    questions.setVisibility(View.GONE);
-                    questions2.setVisibility(View.VISIBLE);
-                }
-
-                if(count == 2){
-                    questions2.setVisibility(View.GONE);
-                    questions3.setVisibility(View.VISIBLE);
-                }
-
-                if(count == 3){
-                    questions3.setVisibility(View.GONE);
-                    questions4.setVisibility(View.VISIBLE);
-
-                }
-                if(count == 4){
-                    count=0;
-                    ((MainActivity)getActivity()).fragmentQuestionsAlimentos();
-
-                }
+                ((MainActivity)getActivity()).questionExploracion();
 
             }
         });

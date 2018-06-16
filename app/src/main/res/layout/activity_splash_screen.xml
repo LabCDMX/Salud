@@ -2,12 +2,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="#fff"
     tools:context=".Activitys.SplashScreenActivity">
 
     <ImageView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="700dp"
+        android:layout_height="600dp"
         android:id="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:src="@drawable/medico_casa_logo"
-        android:scaleType="centerCrop" />
+        android:scaleType="fitCenter" />
 </RelativeLayout>

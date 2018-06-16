@@ -119,7 +119,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/open"
+                android:id="@+id/questions"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -198,21 +198,294 @@
                         android:text="Sin Escolaridad"
                         android:textColor="#000000" />
 
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/questions2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/tiempo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="30dp"
+                    android:text="2.- Tiempo de escuela/trabajo"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <RadioGroup
+                    android:id="@+id/radioTiempo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
 
+                    <RadioButton
+                        android:id="@+id/hora1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#E91A8D"
+                        android:paddingLeft="40dip"
+                        android:text="Menos de 6 hrs"
+                        android:textColor="#000000" />
 
 
+                    <RadioButton
+                        android:id="@+id/hora2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#E91A8D"
+                        android:paddingLeft="40dip"
+                        android:text="6hrs a 9hrs"
+                        android:textColor="#000000" />
 
+                    <RadioButton
+                        android:id="@+id/hora3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#E91A8D"
+                        android:paddingLeft="40dip"
+                        android:text="9hrs a 12hrs"
+                        android:textColor="#000000" />
+
+                    <RadioButton
+                        android:id="@+id/hora4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#E91A8D"
+                        android:paddingLeft="40dip"
+                        android:text="Mas de 12 hrs"
+                        android:textColor="#000000" />
 
 
                 </RadioGroup>
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/questions3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/tiempoTrans"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="30dp"
+                    android:text="3.- Tiempo de transporte"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <RadioGroup
+                    android:id="@+id/radioTrans"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
 
+                    <RadioButton
+                        android:id="@+id/transporte1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#E91A8D"
+                        android:paddingLeft="40dip"
+                        android:text="Menos de 1 hr"
+                        android:textColor="#000000" />
 
 
+                    <RadioButton
+                        android:id="@+id/transporte2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#E91A8D"
+                        android:paddingLeft="40dip"
+                        android:text="1 hr a 3 hrs"
+                        android:textColor="#000000" />
+
+                    <RadioButton
+                        android:id="@+id/transporte3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#E91A8D"
+                        android:paddingLeft="40dip"
+                        android:text="Mas de 3 hrs"
+                        android:textColor="#000000" />
+
+                </RadioGroup>
 
             </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/questions4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/tiempoRecre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="30dp"
+                    android:text="4.- Tiempo de recreación"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <RadioGroup
+                    android:id="@+id/radioRecre"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <RadioButton
+                        android:id="@+id/recre"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#E91A8D"
+                        android:paddingLeft="40dip"
+                        android:text="Menos de 1 h"
+                        android:textColor="#000000" />
+
+
+                    <RadioButton
+                        android:id="@+id/recre1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#E91A8D"
+                        android:paddingLeft="40dip"
+                        android:text="1 hr a 2 hrs"
+                        android:textColor="#000000" />
+
+                    <RadioButton
+                        android:id="@+id/recre2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#E91A8D"
+                        android:paddingLeft="40dip"
+                        android:text="Más de 2 hrs"
+                        android:textColor="#000000" />
+
+                    <RadioButton
+                        android:id="@+id/recre3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#E91A8D"
+                        android:paddingLeft="40dip"
+                        android:text="No tengo actividad recreativa"
+                        android:textColor="#000000" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/questions5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/tv_estres"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="30dp"
+                    android:text="5.- Nivel de estrés actual, hace 1 año, hace 5 años"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <RadioGroup
+                    android:id="@+id/radioEstres"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <RadioButton
+                        android:id="@+id/estres"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#E91A8D"
+                        android:paddingLeft="40dip"
+                        android:text="Muy bajo"
+                        android:textColor="#000000" />
+
+
+                    <RadioButton
+                        android:id="@+id/estres1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#E91A8D"
+                        android:paddingLeft="40dip"
+                        android:text="Bajo"
+                        android:textColor="#000000" />
+
+                    <RadioButton
+                        android:id="@+id/estres2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#E91A8D"
+                        android:paddingLeft="40dip"
+                        android:text="Normal"
+                        android:textColor="#000000" />
+
+                    <RadioButton
+                        android:id="@+id/estres3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#E91A8D"
+                        android:paddingLeft="40dip"
+                        android:text="Alto"
+                        android:textColor="#000000" />
+
+                    <RadioButton
+                        android:id="@+id/estres4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#E91A8D"
+                        android:paddingLeft="40dip"
+                        android:text="Muy alto"
+                        android:textColor="#000000" />
+
+                    <RadioButton
+                        android:id="@+id/estres5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#E91A8D"
+                        android:paddingLeft="40dip"
+                        android:text="Nose"
+                        android:textColor="#000000" />
+
+                    <RadioButton
+                        android:id="@+id/estres6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#E91A8D"
+                        android:paddingLeft="40dip"
+                        android:text="Prefiero no responder"
+                        android:textColor="#000000" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+
+
+
+
 
 
             <LinearLayout

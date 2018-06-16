@@ -1,25 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/products"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:gravity="center">
+    android:paddingBottom="15dp"
+    android:paddingLeft="30dp"
+    android:paddingRight="30dp"
+    android:paddingTop="15dp">
 
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        card_view:cardBackgroundColor="@color/colorWhite"
-        card_view:cardElevation="0dp"
-        card_view:cardMaxElevation="0dp"
-        card_view:cardPreventCornerOverlap="false"
-        android:id="@+id/card_view">
+        android:orientation="horizontal">
 
-        <RelativeLayout
-            android:layout_width="500dp"
-            android:layout_height="200dp">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/imgLogoCompany"
@@ -29,6 +27,15 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginRight="20dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
 
             <TextView
                 android:id="@+id/tvNombre"
@@ -80,18 +87,6 @@
                 android:layout_below="@+id/divider"
                 android:layout_marginTop="10dp" />
 
-            <TextView
-                android:id="@+id/tv_curp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="15dp"
-                android:textColor="#000"
-                android:text="CURP:"
-                android:singleLine="true"
-                android:layout_marginLeft="10dp"
-                android:layout_below="@id/divider"
-                android:layout_toRightOf="@id/tvCurp"
-                android:layout_marginTop="10dp" />
 
             <TextView
                 android:id="@+id/tvDireccion"
@@ -105,34 +100,10 @@
                 android:layout_below="@+id/tvCurp"
                 android:layout_marginTop="10dp" />
 
-            <TextView
-                android:id="@+id/tv_direccion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="15dp"
-                android:textColor="#000"
-                android:text="DIRECCION"
-                android:inputType="textMultiLine"
-                android:layout_marginLeft="10dp"
-                android:layout_below="@id/tv_curp"
-                android:layout_toRightOf="@id/tvDireccion"
-                android:layout_marginTop="10dp" />
 
 
+        </LinearLayout>
 
+    </LinearLayout>
 
-
-
-
-
-
-
-
-
-        </RelativeLayout>
-
-
-
-
-    </android.support.v7.widget.CardView>
 </LinearLayout>

@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -35,6 +36,10 @@ public class QuestionsEducacion extends Fragment {
     private RadioButton primaria,secundaria,preparatoria,licenciatura,posgrado,sinEsc;
     private RadioGroup radioEsc;
     private ImageButton next;
+    private LinearLayout questions,questions2,questions3,questions4,questions5;
+    private int count = 0;
+
+
 
 
 
@@ -73,18 +78,48 @@ public class QuestionsEducacion extends Fragment {
 
         sharedPreferences = SharedPreferences.getInstance();
 
+        questions = (LinearLayout) getActivity().findViewById(R.id.questions);
+        questions2 = (LinearLayout) getActivity().findViewById(R.id.questions2);
+        questions3 = (LinearLayout) getActivity().findViewById(R.id.questions3);
+        questions4 = (LinearLayout) getActivity().findViewById(R.id.questions4);
+        questions5 = (LinearLayout) getActivity().findViewById(R.id.questions5);
+
+
 
 
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(primaria.isChecked() || secundaria.isChecked() || preparatoria.isChecked() || licenciatura.isChecked() || posgrado.isChecked() || sinEsc.isChecked() ){
-                    Log.e("VALUES RADIO", sharedPreferences.getStringData("Escolaridad"));
-                    ((MainActivity)getActivity()).fragmentContextElectro();
-                }else{
-                    Toast.makeText(getActivity(),"Selecciona una opcion antes de continuar",Toast.LENGTH_SHORT).show();
+
+                count++;
+
+                if(count == 1){
+                    questions.setVisibility(View.GONE);
+                    questions2.setVisibility(View.VISIBLE);
                 }
+
+                if(count == 2){
+                    questions2.setVisibility(View.GONE);
+                    questions3.setVisibility(View.VISIBLE);
+                }
+
+                if(count == 3){
+                    questions3.setVisibility(View.GONE);
+                    questions4.setVisibility(View.VISIBLE);
+                }
+
+                if(count == 4){
+                    questions4.setVisibility(View.GONE);
+                    questions5.setVisibility(View.VISIBLE);
+                }
+
+                if(count == 5){
+
+                    ((MainActivity)getActivity()).fragmentContextElectro();
+
+                }
+
 
             }
         });

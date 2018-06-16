@@ -21,21 +21,27 @@ import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.InicioFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.InicioFragmentMain;
 import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.NewPatientFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.PacienteFragment;
+import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.PacientesFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.RegistroFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.SeguimientoFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.SincronizacionFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.SuccededFragment;
+import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.SuccededHistoriaFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.VisitaFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.ContextoSocialFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.DatosGeneralesFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionDomFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsAlimentos;
+import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsAntecedentes;
+import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsAntecedentesPersonales;
 import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsContextElectro;
 import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsDomFragmentThree;
 import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsDomFragmentTwo;
 import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsEducacion;
+import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsExploracion;
 import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsFragmentTwo;
+import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsHistoriaClinica;
 import mx.digitalcoaster.rzertuche.medicoencasa.R;
 
 public class MainActivity extends AppCompatActivity implements
@@ -57,7 +63,13 @@ public class MainActivity extends AppCompatActivity implements
         QuestionsFragmentTwo.OnFragmentInteractionListener,
         QuestionsDomFragmentTwo.OnFragmentInteractionListener,
         QuestionsDomFragmentThree.OnFragmentInteractionListener,
-        RegistroFragment.OnFragmentInteractionListener{
+        RegistroFragment.OnFragmentInteractionListener,
+        QuestionsAntecedentes.OnFragmentInteractionListener,
+        QuestionsAntecedentesPersonales.OnFragmentInteractionListener,
+        QuestionsHistoriaClinica.OnFragmentInteractionListener,
+        QuestionsExploracion.OnFragmentInteractionListener,
+        SuccededHistoriaFragment.OnFragmentInteractionListener,
+        PacientesFragment.OnFragmentInteractionListener{
 
     public String patientID;
     public static ImageView inicio, registros, seguimiento, sincronizacion;
@@ -166,8 +178,37 @@ public class MainActivity extends AppCompatActivity implements
 
     }
 
+
+
+    public void questionInterrogatorio(){
+        QuestionsHistoriaClinica fragment = new QuestionsHistoriaClinica();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.fragmentHolder, fragment);
+        transaction.commit();
+
+    }
+
     public void questionFragmentTwo(){
         QuestionsFragmentTwo fragment = new QuestionsFragmentTwo();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.fragmentHolder, fragment);
+        transaction.commit();
+
+    }
+
+    public void succededClinica(){
+        SuccededHistoriaFragment fragment = new SuccededHistoriaFragment();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.fragmentHolder, fragment);
+        transaction.commit();
+
+    }
+
+    public void pacientesFragment(){
+        SuccededHistoriaFragment fragment = new SuccededHistoriaFragment();
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.fragmentHolder, fragment);
@@ -193,6 +234,37 @@ public class MainActivity extends AppCompatActivity implements
 
     }
 
+
+
+    public void questionsAntPersonales(){
+        QuestionsAntecedentesPersonales fragment = new QuestionsAntecedentesPersonales();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.fragmentHolder, fragment);
+        transaction.commit();
+
+    }
+
+    public void questionExploracion(){
+        QuestionsExploracion fragment = new QuestionsExploracion();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.fragmentHolder, fragment);
+        transaction.commit();
+
+    }
+
+
+
+    public void questionAntecedentes(){
+        QuestionsAntecedentes fragment = new QuestionsAntecedentes();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.fragmentHolder, fragment);
+        transaction.commit();
+
+    }
+
     public void historiaClinica(){
         RegistroFragment fragment = new RegistroFragment();
         FragmentManager manager = getSupportFragmentManager();
@@ -204,7 +276,7 @@ public class MainActivity extends AppCompatActivity implements
 
 
     public void seguimiento(View v){
-        SeguimientoFragment fragment = new SeguimientoFragment();
+        PacientesFragment fragment = new PacientesFragment();
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.fragmentHolder, fragment);

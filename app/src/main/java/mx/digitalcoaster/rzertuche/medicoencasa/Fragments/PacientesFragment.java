@@ -14,9 +14,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,12 +28,12 @@ import mx.digitalcoaster.rzertuche.medicoencasa.models.ItemAdapter;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link RegistroFragment.OnFragmentInteractionListener} interface
+ * {@link PacientesFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link RegistroFragment#newInstance} factory method to
+ * Use the {@link PacientesFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class RegistroFragment extends Fragment {
+public class PacientesFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -57,7 +54,7 @@ public class RegistroFragment extends Fragment {
     private Cursor c = null;            // Objeto para hacer consultas a la base de datos
 
 
-    public RegistroFragment() {
+    public PacientesFragment() {
         // Required empty public constructor
     }
 
@@ -70,8 +67,8 @@ public class RegistroFragment extends Fragment {
      * @return A new instance of fragment HomeFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static RegistroFragment newInstance(String param1, String param2) {
-        RegistroFragment fragment = new RegistroFragment();
+    public static PacientesFragment newInstance(String param1, String param2) {
+        PacientesFragment fragment = new PacientesFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -91,7 +88,7 @@ public class RegistroFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_registro, container, false);
+        return inflater.inflate(R.layout.fragment_pacientes, container, false);
     }
 
     @Override
@@ -99,22 +96,31 @@ public class RegistroFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        GridView gridView = (GridView) view.findViewById(R.id.gridusers);
+        lista = (GridView) getActivity().findViewById(R.id.gridview);
 
         items = new ArrayList<>();
         getProductos();
-        gridView.setAdapter(new ItemAdapter(getActivity().getApplicationContext(), items));
+        lista.setAdapter(new ItemAdapter(getActivity().getApplicationContext(), items));
 
 
 
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> arg0, View v, int position, long arg3) {
-                Item selectedUser = items.get(position);
-                Log.d("User", "USERUUID:"+selectedUser.getNombre());
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Log.e("WORKS","asdasd");
             }
         });
 
+        lista.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                Log.e("WORKS","asdasd");
+
+
+                return false;
+            }
+        });
 
 
     }
@@ -122,7 +128,7 @@ public class RegistroFragment extends Fragment {
 
     private void getProductos() {
 
-        db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, android.content.Context.MODE_PRIVATE, null);
+        db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE, null);
         try {
             c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES, null);
             if (c.moveToFirst()) {

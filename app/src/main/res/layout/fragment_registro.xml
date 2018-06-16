@@ -5,8 +5,8 @@
     android:id="@+id/container_questions"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants"
     android:orientation="vertical">
-
 
 
         <LinearLayout
@@ -14,6 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:descendantFocusability="blocksDescendants"
             android:orientation="vertical">
 
             <LinearLayout
@@ -29,13 +30,13 @@
                     android:layout_marginBottom="5dp"
                     android:layout_marginTop="20dp"
                     android:paddingBottom="20dp"
-                    android:text="DATOS GENERALES"
+                    android:text="@string/pacientes_registros"
                     android:textAlignment="center"
                     android:textSize="32sp"
                     android:textStyle="bold" />
 
                 <GridView
-                    android:id="@+id/gridview"
+                    android:id="@+id/gridusers"
                     android:layout_width="match_parent"
                     android:layout_height="400dp"
                     android:columnWidth="100dp"
@@ -45,92 +46,6 @@
                     />
             </LinearLayout>
 
-
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="bottom"
-                android:orientation="vertical">
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical|center_horizontal|center"
-                    android:orientation="horizontal"
-                    android:visibility="visible">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="80dp"
-                        android:layout_weight="1"
-                        android:gravity="center_vertical|center_horizontal|center"
-                        android:orientation="vertical"
-                        android:visibility="visible">
-
-                        <ImageView
-                            android:id="@+id/imageView"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_weight="1"
-                            android:scaleType="fitXY"
-                            android:visibility="visible"
-                            app:srcCompat="@drawable/number_one_pink" />
-
-                        <TextView
-                            android:id="@+id/textView6"
-                            android:layout_width="150dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:layout_weight="1"
-                            android:text="DATOS GENERALES"
-                            android:textAlignment="center"
-                            android:visibility="visible" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="5dp"
-                        android:layout_weight="1"
-                        android:background="#DEDED8"
-                        android:gravity="center_vertical|center_horizontal|center"
-                        android:orientation="vertical"
-                        android:visibility="visible">
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="80dp"
-                        android:layout_weight="1"
-                        android:gravity="center_vertical|center_horizontal|center"
-                        android:orientation="vertical"
-                        android:visibility="visible">
-
-                        <ImageView
-                            android:id="@+id/icon2"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_weight="1"
-                            android:scaleType="fitXY"
-                            android:visibility="visible"
-                            app:srcCompat="@drawable/number_two_pink" />
-
-                        <TextView
-                            android:id="@+id/textView7"
-                            android:layout_width="150dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:layout_weight="1"
-                            android:text="CONTEXTO SOCIAL"
-                            android:textAlignment="center"
-                            android:visibility="visible" />
-                    </LinearLayout>
-
-                </LinearLayout>
-            </LinearLayout>
 
         </LinearLayout>
     </LinearLayout>

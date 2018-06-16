@@ -55,8 +55,8 @@ public class ItemAdapter extends BaseAdapter {
         }
 
         TextView nombre  = (TextView) rowView.findViewById(R.id.tvNombre);
-        TextView curp  = (TextView) rowView.findViewById(R.id.tv_curp);
-        TextView direccion = (TextView) rowView.findViewById(R.id.tv_direccion);
+        TextView curp  = (TextView) rowView.findViewById(R.id.tvCurp);
+        TextView direccion = (TextView) rowView.findViewById(R.id.tvDireccion);
 
         Item item = this.items.get(position);
 
