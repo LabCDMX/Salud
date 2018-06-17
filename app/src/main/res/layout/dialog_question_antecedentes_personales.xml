@@ -83,7 +83,7 @@
                 android:lines="4"
                 android:maxLines="4"
                 android:padding="20dp"
-                android:text="@string/antecedentes_patologicos"
+                android:text="@string/antecedentes_personales"
                 android:textAlignment="center"
                 android:textSize="27sp" />
 

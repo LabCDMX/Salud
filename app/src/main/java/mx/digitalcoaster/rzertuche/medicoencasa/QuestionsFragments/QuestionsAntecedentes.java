@@ -38,8 +38,7 @@ public class QuestionsAntecedentes extends Fragment {
     private TextView questions2;
     private int count = 0;
 
-
-
+    private CheckBox abuelos, padres, tios, hermanos, ninguno;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -58,11 +57,20 @@ public class QuestionsAntecedentes extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        sharedPreferences = SharedPreferences.getInstance();
+        String name = sharedPreferences.getStringData("nameHistoric");
 
-
+        TextView title2 = (TextView) getActivity().findViewById(R.id.title2);
+        title2.setText(name);
 
         questions2 = (TextView) getActivity().findViewById(R.id.question2);
 
+
+        abuelos = (CheckBox) getActivity().findViewById(R.id.abuelos);
+        padres = (CheckBox) getActivity().findViewById(R.id.padres);
+        tios = (CheckBox) getActivity().findViewById(R.id.tios);
+        hermanos = (CheckBox) getActivity().findViewById(R.id.hermanos);
+        ninguno = (CheckBox) getActivity().findViewById(R.id.ninguno);
 
 
 
@@ -75,23 +83,29 @@ public class QuestionsAntecedentes extends Fragment {
 
 
                 if(count == 1){
+                    clearCheckBox();
                     questions2.setText("b) HTA");
                 }
 
                 if(count == 2){
+                    clearCheckBox();
                     questions2.setText("c) Diabetes");
 
                 }
 
                 if(count == 3){
+                    clearCheckBox();
                     questions2.setText("d) Dislipidemias");
 
                 }
+
                 if(count == 4){
+                    clearCheckBox();
                     questions2.setText("e) Obesidad");
 
                 }
                 if(count == 5){
+                    clearCheckBox();
                     questions2.setText("f) Enfermedades Cerebrovascular");
 
                 }
@@ -104,12 +118,16 @@ public class QuestionsAntecedentes extends Fragment {
             }
         });
 
+    }
 
 
-
-
-        sharedPreferences = SharedPreferences.getInstance();
-
+    private void clearCheckBox(){
+        abuelos.setChecked(false);
+        padres.setChecked(false);
+        tios.setChecked(false);
+        hermanos.setChecked(false);
+        abuelos.setChecked(false);
+        ninguno.setChecked(false);
     }
 
 
@@ -140,16 +158,6 @@ public class QuestionsAntecedentes extends Fragment {
         mListener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);

@@ -114,8 +114,13 @@
                     android:textAlignment="center"
                     android:textSize="32sp"
                     android:textStyle="bold" />
-
-
+                <TextView
+                    android:id="@+id/title2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="HISTORIA CLÍNICA"
+                    android:textAlignment="center"
+                    android:textSize="15sp" />
             </LinearLayout>
 
             <LinearLayout

@@ -5,7 +5,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -14,9 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,14 +61,6 @@ public class RegistroFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment HomeFragment.
-     */
     // TODO: Rename and change types and number of parameters
     public static RegistroFragment newInstance(String param1, String param2) {
         RegistroFragment fragment = new RegistroFragment();
@@ -110,23 +98,17 @@ public class RegistroFragment extends Fragment {
         getProductos();
         gridView.setAdapter(new ItemAdapter(getActivity().getApplicationContext(), items));
 
-
-
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> arg0, View v, int position, long arg3) {
                 Item selectedUser = items.get(position);
                 Log.d("User", "USERUUID:"+selectedUser.getNombre());
                 sharedPreferences.setStringData("nameHistoric", selectedUser.getNombre());
-                ((MainActivity)getActivity()).questionExploracion();
+                ((MainActivity)getActivity()).questionAntecedentes();
 
             }
         });
-
-
-
     }
-
 
     private void getProductos() {
 
@@ -172,16 +154,6 @@ public class RegistroFragment extends Fragment {
         mListener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
