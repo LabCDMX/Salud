@@ -57,11 +57,11 @@ public class QuestionsExploracion extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
+        sharedPreferences = SharedPreferences.getInstance();
+        String name = sharedPreferences.getStringData("nameHistoric");
 
-
-
-
-
+        TextView title2 = (TextView) getActivity().findViewById(R.id.title2);
+        title2.setText(name);
 
         next = (ImageButton) getActivity().findViewById(R.id.next);
         next.setOnClickListener(new View.OnClickListener() {
@@ -77,7 +77,8 @@ public class QuestionsExploracion extends Fragment {
 
 
 
-        sharedPreferences = SharedPreferences.getInstance();
+
+
 
     }
 

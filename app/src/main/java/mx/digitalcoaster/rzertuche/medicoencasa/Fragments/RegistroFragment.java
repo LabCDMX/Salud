@@ -20,6 +20,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import mx.digitalcoaster.rzertuche.medicoencasa.Utils.SharedPreferences;
+
 
 import mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity;
 import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseDB;
@@ -55,6 +57,8 @@ public class RegistroFragment extends Fragment {
 
     private SQLiteDatabase db = null;   // Objeto para usar la base de datos local
     private Cursor c = null;            // Objeto para hacer consultas a la base de datos
+
+    SharedPreferences sharedPreferences;
 
 
     public RegistroFragment() {
@@ -98,6 +102,7 @@ public class RegistroFragment extends Fragment {
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        sharedPreferences = SharedPreferences.getInstance();
 
         GridView gridView = (GridView) view.findViewById(R.id.gridusers);
 
@@ -112,6 +117,9 @@ public class RegistroFragment extends Fragment {
             public void onItemClick(AdapterView<?> arg0, View v, int position, long arg3) {
                 Item selectedUser = items.get(position);
                 Log.d("User", "USERUUID:"+selectedUser.getNombre());
+                sharedPreferences.setStringData("nameHistoric", selectedUser.getNombre());
+                ((MainActivity)getActivity()).questionExploracion();
+
             }
         });
 

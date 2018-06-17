@@ -114,6 +114,15 @@
                     android:textAlignment="center"
                     android:textSize="32sp"
                     android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/title2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="HISTORIA CLÍNICA"
+                    android:textAlignment="center"
+                    android:textSize="15sp" />
+
+
 
 
             </LinearLayout>
@@ -143,7 +152,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:hint="Escribir respuesta aquí."
-                    android:inputType="textCapCharacters" />
+                    android:inputType="number" />
 
                 <TextView
                     android:id="@+id/question2"
@@ -163,7 +172,26 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:hint="Escribir respuesta aquí."
-                    android:inputType="textCapCharacters" />
+                    android:inputType="numberDecimal" />
+
+                <TextView
+                    android:id="@+id/question3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="30dp"
+                    android:text="IMC"
+                    android:layout_marginLeft="40dp"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/answer3"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="20dp"
+                    android:inputType="numberDecimal" />
 
 
 

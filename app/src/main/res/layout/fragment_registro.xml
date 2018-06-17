@@ -41,7 +41,7 @@
                     android:layout_height="400dp"
                     android:columnWidth="100dp"
                     android:numColumns="3"
-                    android:verticalSpacing="2dp"
+                    android:verticalSpacing="10dp"
                     android:horizontalSpacing="10dp"
                     />
             </LinearLayout>
