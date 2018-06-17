@@ -5,10 +5,13 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -24,7 +27,8 @@ import mx.digitalcoaster.rzertuche.medicoencasa.Utils.SharedPreferences;
 public class QuestionsExploracion extends Fragment {
 
 
-
+    Double imcAux = 0.0;
+    private EditText imc,estatura,peso;
     private OnFragmentInteractionListener mListener;
 
     SharedPreferences sharedPreferences;
@@ -63,6 +67,14 @@ public class QuestionsExploracion extends Fragment {
         TextView title2 = (TextView) getActivity().findViewById(R.id.title2);
         title2.setText(name);
 
+
+        estatura = (EditText) getActivity().findViewById(R.id.answer2);
+        estatura.addTextChangedListener(imcWatcher);
+
+        imc = (EditText) getActivity().findViewById(R.id.answer3);
+
+        peso = (EditText) getActivity().findViewById(R.id.answer);
+
         next = (ImageButton) getActivity().findViewById(R.id.next);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,14 +85,33 @@ public class QuestionsExploracion extends Fragment {
             }
         });
 
-
-
-
-
-
-
-
     }
+
+
+    private final TextWatcher imcWatcher = new TextWatcher() {
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            imc.setVisibility(View.VISIBLE);
+            Double pesoAux = 0.0;
+            Double estaturaAux = 0.0;
+
+            pesoAux = Double.valueOf(peso.getText().toString());
+            estaturaAux = Double.valueOf(estatura.getText().toString());
+            imcAux = (pesoAux / (estaturaAux * estaturaAux));
+
+        }
+
+        public void afterTextChanged(Editable s) {
+            if (s.length() == 0) {
+                imc.setVisibility(View.GONE);
+            } else{
+                imc.setText(String.valueOf(imcAux));
+            }
+        }
+    };
 
 
 

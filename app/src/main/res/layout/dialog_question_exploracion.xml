@@ -191,6 +191,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="40dp"
                     android:layout_marginRight="20dp"
+                    android:textAlignment="center"
+                    android:focusable="false"
                     android:inputType="numberDecimal" />
 
 
