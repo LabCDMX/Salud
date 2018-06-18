@@ -280,6 +280,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="bottom"
+        android:layout_below="@id/divider3"
         android:orientation="vertical">
 
 
@@ -345,7 +346,7 @@
                 android:layout_weight="1"
                 android:scaleType="fitXY"
                 android:visibility="visible"
-                app:srcCompat="@drawable/number_two_grey" />
+                app:srcCompat="@drawable/number_two_pink" />
 
             <TextView
                 android:id="@+id/textView6"
