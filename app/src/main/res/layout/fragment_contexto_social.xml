@@ -73,10 +73,7 @@
                 android:layout_below="@+id/divider"
                 android:background="#00000000"
                 android:textColor="@android:color/black"
-                android:layout_toRightOf="@+id/tvApellidoP"
-                android:layout_toEndOf="@+id/tvApellidoP"
-                android:layout_marginLeft="23dp"
-                android:layout_marginStart="60dp" />
+                android:layout_marginLeft="210dp" />
 
             <ImageButton
                 android:id="@+id/btn_edit"
@@ -93,7 +90,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textViewNombre"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="20dp"
                 android:textSize="20sp"
                 android:text="Tiempo de escuela/trabajo:"
                 android:textStyle="bold"
@@ -106,16 +103,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textViewNombre"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="20dp"
                 android:textSize="20sp"
                 android:text="Apellido Paterno"
                 android:inputType="text"
                 android:background="#00000000"
                 android:textColor="@android:color/black"
                 android:layout_toRightOf="@+id/tvApellidoP"
-                android:layout_toEndOf="@+id/tvApellidoP"
-                android:layout_marginLeft="20dp"
-                android:layout_marginStart="60dp" />
+                android:layout_marginLeft="20dp" />
 
             <ImageButton
                 android:id="@+id/btn_edit2"
@@ -227,10 +222,7 @@
                 android:inputType="text"
                 android:background="#00000000"
                 android:textColor="@android:color/black"
-                android:layout_toRightOf="@+id/tvCantidades"
-                android:layout_toEndOf="@+id/tvCantidades"
-                android:layout_marginLeft="40dp"
-                android:layout_marginStart="110dp" />
+                android:layout_marginLeft="380dp" />
 
 
             <ImageButton
