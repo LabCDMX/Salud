@@ -15,7 +15,9 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity;
 import mx.digitalcoaster.rzertuche.medicoencasa.R;
@@ -83,10 +85,18 @@ public class ContextoSocialFragment extends Fragment {
         nombre.setText(sharedPreferences.getStringData("Escolaridad"));
         apellidoP.setText("Sin Layout");
 
-        String listElectroAux = listElectro.toString().replace("[","").replace("]","").replace(",","\n");
+        String cadena = new String();
+        String listElectroAux= borrarRepetidos(listElectro).toString().replace("[","").replace("]","").replace(",","\n");
 
 
-        estado.setText(listElectroAux);
+
+        for (String object: listElectro) {
+            cadena+= "-" + object + "\n";
+        }
+
+
+        Log.e("CADENA",cadena);
+        estado.setText(cadena);
         municipio.setText(sharedPreferences.getStringData("Alimentos"));
 
         lockEditText();
@@ -297,5 +307,15 @@ public class ContextoSocialFragment extends Fragment {
         apellidoP.setEnabled(true);
         estado.setEnabled(true);
         municipio.setEnabled(true);
+    }
+
+    public List<String> borrarRepetidos(List<String> arraycar){
+        Set<String> hs = new HashSet<>();
+        hs.addAll(arraycar);
+        arraycar.clear();
+        arraycar.addAll(hs);
+
+        return arraycar;
+
     }
 }

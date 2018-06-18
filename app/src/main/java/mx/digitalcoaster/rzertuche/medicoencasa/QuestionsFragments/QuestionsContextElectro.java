@@ -32,7 +32,6 @@ public class QuestionsContextElectro extends Fragment {
     private CheckBox estufa,refrigerador,lavadora,telefono,horno,televisor;
     private ImageButton next;
     public static List<String> listElectro = new ArrayList<String>();
-
     private LinearLayout questions,questions2,questions3,questions4;
     private int count = 0;
 

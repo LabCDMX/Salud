@@ -32,9 +32,9 @@ public class QuestionsHistoriaClinica extends Fragment {
     private ImageButton next;
     public static List<String> listElectro = new ArrayList<String>();
 
-    private LinearLayout questions,questions3,questions4;
-    private TextView questions2;
+    private TextView question2,question;
     private int count = 0;
+
 
 
 
@@ -60,15 +60,63 @@ public class QuestionsHistoriaClinica extends Fragment {
 
 
 
-
+        question2 = getActivity().findViewById(R.id.question2);
+        question = getActivity().findViewById(R.id.question);
 
 
         next = (ImageButton) getActivity().findViewById(R.id.next);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                count++;
 
-                ((MainActivity)getActivity()).questionExploracion();
+
+
+                if(count == 1){
+                    question.setText(getActivity().getResources().getString(R.string.interrogatorio_title1));
+                    question2.setText(getActivity().getResources().getString(R.string.interrogatorio1));
+                }
+
+                if(count == 2){
+                    question.setText(getActivity().getResources().getString(R.string.interrogatorio_title2));
+                    question2.setText(getActivity().getResources().getString(R.string.interrogatorio2));
+                }
+
+                if(count == 3){
+                    question.setText(getActivity().getResources().getString(R.string.interrogatorio_title3));
+                    question2.setText(getActivity().getResources().getString(R.string.interrogatorio3));
+                }
+
+                if(count == 4){
+                    question.setText(getActivity().getResources().getString(R.string.interrogatorio_title4));
+                    question2.setText(getActivity().getResources().getString(R.string.interrogatorio4));
+                }
+                if(count == 5){
+                    question.setText(getActivity().getResources().getString(R.string.interrogatorio_title5));
+                    question2.setText(getActivity().getResources().getString(R.string.interrogatorio5));
+                }
+                if(count == 6){
+                    question.setText(getActivity().getResources().getString(R.string.interrogatorio_title6));
+                    question2.setText(getActivity().getResources().getString(R.string.interrogatorio6));
+                }
+                if(count == 7){
+                    question.setText(getActivity().getResources().getString(R.string.interrogatorio_title7));
+                    question2.setText(getActivity().getResources().getString(R.string.interrogatorio7));
+                }
+                if(count == 8){
+                    question.setText(getActivity().getResources().getString(R.string.interrogatorio_title8));
+                    question2.setText(getActivity().getResources().getString(R.string.interrogatorio8));
+                }
+                if(count == 9){
+                    question.setText(getActivity().getResources().getString(R.string.interrogatorio_title9));
+                    question2.setText(getActivity().getResources().getString(R.string.interrogatorio9));
+                }
+                if(count == 10){
+                    count=0;
+                    ((MainActivity)getActivity()).questionExploracion();
+
+                }
+
 
             }
         });

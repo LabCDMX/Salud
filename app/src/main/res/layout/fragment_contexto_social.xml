@@ -18,34 +18,13 @@
         android:text="CONTEXTO SOCIAL"/>
 
 
-    <TextView
-        android:id="@+id/textViewPersonales"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:layout_below="@id/textViewDatosGenerales"
-        android:textColor="@android:color/black"
-        android:layout_marginTop="10dp"
-        android:textSize="30sp"
-        android:layout_marginLeft="50dp"
-        android:text="Antecedentes no Patológicos"/>
-
-    <View
-        android:id="@+id/divider"
-        android:layout_below="@id/textViewPersonales"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginBottom="3dp"
-        android:layout_marginTop="3dp"
-        android:background="#E91A8D" />
-
     <ScrollView
         android:id="@+id/cuerpo"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="400dp"
         android:layout_marginLeft="50dp"
-        android:layout_below="@+id/divider" >
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/textViewDatosGenerales" >
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -53,11 +32,32 @@
             android:layout_marginTop="10dp">
 
             <TextView
+                android:id="@+id/textViewPersonales"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="10dp"
+                android:textSize="30sp"
+                android:text="Antecedentes no Patológicos"/>
+
+            <View
+                android:id="@+id/divider"
+                android:layout_below="@id/textViewPersonales"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
+                android:background="#E91A8D" />
+
+
+            <TextView
                 android:id="@+id/tvNombre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:textSize="20sp"
+                android:layout_below="@+id/divider"
                 android:text="Escolaridad Máxima:"
                 android:layout_marginLeft="10dp"
                 android:layout_marginStart="10dp"
@@ -71,6 +71,7 @@
                 android:layout_marginTop="5dp"
                 android:textSize="20sp"
                 android:text="Nombre"
+                android:layout_below="@+id/divider"
                 android:background="#00000000"
                 android:textColor="@android:color/black"
                 android:layout_toRightOf="@+id/tvApellidoP"
@@ -82,8 +83,9 @@
                 android:id="@+id/btn_edit"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_below="@+id/divider"
                 android:layout_marginLeft="600dp"
-                android:scaleType= "fitCenter"
+                android:background="#fff"
                 app:srcCompat="@drawable/pencil_pink"/>
 
 
@@ -121,7 +123,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="600dp"
-                android:scaleType= "fitCenter"
+                android:background="#fff"
                 android:layout_below="@+id/btn_edit"
                 app:srcCompat="@drawable/pencil_pink"/>
 
@@ -161,24 +163,23 @@
                 android:id="@+id/textViewEstado"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tvDomiciliarios"
+                android:layout_below="@id/tvEstado"
                 android:layout_marginTop="20dp"
                 android:textSize="20sp"
+                android:maxLines="10"
                 android:text="Estado"
-                android:inputType="text"
+                android:layout_marginStart="50dp"
+                android:inputType="textMultiLine"
                 android:background="#00000000"
                 android:textColor="@android:color/black"
-                android:layout_toRightOf="@+id/tvEstado"
-                android:layout_toEndOf="@+id/tvEstado"
-                android:layout_marginLeft="40dp"
-                android:layout_marginStart="100dp" />
+                android:layout_marginLeft="50dp" />
 
             <ImageButton
                 android:id="@+id/btn_edit4"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="600dp"
-                android:scaleType= "fitCenter"
+                android:background="#fff"
                 android:layout_below="@+id/divider2"
                 app:srcCompat="@drawable/pencil_pink"/>
 
@@ -188,11 +189,11 @@
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tvEstado"
+                android:layout_below="@id/textViewEstado"
                 android:textStyle="bold"
                 android:textColor="@android:color/black"
                 android:textSize="30sp"
-                android:text="Condiciones y Servicios del Hogar"/>
+                android:text="Alimentación"/>
 
             <View
                 android:id="@+id/divider4"
@@ -202,6 +203,7 @@
                 android:layout_marginBottom="3dp"
                 android:layout_marginTop="3dp"
                 android:background="#E91A8D" />
+
             <TextView
                 android:id="@+id/tvCantidades"
                 android:layout_width="wrap_content"
@@ -231,19 +233,34 @@
                 android:layout_marginLeft="40dp"
                 android:layout_marginStart="110dp" />
 
+
             <ImageButton
                 android:id="@+id/btn_edit5"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="600dp"
-                android:scaleType= "fitCenter"
+                android:background="#fff"
                 android:layout_below="@+id/divider4"
                 app:srcCompat="@drawable/pencil_pink"/>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:gravity="bottom|right"
+                android:layout_below="@+id/btn_edit5"
+                android:orientation="horizontal">
 
+                <ImageButton
+                    android:id="@+id/next"
+                    android:layout_width="140dp"
+                    android:layout_height="45dp"
+                    android:background="@android:color/transparent"
+                    android:padding="10dp"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/siguiente" />
 
-
-
+            </LinearLayout>
 
 
 
@@ -256,8 +273,8 @@
         android:layout_below="@id/cuerpo"
         android:layout_width="match_parent"
         android:layout_height="2dp"
+        android:layout_marginTop="40dp"
         android:layout_marginBottom="3dp"
-        android:layout_marginTop="95dp"
         android:background="#b60065" />
 
     <LinearLayout
@@ -266,24 +283,7 @@
         android:gravity="bottom"
         android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:gravity="bottom|right"
-        android:orientation="horizontal">
 
-
-        <ImageButton
-            android:id="@+id/next"
-            android:layout_width="140dp"
-            android:layout_height="45dp"
-            android:background="@android:color/transparent"
-            android:padding="10dp"
-            android:scaleType="fitXY"
-            app:srcCompat="@drawable/siguiente" />
-
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

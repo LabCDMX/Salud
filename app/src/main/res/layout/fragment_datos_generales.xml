@@ -308,13 +308,6 @@
     </ScrollView>
 
 
-
-
-
-
-
-
-
     <View
         android:id="@+id/divider3"
         android:layout_below="@id/cuerpo"

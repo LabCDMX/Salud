@@ -12,6 +12,37 @@
     <string name="pacientes_registros"> PACIENTES REGISTRADOS \n FASE 1</string>
     <string name="interrogatorio">Interrogatorio \n por aparatos \n y sistemas</string>
 
+    <string name="interrogatorio1">Antecedentes de cardiopatías, disnea, tos, hemoptisis, bronquitis frecuente, lipotimias, vértigos, insuficiencia arterial y venenosa, síncope, fatiga, palpitaciones, dolor, precordial, edemas, ascitis, cianosis, estasis venenosa.</string>
+    <string name="interrogatorio2">Apetito, masticación, disfagia, pirosis, regurgitación, distensión abdominal, dolor, vómito, hematemesis, evacuaciones diarreicas, melena, pujo y tenesmo, constipación, ictericia, intolerancia a alimentos.</string>
+    <string name="interrogatorio3">Disuria, poliaquiuria, tenesmo vesical, hematuria, pluria, incontinencia, dolor lumbar, expulsión de cálculos, secreción uretral.</string>
+    <string name="interrogatorio4">Altreaciones menstruales, dolor pélvico, colporrea patológica, alteraciones de la líbido, patologia obstetrica. \n Alteraciones testiculares, trastornos en la micción y/o eyaculación, alteraciones de la líbido.</string>
+    <string name="interrogatorio5">Anemias, hemolisis, tendencia a hemorragia, adenopatías, menor resistencia a  infecciones.</string>
+    <string name="interrogatorio6">Crecimiento en peso y estatura, perturbaciones somáticas, caracteres sexuales, sensibilidad, al calor y frío, piel y faneras exoftalmos, diabetes, acné.</string>
+    <string name="interrogatorio7">Pérdida  del conocimiento, parálisis, paresias, temblores, coordinación, convulsiones, atrofias, hipo o hiperestesias, cefalea, algias, visión, audición, equilibrio, olfato, gusto, sueño, alteraciones de la personalidad, depresión, compulsión, excitación, atención, memoria, cambios de conducta, afectividad, nerviosismo, angustia.</string>
+    <string name="interrogatorio8">Deformaciones óseas, limitación de movimientos, algias, atrofias</string>
+    <string name="interrogatorio9">Mucosas, piel, pelo, uñas, prurito, cambios de coloración, alopecia, erupciones, infestaciones, micosis.</string>
+
+
+
+
+    <string name="interrogatorio_title1">2.- Cardiovascular</string>
+    <string name="interrogatorio_title2">3.- Digestivo</string>
+    <string name="interrogatorio_title3">4.- Urinario</string>
+    <string name="interrogatorio_title4">5.- Reproductor</string>
+    <string name="interrogatorio_title5">6.- Hemolinfático</string>
+    <string name="interrogatorio_title6">7.- Endocrino</string>
+    <string name="interrogatorio_title7">8.- Sistema Nervioso</string>
+    <string name="interrogatorio_title8">9.- Músculo esquelético</string>
+    <string name="interrogatorio_title9">10.- Piel y anexos</string>
+
+
+
+
+
+
+
+
+
 
 
 

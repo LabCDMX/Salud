@@ -38,7 +38,7 @@ public class SuccededHistoriaFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_succeded_datos_generales, container, false);
+        return inflater.inflate(R.layout.fragment_succeded_historia_clinica, container, false);
     }
 
     @Override

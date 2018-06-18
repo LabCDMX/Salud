@@ -34,7 +34,7 @@ public class QuestionsEducacion extends Fragment {
 
     SharedPreferences sharedPreferences;
     private RadioButton primaria,secundaria,preparatoria,licenciatura,posgrado,sinEsc;
-    private RadioGroup radioEsc;
+    private RadioGroup radioEsc,radioTiempo;
     private ImageButton next;
     private LinearLayout questions,questions2,questions3,questions4,questions5;
     private int count = 0;
@@ -72,6 +72,8 @@ public class QuestionsEducacion extends Fragment {
         sinEsc = (RadioButton) getActivity().findViewById(R.id.sin_esc_rb);
 
         radioEsc = (RadioGroup) getActivity().findViewById(R.id.radioEsc);
+        radioTiempo = (RadioGroup) getActivity().findViewById(R.id.radioTiempo);
+
 
         next = (ImageButton) getActivity().findViewById(R.id.next);
 
@@ -159,6 +161,30 @@ public class QuestionsEducacion extends Fragment {
 
                     sharedPreferences.setStringData("Escolaridad","Sin escolaridad");
                     Log.e("RadioGroup","sinexc");
+
+                }
+
+            }
+
+        });
+
+
+        radioEsc.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
+
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                // TODO Auto-generated method stub
+                if (checkedId == R.id.hora1){
+                    sharedPreferences.setStringData("TiempoEscuela","Menos de 6 hrs");
+
+                }else if (checkedId == R.id.hora2){
+                    sharedPreferences.setStringData("TiempoEscuela","6hrs a 9hrs");
+
+                }else if (checkedId == R.id.hora3){
+                    sharedPreferences.setStringData("TiempoEscuela","9hrs a 12hrs");
+
+                }else if (checkedId == R.id.hora4){
+                    sharedPreferences.setStringData("TiempoEscuela","Mas de 12 hrs");
 
                 }
 
