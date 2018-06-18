@@ -21,7 +21,7 @@
     <ScrollView
         android:id="@+id/cuerpo"
         android:layout_width="match_parent"
-        android:layout_height="450dp"
+        android:layout_height="400dp"
         android:layout_below="@+id/textViewDatosGenerales"
         android:layout_marginLeft="50dp">
 
@@ -303,7 +303,7 @@
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_marginBottom="3dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="50dp"
         android:background="#b60065" />
 
     <LinearLayout

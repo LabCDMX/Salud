@@ -6,4 +6,10 @@
     <color name="colorWhite">#FFF</color>
     <color name="colorBlack">#000</color>
     <color name="colorGray">#696666</color>
+
+
+    <color name="colorSano">#6EC67A</color>
+    <color name="colorAmbar">#e2d669</color>
+    <color name="colorRojo">#ea4d4d</color>
+
 </resources>

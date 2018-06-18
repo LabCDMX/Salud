@@ -1,6 +1,10 @@
 package mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -13,8 +17,11 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity;
+import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseDB;
+import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseHelper;
 import mx.digitalcoaster.rzertuche.medicoencasa.R;
 import mx.digitalcoaster.rzertuche.medicoencasa.Utils.SharedPreferences;
 
@@ -38,9 +45,13 @@ public class TarjetaPacienteFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
     SharedPreferences sharedPreferences;
 
-    EditText tvNombreItem, tvCurpItem, tvDireccionItem;
+    TextView tvNombreItem, tvCurpItem, tvDireccionItem;
     ImageButton next;
     ImageView status;
+
+    private SQLiteDatabase db = null;      // Objeto para utilizar la base de datos
+    private DataBaseHelper sqliteHelper;   // Objeto para abrir la base de Datos
+    private Cursor c = null;
 
 
 
@@ -71,9 +82,9 @@ public class TarjetaPacienteFragment extends Fragment {
         //Obtencion de datos del sharedPreferences
         sharedPreferences = SharedPreferences.getInstance();
 
-        tvNombreItem = (EditText) getActivity().findViewById(R.id.tvNombreItem);
-        tvCurpItem = (EditText) getActivity().findViewById(R.id.tvCurpItem);
-        tvDireccionItem = (EditText) getActivity().findViewById(R.id.tvDireccionItem);
+        tvNombreItem = (TextView) getActivity().findViewById(R.id.tvNombreItem);
+        tvCurpItem = (TextView) getActivity().findViewById(R.id.tvCurpItem);
+        tvDireccionItem = (TextView) getActivity().findViewById(R.id.tvDireccionItem);
 
 
         status = (ImageView) getActivity().findViewById(R.id.status);
@@ -86,14 +97,14 @@ public class TarjetaPacienteFragment extends Fragment {
         String statusImage = sharedPreferences.getStringData("ImageItem");
 
         if(statusImage.equals("Sano")){
-            status.setImageDrawable(getActivity().getDrawable(R.drawable.status_green));
+            status.setBackground(getActivity().getDrawable(R.drawable.status_green));
 
         }else if(statusImage.equals("Sobrepeso")){
-            status.setImageDrawable(getActivity().getDrawable(R.drawable.status_ambar));
+            status.setBackground(getActivity().getDrawable(R.drawable.status_ambar));
 
 
         }else if(statusImage.equals("Obeso")){
-            status.setImageDrawable(getActivity().getDrawable(R.drawable.status_red));
+            status.setBackground(getActivity().getDrawable(R.drawable.status_red));
 
 
         }
@@ -103,6 +114,8 @@ public class TarjetaPacienteFragment extends Fragment {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                deleteUser(sharedPreferences.getStringData("curpHistoric"));
 
                 ((MainActivity)getActivity()).succededClinica();
 
@@ -147,6 +160,47 @@ public class TarjetaPacienteFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    private void deleteUser(String CURP){
+
+        db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE ,null);
+
+        /*------------------------- Revisar si existe ------------------------*/
+        c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_VISITAS, null);
+        try {
+            if(c.moveToFirst()) {
+                ContentValues values = new ContentValues();
+                values.put(DataBaseDB.PACIENTES_VISITA_NOMBRE,sharedPreferences.getStringData("nameHistoric"));
+                values.put(DataBaseDB.PACIENTES_VISITA_CURP, sharedPreferences.getStringData("curpHistoric"));
+                values.put(DataBaseDB.PACIENTES_VISITA_DIRECCION, sharedPreferences.getStringData("direccionHistoric"));
+                values.put(DataBaseDB.PACIENTES_VISITA_STATUS, sharedPreferences.getStringData("ImageItem"));
+
+
+                db.insert(DataBaseDB.TABLE_NAME_PACIENTES_VISITAS, null, values);
+                System.out.println("Visita  insertada correctamente");
+            }
+            else {
+                ContentValues values = new ContentValues();
+                values.put(DataBaseDB.PACIENTES_VISITA_NOMBRE,sharedPreferences.getStringData("nameHistoric"));
+                values.put(DataBaseDB.PACIENTES_VISITA_CURP, sharedPreferences.getStringData("curpHistoric"));
+                values.put(DataBaseDB.PACIENTES_VISITA_DIRECCION, sharedPreferences.getStringData("direccionHistoric"));
+                values.put(DataBaseDB.PACIENTES_VISITA_STATUS, sharedPreferences.getStringData("ImageItem"));
+
+
+                db.insert(DataBaseDB.TABLE_NAME_PACIENTES_VISITAS, null, values);
+                System.out.println("Visita  insertada correctamente");
+
+            }
+            c.close();
+        } catch (SQLException ex) {
+            System.out.println("Error al insertar productos: " + ex);
+        }
+
+        db.delete(DataBaseDB.TABLE_NAME_PACIENTES,DataBaseDB.PACIENTES_CURP + "=?",new String[]{CURP});
+
+
+        db.close();
     }
 
 }

@@ -6,6 +6,7 @@ public class Item {
     private String nombre;
     private String curp;
     private String direccion;
+    private String status;
 
 
     /*--------------------------------- Datos de la lista de agendados ---------------------------*/
@@ -16,6 +17,13 @@ public class Item {
         this.nombre = nombre;
         this.curp = curp;
         this.direccion = direccion;
+    }
+
+    public Item(String nombre, String curp, String direccion, String status){
+        this.nombre = nombre;
+        this.curp = curp;
+        this.direccion = direccion;
+        this.status = status;
 
 
     }
@@ -30,6 +38,11 @@ public class Item {
     public String getDireccion() {
         return direccion;
     }
+
+    public String getStatus() {
+        return status;
+    }
+
 
 
 

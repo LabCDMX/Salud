@@ -23,6 +23,7 @@ import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseDB;
 import mx.digitalcoaster.rzertuche.medicoencasa.R;
 import mx.digitalcoaster.rzertuche.medicoencasa.models.Item;
 import mx.digitalcoaster.rzertuche.medicoencasa.models.ItemAdapter;
+import mx.digitalcoaster.rzertuche.medicoencasa.models.VisitasAdapter;
 
 
 /**
@@ -100,28 +101,7 @@ public class PacientesFragment extends Fragment {
 
         items = new ArrayList<>();
         getProductos();
-        lista.setAdapter(new ItemAdapter(getActivity().getApplicationContext(), items));
-
-
-
-        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Log.e("WORKS","asdasd");
-            }
-        });
-
-        lista.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-                Log.e("WORKS","asdasd");
-
-
-                return false;
-            }
-        });
-
+        lista.setAdapter(new VisitasAdapter(getActivity().getApplicationContext(), items));
 
     }
 
@@ -130,10 +110,10 @@ public class PacientesFragment extends Fragment {
 
         db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE, null);
         try {
-            c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES, null);
+            c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_VISITAS, null);
             if (c.moveToFirst()) {
                 do {
-                    items.add(new Item(c.getString(1), c.getString(2), c.getString(3)));
+                    items.add(new Item(c.getString(1), c.getString(2), c.getString(3), c.getString(5)));
                 }while (c.moveToNext());
             } else {
                 System.out.println("No existen PACIENTES");

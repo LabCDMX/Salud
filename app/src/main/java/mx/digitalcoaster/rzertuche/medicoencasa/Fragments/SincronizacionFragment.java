@@ -1,10 +1,13 @@
 package mx.digitalcoaster.rzertuche.medicoencasa.Fragments;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +15,9 @@ import android.widget.TextView;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
+import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseDB;
 import mx.digitalcoaster.rzertuche.medicoencasa.R;
+import mx.digitalcoaster.rzertuche.medicoencasa.models.Item;
 import mx.digitalcoaster.rzertuche.medicoencasa.models.User;
 
 
@@ -40,6 +45,12 @@ public class SincronizacionFragment extends Fragment {
     public TextView rojo;
 
     private OnFragmentInteractionListener mListener;
+
+
+    private SQLiteDatabase db = null;   // Objeto para usar la base de datos local
+    private Cursor c = null;            // Objeto para hacer consultas a la base de datos
+
+
 
     public SincronizacionFragment() {
         // Required empty public constructor
@@ -83,17 +94,18 @@ public class SincronizacionFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Realm realm = Realm.getDefaultInstance();
-
-        RealmResults<User> users = realm.where(User.class).findAll();
-
+        String totalPatients = String.valueOf(getProductos());
 
         total = (TextView) view.findViewById(R.id.total);
         verde = (TextView) view.findViewById(R.id.verde);
         amarillo = (TextView) view.findViewById(R.id.amarillo);
         rojo = (TextView) view.findViewById(R.id.rojo);
 
-        total.setText(users.size()+"");
+
+        total.setText(totalPatients);
+
+
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -133,5 +145,25 @@ public class SincronizacionFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    private int getProductos() {
+        int totalAux = 0;
+
+        db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE, null);
+        try {
+            c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES, null);
+            totalAux = c.getCount();
+            c.close();
+
+            return totalAux;
+
+        } catch (Exception ex) {
+            Log.e("Error", ex.toString());
+        } finally {
+            db.close();
+        }
+
+        return totalAux;
     }
 }
