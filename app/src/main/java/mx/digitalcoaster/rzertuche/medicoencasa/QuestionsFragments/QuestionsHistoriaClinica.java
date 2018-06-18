@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -38,6 +39,7 @@ public class QuestionsHistoriaClinica extends Fragment {
     public static List<String> listElectro = new ArrayList<String>();
 
     private TextView question2,question;
+    private EditText textArea_information;
     private int count = 0;
 
 
@@ -69,6 +71,8 @@ public class QuestionsHistoriaClinica extends Fragment {
         question = getActivity().findViewById(R.id.question);
 
 
+        textArea_information = (EditText) getActivity().findViewById(R.id.textArea_information);
+
         next = (ImageButton) getActivity().findViewById(R.id.next);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,45 +82,55 @@ public class QuestionsHistoriaClinica extends Fragment {
 
 
                 if(count == 1){
+                    textArea_information.setText("");
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title1));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio1));
                 }
 
                 if(count == 2){
+                    textArea_information.setText("");
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title2));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio2));
                 }
 
                 if(count == 3){
+                    textArea_information.setText("");
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title3));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio3));
                 }
 
                 if(count == 4){
+                    textArea_information.setText("");
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title4));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio4));
                 }
                 if(count == 5){
+                    textArea_information.setText("");
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title5));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio5));
                 }
                 if(count == 6){
+                    textArea_information.setText("");
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title6));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio6));
                 }
                 if(count == 7){
+                    textArea_information.setText("");
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title7));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio7));
                 }
                 if(count == 8){
+                    textArea_information.setText("");
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title8));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio8));
                 }
                 if(count == 9){
+                    textArea_information.setText("");
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title9));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio9));
                 }
                 if(count == 10){
+                    textArea_information.setText("");
                     count=0;
                     ((MainActivity)getActivity()).questionExploracion();
 

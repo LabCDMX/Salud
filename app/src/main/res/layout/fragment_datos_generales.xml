@@ -75,14 +75,11 @@
                 android:layout_marginTop="5dp"
                 android:inputType="textCapCharacters"
                 android:textSize="20sp"
+                android:layout_marginLeft="100dp"
                 android:text="Nombre"
                 android:layout_below="@+id/divider"
                 android:background="#00000000"
-                android:textColor="@android:color/black"
-                android:layout_toRightOf="@+id/tvApellidoP"
-                android:layout_toEndOf="@+id/tvApellidoP"
-                android:layout_marginLeft="23dp"
-                android:layout_marginStart="60dp" />
+                android:textColor="@android:color/black"/>
 
             <ImageButton
                 android:id="@+id/btn_edit"
@@ -115,11 +112,10 @@
                 android:text="Apellido Paterno"
                 android:inputType="textCapCharacters"
                 android:background="#00000000"
+                android:layout_marginLeft="10dp"
                 android:textColor="@android:color/black"
                 android:layout_toRightOf="@+id/tvApellidoP"
-                android:layout_toEndOf="@+id/tvApellidoP"
-                android:layout_marginLeft="20dp"
-                android:layout_marginStart="60dp" />
+                android:layout_toEndOf="@+id/tvApellidoP" />
 
             <ImageButton
                 android:id="@+id/btn_edit2"
@@ -154,8 +150,8 @@
                 android:textColor="@android:color/black"
                 android:layout_toRightOf="@+id/tvApellidoM"
                 android:layout_toEndOf="@+id/tvApellidoM"
-                android:layout_marginLeft="13dp"
-                android:layout_marginStart="60dp" />
+                android:layout_marginLeft="10dp"
+                />
 
             <ImageButton
                 android:id="@+id/btn_edit3"
@@ -213,8 +209,7 @@
                 android:textColor="@android:color/black"
                 android:layout_toRightOf="@+id/tvEstado"
                 android:layout_toEndOf="@+id/tvEstado"
-                android:layout_marginLeft="40dp"
-                android:layout_marginStart="100dp" />
+                android:layout_marginLeft="10dp" />
 
             <ImageButton
                 android:id="@+id/btn_edit4"
@@ -250,8 +245,7 @@
                 android:textColor="@android:color/black"
                 android:layout_toRightOf="@+id/tvMunicipio"
                 android:layout_toEndOf="@+id/tvMunicipio"
-                android:layout_marginLeft="13dp"
-                android:layout_marginStart="70dp" />
+                android:layout_marginLeft="10dp"/>
 
             <ImageButton
                 android:id="@+id/btn_edit5"
@@ -286,8 +280,7 @@
                 android:textColor="@android:color/black"
                 android:layout_toRightOf="@+id/tvMunicipio"
                 android:layout_toEndOf="@+id/tvMunicipio"
-                android:layout_marginLeft="13dp"
-                android:layout_marginStart="70dp" />
+                android:layout_marginLeft="10dp"/>
 
             <ImageButton
                 android:id="@+id/btn_edit6"
