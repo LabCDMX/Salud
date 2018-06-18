@@ -5,6 +5,7 @@
     android:layout_gravity="center_vertical|center_horizontal"
     android:foregroundGravity="center_vertical|center_horizontal"
     android:gravity="center"
+    android:background="#fff"
     android:orientation="vertical">
 
     <LinearLayout

@@ -5,7 +5,8 @@
     android:id="@+id/container_questions"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#fff">
 
     <LinearLayout
         android:id="@+id/finishLayout"
@@ -142,21 +143,22 @@
                     android:layout_marginBottom="10dp"
                     android:text="Obstrucción nasal disfonía, tos, expectoración, hemoptisis, dolor, cianosis, disnea.
 "
-                    android:textSize="20sp"/>
+                    android:textSize="20sp" />
 
 
                 <EditText
-                    android:id="@+id/answer2"
-                    android:layout_width="700dp"
+                    android:id="@+id/textArea_information"
+                    android:layout_width="750dp"
                     android:layout_height="250dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
                     android:background="@drawable/cajas_texto"
-                    android:hint="Escribir respuesta aquí."
-                    android:inputType="textCapCharacters"
-
-                    />
-
+                    android:gravity="top|left"
+                    android:inputType="textMultiLine"
+                    android:lines="6"
+                    android:overScrollMode="always"
+                    android:scrollHorizontally="false"
+                    android:scrollbarStyle="insideInset"
+                    android:scrollbars="vertical"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
 
 
             </LinearLayout>
