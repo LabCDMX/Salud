@@ -265,7 +265,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="10dp"
                             android:layout_weight="1"
-                            android:text="DATOS GENERALES"
+                            android:text="HISTORIA CLÍNICA"
                             android:textAlignment="center"
                             android:visibility="visible" />
                     </LinearLayout>
@@ -296,7 +296,7 @@
                             android:layout_weight="1"
                             android:scaleType="fitXY"
                             android:visibility="visible"
-                            app:srcCompat="@drawable/number_two_pink" />
+                            app:srcCompat="@drawable/number_two_grey" />
 
                         <TextView
                             android:id="@+id/textView6"
@@ -304,13 +304,55 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="10dp"
                             android:layout_weight="1"
-                            android:text="CONTEXTO SOCIAL"
+                            android:text="NOTAS MÉDICAS"
+                            android:textAlignment="center"
+                            android:visibility="visible" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="5dp"
+                        android:layout_weight="1"
+                        android:background="#DEDED8"
+                        android:gravity="center_vertical|center_horizontal|center"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical|center_horizontal|center"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+                        <ImageView
+                            android:id="@+id/icon2"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_weight="1"
+                            android:scaleType="fitXY"
+                            android:visibility="visible"
+                            app:srcCompat="@drawable/number_three_grey" />
+
+                        <TextView
+                            android:id="@+id/textView6"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:layout_weight="1"
+                            android:text="DIAGNÓSTICO"
                             android:textAlignment="center"
                             android:visibility="visible" />
                     </LinearLayout>
 
                 </LinearLayout>
             </LinearLayout>
+
 
         </LinearLayout>
     </LinearLayout>
