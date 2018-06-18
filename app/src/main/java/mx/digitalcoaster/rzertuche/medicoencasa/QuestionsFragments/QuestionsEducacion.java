@@ -19,6 +19,11 @@ import mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity;
 import mx.digitalcoaster.rzertuche.medicoencasa.Utils.SharedPreferences;
 import mx.digitalcoaster.rzertuche.medicoencasa.R;
 
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.inicio;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.registros;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.seguimiento;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.sincronizacion;
+
 
 public class QuestionsEducacion extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
@@ -64,6 +69,9 @@ public class QuestionsEducacion extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
+        blockListeners();
+
+
         primaria = (RadioButton) getActivity().findViewById(R.id.primaria_rb);
         secundaria = (RadioButton) getActivity().findViewById(R.id.secundaria_rb);
         preparatoria = (RadioButton) getActivity().findViewById(R.id.media_rb);
@@ -85,9 +93,6 @@ public class QuestionsEducacion extends Fragment {
         questions3 = (LinearLayout) getActivity().findViewById(R.id.questions3);
         questions4 = (LinearLayout) getActivity().findViewById(R.id.questions4);
         questions5 = (LinearLayout) getActivity().findViewById(R.id.questions5);
-
-
-
 
 
         next.setOnClickListener(new View.OnClickListener() {
@@ -117,12 +122,9 @@ public class QuestionsEducacion extends Fragment {
                 }
 
                 if(count == 5){
-
                     ((MainActivity)getActivity()).fragmentContextElectro();
 
                 }
-
-
             }
         });
 
@@ -132,35 +134,22 @@ public class QuestionsEducacion extends Fragment {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 // TODO Auto-generated method stub
                 if (checkedId == R.id.primaria_rb){
-
                     sharedPreferences.setStringData("Escolaridad","Primaria");
-                    Log.e("RadioGroup","Primaria");
-
 
                 }else if (checkedId == R.id.secundaria_rb){
-
                     sharedPreferences.setStringData("Escolaridad","Secundaria");
-                    Log.e("RadioGroup","Sec");
 
                 }else if (checkedId == R.id.media_rb){
-
                     sharedPreferences.setStringData("Escolaridad","Media Superior");
-                    Log.e("RadioGroup","prepa");
 
                 }else if (checkedId == R.id.licenciatura_rb){
-
                     sharedPreferences.setStringData("Escolaridad","Licenciatura");
-                    Log.e("RadioGroup","lic");
 
                 }else if (checkedId == R.id.posgrado_rb){
-
                     sharedPreferences.setStringData("Escolaridad","Posgrado");
-                    Log.e("RadioGroup","posgra");
 
                 }else if (checkedId == R.id.sin_esc_rb){
-
                     sharedPreferences.setStringData("Escolaridad","Sin escolaridad");
-                    Log.e("RadioGroup","sinexc");
 
                 }
 
@@ -169,7 +158,7 @@ public class QuestionsEducacion extends Fragment {
         });
 
 
-        radioEsc.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
+        radioTiempo.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
 
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -194,7 +183,12 @@ public class QuestionsEducacion extends Fragment {
 
     }
 
-
+    public void blockListeners(){
+        inicio.setEnabled(false);
+        registros.setEnabled(false);
+        seguimiento.setEnabled(false);
+        sincronizacion.setEnabled(false);
+    }
 
 
 

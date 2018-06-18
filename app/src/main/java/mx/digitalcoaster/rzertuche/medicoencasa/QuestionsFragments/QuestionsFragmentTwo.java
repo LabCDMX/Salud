@@ -35,6 +35,11 @@ import mx.digitalcoaster.rzertuche.medicoencasa.models.HistoriaClinica;
 import mx.digitalcoaster.rzertuche.medicoencasa.models.Question;
 import mx.digitalcoaster.rzertuche.medicoencasa.models.User;
 
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.inicio;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.registros;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.seguimiento;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.sincronizacion;
+
 
 public class QuestionsFragmentTwo extends Fragment {
 
@@ -82,6 +87,8 @@ public class QuestionsFragmentTwo extends Fragment {
         this.activity = getActivity();
         this.container = view;
 
+
+        blockListeners();
 
         category = (TextView) view.findViewById(R.id.category);
 
@@ -150,7 +157,6 @@ public class QuestionsFragmentTwo extends Fragment {
                 final Calendar c = Calendar.getInstance();
                 dateFormatter = new SimpleDateFormat("dd/MM/yyyy");
 
-
                 int mYear = c.get(Calendar.YEAR); // current year
                 int mMonth = c.get(Calendar.MONTH); // current month
                 int mDay = c.get(Calendar.DAY_OF_MONTH); // current day
@@ -167,7 +173,6 @@ public class QuestionsFragmentTwo extends Fragment {
 
                             }
                         }, mYear, mMonth, mDay);
-                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
                 datePickerDialog.getDatePicker().setSpinnersShown(false);
                 datePickerDialog.setCancelable(false);
                 datePickerDialog.show();
@@ -196,6 +201,12 @@ public class QuestionsFragmentTwo extends Fragment {
 
     }
 
+    public void blockListeners(){
+        inicio.setEnabled(false);
+        registros.setEnabled(false);
+        seguimiento.setEnabled(false);
+        sincronizacion.setEnabled(false);
+    }
 
 
 

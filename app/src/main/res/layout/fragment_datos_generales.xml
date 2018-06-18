@@ -298,6 +298,26 @@
                 android:layout_below="@+id/btn_edit5"
                 app:srcCompat="@drawable/pencil_pink"/>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:gravity="bottom|right"
+                android:layout_below="@+id/btn_edit6"
+                android:orientation="horizontal">
+
+
+                <ImageButton
+                    android:id="@+id/next"
+                    android:layout_width="140dp"
+                    android:layout_height="45dp"
+                    android:background="@android:color/transparent"
+                    android:padding="10dp"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/siguiente" />
+
+            </LinearLayout>
+
 
 
         </RelativeLayout>
@@ -323,24 +343,7 @@
         android:gravity="bottom"
         android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:gravity="bottom|right"
-        android:orientation="horizontal">
 
-
-        <ImageButton
-            android:id="@+id/next"
-            android:layout_width="140dp"
-            android:layout_height="45dp"
-            android:background="@android:color/transparent"
-            android:padding="10dp"
-            android:scaleType="fitXY"
-            app:srcCompat="@drawable/siguiente" />
-
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

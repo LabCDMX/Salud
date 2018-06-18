@@ -26,6 +26,11 @@ import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseHelper;
 import mx.digitalcoaster.rzertuche.medicoencasa.Utils.SharedPreferences;
 import mx.digitalcoaster.rzertuche.medicoencasa.R;
 
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.inicio;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.registros;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.seguimiento;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.sincronizacion;
+
 
 public class DatosGeneralesFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
@@ -67,6 +72,9 @@ public class DatosGeneralesFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+
+        blockListeners();
 
         nombre = (EditText) getActivity().findViewById(R.id.textViewNombre);
         apellidoP = (EditText) getActivity().findViewById(R.id.textViewApellidoP);
@@ -377,6 +385,14 @@ public class DatosGeneralesFragment extends Fragment {
         });
 
 
+    }
+
+
+    public void blockListeners(){
+        inicio.setEnabled(false);
+        registros.setEnabled(false);
+        seguimiento.setEnabled(false);
+        sincronizacion.setEnabled(false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

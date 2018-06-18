@@ -27,6 +27,11 @@ import mx.digitalcoaster.rzertuche.medicoencasa.models.HistoriaClinica;
 import mx.digitalcoaster.rzertuche.medicoencasa.models.Question;
 import mx.digitalcoaster.rzertuche.medicoencasa.models.User;
 
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.inicio;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.registros;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.seguimiento;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.sincronizacion;
+
 
 public class QuestionDomFragment extends Fragment {
 
@@ -94,6 +99,8 @@ public class QuestionDomFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         this.activity = getActivity();
         this.container = view;
+
+        blockListeners();
 
         open = (LinearLayout) view.findViewById(R.id.open);
         multiple = (LinearLayout) view.findViewById(R.id.multiple);
@@ -243,6 +250,13 @@ public class QuestionDomFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    public void blockListeners(){
+        inicio.setEnabled(false);
+        registros.setEnabled(false);
+        seguimiento.setEnabled(false);
+        sincronizacion.setEnabled(false);
     }
 
     /**

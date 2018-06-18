@@ -23,6 +23,10 @@ import mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity;
 import mx.digitalcoaster.rzertuche.medicoencasa.R;
 import mx.digitalcoaster.rzertuche.medicoencasa.Utils.SharedPreferences;
 
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.inicio;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.registros;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.seguimiento;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.sincronizacion;
 import static mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsContextElectro.listElectro;
 
 
@@ -65,6 +69,9 @@ public class ContextoSocialFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
+        blockListeners();
+
         nombre = (EditText) getActivity().findViewById(R.id.textViewNombre);
         apellidoP = (EditText) getActivity().findViewById(R.id.textViewApellidoP);
         estado = (EditText) getActivity().findViewById(R.id.textViewEstado);
@@ -83,7 +90,7 @@ public class ContextoSocialFragment extends Fragment {
         sharedPreferences = SharedPreferences.getInstance();
 
         nombre.setText(sharedPreferences.getStringData("Escolaridad"));
-        apellidoP.setText("Sin Layout");
+        apellidoP.setText(sharedPreferences.getStringData("TiempoEscuela"));
 
         String cadena = new String();
         String listElectroAux= borrarRepetidos(listElectro).toString().replace("[","").replace("]","").replace(",","\n");
@@ -317,5 +324,12 @@ public class ContextoSocialFragment extends Fragment {
 
         return arraycar;
 
+    }
+
+    public void blockListeners(){
+        inicio.setEnabled(false);
+        registros.setEnabled(false);
+        seguimiento.setEnabled(false);
+        sincronizacion.setEnabled(false);
     }
 }

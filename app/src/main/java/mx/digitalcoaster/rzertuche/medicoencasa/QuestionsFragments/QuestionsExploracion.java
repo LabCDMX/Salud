@@ -16,12 +16,18 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 import mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity;
 import mx.digitalcoaster.rzertuche.medicoencasa.R;
 import mx.digitalcoaster.rzertuche.medicoencasa.Utils.SharedPreferences;
+
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.inicio;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.registros;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.seguimiento;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.sincronizacion;
 
 
 public class QuestionsExploracion extends Fragment {
@@ -60,6 +66,8 @@ public class QuestionsExploracion extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
+        blockListeners();
 
         sharedPreferences = SharedPreferences.getInstance();
         String name = sharedPreferences.getStringData("nameHistoric");
@@ -108,11 +116,20 @@ public class QuestionsExploracion extends Fragment {
             if (s.length() == 0) {
                 imc.setVisibility(View.GONE);
             } else{
-                imc.setText(String.valueOf(imcAux));
+                DecimalFormat df = new DecimalFormat("#.00");
+                imc.setText(String.valueOf(df.format(imcAux)));
             }
         }
     };
 
+
+
+    public void blockListeners(){
+        inicio.setEnabled(false);
+        registros.setEnabled(false);
+        seguimiento.setEnabled(false);
+        sincronizacion.setEnabled(false);
+    }
 
 
 

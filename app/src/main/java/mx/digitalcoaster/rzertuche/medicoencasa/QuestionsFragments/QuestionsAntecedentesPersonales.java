@@ -20,6 +20,11 @@ import mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity;
 import mx.digitalcoaster.rzertuche.medicoencasa.R;
 import mx.digitalcoaster.rzertuche.medicoencasa.Utils.SharedPreferences;
 
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.inicio;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.registros;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.seguimiento;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.sincronizacion;
+
 
 public class QuestionsAntecedentesPersonales extends Fragment {
 
@@ -58,6 +63,8 @@ public class QuestionsAntecedentesPersonales extends Fragment {
 
 
 
+        blockListeners();
+
 
         questions2 = (TextView) getActivity().findViewById(R.id.question2);
 
@@ -86,6 +93,13 @@ public class QuestionsAntecedentesPersonales extends Fragment {
 
 
 
+
+    public void blockListeners(){
+        inicio.setEnabled(false);
+        registros.setEnabled(false);
+        seguimiento.setEnabled(false);
+        sincronizacion.setEnabled(false);
+    }
 
 
     // TODO: Rename method, update argument and hook method into UI event

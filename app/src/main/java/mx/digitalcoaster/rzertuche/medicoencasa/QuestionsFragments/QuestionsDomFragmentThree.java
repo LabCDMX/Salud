@@ -17,6 +17,11 @@ import mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity;
 import mx.digitalcoaster.rzertuche.medicoencasa.R;
 import mx.digitalcoaster.rzertuche.medicoencasa.Utils.SharedPreferences;
 
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.inicio;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.registros;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.seguimiento;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.sincronizacion;
+
 
 public class QuestionsDomFragmentThree extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
@@ -59,6 +64,8 @@ public class QuestionsDomFragmentThree extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
+        blockListeners();
+
 
         next = (ImageButton) getActivity().findViewById(R.id.next);
 
@@ -77,6 +84,13 @@ public class QuestionsDomFragmentThree extends Fragment {
     }
 
 
+
+    public void blockListeners(){
+        inicio.setEnabled(false);
+        registros.setEnabled(false);
+        seguimiento.setEnabled(false);
+        sincronizacion.setEnabled(false);
+    }
 
 
 

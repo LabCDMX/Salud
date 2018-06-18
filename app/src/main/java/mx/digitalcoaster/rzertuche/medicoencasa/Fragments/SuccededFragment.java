@@ -13,6 +13,10 @@ import android.widget.LinearLayout;
 
 import mx.digitalcoaster.rzertuche.medicoencasa.R;
 
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.inicio;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.registros;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.seguimiento;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.sincronizacion;
 
 
 public class SuccededFragment extends Fragment {
@@ -45,6 +49,8 @@ public class SuccededFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        restartListeners();
 
         final LinearLayout loader = (LinearLayout) getActivity().findViewById(R.id.loader);
         final LinearLayout finish = (LinearLayout) getActivity().findViewById(R.id.completed);
@@ -87,6 +93,13 @@ public class SuccededFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    public void restartListeners(){
+        inicio.setEnabled(true);
+        registros.setEnabled(true);
+        seguimiento.setEnabled(true);
+        sincronizacion.setEnabled(true);
     }
 
     /**

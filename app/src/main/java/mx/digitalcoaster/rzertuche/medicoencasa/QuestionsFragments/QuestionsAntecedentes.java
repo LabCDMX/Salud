@@ -22,6 +22,11 @@ import mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity;
 import mx.digitalcoaster.rzertuche.medicoencasa.R;
 import mx.digitalcoaster.rzertuche.medicoencasa.Utils.SharedPreferences;
 
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.inicio;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.registros;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.seguimiento;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.sincronizacion;
+
 
 public class QuestionsAntecedentes extends Fragment {
 
@@ -56,6 +61,8 @@ public class QuestionsAntecedentes extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        blockListeners();
 
         sharedPreferences = SharedPreferences.getInstance();
         String name = sharedPreferences.getStringData("nameHistoric");
@@ -128,6 +135,13 @@ public class QuestionsAntecedentes extends Fragment {
         hermanos.setChecked(false);
         abuelos.setChecked(false);
         ninguno.setChecked(false);
+    }
+
+    public void blockListeners(){
+        inicio.setEnabled(false);
+        registros.setEnabled(false);
+        seguimiento.setEnabled(false);
+        sincronizacion.setEnabled(false);
     }
 
 

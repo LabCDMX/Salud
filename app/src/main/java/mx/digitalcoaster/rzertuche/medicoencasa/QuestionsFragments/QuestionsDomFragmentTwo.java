@@ -20,6 +20,11 @@ import mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity;
 import mx.digitalcoaster.rzertuche.medicoencasa.R;
 import mx.digitalcoaster.rzertuche.medicoencasa.Utils.SharedPreferences;
 
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.inicio;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.registros;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.seguimiento;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.sincronizacion;
+
 
 public class QuestionsDomFragmentTwo extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
@@ -63,6 +68,8 @@ public class QuestionsDomFragmentTwo extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
+        blockListeners();
 
         seguro = (RadioButton) getActivity().findViewById(R.id.seguro);
         seguro2 = (RadioButton) getActivity().findViewById(R.id.seguro2);
@@ -137,6 +144,13 @@ public class QuestionsDomFragmentTwo extends Fragment {
 
     }
 
+
+    public void blockListeners(){
+        inicio.setEnabled(false);
+        registros.setEnabled(false);
+        seguimiento.setEnabled(false);
+        sincronizacion.setEnabled(false);
+    }
 
 
 
