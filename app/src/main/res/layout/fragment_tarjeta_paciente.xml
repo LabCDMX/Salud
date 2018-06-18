@@ -15,20 +15,116 @@
         android:textColor="@android:color/black"
         android:textSize="30dp"
         android:layout_marginTop="40dp"
-        android:text="CONTEXTO SOCIAL"/>
+        android:text="TARJETA DEL PACIENTE"/>
+
+    <RelativeLayout
+        android:id="@+id/linearItem"
+        android:layout_below="@+id/textViewDatosGenerales"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:orientation="horizontal">
+
+
+        <ImageView
+            android:id="@+id/status"
+            android:layout_width="900dp"
+            android:layout_height="40dp"
+            android:visibility="visible"
+            android:background="@drawable/status_red" />
+
+        <RelativeLayout
+            android:id="@+id/photho"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:layout_below="@+id/status"
+
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imgLogoCompany"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:background="@drawable/ic_item"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="20dp"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_toRightOf="@+id/photho"
+            android:layout_below="@+id/status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+
+            <TextView
+                android:id="@+id/tvNombreItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:textColor="#000"
+                android:text="Nombre:"
+                android:singleLine="true"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:id="@+id/tv_datosItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:textColor="#000"
+                android:text="DATOS GENERALES"
+                android:layout_marginTop="10dp"
+                android:singleLine="true"
+                android:layout_below="@+id/tvNombreItem"/>
+
+
+            <TextView
+                android:id="@+id/tvCurpItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:textColor="#000"
+                android:text="CURP:"
+                android:singleLine="true"
+                android:layout_below="@+id/tv_datosItem"
+                android:layout_marginTop="10dp" />
+
+
+            <TextView
+                android:id="@+id/tvDireccionItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:textColor="#000"
+                android:text="DIRECCIÓN:"
+                android:singleLine="true"
+                android:layout_below="@+id/tvCurpItem"
+                android:layout_marginTop="10dp" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
 
 
     <ScrollView
         android:id="@+id/cuerpo"
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:layout_marginLeft="50dp"
-        android:layout_below="@+id/textViewDatosGenerales" >
+        android:layout_width="900dp"
+        android:layout_height="250dp"
+        android:layout_below="@+id/linearItem"
+        android:layout_marginLeft="50dp">
+
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp">
+
 
             <TextView
                 android:id="@+id/textViewPersonales"
@@ -38,7 +134,7 @@
                 android:textColor="@android:color/black"
                 android:layout_marginTop="10dp"
                 android:textSize="30sp"
-                android:text="Antecedentes no Patológicos"/>
+                android:text="Diagnóstico"/>
 
             <View
                 android:id="@+id/divider"
@@ -50,197 +146,93 @@
                 android:background="#E91A8D" />
 
 
-            <TextView
-                android:id="@+id/tvNombre"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:textSize="20sp"
-                android:layout_below="@+id/divider"
-                android:text="Escolaridad Máxima:"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:textStyle="bold"
-                android:textColor="@android:color/black" />
-
-            <EditText
-                android:id="@+id/textViewNombre"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:textSize="20sp"
-                android:text="Nombre"
-                android:layout_below="@+id/divider"
-                android:background="#00000000"
-                android:textColor="@android:color/black"
-                android:layout_marginLeft="210dp" />
-
-            <ImageButton
-                android:id="@+id/btn_edit"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_below="@+id/divider"
-                android:layout_marginLeft="600dp"
-                android:background="#fff"
-                app:srcCompat="@drawable/pencil_pink"/>
-
 
             <TextView
-                android:id="@+id/tvApellidoP"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textViewNombre"
-                android:layout_marginTop="20dp"
-                android:textSize="20sp"
-                android:text="Tiempo de escuela/trabajo:"
-                android:textStyle="bold"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:textColor="@android:color/black" />
-
-            <EditText
-                android:id="@+id/textViewApellidoP"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textViewNombre"
-                android:layout_marginTop="20dp"
-                android:textSize="20sp"
-                android:text="Apellido Paterno"
-                android:inputType="text"
-                android:background="#00000000"
-                android:textColor="@android:color/black"
-                android:layout_toRightOf="@+id/tvApellidoP"
-                android:layout_marginLeft="20dp" />
-
-            <ImageButton
-                android:id="@+id/btn_edit2"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="600dp"
-                android:background="#fff"
-                android:layout_below="@+id/btn_edit"
-                app:srcCompat="@drawable/pencil_pink"/>
-
-            <TextView
-                android:id="@+id/tvDomiciliarios"
+                android:id="@+id/tvInterrogatorio"
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/textViewApellidoP"
+                android:layout_below="@id/divider"
                 android:textStyle="bold"
                 android:textColor="@android:color/black"
                 android:textSize="30sp"
-                android:text="Condiciones y Servicios del Hogar"/>
+                android:text="Tratamiento"/>
 
             <View
                 android:id="@+id/divider2"
-                android:layout_below="@id/tvDomiciliarios"
+                android:layout_below="@id/tvInterrogatorio"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:layout_marginBottom="3dp"
                 android:layout_marginTop="3dp"
                 android:background="#E91A8D" />
-            <TextView
-                android:id="@+id/tvEstado"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvDomiciliarios"
-                android:layout_marginTop="20dp"
-                android:textSize="20sp"
-                android:text="Equipo Electrodomésticos:"
-                android:textStyle="bold"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:textColor="@android:color/black" />
 
-            <EditText
-                android:id="@+id/textViewEstado"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvEstado"
-                android:layout_marginTop="20dp"
-                android:textSize="20sp"
-                android:maxLines="10"
-                android:text="Estado"
-                android:layout_marginStart="50dp"
-                android:inputType="textMultiLine"
-                android:background="#00000000"
-                android:textColor="@android:color/black"
-                android:layout_marginLeft="50dp" />
 
-            <ImageButton
-                android:id="@+id/btn_edit4"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="600dp"
-                android:background="#fff"
-                android:layout_below="@+id/divider2"
-                app:srcCompat="@drawable/pencil_pink"/>
+            //EXPLORACION FISICA
 
 
             <TextView
-                android:id="@+id/tvAlimentos"
+                android:id="@+id/tvExploracion"
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/textViewEstado"
+                android:layout_below="@id/divider2"
                 android:textStyle="bold"
                 android:textColor="@android:color/black"
                 android:textSize="30sp"
-                android:text="Alimentación"/>
+                android:text="Elaboró"/>
 
             <View
                 android:id="@+id/divider4"
-                android:layout_below="@id/tvAlimentos"
+                android:layout_below="@id/tvExploracion"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:layout_marginBottom="3dp"
                 android:layout_marginTop="3dp"
                 android:background="#E91A8D" />
-
             <TextView
-                android:id="@+id/tvCantidades"
+                android:id="@+id/tvPeso"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/divider4"
+                android:layout_below="@id/tvExploracion"
                 android:layout_marginTop="20dp"
-                android:textSize="20sp"
-                android:text="Cantidad de comidas consumidas al día:"
+                android:textSize="30sp"
+                android:text="NOMBRE DEL MÉDICO"
                 android:textStyle="bold"
                 android:layout_marginLeft="10dp"
                 android:layout_marginStart="10dp"
                 android:textColor="@android:color/black" />
 
             <EditText
-                android:id="@+id/textCantidades"
+                android:id="@+id/textViewPeso"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/divider4"
-                android:layout_marginTop="20dp"
+                android:layout_below="@id/tvExploracion"
                 android:textSize="20sp"
-                android:text="Estado"
-                android:inputType="text"
+                android:text="55334090"
+                android:inputType="textCapCharacters"
                 android:background="#00000000"
+                android:layout_marginTop="23dp"
                 android:textColor="@android:color/black"
-                android:layout_marginLeft="380dp" />
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@+id/tvPeso"/>
 
 
-            <ImageButton
-                android:id="@+id/btn_edit5"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="600dp"
-                android:background="#fff"
-                android:layout_below="@+id/divider4"
-                app:srcCompat="@drawable/pencil_pink"/>
+
+
+
+            //ButtonNext
+
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
                 android:gravity="bottom|right"
-                android:layout_below="@+id/btn_edit5"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/textViewPeso"
                 android:orientation="horizontal">
+
 
                 <ImageButton
                     android:id="@+id/next"
@@ -248,24 +240,24 @@
                     android:layout_height="45dp"
                     android:background="@android:color/transparent"
                     android:padding="10dp"
-                    android:scaleType="fitXY"
-                    app:srcCompat="@drawable/siguiente" />
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/icon_guardar" />
 
             </LinearLayout>
 
-
-
-
         </RelativeLayout>
+
+
     </ScrollView>
+
 
     <View
         android:id="@+id/divider3"
         android:layout_below="@id/cuerpo"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:layout_marginTop="60dp"
         android:layout_marginBottom="3dp"
+        android:layout_marginTop="30dp"
         android:background="#b60065" />
 
     <LinearLayout
@@ -307,7 +299,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:text="DATOS GENERALES"
+                android:text="HISTORIA CLÍNICA"
                 android:textAlignment="center"
                 android:visibility="visible" />
         </LinearLayout>
@@ -338,7 +330,7 @@
                 android:layout_weight="1"
                 android:scaleType="fitXY"
                 android:visibility="visible"
-                app:srcCompat="@drawable/number_two_pink" />
+                app:srcCompat="@drawable/number_two_grey" />
 
             <TextView
                 android:id="@+id/textView6"
@@ -346,7 +338,48 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:text="CONTEXTO SOCIAL"
+                android:text="NOTAS MÉDICAS"
+                android:textAlignment="center"
+                android:visibility="visible" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_weight="1"
+            android:background="#DEDED8"
+            android:gravity="center_vertical|center_horizontal|center"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical|center_horizontal|center"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <ImageView
+                android:id="@+id/icon2"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:scaleType="fitXY"
+                android:visibility="visible"
+                app:srcCompat="@drawable/number_three_grey" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:text="DIAGNÓSTICO"
                 android:textAlignment="center"
                 android:visibility="visible" />
         </LinearLayout>

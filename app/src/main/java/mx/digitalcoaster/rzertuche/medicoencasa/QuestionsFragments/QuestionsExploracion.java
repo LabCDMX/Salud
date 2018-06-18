@@ -88,7 +88,10 @@ public class QuestionsExploracion extends Fragment {
             @Override
             public void onClick(View v) {
 
-                ((MainActivity)getActivity()).succededClinica();
+                sharedPreferences.setStringData("Peso", peso.getText().toString());
+                sharedPreferences.setStringData("Estatura", estatura.getText().toString());
+
+                ((MainActivity)getActivity()).historiaClinicaFragment();
 
             }
         });

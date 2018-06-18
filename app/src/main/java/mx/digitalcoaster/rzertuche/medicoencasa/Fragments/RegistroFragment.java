@@ -104,6 +104,9 @@ public class RegistroFragment extends Fragment {
                 Item selectedUser = items.get(position);
                 Log.d("User", "USERUUID:"+selectedUser.getNombre());
                 sharedPreferences.setStringData("nameHistoric", selectedUser.getNombre());
+                sharedPreferences.setStringData("curpHistoric", selectedUser.getCurp());
+                sharedPreferences.setStringData("direccionHistoric", selectedUser.getDireccion());
+
                 ((MainActivity)getActivity()).questionAntecedentes();
 
             }

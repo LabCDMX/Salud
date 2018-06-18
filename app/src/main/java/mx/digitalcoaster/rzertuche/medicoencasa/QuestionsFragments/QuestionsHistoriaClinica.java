@@ -82,12 +82,14 @@ public class QuestionsHistoriaClinica extends Fragment {
 
 
                 if(count == 1){
+                    sharedPreferences.setStringData("Respiratorio",textArea_information.getText().toString());
                     textArea_information.setText("");
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title1));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio1));
                 }
 
                 if(count == 2){
+                    sharedPreferences.setStringData("Cardio",textArea_information.getText().toString());
                     textArea_information.setText("");
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title2));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio2));
