@@ -41,7 +41,7 @@ public class QuestionsDomFragmentTwo extends Fragment {
 
     SharedPreferences sharedPreferences;
     private RadioButton seguro,seguro2;
-    private RadioGroup radioEsc;
+    private RadioGroup radioEsc,radioAct;
     private ImageButton next;
     private RelativeLayout relativeSeguro;
     private LinearLayout questions,questions2,questions3;
@@ -75,6 +75,8 @@ public class QuestionsDomFragmentTwo extends Fragment {
         seguro2 = (RadioButton) getActivity().findViewById(R.id.seguro2);
 
         radioEsc = (RadioGroup) getActivity().findViewById(R.id.radioSeguro);
+        radioAct = (RadioGroup) getActivity().findViewById(R.id.radioAct);
+
 
         next = (ImageButton) getActivity().findViewById(R.id.next);
 
@@ -119,23 +121,44 @@ public class QuestionsDomFragmentTwo extends Fragment {
 
 
 
-
-
-
         radioEsc.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
 
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 // TODO Auto-generated method stub
-                if (checkedId == R.id.seguro){
-
+                if (checkedId == R.id.estado_civil){
+                    sharedPreferences.setStringData("EstadoCiv","Soltero");
                     relativeSeguro.setVisibility(View.VISIBLE);
-
-
-                }else if (checkedId == R.id.seguro2){
-
+                }else if (checkedId == R.id.estado_civil2){
+                    sharedPreferences.setStringData("EstadoCiv","Casado");
                     relativeSeguro.setVisibility(View.GONE);
+                }else if (checkedId == R.id.estado_civil3){
+                    sharedPreferences.setStringData("EstadoCiv","Divorciado");
+                    relativeSeguro.setVisibility(View.GONE);
+                }else if (checkedId == R.id.estado_civil4){
+                    sharedPreferences.setStringData("EstadoCiv","Viudo");
+                    relativeSeguro.setVisibility(View.GONE);
+                }
 
+            }
+
+        });
+
+
+        radioAct.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
+
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                // TODO Auto-generated method stub
+                if (checkedId == R.id.actividad){
+                    sharedPreferences.setStringData("Ocupacion","Empleado");
+                    relativeSeguro.setVisibility(View.VISIBLE);
+                }else if (checkedId == R.id.actividad2){
+                    sharedPreferences.setStringData("Ocupacion","Profesionista");
+                    relativeSeguro.setVisibility(View.GONE);
+                }else if (checkedId == R.id.actividad3){
+                    sharedPreferences.setStringData("Ocupacion","Estudiante");
+                    relativeSeguro.setVisibility(View.GONE);
                 }
 
             }

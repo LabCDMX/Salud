@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -40,6 +41,7 @@ public class QuestionsDomFragmentThree extends Fragment {
     private RadioGroup radioEsc;
     private ImageButton next;
     private RelativeLayout relativeSeguro;
+    private EditText answer,answer2,answer3;
 
 
 
@@ -69,6 +71,9 @@ public class QuestionsDomFragmentThree extends Fragment {
 
         next = (ImageButton) getActivity().findViewById(R.id.next);
 
+        answer = (EditText) getActivity().findViewById(R.id.answer);
+        answer2 = (EditText) getActivity().findViewById(R.id.answer2);
+        answer3 = (EditText) getActivity().findViewById(R.id.answer3);
 
         sharedPreferences = SharedPreferences.getInstance();
 
@@ -78,7 +83,12 @@ public class QuestionsDomFragmentThree extends Fragment {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    ((MainActivity)getActivity()).fragmentDatosGenerales();
+
+                sharedPreferences.setStringData("TelFijo",answer.getText().toString());
+                sharedPreferences.setStringData("TelCel",answer2.getText().toString());
+                sharedPreferences.setStringData("Email",answer3.getText().toString());
+
+                ((MainActivity)getActivity()).fragmentDatosGenerales();
             }
         });
     }

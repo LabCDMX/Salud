@@ -45,7 +45,7 @@ public class DatosGeneralesFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
     SharedPreferences sharedPreferences;
 
-    EditText nombre, apellidoP, apellidoM, estado, municipio, localidad;
+    EditText nombre, apellidoP, apellidoM, estado, municipio, localidad, fechaNac, estadoNac,sexo,nac,estadociv,ocupacion,telFijo,telCelular,email;
     ImageButton btnedit,btnedit1,btnedit2,btnedit3,btnedit4,btnedit5,next;
 
     private SQLiteDatabase db = null;      // Objeto para utilizar la base de datos
@@ -82,6 +82,18 @@ public class DatosGeneralesFragment extends Fragment {
         estado = (EditText) getActivity().findViewById(R.id.textViewEstado);
         municipio = (EditText) getActivity().findViewById(R.id.textViewMunicipio);
         localidad = (EditText) getActivity().findViewById(R.id.textViewLocalidad);
+        fechaNac = (EditText) getActivity().findViewById(R.id.textViewFechaNac);
+        estadoNac = (EditText) getActivity().findViewById(R.id.textViewEstadoNac);
+        sexo = (EditText) getActivity().findViewById(R.id.textViewSexo);
+        nac = (EditText) getActivity().findViewById(R.id.textViewNacOrigen);
+        estadociv = (EditText) getActivity().findViewById(R.id.textViewEstadoCivil);
+        ocupacion = (EditText) getActivity().findViewById(R.id.textViewOcupacion);
+        telFijo = (EditText) getActivity().findViewById(R.id.textViewTelefonoFijo);
+        telCelular = (EditText) getActivity().findViewById(R.id.textViewTelefonoCel);
+        email = (EditText) getActivity().findViewById(R.id.textViewEmail);
+
+
+
 
         btnedit = (ImageButton) getActivity().findViewById(R.id.btn_edit);
         btnedit1 = (ImageButton) getActivity().findViewById(R.id.btn_edit2);
@@ -109,6 +121,19 @@ public class DatosGeneralesFragment extends Fragment {
         estado.setText(sharedPreferences.getStringData("Estado"));
         municipio.setText(sharedPreferences.getStringData("Municipio"));
         localidad.setText(sharedPreferences.getStringData("Localidad"));
+
+        fechaNac.setText(sharedPreferences.getStringData("FechaNac"));
+        estadoNac.setText(sharedPreferences.getStringData("EstadoNac"));
+        sexo.setText(sharedPreferences.getStringData("Sexo"));
+
+        nac.setText(sharedPreferences.getStringData("Nac"));
+        estadociv.setText(sharedPreferences.getStringData("EstadoCiv"));
+        ocupacion.setText(sharedPreferences.getStringData("Ocupacion"));
+
+        telFijo.setText(sharedPreferences.getStringData("TelFijo"));
+        telCelular.setText(sharedPreferences.getStringData("TelCel"));
+        email.setText(sharedPreferences.getStringData("Email"));
+
 
         lockEditText();
 

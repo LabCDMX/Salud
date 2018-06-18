@@ -129,8 +129,12 @@ public class QuestionsFragmentTwo extends Fragment {
                         if(!sexo.isEmpty()){
                             if(!nacionalidad.getText().toString().isEmpty()){
 
-                                ((MainActivity)getActivity()).fragmentDomiciliarios();
+                                sharedPreferences.setStringData("FechaNac",date.getText().toString());
+                                sharedPreferences.setStringData("EstadoNac",estadoNacimiento.getText().toString());
+                                sharedPreferences.setStringData("Sexo",sexo);
+                                sharedPreferences.setStringData("Nac",nacionalidad.getText().toString());
 
+                                ((MainActivity)getActivity()).fragmentDomiciliarios();
 
                             }else{
                                 nacionalidad.setError("Campo requerido");
