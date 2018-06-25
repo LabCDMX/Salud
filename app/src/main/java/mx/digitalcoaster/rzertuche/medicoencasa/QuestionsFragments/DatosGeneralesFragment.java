@@ -45,7 +45,7 @@ public class DatosGeneralesFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
     SharedPreferences sharedPreferences;
 
-    EditText nombre, apellidoP, apellidoM, estado, municipio, localidad, fechaNac, estadoNac,sexo,nac,estadociv,ocupacion,telFijo,telCelular,email;
+    EditText nombre, apellidoP, apellidoM, estado, municipio, localidad, fechaNac, estadoNac,sexo,nac,estadociv,ocupacion,telFijo,telCelular,email,curp;
     ImageButton btnedit,btnedit1,btnedit2,btnedit3,btnedit4,btnedit5,next;
 
     private SQLiteDatabase db = null;      // Objeto para utilizar la base de datos
@@ -91,6 +91,7 @@ public class DatosGeneralesFragment extends Fragment {
         telFijo = (EditText) getActivity().findViewById(R.id.textViewTelefonoFijo);
         telCelular = (EditText) getActivity().findViewById(R.id.textViewTelefonoCel);
         email = (EditText) getActivity().findViewById(R.id.textViewEmail);
+        curp = (EditText) getActivity().findViewById(R.id.textViewCURP);
 
 
 
@@ -113,6 +114,8 @@ public class DatosGeneralesFragment extends Fragment {
 
         //Obtencion de datos del sharedPreferences
         sharedPreferences = SharedPreferences.getInstance();
+
+        curp.setText(sharedPreferences.getStringData("CURP"));
 
         nombre.setText(sharedPreferences.getStringData("NombrePatient"));
         apellidoP.setText(sharedPreferences.getStringData("ApellidoP"));

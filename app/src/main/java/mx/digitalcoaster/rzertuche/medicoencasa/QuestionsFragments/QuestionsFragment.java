@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import java.util.Date;
@@ -46,6 +47,7 @@ public class QuestionsFragment extends Fragment {
     LinearLayout open;
     LinearLayout finish;
     LinearLayout review;
+    LinearLayout checkCurp;
 
     ImageButton next;
     ImageView imageLogo;
@@ -62,6 +64,8 @@ public class QuestionsFragment extends Fragment {
 
     Activity activity;
     View container;
+    private int count=0;
+    private RadioGroup radioCurp;
 
 
 
@@ -103,6 +107,9 @@ public class QuestionsFragment extends Fragment {
         blockListeners();
 
         open = (LinearLayout) view.findViewById(R.id.open);
+        checkCurp = (LinearLayout) view.findViewById(R.id.linear_curp);
+
+
         multiple = (LinearLayout) view.findViewById(R.id.multiple);
         finish = (LinearLayout) view.findViewById(R.id.finishLayout);
         review = (LinearLayout) view.findViewById(R.id.ReviewLayout);
@@ -120,6 +127,10 @@ public class QuestionsFragment extends Fragment {
 
         category = (TextView) view.findViewById(R.id.category);
 
+        radioCurp = (RadioGroup) view.findViewById(R.id.radioCurp);
+
+
+
 
 
 
@@ -136,13 +147,13 @@ public class QuestionsFragment extends Fragment {
         String sharedApellidoM = sharedPreferences.getStringData("ApellidoM");
         String curp = sharedPreferences.getStringData("CURP");
 
-        if(!sharedNombre.isEmpty() && !sharedApellidoM.isEmpty() && !sharedApellidoM.isEmpty() && !curp.isEmpty() ){
+        /*if(!sharedNombre.isEmpty() && !sharedApellidoM.isEmpty() && !sharedApellidoM.isEmpty() && !curp.isEmpty() ){
             answer.setText(sharedNombre);
             answer2.setText(sharedApellidoP);
             answer3.setText(sharedApellidoM);
             answer4.setText(curp);
 
-        }
+        }*/
 
 
 
@@ -161,59 +172,101 @@ public class QuestionsFragment extends Fragment {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String nombre = answer.getText().toString();
-                String apeP = answer2.getText().toString();
-                String apeM = answer3.getText().toString();
-                String curp = answer4.getText().toString();
 
-                if(checkNull(curp)){
-                    sharedPreferences.setStringData("CURP",curp);
-                    if(checkNull(nombre)){
-                        sharedPreferences.setStringData("NombrePatient",nombre);
-                        if(checkNull(apeP)){
-                            sharedPreferences.setStringData("ApellidoP",apeP);
-                            if(checkNull(apeM)){
-                                sharedPreferences.setStringData("ApellidoM",apeM);
-                                ((MainActivity)getActivity()).questionFragmentTwo();
-                            }else{
-                                answer3.setError("Campo faltante");
-                                answer3.requestFocus();
-                                InputMethodManager imm = (InputMethodManager) // con esto abres el teclado despues de ubicar el foco en tu editText
-                                        getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                                imm.showSoftInput(answer3, InputMethodManager.SHOW_IMPLICIT);
-                            }
-                        }else{
-                            answer2.setError("Campo faltante");
-                            answer2.requestFocus();
-                            InputMethodManager imm = (InputMethodManager) // con esto abres el teclado despues de ubicar el foco en tu editText
-                                    getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                            imm.showSoftInput(answer2, InputMethodManager.SHOW_IMPLICIT);
+                count++;
 
-                        }
-                    }else{
-
-                        answer.setError("Campo faltante");
-                        answer.requestFocus();
-                        InputMethodManager imm = (InputMethodManager) // con esto abres el teclado despues de ubicar el foco en tu editText
-                                getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                        imm.showSoftInput(answer, InputMethodManager.SHOW_IMPLICIT);
-
+                if(count == 1){
+                    if(answer.getVisibility() == View.VISIBLE){
+                        sharedPreferences.setStringData("CURP",answer4.getText().toString());
                     }
 
-                }else{
+                    checkCurp.setVisibility(View.GONE);
+                    open.setVisibility(View.VISIBLE);
 
-                    answer4.setError("Campo faltante");
-                    answer4.requestFocus();
-                    InputMethodManager imm = (InputMethodManager) // con esto abres el teclado despues de ubicar el foco en tu editText
-                            getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.showSoftInput(answer4, InputMethodManager.SHOW_IMPLICIT);
+                }else if(count == 2){
+                    ((MainActivity)getActivity()).questionFragmentTwo();
+
+                    /*String nombre = answer.getText().toString();
+                    String apeP = answer2.getText().toString();
+                    String apeM = answer3.getText().toString();
+                    String curp = answer4.getText().toString();
+
+                    if(checkNull(curp)){
+                        sharedPreferences.setStringData("CURP",curp);
+                        if(checkNull(nombre)){
+                            sharedPreferences.setStringData("NombrePatient",nombre);
+                            if(checkNull(apeP)){
+                                sharedPreferences.setStringData("ApellidoP",apeP);
+                                if(checkNull(apeM)){
+                                    sharedPreferences.setStringData("ApellidoM",apeM);
+                                    ((MainActivity)getActivity()).questionFragmentTwo();
+                                }else{
+                                    answer3.setError("Campo faltante");
+                                    answer3.requestFocus();
+                                    InputMethodManager imm = (InputMethodManager) // con esto abres el teclado despues de ubicar el foco en tu editText
+                                            getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                                    imm.showSoftInput(answer3, InputMethodManager.SHOW_IMPLICIT);
+                                }
+                            }else{
+                                answer2.setError("Campo faltante");
+                                answer2.requestFocus();
+                                InputMethodManager imm = (InputMethodManager) // con esto abres el teclado despues de ubicar el foco en tu editText
+                                        getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                                imm.showSoftInput(answer2, InputMethodManager.SHOW_IMPLICIT);
+
+                            }
+                        }else{
+
+                            answer.setError("Campo faltante");
+                            answer.requestFocus();
+                            InputMethodManager imm = (InputMethodManager) // con esto abres el teclado despues de ubicar el foco en tu editText
+                                    getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                            imm.showSoftInput(answer, InputMethodManager.SHOW_IMPLICIT);
+
+                        }
+
+                    }else{
+
+                        answer4.setError("Campo faltante");
+                        answer4.requestFocus();
+                        InputMethodManager imm = (InputMethodManager) // con esto abres el teclado despues de ubicar el foco en tu editText
+                                getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                        imm.showSoftInput(answer4, InputMethodManager.SHOW_IMPLICIT);
+
+                    }*/
+
+
+
+
 
                 }
 
+            }
+        });
 
 
+        radioCurp.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
+
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                // TODO Auto-generated method stub
+                if (checkedId == R.id.conoce_curp){
+                    answer4.setVisibility(View.VISIBLE);
+
+                }else if (checkedId == R.id.no_especifica_curp){
+
+                    answer4.setVisibility(View.GONE);
+                    sharedPreferences.setStringData("CURP","XXXX888888XXXXXX88");
+
+                }else if (checkedId == R.id.desconoce_curp){
+
+                    answer4.setVisibility(View.GONE);
+                    sharedPreferences.setStringData("CURP","XXXX999999XXXXXX99");
+
+                }
 
             }
+
         });
 
 

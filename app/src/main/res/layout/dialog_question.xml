@@ -116,7 +116,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/open"
+                android:id="@+id/linear_curp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -130,6 +130,49 @@
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
+                <RadioGroup
+                    android:id="@+id/radioCurp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+
+                    <RadioButton
+                        android:id="@+id/conoce_curp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#E91A8D"
+                        android:text="Conoce el CURP"
+                        android:textColor="#000000" />
+
+                    <RadioButton
+                        android:id="@+id/no_especifica_curp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#E91A8D"
+                        android:layout_marginLeft="50dp"
+                        android:text="No Especificado"
+                        android:textColor="#000000" />
+
+
+                    <RadioButton
+                        android:id="@+id/desconoce_curp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#E91A8D"
+                        android:layout_marginLeft="50dp"
+                        android:text="Desconocido"
+                        android:textColor="#000000" />
+
+
+
+                </RadioGroup>
+
+
+
+
                 <EditText
                     android:id="@+id/answer4"
                     android:layout_width="700dp"
@@ -137,8 +180,22 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:maxLength="18"
+                    android:layout_marginTop="60dp"
                     android:inputType="textCapCharacters"
-                    android:hint="Escribir respuesta aquí." />
+                    android:hint="Escribir respuesta aquí."
+                    android:visibility="gone"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/open"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical"
+                android:visibility="gone">
+
 
                 <TextView
                     android:id="@+id/question"
@@ -199,6 +256,8 @@
                     />
 
             </LinearLayout>
+
+
 
 
             <LinearLayout

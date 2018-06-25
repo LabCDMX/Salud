@@ -41,7 +41,7 @@ public class QuestionsDomFragmentTwo extends Fragment {
 
     SharedPreferences sharedPreferences;
     private RadioButton seguro,seguro2;
-    private RadioGroup radioEsc,radioAct;
+    private RadioGroup radioEsc,radioAct,radioSeguro;
     private ImageButton next;
     private RelativeLayout relativeSeguro;
     private LinearLayout questions,questions2,questions3;
@@ -74,8 +74,10 @@ public class QuestionsDomFragmentTwo extends Fragment {
         seguro = (RadioButton) getActivity().findViewById(R.id.seguro);
         seguro2 = (RadioButton) getActivity().findViewById(R.id.seguro2);
 
-        radioEsc = (RadioGroup) getActivity().findViewById(R.id.radioSeguro);
+        radioEsc = (RadioGroup) getActivity().findViewById(R.id.radioEsc);
         radioAct = (RadioGroup) getActivity().findViewById(R.id.radioAct);
+        radioSeguro = (RadioGroup) getActivity().findViewById(R.id.radioSeguro);
+
 
 
         next = (ImageButton) getActivity().findViewById(R.id.next);
@@ -128,16 +130,12 @@ public class QuestionsDomFragmentTwo extends Fragment {
                 // TODO Auto-generated method stub
                 if (checkedId == R.id.estado_civil){
                     sharedPreferences.setStringData("EstadoCiv","Soltero");
-                    relativeSeguro.setVisibility(View.VISIBLE);
                 }else if (checkedId == R.id.estado_civil2){
                     sharedPreferences.setStringData("EstadoCiv","Casado");
-                    relativeSeguro.setVisibility(View.GONE);
                 }else if (checkedId == R.id.estado_civil3){
                     sharedPreferences.setStringData("EstadoCiv","Divorciado");
-                    relativeSeguro.setVisibility(View.GONE);
                 }else if (checkedId == R.id.estado_civil4){
                     sharedPreferences.setStringData("EstadoCiv","Viudo");
-                    relativeSeguro.setVisibility(View.GONE);
                 }
 
             }
@@ -152,12 +150,43 @@ public class QuestionsDomFragmentTwo extends Fragment {
                 // TODO Auto-generated method stub
                 if (checkedId == R.id.actividad){
                     sharedPreferences.setStringData("Ocupacion","Empleado");
-                    relativeSeguro.setVisibility(View.VISIBLE);
                 }else if (checkedId == R.id.actividad2){
                     sharedPreferences.setStringData("Ocupacion","Profesionista");
-                    relativeSeguro.setVisibility(View.GONE);
                 }else if (checkedId == R.id.actividad3){
                     sharedPreferences.setStringData("Ocupacion","Estudiante");
+                }
+
+            }
+
+        });
+
+        radioAct.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
+
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                // TODO Auto-generated method stub
+                if (checkedId == R.id.actividad){
+                    sharedPreferences.setStringData("Ocupacion","Empleado");
+                }else if (checkedId == R.id.actividad2){
+                    sharedPreferences.setStringData("Ocupacion","Profesionista");
+                }else if (checkedId == R.id.actividad3){
+                    sharedPreferences.setStringData("Ocupacion","Estudiante");
+                }
+
+            }
+
+        });
+
+        radioSeguro.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
+
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                // TODO Auto-generated method stub
+                if (checkedId == R.id.seguro){
+                    sharedPreferences.setStringData("Derechohabiente","SI");
+                    relativeSeguro.setVisibility(View.VISIBLE);
+                }else if (checkedId == R.id.seguro2){
+                    sharedPreferences.setStringData("Derechohabiente","NO");
                     relativeSeguro.setVisibility(View.GONE);
                 }
 

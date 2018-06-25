@@ -76,15 +76,6 @@ public class QuestionDomFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        random_uuid = UUID.randomUUID().toString();
-
-        user = new User();
-        user.setUserUUID(random_uuid);
-        user.fecha = new Date();
-        contexto = new Contexto();
-        contexto.setUserUUID(random_uuid);
-        historiaClinica = new HistoriaClinica();
-        historiaClinica.setUserUUID(random_uuid);
     }
 
     @Override

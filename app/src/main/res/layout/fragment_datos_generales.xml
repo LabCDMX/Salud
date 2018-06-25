@@ -51,13 +51,52 @@
                 android:layout_marginTop="3dp"
                 android:background="#E91A8D" />
 
+            //CURP
+
             <TextView
-                android:id="@+id/tvNombre"
+                android:id="@+id/tv_CURP"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:textSize="20sp"
                 android:layout_below="@+id/divider"
+                android:text="CURP:"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewCURP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:inputType="textCapCharacters"
+                android:textSize="20sp"
+                android:layout_marginLeft="75dp"
+                android:text="CURP"
+                android:layout_below="@+id/divider"
+                android:background="#00000000"
+                android:textColor="@android:color/black"/>
+
+            <ImageButton
+                android:id="@+id/btn_edit16"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_below="@+id/divider"
+                android:layout_marginLeft="600dp"
+                android:background="#FFF"
+                app:srcCompat="@drawable/pencil_pink"/>
+
+            //NOMBRE
+
+            <TextView
+                android:id="@+id/tvNombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="20sp"
+                android:layout_below="@+id/tv_CURP"
                 android:text="Nombre:"
                 android:layout_marginLeft="10dp"
                 android:layout_marginStart="10dp"
@@ -68,12 +107,12 @@
                 android:id="@+id/textViewNombre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:inputType="textCapCharacters"
                 android:textSize="20sp"
                 android:layout_marginLeft="100dp"
                 android:text="Nombre"
-                android:layout_below="@+id/divider"
+                android:layout_below="@+id/textViewCURP"
                 android:background="#00000000"
                 android:textColor="@android:color/black"/>
 
@@ -86,6 +125,8 @@
                 android:background="#FFF"
                 app:srcCompat="@drawable/pencil_pink"/>
 
+            //APELLIDO
+
 
             <TextView
                 android:id="@+id/tvApellidoP"
@@ -95,6 +136,7 @@
                 android:textSize="20sp"
                 android:text="Apellido Paterno:"
                 android:textStyle="bold"
+                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginStart="10dp"
                 android:textColor="@android:color/black" />
@@ -106,6 +148,7 @@
                 android:layout_below="@id/textViewNombre"
                 android:textSize="20sp"
                 android:text="Apellido Paterno"
+                android:layout_marginTop="10dp"
                 android:inputType="textCapCharacters"
                 android:background="#00000000"
                 android:layout_marginLeft="10dp"
@@ -130,6 +173,7 @@
                 android:textSize="20sp"
                 android:text="Apellido Materno:"
                 android:textStyle="bold"
+                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginStart="10dp"
                 android:textColor="@android:color/black" />
@@ -142,6 +186,7 @@
                 android:textSize="20sp"
                 android:inputType="textCapCharacters"
                 android:text="Apellido Materno"
+                android:layout_marginTop="10dp"
                 android:background="#00000000"
                 android:textColor="@android:color/black"
                 android:layout_toRightOf="@+id/tvApellidoM"
@@ -168,6 +213,7 @@
                 android:textSize="20sp"
                 android:text="Fecha de Nacimiento:"
                 android:textStyle="bold"
+                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginStart="10dp"
                 android:textColor="@android:color/black" />
@@ -178,6 +224,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textViewApellidoM"
                 android:textSize="20sp"
+                android:layout_marginTop="10dp"
                 android:inputType="textCapCharacters"
                 android:text="Fecha de Nacimiento"
                 android:background="#00000000"
@@ -214,6 +261,7 @@
                 android:textSize="20sp"
                 android:text="Estado de Nacimiento:"
                 android:textStyle="bold"
+                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginStart="10dp"
                 android:textColor="@android:color/black" />
@@ -224,6 +272,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textViewFechaNac"
                 android:textSize="20sp"
+                android:layout_marginTop="10dp"
                 android:inputType="textCapCharacters"
                 android:text="Estado de Nacimiento"
                 android:background="#00000000"
@@ -254,6 +303,7 @@
                 android:textSize="20sp"
                 android:text="Sexo:"
                 android:textStyle="bold"
+                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginStart="10dp"
                 android:textColor="@android:color/black" />
@@ -266,6 +316,7 @@
                 android:textSize="20sp"
                 android:inputType="textCapCharacters"
                 android:text="Sexo"
+                android:layout_marginTop="10dp"
                 android:background="#00000000"
                 android:textColor="@android:color/black"
                 android:layout_marginLeft="70dp"
@@ -295,6 +346,7 @@
                 android:textSize="20sp"
                 android:text="Nacionalidad de origen:"
                 android:textStyle="bold"
+                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginStart="10dp"
                 android:textColor="@android:color/black" />
@@ -308,6 +360,7 @@
                 android:inputType="textCapCharacters"
                 android:text="Nacionalidad de origen"
                 android:background="#00000000"
+                android:layout_marginTop="10dp"
                 android:textColor="@android:color/black"
                 android:layout_toRightOf="@+id/tvApellidoM"
                 android:layout_toEndOf="@+id/tvApellidoM"
@@ -322,17 +375,6 @@
                 android:background="#FFF"
                 android:layout_below="@+id/btn_edit9"
                 app:srcCompat="@drawable/pencil_pink"/>
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -401,6 +443,7 @@
                 android:textSize="20sp"
                 android:text="Municipio:"
                 android:textStyle="bold"
+                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginStart="10dp"
                 android:textColor="@android:color/black" />
@@ -412,6 +455,7 @@
                 android:layout_below="@id/textViewEstado"
                 android:textSize="20sp"
                 android:text="Municipio"
+                android:layout_marginTop="10dp"
                 android:background="#00000000"
                 android:inputType="textCapCharacters"
                 android:textColor="@android:color/black"
@@ -435,6 +479,8 @@
                 android:layout_below="@id/textViewMunicipio"
                 android:textSize="20sp"
                 android:text="Localidad:"
+                android:layout_marginTop="10dp"
+
                 android:textStyle="bold"
                 android:layout_marginLeft="10dp"
                 android:layout_marginStart="10dp"
@@ -449,6 +495,7 @@
                 android:text="Localidad"
                 android:inputType="textCapCharacters"
                 android:background="#00000000"
+                android:layout_marginTop="10dp"
                 android:textColor="@android:color/black"
                 android:layout_toRightOf="@+id/tvMunicipio"
                 android:layout_toEndOf="@+id/tvMunicipio"
@@ -476,6 +523,7 @@
                 android:textSize="20sp"
                 android:text="Estado civil:"
                 android:textStyle="bold"
+                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginStart="10dp"
                 android:textColor="@android:color/black" />
@@ -487,6 +535,7 @@
                 android:layout_below="@id/textViewLocalidad"
                 android:textSize="20sp"
                 android:text="Estado civil"
+                android:layout_marginTop="10dp"
                 android:inputType="textCapCharacters"
                 android:background="#00000000"
                 android:textColor="@android:color/black"
@@ -514,6 +563,7 @@
                 android:layout_below="@id/tvEstadoCivil"
                 android:textSize="20sp"
                 android:text="Ocupación:"
+                android:layout_marginTop="10dp"
                 android:textStyle="bold"
                 android:layout_marginLeft="10dp"
                 android:layout_marginStart="10dp"
@@ -526,6 +576,7 @@
                 android:layout_below="@id/textViewEstadoCivil"
                 android:textSize="20sp"
                 android:text="Ocupacion"
+                android:layout_marginTop="10dp"
                 android:inputType="textCapCharacters"
                 android:background="#00000000"
                 android:textColor="@android:color/black"
@@ -553,6 +604,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tvOcupacion"
                 android:textSize="20sp"
+                android:layout_marginTop="10dp"
                 android:text="Telefono Fijo:"
                 android:textStyle="bold"
                 android:layout_marginLeft="10dp"
@@ -565,6 +617,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textViewOcupacion"
                 android:textSize="20sp"
+                android:layout_marginTop="10dp"
                 android:text="Telefono Fijo"
                 android:inputType="textCapCharacters"
                 android:background="#00000000"
@@ -590,6 +643,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tvOcupacion"
                 android:textSize="20sp"
+                android:layout_marginTop="10dp"
                 android:text="Telefono Fijo:"
                 android:textStyle="bold"
                 android:layout_marginLeft="10dp"
@@ -602,6 +656,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textViewOcupacion"
                 android:textSize="20sp"
+                android:layout_marginTop="10dp"
                 android:text="Telefono Fijo"
                 android:inputType="textCapCharacters"
                 android:background="#00000000"
@@ -628,6 +683,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tvTelCel"
                 android:textSize="20sp"
+                android:layout_marginTop="10dp"
                 android:text="Email:"
                 android:textStyle="bold"
                 android:layout_marginLeft="10dp"
@@ -641,6 +697,7 @@
                 android:layout_below="@id/textViewTelefonoCel"
                 android:textSize="20sp"
                 android:text="Email"
+                android:layout_marginTop="10dp"
                 android:inputType="textCapCharacters"
                 android:background="#00000000"
                 android:textColor="@android:color/black"

@@ -125,25 +125,29 @@ public class QuestionsFragmentTwo extends Fragment {
 
 
                 if(!date.getText().toString().equals("")){
-                    if(!estadoNacimiento.getText().toString().isEmpty()){
-                        if(!sexo.isEmpty()){
-                            if(!nacionalidad.getText().toString().isEmpty()){
+                    if(!sp.getSelectedItem().toString().equals("Selecciona uno")){
+                        if(!estadoNacimiento.getText().toString().isEmpty()){
+                            if(!sexo.isEmpty()){
+                                if(!nacionalidad.getText().toString().isEmpty()){
 
-                                sharedPreferences.setStringData("FechaNac",date.getText().toString());
-                                sharedPreferences.setStringData("EstadoNac",estadoNacimiento.getText().toString());
-                                sharedPreferences.setStringData("Sexo",sexo);
-                                sharedPreferences.setStringData("Nac",nacionalidad.getText().toString());
+                                    sharedPreferences.setStringData("FechaNac",date.getText().toString());
+                                    sharedPreferences.setStringData("EstadoNac",estadoNacimiento.getText().toString());
+                                    sharedPreferences.setStringData("Sexo",sexo);
+                                    sharedPreferences.setStringData("Nac",nacionalidad.getText().toString());
 
-                                ((MainActivity)getActivity()).fragmentDomiciliarios();
+                                    ((MainActivity)getActivity()).fragmentDomiciliarios();
 
+                                }else{
+                                    nacionalidad.setError("Campo requerido");
+                                }
                             }else{
-                                nacionalidad.setError("Campo requerido");
+                                Toast.makeText(getActivity(), "Selecciona los campos faltantes", Toast.LENGTH_LONG).show();
                             }
                         }else{
-                            Toast.makeText(getActivity(), "Selecciona los campos faltantes", Toast.LENGTH_LONG).show();
+                            estadoNacimiento.setError("Campo requerido");
                         }
                     }else{
-                        estadoNacimiento.setError("Campo requerido");
+                        ((TextView)sp.getSelectedView()).setError("Selecciona uno para continuar");
                     }
                 }else{
                     date.setError("Campo requerido");
@@ -177,7 +181,7 @@ public class QuestionsFragmentTwo extends Fragment {
 
                             }
                         }, mYear, mMonth, mDay);
-                datePickerDialog.getDatePicker().setSpinnersShown(false);
+                datePickerDialog.getDatePicker().setSpinnersShown(true);
                 datePickerDialog.setCancelable(false);
                 datePickerDialog.show();
 
@@ -196,6 +200,7 @@ public class QuestionsFragmentTwo extends Fragment {
     public void getSpinnerOptions(){
         ArrayList<String> category = new ArrayList<String>();
 
+        category.add("Selecciona uno");
         category.add("HOMBRE");
         category.add("MUJER");
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), R.layout.spinner_item, category);
