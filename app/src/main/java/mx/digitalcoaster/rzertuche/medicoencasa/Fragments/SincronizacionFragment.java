@@ -43,6 +43,7 @@ public class SincronizacionFragment extends Fragment {
     public TextView verde;
     public TextView amarillo;
     public TextView rojo;
+    public int totalPatient;
 
     private OnFragmentInteractionListener mListener;
 
@@ -94,7 +95,7 @@ public class SincronizacionFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        String totalPatients = String.valueOf(getProductos());
+        String totalPatients = String.valueOf(getTotalDB());
 
         total = (TextView) view.findViewById(R.id.total);
         verde = (TextView) view.findViewById(R.id.verde);
@@ -107,6 +108,8 @@ public class SincronizacionFragment extends Fragment {
 
 
     }
+
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -147,7 +150,7 @@ public class SincronizacionFragment extends Fragment {
         void onFragmentInteraction(Uri uri);
     }
 
-    private int getProductos() {
+    private int getTotalDB() {
         int totalAux = 0;
 
         db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE, null);

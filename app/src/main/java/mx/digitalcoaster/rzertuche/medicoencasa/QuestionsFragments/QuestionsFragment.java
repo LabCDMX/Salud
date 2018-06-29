@@ -142,11 +142,6 @@ public class QuestionsFragment extends Fragment {
         sharedPreferences = SharedPreferences.getInstance();
 
 
-        String sharedNombre = sharedPreferences.getStringData("NombrePatient");
-        String sharedApellidoP = sharedPreferences.getStringData("ApellidoP");
-        String sharedApellidoM = sharedPreferences.getStringData("ApellidoM");
-        String curp = sharedPreferences.getStringData("CURP");
-
         /*if(!sharedNombre.isEmpty() && !sharedApellidoM.isEmpty() && !sharedApellidoM.isEmpty() && !curp.isEmpty() ){
             answer.setText(sharedNombre);
             answer2.setText(sharedApellidoP);
@@ -176,7 +171,7 @@ public class QuestionsFragment extends Fragment {
                 count++;
 
                 if(count == 1){
-                    if(answer.getVisibility() == View.VISIBLE){
+                    if(answer4.getVisibility() == View.VISIBLE){
                         sharedPreferences.setStringData("CURP",answer4.getText().toString());
                     }
 

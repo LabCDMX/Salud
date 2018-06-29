@@ -13,7 +13,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -102,6 +104,15 @@ public class PacientesFragment extends Fragment {
         items = new ArrayList<>();
         getProductos();
         lista.setAdapter(new VisitasAdapter(getActivity().getApplicationContext(), items));
+
+
+        ImageButton button_pacientes = (ImageButton) getActivity().findViewById(R.id.button_pacientes);
+        button_pacientes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity)getActivity()).historiaClinica();
+            }
+        });
 
     }
 

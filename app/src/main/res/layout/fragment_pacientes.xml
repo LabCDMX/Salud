@@ -15,6 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
+        android:layout_marginLeft="50dp"
         android:orientation="vertical">
 
         <LinearLayout
@@ -34,15 +35,37 @@
                 android:textSize="32sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/pacientesFase1"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:layout_marginTop="20dp"
-                android:text="Pacientes Historia Clínica"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:layout_weight="8"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/pacientesFase1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Pacientes Historia Clínica"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+
+                <ImageButton
+                    android:id="@+id/button_pacientes"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="600dp"
+                    android:background="@drawable/icon_siguiente"
+                    android:layout_toRightOf="@+id/pacientesFase1"
+                    />
+
+            </RelativeLayout>
+
+
+
             <TextView
                 android:id="@+id/pacientesFasedescribe"
                 android:layout_width="match_parent"
