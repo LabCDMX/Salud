@@ -181,6 +181,103 @@
 
 
             <LinearLayout
+                android:id="@+id/alimentos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/question1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="230dp"
+                    android:layout_marginTop="30dp"
+                    android:text="¿Que alimentos consumes a la semana?"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/question2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="230dp"
+                    android:text="Verduras"
+                    android:textSize="20sp"/>
+
+                <RadioGroup
+                    android:id="@+id/radioAli"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+
+                    <RadioButton
+                        android:id="@+id/tipoAli"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#E91A8D"
+                        android:paddingLeft="40dip"
+                        android:text="Ninguna"
+                        android:textColor="#000000" />
+
+                    <RadioButton
+                        android:id="@+id/tipoAli2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#E91A8D"
+                        android:paddingLeft="40dip"
+                        android:text="1 a 5"
+                        android:textColor="#000000" />
+
+
+                    <RadioButton
+                        android:id="@+id/tipoAli3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#E91A8D"
+                        android:paddingLeft="40dip"
+                        android:text="5 a 10"
+                        android:textColor="#000000" />
+
+                    <RadioButton
+                        android:id="@+id/tipoAli4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#E91A8D"
+                        android:paddingLeft="40dip"
+                        android:text="10 a 15"
+                        android:textColor="#000000" />
+
+                    <RadioButton
+                        android:id="@+id/tipoAli5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#E91A8D"
+                        android:paddingLeft="40dip"
+                        android:text="15 a 20"
+                        android:textColor="#000000" />
+
+                    <RadioButton
+                        android:id="@+id/tipoAli6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#E91A8D"
+                        android:paddingLeft="40dip"
+                        android:text="Más de 20"
+                        android:textColor="#000000" />
+
+                </RadioGroup>
+
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="bottom"

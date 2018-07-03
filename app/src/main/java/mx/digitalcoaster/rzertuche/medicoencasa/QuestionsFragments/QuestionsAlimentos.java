@@ -10,8 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity;
@@ -40,6 +42,9 @@ public class QuestionsAlimentos extends Fragment {
     private RadioButton alimentos1,alimentos2,alimentos3;
     private RadioGroup radioEsc;
     private ImageButton next;
+    private TextView changeTitle;
+    private LinearLayout tipoAlimentos, open;
+    int count=0;
 
 
 
@@ -71,6 +76,11 @@ public class QuestionsAlimentos extends Fragment {
         alimentos3= (RadioButton) getActivity().findViewById(R.id.alimentos3);
 
 
+        changeTitle = (TextView) getActivity().findViewById(R.id.question2);
+        tipoAlimentos = (LinearLayout) getActivity().findViewById(R.id.alimentos);
+        open = (LinearLayout) getActivity().findViewById(R.id.open);
+
+
         radioEsc = (RadioGroup) getActivity().findViewById(R.id.radioEsc);
 
         next = (ImageButton) getActivity().findViewById(R.id.next);
@@ -84,12 +94,52 @@ public class QuestionsAlimentos extends Fragment {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(alimentos1.isChecked() || alimentos2.isChecked() || alimentos3.isChecked() ){
+                count++;
+                if((alimentos1.isChecked() || alimentos2.isChecked() || alimentos3.isChecked()) && count == 1){
                     Log.e("VALUES RADIO", sharedPreferences.getStringData("Alimentos"));
+                    count++;
+                }else if(count == 2){
+                    open.setVisibility(View.GONE);
+                    tipoAlimentos.setVisibility(View.VISIBLE);
+                }else if(count == 3){
+                    changeTitle.setText("Frutas");
+
+                }else if(count == 4){
+                    changeTitle.setText("Leguminosas");
+
+                }else if(count == 5){
+                    changeTitle.setText("Cereales/Tuberculos");
+
+                }else if(count == 6){
+                    changeTitle.setText("Pan/Tortilla");
+
+                }else if(count == 7){
+                    changeTitle.setText("Chatarra");
+
+                }else if(count == 8){
+                    changeTitle.setText("Agua");
+
+                }else if(count == 9){
+                    changeTitle.setText("Carne");
+
+                }else if(count == 10){
+                    changeTitle.setText("Pollo");
+
+                }else if(count == 11){
+                    changeTitle.setText("Pescado");
+
+                }else if(count == 12){
+                    changeTitle.setText("Embutidos");
+
+                }else if(count == 13){
+                    count = 0;
                     ((MainActivity)getActivity()).fragmentQuestionsContexto();
-                }else{
-                    Toast.makeText(getActivity(),"Selecciona una opcion antes de continuar",Toast.LENGTH_SHORT).show();
                 }
+
+
+
+
+
 
             }
         });

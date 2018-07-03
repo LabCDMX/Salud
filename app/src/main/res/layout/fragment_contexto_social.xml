@@ -49,7 +49,7 @@
                 android:layout_marginTop="3dp"
                 android:background="#E91A8D" />
 
-
+//ESCOLARIDAD
             <TextView
                 android:id="@+id/tvNombre"
                 android:layout_width="wrap_content"
@@ -84,6 +84,7 @@
                 android:background="#fff"
                 app:srcCompat="@drawable/pencil_pink"/>
 
+            //TIEMPO ESCUELA
 
             <TextView
                 android:id="@+id/tvApellidoP"
@@ -121,12 +122,133 @@
                 android:layout_below="@+id/btn_edit"
                 app:srcCompat="@drawable/pencil_pink"/>
 
+            //TIEMPO DE TRANSPORTE
+
+            <TextView
+                android:id="@+id/tvTiempoTransporte"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvApellidoP"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="Tiempo de transporte:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewTransporte"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewApellidoP"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="Apellido Paterno"
+                android:inputType="text"
+                android:background="#00000000"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="220dp"/>
+
+            <ImageButton
+                android:id="@+id/btn_edit3"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="600dp"
+                android:background="#fff"
+                android:layout_below="@+id/btn_edit2"
+                app:srcCompat="@drawable/pencil_pink"/>
+
+
+
+            //TIEMPO DE RECREACION
+
+
+            <TextView
+                android:id="@+id/tvRecreacion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvTiempoTransporte"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="Tiempo de recreación:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewRecreacion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewTransporte"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="Apellido Paterno"
+                android:inputType="text"
+                android:background="#00000000"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="220dp" />
+
+            <ImageButton
+                android:id="@+id/btn_edit8"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="600dp"
+                android:background="#fff"
+                android:layout_below="@+id/btn_edit3"
+                app:srcCompat="@drawable/pencil_pink"/>
+
+
+            //NIVEL DE ESTRES
+
+
+            <TextView
+                android:id="@+id/tvEstres"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvRecreacion"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="Nivel de estrés:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewEstres"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewRecreacion"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="Apellido Paterno"
+                android:inputType="text"
+                android:background="#00000000"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="160dp"/>
+
+            <ImageButton
+                android:id="@+id/btn_edit9"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="600dp"
+                android:background="#fff"
+                android:layout_below="@+id/btn_edit8"
+                app:srcCompat="@drawable/pencil_pink"/>
+
+
+
+
+            //CONDICIONES Y SERVICIOS
+
             <TextView
                 android:id="@+id/tvDomiciliarios"
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/textViewApellidoP"
+                android:layout_below="@id/textViewEstres"
                 android:textStyle="bold"
                 android:textColor="@android:color/black"
                 android:textSize="30sp"
@@ -178,12 +300,127 @@
                 app:srcCompat="@drawable/pencil_pink"/>
 
 
+            //CARACTERISTICAS
+
+            <TextView
+                android:id="@+id/tvCaracteristicas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewEstado"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="Características de la vivienda:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewCaracteristicas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewEstado"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="Apellido Paterno"
+                android:inputType="text"
+                android:background="#00000000"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="290dp"/>
+
+            <ImageButton
+                android:id="@+id/btn_edit10"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="600dp"
+                android:background="#fff"
+                android:layout_below="@+id/btn_edit4"
+                app:srcCompat="@drawable/pencil_pink"/>
+
+            //PISO
+
+            <TextView
+                android:id="@+id/tvPiso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvCaracteristicas"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="Piso:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewPiso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewCaracteristicas"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="Apellido Paterno"
+                android:inputType="text"
+                android:background="#00000000"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="70dp"/>
+
+            <ImageButton
+                android:id="@+id/btn_edit11"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="600dp"
+                android:background="#fff"
+                android:layout_below="@+id/btn_edit10"
+                app:srcCompat="@drawable/pencil_pink"/>
+
+            //TECHO
+
+            <TextView
+                android:id="@+id/tvTecho"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvPiso"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="Techo:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewTecho"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewPiso"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="Apellido Paterno"
+                android:inputType="text"
+                android:background="#00000000"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="80dp"/>
+
+            <ImageButton
+                android:id="@+id/btn_edit12"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="600dp"
+                android:background="#fff"
+                android:layout_below="@+id/btn_edit11"
+                app:srcCompat="@drawable/pencil_pink"/>
+
+
+
+
+            //ALIMENTACIÓN
             <TextView
                 android:id="@+id/tvAlimentos"
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/textViewEstado"
+                android:layout_below="@id/textViewTecho"
                 android:textStyle="bold"
                 android:textColor="@android:color/black"
                 android:textSize="30sp"
@@ -234,12 +471,181 @@
                 android:layout_below="@+id/divider4"
                 app:srcCompat="@drawable/pencil_pink"/>
 
+
+            //Tipo de alimentacion
+            //- Verduras  
+
+            <TextView
+                android:id="@+id/tvVerduras"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvCantidades"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="Verduras:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewVerduras"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textCantidades"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="Apellido Paterno"
+                android:inputType="text"
+                android:background="#00000000"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="110dp"/>
+
+            <ImageButton
+                android:id="@+id/btn_edit13"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="600dp"
+                android:background="#fff"
+                android:layout_below="@+id/btn_edit5"
+                app:srcCompat="@drawable/pencil_pink"/>
+
+            - Frutas
+
+            <TextView
+                android:id="@+id/tvFruta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvVerduras"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="Fruta:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewFruta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewVerduras"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="Apellido Paterno"
+                android:inputType="text"
+                android:background="#00000000"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="90dp"/>
+
+            <ImageButton
+                android:id="@+id/btn_edit14"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="600dp"
+                android:background="#fff"
+                android:layout_below="@+id/btn_edit13"
+                app:srcCompat="@drawable/pencil_pink"/>
+
+
+             - Leguminosas
+
+            <TextView
+                android:id="@+id/tvLeguminosas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvFruta"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="Leguminosas:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewLeguminosas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewFruta"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="Apellido Paterno"
+                android:inputType="text"
+                android:background="#00000000"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="150dp"/>
+
+            <ImageButton
+                android:id="@+id/btn_edit15"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="600dp"
+                android:background="#fff"
+                android:layout_below="@+id/btn_edit14"
+                app:srcCompat="@drawable/pencil_pink"/>
+
+
+
+
+
+
+             - Cereales / Tuberculos
+
+
+
+
+
+
+             - Pan / Tortilla
+
+
+
+
+
+
+
+
+             - Chatarra
+
+
+
+
+
+
+
+
+             - Carne
+
+
+
+
+
+
+
+             - Pollo
+
+
+
+
+
+
+             - Pescado
+
+
+
+
+
+             - Embutidos
+
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
                 android:gravity="bottom|right"
-                android:layout_below="@+id/btn_edit5"
+                android:layout_below="@+id/btn_edit15"
                 android:orientation="horizontal">
 
                 <ImageButton
@@ -252,9 +658,6 @@
                     app:srcCompat="@drawable/siguiente" />
 
             </LinearLayout>
-
-
-
 
         </RelativeLayout>
     </ScrollView>

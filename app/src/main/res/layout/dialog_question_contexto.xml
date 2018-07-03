@@ -392,6 +392,111 @@
 
 
             <LinearLayout
+                android:id="@+id/questions6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/question4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="5.- ¿Realiza alguna actividad física?"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <RadioGroup
+                    android:id="@+id/radioActividad"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <RadioButton
+                        android:id="@+id/aceptedFisica"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#E91A8D"
+                        android:text="SI"
+                        android:textColor="#000000" />
+
+                    <RadioButton
+                        android:id="@+id/declinedFisica"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#E91A8D"
+                        android:layout_marginLeft="50dp"
+                        android:text="NO"
+                        android:textColor="#000000" />
+
+                </RadioGroup>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/questions7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/tv_actividad"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="30dp"
+                    android:text="¿Cuanto tiempo tiene realizandola?"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <RadioGroup
+                    android:id="@+id/radioAccepted"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <RadioButton
+                        android:id="@+id/leessix"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#E91A8D"
+                        android:paddingLeft="40dip"
+                        android:text="Menos de 6 meses"
+                        android:textColor="#000000" />
+
+
+                    <RadioButton
+                        android:id="@+id/morethansix"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#E91A8D"
+                        android:paddingLeft="40dip"
+                        android:text="6 a 12 meses"
+                        android:textColor="#000000" />
+
+                    <RadioButton
+                        android:id="@+id/morethantw"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#E91A8D"
+                        android:paddingLeft="40dip"
+                        android:text="Más de 12 meses"
+                        android:textColor="#000000" />
+
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
                 android:id="@+id/questions5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -405,7 +510,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="30dp"
-                    android:text="5.- Nivel de estrés actual, hace 1 año, hace 5 años"
+                    android:text="6.- Nivel de estrés actual, hace 1 año, hace 5 años"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
