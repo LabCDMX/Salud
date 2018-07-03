@@ -51,13 +51,101 @@
                 android:layout_marginTop="3dp"
                 android:background="#E91A8D" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/divider"
+                android:text="1.-"
+                android:layout_marginTop="20dp"
+                android:textColor="#000"
+                android:textSize="20dp" />
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/layout_diagnostico"
+                android:layout_width="match_parent"
+                android:layout_below="@id/divider"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/et_diagnostico"
+                    android:layout_width="880dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvEmail"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="10dp"
+                    android:textSize="16dp" />
+
+
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout_diagnostico"
+                android:text="2.-"
+                android:layout_marginTop="20dp"
+                android:textColor="#000"
+                android:textSize="20dp" />
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/layout_diagnostico1"
+                android:layout_width="match_parent"
+                android:layout_below="@id/layout_diagnostico"
+                android:layout_height="wrap_content">
+
+
+                <EditText
+                    android:id="@+id/et_diagnostico1"
+                    android:layout_width="880dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvEmail"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="10dp"
+                    android:textSize="16dp" />
+
+
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout_diagnostico1"
+                android:text="3.-"
+                android:layout_marginTop="20dp"
+                android:textColor="#000"
+                android:textSize="20dp" />
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/layout_diagnostico2"
+                android:layout_width="match_parent"
+                android:layout_below="@id/layout_diagnostico1"
+                android:layout_height="wrap_content">
+
+
+                <EditText
+                    android:id="@+id/et_diagnostico2"
+                    android:layout_width="880dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvEmail"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="10dp"
+                    android:textSize="16dp" />
+
+
+            </android.support.design.widget.TextInputLayout>
+
+
+
+
 
             <TextView
                 android:id="@+id/tvInterrogatorio"
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/divider"
+                android:layout_below="@id/layout_diagnostico2"
                 android:textStyle="bold"
                 android:textColor="@android:color/black"
                 android:textSize="30sp"
@@ -84,6 +172,91 @@
                 android:layout_marginStart="10dp"
                 android:textColor="@android:color/black" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvRespiratorio"
+                android:text="1.-"
+                android:layout_marginTop="20dp"
+                android:textColor="#000"
+                android:textSize="20dp" />
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/layout_tratamiento"
+                android:layout_width="match_parent"
+                android:layout_below="@id/tvRespiratorio"
+                android:layout_height="wrap_content">
+
+
+                <EditText
+                    android:id="@+id/et_tratamiento"
+                    android:layout_width="880dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvEmail"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="10dp"
+                    android:textSize="16dp" />
+
+
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout_tratamiento"
+                android:text="2.-"
+                android:layout_marginTop="20dp"
+                android:textColor="#000"
+                android:textSize="20dp" />
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/layout_tratamiento1"
+                android:layout_width="match_parent"
+                android:layout_below="@id/layout_tratamiento"
+                android:layout_height="wrap_content">
+
+
+                <EditText
+                    android:id="@+id/et_tratamiento1"
+                    android:layout_width="880dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/layout_tratamiento"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="10dp"
+                    android:textSize="16dp" />
+
+
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout_tratamiento1"
+                android:text="3.-"
+                android:layout_marginTop="20dp"
+                android:textColor="#000"
+                android:textSize="20dp" />
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/layout_tratamiento2"
+                android:layout_width="match_parent"
+                android:layout_below="@id/layout_tratamiento1"
+                android:layout_height="wrap_content">
+
+
+                <EditText
+                    android:id="@+id/et_tratamiento2"
+                    android:layout_width="880dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/layout_tratamiento1"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="10dp"
+                    android:textSize="16dp" />
+
+
+            </android.support.design.widget.TextInputLayout>
+
 
 
             //EXPLORACION FISICA
@@ -94,7 +267,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tvRespiratorio"
+                android:layout_below="@id/layout_tratamiento2"
                 android:textStyle="bold"
                 android:textColor="@android:color/black"
                 android:textSize="30sp"
@@ -128,6 +301,7 @@
                     android:visibility="visible">
 
                     <LinearLayout
+                        android:id="@+id/layout_sano"
                         android:layout_width="match_parent"
                         android:layout_height="80dp"
                         android:layout_weight="1"
@@ -161,6 +335,7 @@
 
 
                     <LinearLayout
+                        android:id="@+id/layout_sobrepeso"
                         android:layout_width="match_parent"
                         android:layout_height="80dp"
                         android:layout_weight="1"
@@ -195,6 +370,7 @@
 
 
                     <LinearLayout
+                        android:id="@+id/layout_obeso"
                         android:layout_width="match_parent"
                         android:layout_height="80dp"
                         android:layout_weight="1"
@@ -260,14 +436,11 @@
         android:layout_below="@id/cuerpo"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:layout_marginBottom="3dp"
-        android:layout_marginTop="30dp"
         android:background="#b60065" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="bottom"
         android:layout_below="@id/divider3"
         android:orientation="vertical">
 

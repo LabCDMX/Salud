@@ -97,14 +97,14 @@ public class TarjetaPacienteFragment extends Fragment {
         String statusImage = sharedPreferences.getStringData("ImageItem");
 
         if(statusImage.equals("Sano")){
-            status.setBackground(getActivity().getDrawable(R.drawable.status_green));
+            status.setBackground(getResources().getDrawable(R.drawable.status_green));
 
         }else if(statusImage.equals("Sobrepeso")){
-            status.setBackground(getActivity().getDrawable(R.drawable.status_ambar));
+            status.setBackground(getResources().getDrawable(R.drawable.status_ambar));
 
 
         }else if(statusImage.equals("Obeso")){
-            status.setBackground(getActivity().getDrawable(R.drawable.status_red));
+            status.setBackground(getResources().getDrawable(R.drawable.status_red));
 
 
         }

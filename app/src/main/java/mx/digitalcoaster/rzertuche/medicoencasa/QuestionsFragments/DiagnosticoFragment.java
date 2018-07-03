@@ -1,6 +1,7 @@
 package mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -12,6 +13,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+
+import java.io.ObjectStreamException;
 
 import mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity;
 import mx.digitalcoaster.rzertuche.medicoencasa.R;
@@ -37,7 +41,8 @@ public class DiagnosticoFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
     SharedPreferences sharedPreferences;
 
-    ImageButton next,sano,obeso,sobrepeso;
+    LinearLayout sano,obeso,sobrepeso;
+    ImageButton next;
 
 
 
@@ -58,7 +63,7 @@ public class DiagnosticoFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(View view, @Nullable final Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
 
@@ -67,9 +72,9 @@ public class DiagnosticoFragment extends Fragment {
 
         next = (ImageButton) getActivity().findViewById(R.id.next);
 
-        sano = (ImageButton) getActivity().findViewById(R.id.sano);
-        sobrepeso = (ImageButton) getActivity().findViewById(R.id.sobrepeso);
-        obeso = (ImageButton) getActivity().findViewById(R.id.obeso);
+        sano = (LinearLayout) getActivity().findViewById(R.id.layout_sano);
+        sobrepeso = (LinearLayout) getActivity().findViewById(R.id.layout_sobrepeso);
+        obeso = (LinearLayout) getActivity().findViewById(R.id.layout_obeso);
 
 
 
@@ -81,10 +86,12 @@ public class DiagnosticoFragment extends Fragment {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View view) {
-                sobrepeso.setImageDrawable(getActivity().getDrawable(R.drawable.status_ambar));
-                obeso.setImageDrawable(getActivity().getDrawable(R.drawable.status_red));
 
-                sano.setImageDrawable(getActivity().getDrawable(R.drawable.seleccionar));
+                sobrepeso.setBackgroundColor(Color.TRANSPARENT);
+                obeso.setBackgroundColor(Color.TRANSPARENT);
+
+
+                sano.setBackgroundColor(getResources().getColor(R.color.colorSano));
                 sharedPreferences.setStringData("ImageItem","Sano");
 
             }
@@ -94,10 +101,11 @@ public class DiagnosticoFragment extends Fragment {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View view) {
-                sano.setImageDrawable(getActivity().getDrawable(R.drawable.status_green));
-                obeso.setImageDrawable(getActivity().getDrawable(R.drawable.status_red));
+                sano.setBackgroundColor(Color.TRANSPARENT);
+                obeso.setBackgroundColor(Color.TRANSPARENT);
 
-                sobrepeso.setImageDrawable(getActivity().getDrawable(R.drawable.seleccionar));
+
+                sobrepeso.setBackgroundColor(getResources().getColor(R.color.colorAmbar));
                 sharedPreferences.setStringData("ImageItem","Sobrepeso");
 
             }
@@ -107,10 +115,11 @@ public class DiagnosticoFragment extends Fragment {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View view) {
-                sano.setImageDrawable(getActivity().getDrawable(R.drawable.status_green));
-                sobrepeso.setImageDrawable(getActivity().getDrawable(R.drawable.status_ambar));
+                sano.setBackgroundColor(Color.TRANSPARENT);
+                sobrepeso.setBackgroundColor(Color.TRANSPARENT);
 
-                obeso.setImageDrawable(getActivity().getDrawable(R.drawable.seleccionar));
+
+                obeso.setBackgroundColor(getResources().getColor(R.color.colorRojo));
                 sharedPreferences.setStringData("ImageItem","Obeso");
 
             }
