@@ -106,7 +106,8 @@ public class QuestionsFragmentTwo extends Fragment {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity)getActivity()).activityNewPatient();
+                sharedPreferences.setBooleanData("BackToQuestionsTwo", true);
+                ((MainActivity)getActivity()).activityRegistros();
 
             }
         });

@@ -644,7 +644,7 @@
                 android:layout_below="@id/tvTelFijo"
                 android:textSize="20sp"
                 android:layout_marginTop="10dp"
-                android:text="Telefono Fijo:"
+                android:text="Telefono Celular:"
                 android:textStyle="bold"
                 android:layout_marginLeft="10dp"
                 android:layout_marginStart="10dp"
@@ -663,7 +663,7 @@
                 android:textColor="@android:color/black"
                 android:layout_toRightOf="@+id/tvMunicipio"
                 android:layout_toEndOf="@+id/tvMunicipio"
-                android:layout_marginLeft="40dp"/>
+                android:layout_marginLeft="70dp"/>
 
             <ImageButton
                 android:id="@+id/btn_edit14"
@@ -720,7 +720,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
                 android:gravity="bottom|right"
-                android:layout_below="@+id/btn_edit14"
+                android:layout_below="@+id/tvEmail"
                 android:orientation="horizontal">
 
 

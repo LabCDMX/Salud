@@ -148,14 +148,18 @@ public class QuestionsFragment extends Fragment {
 
         sharedPreferences = SharedPreferences.getInstance();
 
+        if(sharedPreferences.getBooleanData("BackToQuestionsTwo")){
+            count=2;
+            checkCurp.setVisibility(View.GONE);
+            open.setVisibility(View.VISIBLE);
+        }
 
-        /*if(!sharedNombre.isEmpty() && !sharedApellidoM.isEmpty() && !sharedApellidoM.isEmpty() && !curp.isEmpty() ){
-            answer.setText(sharedNombre);
-            answer2.setText(sharedApellidoP);
-            answer3.setText(sharedApellidoM);
-            answer4.setText(curp);
 
-        }*/
+        if(!sharedPreferences.getStringData("NombrePatient").isEmpty() && !sharedPreferences.getStringData("ApellidoP").isEmpty() && !sharedPreferences.getStringData("ApellidoM").isEmpty() ){
+            answer.setText(sharedPreferences.getStringData("NombrePatient"));
+            answer2.setText(sharedPreferences.getStringData("ApellidoP"));
+            answer3.setText(sharedPreferences.getStringData("ApellidoM"));
+        }
 
 
 
@@ -178,7 +182,9 @@ public class QuestionsFragment extends Fragment {
                 if(count == 1){
                     if(conoce.isChecked()){
                         checkCURP();
-                    }else if(conoce.isChecked() || desconoce.isChecked() || noesp.isChecked()){
+
+                    }else if(desconoce.isChecked() || noesp.isChecked()){
+                        count++;
                         checkCurp.setVisibility(View.GONE);
                         open.setVisibility(View.VISIBLE);
                     }else{
@@ -188,59 +194,43 @@ public class QuestionsFragment extends Fragment {
 
 
                 }else if(count == 2){
-                    ((MainActivity)getActivity()).questionFragmentTwo();
 
                     String nombre = answer.getText().toString();
                     String apeP = answer2.getText().toString();
                     String apeM = answer3.getText().toString();
-                    String curp = answer4.getText().toString();
 
-                    if(checkNull(curp)){
-                        sharedPreferences.setStringData("CURP",curp);
-                        if(checkNull(nombre)){
-                            sharedPreferences.setStringData("NombrePatient",nombre);
-                            if(checkNull(apeP)){
-                                sharedPreferences.setStringData("ApellidoP",apeP);
-                                if(checkNull(apeM)){
-                                    sharedPreferences.setStringData("ApellidoM",apeM);
-                                    ((MainActivity)getActivity()).questionFragmentTwo();
-                                }else{
-                                    answer3.setError("Campo faltante");
-                                    answer3.requestFocus();
-                                    InputMethodManager imm = (InputMethodManager) // con esto abres el teclado despues de ubicar el foco en tu editText
-                                            getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                                    imm.showSoftInput(answer3, InputMethodManager.SHOW_IMPLICIT);
-                                }
+
+                    if(checkNull(nombre)){
+                        sharedPreferences.setStringData("NombrePatient",nombre);
+                        if(checkNull(apeP)){
+                            sharedPreferences.setStringData("ApellidoP",apeP);
+                            if(checkNull(apeM)){
+                                sharedPreferences.setStringData("ApellidoM",apeM);
+                                ((MainActivity)getActivity()).questionFragmentTwo();
                             }else{
-                                answer2.setError("Campo faltante");
-                                answer2.requestFocus();
+                                answer3.setError("Campo faltante");
+                                answer3.requestFocus();
                                 InputMethodManager imm = (InputMethodManager) // con esto abres el teclado despues de ubicar el foco en tu editText
                                         getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                                imm.showSoftInput(answer2, InputMethodManager.SHOW_IMPLICIT);
-
+                                imm.showSoftInput(answer3, InputMethodManager.SHOW_IMPLICIT);
                             }
                         }else{
-
-                            answer.setError("Campo faltante");
-                            answer.requestFocus();
+                            answer2.setError("Campo faltante");
+                            answer2.requestFocus();
                             InputMethodManager imm = (InputMethodManager) // con esto abres el teclado despues de ubicar el foco en tu editText
                                     getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                            imm.showSoftInput(answer, InputMethodManager.SHOW_IMPLICIT);
+                            imm.showSoftInput(answer2, InputMethodManager.SHOW_IMPLICIT);
 
                         }
-
                     }else{
 
-                        answer4.setError("Campo faltante");
-                        answer4.requestFocus();
+                        answer.setError("Campo faltante");
+                        answer.requestFocus();
                         InputMethodManager imm = (InputMethodManager) // con esto abres el teclado despues de ubicar el foco en tu editText
                                 getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                        imm.showSoftInput(answer4, InputMethodManager.SHOW_IMPLICIT);
+                        imm.showSoftInput(answer, InputMethodManager.SHOW_IMPLICIT);
 
                     }
-
-
-
 
 
                 }
@@ -285,6 +275,8 @@ public class QuestionsFragment extends Fragment {
 
                 sharedPreferences.setStringData("CURP",answer4.getText().toString());
                 count++;
+                checkCurp.setVisibility(View.GONE);
+                open.setVisibility(View.VISIBLE);
             }else{
                 answer4.setError("Campo faltante");
                 answer4.requestFocus();
