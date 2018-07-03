@@ -14,8 +14,10 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Date;
 import java.util.UUID;
@@ -64,8 +66,9 @@ public class QuestionsFragment extends Fragment {
 
     Activity activity;
     View container;
-    private int count=0;
+    private int count=1;
     private RadioGroup radioCurp;
+    private RadioButton conoce, desconoce, noesp;
 
 
 
@@ -129,6 +132,10 @@ public class QuestionsFragment extends Fragment {
 
         radioCurp = (RadioGroup) view.findViewById(R.id.radioCurp);
 
+        conoce = (RadioButton) view.findViewById(R.id.conoce_curp);
+        desconoce = (RadioButton) view.findViewById(R.id.desconoce_curp);
+        noesp = (RadioButton) view.findViewById(R.id.no_especifica_curp);
+
 
 
 
@@ -164,24 +171,26 @@ public class QuestionsFragment extends Fragment {
 
 
         ImageButton next = (ImageButton) view.findViewById(R.id.next);
+
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                count++;
-
                 if(count == 1){
-                    if(answer4.getVisibility() == View.VISIBLE){
-                        sharedPreferences.setStringData("CURP",answer4.getText().toString());
+                    if(conoce.isChecked()){
+                        checkCURP();
+                    }else if(conoce.isChecked() || desconoce.isChecked() || noesp.isChecked()){
+                        checkCurp.setVisibility(View.GONE);
+                        open.setVisibility(View.VISIBLE);
+                    }else{
+                        Toast.makeText(getContext(),"Selecciona una opcion antes de continuar", Toast.LENGTH_SHORT).show();
+
                     }
 
-                    checkCurp.setVisibility(View.GONE);
-                    open.setVisibility(View.VISIBLE);
 
                 }else if(count == 2){
                     ((MainActivity)getActivity()).questionFragmentTwo();
 
-                    /*String nombre = answer.getText().toString();
+                    String nombre = answer.getText().toString();
                     String apeP = answer2.getText().toString();
                     String apeM = answer3.getText().toString();
                     String curp = answer4.getText().toString();
@@ -228,7 +237,7 @@ public class QuestionsFragment extends Fragment {
                                 getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                         imm.showSoftInput(answer4, InputMethodManager.SHOW_IMPLICIT);
 
-                    }*/
+                    }
 
 
 
@@ -265,6 +274,25 @@ public class QuestionsFragment extends Fragment {
         });
 
 
+
+    }
+
+    public void checkCURP(){
+
+        if(answer4.getVisibility() == View.VISIBLE){
+
+            if(checkNull(answer4.getText().toString())){
+
+                sharedPreferences.setStringData("CURP",answer4.getText().toString());
+                count++;
+            }else{
+                answer4.setError("Campo faltante");
+                answer4.requestFocus();
+                InputMethodManager imm = (InputMethodManager) // con esto abres el teclado despues de ubicar el foco en tu editText
+                        getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.showSoftInput(answer4, InputMethodManager.SHOW_IMPLICIT);
+            }
+        }
 
     }
 

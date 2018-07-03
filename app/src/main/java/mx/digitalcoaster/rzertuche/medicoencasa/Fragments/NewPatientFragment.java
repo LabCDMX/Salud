@@ -14,6 +14,11 @@ import mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity;
 import mx.digitalcoaster.rzertuche.medicoencasa.Utils.SharedPreferences;
 import mx.digitalcoaster.rzertuche.medicoencasa.R;
 
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.inicio;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.registros;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.seguimiento;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.sincronizacion;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -82,6 +87,8 @@ public class NewPatientFragment extends Fragment {
         sharedPreferences = SharedPreferences.getInstance();
         sharedPreferences.clearPreferences();
 
+        restartListeners();
+
 
         ImageButton nuevo = (ImageButton) view.findViewById(R.id.imageButton2);
         nuevo.setOnClickListener(new View.OnClickListener() {
@@ -99,12 +106,14 @@ public class NewPatientFragment extends Fragment {
             }
         });
 
+    }
 
 
-
-
-
-
+    public void restartListeners(){
+        inicio.setEnabled(true);
+        registros.setEnabled(true);
+        seguimiento.setEnabled(true);
+        sincronizacion.setEnabled(true);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
