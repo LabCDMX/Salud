@@ -21,6 +21,16 @@
     <string name="interrogatorio7">Pérdida  del conocimiento, parálisis, paresias, temblores, coordinación, convulsiones, atrofias, hipo o hiperestesias, cefalea, algias, visión, audición, equilibrio, olfato, gusto, sueño, alteraciones de la personalidad, depresión, compulsión, excitación, atención, memoria, cambios de conducta, afectividad, nerviosismo, angustia.</string>
     <string name="interrogatorio8">Deformaciones óseas, limitación de movimientos, algias, atrofias</string>
     <string name="interrogatorio9">Mucosas, piel, pelo, uñas, prurito, cambios de coloración, alopecia, erupciones, infestaciones, micosis.</string>
+    <string name="interrogatorio10">Edad, aparente, biotipo, estado de conciencia, orientación en espacio, tiempo y persona, facies, postura, marcha, movimietos anormales, estado y color de tegumentos, actitud.</string>
+    <string name="interrogatorio11">Cráneo: tipo, forma, volumen, cabello, exostosis, hundimientos, fontanela. Cara: tinte, ojos, reflejos pupilares, fondo de ojos, conjuntivas, cornea Nariz: obstrucción, mucosa Boca: desviación de las comisuras, aliento, labios, y paladar Oídos: conducto auditivo y tímpano Faringe: úvula, amigdalas, adenoides, secresiones.</string>
+    <string name="interrogatorio12">Forma, movilidad, contracturas, arterias, pulsos, soplos venenosos, frémitos, traquea, tiroides, cadenas linfáticas, huecos supraciaviculares.</string>
+    <string name="interrogatorio13">Inspección, forma, volumen, edema, red venosa, pigmentación, vello, latido, epigástrico, ascitis, depresible blando, duro, resistente, zonas dolorosas, tumores frémitos, orificios inguinales, peristalsis, forma y tamaño de visceras</string>
+    <string name="interrogatorio14">Exploración manual: útero, forma, volumen, tamaño, posición, consistencia, masas tumorales, dolor, sangrado, secreciones. Anexos: Dolor a la exploración de ovarios y trompas,presencia de masas tumorales, fondo de saco, y adherencias. Exoloración armada: forma, color, deformaciones, sangrado, colporrea, lesiones, úlceras, ectropión, pólipos</string>
+    <string name="interrogatorio15">Forma volumen, piel, uñas, dedos, articulaciones, tono, fuerza, reflejos, tendinosos, movimientos, pulsos arteriales, simetría, amplitud, frecuencia, ritmo, arcos de movilidad, varices, úlceras, flebitis, micosis, marcha. Edema, reflejos: Rotuliano, aquliano y plantar.</string>
+    <string name="interrogatorio16">Inspeción, posición, dolor, deformaciones, disfunción, alineación, función, simetría, movimiento, flexión, extensión, rotación, lateralidad, curvaturas, lordosis, xifósis, escoliosis, masa musculares, lesiones, cutáneas.</string>
+    <string name="interrogatorio17">Razonamiento, atención, memoria, ansiedad, depresión, alucinaciones, postura corporal, funciones motoras, movimientos corporales voluntarios e involuntarios, paresias, parálisis, marcha, equilibrio, pares, craneales, función sensorial.</string>
+    <string name="interrogatorio18">Inspección, madurez, tacto vaginal, tacto rectal, secreciones, vesicular y úlceras, verrugas, condiomas, otras lesiones.</string>
+
 
 
 
@@ -34,6 +44,15 @@
     <string name="interrogatorio_title7">8.- Sistema Nervioso</string>
     <string name="interrogatorio_title8">9.- Músculo esquelético</string>
     <string name="interrogatorio_title9">10.- Piel y anexos</string>
+    <string name="interrogatorio_title10">11.- Habitus exterior</string>
+    <string name="interrogatorio_title11">12.- Cabeza</string>
+    <string name="interrogatorio_title12">13.- Cuello</string>
+    <string name="interrogatorio_title20">14.- Abdomen</string>
+    <string name="interrogatorio_title14">15.- Exploración ginecológica</string>
+    <string name="interrogatorio_title15">16.- Extremidades superiores e inferiores</string>
+    <string name="interrogatorio_title16">17.- Columna vertebral</string>
+    <string name="interrogatorio_title17">18.- Exploración neurológica</string>
+    <string name="interrogatorio_title18">19.- Genitales</string>
 
 
 

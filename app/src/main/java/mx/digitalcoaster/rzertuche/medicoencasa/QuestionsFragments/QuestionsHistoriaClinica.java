@@ -133,6 +133,51 @@ public class QuestionsHistoriaClinica extends Fragment {
                 }
                 if(count == 10){
                     textArea_information.setText("");
+                    question.setText(getActivity().getResources().getString(R.string.interrogatorio_title10));
+                    question2.setText(getActivity().getResources().getString(R.string.interrogatorio10));
+                }
+                if(count == 11){
+                    textArea_information.setText("");
+                    question.setText(getActivity().getResources().getString(R.string.interrogatorio_title11));
+                    question2.setText(getActivity().getResources().getString(R.string.interrogatorio11));
+                }
+                if(count == 12){
+                    textArea_information.setText("");
+                    question.setText(getActivity().getResources().getString(R.string.interrogatorio_title12));
+                    question2.setText(getActivity().getResources().getString(R.string.interrogatorio12));
+                }
+                if(count == 13){
+                    textArea_information.setText("");
+                    question.setText(getActivity().getResources().getString(R.string.interrogatorio_title20));
+                    question2.setText(getActivity().getResources().getString(R.string.interrogatorio13));
+                }
+                if(count == 14){
+                    textArea_information.setText("");
+                    question.setText(getActivity().getResources().getString(R.string.interrogatorio_title14));
+                    question2.setText(getActivity().getResources().getString(R.string.interrogatorio14));
+                }
+                if(count == 15){
+                    textArea_information.setText("");
+                    question.setText(getActivity().getResources().getString(R.string.interrogatorio_title15));
+                    question2.setText(getActivity().getResources().getString(R.string.interrogatorio15));
+                }
+                if(count == 16){
+                    textArea_information.setText("");
+                    question.setText(getActivity().getResources().getString(R.string.interrogatorio_title16));
+                    question2.setText(getActivity().getResources().getString(R.string.interrogatorio16));
+                }
+                if(count == 17){
+                    textArea_information.setText("");
+                    question.setText(getActivity().getResources().getString(R.string.interrogatorio_title17));
+                    question2.setText(getActivity().getResources().getString(R.string.interrogatorio17));
+                }
+                if(count == 18){
+                    textArea_information.setText("");
+                    question.setText(getActivity().getResources().getString(R.string.interrogatorio_title18));
+                    question2.setText(getActivity().getResources().getString(R.string.interrogatorio18));
+                }
+                if(count == 19){
+                    textArea_information.setText("");
                     count=0;
                     ((MainActivity)getActivity()).questionExploracion();
 
