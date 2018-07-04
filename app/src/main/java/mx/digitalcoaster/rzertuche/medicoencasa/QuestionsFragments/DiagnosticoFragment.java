@@ -44,6 +44,8 @@ public class DiagnosticoFragment extends Fragment {
     LinearLayout sano,obeso,sobrepeso;
     ImageButton next;
 
+    EditText et_tratamiento, et_tratamiento1, et_tratamiento2 , et_diagnostico,et_diagnostico1,et_diagnostico2;
+
 
 
     @Override
@@ -75,6 +77,14 @@ public class DiagnosticoFragment extends Fragment {
         sano = (LinearLayout) getActivity().findViewById(R.id.layout_sano);
         sobrepeso = (LinearLayout) getActivity().findViewById(R.id.layout_sobrepeso);
         obeso = (LinearLayout) getActivity().findViewById(R.id.layout_obeso);
+
+        et_tratamiento = (EditText) getActivity().findViewById(R.id.et_tratamiento);
+        et_tratamiento1 = (EditText) getActivity().findViewById(R.id.et_tratamiento1);
+        et_tratamiento2 = (EditText) getActivity().findViewById(R.id.et_tratamiento2);
+
+        et_diagnostico = (EditText) getActivity().findViewById(R.id.et_diagnostico);
+        et_diagnostico = (EditText) getActivity().findViewById(R.id.et_diagnostico1);
+        et_diagnostico = (EditText) getActivity().findViewById(R.id.et_diagnostico2);
 
 
 
@@ -128,6 +138,16 @@ public class DiagnosticoFragment extends Fragment {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                sharedPreferences.setStringData("Diagnostico1", et_diagnostico.getText().toString());
+                sharedPreferences.setStringData("Diagnostico2", et_diagnostico1.getText().toString());
+                sharedPreferences.setStringData("Diagnostico3", et_diagnostico2.getText().toString());
+
+
+                sharedPreferences.setStringData("Tratamiento1", et_tratamiento.getText().toString());
+                sharedPreferences.setStringData("Tratamiento2", et_tratamiento1.getText().toString());
+                sharedPreferences.setStringData("Tratamiento3", et_tratamiento2.getText().toString());
+
 
                 ((MainActivity)getActivity()).fragmentTarjetaPaciente();
 

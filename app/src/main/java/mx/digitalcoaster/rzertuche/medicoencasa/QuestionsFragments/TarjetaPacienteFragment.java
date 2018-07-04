@@ -48,6 +48,7 @@ public class TarjetaPacienteFragment extends Fragment {
     TextView tvNombreItem, tvCurpItem, tvDireccionItem;
     ImageButton next;
     ImageView status;
+    EditText diagnostico, tratamiento;
 
     private SQLiteDatabase db = null;      // Objeto para utilizar la base de datos
     private DataBaseHelper sqliteHelper;   // Objeto para abrir la base de Datos
@@ -89,10 +90,27 @@ public class TarjetaPacienteFragment extends Fragment {
 
         status = (ImageView) getActivity().findViewById(R.id.status);
 
+        tratamiento = (EditText) getActivity().findViewById(R.id.textViewTratamiento);
+        diagnostico = (EditText) getActivity().findViewById(R.id.textViewDiagnostico);
 
         tvNombreItem.setText(sharedPreferences.getStringData("nameHistoric"));
         tvCurpItem.setText(sharedPreferences.getStringData("curpHistoric"));
         tvDireccionItem.setText(sharedPreferences.getStringData("direccionHistoric"));
+
+
+        //Diagnostico
+        diagnostico.setText(sharedPreferences.getStringData("Diagnostico1") + "\n"+
+                sharedPreferences.getStringData("Diagnostico2" + "\n") +
+                sharedPreferences.getStringData("Diagnostico3")
+        );
+
+
+        //Tratamiento
+        tratamiento.setText(sharedPreferences.getStringData("Tratamiento1") + "\n"+
+                sharedPreferences.getStringData("Tratamiento2" + "\n") +
+                sharedPreferences.getStringData("Tratamiento3")
+        );
+
 
         String statusImage = sharedPreferences.getStringData("ImageItem");
 

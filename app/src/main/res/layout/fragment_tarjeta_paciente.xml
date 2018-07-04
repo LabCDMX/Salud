@@ -136,6 +136,22 @@
                 android:textSize="30sp"
                 android:text="Diagnóstico"/>
 
+            <EditText
+                android:id="@+id/textViewDiagnostico"
+                android:layout_width="800dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/divider"
+                android:textSize="20sp"
+                android:text="Respiratorio"
+                android:layout_marginTop="20dp"
+                android:inputType="textMultiLine"
+                android:background="#00000000"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="50dp" />
+
+
+
+
             <View
                 android:id="@+id/divider"
                 android:layout_below="@id/textViewPersonales"
@@ -152,7 +168,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/divider"
+                android:layout_below="@id/textViewDiagnostico"
                 android:textStyle="bold"
                 android:textColor="@android:color/black"
                 android:textSize="30sp"
@@ -167,8 +183,21 @@
                 android:layout_marginTop="3dp"
                 android:background="#E91A8D" />
 
+            <EditText
+                android:id="@+id/textViewTratamiento"
+                android:layout_width="800dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/divider2"
+                android:textSize="20sp"
+                android:text="Respiratorio"
+                android:layout_marginTop="20dp"
+                android:inputType="textMultiLine"
+                android:background="#00000000"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="50dp" />
 
-            //EXPLORACION FISICA
+
+
 
 
             <TextView
@@ -176,7 +205,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/divider2"
+                android:layout_below="@id/textViewTratamiento"
                 android:textStyle="bold"
                 android:textColor="@android:color/black"
                 android:textSize="30sp"
