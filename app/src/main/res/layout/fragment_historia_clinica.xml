@@ -64,6 +64,61 @@
                 android:textStyle="bold"
                 android:textColor="@android:color/black" />
 
+            <TextView
+                android:id="@+id/tvCardioVas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvNombre"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="-Enfermedades Cardiovasculares:"
+                android:textStyle="bold"
+                android:layout_marginLeft="50dp"
+                android:layout_marginStart="50dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewCardioVas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvCardioVas"
+                android:textSize="20sp"
+                android:text="Respiratorio"
+                android:inputType="textMultiLine"
+                android:background="#00000000"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="50dp" />
+
+
+            //HTA
+
+            <TextView
+                android:id="@+id/tvHTA"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvCardioVas"
+                android:layout_marginTop="50dp"
+                android:textSize="20sp"
+                android:text="-HTA:"
+                android:textStyle="bold"
+                android:layout_marginLeft="50dp"
+                android:layout_marginStart="50dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewHTA"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvHTA"
+                android:textSize="20sp"
+                android:text="Respiratorio"
+                android:inputType="textMultiLine"
+                android:background="#00000000"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="50dp" />
+
+
+
 
 
             <ImageButton
@@ -80,13 +135,95 @@
                 android:id="@+id/tvApellidoP"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tvNombre"
+                android:layout_below="@id/textViewHTA"
                 android:textSize="20sp"
                 android:text="2.- Personales:"
                 android:textStyle="bold"
                 android:layout_marginLeft="10dp"
                 android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
                 android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/tvCerebro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvApellidoP"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="-Enfermedades Cerebrovascular:"
+                android:textStyle="bold"
+                android:layout_marginLeft="50dp"
+                android:layout_marginStart="50dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewCerebro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvCerebro"
+                android:textSize="20sp"
+                android:text="Respiratorio"
+                android:inputType="textMultiLine"
+                android:background="#00000000"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="50dp" />
+
+
+
+            <TextView
+                android:id="@+id/tvSobrepeso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvCerebro"
+                android:layout_marginTop="50dp"
+                android:textSize="20sp"
+                android:text="-Sobrepeso:"
+                android:textStyle="bold"
+                android:layout_marginLeft="50dp"
+                android:layout_marginStart="50dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewSobrepeso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvSobrepeso"
+                android:textSize="20sp"
+                android:text="Respiratorio"
+                android:inputType="textMultiLine"
+                android:background="#00000000"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="50dp" />
+
+            <TextView
+                android:id="@+id/tvTabaquismo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvSobrepeso"
+                android:layout_marginTop="50dp"
+                android:textSize="20sp"
+                android:text="-Tabaquismo:"
+                android:textStyle="bold"
+                android:layout_marginLeft="50dp"
+                android:layout_marginStart="50dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewTabaquismo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvTabaquismo"
+                android:textSize="20sp"
+                android:text="Respiratorio"
+                android:inputType="textMultiLine"
+                android:background="#00000000"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="50dp" />
+
+
+
+
 
 
 
@@ -102,10 +239,10 @@
 
             <TextView
                 android:id="@+id/tvInterrogatorio"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="40dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tvApellidoP"
+                android:layout_below="@id/textViewTabaquismo"
                 android:textStyle="bold"
                 android:textColor="@android:color/black"
                 android:textSize="30sp"
@@ -119,6 +256,7 @@
                 android:layout_marginBottom="3dp"
                 android:layout_marginTop="3dp"
                 android:background="#E91A8D" />
+
             <TextView
                 android:id="@+id/tvRespiratorio"
                 android:layout_width="wrap_content"

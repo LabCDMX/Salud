@@ -11,6 +11,10 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity;
 import mx.digitalcoaster.rzertuche.medicoencasa.R;
 import mx.digitalcoaster.rzertuche.medicoencasa.Utils.SharedPreferences;
@@ -19,6 +23,9 @@ import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.in
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.registros;
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.seguimiento;
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.sincronizacion;
+import static mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsAntecedentes.listCardio;
+import static mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsAntecedentes.listHTA;
+import static mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsContextElectro.listElectro;
 
 
 public class HistoriaClinicaFragment extends Fragment {
@@ -33,7 +40,7 @@ public class HistoriaClinicaFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
     SharedPreferences sharedPreferences;
 
-    EditText respiratorio, cardio, peso, estatura;
+    EditText respiratorio, cardio, peso, estatura, HTA, cardioList;
     ImageButton next;
 
 
@@ -68,6 +75,11 @@ public class HistoriaClinicaFragment extends Fragment {
         peso = (EditText) getActivity().findViewById(R.id.textViewPeso);
         estatura = (EditText) getActivity().findViewById(R.id.textViewEstatura);
 
+        HTA = (EditText) getActivity().findViewById(R.id.textViewHTA);
+        cardioList = (EditText) getActivity().findViewById(R.id.textViewCardioVas);
+
+
+
 
         next = (ImageButton) getActivity().findViewById(R.id.next);
 
@@ -81,6 +93,30 @@ public class HistoriaClinicaFragment extends Fragment {
 
         peso.setText(sharedPreferences.getStringData("Peso") + "kg");
         estatura.setText(sharedPreferences.getStringData("Estatura") + "mts");
+
+
+
+        String cadenaCardio = new String();
+        String cadenaHTA = new String();
+        String listElectroAux= borrarRepetidos(listCardio).toString().replace("[","").replace("]","").replace(",","\n");
+        String listElectroAux2= borrarRepetidos(listHTA).toString().replace("[","").replace("]","").replace(",","\n");
+
+
+
+        for (String object: listCardio) {
+            cadenaCardio+= "-" + object + "\n";
+        }
+
+        for (String object: listHTA) {
+            cadenaHTA+= "-" + object + "\n";
+        }
+
+
+        cardioList.setText(cadenaCardio);
+        HTA.setText(cadenaHTA);
+
+
+
 
 
         next.setOnClickListener(new View.OnClickListener() {
@@ -131,6 +167,16 @@ public class HistoriaClinicaFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    public List<String> borrarRepetidos(List<String> arraycar){
+        Set<String> hs = new HashSet<>();
+        hs.addAll(arraycar);
+        arraycar.clear();
+        arraycar.addAll(hs);
+
+        return arraycar;
+
     }
 
 }

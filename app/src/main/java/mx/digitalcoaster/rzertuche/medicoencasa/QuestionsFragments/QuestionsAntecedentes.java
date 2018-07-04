@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.BoringLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,11 +38,17 @@ public class QuestionsAntecedentes extends Fragment {
     SharedPreferences sharedPreferences;
     private CheckBox estufa,refrigerador,lavadora,telefono,horno,televisor;
     private ImageButton next;
-    public static List<String> listElectro = new ArrayList<String>();
+    public static List<String> listCardio = new ArrayList<String>();
+    public static List<String> listHTA = new ArrayList<String>();
+
+
+    private Boolean isCardio = true;
+    private Boolean isHTA = false;
 
     private LinearLayout questions,questions3,questions4;
     private TextView questions2;
     private int count = 0;
+
 
     private CheckBox abuelos, padres, tios, hermanos, ninguno;
 
@@ -85,16 +92,56 @@ public class QuestionsAntecedentes extends Fragment {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 count++;
+
+
+                if((abuelos.isChecked() || padres.isChecked() || tios.isChecked() || hermanos.isChecked() || ninguno.isChecked()) && isCardio){
+                    if(abuelos.isChecked()){
+                        listCardio.add("Abuelos");
+                    }
+                    if(padres.isChecked()){
+                        listCardio.add("Padres");
+                    }
+                    if(tios.isChecked()){
+                        listCardio.add("Tios");
+                    }
+                    if(hermanos.isChecked()){
+                        listCardio.add("Hermanos");
+                    }
+                    if(ninguno.isChecked()){
+                        listCardio.add("Ninguno");
+                    }
+
+                }else if((abuelos.isChecked() || padres.isChecked() || tios.isChecked() || hermanos.isChecked() || ninguno.isChecked()) && isHTA){
+                    if(abuelos.isChecked()){
+                        listHTA.add("Abuelos");
+                    }
+                    if(padres.isChecked()){
+                        listHTA.add("Padres");
+                    }
+                    if(tios.isChecked()){
+                        listHTA.add("Tios");
+                    }
+                    if(hermanos.isChecked()){
+                        listHTA.add("Hermanos");
+                    }
+                    if(ninguno.isChecked()){
+                        listHTA.add("Ninguno");
+                    }
+                }
 
 
 
                 if(count == 1){
+                    isCardio = false;
+                    isHTA = true;
                     clearCheckBox();
                     questions2.setText("b) HTA");
                 }
 
                 if(count == 2){
+                    isHTA=false;
                     clearCheckBox();
                     questions2.setText("c) Diabetes");
 
