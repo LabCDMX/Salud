@@ -96,8 +96,8 @@
                 android:id="@+id/tvHTA"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tvCardioVas"
-                android:layout_marginTop="50dp"
+                android:layout_below="@id/textViewCardioVas"
+                android:layout_marginTop="20dp"
                 android:textSize="20sp"
                 android:text="-HTA:"
                 android:textStyle="bold"
@@ -435,7 +435,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
                 android:gravity="bottom|right"
-                android:layout_below="@+id/textViewEstatura"
+                android:layout_below="@+id/textViewPulso"
                 android:orientation="horizontal">
 
 

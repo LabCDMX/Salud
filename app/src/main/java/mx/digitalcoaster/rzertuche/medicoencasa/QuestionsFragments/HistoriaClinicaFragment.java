@@ -43,7 +43,7 @@ public class HistoriaClinicaFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
     SharedPreferences sharedPreferences;
 
-    EditText respiratorio, cardio, peso, estatura, HTA, cardioList, sobrepeso, tabaquismo;
+    EditText respiratorio, cardio, peso, estatura, HTA, cardioList, talla, pulso, hemotipo;
     TextView cerebro;
     ImageButton next;
 
@@ -84,6 +84,11 @@ public class HistoriaClinicaFragment extends Fragment {
 
         cerebro = (TextView) getActivity().findViewById(R.id.tvCerebro);
 
+        hemotipo = (EditText) getActivity().findViewById(R.id.textViewHemotipo);
+        talla = (EditText) getActivity().findViewById(R.id.textViewTalla);
+        pulso = (EditText) getActivity().findViewById(R.id.textViewPulso);
+
+
 
 
 
@@ -100,6 +105,9 @@ public class HistoriaClinicaFragment extends Fragment {
         peso.setText(sharedPreferences.getStringData("Peso") + "kg");
         estatura.setText(sharedPreferences.getStringData("Estatura") + "mts");
 
+        hemotipo.setText(sharedPreferences.getStringData("Hemotipo"));
+        talla.setText(sharedPreferences.getStringData("Talla"));
+        pulso.setText(sharedPreferences.getStringData("Pulso"));
 
 
         String cadenaCardio = new String();
@@ -127,8 +135,6 @@ public class HistoriaClinicaFragment extends Fragment {
         HTA.setText(cadenaHTA);
 
         cerebro.setText(cadenaCerebro);
-
-
 
 
 

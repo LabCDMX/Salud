@@ -7,6 +7,8 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
+import android.util.Range;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,8 +48,6 @@ public class QuestionsExploracion extends Fragment {
     private TextView questions2;
     private int count = 0;
 
-
-    //Para manejar Rangos usarems Range<Integer> test = Range.between(1, 3);
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -120,7 +120,24 @@ public class QuestionsExploracion extends Fragment {
                 imc.setVisibility(View.GONE);
             } else{
                 DecimalFormat df = new DecimalFormat("#.00");
-                imc.setText(String.valueOf(df.format(imcAux)));
+                Double imcAuxiliar = Double.valueOf(df.format(imcAux));
+
+                Log.e("prueba de double" , String.valueOf(imcAuxiliar));
+
+                if(imcAuxiliar<18.5){
+                    imc.setText(df.format(imcAux) + " Peso Insuficiente");
+                }else if(imcAuxiliar >= 18.5 && imcAuxiliar <= 24.9){
+                    imc.setText(df.format(imcAux) + " Peso Normal");
+                }else if(imcAuxiliar >= 25 && imcAuxiliar <= 26.9){
+                    imc.setText(df.format(imcAux) + " Sobrepeso Grado I");
+                }else if(imcAuxiliar >= 27 && imcAuxiliar <= 29.9){
+                    imc.setText(df.format(imcAux) + " Sobrepeso Grado II");
+                }else if(imcAuxiliar >= 30 && imcAuxiliar <= 34.9){
+                    imc.setText(df.format(imcAux) + " Obesidad Tipo I");
+                }else if(imcAuxiliar >= 35 && imcAuxiliar <= 34.9){
+                    imc.setText(df.format(imcAux) + " Obesidad Tipo II");
+                }
+
             }
         }
     };
