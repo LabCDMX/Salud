@@ -12,4 +12,49 @@
     <color name="colorAmbar">#e2d669</color>
     <color name="colorRojo">#ea4d4d</color>
 
+
+    <color name="colorWhiteAlpha_trans">#44ffffff</color>
+    <color name="colorWhite_2">#F2F2F2</color>
+    <color name="colorBlueDark">#274B97</color>
+    <color name="colorBlackTransparent2">#22000000</color>
+    <!--<color name="colorBlue2">#00B0FF</color>-->
+    <color name="colorgreenflag">#7fa87f</color>
+    <color name="colorAlpha30">#30000000</color>
+    <color name="colorRed">#d70311</color>
+    <color name="colorGray2">#424242</color>
+    <color name="colorGrayText1">#3c3c3c</color>
+    <color name="magenta">#c8175e</color>
+    <color name="colorAlpha10">#10000000</color>
+    <color name="colorBlueTrans">#8853BCEC</color>
+    <color name="colorBlackTranparent4">#66000000</color>
+
+
+
+    <color name="colorGray5">#cecece</color>
+    <color name="colorGray3">#f5f5f5</color>
+    <color name="colorGrayEB">#ebebeb</color>
+    <color name="colorGray4">#e2e2e2</color>
+    <color name="colorGrayBar">#7e7e7e</color>
+    <color name="colorGray5e">#5e5e5e</color>
+    <color name="colorGray30">#30000000</color>
+    <color name="colorGray40">#40000000</color>
+    <color name="colorGray60">#60000000</color>
+    <color name="colorGray70">#70000000</color>
+    <color name="colorGray80">#80000000</color>
+    <color name="colorGreen">#86C82D</color>
+    <color name="colorBlue2">#006EC1</color>
+    <color name="colorBlue3">#89ceed</color>
+    <color name="colorBlue4">#2faee8</color>
+    <color name="colorBlack0C">#0c0c0c</color>
+    <color name="colorBlueDark2">#4274e2</color>
+    <color name="colorBlackTransparentIndicator">#99000000</color>
+    <color name="colorBlackTransparent">#44000000</color>
+    <color name="colorOrange">#F6891E</color>
+    <color name="colorWhiteAlpha">#90ffffff</color>
+    <color name="colorTransparent">#00000000</color>
+    <color name="colorMagenta">#E40073</color>
+    <color name="colorYellow">#FDBD2C</color>
+    <color name="colorBlue">#52BCEC</color>
+    <color name="colorBlackTranparent3">#00000000</color>
+
 </resources>

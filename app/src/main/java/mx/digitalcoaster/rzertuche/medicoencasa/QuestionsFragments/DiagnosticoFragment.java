@@ -69,7 +69,6 @@ public class DiagnosticoFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        blockListeners();
 
 
         next = (ImageButton) getActivity().findViewById(R.id.next);
@@ -83,8 +82,8 @@ public class DiagnosticoFragment extends Fragment {
         et_tratamiento2 = (EditText) getActivity().findViewById(R.id.et_tratamiento2);
 
         et_diagnostico = (EditText) getActivity().findViewById(R.id.et_diagnostico);
-        et_diagnostico = (EditText) getActivity().findViewById(R.id.et_diagnostico1);
-        et_diagnostico = (EditText) getActivity().findViewById(R.id.et_diagnostico2);
+        et_diagnostico1 = (EditText) getActivity().findViewById(R.id.et_diagnostico1);
+        et_diagnostico2 = (EditText) getActivity().findViewById(R.id.et_diagnostico2);
 
 
 

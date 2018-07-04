@@ -202,6 +202,15 @@
                     android:text="Sedentarismo"
                     android:textColor="#000000" />
 
+                <CheckBox
+                    android:id="@+id/ninguno"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="#E91A8D"
+                    android:paddingLeft="40dip"
+                    android:text="Ninguno"
+                    android:textColor="#000000" />
+
             </LinearLayout>
 
 

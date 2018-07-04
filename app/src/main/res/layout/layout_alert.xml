@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_contour"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:background = "@drawable/shape_contour"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/lblTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:textSize="16dp" />
+
+            <ImageView
+                android:id="@+id/imgDivider"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/lblMessage"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/divider" />
+
+
+            <TextView
+                android:id="@+id/lblMessage"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lblTitle"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/colorBlack"
+                android:textSize="12dp"
+                android:gravity="center"
+                android:maxLines="10"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"/>
+
+            <TextView
+                android:id="@+id/lblCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorBlack"
+                android:textSize="10dp"
+                android:gravity="center"
+                android:maxLines="10"
+                android:layout_below="@+id/lblMessage"
+                android:layout_alignEnd="@id/lblMessage"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="bottom"
+                android:layout_marginTop="10dp"
+                android:paddingBottom="10dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignTop="@+id/imgDivider"
+                android:id="@+id/relativeLayout">
+
+                <Button
+                    android:id="@+id/btnAccept"
+                    android:background="@null"
+                    android:layout_width="120dp"
+                    android:layout_height="35dp"
+                    android:text="Aceptar"
+                    android:textColor="@color/colorBlue"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="30dp"
+                    android:textSize="16dp" />
+
+                <Button
+                    android:id="@+id/btnCancel"
+                    android:background="@null"
+                    android:layout_width="120dp"
+                    android:layout_height="35dp"
+                    android:text="Cancelar"
+                    android:textColor="@color/colorBlue"
+                    android:textStyle="bold"
+                    android:textSize="16dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/btnAccept"/>
+
+            </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

@@ -69,7 +69,6 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@android:color/transparent"
-                    android:onClick="inicio"
                     android:padding="30dp"
                     android:scaleType="fitCenter"
                     app:srcCompat="@drawable/inicio_black" />
@@ -80,7 +79,6 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@android:color/transparent"
-                    android:onClick="registros"
                     android:padding="30dp"
                     android:scaleType="fitCenter"
                     app:srcCompat="@drawable/nuevo_black" />

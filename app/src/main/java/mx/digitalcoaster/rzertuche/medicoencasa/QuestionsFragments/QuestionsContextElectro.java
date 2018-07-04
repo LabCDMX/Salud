@@ -63,7 +63,6 @@ public class QuestionsContextElectro extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        blockListeners();
 
         estufa = (CheckBox) getActivity().findViewById(R.id.estufa);
         lavadora = (CheckBox) getActivity().findViewById(R.id.lavadora);

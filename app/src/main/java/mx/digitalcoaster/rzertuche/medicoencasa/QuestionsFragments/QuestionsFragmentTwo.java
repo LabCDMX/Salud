@@ -88,7 +88,6 @@ public class QuestionsFragmentTwo extends Fragment {
         this.container = view;
 
 
-        blockListeners();
 
         category = (TextView) view.findViewById(R.id.category);
 

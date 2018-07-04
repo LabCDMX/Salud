@@ -61,7 +61,6 @@ public class NotasHistoric extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        blockListeners();
 
         //Obtencion de datos del sharedPreferences
         sharedPreferences = SharedPreferences.getInstance();

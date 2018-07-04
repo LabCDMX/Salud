@@ -23,12 +23,9 @@ public class DataBaseDB {
     public static final String PACIENTES_VISITA_DIRECCION = "pacientes_visita_direccion";
     public static final String PACIENTES_VISITA_NUMERO = "pacientes_visita_numero";
     public static final String PACIENTES_VISITA_STATUS = "pacientes_visita_status";
-
-
-
-
-
-
+    public static final String PACIENTES_VISITA_DIAGNOSTICO = "pacientes_visita_diagnostico";
+    public static final String PACIENTES_VISITA_TRATAMIENTO = "pacientes_visita_tratamiento";
+    public static final String PACIENTES_VISITA_FECHA= "pacientes_visita_fecha";
 
 
 

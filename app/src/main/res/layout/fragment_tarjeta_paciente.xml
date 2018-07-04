@@ -22,7 +22,7 @@
         android:layout_below="@+id/textViewDatosGenerales"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
+        android:layout_marginLeft="100dp"
         android:orientation="horizontal">
 
 
@@ -117,7 +117,7 @@
         android:layout_width="900dp"
         android:layout_height="250dp"
         android:layout_below="@+id/linearItem"
-        android:layout_marginLeft="50dp">
+        android:layout_marginLeft="100dp">
 
 
         <RelativeLayout
@@ -148,8 +148,6 @@
                 android:background="#00000000"
                 android:textColor="@android:color/black"
                 android:layout_marginLeft="50dp" />
-
-
 
 
             <View

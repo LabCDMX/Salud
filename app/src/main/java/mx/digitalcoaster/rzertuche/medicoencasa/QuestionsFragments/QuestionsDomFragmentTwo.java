@@ -69,7 +69,6 @@ public class QuestionsDomFragmentTwo extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        blockListeners();
 
         seguro = (RadioButton) getActivity().findViewById(R.id.seguro);
         seguro2 = (RadioButton) getActivity().findViewById(R.id.seguro2);

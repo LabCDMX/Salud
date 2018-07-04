@@ -31,6 +31,7 @@ import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.in
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.registros;
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.seguimiento;
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.sincronizacion;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Fragments.PacientesFragment.isSeguimiento;
 
 
 public class QuestionsExploracion extends Fragment {
@@ -45,7 +46,7 @@ public class QuestionsExploracion extends Fragment {
     public static List<String> listElectro = new ArrayList<String>();
 
     private LinearLayout pesoLayout,tipoSangre,tensionLayout, tallaLayout;
-    private TextView questions2;
+    private TextView questions2,title;
     private int count = 0;
 
     private RadioGroup radioSangre;
@@ -69,13 +70,18 @@ public class QuestionsExploracion extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        blockListeners();
 
         sharedPreferences = SharedPreferences.getInstance();
         String name = sharedPreferences.getStringData("nameHistoric");
 
         TextView title2 = (TextView) getActivity().findViewById(R.id.title2);
         title2.setText(name);
+
+        title = (TextView) getActivity().findViewById(R.id.title);
+
+        if(isSeguimiento){
+            title.setText("DATOS DE CONTROL");
+        }
 
 
         estatura = (EditText) getActivity().findViewById(R.id.answer2);

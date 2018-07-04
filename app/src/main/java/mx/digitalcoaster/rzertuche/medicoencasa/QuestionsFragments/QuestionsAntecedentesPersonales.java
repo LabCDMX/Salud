@@ -66,7 +66,6 @@ public class QuestionsAntecedentesPersonales extends Fragment {
 
 
 
-        blockListeners();
 
 
         questions2 = (TextView) getActivity().findViewById(R.id.question2);

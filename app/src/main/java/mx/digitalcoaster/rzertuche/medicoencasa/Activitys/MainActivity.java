@@ -1,18 +1,25 @@
 package mx.digitalcoaster.rzertuche.medicoencasa.Activitys;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import io.realm.Realm;
 import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseDB;
@@ -28,6 +35,7 @@ import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.SincronizacionFragment
 import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.SuccededFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.SuccededHistoriaFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.VisitaFragment;
+import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.VisitasFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.ContextoSocialFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.DatosGeneralesFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.DiagnosticoFragment;
@@ -78,11 +86,13 @@ public class MainActivity extends AppCompatActivity implements
         HistoriaClinicaFragment.OnFragmentInteractionListener,
         NotasHistoric.OnFragmentInteractionListener,
         DiagnosticoFragment.OnFragmentInteractionListener,
-        TarjetaPacienteFragment.OnFragmentInteractionListener{
+        TarjetaPacienteFragment.OnFragmentInteractionListener,
+        VisitasFragment.OnFragmentInteractionListener{
 
     public String patientID;
     public static ImageView inicio, registros, seguimiento, sincronizacion;
     public static Context appContext;
+    public static Boolean notListerners=false;
 
     /*---------------------------------- Objetos de Base de Datos --------------------------------*/
     private SQLiteDatabase db = null;      // Objeto para utilizar la base de datos
@@ -109,6 +119,7 @@ public class MainActivity extends AppCompatActivity implements
         seguimiento = (ImageView) findViewById(R.id.imageButton3);
         sincronizacion = (ImageView) findViewById(R.id.imageButton4);
 
+
         sqliteHelper = new DataBaseHelper(this, DataBaseDB.DB_NAME, null, DataBaseDB.VERSION);
         db = sqliteHelper.getWritableDatabase();
         db.close();
@@ -119,6 +130,137 @@ public class MainActivity extends AppCompatActivity implements
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.fragmentHolder, fragment);
         transaction.commit();
+
+
+        registros.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(notListerners){
+                    final Dialog dialog = new Dialog(MainActivity.this);
+                    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                    dialog.setCancelable(false);
+                    dialog.setContentView(R.layout.layout_alert);
+
+                    TextView txtTitle = (TextView) dialog.findViewById(R.id.lblTitle);
+                    txtTitle.setText("ALERTA");
+
+                    TextView txtMessage = (TextView) dialog.findViewById(R.id.lblMessage);
+                    txtMessage.setText("Si sales perderas toda la información del usuario hasta el momento");
+
+                    Button btnCancelar = (Button) dialog.findViewById(R.id.btnCancel);
+                    btnCancelar.setText("Cancelar");
+                    btnCancelar.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                        }
+                    });
+
+                    Button btnAceptar = (Button) dialog.findViewById(R.id.btnAccept);
+                    btnAceptar.setText("Aceptar");
+                    btnAceptar.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            notListerners = false;
+                            dialog.dismiss();
+
+                            NewPatientFragment fragment = new NewPatientFragment();
+                            FragmentManager manager = getSupportFragmentManager();
+                            FragmentTransaction transaction = manager.beginTransaction();
+                            transaction.replace(R.id.fragmentHolder, fragment);
+                            transaction.commit();
+
+                            restartImageButtons();
+                            registros.setImageDrawable(getResources().getDrawable(R.drawable.nuevo_pink));
+
+                        }
+                    });
+                    dialog.show();
+                }else{
+                    Log.e("BLOCK","Bloqueado alv");
+
+                    NewPatientFragment fragment = new NewPatientFragment();
+                    FragmentManager manager = getSupportFragmentManager();
+                    FragmentTransaction transaction = manager.beginTransaction();
+                    transaction.replace(R.id.fragmentHolder, fragment);
+                    transaction.commit();
+
+                    restartImageButtons();
+                    registros.setImageDrawable(getResources().getDrawable(R.drawable.nuevo_pink));
+                }
+
+
+            }
+        });
+
+
+
+        inicio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(notListerners){
+                    final Dialog dialog = new Dialog(MainActivity.this);
+                    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                    dialog.setCancelable(false);
+                    dialog.setContentView(R.layout.layout_alert);
+
+                    TextView txtTitle = (TextView) dialog.findViewById(R.id.lblTitle);
+                    txtTitle.setText("ALERTA");
+
+                    TextView txtMessage = (TextView) dialog.findViewById(R.id.lblMessage);
+                    txtMessage.setText("Si sales perderas toda la información del usuario hasta el momento");
+
+                    Button btnCancelar = (Button) dialog.findViewById(R.id.btnCancel);
+                    btnCancelar.setText("Cancelar");
+                    btnCancelar.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                        }
+                    });
+
+                    Button btnAceptar = (Button) dialog.findViewById(R.id.btnAccept);
+                    btnAceptar.setText("Aceptar");
+                    btnAceptar.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            notListerners = false;
+                            dialog.dismiss();
+
+                            InicioFragment fragment = new InicioFragment();
+                            FragmentManager manager = getSupportFragmentManager();
+                            FragmentTransaction transaction = manager.beginTransaction();
+                            transaction.replace(R.id.fragmentHolder, fragment);
+                            transaction.commit();
+
+
+
+                            restartImageButtons();
+                            inicio.setImageDrawable(getResources().getDrawable(R.drawable.inicio_pink));
+
+                        }
+                    });
+                    dialog.show();
+                }else{
+                    Log.e("BLOCK","Bloqueado alv");
+
+                    InicioFragment fragment = new InicioFragment();
+                    FragmentManager manager = getSupportFragmentManager();
+                    FragmentTransaction transaction = manager.beginTransaction();
+                    transaction.replace(R.id.fragmentHolder, fragment);
+                    transaction.commit();
+
+
+
+                    restartImageButtons();
+                    inicio.setImageDrawable(getResources().getDrawable(R.drawable.inicio_pink));
+                }
+
+
+            }
+        });
 
     }
 
@@ -143,6 +285,7 @@ public class MainActivity extends AppCompatActivity implements
 
     }
 
+
     public void inicio(View v){
         InicioFragment fragment = new InicioFragment();
         FragmentManager manager = getSupportFragmentManager();
@@ -156,6 +299,8 @@ public class MainActivity extends AppCompatActivity implements
 
     }
 
+
+
     public void registros(View v){
         NewPatientFragment fragment = new NewPatientFragment();
         FragmentManager manager = getSupportFragmentManager();
@@ -166,6 +311,8 @@ public class MainActivity extends AppCompatActivity implements
         restartImageButtons();
         registros.setImageDrawable(getResources().getDrawable(R.drawable.nuevo_pink));
     }
+
+
 
     public void activityNewPatient(){
         NewPatientFragment fragment = new NewPatientFragment();
@@ -276,6 +423,15 @@ public class MainActivity extends AppCompatActivity implements
 
     public void questionExploracion(){
         QuestionsExploracion fragment = new QuestionsExploracion();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.fragmentHolder, fragment);
+        transaction.commit();
+
+    }
+
+    public void visitasFragment(String nameUser){
+        VisitasFragment fragment = new VisitasFragment();
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.fragmentHolder, fragment);

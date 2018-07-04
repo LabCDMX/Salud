@@ -73,7 +73,6 @@ public class QuestionsAlimentos extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        blockListeners();
 
         alimentos1 = (RadioButton) getActivity().findViewById(R.id.alimentos1);
         alimentos2 = (RadioButton) getActivity().findViewById(R.id.alimentos2);

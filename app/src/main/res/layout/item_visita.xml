@@ -25,22 +25,6 @@
                 android:layout_marginBottom="10dp"
                 android:layout_marginRight="20dp"/>
 
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#6EC67A"
-                android:text="Toca visita"
-                android:textAlignment="center" />
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#6EC67A"
-                android:text="21-04-2018"
-                android:textAlignment="center" />
-
         </LinearLayout>
 
         <LinearLayout

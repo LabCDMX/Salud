@@ -31,6 +31,7 @@ import mx.digitalcoaster.rzertuche.medicoencasa.models.Question;
 import mx.digitalcoaster.rzertuche.medicoencasa.models.User;
 
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.inicio;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.notListerners;
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.registros;
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.seguimiento;
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.sincronizacion;
@@ -105,7 +106,6 @@ public class QuestionsFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         this.activity = getActivity();
         this.container = view;
-
 
         blockListeners();
 
@@ -289,10 +289,7 @@ public class QuestionsFragment extends Fragment {
     }
 
     public void blockListeners(){
-        inicio.setEnabled(false);
-        registros.setEnabled(false);
-        seguimiento.setEnabled(false);
-        sincronizacion.setEnabled(false);
+        notListerners = true;
     }
 
 

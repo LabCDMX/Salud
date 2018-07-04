@@ -66,7 +66,6 @@ public class QuestionsDomFragmentThree extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        blockListeners();
 
 
         next = (ImageButton) getActivity().findViewById(R.id.next);

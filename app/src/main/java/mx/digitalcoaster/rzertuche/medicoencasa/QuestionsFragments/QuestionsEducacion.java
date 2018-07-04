@@ -69,7 +69,6 @@ public class QuestionsEducacion extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        blockListeners();
 
 
         primaria = (RadioButton) getActivity().findViewById(R.id.primaria_rb);

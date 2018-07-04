@@ -70,7 +70,6 @@ public class ContextoSocialFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        blockListeners();
 
         nombre = (EditText) getActivity().findViewById(R.id.textViewNombre);
         apellidoP = (EditText) getActivity().findViewById(R.id.textViewApellidoP);

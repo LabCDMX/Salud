@@ -61,7 +61,7 @@ public class VisitasAdapter extends BaseAdapter {
 
         Item item = this.items.get(position);
 
-        if(item.getStatus().equals("Sano")){
+        /*if(item.getStatus().equals("Sano")){
             tv_status.setBackgroundColor(context.getResources().getColor(R.color.colorSano));
             status.setBackgroundColor(context.getResources().getColor(R.color.colorSano));
         }else if(item.getStatus().equals("Sobrepeso")){
@@ -73,8 +73,7 @@ public class VisitasAdapter extends BaseAdapter {
 
             tv_status.setBackgroundColor(context.getResources().getColor(R.color.colorRojo));
             status.setBackgroundColor(context.getResources().getColor(R.color.colorRojo));
-
-        }
+        }*/
 
 
 

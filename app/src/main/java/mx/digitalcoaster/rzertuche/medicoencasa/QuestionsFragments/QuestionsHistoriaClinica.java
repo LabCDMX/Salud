@@ -65,7 +65,6 @@ public class QuestionsHistoriaClinica extends Fragment {
 
 
 
-        blockListeners();
 
         question2 = getActivity().findViewById(R.id.question2);
         question = getActivity().findViewById(R.id.question);

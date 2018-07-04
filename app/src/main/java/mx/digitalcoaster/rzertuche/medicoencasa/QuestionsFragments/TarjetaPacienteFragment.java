@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,9 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity;
 import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseDB;
@@ -78,7 +82,6 @@ public class TarjetaPacienteFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        blockListeners();
 
         //Obtencion de datos del sharedPreferences
         sharedPreferences = SharedPreferences.getInstance();
@@ -96,6 +99,16 @@ public class TarjetaPacienteFragment extends Fragment {
         tvNombreItem.setText(sharedPreferences.getStringData("nameHistoric"));
         tvCurpItem.setText(sharedPreferences.getStringData("curpHistoric"));
         tvDireccionItem.setText(sharedPreferences.getStringData("direccionHistoric"));
+
+
+        sharedPreferences.setStringData("DiagnosticoGeneral",sharedPreferences.getStringData("Diagnostico1") + "\n"+
+                sharedPreferences.getStringData("Diagnostico2" + "\n") +
+                sharedPreferences.getStringData("Diagnostico3"));
+
+        sharedPreferences.setStringData("TratamientoGeneral",sharedPreferences.getStringData("Tratamiento1") + "\n"+
+                sharedPreferences.getStringData("Tratamiento2" + "\n") +
+                sharedPreferences.getStringData("Tratamiento3"));
+
 
 
         //Diagnostico
@@ -182,6 +195,14 @@ public class TarjetaPacienteFragment extends Fragment {
 
     private void deleteUser(String CURP){
 
+        Date myDate = new Date();
+        System.out.println(myDate);
+        System.out.println(new SimpleDateFormat("yyyy-MM-dd").format(myDate));
+        String fechaActual = new SimpleDateFormat("yyyy-MM-dd").format(myDate);
+
+
+        Log.e("VNEGA PRUEBA",sharedPreferences.getStringData("nameHistoric"));
+
         db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE ,null);
 
         /*------------------------- Revisar si existe ------------------------*/
@@ -193,6 +214,13 @@ public class TarjetaPacienteFragment extends Fragment {
                 values.put(DataBaseDB.PACIENTES_VISITA_CURP, sharedPreferences.getStringData("curpHistoric"));
                 values.put(DataBaseDB.PACIENTES_VISITA_DIRECCION, sharedPreferences.getStringData("direccionHistoric"));
                 values.put(DataBaseDB.PACIENTES_VISITA_STATUS, sharedPreferences.getStringData("ImageItem"));
+                values.put(DataBaseDB.PACIENTES_VISITA_DIAGNOSTICO, sharedPreferences.getStringData("DiagnosticoGeneral"));
+                values.put(DataBaseDB.PACIENTES_VISITA_TRATAMIENTO, sharedPreferences.getStringData("TratamientoGeneral"));
+                values.put(DataBaseDB.PACIENTES_VISITA_NUMERO, "1");
+                values.put(DataBaseDB.PACIENTES_VISITA_FECHA, fechaActual);
+
+
+
 
 
                 db.insert(DataBaseDB.TABLE_NAME_PACIENTES_VISITAS, null, values);
@@ -204,6 +232,13 @@ public class TarjetaPacienteFragment extends Fragment {
                 values.put(DataBaseDB.PACIENTES_VISITA_CURP, sharedPreferences.getStringData("curpHistoric"));
                 values.put(DataBaseDB.PACIENTES_VISITA_DIRECCION, sharedPreferences.getStringData("direccionHistoric"));
                 values.put(DataBaseDB.PACIENTES_VISITA_STATUS, sharedPreferences.getStringData("ImageItem"));
+                values.put(DataBaseDB.PACIENTES_VISITA_DIAGNOSTICO, sharedPreferences.getStringData("DiagnosticoGeneral"));
+                values.put(DataBaseDB.PACIENTES_VISITA_TRATAMIENTO, sharedPreferences.getStringData("TratamientoGeneral"));
+                values.put(DataBaseDB.PACIENTES_VISITA_NUMERO, "1");
+                values.put(DataBaseDB.PACIENTES_VISITA_FECHA, fechaActual);
+
+
+
 
 
                 db.insert(DataBaseDB.TABLE_NAME_PACIENTES_VISITAS, null, values);

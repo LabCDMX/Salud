@@ -4,18 +4,19 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -26,20 +27,13 @@ import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseDB;
 import mx.digitalcoaster.rzertuche.medicoencasa.R;
 import mx.digitalcoaster.rzertuche.medicoencasa.Utils.SharedPreferences;
 import mx.digitalcoaster.rzertuche.medicoencasa.models.Item;
-import mx.digitalcoaster.rzertuche.medicoencasa.models.ItemAdapter;
-import mx.digitalcoaster.rzertuche.medicoencasa.models.User;
+import mx.digitalcoaster.rzertuche.medicoencasa.models.ItemVisita;
+import mx.digitalcoaster.rzertuche.medicoencasa.models.ItemVisitaAdapter;
 import mx.digitalcoaster.rzertuche.medicoencasa.models.VisitasAdapter;
 
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link PacientesFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link PacientesFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class PacientesFragment extends Fragment {
+
+public class VisitasFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -54,52 +48,26 @@ public class PacientesFragment extends Fragment {
     public static Context appContext;
 
     public GridView lista;
-    private List<Item> items = null;
+    private List<ItemVisita> items = null;
 
     private SQLiteDatabase db = null;   // Objeto para usar la base de datos local
     private Cursor c = null;            // Objeto para hacer consultas a la base de datos
     private TextView title;
     public static Boolean isSeguimiento=false;
     SharedPreferences sharedPreferences;
+    public static String nombrePatient;
+    private TextView nombre, diagnostico, tratamiento;
+    ImageView status;
 
 
-    public PacientesFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment HomeFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static PacientesFragment newInstance(String param1, String param2) {
-        PacientesFragment fragment = new PacientesFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_pacientes, container, false);
+        return inflater.inflate(R.layout.fragment_visita_paciente, container, false);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -108,47 +76,65 @@ public class PacientesFragment extends Fragment {
         lista = (GridView) getActivity().findViewById(R.id.gridview);
 
         items = new ArrayList<>();
-        getProductos();
-        lista.setAdapter(new VisitasAdapter(getActivity().getApplicationContext(), items));
+        lista.setAdapter(new ItemVisitaAdapter(getActivity().getApplicationContext(), items));
 
 
         sharedPreferences = SharedPreferences.getInstance();
+        nombrePatient = sharedPreferences.getStringData("nameSeguimiento");
+        status = (ImageView) getActivity().findViewById(R.id.status);
 
-        ImageButton button_pacientes = (ImageButton) getActivity().findViewById(R.id.button_pacientes);
-        button_pacientes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).historiaClinica();
-            }
-        });
+        nombre = (TextView) getActivity().findViewById(R.id.tvNombreItem);
+        diagnostico = (TextView) getActivity().findViewById(R.id.textViewDiagnostico);
+        tratamiento = (TextView) getActivity().findViewById(R.id.textViewTratamiento);
 
-        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> arg0, View v, int position, long arg3) {
-                Item selectedUser = items.get(position);
-                String nameUser = selectedUser.getNombre();
-                sharedPreferences.setStringData("nameSeguimiento", nameUser);
-                Log.e("TOUCHME",nameUser);
-                ((MainActivity)getActivity()).visitasFragment(nameUser);
 
-            }
-        });
+        getProductos();
+
+        String statusImage = sharedPreferences.getStringData("ImageItem");
+
+        nombre.setText(sharedPreferences.getStringData("Nombre"));
+        diagnostico.setText(sharedPreferences.getStringData("Diagnostico"));
+        tratamiento.setText(sharedPreferences.getStringData("Tratamiento"));
+
+
+        if(statusImage.equals("Sano")){
+            status.setBackground(getResources().getDrawable(R.drawable.status_green));
+
+        }else if(statusImage.equals("Sobrepeso")){
+            status.setBackground(getResources().getDrawable(R.drawable.status_ambar));
+
+
+        }else if(statusImage.equals("Obeso")){
+            status.setBackground(getResources().getDrawable(R.drawable.status_red));
+
+
+        }
 
 
     }
 
 
+
+
     private void getProductos() {
+
 
         db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE, null);
         try {
-            c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_VISITAS, null);
+            c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_VISITAS + " WHERE " +
+                    DataBaseDB.PACIENTES_VISITA_NOMBRE + " ='"+nombrePatient+"'", null);
             if (c.moveToFirst()) {
                 do {
-                    items.add(new Item(c.getString(1), c.getString(2), c.getString(3), c.getString(5)));
+
+                    sharedPreferences.setStringData("ImageItem",c.getString(5));
+                    sharedPreferences.setStringData("Diagnostico",c.getString(7));
+                    sharedPreferences.setStringData("Tratamiento",c.getString(8));
+                    sharedPreferences.setStringData("Nombre",c.getString(1));
+
+                    items.add(new ItemVisita(c.getString(1), c.getString(7), c.getString(8), c.getString(6), c.getString(4)));
                 }while (c.moveToNext());
             } else {
-                System.out.println("No existen PACIENTES");
+                System.out.println("No existen Visitas");
             }
             c.close();
         } catch (Exception ex) {

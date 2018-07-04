@@ -91,7 +91,6 @@ public class QuestionDomFragment extends Fragment {
         this.activity = getActivity();
         this.container = view;
 
-        blockListeners();
 
         open = (LinearLayout) view.findViewById(R.id.open);
         multiple = (LinearLayout) view.findViewById(R.id.multiple);
