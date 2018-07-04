@@ -43,7 +43,7 @@ public class ContextoSocialFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
     SharedPreferences sharedPreferences;
 
-    EditText nombre, apellidoP, estado, municipio;
+    EditText nombre, apellidoP, estado, municipio, transporte, recreacion, estres, caracteristicas, piso, techo,verduras, fruta, leguminosa;
     ImageButton btnedit,btnedit1,btnedit3,btnedit4,next;
 
 
@@ -77,6 +77,18 @@ public class ContextoSocialFragment extends Fragment {
         estado = (EditText) getActivity().findViewById(R.id.textViewEstado);
         municipio = (EditText) getActivity().findViewById(R.id.textCantidades);
 
+        transporte = (EditText) getActivity().findViewById(R.id.textViewTransporte);
+        recreacion = (EditText) getActivity().findViewById(R.id.textViewRecreacion);
+        estres = (EditText) getActivity().findViewById(R.id.textViewEstres);
+        caracteristicas = (EditText) getActivity().findViewById(R.id.textViewCaracteristicas);
+        piso = (EditText) getActivity().findViewById(R.id.textViewPiso);
+        techo = (EditText) getActivity().findViewById(R.id.textViewTecho);
+        verduras = (EditText) getActivity().findViewById(R.id.textViewVerduras);
+        fruta = (EditText) getActivity().findViewById(R.id.textViewFruta);
+        leguminosa = (EditText) getActivity().findViewById(R.id.textViewLeguminosas);
+
+
+
         btnedit = (ImageButton) getActivity().findViewById(R.id.btn_edit);
         btnedit1 = (ImageButton) getActivity().findViewById(R.id.btn_edit2);
         btnedit3 = (ImageButton) getActivity().findViewById(R.id.btn_edit4);
@@ -91,6 +103,18 @@ public class ContextoSocialFragment extends Fragment {
 
         nombre.setText(sharedPreferences.getStringData("Escolaridad"));
         apellidoP.setText(sharedPreferences.getStringData("TiempoEscuela"));
+
+        transporte.setText(sharedPreferences.getStringData("Transporte"));
+        recreacion.setText(sharedPreferences.getStringData("Recreacion"));
+        estres.setText(sharedPreferences.getStringData("Estres"));
+        caracteristicas.setText(sharedPreferences.getStringData("Caracteristicas"));
+        piso.setText(sharedPreferences.getStringData("Piso"));
+        techo.setText(sharedPreferences.getStringData("Techo"));
+        verduras.setText(sharedPreferences.getStringData("Verduras"));
+        fruta.setText(sharedPreferences.getStringData("Fruta"));
+        leguminosa.setText(sharedPreferences.getStringData("Leguminosa"));
+
+
 
         String cadena = new String();
         String listElectroAux= borrarRepetidos(listElectro).toString().replace("[","").replace("]","").replace(",","\n");

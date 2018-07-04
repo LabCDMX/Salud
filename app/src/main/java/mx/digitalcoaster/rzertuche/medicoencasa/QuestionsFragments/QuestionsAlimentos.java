@@ -40,10 +40,14 @@ public class QuestionsAlimentos extends Fragment {
 
     SharedPreferences sharedPreferences;
     private RadioButton alimentos1,alimentos2,alimentos3;
-    private RadioGroup radioEsc;
+    private RadioGroup radioEsc, radioAli;
     private ImageButton next;
     private TextView changeTitle;
     private LinearLayout tipoAlimentos, open;
+    private Boolean isFruit = false;
+    private Boolean isVerdura = false;
+    private Boolean isLegu = false;
+
     int count=0;
 
 
@@ -82,6 +86,8 @@ public class QuestionsAlimentos extends Fragment {
 
 
         radioEsc = (RadioGroup) getActivity().findViewById(R.id.radioEsc);
+        radioAli = (RadioGroup) getActivity().findViewById(R.id.radioAli);
+
 
         next = (ImageButton) getActivity().findViewById(R.id.next);
 
@@ -97,41 +103,58 @@ public class QuestionsAlimentos extends Fragment {
                 count++;
                 if((alimentos1.isChecked() || alimentos2.isChecked() || alimentos3.isChecked()) && count == 1){
                     Log.e("VALUES RADIO", sharedPreferences.getStringData("Alimentos"));
-                    count++;
                 }else if(count == 2){
+                    isVerdura = true;
                     open.setVisibility(View.GONE);
                     tipoAlimentos.setVisibility(View.VISIBLE);
                 }else if(count == 3){
+                    isVerdura = false;
+                    isFruit = true;
+
+                    radioAli.clearCheck();
                     changeTitle.setText("Frutas");
 
                 }else if(count == 4){
+                    isFruit = false;
+                    isLegu = true;
+                    radioAli.clearCheck();
                     changeTitle.setText("Leguminosas");
 
                 }else if(count == 5){
+                    isLegu = false;
+                    radioAli.clearCheck();
                     changeTitle.setText("Cereales/Tuberculos");
 
                 }else if(count == 6){
+                    radioAli.clearCheck();
                     changeTitle.setText("Pan/Tortilla");
 
                 }else if(count == 7){
+                    radioAli.clearCheck();
                     changeTitle.setText("Chatarra");
 
                 }else if(count == 8){
+                    radioAli.clearCheck();
                     changeTitle.setText("Agua");
 
                 }else if(count == 9){
+                    radioAli.clearCheck();
                     changeTitle.setText("Carne");
 
                 }else if(count == 10){
+                    radioAli.clearCheck();
                     changeTitle.setText("Pollo");
 
                 }else if(count == 11){
+                    radioAli.clearCheck();
                     changeTitle.setText("Pescado");
 
                 }else if(count == 12){
+                    radioAli.clearCheck();
                     changeTitle.setText("Embutidos");
 
                 }else if(count == 13){
+                    radioAli.clearCheck();
                     count = 0;
                     ((MainActivity)getActivity()).fragmentQuestionsContexto();
                 }
@@ -154,7 +177,6 @@ public class QuestionsAlimentos extends Fragment {
                     sharedPreferences.setStringData("Alimentos","Menos de 3");
                     Log.e("RadioGroup","Primaria");
 
-
                 }else if (checkedId == R.id.alimentos2){
 
                     sharedPreferences.setStringData("Alimentos","3 a 5");
@@ -170,6 +192,79 @@ public class QuestionsAlimentos extends Fragment {
             }
 
         });
+
+        radioAli.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
+
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                // TODO Auto-generated method stub
+                if (checkedId == R.id.tipoAli){
+
+                    if(isVerdura){
+                        sharedPreferences.setStringData("Verduras","Ninguna");
+                    }else if(isFruit){
+                        sharedPreferences.setStringData("Fruta","Ninguna");
+                    }else if(isLegu){
+                        sharedPreferences.setStringData("Leguminosa","Ninguna");
+                    }
+
+
+                }else if (checkedId == R.id.tipoAli2){
+
+                    if(isVerdura){
+                        sharedPreferences.setStringData("Verduras","1 a 5");
+                    }else if(isFruit){
+                        sharedPreferences.setStringData("Fruta","1 a 5");
+                    }else if(isLegu){
+                        sharedPreferences.setStringData("Leguminosa","1 a 5");
+                    }
+
+                }else if (checkedId == R.id.tipoAli3){
+
+                    if(isVerdura){
+                        sharedPreferences.setStringData("Verduras","5 a 10");
+                    }else if(isFruit){
+                        sharedPreferences.setStringData("Fruta","5 a 10");
+                    }else if(isLegu){
+                        sharedPreferences.setStringData("Leguminosa","5 a 10");
+                    }
+
+                }else if (checkedId == R.id.tipoAli4){
+
+                    if(isVerdura){
+                        sharedPreferences.setStringData("Verduras","10 a 15");
+                    }else if(isFruit){
+                        sharedPreferences.setStringData("Fruta","10 a 15");
+                    }else if(isLegu){
+                        sharedPreferences.setStringData("Leguminosa","10 a 15");
+                    }
+
+                }else if (checkedId == R.id.tipoAli5){
+
+                    if(isVerdura){
+                        sharedPreferences.setStringData("Verduras","15 a 20");
+                    }else if(isFruit){
+                        sharedPreferences.setStringData("Fruta","15 a 20");
+                    }else if(isLegu){
+                        sharedPreferences.setStringData("Leguminosa","15 a 20");
+                    }
+
+                }else if (checkedId == R.id.tipoAli6){
+
+                    if(isVerdura){
+                        sharedPreferences.setStringData("Verduras","Más de 20");
+                    }else if(isFruit){
+                        sharedPreferences.setStringData("Fruta","Más de 20");
+                    }else if(isLegu){
+                        sharedPreferences.setStringData("Leguminosa","Más de 20");
+                    }
+
+                }
+
+            }
+
+        });
+
 
     }
 

@@ -39,7 +39,7 @@ public class QuestionsEducacion extends Fragment {
 
     SharedPreferences sharedPreferences;
     private RadioButton primaria,secundaria,preparatoria,licenciatura,posgrado,sinEsc;
-    private RadioGroup radioEsc,radioTiempo;
+    private RadioGroup radioEsc,radioTiempo,radioTransporte, radioRecre,radioEstres;
     private ImageButton next;
     private LinearLayout questions,questions2,questions3,questions4,questions5;
     private int count = 0;
@@ -81,6 +81,11 @@ public class QuestionsEducacion extends Fragment {
 
         radioEsc = (RadioGroup) getActivity().findViewById(R.id.radioEsc);
         radioTiempo = (RadioGroup) getActivity().findViewById(R.id.radioTiempo);
+
+        radioRecre = (RadioGroup) getActivity().findViewById(R.id.radioRecre);
+        radioEstres = (RadioGroup) getActivity().findViewById(R.id.radioEstres);
+        radioTransporte = (RadioGroup) getActivity().findViewById(R.id.radioTrans);
+
 
 
         next = (ImageButton) getActivity().findViewById(R.id.next);
@@ -180,6 +185,85 @@ public class QuestionsEducacion extends Fragment {
             }
 
         });
+
+
+
+        radioTransporte.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
+
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                // TODO Auto-generated method stub
+                if (checkedId == R.id.transporte1){
+                    sharedPreferences.setStringData("Transporte","Menos de 1 hora");
+
+                }else if (checkedId == R.id.transporte2){
+                    sharedPreferences.setStringData("Transporte","1 hora a 3 horas");
+
+                }else if (checkedId == R.id.transporte3){
+                    sharedPreferences.setStringData("Transporte","Más de 3 horas");
+
+                }
+            }
+
+        });
+
+
+        radioRecre.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
+
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                // TODO Auto-generated method stub
+                if (checkedId == R.id.recre){
+                    sharedPreferences.setStringData("Recreacion","Menos de 1 hora");
+
+                }else if (checkedId == R.id.recre1){
+                    sharedPreferences.setStringData("Recreacion","1 hora a 2 horas");
+
+                }else if (checkedId == R.id.recre2){
+                    sharedPreferences.setStringData("Recreacion","Más de 2 horas");
+
+                }else if (checkedId == R.id.recre3){
+                    sharedPreferences.setStringData("Recreacion","No tengo actividad recreativa");
+
+                }
+            }
+
+        });
+
+        radioEstres.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
+
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                // TODO Auto-generated method stub
+                if (checkedId == R.id.estres){
+                    sharedPreferences.setStringData("Estres","Muy bajo");
+
+                }else if (checkedId == R.id.estres1){
+                    sharedPreferences.setStringData("Estres","Bajo");
+
+                }else if (checkedId == R.id.estres2){
+                    sharedPreferences.setStringData("Estres","Normal");
+
+                }else if (checkedId == R.id.estres3){
+                    sharedPreferences.setStringData("Estres","Alto");
+
+                }else if (checkedId == R.id.estres4){
+                    sharedPreferences.setStringData("Estres","Muy alto");
+
+                }else if (checkedId == R.id.estres5){
+                    sharedPreferences.setStringData("Estres","No se");
+
+                }else if (checkedId == R.id.estres6){
+                    sharedPreferences.setStringData("Estres","Prefiero no responder");
+
+                }
+            }
+
+        });
+
+
+
+
 
     }
 
