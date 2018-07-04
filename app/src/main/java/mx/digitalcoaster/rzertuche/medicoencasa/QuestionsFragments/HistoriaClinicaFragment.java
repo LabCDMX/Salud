@@ -89,9 +89,6 @@ public class HistoriaClinicaFragment extends Fragment {
         pulso = (EditText) getActivity().findViewById(R.id.textViewPulso);
 
 
-
-
-
         next = (ImageButton) getActivity().findViewById(R.id.next);
 
 

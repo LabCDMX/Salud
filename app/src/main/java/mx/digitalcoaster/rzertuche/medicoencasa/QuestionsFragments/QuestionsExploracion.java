@@ -16,6 +16,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import java.text.DecimalFormat;
@@ -36,17 +37,18 @@ public class QuestionsExploracion extends Fragment {
 
 
     Double imcAux = 0.0;
-    private EditText imc,estatura,peso;
+    private EditText imc,estatura,peso, talla, pulso;
     private OnFragmentInteractionListener mListener;
 
     SharedPreferences sharedPreferences;
-    private CheckBox estufa,refrigerador,lavadora,telefono,horno,televisor;
     private ImageButton next;
     public static List<String> listElectro = new ArrayList<String>();
 
-    private LinearLayout questions,questions3,questions4;
+    private LinearLayout pesoLayout,tipoSangre,tensionLayout, tallaLayout;
     private TextView questions2;
     private int count = 0;
+
+    private RadioGroup radioSangre;
 
 
     @Override
@@ -80,23 +82,98 @@ public class QuestionsExploracion extends Fragment {
         estatura.addTextChangedListener(imcWatcher);
 
         imc = (EditText) getActivity().findViewById(R.id.answer3);
-
         peso = (EditText) getActivity().findViewById(R.id.answer);
+
+        talla = (EditText) getActivity().findViewById(R.id.answers7);
+        pulso = (EditText) getActivity().findViewById(R.id.answers8);
+
+
+        pesoLayout = (LinearLayout) getActivity().findViewById(R.id.questions);
+        tipoSangre = (LinearLayout) getActivity().findViewById(R.id.questionsHemotipo);
+        tensionLayout = (LinearLayout) getActivity().findViewById(R.id.questions2);
+        tallaLayout = (LinearLayout) getActivity().findViewById(R.id.questions6);
+
+        radioSangre = (RadioGroup) getActivity().findViewById(R.id.radioSangre);
+
 
         next = (ImageButton) getActivity().findViewById(R.id.next);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                sharedPreferences.setStringData("Peso", peso.getText().toString());
-                sharedPreferences.setStringData("Estatura", estatura.getText().toString());
+                count++;
 
-                ((MainActivity)getActivity()).historiaClinicaFragment();
+                if(count == 1){
+                    tipoSangre.setVisibility(View.GONE);
+                    pesoLayout.setVisibility(View.VISIBLE);
+                }
+
+                if(count == 2){
+
+                    sharedPreferences.setStringData("Peso", peso.getText().toString());
+                    sharedPreferences.setStringData("Estatura", estatura.getText().toString());
+
+
+                    pesoLayout.setVisibility(View.GONE);
+                    tensionLayout.setVisibility(View.VISIBLE);
+                }
+
+                if(count == 3){
+                    tensionLayout.setVisibility(View.GONE);
+                    tallaLayout.setVisibility(View.VISIBLE);
+                }
+
+                if(count == 4){
+                    sharedPreferences.setStringData("Talla", talla.getText().toString());
+                    sharedPreferences.setStringData("Pulso", pulso.getText().toString());
+
+
+
+                    ((MainActivity)getActivity()).historiaClinicaFragment();
+
+                }
 
             }
         });
 
+
+
+        radioSangre.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
+
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                // TODO Auto-generated method stub
+                if (checkedId == R.id.tipoA){
+                    sharedPreferences.setStringData("Hemotipo","Tipo A");
+
+                }else if (checkedId == R.id.tipoB){
+                    sharedPreferences.setStringData("Hemotipo","Tipo B");
+
+                }else if (checkedId == R.id.tipoAB){
+                    sharedPreferences.setStringData("Hemotipo","Tipo AB");
+
+                }else if (checkedId == R.id.tipoO){
+                    sharedPreferences.setStringData("Hemotipo","Tipo O");
+
+                }else if (checkedId == R.id.tipoRHPositivo){
+                    sharedPreferences.setStringData("Hemotipo","Tipo RH +");
+
+                }else if (checkedId == R.id.tipoRHNegativo){
+                    sharedPreferences.setStringData("Hemotipo","Tipo RH -");
+
+                }else if (checkedId == R.id.tipoDesconocido){
+                    sharedPreferences.setStringData("Hemotipo","Desconocido");
+
+                }
+
+            }
+
+        });
+
     }
+
+
+
 
 
     private final TextWatcher imcWatcher = new TextWatcher() {
