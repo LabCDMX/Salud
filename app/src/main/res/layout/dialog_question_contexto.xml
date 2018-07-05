@@ -512,7 +512,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="30dp"
-                    android:text="6.- Nivel de estrés actual, hace 1 año, hace 5 años"
+                    android:text="6.- Nivel de estrés actual"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 

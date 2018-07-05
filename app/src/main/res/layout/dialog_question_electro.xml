@@ -183,14 +183,59 @@
                         android:text="Horno de Microondas"
                         android:textColor="#000000" />
 
+                <CheckBox
+                    android:id="@+id/boiler"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="#E91A8D"
+                    android:paddingLeft="40dip"
+                    android:text="Boíler o calentador de agua"
+                    android:textColor="#000000" />
+
+                <CheckBox
+                    android:id="@+id/radio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="#E91A8D"
+                    android:paddingLeft="40dip"
+                    android:text="Radio"
+                    android:textColor="#000000" />
+
                     <CheckBox
                         android:id="@+id/tele"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:buttonTint="#E91A8D"
                         android:paddingLeft="40dip"
-                        android:text="Televisión"
+                        android:text="TV de paga"
                         android:textColor="#000000" />
+
+                <CheckBox
+                    android:id="@+id/lap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="#E91A8D"
+                    android:paddingLeft="40dip"
+                    android:text="Laptop o computadora de escritorio"
+                    android:textColor="#000000" />
+
+                <CheckBox
+                    android:id="@+id/internet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="#E91A8D"
+                    android:paddingLeft="40dip"
+                    android:text="Internet"
+                    android:textColor="#000000" />
+
+                <CheckBox
+                    android:id="@+id/automovil"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="#E91A8D"
+                    android:paddingLeft="40dip"
+                    android:text="Automóvil"
+                    android:textColor="#000000" />
 
             </LinearLayout>
 

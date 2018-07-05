@@ -3,6 +3,7 @@ package mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -16,6 +17,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -45,11 +47,11 @@ public class QuestionsExploracion extends Fragment {
     private ImageButton next;
     public static List<String> listElectro = new ArrayList<String>();
 
-    private LinearLayout pesoLayout,tipoSangre,tensionLayout, tallaLayout;
+    private LinearLayout pesoLayout,tipoSangre,tensionLayout, tallaLayout, tensionLayout2;
     private TextView questions2,title;
     private int count = 0;
 
-    private RadioGroup radioSangre;
+    private RadioGroup radioSangre, radioTipoSangre,radioDec;
 
 
     @Override
@@ -97,9 +99,14 @@ public class QuestionsExploracion extends Fragment {
         pesoLayout = (LinearLayout) getActivity().findViewById(R.id.questions);
         tipoSangre = (LinearLayout) getActivity().findViewById(R.id.questionsHemotipo);
         tensionLayout = (LinearLayout) getActivity().findViewById(R.id.questions2);
+        tensionLayout2 = (LinearLayout) getActivity().findViewById(R.id.questions5);
         tallaLayout = (LinearLayout) getActivity().findViewById(R.id.questions6);
 
+
         radioSangre = (RadioGroup) getActivity().findViewById(R.id.radioSangre);
+        radioTipoSangre = (RadioGroup) getActivity().findViewById(R.id.radioTipoSangre);
+
+        radioDec = (RadioGroup) getActivity().findViewById(R.id.radioDec);
 
 
         next = (ImageButton) getActivity().findViewById(R.id.next);
@@ -126,10 +133,18 @@ public class QuestionsExploracion extends Fragment {
 
                 if(count == 3){
                     tensionLayout.setVisibility(View.GONE);
-                    tallaLayout.setVisibility(View.VISIBLE);
+                    tensionLayout2.setVisibility(View.VISIBLE);
                 }
 
                 if(count == 4){
+
+                    tensionLayout2.setVisibility(View.GONE);
+                    tallaLayout.setVisibility(View.VISIBLE);
+
+
+                }
+
+                if(count == 5){
                     sharedPreferences.setStringData("Talla", talla.getText().toString());
                     sharedPreferences.setStringData("Pulso", pulso.getText().toString());
 
@@ -153,26 +168,34 @@ public class QuestionsExploracion extends Fragment {
 
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+
                 // TODO Auto-generated method stub
                 if (checkedId == R.id.tipoA){
+                    radioDec.clearCheck();
                     sharedPreferences.setStringData("Hemotipo","Tipo A");
 
                 }else if (checkedId == R.id.tipoB){
+                    radioDec.clearCheck();
                     sharedPreferences.setStringData("Hemotipo","Tipo B");
 
                 }else if (checkedId == R.id.tipoAB){
+                    radioDec.clearCheck();
                     sharedPreferences.setStringData("Hemotipo","Tipo AB");
 
                 }else if (checkedId == R.id.tipoO){
+                    radioDec.clearCheck();
                     sharedPreferences.setStringData("Hemotipo","Tipo O");
 
                 }else if (checkedId == R.id.tipoRHPositivo){
+                    radioDec.clearCheck();
                     sharedPreferences.setStringData("Hemotipo","Tipo RH +");
 
                 }else if (checkedId == R.id.tipoRHNegativo){
+                    radioDec.clearCheck();
                     sharedPreferences.setStringData("Hemotipo","Tipo RH -");
 
                 }else if (checkedId == R.id.tipoDesconocido){
+                    radioDec.clearCheck();
                     sharedPreferences.setStringData("Hemotipo","Desconocido");
 
                 }
@@ -180,6 +203,46 @@ public class QuestionsExploracion extends Fragment {
             }
 
         });
+
+        radioTipoSangre.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
+
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                // TODO Auto-generated method stub
+               if (checkedId == R.id.tipoRHPositivo){
+                   radioDec.clearCheck();
+                   sharedPreferences.setStringData("Hemotipo","Tipo RH +");
+
+                }else if (checkedId == R.id.tipoRHNegativo){
+                   radioDec.clearCheck();
+                   sharedPreferences.setStringData("Hemotipo","Tipo RH -");
+
+                }
+
+            }
+
+        });
+
+        radioDec.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
+
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                // TODO Auto-generated method stub
+                if (checkedId == R.id.tipoDesconocido){
+                    sharedPreferences.setStringData("Hemotipo","Tipo RH +");
+                    radioSangre.clearCheck();
+                    radioTipoSangre.clearCheck();
+
+                }
+
+            }
+
+        });
+
+
+
+
 
     }
 

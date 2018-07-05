@@ -197,6 +197,7 @@
 
             </LinearLayout>
 
+
             <LinearLayout
                 android:id="@+id/questions2"
                 android:layout_width="match_parent"
@@ -210,11 +211,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:layout_marginTop="30dp"
                     android:text="4.- Tension Arterial"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
+                <TextView
+                    android:id="@+id/sistolica"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="1.- Sistólica"
+                    android:textSize="18sp"/>
 
                 <EditText
                     android:id="@+id/answers2"
@@ -224,6 +231,34 @@
                     android:layout_marginRight="20dp"
                     android:hint="Escribir respuesta aquí."
                     android:inputType="numberSigned" />
+
+                <TextView
+                    android:id="@+id/diastolica"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:text="2.- Diastólica"
+                    android:textSize="18sp"/>
+
+                <EditText
+                    android:id="@+id/answersDiasto"
+                    android:layout_width="700dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:hint="Escribir respuesta aquí."
+                    android:inputType="numberSigned" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/questions5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/questions3"
@@ -263,11 +298,18 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:hint="Ej. 100 x min."
-                    android:inputType="numberSigned" />>
+                    android:inputType="number" />
 
 
 
             </LinearLayout>
+
+
+
+
+
+
+
 
 
             //PARTE 3
@@ -352,7 +394,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/tvHemotipo"
@@ -435,14 +478,25 @@
 
                 </RadioGroup>
 
-                <RadioButton
-                    android:id="@+id/tipoDesconocido"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="#E91A8D"
-                    android:paddingLeft="40dip"
-                    android:text="Desconocido"
-                    android:textColor="#000000" />
+                <RadioGroup
+                    android:id="@+id/radioDec"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <RadioButton
+                        android:id="@+id/tipoDesconocido"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#E91A8D"
+                        android:paddingLeft="40dip"
+                        android:text="Desconocido"
+                        android:textColor="#000000" />
+
+                </RadioGroup>
+
+
+
+
 
             </LinearLayout>
 

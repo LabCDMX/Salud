@@ -270,7 +270,7 @@
                 android:layout_below="@id/tvDomiciliarios"
                 android:layout_marginTop="20dp"
                 android:textSize="20sp"
-                android:text="Equipo Electrodomésticos:"
+                android:text="Equipos electrodomésticos con los que se cuenta en el hogar:"
                 android:textStyle="bold"
                 android:layout_marginLeft="10dp"
                 android:layout_marginStart="10dp"
@@ -589,11 +589,152 @@
 
              - Cereales / Tuberculos
 
+
+            <TextView
+                android:id="@+id/tvCereales"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvLeguminosas"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="Cereales / Tuberculos:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewCereales"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewLeguminosas"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="Apellido Paterno"
+                android:inputType="text"
+                android:background="#00000000"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="220dp"/>
+
+            <ImageButton
+                android:id="@+id/btn_edit16"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="600dp"
+                android:background="#fff"
+                android:layout_below="@+id/btn_edit15"
+                app:srcCompat="@drawable/pencil_pink"/>
+
              - Pan / Tortilla
+
+            <TextView
+                android:id="@+id/tvPan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvCereales"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="Pan / Tortilla:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewPan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewCereales"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="Apellido Paterno"
+                android:inputType="text"
+                android:background="#00000000"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="150dp"/>
+
+            <ImageButton
+                android:id="@+id/btn_edit17"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="600dp"
+                android:background="#fff"
+                android:layout_below="@+id/btn_edit16"
+                app:srcCompat="@drawable/pencil_pink"/>
 
              - Chatarra
 
+            <TextView
+                android:id="@+id/tvChatarra"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvPan"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="Chatarra:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewChatarra"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewPan"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="Apellido Paterno"
+                android:inputType="text"
+                android:background="#00000000"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="120dp"/>
+
+            <ImageButton
+                android:id="@+id/btn_edit18"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="600dp"
+                android:background="#fff"
+                android:layout_below="@+id/btn_edit17"
+                app:srcCompat="@drawable/pencil_pink"/>
+
              - Carne
+
+            <TextView
+                android:id="@+id/tvCarne"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvChatarra"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="Carne:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewCarne"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewChatarra"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="Apellido Paterno"
+                android:inputType="text"
+                android:background="#00000000"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="90dp"/>
+
+            <ImageButton
+                android:id="@+id/btn_edit19"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="600dp"
+                android:background="#fff"
+                android:layout_below="@+id/btn_edit18"
+                app:srcCompat="@drawable/pencil_pink"/>
 
              - Pollo
 

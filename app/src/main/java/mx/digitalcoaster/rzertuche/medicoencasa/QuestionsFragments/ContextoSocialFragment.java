@@ -43,7 +43,7 @@ public class ContextoSocialFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
     SharedPreferences sharedPreferences;
 
-    EditText nombre, apellidoP, estado, municipio, transporte, recreacion, estres, caracteristicas, piso, techo,verduras, fruta, leguminosa;
+    EditText nombre, apellidoP, estado, municipio, transporte, recreacion, estres, caracteristicas, piso, techo,verduras, fruta, leguminosa,carne,cereal,pan,chatarra;
     ImageButton btnedit,btnedit1,btnedit3,btnedit4,next;
 
 
@@ -86,6 +86,10 @@ public class ContextoSocialFragment extends Fragment {
         fruta = (EditText) getActivity().findViewById(R.id.textViewFruta);
         leguminosa = (EditText) getActivity().findViewById(R.id.textViewLeguminosas);
 
+        carne = (EditText) getActivity().findViewById(R.id.textViewCarne);
+        cereal = (EditText) getActivity().findViewById(R.id.textViewCereales);
+        chatarra = (EditText) getActivity().findViewById(R.id.textViewChatarra);
+        pan = (EditText) getActivity().findViewById(R.id.textViewPan);
 
 
         btnedit = (ImageButton) getActivity().findViewById(R.id.btn_edit);
@@ -112,6 +116,10 @@ public class ContextoSocialFragment extends Fragment {
         verduras.setText(sharedPreferences.getStringData("Verduras"));
         fruta.setText(sharedPreferences.getStringData("Fruta"));
         leguminosa.setText(sharedPreferences.getStringData("Leguminosa"));
+        pan.setText(sharedPreferences.getStringData("Pan"));
+        carne.setText(sharedPreferences.getStringData("Carne"));
+        chatarra.setText(sharedPreferences.getStringData("Chatarra"));
+        cereal.setText(sharedPreferences.getStringData("Cereal"));
 
 
 

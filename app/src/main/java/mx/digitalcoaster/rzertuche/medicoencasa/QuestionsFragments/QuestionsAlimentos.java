@@ -47,6 +47,10 @@ public class QuestionsAlimentos extends Fragment {
     private Boolean isFruit = false;
     private Boolean isVerdura = false;
     private Boolean isLegu = false;
+    private Boolean isCere = false;
+    private Boolean isChatarra = false;
+    private Boolean isPan = false;
+    private Boolean isCarne = false;
 
     int count=0;
 
@@ -121,14 +125,19 @@ public class QuestionsAlimentos extends Fragment {
 
                 }else if(count == 5){
                     isLegu = false;
+                    isCere = true;
                     radioAli.clearCheck();
                     changeTitle.setText("Cereales/Tuberculos");
 
                 }else if(count == 6){
+                    isCere=false;
+                    isPan = true;
                     radioAli.clearCheck();
                     changeTitle.setText("Pan/Tortilla");
 
                 }else if(count == 7){
+                    isPan = false;
+                    isChatarra = true;
                     radioAli.clearCheck();
                     changeTitle.setText("Chatarra");
 
@@ -137,6 +146,8 @@ public class QuestionsAlimentos extends Fragment {
                     changeTitle.setText("Agua");
 
                 }else if(count == 9){
+                    isChatarra=false;
+                    isCarne = true;
                     radioAli.clearCheck();
                     changeTitle.setText("Carne");
 
@@ -205,6 +216,14 @@ public class QuestionsAlimentos extends Fragment {
                         sharedPreferences.setStringData("Fruta","Ninguna");
                     }else if(isLegu){
                         sharedPreferences.setStringData("Leguminosa","Ninguna");
+                    }else if(isCarne){
+                        sharedPreferences.setStringData("Carne","Ninguna");
+                    }else if(isPan){
+                        sharedPreferences.setStringData("Pan","Ninguna");
+                    }else if(isCere){
+                        sharedPreferences.setStringData("Cereal","Ninguna");
+                    }else if(isChatarra){
+                        sharedPreferences.setStringData("Chatarra","Ninguna");
                     }
 
 
@@ -216,6 +235,14 @@ public class QuestionsAlimentos extends Fragment {
                         sharedPreferences.setStringData("Fruta","1 a 5");
                     }else if(isLegu){
                         sharedPreferences.setStringData("Leguminosa","1 a 5");
+                    }else if(isCarne){
+                        sharedPreferences.setStringData("Carne","1 a 5");
+                    }else if(isPan){
+                        sharedPreferences.setStringData("Pan","1 a 5");
+                    }else if(isCere){
+                        sharedPreferences.setStringData("Cereal","1 a 5");
+                    }else if(isChatarra){
+                        sharedPreferences.setStringData("Chatarra","1 a 5");
                     }
 
                 }else if (checkedId == R.id.tipoAli3){
@@ -226,6 +253,14 @@ public class QuestionsAlimentos extends Fragment {
                         sharedPreferences.setStringData("Fruta","5 a 10");
                     }else if(isLegu){
                         sharedPreferences.setStringData("Leguminosa","5 a 10");
+                    }else if(isCarne){
+                        sharedPreferences.setStringData("Carne","5 a 10");
+                    }else if(isPan){
+                        sharedPreferences.setStringData("Pan","5 a 10");
+                    }else if(isCere){
+                        sharedPreferences.setStringData("Cereal","5 a 10");
+                    }else if(isChatarra){
+                        sharedPreferences.setStringData("Chatarra","5 a 10");
                     }
 
                 }else if (checkedId == R.id.tipoAli4){
@@ -236,6 +271,14 @@ public class QuestionsAlimentos extends Fragment {
                         sharedPreferences.setStringData("Fruta","10 a 15");
                     }else if(isLegu){
                         sharedPreferences.setStringData("Leguminosa","10 a 15");
+                    }else if(isCarne){
+                        sharedPreferences.setStringData("Carne","10 a 15");
+                    }else if(isPan){
+                        sharedPreferences.setStringData("Pan","10 a 15");
+                    }else if(isCere){
+                        sharedPreferences.setStringData("Cereal","10 a 15");
+                    }else if(isChatarra){
+                        sharedPreferences.setStringData("Chatarra","10 a 15");
                     }
 
                 }else if (checkedId == R.id.tipoAli5){
@@ -246,6 +289,14 @@ public class QuestionsAlimentos extends Fragment {
                         sharedPreferences.setStringData("Fruta","15 a 20");
                     }else if(isLegu){
                         sharedPreferences.setStringData("Leguminosa","15 a 20");
+                    }else if(isCarne){
+                        sharedPreferences.setStringData("Carne","15 a 20");
+                    }else if(isPan){
+                        sharedPreferences.setStringData("Pan","15 a 20");
+                    }else if(isCere){
+                        sharedPreferences.setStringData("Cereal","15 a 20");
+                    }else if(isChatarra){
+                        sharedPreferences.setStringData("Chatarra","15 a 20");
                     }
 
                 }else if (checkedId == R.id.tipoAli6){
@@ -256,6 +307,14 @@ public class QuestionsAlimentos extends Fragment {
                         sharedPreferences.setStringData("Fruta","Más de 20");
                     }else if(isLegu){
                         sharedPreferences.setStringData("Leguminosa","Más de 20");
+                    }else if(isCarne){
+                        sharedPreferences.setStringData("Carne","Más de 20");
+                    }else if(isPan){
+                        sharedPreferences.setStringData("Pan","Más de 20");
+                    }else if(isCere){
+                        sharedPreferences.setStringData("Cereal","Más de 20");
+                    }else if(isChatarra){
+                        sharedPreferences.setStringData("Chatarra","Más de 20");
                     }
 
                 }
