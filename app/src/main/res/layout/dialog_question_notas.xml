@@ -18,7 +18,7 @@
         android:text="NOTAS MÉDICAS"/>
 
 
-    <LinearLayout
+    <ScrollView
         android:id="@+id/cuerpo"
         android:layout_width="match_parent"
         android:layout_height="400dp"
@@ -68,7 +68,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="bottom|right"
+                android:gravity="bottom|center"
+                android:layout_marginTop="30dp"
                 android:layout_below="@+id/textArea_information"
                 android:orientation="horizontal">
 
@@ -84,7 +85,7 @@
             </LinearLayout>
 
         </RelativeLayout>
-    </LinearLayout>
+    </ScrollView>
 
     <View
         android:id="@+id/divider3"

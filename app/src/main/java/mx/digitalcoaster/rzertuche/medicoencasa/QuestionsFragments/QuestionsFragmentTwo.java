@@ -101,15 +101,7 @@ public class QuestionsFragmentTwo extends Fragment {
         sharedPreferences = SharedPreferences.getInstance();
 
 
-        ImageButton back = (ImageButton) view.findViewById(R.id.back);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                sharedPreferences.setBooleanData("BackToQuestionsTwo", true);
-                ((MainActivity)getActivity()).activityRegistros();
 
-            }
-        });
 
         final TextView date = (TextView) getActivity().findViewById(R.id.answer4);
         final EditText estadoNacimiento = (EditText) getActivity().findViewById(R.id.answer);

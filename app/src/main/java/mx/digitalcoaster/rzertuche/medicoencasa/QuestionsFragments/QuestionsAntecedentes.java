@@ -40,11 +40,20 @@ public class QuestionsAntecedentes extends Fragment {
     private ImageButton next;
     public static List<String> listCardio = new ArrayList<String>();
     public static List<String> listHTA = new ArrayList<String>();
+    public static List<String> listDiabetes = new ArrayList<String>();
+    public static List<String> listDis = new ArrayList<String>();
+    public static List<String> listObe = new ArrayList<String>();
+    public static List<String> listEnf = new ArrayList<String>();
+
 
 
 
     private Boolean isCardio = true;
     private Boolean isHTA = false;
+    private Boolean isDiabetes = false;
+    private Boolean isDis = false;
+    private Boolean isObe = false;
+    private Boolean isEnf = false;
 
     private LinearLayout questions,questions3,questions4;
     private TextView questions2;
@@ -129,6 +138,70 @@ public class QuestionsAntecedentes extends Fragment {
                     if(ninguno.isChecked()){
                         listHTA.add("Ninguno");
                     }
+                }else if((abuelos.isChecked() || padres.isChecked() || tios.isChecked() || hermanos.isChecked() || ninguno.isChecked()) && isDiabetes){
+                    if(abuelos.isChecked()){
+                        listDiabetes.add("Abuelos");
+                    }
+                    if(padres.isChecked()){
+                        listDiabetes.add("Padres");
+                    }
+                    if(tios.isChecked()){
+                        listDiabetes.add("Tios");
+                    }
+                    if(hermanos.isChecked()){
+                        listDiabetes.add("Hermanos");
+                    }
+                    if(ninguno.isChecked()){
+                        listDiabetes.add("Ninguno");
+                    }
+                }else if((abuelos.isChecked() || padres.isChecked() || tios.isChecked() || hermanos.isChecked() || ninguno.isChecked()) && isDis){
+                    if(abuelos.isChecked()){
+                        listDis.add("Abuelos");
+                    }
+                    if(padres.isChecked()){
+                        listDis.add("Padres");
+                    }
+                    if(tios.isChecked()){
+                        listDis.add("Tios");
+                    }
+                    if(hermanos.isChecked()){
+                        listDis.add("Hermanos");
+                    }
+                    if(ninguno.isChecked()){
+                        listDis.add("Ninguno");
+                    }
+                }else if((abuelos.isChecked() || padres.isChecked() || tios.isChecked() || hermanos.isChecked() || ninguno.isChecked()) && isObe){
+                    if(abuelos.isChecked()){
+                        listObe.add("Abuelos");
+                    }
+                    if(padres.isChecked()){
+                        listObe.add("Padres");
+                    }
+                    if(tios.isChecked()){
+                        listObe.add("Tios");
+                    }
+                    if(hermanos.isChecked()){
+                        listObe.add("Hermanos");
+                    }
+                    if(ninguno.isChecked()){
+                        listObe.add("Ninguno");
+                    }
+                }else if((abuelos.isChecked() || padres.isChecked() || tios.isChecked() || hermanos.isChecked() || ninguno.isChecked()) && isEnf){
+                    if(abuelos.isChecked()){
+                        listEnf.add("Abuelos");
+                    }
+                    if(padres.isChecked()){
+                        listEnf.add("Padres");
+                    }
+                    if(tios.isChecked()){
+                        listEnf.add("Tios");
+                    }
+                    if(hermanos.isChecked()){
+                        listEnf.add("Hermanos");
+                    }
+                    if(ninguno.isChecked()){
+                        listEnf.add("Ninguno");
+                    }
                 }
 
 
@@ -142,28 +215,37 @@ public class QuestionsAntecedentes extends Fragment {
 
                 if(count == 2){
                     isHTA=false;
+                    isDiabetes = true;
                     clearCheckBox();
                     questions2.setText("c) Diabetes");
 
                 }
 
                 if(count == 3){
+                    isDiabetes = false;
+                    isDis=true;
+
                     clearCheckBox();
                     questions2.setText("d) Dislipidemias");
 
                 }
 
                 if(count == 4){
+                    isDis=false;
+                    isObe = true;
                     clearCheckBox();
                     questions2.setText("e) Obesidad");
 
                 }
                 if(count == 5){
+                    isObe=false;
+                    isEnf = true;
                     clearCheckBox();
                     questions2.setText("f) Enfermedades Cerebrovascular");
 
                 }
                 if(count == 6){
+                    isEnf = false;
                     count=0;
                     ((MainActivity)getActivity()).questionsAntPersonales();
 

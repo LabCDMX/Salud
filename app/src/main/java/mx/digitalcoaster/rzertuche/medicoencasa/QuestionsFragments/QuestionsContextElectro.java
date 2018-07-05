@@ -13,6 +13,7 @@ import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -35,10 +36,11 @@ public class QuestionsContextElectro extends Fragment {
     private OnFragmentInteractionListener mListener;
 
     SharedPreferences sharedPreferences;
-    private CheckBox estufa,refrigerador,lavadora,telefono,horno,televisor;
+    private CheckBox estufa,refrigerador,lavadora,telefono,horno,televisor, boiler, radio, tv,lap,internet,auto;
     private ImageButton next;
     public static List<String> listElectro = new ArrayList<String>();
-    private LinearLayout questions,questions2,questions3,questions4;
+    private LinearLayout questions2,questions3,questions4;
+    private RelativeLayout questions;
     private int count = 0;
     private RadioGroup radioVivienda,radioPiso, radioTecho;
 
@@ -71,8 +73,15 @@ public class QuestionsContextElectro extends Fragment {
         televisor = (CheckBox) getActivity().findViewById(R.id.tele);
         horno = (CheckBox) getActivity().findViewById(R.id.horno);
 
+        boiler = (CheckBox) getActivity().findViewById(R.id.boiler);
+        radio = (CheckBox) getActivity().findViewById(R.id.radio);
+        lap = (CheckBox) getActivity().findViewById(R.id.lap);
+        internet = (CheckBox) getActivity().findViewById(R.id.internet);
+        auto = (CheckBox) getActivity().findViewById(R.id.automovil);
 
-        questions = (LinearLayout) getActivity().findViewById(R.id.questions);
+
+
+        questions = (RelativeLayout) getActivity().findViewById(R.id.questions);
         questions2 = (LinearLayout) getActivity().findViewById(R.id.questions2);
         questions3 = (LinearLayout) getActivity().findViewById(R.id.questions3);
         questions4 = (LinearLayout) getActivity().findViewById(R.id.questions4);
@@ -94,7 +103,8 @@ public class QuestionsContextElectro extends Fragment {
 
 
 
-                if(estufa.isChecked() || refrigerador.isChecked() || lavadora.isChecked() || telefono.isChecked() || horno.isChecked() || televisor.isChecked() ){
+                if(estufa.isChecked() || refrigerador.isChecked() || lavadora.isChecked() || telefono.isChecked() || horno.isChecked() || televisor.isChecked()
+                        || boiler.isChecked() || radio.isChecked() || lap.isChecked() || internet.isChecked() || auto.isChecked()){
                     if(estufa.isChecked()){
                         listElectro.add("Estufa");
                     }
@@ -111,7 +121,23 @@ public class QuestionsContextElectro extends Fragment {
                         listElectro.add("Horno");
                     }
                     if(televisor.isChecked()){
-                        listElectro.add("Televisor");
+                        listElectro.add("TV de paga");
+                    }
+                    if(boiler.isChecked()){
+                        listElectro.add("Boíler o calentador de agua");
+                    }
+                    if(lap.isChecked()){
+                        listElectro.add("Laptop o computadora de escritorio");
+                    }
+                    if(internet.isChecked()){
+                        listElectro.add("Internet");
+                    }
+                    if(auto.isChecked()){
+                        listElectro.add("Automóvil");
+                    }
+
+                    if(radio.isChecked()){
+                        listElectro.add("Radio");
                     }
 
                     Log.e("VALUES LIST", listElectro.toString());

@@ -749,7 +749,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
                 android:gravity="bottom|right"
-                android:layout_below="@+id/btn_edit15"
+                android:layout_below="@+id/btn_edit19"
                 android:orientation="horizontal">
 
                 <ImageButton

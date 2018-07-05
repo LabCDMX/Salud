@@ -130,16 +130,6 @@ public class QuestionDomFragment extends Fragment {
             answer3.setText(sharedApellidoM);
         }
 
-        ImageButton back = (ImageButton) view.findViewById(R.id.back);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).activityRegistros();
-
-            }
-        });
-
-
 
         ImageButton next = (ImageButton) view.findViewById(R.id.next);
         next.setOnClickListener(new View.OnClickListener() {

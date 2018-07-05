@@ -25,7 +25,11 @@ import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.re
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.seguimiento;
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.sincronizacion;
 import static mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsAntecedentes.listCardio;
+import static mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsAntecedentes.listDiabetes;
+import static mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsAntecedentes.listDis;
+import static mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsAntecedentes.listEnf;
 import static mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsAntecedentes.listHTA;
+import static mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsAntecedentes.listObe;
 import static mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsAntecedentesPersonales.listPersonales;
 
 import static mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsContextElectro.listElectro;
@@ -44,6 +48,8 @@ public class HistoriaClinicaFragment extends Fragment {
     SharedPreferences sharedPreferences;
 
     EditText respiratorio, cardio, peso, estatura, HTA, cardioList, talla, pulso, hemotipo;
+    EditText digestivo,urinario,reproductor,hemo,endocrino,nervioso,piel,habitus,cabeza,cuello;
+    EditText diabetes,disli,obesidad,enf_cardio;
     TextView cerebro;
     ImageButton next;
 
@@ -73,6 +79,18 @@ public class HistoriaClinicaFragment extends Fragment {
 
         respiratorio = (EditText) getActivity().findViewById(R.id.textViewRespiratorio);
         cardio = (EditText) getActivity().findViewById(R.id.textViewCardio);
+        digestivo = (EditText) getActivity().findViewById(R.id.textViewDigestivo);
+        urinario = (EditText) getActivity().findViewById(R.id.textViewUrinario);
+        reproductor = (EditText) getActivity().findViewById(R.id.textViewReproductor);
+        hemo = (EditText) getActivity().findViewById(R.id.textViewHemolinfatico);
+        endocrino = (EditText) getActivity().findViewById(R.id.textViewEndocrino);
+        nervioso = (EditText) getActivity().findViewById(R.id.textViewNervioso);
+        piel = (EditText) getActivity().findViewById(R.id.textViewPiel);
+        habitus = (EditText) getActivity().findViewById(R.id.textViewHabitus);
+        cabeza = (EditText) getActivity().findViewById(R.id.textViewCabeza);
+        cuello = (EditText) getActivity().findViewById(R.id.textViewCuello);
+
+
 
 
         peso = (EditText) getActivity().findViewById(R.id.textViewPeso);
@@ -80,6 +98,12 @@ public class HistoriaClinicaFragment extends Fragment {
 
         HTA = (EditText) getActivity().findViewById(R.id.textViewHTA);
         cardioList = (EditText) getActivity().findViewById(R.id.textViewCardioVas);
+
+        diabetes = (EditText) getActivity().findViewById(R.id.textViewDiabetes);
+        disli = (EditText) getActivity().findViewById(R.id.textViewDisli);
+        obesidad = (EditText) getActivity().findViewById(R.id.textViewObesidad);
+        enf_cardio = (EditText) getActivity().findViewById(R.id.textViewCerebroVas);
+
 
         cerebro = (TextView) getActivity().findViewById(R.id.tvCerebro);
 
@@ -98,6 +122,18 @@ public class HistoriaClinicaFragment extends Fragment {
         respiratorio.setText(sharedPreferences.getStringData("Respiratorio"));
         cardio.setText(sharedPreferences.getStringData("Cardio"));
 
+        digestivo.setText(sharedPreferences.getStringData("Digestivo"));
+        urinario.setText(sharedPreferences.getStringData("Urinario"));
+        reproductor.setText(sharedPreferences.getStringData("Reproductor"));
+        hemo.setText(sharedPreferences.getStringData("Hemo"));
+        endocrino.setText(sharedPreferences.getStringData("Endocrino"));
+        nervioso.setText(sharedPreferences.getStringData("Nervioso"));
+        piel.setText(sharedPreferences.getStringData("Piel"));
+        habitus.setText(sharedPreferences.getStringData("Habitus"));
+        cabeza.setText(sharedPreferences.getStringData("Cabeza"));
+        cuello.setText(sharedPreferences.getStringData("Cuello"));
+
+
         peso.setText(sharedPreferences.getStringData("Peso") + "kg");
         estatura.setText(sharedPreferences.getStringData("Estatura") + "mts");
 
@@ -108,8 +144,12 @@ public class HistoriaClinicaFragment extends Fragment {
 
         String cadenaCardio = new String();
         String cadenaHTA = new String();
+        String cadenaPersonales = new String();
+        String cadenaDiabetes = new String();
+        String cadenaDis = new String();
+        String cadenaObe = new String();
+        String cadenaEnf = new String();
 
-        String cadenaCerebro = new String();
 
 
 
@@ -122,15 +162,35 @@ public class HistoriaClinicaFragment extends Fragment {
         }
 
         for (String object: listPersonales) {
-            cadenaCerebro+= "-" + object + "\n";
+            cadenaPersonales+= "-" + object + "\n";
+        }
+
+        for (String object: listDiabetes) {
+            cadenaDiabetes+= "-" + object + "\n";
+        }
+
+        for (String object: listDis) {
+            cadenaDis+= "-" + object + "\n";
+        }
+
+        for (String object: listObe) {
+            cadenaObe+= "-" + object + "\n";
+        }
+
+        for (String object: listEnf) {
+            cadenaEnf+= "-" + object + "\n";
         }
 
 
 
         cardioList.setText(cadenaCardio);
         HTA.setText(cadenaHTA);
+        cerebro.setText(cadenaPersonales);
+        obesidad.setText(cadenaObe);
+        diabetes.setText(cadenaDiabetes);
+        disli.setText(cadenaDis);
+        enf_cardio.setText(cadenaEnf);
 
-        cerebro.setText(cadenaCerebro);
 
 
 

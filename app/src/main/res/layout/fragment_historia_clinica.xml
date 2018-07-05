@@ -117,9 +117,113 @@
                 android:textColor="@android:color/black"
                 android:layout_marginLeft="50dp" />
 
+            //DIABETES
 
+            <TextView
+                android:id="@+id/tvDiabetes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewHTA"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="-Diabetes:"
+                android:textStyle="bold"
+                android:layout_marginLeft="50dp"
+                android:layout_marginStart="50dp"
+                android:textColor="@android:color/black" />
 
+            <EditText
+                android:id="@+id/textViewDiabetes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvDiabetes"
+                android:textSize="20sp"
+                android:text="Respiratorio"
+                android:inputType="textMultiLine"
+                android:background="#00000000"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="50dp" />
 
+            //DISLIPIDEMIAS
+
+            <TextView
+                android:id="@+id/tvDisli"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewDiabetes"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="-Dislipidemias:"
+                android:textStyle="bold"
+                android:layout_marginLeft="50dp"
+                android:layout_marginStart="50dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewDisli"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvDisli"
+                android:textSize="20sp"
+                android:text="Respiratorio"
+                android:inputType="textMultiLine"
+                android:background="#00000000"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="50dp" />
+
+            //OBESIDAD
+
+            <TextView
+                android:id="@+id/tvObesidad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewDisli"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="-Obesidad:"
+                android:textStyle="bold"
+                android:layout_marginLeft="50dp"
+                android:layout_marginStart="50dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewObesidad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvObesidad"
+                android:textSize="20sp"
+                android:text="Respiratorio"
+                android:inputType="textMultiLine"
+                android:background="#00000000"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="50dp" />
+
+            //ENFERMEDAES CEREBROVASCULARES
+
+            <TextView
+                android:id="@+id/tvCerebroVas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewObesidad"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="-Enfermedades Cerebrovascular:"
+                android:textStyle="bold"
+                android:layout_marginLeft="50dp"
+                android:layout_marginStart="50dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewCerebroVas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvCerebroVas"
+                android:textSize="20sp"
+                android:text="Respiratorio"
+                android:inputType="textMultiLine"
+                android:background="#00000000"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="50dp" />
 
             <ImageButton
                 android:id="@+id/btn_edit"
@@ -135,7 +239,7 @@
                 android:id="@+id/tvApellidoP"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/textViewHTA"
+                android:layout_below="@id/textViewCerebroVas"
                 android:textSize="20sp"
                 android:text="2.- Personales:"
                 android:textStyle="bold"
@@ -186,6 +290,8 @@
                 android:layout_marginTop="3dp"
                 android:background="#E91A8D" />
 
+            //Respiratorio
+
             <TextView
                 android:id="@+id/tvRespiratorio"
                 android:layout_width="wrap_content"
@@ -221,6 +327,8 @@
                 app:srcCompat="@drawable/pencil_pink"/>
 
 
+            //Cardio
+
             <TextView
                 android:id="@+id/tvCardio"
                 android:layout_width="wrap_content"
@@ -255,6 +363,367 @@
                 android:layout_below="@+id/btn_edit4"
                 app:srcCompat="@drawable/pencil_pink"/>
 
+            //Digestivo
+
+            <TextView
+                android:id="@+id/tvDigestivo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewCardio"
+                android:textSize="20sp"
+                android:text="3. Digestivo:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewDigestivo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvDigestivo"
+                android:textSize="20sp"
+                android:text="Municipio"
+                android:background="#00000000"
+                android:inputType="textCapCharacters"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="50dp"/>
+
+            <ImageButton
+                android:id="@+id/btn_edit6"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="600dp"
+                android:background="#FFF"
+                android:layout_marginTop="30dp"
+                android:layout_below="@+id/btn_edit5"
+                app:srcCompat="@drawable/pencil_pink"/>
+
+
+            //Urinario
+
+            <TextView
+                android:id="@+id/tvUrinario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewDigestivo"
+                android:textSize="20sp"
+                android:text="4. Urinario:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewUrinario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvUrinario"
+                android:textSize="20sp"
+                android:text="Municipio"
+                android:background="#00000000"
+                android:inputType="textCapCharacters"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="50dp"/>
+
+            <ImageButton
+                android:id="@+id/btn_edit7"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="600dp"
+                android:background="#FFF"
+                android:layout_marginTop="30dp"
+                android:layout_below="@+id/btn_edit6"
+                app:srcCompat="@drawable/pencil_pink"/>
+
+            //Reproductor
+
+            <TextView
+                android:id="@+id/tvReproductor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewUrinario"
+                android:textSize="20sp"
+                android:text="5. Reproductor:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewReproductor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvReproductor"
+                android:textSize="20sp"
+                android:text="Municipio"
+                android:background="#00000000"
+                android:inputType="textCapCharacters"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="50dp"/>
+
+            <ImageButton
+                android:id="@+id/btn_edit8"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="600dp"
+                android:background="#FFF"
+                android:layout_marginTop="30dp"
+                android:layout_below="@+id/btn_edit7"
+                app:srcCompat="@drawable/pencil_pink"/>
+
+            //Hemolinfatico
+
+            <TextView
+                android:id="@+id/tvHemolinfatico"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewReproductor"
+                android:textSize="20sp"
+                android:text="6. Hemolinfatico:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewHemolinfatico"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvHemolinfatico"
+                android:textSize="20sp"
+                android:text="Municipio"
+                android:background="#00000000"
+                android:inputType="textCapCharacters"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="50dp"/>
+
+            <ImageButton
+                android:id="@+id/btn_edit9"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="600dp"
+                android:background="#FFF"
+                android:layout_marginTop="30dp"
+                android:layout_below="@+id/btn_edit8"
+                app:srcCompat="@drawable/pencil_pink"/>
+
+            //Endocrino
+
+            <TextView
+                android:id="@+id/tvEndocrino"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewHemolinfatico"
+                android:textSize="20sp"
+                android:text="7. Endocrino:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewEndocrino"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvEndocrino"
+                android:textSize="20sp"
+                android:text="Municipio"
+                android:background="#00000000"
+                android:inputType="textCapCharacters"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="50dp"/>
+
+            <ImageButton
+                android:id="@+id/btn_edit10"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="600dp"
+                android:background="#FFF"
+                android:layout_marginTop="30dp"
+                android:layout_below="@+id/btn_edit9"
+                app:srcCompat="@drawable/pencil_pink"/>
+
+            //Nervioso
+
+            <TextView
+                android:id="@+id/tvNervioso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewEndocrino"
+                android:textSize="20sp"
+                android:text="8. Sistema Nervioso:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewNervioso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvNervioso"
+                android:textSize="20sp"
+                android:text="Municipio"
+                android:background="#00000000"
+                android:inputType="textCapCharacters"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="50dp"/>
+
+            <ImageButton
+                android:id="@+id/btn_edit11"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="600dp"
+                android:background="#FFF"
+                android:layout_marginTop="30dp"
+                android:layout_below="@+id/btn_edit10"
+                app:srcCompat="@drawable/pencil_pink"/>
+
+            //Piel
+
+            <TextView
+                android:id="@+id/tvPiel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewNervioso"
+                android:textSize="20sp"
+                android:text="9. Piel y anexos:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewPiel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvPiel"
+                android:textSize="20sp"
+                android:text="Municipio"
+                android:background="#00000000"
+                android:inputType="textCapCharacters"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="50dp"/>
+
+            <ImageButton
+                android:id="@+id/btn_edit12"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="600dp"
+                android:background="#FFF"
+                android:layout_marginTop="30dp"
+                android:layout_below="@+id/btn_edit11"
+                app:srcCompat="@drawable/pencil_pink"/>
+
+            //HabitusEx
+
+            <TextView
+                android:id="@+id/tvHabitus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewPiel"
+                android:textSize="20sp"
+                android:text="10. Habitus exterior:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewHabitus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvHabitus"
+                android:textSize="20sp"
+                android:text="Municipio"
+                android:background="#00000000"
+                android:inputType="textCapCharacters"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="50dp"/>
+
+            <ImageButton
+                android:id="@+id/btn_edit13"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="600dp"
+                android:background="#FFF"
+                android:layout_marginTop="30dp"
+                android:layout_below="@+id/btn_edit12"
+                app:srcCompat="@drawable/pencil_pink"/>
+
+            //Cabeza
+
+            <TextView
+                android:id="@+id/tvCabeza"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewHabitus"
+                android:textSize="20sp"
+                android:text="11. Cabeza:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewCabeza"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvCabeza"
+                android:textSize="20sp"
+                android:text="Municipio"
+                android:background="#00000000"
+                android:inputType="textCapCharacters"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="50dp"/>
+
+            <ImageButton
+                android:id="@+id/btn_edit14"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="600dp"
+                android:background="#FFF"
+                android:layout_marginTop="30dp"
+                android:layout_below="@+id/btn_edit13"
+                app:srcCompat="@drawable/pencil_pink"/>
+
+            //Cuello
+
+            <TextView
+                android:id="@+id/tvCuello"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewCabeza"
+                android:textSize="20sp"
+                android:text="11. Cabeza:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewCuello"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvCuello"
+                android:textSize="20sp"
+                android:text="Municipio"
+                android:background="#00000000"
+                android:inputType="textCapCharacters"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="50dp"/>
+
+            <ImageButton
+                android:id="@+id/btn_edit15"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="600dp"
+                android:background="#FFF"
+                android:layout_marginTop="30dp"
+                android:layout_below="@+id/btn_edit14"
+                app:srcCompat="@drawable/pencil_pink"/>
+
 
             //EXPLORACION FISICA
 
@@ -264,7 +733,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/textViewCardio"
+                android:layout_below="@id/textViewCuello"
                 android:textStyle="bold"
                 android:textColor="@android:color/black"
                 android:textSize="30sp"

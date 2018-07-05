@@ -163,14 +163,6 @@ public class QuestionsFragment extends Fragment {
 
 
 
-        ImageButton back = (ImageButton) view.findViewById(R.id.back);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).activityNewPatient();
-
-            }
-        });
 
 
 

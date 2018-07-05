@@ -119,7 +119,7 @@
 
             </LinearLayout>
 
-            <LinearLayout
+            <RelativeLayout
                 android:id="@+id/questions"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -134,7 +134,8 @@
                     android:layout_marginTop="30dp"
                     android:text="1.- Electrodomésticos con los que cuenta el hogar"
                     android:textSize="24sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_below="@+id/title"/>
 
 
                     <CheckBox
@@ -144,6 +145,7 @@
                         android:buttonTint="#E91A8D"
                         android:paddingLeft="40dip"
                         android:text="Estufa"
+                        android:layout_below="@id/question"
                         android:textColor="#000000" />
 
                     <CheckBox
@@ -153,6 +155,7 @@
                         android:buttonTint="#E91A8D"
                         android:paddingLeft="40dip"
                         android:text="Refrigerador"
+                        android:layout_below="@id/estufa"
                         android:textColor="#000000" />
 
 
@@ -163,6 +166,7 @@
                         android:buttonTint="#E91A8D"
                         android:paddingLeft="40dip"
                         android:text="Lavadora"
+                        android:layout_below="@id/refrigerador"
                         android:textColor="#000000" />
 
                     <CheckBox
@@ -171,6 +175,7 @@
                         android:layout_height="wrap_content"
                         android:buttonTint="#E91A8D"
                         android:paddingLeft="40dip"
+                        android:layout_below="@+id/lavadora"
                         android:text="Teléfono fijo o celular"
                         android:textColor="#000000" />
 
@@ -180,8 +185,11 @@
                         android:layout_height="wrap_content"
                         android:buttonTint="#E91A8D"
                         android:paddingLeft="40dip"
+                        android:layout_below="@id/telefono"
                         android:text="Horno de Microondas"
                         android:textColor="#000000" />
+
+
 
                 <CheckBox
                     android:id="@+id/boiler"
@@ -190,7 +198,10 @@
                     android:buttonTint="#E91A8D"
                     android:paddingLeft="40dip"
                     android:text="Boíler o calentador de agua"
-                    android:textColor="#000000" />
+                    android:textColor="#000000"
+                    android:layout_toRightOf="@+id/estufa"
+                    android:layout_below="@+id/question"
+                    android:layout_marginLeft="200dp"/>
 
                 <CheckBox
                     android:id="@+id/radio"
@@ -199,6 +210,9 @@
                     android:buttonTint="#E91A8D"
                     android:paddingLeft="40dip"
                     android:text="Radio"
+                    android:layout_below="@+id/boiler"
+                    android:layout_toRightOf="@+id/refrigerador"
+                    android:layout_marginLeft="165dp"
                     android:textColor="#000000" />
 
                     <CheckBox
@@ -208,6 +222,9 @@
                         android:buttonTint="#E91A8D"
                         android:paddingLeft="40dip"
                         android:text="TV de paga"
+                        android:layout_toRightOf="@+id/lavadora"
+                        android:layout_below="@id/radio"
+                        android:layout_marginLeft="185dp"
                         android:textColor="#000000" />
 
                 <CheckBox
@@ -216,6 +233,9 @@
                     android:layout_height="wrap_content"
                     android:buttonTint="#E91A8D"
                     android:paddingLeft="40dip"
+                    android:layout_toRightOf="@+id/telefono"
+                    android:layout_below="@id/tele"
+                    android:layout_marginLeft="110dp"
                     android:text="Laptop o computadora de escritorio"
                     android:textColor="#000000" />
 
@@ -226,6 +246,9 @@
                     android:buttonTint="#E91A8D"
                     android:paddingLeft="40dip"
                     android:text="Internet"
+                    android:layout_below="@id/lap"
+                    android:layout_toRightOf="@+id/horno"
+                    android:layout_marginLeft="110dp"
                     android:textColor="#000000" />
 
                 <CheckBox
@@ -235,9 +258,10 @@
                     android:buttonTint="#E91A8D"
                     android:paddingLeft="40dip"
                     android:text="Automóvil"
+                    android:layout_below="@id/horno"
                     android:textColor="#000000" />
 
-            </LinearLayout>
+            </RelativeLayout>
 
             <LinearLayout
                 android:id="@+id/questions2"
@@ -435,15 +459,6 @@
                     android:layout_marginBottom="15dp"
                     android:orientation="horizontal">
 
-                    <ImageButton
-                        android:id="@+id/back"
-                        android:layout_width="140dp"
-                        android:layout_height="45dp"
-                        android:layout_gravity="left"
-                        android:background="@android:color/transparent"
-                        android:padding="10dp"
-                        android:scaleType="fitXY"
-                        app:srcCompat="@drawable/regresar" />
 
 
                     <ImageButton
