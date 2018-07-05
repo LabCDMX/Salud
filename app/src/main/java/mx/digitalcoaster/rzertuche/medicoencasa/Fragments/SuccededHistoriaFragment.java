@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import mx.digitalcoaster.rzertuche.medicoencasa.R;
 
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.inicio;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.notListerners;
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.registros;
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.seguimiento;
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.sincronizacion;
@@ -74,6 +75,7 @@ public class SuccededHistoriaFragment extends Fragment {
 
 
     public void restartListeners(){
+        notListerners=false;
         inicio.setEnabled(true);
         registros.setEnabled(true);
         seguimiento.setEnabled(true);

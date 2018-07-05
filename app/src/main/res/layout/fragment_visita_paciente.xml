@@ -158,7 +158,7 @@
                 android:padding="10dp"
                 android:layout_marginLeft="770dp"
                 android:scaleType="fitCenter"
-                app:srcCompat="@drawable/sincronizar" />
+                app:srcCompat="@drawable/anadir" />
 
             <View
                 android:id="@+id/divider"
