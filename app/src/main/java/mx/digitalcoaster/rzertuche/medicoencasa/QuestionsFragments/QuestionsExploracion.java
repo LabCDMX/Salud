@@ -31,7 +31,7 @@ import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.in
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.registros;
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.seguimiento;
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.sincronizacion;
-import static mx.digitalcoaster.rzertuche.medicoencasa.Fragments.PacientesFragment.isSeguimiento;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Fragments.VisitasFragment.isSeguimiento;
 
 
 public class QuestionsExploracion extends Fragment {
@@ -133,9 +133,14 @@ public class QuestionsExploracion extends Fragment {
                     sharedPreferences.setStringData("Talla", talla.getText().toString());
                     sharedPreferences.setStringData("Pulso", pulso.getText().toString());
 
+                    if(isSeguimiento){
+                        ((MainActivity)getActivity()).fragmentNotasHistoric();
+
+                    }else{
+                        ((MainActivity)getActivity()).historiaClinicaFragment();
+                    }
 
 
-                    ((MainActivity)getActivity()).historiaClinicaFragment();
 
                 }
 

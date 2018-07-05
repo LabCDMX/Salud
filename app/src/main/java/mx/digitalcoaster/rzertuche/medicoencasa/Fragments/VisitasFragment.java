@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -90,6 +91,8 @@ public class VisitasFragment extends Fragment {
 
         getProductos();
 
+
+
         String statusImage = sharedPreferences.getStringData("ImageItem");
 
         nombre.setText(sharedPreferences.getStringData("Nombre"));
@@ -109,6 +112,15 @@ public class VisitasFragment extends Fragment {
 
 
         }
+
+        ImageButton next = (ImageButton) getActivity().findViewById(R.id.next);
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                isSeguimiento = true;
+                ((MainActivity)getActivity()).questionExploracion();
+            }
+        });
 
 
     }

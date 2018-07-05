@@ -154,31 +154,12 @@
                         android:textColor="#000000" />
 
                     <RadioButton
-                        android:id="@+id/licenciatura_rb"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:buttonTint="#E91A8D"
-                        android:paddingLeft="40dip"
-                        android:text="Licenciatura"
-                        android:textColor="#000000" />
-
-
-                    <RadioButton
                         android:id="@+id/secundaria_rb"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:buttonTint="#E91A8D"
                         android:paddingLeft="40dip"
                         android:text="Secundaria"
-                        android:textColor="#000000" />
-
-                    <RadioButton
-                        android:id="@+id/posgrado_rb"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:buttonTint="#E91A8D"
-                        android:paddingLeft="40dip"
-                        android:text="Posgrado"
                         android:textColor="#000000" />
 
                     <RadioButton
@@ -189,6 +170,27 @@
                         android:paddingLeft="40dip"
                         android:text="Media Superior"
                         android:textColor="#000000" />
+
+                    <RadioButton
+                        android:id="@+id/licenciatura_rb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#E91A8D"
+                        android:paddingLeft="40dip"
+                        android:text="Superior"
+                        android:textColor="#000000" />
+
+
+                    <RadioButton
+                        android:id="@+id/posgrado_rb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#E91A8D"
+                        android:paddingLeft="40dip"
+                        android:text="Posgrado"
+                        android:textColor="#000000" />
+
+
 
                     <RadioButton
                         android:id="@+id/sin_esc_rb"
@@ -217,7 +219,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="30dp"
-                    android:text="2.- Tiempo de escuela/trabajo"
+                    android:text="2.- Horas que permanece por día en la escuela o trabajo"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
@@ -283,7 +285,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="30dp"
-                    android:text="3.- Tiempo de transporte"
+                    android:text="3.- Tiempo de traslado de casa a escuela o trabajo"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
@@ -339,7 +341,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="30dp"
-                    android:text="4.- Tiempo de recreación"
+                    android:text="4.- Tiempo que dedica a realizar una actividad recreativa"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
@@ -572,7 +574,7 @@
                         android:layout_height="wrap_content"
                         android:buttonTint="#E91A8D"
                         android:paddingLeft="40dip"
-                        android:text="Nose"
+                        android:text="No sé"
                         android:textColor="#000000" />
 
                     <RadioButton

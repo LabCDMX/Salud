@@ -59,7 +59,6 @@ public class PacientesFragment extends Fragment {
     private SQLiteDatabase db = null;   // Objeto para usar la base de datos local
     private Cursor c = null;            // Objeto para hacer consultas a la base de datos
     private TextView title;
-    public static Boolean isSeguimiento=false;
     SharedPreferences sharedPreferences;
 
 
