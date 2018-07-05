@@ -47,7 +47,7 @@ public class QuestionsExploracion extends Fragment {
     private int count = 0;
 
 
-
+    //Para manejar Rangos usarems Range<Integer> test = Range.between(1, 3);
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

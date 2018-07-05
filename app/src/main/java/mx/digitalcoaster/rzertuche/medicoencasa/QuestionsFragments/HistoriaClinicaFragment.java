@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import java.util.HashSet;
 import java.util.List;
@@ -25,6 +26,8 @@ import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.se
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.sincronizacion;
 import static mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsAntecedentes.listCardio;
 import static mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsAntecedentes.listHTA;
+import static mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsAntecedentesPersonales.listPersonales;
+
 import static mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsContextElectro.listElectro;
 
 
@@ -40,7 +43,8 @@ public class HistoriaClinicaFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
     SharedPreferences sharedPreferences;
 
-    EditText respiratorio, cardio, peso, estatura, HTA, cardioList;
+    EditText respiratorio, cardio, peso, estatura, HTA, cardioList, sobrepeso, tabaquismo;
+    TextView cerebro;
     ImageButton next;
 
 
@@ -78,6 +82,8 @@ public class HistoriaClinicaFragment extends Fragment {
         HTA = (EditText) getActivity().findViewById(R.id.textViewHTA);
         cardioList = (EditText) getActivity().findViewById(R.id.textViewCardioVas);
 
+        cerebro = (TextView) getActivity().findViewById(R.id.tvCerebro);
+
 
 
 
@@ -98,8 +104,8 @@ public class HistoriaClinicaFragment extends Fragment {
 
         String cadenaCardio = new String();
         String cadenaHTA = new String();
-        String listElectroAux= borrarRepetidos(listCardio).toString().replace("[","").replace("]","").replace(",","\n");
-        String listElectroAux2= borrarRepetidos(listHTA).toString().replace("[","").replace("]","").replace(",","\n");
+
+        String cadenaCerebro = new String();
 
 
 
@@ -111,9 +117,16 @@ public class HistoriaClinicaFragment extends Fragment {
             cadenaHTA+= "-" + object + "\n";
         }
 
+        for (String object: listPersonales) {
+            cadenaCerebro+= "-" + object + "\n";
+        }
+
+
 
         cardioList.setText(cadenaCardio);
         HTA.setText(cadenaHTA);
+
+        cerebro.setText(cadenaCerebro);
 
 
 

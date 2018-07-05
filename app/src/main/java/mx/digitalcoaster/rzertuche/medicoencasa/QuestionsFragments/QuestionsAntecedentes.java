@@ -42,6 +42,7 @@ public class QuestionsAntecedentes extends Fragment {
     public static List<String> listHTA = new ArrayList<String>();
 
 
+
     private Boolean isCardio = true;
     private Boolean isHTA = false;
 

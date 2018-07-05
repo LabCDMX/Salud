@@ -148,7 +148,7 @@
                     android:textColor="#000000" />
 
                 <CheckBox
-                    android:id="@+id/padres"
+                    android:id="@+id/sobrepeso"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:buttonTint="#E91A8D"
@@ -158,7 +158,7 @@
 
 
                 <CheckBox
-                    android:id="@+id/tios"
+                    android:id="@+id/vih"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:buttonTint="#E91A8D"
@@ -167,7 +167,7 @@
                     android:textColor="#000000" />
 
                 <CheckBox
-                    android:id="@+id/hermanos"
+                    android:id="@+id/enf_cardiovascular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:buttonTint="#E91A8D"
@@ -176,7 +176,7 @@
                     android:textColor="#000000" />
 
                 <CheckBox
-                    android:id="@+id/ninguno"
+                    android:id="@+id/tabaquismo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:buttonTint="#E91A8D"
@@ -185,7 +185,7 @@
                     android:textColor="#000000" />
 
                 <CheckBox
-                    android:id="@+id/ninguno2"
+                    android:id="@+id/tuberculosis"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:buttonTint="#E91A8D"
@@ -194,7 +194,7 @@
                     android:textColor="#000000" />
 
                 <CheckBox
-                    android:id="@+id/ninguno3"
+                    android:id="@+id/sedentarismo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:buttonTint="#E91A8D"

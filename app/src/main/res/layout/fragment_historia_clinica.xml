@@ -152,80 +152,9 @@
                 android:layout_marginTop="20dp"
                 android:textSize="20sp"
                 android:text="-Enfermedades Cerebrovascular:"
-                android:textStyle="bold"
                 android:layout_marginLeft="50dp"
                 android:layout_marginStart="50dp"
                 android:textColor="@android:color/black" />
-
-            <EditText
-                android:id="@+id/textViewCerebro"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvCerebro"
-                android:textSize="20sp"
-                android:text="Respiratorio"
-                android:inputType="textMultiLine"
-                android:background="#00000000"
-                android:textColor="@android:color/black"
-                android:layout_marginLeft="50dp" />
-
-
-
-            <TextView
-                android:id="@+id/tvSobrepeso"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvCerebro"
-                android:layout_marginTop="50dp"
-                android:textSize="20sp"
-                android:text="-Sobrepeso:"
-                android:textStyle="bold"
-                android:layout_marginLeft="50dp"
-                android:layout_marginStart="50dp"
-                android:textColor="@android:color/black" />
-
-            <EditText
-                android:id="@+id/textViewSobrepeso"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvSobrepeso"
-                android:textSize="20sp"
-                android:text="Respiratorio"
-                android:inputType="textMultiLine"
-                android:background="#00000000"
-                android:textColor="@android:color/black"
-                android:layout_marginLeft="50dp" />
-
-            <TextView
-                android:id="@+id/tvTabaquismo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvSobrepeso"
-                android:layout_marginTop="50dp"
-                android:textSize="20sp"
-                android:text="-Tabaquismo:"
-                android:textStyle="bold"
-                android:layout_marginLeft="50dp"
-                android:layout_marginStart="50dp"
-                android:textColor="@android:color/black" />
-
-            <EditText
-                android:id="@+id/textViewTabaquismo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvTabaquismo"
-                android:textSize="20sp"
-                android:text="Respiratorio"
-                android:inputType="textMultiLine"
-                android:background="#00000000"
-                android:textColor="@android:color/black"
-                android:layout_marginLeft="50dp" />
-
-
-
-
-
-
 
             <ImageButton
                 android:id="@+id/btn_edit2"
@@ -242,7 +171,7 @@
                 android:layout_marginTop="40dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/textViewTabaquismo"
+                android:layout_below="@id/tvCerebro"
                 android:textStyle="bold"
                 android:textColor="@android:color/black"
                 android:textSize="30sp"
@@ -402,6 +331,98 @@
                 android:inputType="textCapCharacters"
                 android:textColor="@android:color/black"
                 android:layout_marginLeft="120dp"/>
+
+
+            //Hemotipo
+            <TextView
+                android:id="@+id/tvHemotipo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewEstatura"
+                android:textSize="20sp"
+                android:text="3. Hemotipo:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewHemotipo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewEstatura"
+                android:textSize="20sp"
+                android:text="Municipio"
+                android:background="#00000000"
+                android:inputType="textCapCharacters"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="140dp"/>
+
+            //Talla
+
+
+            <TextView
+                android:id="@+id/tvTalla"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewHemotipo"
+                android:textSize="20sp"
+                android:text="4. Talla:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewTalla"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewHemotipo"
+                android:textSize="20sp"
+                android:text="Municipio"
+                android:background="#00000000"
+                android:inputType="textCapCharacters"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="90dp"/>
+
+
+
+            //Pulso
+
+
+            <TextView
+                android:id="@+id/tvPulso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewTalla"
+                android:textSize="20sp"
+                android:text="5. Pulso:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewPulso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewTalla"
+                android:textSize="20sp"
+                android:text="Municipio"
+                android:background="#00000000"
+                android:inputType="textCapCharacters"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="90dp"/>
+
+
+
+
+
+            //Glucemia
+
+
+
+
 
 
 

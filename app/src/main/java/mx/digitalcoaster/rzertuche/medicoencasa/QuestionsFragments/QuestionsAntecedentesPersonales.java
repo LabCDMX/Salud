@@ -35,11 +35,14 @@ public class QuestionsAntecedentesPersonales extends Fragment {
     SharedPreferences sharedPreferences;
     private CheckBox estufa,refrigerador,lavadora,telefono,horno,televisor;
     private ImageButton next;
-    public static List<String> listElectro = new ArrayList<String>();
 
     private LinearLayout questions,questions3,questions4;
     private TextView questions2;
     private int count = 0;
+
+    private CheckBox enf_cerebro,sobrepeso,tabaquismo,vih,enf_cardiovascular,sedentarismo,tuberculosis;
+
+    public static List<String> listPersonales = new ArrayList<String>();
 
 
 
@@ -68,6 +71,15 @@ public class QuestionsAntecedentesPersonales extends Fragment {
 
         questions2 = (TextView) getActivity().findViewById(R.id.question2);
 
+        enf_cerebro = (CheckBox) getActivity().findViewById(R.id.enf_cerebro);
+        vih = (CheckBox) getActivity().findViewById(R.id.vih);
+        sobrepeso = (CheckBox) getActivity().findViewById(R.id.sobrepeso);
+        tabaquismo = (CheckBox) getActivity().findViewById(R.id.tabaquismo);
+        sedentarismo = (CheckBox) getActivity().findViewById(R.id.sedentarismo);
+        tuberculosis = (CheckBox) getActivity().findViewById(R.id.tuberculosis);
+        enf_cardiovascular = (CheckBox) getActivity().findViewById(R.id.enf_cardiovascular);
+
+
 
 
 
@@ -76,10 +88,35 @@ public class QuestionsAntecedentesPersonales extends Fragment {
             @Override
             public void onClick(View v) {
 
+                if(enf_cerebro.isChecked() || vih.isChecked() || sobrepeso.isChecked() || tabaquismo.isChecked() || sedentarismo.isChecked()
+                        || tuberculosis.isChecked() || enf_cardiovascular.isChecked()) {
+                    if (enf_cerebro.isChecked()) {
+                        listPersonales.add("Enfermedad Cerebrovascular");
+                    }
+                    if (vih.isChecked()) {
+                        listPersonales.add("VIH");
+                    }
+                    if (sobrepeso.isChecked()) {
+                        listPersonales.add("Sobrepeso");
+                    }
+                    if (tabaquismo.isChecked()) {
+                        listPersonales.add("Tabaquismo");
+                    }
+                    if (sedentarismo.isChecked()) {
+                        listPersonales.add("Sedentarismo");
+                    }
+                    if (tuberculosis.isChecked()) {
+                        listPersonales.add("Tuberculosis");
+                    }
+                    if (enf_cardiovascular.isChecked()) {
+                        listPersonales.add("Enfermedad Cardiovascular");
+                    }
+                }
+
+
+
+
                 ((MainActivity)getActivity()).questionInterrogatorio();
-
-
-
             }
         });
 

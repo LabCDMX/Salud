@@ -196,6 +196,153 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/questions2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/questions1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="30dp"
+                    android:text="3.- Tension Arterial"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+
+                <EditText
+                    android:id="@+id/answers2"
+                    android:layout_width="700dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:hint="Escribir respuesta aquí."
+                    android:inputType="number" />
+
+                <TextView
+                    android:id="@+id/questions3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="30dp"
+                    android:text="4.- Frecuencia Cardiaca"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+
+                <EditText
+                    android:id="@+id/answers3"
+                    android:layout_width="700dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:hint="Escribir respuesta aquí."
+                    android:inputType="numberDecimal" />
+
+                <TextView
+                    android:id="@+id/questions4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="30dp"
+                    android:text="5.- Frecuencia Respiratoria"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+
+                <EditText
+                    android:id="@+id/answers4"
+                    android:layout_width="700dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:hint="Escribir respuesta aquí."
+                    android:inputType="numberDecimal" />>
+
+
+
+            </LinearLayout>
+
+
+            //PARTE 3
+
+            <LinearLayout
+                android:id="@+id/questions6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/questions7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="30dp"
+                    android:text="6.- Talla"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+
+                <EditText
+                    android:id="@+id/answers7"
+                    android:layout_width="700dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:hint="Escribir respuesta aquí."
+                    android:inputType="number" />
+
+                <TextView
+                    android:id="@+id/questions8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="30dp"
+                    android:text="7.- Pulso"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+
+                <EditText
+                    android:id="@+id/answers8"
+                    android:layout_width="700dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:hint="Escribir respuesta aquí."
+                    android:inputType="numberDecimal" />
+
+                <TextView
+                    android:id="@+id/questions9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="30dp"
+                    android:text="8.- Glucemia"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+
+                <EditText
+                    android:id="@+id/answers9"
+                    android:layout_width="700dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:hint="Escribir respuesta aquí."
+                    android:inputType="numberDecimal" />>
+
+
+
+            </LinearLayout>
+
 
 
 
