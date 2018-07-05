@@ -149,7 +149,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:hint="Escribir respuesta aquí."
+                    android:hint="Ej. 52 kg"
                     android:inputType="number" />
 
                 <TextView
@@ -158,7 +158,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="30dp"
-                    android:text="3.- Estatura (cm)"
+                    android:text="3.- Estatura (mts)"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
@@ -169,7 +169,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:hint="Escribir respuesta aquí."
+                    android:hint="Ej. 1.60 mts"
                     android:inputType="numberDecimal" />
 
                 <TextView
@@ -242,7 +242,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:hint="Escribir respuesta aquí."
+                    android:hint="Ej. 110 x min"
                     android:inputType="numberSigned" />
 
                 <TextView
@@ -262,7 +262,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:hint="Escribir respuesta aquí."
+                    android:hint="Ej. 100 x min."
                     android:inputType="numberSigned" />>
 
 
@@ -297,7 +297,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:hint="Escribir respuesta aquí."
+                    android:hint="Ej. 80 cm"
                     android:inputType="numberDecimal" />
 
                 <TextView
@@ -317,7 +317,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:hint="Escribir respuesta aquí."
+                    android:hint="Ej. 90 x min"
                     android:inputType="numberSigned" />
 
                 <TextView
@@ -337,7 +337,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:hint="Escribir respuesta aquí."
+                    android:hint="Ej. 105 mg/DI"
                     android:inputType="numberSigned" />>
 
 
@@ -379,7 +379,6 @@
                         android:text="A"
                         android:textColor="#000000" />
 
-
                     <RadioButton
                         android:id="@+id/tipoB"
                         android:layout_width="wrap_content"
@@ -406,6 +405,16 @@
                         android:paddingLeft="40dip"
                         android:text="O"
                         android:textColor="#000000" />
+
+                </RadioGroup>
+
+
+                <RadioGroup
+                    android:id="@+id/radioTipoSangre"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
                     <RadioButton
                         android:id="@+id/tipoRHPositivo"
                         android:layout_width="wrap_content"
@@ -422,17 +431,18 @@
                         android:paddingLeft="40dip"
                         android:text="RH -"
                         android:textColor="#000000" />
-                    <RadioButton
-                        android:id="@+id/tipoDesconocido"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:buttonTint="#E91A8D"
-                        android:paddingLeft="40dip"
-                        android:text="Desconocido"
-                        android:textColor="#000000" />
 
 
                 </RadioGroup>
+
+                <RadioButton
+                    android:id="@+id/tipoDesconocido"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="#E91A8D"
+                    android:paddingLeft="40dip"
+                    android:text="Desconocido"
+                    android:textColor="#000000" />
 
             </LinearLayout>
 
