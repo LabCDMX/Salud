@@ -8,6 +8,8 @@
     <string name="antecedentes_personales">Antecedentes\n (Personales)</string>
     <string name="condiciones_servicios">Condiciones y \n Servicios del \n Hogar </string>
     <string name="fase_1">FASE 1 \n COMPLETADA </string>
+    <string name="dom_reg">DOMICILIO \n REGISTRADO </string>
+
     <string name="fase_2">FASE 2 \n COMPLETADA </string>
     <string name="pacientes_registros"> PACIENTES REGISTRADOS \n FASE 1</string>
     <string name="interrogatorio">Interrogatorio \n por aparatos \n y sistemas</string>

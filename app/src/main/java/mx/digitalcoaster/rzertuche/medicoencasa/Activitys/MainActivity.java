@@ -33,6 +33,7 @@ import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.RegistroFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.SeguimientoFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.SincronizacionFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.SuccededFragment;
+import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.SuccededFragmentDom;
 import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.SuccededHistoriaFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.VisitaFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.VisitasFragment;
@@ -87,7 +88,8 @@ public class MainActivity extends AppCompatActivity implements
         NotasHistoric.OnFragmentInteractionListener,
         DiagnosticoFragment.OnFragmentInteractionListener,
         TarjetaPacienteFragment.OnFragmentInteractionListener,
-        VisitasFragment.OnFragmentInteractionListener{
+        VisitasFragment.OnFragmentInteractionListener,
+        SuccededFragmentDom.OnFragmentInteractionListener{
 
     public String patientID;
     public static ImageView inicio, registros, seguimiento, sincronizacion;
@@ -348,6 +350,15 @@ public class MainActivity extends AppCompatActivity implements
 
     public void questionFragmentTwo(){
         QuestionsFragmentTwo fragment = new QuestionsFragmentTwo();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.fragmentHolder, fragment);
+        transaction.commit();
+
+    }
+
+    public void domRegistrado(){
+        SuccededFragmentDom fragment = new SuccededFragmentDom();
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.fragmentHolder, fragment);

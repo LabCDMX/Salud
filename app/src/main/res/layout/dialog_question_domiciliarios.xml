@@ -125,33 +125,36 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <TextView
-                    android:id="@+id/question"
+                    android:id="@+id/question3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:text="1.- Estado"
+                    android:text="4.- Localidad / Colonia"
+                    android:layout_marginTop="30dp"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/answer"
+                    android:id="@+id/answer3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:inputType="textCapCharacters"
-                    android:hint="Escribir respuesta aquí." />
+                    android:hint="Escribir respuesta aquí."
+                    android:inputType="textCapCharacters"/>
+
 
                 <TextView
                     android:id="@+id/question1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:layout_marginTop="30dp"
-                    android:text="2.- Municipio / Delegación"
+                    android:layout_marginTop="20dp"
+                    android:text="5.- Municipio / Delegación"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
@@ -167,25 +170,185 @@
                     />
 
                 <TextView
-                    android:id="@+id/question3"
+                    android:id="@+id/question"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:text="3.- Localidad / Colonia"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="20dp"
+                    android:text="6.- Estado"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/answer3"
+                    android:id="@+id/answer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:inputType="textCapCharacters"
+                    android:hint="Escribir respuesta aquí." />
+
+                <TextView
+                    android:id="@+id/question7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="7.- CP"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/answer7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:inputType="number"
+                    android:hint="Escribir respuesta aquí." />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/open2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <TextView
+                    android:id="@+id/question4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="1.- Calle"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/answer4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:inputType="textCapCharacters"
+                    android:hint="Escribir respuesta aquí." />
+
+                <TextView
+                    android:id="@+id/question5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="30dp"
+                    android:text="2.- No. Ext"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/answer5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:hint="Escribir respuesta aquí."
-                    android:inputType="textCapCharacters"
+                    android:inputType="number"
 
                     />
+
+                <TextView
+                    android:id="@+id/question6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="3.- No. Interior"
+                    android:layout_marginTop="30dp"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/answer6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:hint="Escribir respuesta aquí."
+                    android:inputType="number"
+
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/open3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/question8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="8.- Visita"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <RadioGroup
+                    android:id="@+id/radioVisita"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <RadioButton
+                        android:id="@+id/censado"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#E91A8D"
+                        android:paddingLeft="40dip"
+                        android:text="Censado"
+                        android:textColor="#000000" />
+
+                    <RadioButton
+                        android:id="@+id/ausente"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#E91A8D"
+                        android:paddingLeft="40dip"
+                        android:text="Ausente"
+                        android:textColor="#000000" />
+
+                    <RadioButton
+                        android:id="@+id/desocupado"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#E91A8D"
+                        android:paddingLeft="40dip"
+                        android:text="Desocupado"
+                        android:textColor="#000000" />
+
+                    <RadioButton
+                        android:id="@+id/renuente"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#E91A8D"
+                        android:paddingLeft="40dip"
+                        android:text="Renuente"
+                        android:textColor="#000000" />
+                    <RadioButton
+                        android:id="@+id/no_vivienda"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#E91A8D"
+                        android:paddingLeft="40dip"
+                        android:text="No vivienda"
+                        android:textColor="#000000" />
+
+                </RadioGroup>
+
+
 
             </LinearLayout>
 

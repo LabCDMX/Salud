@@ -127,7 +127,7 @@ public class QuestionsFragmentTwo extends Fragment {
                                     sharedPreferences.setStringData("Sexo",sexo);
                                     sharedPreferences.setStringData("Nac",nacionalidad.getText().toString());
 
-                                    ((MainActivity)getActivity()).fragmentDomiciliarios();
+                                    ((MainActivity)getActivity()).questionDomTwo();
 
                                 }else{
                                     nacionalidad.setError("Campo requerido");

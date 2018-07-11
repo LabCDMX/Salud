@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import java.util.Date;
@@ -44,7 +45,7 @@ public class QuestionDomFragment extends Fragment {
     EditText answer,answer2,answer3;
 
     LinearLayout multiple;
-    LinearLayout open;
+    LinearLayout open,open2, open3;
     LinearLayout finish;
     LinearLayout review;
 
@@ -63,6 +64,7 @@ public class QuestionDomFragment extends Fragment {
 
     Activity activity;
     View container;
+    int count = 0;
 
 
 
@@ -93,6 +95,12 @@ public class QuestionDomFragment extends Fragment {
 
 
         open = (LinearLayout) view.findViewById(R.id.open);
+        open2 = (LinearLayout) view.findViewById(R.id.open2);
+        open3 = (LinearLayout) view.findViewById(R.id.open3);
+
+
+
+
         multiple = (LinearLayout) view.findViewById(R.id.multiple);
         finish = (LinearLayout) view.findViewById(R.id.finishLayout);
         review = (LinearLayout) view.findViewById(R.id.ReviewLayout);
@@ -114,6 +122,7 @@ public class QuestionDomFragment extends Fragment {
         imageLogo = (ImageView) view.findViewById(R.id.imageView8);
         imageIcon2 = (ImageView) view.findViewById(R.id.icon2);
 
+        final RadioGroup radioVisita = getActivity().findViewById(R.id.radioVisita);
         category.setText("Personales");
 
         sharedPreferences = SharedPreferences.getInstance();
@@ -135,7 +144,28 @@ public class QuestionDomFragment extends Fragment {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String nombre = answer.getText().toString();
+
+
+
+                count ++;
+
+                if(count == 1){
+                    open2.setVisibility(View.GONE);
+                    open.setVisibility(View.VISIBLE);
+                }else if(count == 2){
+                    open.setVisibility(View.GONE);
+                    open3.setVisibility(View.VISIBLE);
+
+                }else if(count == 3){
+                    String tipoVisita = sharedPreferences.getStringData("Visita");
+                    if(tipoVisita.equals("Desocupado") || tipoVisita.equals("Renuente") || tipoVisita.equals("No vivienda") || tipoVisita.equals("Ausente")){
+                        ((MainActivity)getActivity()).domRegistrado();
+                    }else if (tipoVisita.equals("Censado")){
+                        ((MainActivity)getActivity()).activityRegistros();
+                    }
+
+                }
+                /*String nombre = answer.getText().toString();
                 String apeP = answer2.getText().toString();
                 String apeM = answer3.getText().toString();
 
@@ -172,11 +202,33 @@ public class QuestionDomFragment extends Fragment {
                             getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.showSoftInput(answer, InputMethodManager.SHOW_IMPLICIT);
 
-                }
+                } */
+
 
 
 
             }
+        });
+
+        radioVisita.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
+
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                // TODO Auto-generated method stub
+                if (checkedId == R.id.censado){
+                    sharedPreferences.setStringData("Visita","Censado");
+                }else if (checkedId == R.id.ausente){
+                    sharedPreferences.setStringData("Visita","Ausente");
+                }else if (checkedId == R.id.desocupado){
+                    sharedPreferences.setStringData("Visita","Desocupado");
+                }else if (checkedId == R.id.renuente){
+                    sharedPreferences.setStringData("Visita","Renuente");
+                }else if (checkedId == R.id.no_vivienda){
+                    sharedPreferences.setStringData("Visita","No vivienda");
+                }
+
+            }
+
         });
 
 
