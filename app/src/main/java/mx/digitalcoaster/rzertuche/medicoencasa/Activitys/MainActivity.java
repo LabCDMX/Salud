@@ -24,6 +24,7 @@ import android.widget.Toast;
 import io.realm.Realm;
 import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseDB;
 import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseHelper;
+import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.DatosCensado;
 import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.InicioFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.InicioFragmentMain;
 import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.NewPatientFragment;
@@ -89,7 +90,8 @@ public class MainActivity extends AppCompatActivity implements
         DiagnosticoFragment.OnFragmentInteractionListener,
         TarjetaPacienteFragment.OnFragmentInteractionListener,
         VisitasFragment.OnFragmentInteractionListener,
-        SuccededFragmentDom.OnFragmentInteractionListener{
+        SuccededFragmentDom.OnFragmentInteractionListener,
+        DatosCensado.OnFragmentInteractionListener{
 
     public String patientID;
     public static ImageView inicio, registros, seguimiento, sincronizacion;
@@ -337,6 +339,14 @@ public class MainActivity extends AppCompatActivity implements
 
     }
 
+    public void datosCensado(){
+        DatosCensado fragment = new DatosCensado();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.fragmentHolder, fragment);
+        transaction.commit();
+
+    }
 
 
     public void questionInterrogatorio(){

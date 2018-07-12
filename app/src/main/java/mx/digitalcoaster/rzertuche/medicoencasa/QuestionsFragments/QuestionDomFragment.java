@@ -3,8 +3,10 @@ package mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments;
 import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Date;
 import java.util.UUID;
@@ -45,7 +48,7 @@ public class QuestionDomFragment extends Fragment {
     EditText answer,answer2,answer3;
 
     LinearLayout multiple;
-    LinearLayout open,open2, open3;
+    LinearLayout open,open2, open3,open4;
     LinearLayout finish;
     LinearLayout review;
 
@@ -97,6 +100,7 @@ public class QuestionDomFragment extends Fragment {
         open = (LinearLayout) view.findViewById(R.id.open);
         open2 = (LinearLayout) view.findViewById(R.id.open2);
         open3 = (LinearLayout) view.findViewById(R.id.open3);
+        open4 = view.findViewById(R.id.open4);
 
 
 
@@ -154,17 +158,33 @@ public class QuestionDomFragment extends Fragment {
                     open.setVisibility(View.VISIBLE);
                 }else if(count == 2){
                     open.setVisibility(View.GONE);
-                    open3.setVisibility(View.VISIBLE);
+                    open4.setVisibility(View.VISIBLE);
 
                 }else if(count == 3){
+                    open4.setVisibility(View.GONE);
+                    open3.setVisibility(View.VISIBLE);
+
+                    imageIcon2.setImageDrawable(getActivity().getResources().getDrawable(R.drawable.number_two_pink));
+
+                }else if(count == 4){
                     String tipoVisita = sharedPreferences.getStringData("Visita");
-                    if(tipoVisita.equals("Desocupado") || tipoVisita.equals("Renuente") || tipoVisita.equals("No vivienda") || tipoVisita.equals("Ausente")){
-                        ((MainActivity)getActivity()).domRegistrado();
-                    }else if (tipoVisita.equals("Censado")){
-                        ((MainActivity)getActivity()).activityRegistros();
+                    if(tipoVisita.equals("")){
+                        count --;
+                        Toast.makeText(getActivity(), "Selecciona uno antes de continuar", Toast.LENGTH_SHORT).show();
+                    }else{
+
+                        if(tipoVisita.equals("Desocupado") || tipoVisita.equals("Renuente") || tipoVisita.equals("No vivienda") || tipoVisita.equals("Ausente")){
+                            ((MainActivity)getActivity()).domRegistrado();
+                        }else if (tipoVisita.equals("Censado")){
+                            ((MainActivity)getActivity()).datosCensado();
+                        }
+
                     }
 
+
                 }
+
+                
                 /*String nombre = answer.getText().toString();
                 String apeP = answer2.getText().toString();
                 String apeM = answer3.getText().toString();
