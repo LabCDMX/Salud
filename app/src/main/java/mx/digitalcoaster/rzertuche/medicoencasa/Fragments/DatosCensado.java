@@ -95,7 +95,8 @@ public class DatosCensado extends Fragment {
         nuevo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //((MainActivity)getActivity()).fragmentCuidador();
+                ((MainActivity)getActivity()).activityRegistros();
+
             }
         });
 
@@ -103,7 +104,7 @@ public class DatosCensado extends Fragment {
         historia_clinica.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((MainActivity)getActivity()).activityRegistros();
+                ((MainActivity)getActivity()).datosCuidador();
             }
         });
 

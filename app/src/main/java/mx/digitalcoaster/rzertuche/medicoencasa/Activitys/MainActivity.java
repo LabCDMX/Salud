@@ -43,7 +43,9 @@ import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.DatosGenerale
 import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.DiagnosticoFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.HistoriaClinicaFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.NotasHistoric;
+import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionCuidador;
 import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionDomFragment;
+import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionPoblacion;
 import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsAlimentos;
 import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsAntecedentes;
 import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsAntecedentesPersonales;
@@ -91,7 +93,8 @@ public class MainActivity extends AppCompatActivity implements
         TarjetaPacienteFragment.OnFragmentInteractionListener,
         VisitasFragment.OnFragmentInteractionListener,
         SuccededFragmentDom.OnFragmentInteractionListener,
-        DatosCensado.OnFragmentInteractionListener{
+        DatosCensado.OnFragmentInteractionListener,
+        QuestionCuidador.OnFragmentInteractionListener{
 
     public String patientID;
     public static ImageView inicio, registros, seguimiento, sincronizacion;
@@ -338,6 +341,26 @@ public class MainActivity extends AppCompatActivity implements
         transaction.commit();
 
     }
+
+    public void candidatoPrograma(){
+        QuestionPoblacion fragment = new QuestionPoblacion();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.fragmentHolder, fragment);
+        transaction.commit();
+
+    }
+
+
+    public void datosCuidador(){
+        QuestionCuidador fragment = new QuestionCuidador();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.fragmentHolder, fragment);
+        transaction.commit();
+
+    }
+
 
     public void datosCensado(){
         DatosCensado fragment = new DatosCensado();
