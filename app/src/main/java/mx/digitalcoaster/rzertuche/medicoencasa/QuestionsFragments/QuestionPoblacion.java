@@ -114,6 +114,8 @@ public class QuestionPoblacion extends Fragment {
 
 
         final RadioGroup radioVisita = getActivity().findViewById(R.id.radioCandidato);
+        final RadioGroup radioDerecho = getActivity().findViewById(R.id.radioDerechohabiencia);
+
 
 
         sharedPreferences = SharedPreferences.getInstance();
@@ -135,12 +137,27 @@ public class QuestionPoblacion extends Fragment {
                     imageLogo.setImageDrawable(getActivity().getResources().getDrawable(R.drawable.icon_antecedentes));
                     category.setText("DERECHOHABIENCIA");
 
+                    String tipoVisita = sharedPreferences.getStringData("DerechoHabi");
+
+                    if(tipoVisita.equals("")){
+                        count --;
+                        Toast.makeText(getActivity(), "Selecciona uno antes de continuar", Toast.LENGTH_SHORT).show();
+                    }else{
+
+                        if(tipoVisita.equals("IMSS") || tipoVisita.equals("ISSSTE")){
+
+                            ((MainActivity)getActivity()).domRegistrado();
+
+                        }else{
+
+                            open2.setVisibility(View.GONE);
+                            open3.setVisibility(View.VISIBLE);
+
+                        }
+
+                    }
+
                 }else if(count == 2){
-
-                    open2.setVisibility(View.GONE);
-                    open3.setVisibility(View.VISIBLE);
-
-                }else if(count == 3){
 
                     String tipoVisita = sharedPreferences.getStringData("Candidato");
                     if(tipoVisita.equals("")){
@@ -160,8 +177,8 @@ public class QuestionPoblacion extends Fragment {
 
                     }
 
-
                 }
+
 
                 /*String nombre = answer.getText().toString();
                 String apeP = answer2.getText().toString();
@@ -217,6 +234,28 @@ public class QuestionPoblacion extends Fragment {
                     sharedPreferences.setStringData("Candidato","Si");
                 }else if (checkedId == R.id.no){
                     sharedPreferences.setStringData("Candidato","No");
+                }
+
+            }
+
+        });
+
+
+        radioDerecho.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
+
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                // TODO Auto-generated method stub
+                if (checkedId == R.id.imss){
+                    sharedPreferences.setStringData("DerechoHabi","IMSS");
+                }else if (checkedId == R.id.issste){
+                    sharedPreferences.setStringData("DerechoHabi","ISSSTE");
+                }else if (checkedId == R.id.otros){
+                    sharedPreferences.setStringData("DerechoHabi","Otros");
+                }else if (checkedId == R.id.seguro_popular){
+                    sharedPreferences.setStringData("DerechoHabi","Seguro Popular");
+                }else if (checkedId == R.id.gratuidad){
+                    sharedPreferences.setStringData("DerechoHabi","Gratuidad");
                 }
 
             }
