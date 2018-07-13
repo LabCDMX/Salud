@@ -24,6 +24,7 @@ import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseDB;
 import mx.digitalcoaster.rzertuche.medicoencasa.R;
 import mx.digitalcoaster.rzertuche.medicoencasa.models.Item;
 import mx.digitalcoaster.rzertuche.medicoencasa.models.ItemAdapter;
+import mx.digitalcoaster.rzertuche.medicoencasa.models.VisitasAdapter;
 
 
 /**
@@ -55,6 +56,9 @@ public class RegistroFragment extends Fragment {
     private Cursor c = null;            // Objeto para hacer consultas a la base de datos
 
     SharedPreferences sharedPreferences;
+
+    public GridView lista2;
+    private List<Item> items2 = null;
 
 
     public RegistroFragment() {
@@ -92,6 +96,36 @@ public class RegistroFragment extends Fragment {
 
         sharedPreferences = SharedPreferences.getInstance();
 
+
+
+
+        lista2 = (GridView) getActivity().findViewById(R.id.gridview);
+        items2 = new ArrayList<>();
+
+
+        getPacientes();
+        lista.setAdapter(new VisitasAdapter(getActivity().getApplicationContext(), items2));
+
+
+        sharedPreferences = SharedPreferences.getInstance();
+
+
+        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View v, int position, long arg3) {
+                Item selectedUser = items.get(position);
+                String nameUser = selectedUser.getNombre();
+                sharedPreferences.setStringData("nameSeguimiento", nameUser);
+                Log.e("TOUCHME",nameUser);
+                ((MainActivity)getActivity()).visitasFragment(nameUser);
+
+            }
+        });
+
+
+
+
+
         GridView gridView = (GridView) view.findViewById(R.id.gridusers);
 
         items = new ArrayList<>();
@@ -121,6 +155,27 @@ public class RegistroFragment extends Fragment {
             if (c.moveToFirst()) {
                 do {
                     items.add(new Item(c.getString(1), c.getString(2), c.getString(3)));
+                }while (c.moveToNext());
+            } else {
+                System.out.println("No existen PACIENTES");
+            }
+            c.close();
+        } catch (Exception ex) {
+            Log.e("Error", ex.toString());
+        } finally {
+            db.close();
+        }
+    }
+
+
+    private void getPacientes() {
+
+        db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE, null);
+        try {
+            c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_VISITAS, null);
+            if (c.moveToFirst()) {
+                do {
+                    items2.add(new Item(c.getString(1), c.getString(2), c.getString(3), c.getString(5)));
                 }while (c.moveToNext());
             } else {
                 System.out.println("No existen PACIENTES");

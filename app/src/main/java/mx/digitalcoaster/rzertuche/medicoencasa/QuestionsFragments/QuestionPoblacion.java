@@ -150,6 +150,10 @@ public class QuestionPoblacion extends Fragment {
 
                         }else{
 
+                            imageLogo.setVisibility(View.GONE);
+                            category.setVisibility(View.GONE);
+
+
                             open2.setVisibility(View.GONE);
                             open3.setVisibility(View.VISIBLE);
 

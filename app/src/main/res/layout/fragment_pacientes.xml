@@ -65,7 +65,7 @@
             <GridView
                 android:id="@+id/gridusers"
                 android:layout_width="match_parent"
-                android:layout_height="400dp"
+                android:layout_height="300dp"
                 android:columnWidth="100dp"
                 android:numColumns="3"
                 android:verticalSpacing="10dp"

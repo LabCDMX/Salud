@@ -56,6 +56,10 @@ public class PacientesFragment extends Fragment {
     public GridView lista;
     private List<Item> items = null;
 
+    public GridView lista2;
+    private List<Item> items2 = null;
+
+
     private SQLiteDatabase db = null;   // Objeto para usar la base de datos local
     private Cursor c = null;            // Objeto para hacer consultas a la base de datos
     private TextView title;
@@ -104,14 +108,44 @@ public class PacientesFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        lista = (GridView) getActivity().findViewById(R.id.gridview);
+        sharedPreferences = SharedPreferences.getInstance();
 
+
+
+
+        GridView gridView = (GridView) view.findViewById(R.id.gridusers);
+
+        items2 = new ArrayList<>();
+        getPacientes();
+        gridView.setAdapter(new ItemAdapter(getActivity().getApplicationContext(), items2));
+
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View v, int position, long arg3) {
+                Item selectedUser = items2.get(position);
+                Log.d("User", "USERUUID:"+selectedUser.getNombre());
+                sharedPreferences.setStringData("nameHistoric", selectedUser.getNombre());
+                sharedPreferences.setStringData("curpHistoric", selectedUser.getCurp());
+                sharedPreferences.setStringData("direccionHistoric", selectedUser.getDireccion());
+
+                ((MainActivity)getActivity()).questionAntecedentes();
+
+            }
+        });
+
+
+
+
+
+
+        lista = (GridView) getActivity().findViewById(R.id.gridview);
         items = new ArrayList<>();
+
+
         getProductos();
         lista.setAdapter(new VisitasAdapter(getActivity().getApplicationContext(), items));
 
 
-        sharedPreferences = SharedPreferences.getInstance();
 
 
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -149,6 +183,28 @@ public class PacientesFragment extends Fragment {
             db.close();
         }
     }
+
+    private void getPacientes() {
+
+        db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, android.content.Context.MODE_PRIVATE, null);
+        try {
+            c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES, null);
+            if (c.moveToFirst()) {
+                do {
+                    items2.add(new Item(c.getString(1), c.getString(2), c.getString(3)));
+                }while (c.moveToNext());
+            } else {
+                System.out.println("No existen PACIENTES");
+            }
+            c.close();
+        } catch (Exception ex) {
+            Log.e("Error", ex.toString());
+        } finally {
+            db.close();
+        }
+    }
+
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

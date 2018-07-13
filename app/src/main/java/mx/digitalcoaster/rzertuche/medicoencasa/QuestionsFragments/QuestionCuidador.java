@@ -1,6 +1,7 @@
 package mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,13 +10,20 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 
 import mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity;
 import mx.digitalcoaster.rzertuche.medicoencasa.R;
@@ -44,6 +52,14 @@ public class QuestionCuidador extends Fragment {
     Activity activity;
     View container;
     int count = 0;
+
+    TextView answer4;
+
+    private Spinner sp;
+
+    private SimpleDateFormat dateFormatter;
+    private DatePickerDialog datePickerDialog;
+
 
 
 
@@ -81,6 +97,43 @@ public class QuestionCuidador extends Fragment {
 
 
         sharedPreferences = SharedPreferences.getInstance();
+        sp = getActivity().findViewById(R.id.answer6);
+
+
+
+        answer4 = (TextView) getActivity().findViewById(R.id.answer4);
+        answer4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // calender class's instance and get current date , month and year from calender
+                final Calendar c = Calendar.getInstance();
+                dateFormatter = new SimpleDateFormat("dd/MM/yyyy");
+
+                int mYear = c.get(Calendar.YEAR); // current year
+                int mMonth = c.get(Calendar.MONTH); // current month
+                int mDay = c.get(Calendar.DAY_OF_MONTH); // current day
+                // date picker dialog
+                datePickerDialog = new DatePickerDialog(getActivity(),
+                        new DatePickerDialog.OnDateSetListener() {
+
+                            @Override
+                            public void onDateSet(DatePicker view, int year,
+                                                  int monthOfYear, int dayOfMonth) {
+                                // set day of month , month and year value in the edit text
+                                answer4.setText(dayOfMonth + "/"
+                                        + (monthOfYear + 1) + "/" + year);
+
+                            }
+                        }, mYear, mMonth, mDay);
+                datePickerDialog.getDatePicker().setSpinnersShown(true);
+                datePickerDialog.setCancelable(false);
+                datePickerDialog.show();
+
+
+            }
+        });
+
+
 
 
 
@@ -152,8 +205,25 @@ public class QuestionCuidador extends Fragment {
             }
         });
 
+        getSpinnerOptions();
+
+
 
     }
+
+    public void getSpinnerOptions(){
+        ArrayList<String> category = new ArrayList<String>();
+
+        category.add("Selecciona uno");
+        category.add("HOMBRE");
+        category.add("MUJER");
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), R.layout.spinner_item, category);
+        dataAdapter.setDropDownViewResource(R.layout.spinner_item);
+        sp.setAdapter(dataAdapter);
+        dataAdapter.notifyDataSetChanged();
+
+    }
+
 
 
 

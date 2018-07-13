@@ -38,7 +38,7 @@
                 android:textColor="@android:color/black"
                 android:layout_marginTop="10dp"
                 android:textSize="30sp"
-                android:text="Nota"/>
+                android:text="SUBJETIVO"/>
 
             <View
                 android:id="@+id/divider"
@@ -48,6 +48,8 @@
                 android:layout_marginBottom="3dp"
                 android:layout_marginTop="3dp"
                 android:background="#E91A8D" />
+
+
 
             <EditText
                 android:id="@+id/textArea_information"
@@ -65,12 +67,130 @@
                 android:scrollbars="vertical"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
+
+
+            <TextView
+                android:id="@+id/textViewPersonales2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_below="@id/textArea_information"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="10dp"
+                android:textSize="30sp"
+                android:text="OBJETIVO"/>
+
+            <View
+                android:id="@+id/divider2"
+                android:layout_below="@id/textViewPersonales2"
+                android:layout_width="750dp"
+                android:layout_height="2dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
+                android:background="#E91A8D" />
+
+            <EditText
+                android:id="@+id/textArea_information2"
+                android:layout_width="750dp"
+                android:layout_height="250dp"
+                android:background="@drawable/cajas_texto"
+                android:gravity="top|left"
+                android:inputType="textMultiLine"
+                android:lines="6"
+                android:layout_marginTop="50dp"
+                android:layout_below="@+id/divider2"
+                android:overScrollMode="always"
+                android:scrollHorizontally="false"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+
+            <TextView
+                android:id="@+id/textViewPersonales3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_below="@id/textArea_information2"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="10dp"
+                android:textSize="30sp"
+                android:text="ANÁLISIS"/>
+
+            <View
+                android:id="@+id/divider3"
+                android:layout_below="@id/textViewPersonales3"
+                android:layout_width="750dp"
+                android:layout_height="2dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
+                android:background="#E91A8D" />
+
+            <EditText
+                android:id="@+id/textArea_information3"
+                android:layout_width="750dp"
+                android:layout_height="250dp"
+                android:background="@drawable/cajas_texto"
+                android:gravity="top|left"
+                android:inputType="textMultiLine"
+                android:lines="6"
+                android:layout_marginTop="50dp"
+                android:layout_below="@+id/divider3"
+                android:overScrollMode="always"
+                android:scrollHorizontally="false"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+
+
+            <TextView
+                android:id="@+id/textViewPersonales4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_below="@id/textArea_information3"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="10dp"
+                android:textSize="30sp"
+                android:text="PLAN (TRATAMIENTO)"/>
+
+            <View
+                android:id="@+id/divider4"
+                android:layout_below="@id/textViewPersonales4"
+                android:layout_width="750dp"
+                android:layout_height="2dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
+                android:background="#E91A8D" />
+
+            <EditText
+                android:id="@+id/textArea_information4"
+                android:layout_width="750dp"
+                android:layout_height="250dp"
+                android:background="@drawable/cajas_texto"
+                android:gravity="top|left"
+                android:inputType="textMultiLine"
+                android:lines="6"
+                android:layout_marginTop="50dp"
+                android:layout_below="@+id/divider4"
+                android:overScrollMode="always"
+                android:scrollHorizontally="false"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+
+
+
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="bottom|center"
                 android:layout_marginTop="30dp"
-                android:layout_below="@+id/textArea_information"
+                android:layout_below="@+id/textArea_information4"
                 android:orientation="horizontal">
 
                 <ImageButton
@@ -88,7 +208,7 @@
     </ScrollView>
 
     <View
-        android:id="@+id/divider3"
+        android:id="@+id/divider5"
         android:layout_below="@id/cuerpo"
         android:layout_width="match_parent"
         android:layout_height="2dp"
@@ -100,7 +220,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="bottom"
-        android:layout_below="@id/divider3"
+        android:layout_below="@id/divider5"
         android:orientation="vertical">
 
 
