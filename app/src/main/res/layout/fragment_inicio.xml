@@ -21,11 +21,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="domiciliarios"
             android:background="@android:color/transparent"
-            android:onClick="registros"
             android:padding="30dp"
             android:scaleType="fitCenter"
-            app:srcCompat="@drawable/dashboard_nuevo" />
+            app:srcCompat="@drawable/dashboard_registros" />
 
         <ImageButton
             android:id="@+id/imageButton3"

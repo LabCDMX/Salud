@@ -27,7 +27,6 @@ import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseHelper;
 import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.DatosCensado;
 import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.InicioFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.InicioFragmentMain;
-import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.NewPatientFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.PacienteFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.PacientesFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.RegistroFragment;
@@ -69,7 +68,6 @@ public class MainActivity extends AppCompatActivity implements
         PacienteFragment.OnFragmentInteractionListener,
         VisitaFragment.OnFragmentInteractionListener,
         InicioFragmentMain.OnFragmentInteractionListener,
-        NewPatientFragment.OnFragmentInteractionListener,
         QuestionDomFragment.OnFragmentInteractionListener,
         DatosGeneralesFragment.OnFragmentInteractionListener,
         QuestionsEducacion.OnFragmentInteractionListener,
@@ -172,11 +170,7 @@ public class MainActivity extends AppCompatActivity implements
                             notListerners = false;
                             dialog.dismiss();
 
-                            NewPatientFragment fragment = new NewPatientFragment();
-                            FragmentManager manager = getSupportFragmentManager();
-                            FragmentTransaction transaction = manager.beginTransaction();
-                            transaction.replace(R.id.fragmentHolder, fragment);
-                            transaction.commit();
+                            fragmentDomiciliarios();
 
                             restartImageButtons();
                             registros.setImageDrawable(getResources().getDrawable(R.drawable.nuevo_pink));
@@ -187,11 +181,7 @@ public class MainActivity extends AppCompatActivity implements
                 }else{
                     Log.e("BLOCK","Bloqueado alv");
 
-                    NewPatientFragment fragment = new NewPatientFragment();
-                    FragmentManager manager = getSupportFragmentManager();
-                    FragmentTransaction transaction = manager.beginTransaction();
-                    transaction.replace(R.id.fragmentHolder, fragment);
-                    transaction.commit();
+                    fragmentDomiciliarios();
 
                     restartImageButtons();
                     registros.setImageDrawable(getResources().getDrawable(R.drawable.nuevo_pink));
@@ -307,10 +297,8 @@ public class MainActivity extends AppCompatActivity implements
 
     }
 
-
-
-    public void registros(View v){
-        NewPatientFragment fragment = new NewPatientFragment();
+    public void domiciliarios(View v){
+        QuestionDomFragment fragment = new QuestionDomFragment();
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.fragmentHolder, fragment);
@@ -318,20 +306,10 @@ public class MainActivity extends AppCompatActivity implements
 
         restartImageButtons();
         registros.setImageDrawable(getResources().getDrawable(R.drawable.nuevo_pink));
+
+
     }
 
-
-
-    public void activityNewPatient(){
-        NewPatientFragment fragment = new NewPatientFragment();
-        FragmentManager manager = getSupportFragmentManager();
-        FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.fragmentHolder, fragment);
-        transaction.commit();
-
-        restartImageButtons();
-        registros.setImageDrawable(getResources().getDrawable(R.drawable.nuevo_pink));
-    }
 
     public void activityRegistros(){
         QuestionsFragment fragment = new QuestionsFragment();

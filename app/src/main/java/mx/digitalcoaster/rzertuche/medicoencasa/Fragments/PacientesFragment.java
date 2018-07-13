@@ -113,13 +113,6 @@ public class PacientesFragment extends Fragment {
 
         sharedPreferences = SharedPreferences.getInstance();
 
-        ImageButton button_pacientes = (ImageButton) getActivity().findViewById(R.id.button_pacientes);
-        button_pacientes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).historiaClinica();
-            }
-        });
 
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
