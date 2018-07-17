@@ -57,6 +57,8 @@ public class QuestionDomFragment extends Fragment {
     ImageView imageLogo;
     ImageView imageIcon2;
 
+    RadioGroup radioCurp;
+
     String checking = "personales";
 
     User user;
@@ -133,14 +135,17 @@ public class QuestionDomFragment extends Fragment {
 
 
         final RadioGroup radioVisita = getActivity().findViewById(R.id.radioVisita);
+        RadioGroup radioCurp = getActivity().findViewById(R.id.radioCP);
 
+
+        final EditText cp  = getActivity().findViewById(R.id.answer7);
 
         sharedPreferences = SharedPreferences.getInstance();
 
 
         String sharedNombre = sharedPreferences.getStringData("Estado");
         String sharedApellidoP = sharedPreferences.getStringData("Municipio");
-        String sharedApellidoM = sharedPreferences.getStringData("Localidad");
+        final String sharedApellidoM = sharedPreferences.getStringData("Localidad");
 
 
         if(!sharedNombre.isEmpty() && !sharedApellidoM.isEmpty() && !sharedApellidoM.isEmpty() ){
@@ -160,21 +165,48 @@ public class QuestionDomFragment extends Fragment {
                 count ++;
 
                 if(count == 1){
-                    open2.setVisibility(View.GONE);
-                    open.setVisibility(View.VISIBLE);
+
+                    String conoceCurp = sharedPreferences.getStringData("ConoceCurp");
+                    if(!conoceCurp.equals("")){
+                        if(conoceCurp.equals("Si")){
+
+                            cp.setVisibility(View.VISIBLE);
+
+                        }else{
+                            cp.setVisibility(View.GONE);
+
+                        }
+                    }else{
+                        count --;
+                        Toast.makeText(getActivity(),"Selecciona una opción antes de continuar",Toast.LENGTH_SHORT).show();
+                    }
+
+
                 }else if(count == 2){
-                    open.setVisibility(View.GONE);
-                    open4.setVisibility(View.VISIBLE);
+                    open4.setVisibility(View.GONE);
+                    open2.setVisibility(View.VISIBLE);
 
                 }else if(count == 3){
-                    open4.setVisibility(View.GONE);
+                    open2.setVisibility(View.GONE);
+                    open.setVisibility(View.VISIBLE);
+
+
+
+                }else if(count == 4){
+
+                    open.setVisibility(View.GONE);
                     open3.setVisibility(View.VISIBLE);
+
 
                     imageIcon2.setImageDrawable(getActivity().getResources().getDrawable(R.drawable.number_two_pink));
                     imageView8.setImageDrawable(getActivity().getResources().getDrawable(R.drawable.visita));
                     category.setText("Visita");
 
-                }else if(count == 4){
+
+
+                }else if(count ==5){
+
+
                     String tipoVisita = sharedPreferences.getStringData("Visita");
                     if(tipoVisita.equals("")){
                         count --;
@@ -190,7 +222,10 @@ public class QuestionDomFragment extends Fragment {
                     }
 
 
+
                 }
+
+
 
 
                 /*String nombre = answer.getText().toString();
@@ -255,6 +290,20 @@ public class QuestionDomFragment extends Fragment {
                     sharedPreferences.setStringData("Visita","No vivienda");
                 }
 
+            }
+
+        });
+
+        radioCurp.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
+
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                // TODO Auto-generated method stub
+                if (checkedId == R.id.si){
+                    sharedPreferences.setStringData("ConoceCurp","Si");
+                }else if (checkedId == R.id.no){
+                    sharedPreferences.setStringData("ConoceCurp","No");
+                }
             }
 
         });

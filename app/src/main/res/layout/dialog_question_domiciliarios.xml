@@ -161,16 +161,54 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:orientation="vertical"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <TextView
                     android:id="@+id/question7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="7.- CP"
+                    android:text="Código Postal"
                     android:textSize="24sp"
                     android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/question9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="¿Conoce el código postal?"
+                    android:textSize="17sp" />
+
+                <RadioGroup
+                    android:id="@+id/radioCP"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center_horizontal">
+
+
+                    <RadioButton
+                        android:id="@+id/si"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#E91A8D"
+                        android:paddingLeft="40dip"
+                        android:text="SI"
+                        android:textColor="#000000" />
+
+                    <RadioButton
+                        android:id="@+id/no"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="#E91A8D"
+                        android:paddingLeft="40dip"
+                        android:layout_marginLeft="50dp"
+                        android:text="NO"
+                        android:textColor="#000000" />
+
+
+                </RadioGroup>
 
                 <EditText
                     android:id="@+id/answer7"
@@ -180,6 +218,7 @@
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="30dp"
                     android:inputType="number"
+                    android:visibility="gone"
                     android:hint="Escribir respuesta aquí." />
 
 
@@ -192,7 +231,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:orientation="vertical"
-                android:visibility="visible">
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/question4"
@@ -269,7 +308,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:text="8.- Visita"
+                    android:text="7.- Visita"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
