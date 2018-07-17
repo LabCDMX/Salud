@@ -60,6 +60,11 @@ public class PacientesFragment extends Fragment {
     private List<Item> items2 = null;
 
 
+    public GridView lista3;
+    private List<Item> items3 = null;
+
+
+
     private SQLiteDatabase db = null;   // Objeto para usar la base de datos local
     private Cursor c = null;            // Objeto para hacer consultas a la base de datos
     private TextView title;
@@ -134,6 +139,23 @@ public class PacientesFragment extends Fragment {
         });
 
 
+        GridView gridView3 = (GridView) view.findViewById(R.id.gridviewSinExp);
+
+        items3 = new ArrayList<>();
+        getSinExpediente();
+        gridView3.setAdapter(new ItemAdapter(getActivity().getApplicationContext(), items3));
+
+        gridView3.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View v, int position, long arg3) {
+                //Item selectedUser = items2.get(position);
+                //((MainActivity)getActivity()).questionExploracion();
+
+            }
+        });
+
+
+
 
 
         lista = (GridView) getActivity().findViewById(R.id.gridview);
@@ -201,6 +223,27 @@ public class PacientesFragment extends Fragment {
             db.close();
         }
     }
+
+    private void getSinExpediente() {
+
+        db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, android.content.Context.MODE_PRIVATE, null);
+        try {
+            c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SIN_EXPEDIENTE, null);
+            if (c.moveToFirst()) {
+                do {
+                    items3.add(new Item(c.getString(1), c.getString(2), "SIN EXPEDIENTE"));
+                }while (c.moveToNext());
+            } else {
+                System.out.println("No existen PACIENTES SIN EXPEDIENTE");
+            }
+            c.close();
+        } catch (Exception ex) {
+            Log.e("Error", ex.toString());
+        } finally {
+            db.close();
+        }
+    }
+
 
 
 

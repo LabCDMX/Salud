@@ -1,5 +1,6 @@
 package mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments;
 
+import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -15,12 +16,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity;
@@ -49,10 +53,14 @@ public class TarjetaPacienteFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
     SharedPreferences sharedPreferences;
 
-    TextView tvNombreItem, tvCurpItem, tvDireccionItem;
+    TextView tvNombreItem, tvCurpItem, tvDireccionItem,textViewFecha;
     ImageButton next;
     ImageView status;
-    EditText diagnostico, tratamiento;
+    EditText diagnostico, tratamiento,textViewPeso;
+
+    private DatePickerDialog datePickerDialog;
+    private SimpleDateFormat dateFormatter;
+
 
     private SQLiteDatabase db = null;      // Objeto para utilizar la base de datos
     private DataBaseHelper sqliteHelper;   // Objeto para abrir la base de Datos
@@ -89,6 +97,11 @@ public class TarjetaPacienteFragment extends Fragment {
         tvNombreItem = (TextView) getActivity().findViewById(R.id.tvNombreItem);
         tvCurpItem = (TextView) getActivity().findViewById(R.id.tvCurpItem);
         tvDireccionItem = (TextView) getActivity().findViewById(R.id.tvDireccionItem);
+        textViewFecha = (TextView) getActivity().findViewById(R.id.textViewFecha);
+        textViewPeso = (EditText) getActivity().findViewById(R.id.textViewPeso);
+
+
+
 
 
         status = (ImageView) getActivity().findViewById(R.id.status);
@@ -146,10 +159,47 @@ public class TarjetaPacienteFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                deleteUser(sharedPreferences.getStringData("curpHistoric"));
 
-                ((MainActivity)getActivity()).succededClinica();
+                if(textViewFecha.getText().toString().equals("")){
+                    Toast.makeText(getActivity(),"Define la siguiente visita para poder avanzar", Toast.LENGTH_SHORT).show();
+                }else{
+                    if(textViewPeso.getText().toString().equals("")){
+                        Toast.makeText(getActivity(),"Define el nombre de quien realizó la historia para poder avanzar", Toast.LENGTH_SHORT).show();
+                    }else{
+                        deleteUser(sharedPreferences.getStringData("curpHistoric"));
+                        ((MainActivity)getActivity()).succededClinica();
+                    }
+                }
 
+
+            }
+        });
+
+        textViewFecha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Calendar c = Calendar.getInstance();
+                dateFormatter = new SimpleDateFormat("dd/MM/yyyy");
+
+                int mYear = c.get(Calendar.YEAR); // current year
+                int mMonth = c.get(Calendar.MONTH); // current month
+                int mDay = c.get(Calendar.DAY_OF_MONTH); // current day
+                // date picker dialog
+                datePickerDialog = new DatePickerDialog(getActivity(),
+                        new DatePickerDialog.OnDateSetListener() {
+
+                            @Override
+                            public void onDateSet(DatePicker view, int year,
+                                                  int monthOfYear, int dayOfMonth) {
+                                // set day of month , month and year value in the edit text
+                                textViewFecha.setText(dayOfMonth + "/"
+                                        + (monthOfYear + 1) + "/" + year);
+
+                            }
+                        }, mYear, mMonth, mDay);
+                datePickerDialog.getDatePicker().setSpinnersShown(true);
+                datePickerDialog.setCancelable(false);
+                datePickerDialog.show();
 
             }
         });
@@ -198,51 +248,61 @@ public class TarjetaPacienteFragment extends Fragment {
         Date myDate = new Date();
         System.out.println(myDate);
         System.out.println(new SimpleDateFormat("yyyy-MM-dd").format(myDate));
-        String fechaActual = new SimpleDateFormat("yyyy-MM-dd").format(myDate);
+
+        String siguienteVisita = textViewFecha.getText().toString();
+        String fechaActual = siguienteVisita;
+
+        String nombreDoctor = textViewPeso.getText().toString();
 
 
-        Log.e("VNEGA PRUEBA",sharedPreferences.getStringData("nameHistoric"));
+        Log.e("NOMBRE HISTORIA CLINICA",sharedPreferences.getStringData("nameHistoric"));
 
         db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE ,null);
 
         /*------------------------- Revisar si existe ------------------------*/
-        c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_VISITAS, null);
+        c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SIN_EXPEDIENTE, null);
         try {
             if(c.moveToFirst()) {
+
                 ContentValues values = new ContentValues();
-                values.put(DataBaseDB.PACIENTES_VISITA_NOMBRE,sharedPreferences.getStringData("nameHistoric"));
-                values.put(DataBaseDB.PACIENTES_VISITA_CURP, sharedPreferences.getStringData("curpHistoric"));
-                values.put(DataBaseDB.PACIENTES_VISITA_DIRECCION, sharedPreferences.getStringData("direccionHistoric"));
-                values.put(DataBaseDB.PACIENTES_VISITA_STATUS, sharedPreferences.getStringData("ImageItem"));
-                values.put(DataBaseDB.PACIENTES_VISITA_DIAGNOSTICO, sharedPreferences.getStringData("DiagnosticoGeneral"));
-                values.put(DataBaseDB.PACIENTES_VISITA_TRATAMIENTO, sharedPreferences.getStringData("TratamientoGeneral"));
-                values.put(DataBaseDB.PACIENTES_VISITA_NUMERO, "1");
-                values.put(DataBaseDB.PACIENTES_VISITA_FECHA, fechaActual);
+
+                values.put(DataBaseDB.PACIENTES_EXPEDIENTE_NOMBRE,sharedPreferences.getStringData("nameHistoric"));
+                values.put(DataBaseDB.PACIENTES_EXPEDIENTE_CURP, sharedPreferences.getStringData("curpHistoric"));
+                values.put(DataBaseDB.PACIENTES_STATUS, sharedPreferences.getStringData("ImageItem"));
+                values.put(DataBaseDB.PACIENTES_IMPRESION_DIAGNOSTICA, sharedPreferences.getStringData("DiagnosticoGeneral"));
+                values.put(DataBaseDB.PACIENTES_TRATAMIENTO, sharedPreferences.getStringData("TratamientoGeneral"));
+                values.put(DataBaseDB.PACIENTES_ELABORO, nombreDoctor);
 
 
 
 
 
-                db.insert(DataBaseDB.TABLE_NAME_PACIENTES_VISITAS, null, values);
+
+                db.insert(DataBaseDB.TABLE_NAME_PACIENTES_SIN_EXPEDIENTE, null, values);
                 System.out.println("Visita  insertada correctamente");
             }
             else {
+
                 ContentValues values = new ContentValues();
-                values.put(DataBaseDB.PACIENTES_VISITA_NOMBRE,sharedPreferences.getStringData("nameHistoric"));
-                values.put(DataBaseDB.PACIENTES_VISITA_CURP, sharedPreferences.getStringData("curpHistoric"));
-                values.put(DataBaseDB.PACIENTES_VISITA_DIRECCION, sharedPreferences.getStringData("direccionHistoric"));
-                values.put(DataBaseDB.PACIENTES_VISITA_STATUS, sharedPreferences.getStringData("ImageItem"));
-                values.put(DataBaseDB.PACIENTES_VISITA_DIAGNOSTICO, sharedPreferences.getStringData("DiagnosticoGeneral"));
-                values.put(DataBaseDB.PACIENTES_VISITA_TRATAMIENTO, sharedPreferences.getStringData("TratamientoGeneral"));
-                values.put(DataBaseDB.PACIENTES_VISITA_NUMERO, "1");
-                values.put(DataBaseDB.PACIENTES_VISITA_FECHA, fechaActual);
+
+                values.put(DataBaseDB.PACIENTES_EXPEDIENTE_NOMBRE,sharedPreferences.getStringData("nameHistoric"));
+                values.put(DataBaseDB.PACIENTES_EXPEDIENTE_CURP, sharedPreferences.getStringData("curpHistoric"));
+                values.put(DataBaseDB.PACIENTES_STATUS, sharedPreferences.getStringData("ImageItem"));
+                values.put(DataBaseDB.PACIENTES_IMPRESION_DIAGNOSTICA, sharedPreferences.getStringData("DiagnosticoGeneral"));
+                values.put(DataBaseDB.PACIENTES_TRATAMIENTO, sharedPreferences.getStringData("TratamientoGeneral"));
+                values.put(DataBaseDB.PACIENTES_SIGUIENTE_VISITA, fechaActual);
+                values.put(DataBaseDB.PACIENTES_ELABORO, nombreDoctor);
 
 
 
 
 
-                db.insert(DataBaseDB.TABLE_NAME_PACIENTES_VISITAS, null, values);
-                System.out.println("Visita  insertada correctamente");
+
+
+
+
+                db.insert(DataBaseDB.TABLE_NAME_PACIENTES_SIN_EXPEDIENTE, null, values);
+                System.out.println("Sin expediente insertado correctamente");
 
             }
             c.close();
@@ -250,7 +310,7 @@ public class TarjetaPacienteFragment extends Fragment {
             System.out.println("Error al insertar productos: " + ex);
         }
 
-        db.delete(DataBaseDB.TABLE_NAME_PACIENTES,DataBaseDB.PACIENTES_CURP + "=?",new String[]{CURP});
+        db.delete(DataBaseDB.TABLE_NAME_PACIENTES,DataBaseDB.PACIENTES_CURP + "=? AND "+ DataBaseDB.PACIENTES_NOMBRE + "=?",new String[]{CURP,sharedPreferences.getStringData("nameHistoric")});
 
 
         db.close();

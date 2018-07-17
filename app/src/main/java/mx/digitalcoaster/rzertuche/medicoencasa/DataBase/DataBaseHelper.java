@@ -95,7 +95,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 "_id INTEGER PRIMARY KEY, " +
                 DataBaseDB.PACIENTES_EXPEDIENTE_NOMBRE + " TEXT, " +
                 DataBaseDB.PACIENTES_EXPEDIENTE_CURP + " TEXT, " +
+                DataBaseDB.PACIENTES_STATUS + " TEXT, " +
                 DataBaseDB.PACIENTES_EXPEDIENTE + " TEXT, " +
+                DataBaseDB.PACIENTES_ELABORO + " TEXT, " +
                 DataBaseDB.PACIENTES_SIGUIENTE_VISITA + " TEXT," +
                 DataBaseDB.PACIENTES_HEMOTIPO + " TEXT, " +
                 DataBaseDB.PACIENTES_PESO + " TEXT, " +

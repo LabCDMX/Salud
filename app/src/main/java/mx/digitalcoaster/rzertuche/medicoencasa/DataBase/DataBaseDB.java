@@ -3,7 +3,7 @@ package mx.digitalcoaster.rzertuche.medicoencasa.DataBase;
 public class DataBaseDB {
 
     /*-------------------------------- Datos de la base de datos ---------------------------------*/
-    public static final String DB_NAME = "database_summit";    // Nombre de la base de datos
+    public static final String DB_NAME = "database_medicoentucasa";    // Nombre de la base de datos
 
     public static final String TABLE_NAME_PACIENTES = "table_name_pacientes";
     public static final String TABLE_NAME_PACIENTES_VISITAS = "table_name_pacientes_visitas";
@@ -42,7 +42,9 @@ public class DataBaseDB {
     //EXPEDIENTE, HISTORIA CLINICA, SIGUIENTE VISITA
     public static final String PACIENTES_EXPEDIENTE_NOMBRE = "pacientes_expediente_nombre";
     public static final String PACIENTES_EXPEDIENTE_CURP = "pacientes_expediente_curp";
+    public static final String PACIENTES_STATUS = "pacientes_status";
     public static final String PACIENTES_EXPEDIENTE = "pacientes_expediente";
+    public static final String PACIENTES_ELABORO = "pacientes_elaboro";
     public static final String PACIENTES_SIGUIENTE_VISITA = "pacientes_siguiente_visita";
     public static final String PACIENTES_HEMOTIPO = "pacientes_hemotipo";
     public static final String PACIENTES_PESO = "pacientes_peso";
