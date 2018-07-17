@@ -24,17 +24,6 @@
             android:layout_gravity="center_horizontal"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:paddingBottom="20dp"
-                android:text="PACIENTES"
-                android:textAlignment="center"
-                android:textSize="32sp"
-                android:textStyle="bold" />
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -47,7 +36,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
                     android:layout_marginTop="20dp"
-                    android:text="Pacientes Historia Clínica"
+                    android:text="NUEVOS"
+                    android:textColor="#000"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -78,8 +68,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="20dp"
-                android:text="Seguimiento de Pacientes"
+                android:text="SEGUIMIENTO"
                 android:textSize="20sp"
+                android:textColor="#000"
                 android:textStyle="bold" />
             <View
                 android:id="@+id/divider4"

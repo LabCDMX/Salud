@@ -260,6 +260,71 @@ public class MainActivity extends AppCompatActivity implements
             }
         });
 
+
+        seguimiento.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(notListerners){
+                    notListerners=false;
+                    final Dialog dialog = new Dialog(MainActivity.this);
+                    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                    dialog.setCancelable(false);
+                    dialog.setContentView(R.layout.layout_alert);
+
+                    TextView txtTitle = (TextView) dialog.findViewById(R.id.lblTitle);
+                    txtTitle.setText("ALERTA");
+
+                    TextView txtMessage = (TextView) dialog.findViewById(R.id.lblMessage);
+                    txtMessage.setText("Si sales perderas toda la información del usuario hasta el momento");
+
+                    Button btnCancelar = (Button) dialog.findViewById(R.id.btnCancel);
+                    btnCancelar.setText("Cancelar");
+                    btnCancelar.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                        }
+                    });
+
+                    Button btnAceptar = (Button) dialog.findViewById(R.id.btnAccept);
+                    btnAceptar.setText("Aceptar");
+                    btnAceptar.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            notListerners = false;
+                            dialog.dismiss();
+
+                            PacientesFragment fragment = new PacientesFragment();
+                            FragmentManager manager = getSupportFragmentManager();
+                            FragmentTransaction transaction = manager.beginTransaction();
+                            transaction.replace(R.id.fragmentHolder, fragment);
+                            transaction.commit();
+
+                            restartImageButtons();
+                            seguimiento.setImageDrawable(getResources().getDrawable(R.drawable.pacientes_pink));
+
+                        }
+                    });
+                    dialog.show();
+                }else{
+                    Log.e("BLOCK","Bloqueado alv");
+
+                    PacientesFragment fragment = new PacientesFragment();
+                    FragmentManager manager = getSupportFragmentManager();
+                    FragmentTransaction transaction = manager.beginTransaction();
+                    transaction.replace(R.id.fragmentHolder, fragment);
+                    transaction.commit();
+
+                    restartImageButtons();
+                    seguimiento.setImageDrawable(getResources().getDrawable(R.drawable.pacientes_pink));
+
+                }
+
+
+            }
+        });
+
     }
 
     @Override
