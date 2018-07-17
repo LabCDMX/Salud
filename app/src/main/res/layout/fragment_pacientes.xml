@@ -62,6 +62,41 @@
                 android:horizontalSpacing="10dp"
                 />
 
+
+
+            //Sin Expediente
+
+            <TextView
+                android:id="@+id/sin_exp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="20dp"
+                android:text="SIN EXPEDIENTE"
+                android:textSize="20sp"
+                android:textColor="#000"
+                android:textStyle="bold" />
+            <View
+                android:id="@+id/divider5"
+                android:layout_below="@id/cuerpo"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginBottom="10dp"
+                android:background="#b60065" />
+
+            <GridView
+                android:id="@+id/gridviewSinExp"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:columnWidth="100dp"
+                android:numColumns="3"
+                android:verticalSpacing="30dp"
+                android:horizontalSpacing="10dp"
+                />
+
+
+
+
             <TextView
                 android:id="@+id/seguimiento"
                 android:layout_width="match_parent"
@@ -89,6 +124,11 @@
                 android:verticalSpacing="30dp"
                 android:horizontalSpacing="10dp"
                 />
+
+
+
+
+
         </LinearLayout>
 
 

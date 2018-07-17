@@ -378,7 +378,7 @@ public class DatosGeneralesFragment extends Fragment {
                         ContentValues values = new ContentValues();
                         values.put(DataBaseDB.PACIENTES_NOMBRE, nameComplet);
                         values.put(DataBaseDB.PACIENTES_CURP, curp);
-                        values.put(DataBaseDB.PACIENTES_DIRECCION, direccion);
+                        values.put(DataBaseDB.PACIENTES_CALLE, direccion);
 
                         db.insert(DataBaseDB.TABLE_NAME_PACIENTES, null, values);
                         System.out.println("Productos insertados correctamente");
@@ -387,7 +387,7 @@ public class DatosGeneralesFragment extends Fragment {
                         ContentValues values = new ContentValues();
                         values.put(DataBaseDB.PACIENTES_NOMBRE, nameComplet);
                         values.put(DataBaseDB.PACIENTES_CURP, curp);
-                        values.put(DataBaseDB.PACIENTES_DIRECCION, direccion);
+                        values.put(DataBaseDB.PACIENTES_CALLE, direccion);
 
                         db.insert(DataBaseDB.TABLE_NAME_PACIENTES, null, values);
                         System.out.println("Productos insertados correctamente");

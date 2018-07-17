@@ -32,6 +32,7 @@
                 android:layout_height="wrap_content"
                 android:background="#6EC67A"
                 android:text="Toca visita"
+                android:textColor="#FFF"
                 android:textAlignment="center" />
 
             <TextView
@@ -39,6 +40,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#6EC67A"
+                android:textColor="#FFF"
                 android:text="21-04-2018"
                 android:textAlignment="center" />
 
