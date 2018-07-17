@@ -198,7 +198,7 @@ public class QuestionsHistoriaClinica extends Fragment {
                 if(count == 19){
                     textArea_information.setText("");
                     count=0;
-                    ((MainActivity)getActivity()).questionExploracion();
+                    ((MainActivity)getActivity()).historiaClinicaFragment();
 
                 }
 

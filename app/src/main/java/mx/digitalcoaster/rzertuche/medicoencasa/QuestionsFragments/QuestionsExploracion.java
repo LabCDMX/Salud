@@ -90,7 +90,10 @@ public class QuestionsExploracion extends Fragment {
         estatura.addTextChangedListener(imcWatcher);
 
         imc = (EditText) getActivity().findViewById(R.id.answer3);
+
         peso = (EditText) getActivity().findViewById(R.id.answer);
+        //peso.addTextChangedListener(imcWatcher);
+
 
         talla = (EditText) getActivity().findViewById(R.id.answers7);
         pulso = (EditText) getActivity().findViewById(R.id.answers8);
@@ -152,7 +155,7 @@ public class QuestionsExploracion extends Fragment {
                         ((MainActivity)getActivity()).fragmentNotasHistoric();
 
                     }else{
-                        ((MainActivity)getActivity()).historiaClinicaFragment();
+                        ((MainActivity)getActivity()).questionAntecedentes();
                     }
 
 
@@ -253,23 +256,34 @@ public class QuestionsExploracion extends Fragment {
     private final TextWatcher imcWatcher = new TextWatcher() {
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+
         }
 
         public void onTextChanged(CharSequence s, int start, int before, int count) {
             imc.setVisibility(View.VISIBLE);
             Double pesoAux = 0.0;
-            Double estaturaAux = 0.0;
+            int estaturaAux = 0;
 
-            pesoAux = Double.valueOf(peso.getText().toString());
-            estaturaAux = Double.valueOf(estatura.getText().toString());
-            imcAux = (pesoAux / (estaturaAux * estaturaAux));
+
+            if(!peso.getText().toString().isEmpty()){
+                pesoAux = Double.valueOf(peso.getText().toString());
+            }
+
+
+            estaturaAux = Integer.valueOf(estatura.getText().toString());
+            imcAux = (pesoAux / (estaturaAux * estaturaAux)*10000);
+
+
+
 
         }
 
         public void afterTextChanged(Editable s) {
             if (s.length() == 0) {
+
                 imc.setVisibility(View.GONE);
-            } else{
+
+            }else{
                 DecimalFormat df = new DecimalFormat("#.00");
                 Double imcAuxiliar = Double.valueOf(df.format(imcAux));
 

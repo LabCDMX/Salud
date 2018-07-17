@@ -141,7 +141,7 @@ public class RegistroFragment extends Fragment {
                 sharedPreferences.setStringData("curpHistoric", selectedUser.getCurp());
                 sharedPreferences.setStringData("direccionHistoric", selectedUser.getDireccion());
 
-                ((MainActivity)getActivity()).questionAntecedentes();
+                ((MainActivity)getActivity()).questionExploracion();
 
             }
         });
