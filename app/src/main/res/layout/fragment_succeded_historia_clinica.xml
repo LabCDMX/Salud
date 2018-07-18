@@ -36,6 +36,7 @@
 
 
         <TextView
+            android:id="@+id/fase"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:text="@string/fase_2"
@@ -53,6 +54,7 @@
          />
 
         <TextView
+            android:id="@+id/textoFase"
             android:layout_width="match_parent"
             android:layout_height="180dp"
             android:text="PACIENTE GUARDADO EXITOSAMENTE"

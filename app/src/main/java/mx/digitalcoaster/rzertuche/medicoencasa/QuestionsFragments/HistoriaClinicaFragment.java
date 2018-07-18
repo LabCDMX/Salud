@@ -1,10 +1,15 @@
 package mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.icu.text.CurrencyPluralInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,8 +22,10 @@ import java.util.List;
 import java.util.Set;
 
 import mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity;
+import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseDB;
 import mx.digitalcoaster.rzertuche.medicoencasa.R;
 import mx.digitalcoaster.rzertuche.medicoencasa.Utils.SharedPreferences;
+import mx.digitalcoaster.rzertuche.medicoencasa.models.Item;
 
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.inicio;
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.registros;
@@ -54,13 +61,17 @@ public class HistoriaClinicaFragment extends Fragment {
     TextView cerebro;
     ImageButton next;
 
-    private String cadenaCardio = new String();
-    private String cadenaHTA = new String();
-    private String cadenaPersonales = new String();
-    private String cadenaDiabetes = new String();
-    private String cadenaDis = new String();
-    private String cadenaObe = new String();
-    private String cadenaEnf = new String();
+    public static String cadenaCardio = new String();
+    public static String cadenaHTA = new String();
+    public static String cadenaPersonales = new String();
+    public static String cadenaDiabetes = new String();
+    public static String cadenaDis = new String();
+    public static String cadenaObe = new String();
+    public static String cadenaEnf = new String();
+
+    private SQLiteDatabase db = null;   // Objeto para usar la base de datos local
+    private Cursor c = null;            // Objeto para hacer consultas a la base de datos
+
 
 
 
@@ -131,6 +142,7 @@ public class HistoriaClinicaFragment extends Fragment {
 
         if(isSinExp){
 
+            getDatosExp();
             String name = sharedPreferences.getStringData("nameItem");
             respiratorio.setText(sharedPreferences.getStringData("Respiratorio"+name));
             cardio.setText(sharedPreferences.getStringData("Cardio"+name));
@@ -239,6 +251,56 @@ public class HistoriaClinicaFragment extends Fragment {
 
     }
 
+    public void getDatosExp(){
+
+        db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE, null);
+        try {
+            c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SIN_EXPEDIENTE + " WHERE "
+                    + DataBaseDB.PACIENTES_EXPEDIENTE_NOMBRE + " = '" + sharedPreferences.getStringData("nameItem") + "' AND "
+                    + DataBaseDB.PACIENTES_EXPEDIENTE_CURP + " = '" + sharedPreferences.getStringData("curpItem")+"'", null);
+            if (c.moveToFirst()) {
+                do {
+                    String name = sharedPreferences.getStringData("nameItem");
+
+                    sharedPreferences.setStringData("Respiratorio"+name,c.getString(30));
+                    sharedPreferences.setStringData("Cardio"+name,c.getString(31));
+                    sharedPreferences.setStringData("Digestivo"+name,c.getString(32));
+                    sharedPreferences.setStringData("Urinario"+name,c.getString(33));
+                    sharedPreferences.setStringData("Reproductor"+name,c.getString(34));
+                    sharedPreferences.setStringData("Hemo"+name,c.getString(35));
+                    sharedPreferences.setStringData("Endocrino"+name,c.getString(36));
+                    sharedPreferences.setStringData("Nervioso"+name,c.getString(37));
+                    sharedPreferences.setStringData("Piel"+name,c.getString(39));
+                    sharedPreferences.setStringData("Habitus"+name,c.getString(40));
+                    sharedPreferences.setStringData("Cabeza"+name,c.getString(41));
+                    sharedPreferences.setStringData("Cuello"+name,c.getString(42));
+                    sharedPreferences.setStringData("Peso"+name,c.getString(8));
+                    sharedPreferences.setStringData("Estatura"+name,c.getString(9));
+                    sharedPreferences.setStringData("Hemotipo"+name,c.getString(7));
+                    sharedPreferences.setStringData("Talla"+name,c.getString(13));
+                    sharedPreferences.setStringData("Pulso"+name,c.getString(14));
+                    sharedPreferences.setStringData("cadenaCardio"+name,c.getString(19));
+                    sharedPreferences.setStringData("cadenaHTA"+name,c.getString(18));
+                    sharedPreferences.setStringData("cadenaPersonales"+name,c.getString(24));
+                    sharedPreferences.setStringData("cadenaObe"+name,c.getString(20));
+                    sharedPreferences.setStringData("cadenaDiabetes"+name,c.getString(21));
+                    sharedPreferences.setStringData("cadenaDis"+name,c.getString(22));
+                    sharedPreferences.setStringData("cadenaEnf"+name,c.getString(23));
+
+
+                }while (c.moveToNext());
+            } else {
+                System.out.println("No existen PACIENTES");
+            }
+            c.close();
+        } catch (Exception ex) {
+            Log.e("Error", ex.toString());
+        } finally {
+            db.close();
+        }
+
+    }
+
     public void saveAllDataPreferences(){
 
         String name = sharedPreferences.getStringData("nameHistoric");
@@ -254,8 +316,8 @@ public class HistoriaClinicaFragment extends Fragment {
         sharedPreferences.setStringData("Habitus"+name, sharedPreferences.getStringData("Habitus"));
         sharedPreferences.setStringData("Cabeza"+name, sharedPreferences.getStringData("Cabeza"));
         sharedPreferences.setStringData("Cuello"+name, sharedPreferences.getStringData("Cuello"));
-        sharedPreferences.setStringData("Peso"+name, sharedPreferences.getStringData("Peso" + "kg"));
-        sharedPreferences.setStringData("Estatura"+name, sharedPreferences.getStringData("Estatura" + "mts"));
+        sharedPreferences.setStringData("Peso"+name, sharedPreferences.getStringData("Peso"));
+        sharedPreferences.setStringData("Estatura"+name, sharedPreferences.getStringData("Estatura"));
         sharedPreferences.setStringData("Hemotipo"+name, sharedPreferences.getStringData("Hemotipo"));
         sharedPreferences.setStringData("Talla"+name, sharedPreferences.getStringData("Talla"));
         sharedPreferences.setStringData("Pulso"+name, sharedPreferences.getStringData("Pulso"));
@@ -268,6 +330,9 @@ public class HistoriaClinicaFragment extends Fragment {
         sharedPreferences.setStringData("cadenaEnf"+name, cadenaEnf);
 
     }
+
+
+
 
 
     public void blockListeners(){

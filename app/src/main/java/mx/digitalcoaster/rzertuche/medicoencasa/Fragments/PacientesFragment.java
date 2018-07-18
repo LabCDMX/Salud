@@ -131,6 +131,9 @@ public class PacientesFragment extends Fragment {
             public void onItemClick(AdapterView<?> arg0, View v, int position, long arg3) {
                 Item selectedUser = items2.get(position);
                 Log.d("User", "USERUUID:"+selectedUser.getNombre());
+                sharedPreferences.setStringData("nameItem",selectedUser.getNombre());
+                sharedPreferences.setStringData("curpItem",selectedUser.getCurp());
+
                 sharedPreferences.setStringData("nameHistoric", selectedUser.getNombre());
                 sharedPreferences.setStringData("curpHistoric", selectedUser.getCurp());
                 sharedPreferences.setStringData("direccionHistoric", selectedUser.getDireccion());
@@ -153,6 +156,8 @@ public class PacientesFragment extends Fragment {
                 Item selectedUser = items3.get(position);
                 Log.d("User", "USERUUID:"+selectedUser.getNombre());
                 sharedPreferences.setStringData("nameItem",selectedUser.getNombre());
+                sharedPreferences.setStringData("curpItem",selectedUser.getCurp());
+
                 isSinExp = true;
                 ((MainActivity)getActivity()).historiaClinicaFragment();
 
@@ -233,7 +238,8 @@ public class PacientesFragment extends Fragment {
 
         db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, android.content.Context.MODE_PRIVATE, null);
         try {
-            c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SIN_EXPEDIENTE, null);
+            c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SIN_EXPEDIENTE + " WHERE " +
+                    DataBaseDB.PACIENTES_EXPEDIENTE_CURP + " != ''", null);
             if (c.moveToFirst()) {
                 do {
                     items3.add(new Item(c.getString(1), c.getString(2), "SIN EXPEDIENTE"));

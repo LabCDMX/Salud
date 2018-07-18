@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import mx.digitalcoaster.rzertuche.medicoencasa.R;
 
@@ -18,6 +19,7 @@ import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.no
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.registros;
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.seguimiento;
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.sincronizacion;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Fragments.PacientesFragment.isSinExp;
 
 
 public class SuccededHistoriaFragment extends Fragment {
@@ -32,6 +34,7 @@ public class SuccededHistoriaFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
     private LinearLayout loader, finish;
+    private TextView fase, textoFase;
 
 
     @Override
@@ -55,6 +58,9 @@ public class SuccededHistoriaFragment extends Fragment {
 
         final LinearLayout loader = (LinearLayout) getActivity().findViewById(R.id.loader);
         final LinearLayout finish = (LinearLayout) getActivity().findViewById(R.id.completed);
+        textoFase = getActivity().findViewById(R.id.textoFase);
+        fase = getActivity().findViewById(R.id.fase);
+
 
 
         Handler handler = new Handler();
@@ -68,6 +74,13 @@ public class SuccededHistoriaFragment extends Fragment {
         }, 3000);
 
         loader.setVisibility(View.VISIBLE);
+
+        if(isSinExp){
+            isSinExp = false;
+            fase.setText("EXPEDIENTE ASIGNADO");
+            textoFase.setText("PACIENTE SELLADO");
+        }
+
 
 
     }
