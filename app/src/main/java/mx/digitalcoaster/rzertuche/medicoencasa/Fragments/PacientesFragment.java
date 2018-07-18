@@ -70,6 +70,8 @@ public class PacientesFragment extends Fragment {
     private TextView title;
     SharedPreferences sharedPreferences;
 
+    public static Boolean isSinExp = false;
+
 
     public PacientesFragment() {
         // Required empty public constructor
@@ -148,8 +150,11 @@ public class PacientesFragment extends Fragment {
         gridView3.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> arg0, View v, int position, long arg3) {
-                //Item selectedUser = items2.get(position);
-                //((MainActivity)getActivity()).questionExploracion();
+                Item selectedUser = items3.get(position);
+                Log.d("User", "USERUUID:"+selectedUser.getNombre());
+                sharedPreferences.setStringData("nameItem",selectedUser.getNombre());
+                isSinExp = true;
+                ((MainActivity)getActivity()).historiaClinicaFragment();
 
             }
         });

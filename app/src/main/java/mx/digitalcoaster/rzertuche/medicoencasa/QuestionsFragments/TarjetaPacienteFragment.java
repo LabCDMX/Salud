@@ -126,14 +126,14 @@ public class TarjetaPacienteFragment extends Fragment {
 
         //Diagnostico
         diagnostico.setText(sharedPreferences.getStringData("Diagnostico1") + "\n"+
-                sharedPreferences.getStringData("Diagnostico2" + "\n") +
+                sharedPreferences.getStringData("Diagnostico2") + "\n" +
                 sharedPreferences.getStringData("Diagnostico3")
         );
 
 
         //Tratamiento
         tratamiento.setText(sharedPreferences.getStringData("Tratamiento1") + "\n"+
-                sharedPreferences.getStringData("Tratamiento2" + "\n") +
+                sharedPreferences.getStringData("Tratamiento2") + "\n" +
                 sharedPreferences.getStringData("Tratamiento3")
         );
 

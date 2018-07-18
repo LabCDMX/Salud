@@ -24,6 +24,7 @@ import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.in
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.registros;
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.seguimiento;
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.sincronizacion;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Fragments.PacientesFragment.isSinExp;
 import static mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsAntecedentes.listCardio;
 import static mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsAntecedentes.listDiabetes;
 import static mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsAntecedentes.listDis;
@@ -52,6 +53,15 @@ public class HistoriaClinicaFragment extends Fragment {
     EditText diabetes,disli,obesidad,enf_cardio;
     TextView cerebro;
     ImageButton next;
+
+    private String cadenaCardio = new String();
+    private String cadenaHTA = new String();
+    private String cadenaPersonales = new String();
+    private String cadenaDiabetes = new String();
+    private String cadenaDis = new String();
+    private String cadenaObe = new String();
+    private String cadenaEnf = new String();
+
 
 
 
@@ -119,77 +129,99 @@ public class HistoriaClinicaFragment extends Fragment {
         //Obtencion de datos del sharedPreferences
         sharedPreferences = SharedPreferences.getInstance();
 
-        respiratorio.setText(sharedPreferences.getStringData("Respiratorio"));
-        cardio.setText(sharedPreferences.getStringData("Cardio"));
+        if(isSinExp){
 
-        digestivo.setText(sharedPreferences.getStringData("Digestivo"));
-        urinario.setText(sharedPreferences.getStringData("Urinario"));
-        reproductor.setText(sharedPreferences.getStringData("Reproductor"));
-        hemo.setText(sharedPreferences.getStringData("Hemo"));
-        endocrino.setText(sharedPreferences.getStringData("Endocrino"));
-        nervioso.setText(sharedPreferences.getStringData("Nervioso"));
-        piel.setText(sharedPreferences.getStringData("Piel"));
-        habitus.setText(sharedPreferences.getStringData("Habitus"));
-        cabeza.setText(sharedPreferences.getStringData("Cabeza"));
-        cuello.setText(sharedPreferences.getStringData("Cuello"));
-
-
-        peso.setText(sharedPreferences.getStringData("Peso") + "kg");
-        estatura.setText(sharedPreferences.getStringData("Estatura") + "mts");
-
-        hemotipo.setText(sharedPreferences.getStringData("Hemotipo"));
-        talla.setText(sharedPreferences.getStringData("Talla"));
-        pulso.setText(sharedPreferences.getStringData("Pulso"));
-
-
-        String cadenaCardio = new String();
-        String cadenaHTA = new String();
-        String cadenaPersonales = new String();
-        String cadenaDiabetes = new String();
-        String cadenaDis = new String();
-        String cadenaObe = new String();
-        String cadenaEnf = new String();
+            String name = sharedPreferences.getStringData("nameItem");
+            respiratorio.setText(sharedPreferences.getStringData("Respiratorio"+name));
+            cardio.setText(sharedPreferences.getStringData("Cardio"+name));
+            digestivo.setText(sharedPreferences.getStringData("Digestivo"+name));
+            urinario.setText(sharedPreferences.getStringData("Urinario"+name));
+            reproductor.setText(sharedPreferences.getStringData("Reproductor"+name));
+            hemo.setText(sharedPreferences.getStringData("Hemo"+name));
+            endocrino.setText(sharedPreferences.getStringData("Endocrino"+name));
+            nervioso.setText(sharedPreferences.getStringData("Nervioso"+name));
+            piel.setText(sharedPreferences.getStringData("Piel"+name));
+            habitus.setText(sharedPreferences.getStringData("Habitus"+name));
+            cabeza.setText(sharedPreferences.getStringData("Cabeza"+name));
+            cuello.setText(sharedPreferences.getStringData("Cuello"+name));
+            peso.setText(sharedPreferences.getStringData("Peso"+name));
+            estatura.setText(sharedPreferences.getStringData("Estatura"+name));
+            hemotipo.setText(sharedPreferences.getStringData("Hemotipo"+name));
+            talla.setText(sharedPreferences.getStringData("Talla"+name));
+            pulso.setText(sharedPreferences.getStringData("Pulso"+name));
+            cardioList.setText(sharedPreferences.getStringData("cadenaCardio"+name));
+            HTA.setText(sharedPreferences.getStringData("cadenaHTA"+name));
+            cerebro.setText(sharedPreferences.getStringData("cadenaPersonales"+name));
+            obesidad.setText(sharedPreferences.getStringData("cadenaObe"+name));
+            diabetes.setText(sharedPreferences.getStringData("cadenaDiabetes"+name));
+            disli.setText(sharedPreferences.getStringData("cadenaDis"+name));
+            enf_cardio.setText(sharedPreferences.getStringData("cadenaEnf"+name));
 
 
 
+        }else{
 
-        for (String object: listCardio) {
-            cadenaCardio+= "-" + object + "\n";
+            respiratorio.setText(sharedPreferences.getStringData("Respiratorio"));
+            cardio.setText(sharedPreferences.getStringData("Cardio"));
+            digestivo.setText(sharedPreferences.getStringData("Digestivo"));
+            urinario.setText(sharedPreferences.getStringData("Urinario"));
+            reproductor.setText(sharedPreferences.getStringData("Reproductor"));
+            hemo.setText(sharedPreferences.getStringData("Hemo"));
+            endocrino.setText(sharedPreferences.getStringData("Endocrino"));
+            nervioso.setText(sharedPreferences.getStringData("Nervioso"));
+            piel.setText(sharedPreferences.getStringData("Piel"));
+            habitus.setText(sharedPreferences.getStringData("Habitus"));
+            cabeza.setText(sharedPreferences.getStringData("Cabeza"));
+            cuello.setText(sharedPreferences.getStringData("Cuello"));
+            peso.setText(sharedPreferences.getStringData("Peso") + "kg");
+            estatura.setText(sharedPreferences.getStringData("Estatura") + "mts");
+            hemotipo.setText(sharedPreferences.getStringData("Hemotipo"));
+            talla.setText(sharedPreferences.getStringData("Talla"));
+            pulso.setText(sharedPreferences.getStringData("Pulso"));
+
+
+
+            for (String object: listCardio) {
+                cadenaCardio+= "-" + object + "\n";
+            }
+
+            for (String object: listHTA) {
+                cadenaHTA+= "-" + object + "\n";
+            }
+
+            for (String object: listPersonales) {
+                cadenaPersonales+= "-" + object + "\n";
+            }
+
+            for (String object: listDiabetes) {
+                cadenaDiabetes+= "-" + object + "\n";
+            }
+
+            for (String object: listDis) {
+                cadenaDis+= "-" + object + "\n";
+            }
+
+            for (String object: listObe) {
+                cadenaObe+= "-" + object + "\n";
+            }
+
+            for (String object: listEnf) {
+                cadenaEnf+= "-" + object + "\n";
+            }
+
+
+
+            cardioList.setText(cadenaCardio);
+            HTA.setText(cadenaHTA);
+            cerebro.setText(cadenaPersonales);
+            obesidad.setText(cadenaObe);
+            diabetes.setText(cadenaDiabetes);
+            disli.setText(cadenaDis);
+            enf_cardio.setText(cadenaEnf);
+
+
         }
 
-        for (String object: listHTA) {
-            cadenaHTA+= "-" + object + "\n";
-        }
-
-        for (String object: listPersonales) {
-            cadenaPersonales+= "-" + object + "\n";
-        }
-
-        for (String object: listDiabetes) {
-            cadenaDiabetes+= "-" + object + "\n";
-        }
-
-        for (String object: listDis) {
-            cadenaDis+= "-" + object + "\n";
-        }
-
-        for (String object: listObe) {
-            cadenaObe+= "-" + object + "\n";
-        }
-
-        for (String object: listEnf) {
-            cadenaEnf+= "-" + object + "\n";
-        }
-
-
-
-        cardioList.setText(cadenaCardio);
-        HTA.setText(cadenaHTA);
-        cerebro.setText(cadenaPersonales);
-        obesidad.setText(cadenaObe);
-        diabetes.setText(cadenaDiabetes);
-        disli.setText(cadenaDis);
-        enf_cardio.setText(cadenaEnf);
 
 
 
@@ -198,12 +230,42 @@ public class HistoriaClinicaFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                ((MainActivity)getActivity()).fragmentNotasHistoric();
-
+                    saveAllDataPreferences();
+                    ((MainActivity)getActivity()).fragmentNotasHistoric();
 
             }
         });
 
+
+    }
+
+    public void saveAllDataPreferences(){
+
+        String name = sharedPreferences.getStringData("nameHistoric");
+        sharedPreferences.setStringData("Respiratorio"+name, sharedPreferences.getStringData("Respiratorio"));
+        sharedPreferences.setStringData("Cardio"+name, sharedPreferences.getStringData("Cardio"));
+        sharedPreferences.setStringData("Digestivo"+name, sharedPreferences.getStringData("Digestivo"));
+        sharedPreferences.setStringData("Urinario"+name, sharedPreferences.getStringData("Urinario"));
+        sharedPreferences.setStringData("Reproductor"+name, sharedPreferences.getStringData("Reproductor"));
+        sharedPreferences.setStringData("Hemo"+name, sharedPreferences.getStringData("Hemo"));
+        sharedPreferences.setStringData("Endocrino"+name, sharedPreferences.getStringData("Endocrino"));
+        sharedPreferences.setStringData("Nervioso"+name, sharedPreferences.getStringData("Nervioso"));
+        sharedPreferences.setStringData("Piel"+name, sharedPreferences.getStringData("Piel"));
+        sharedPreferences.setStringData("Habitus"+name, sharedPreferences.getStringData("Habitus"));
+        sharedPreferences.setStringData("Cabeza"+name, sharedPreferences.getStringData("Cabeza"));
+        sharedPreferences.setStringData("Cuello"+name, sharedPreferences.getStringData("Cuello"));
+        sharedPreferences.setStringData("Peso"+name, sharedPreferences.getStringData("Peso" + "kg"));
+        sharedPreferences.setStringData("Estatura"+name, sharedPreferences.getStringData("Estatura" + "mts"));
+        sharedPreferences.setStringData("Hemotipo"+name, sharedPreferences.getStringData("Hemotipo"));
+        sharedPreferences.setStringData("Talla"+name, sharedPreferences.getStringData("Talla"));
+        sharedPreferences.setStringData("Pulso"+name, sharedPreferences.getStringData("Pulso"));
+        sharedPreferences.setStringData("cadenaCardio"+name, cadenaCardio);
+        sharedPreferences.setStringData("cadenaHTA"+name, cadenaHTA);
+        sharedPreferences.setStringData("cadenaPersonales"+name, cadenaPersonales);
+        sharedPreferences.setStringData("cadenaObe"+name, cadenaObe);
+        sharedPreferences.setStringData("cadenaDiabetes"+name, cadenaDiabetes);
+        sharedPreferences.setStringData("cadenaDis"+name, cadenaDis);
+        sharedPreferences.setStringData("cadenaEnf"+name, cadenaEnf);
 
     }
 
