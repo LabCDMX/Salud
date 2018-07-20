@@ -149,8 +149,8 @@ public class QuestionsFragmentTwo extends Fragment {
             }
         });
 
-        text_date = (TextView) getActivity().findViewById(R.id.answer4);
-        text_date.setOnClickListener(new View.OnClickListener() {
+        final ImageButton calendario = (ImageButton) getActivity().findViewById(R.id.calendar);
+        calendario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // calender class's instance and get current date , month and year from calender
@@ -168,7 +168,7 @@ public class QuestionsFragmentTwo extends Fragment {
                             public void onDateSet(DatePicker view, int year,
                                                   int monthOfYear, int dayOfMonth) {
                                 // set day of month , month and year value in the edit text
-                                text_date.setText(dayOfMonth + "/"
+                                date .setText(dayOfMonth + "/"
                                         + (monthOfYear + 1) + "/" + year);
 
                             }

@@ -170,7 +170,10 @@ public class QuestionsDomFragmentTwo extends Fragment {
                     sharedPreferences.setStringData("Ocupacion","Profesionista");
                 }else if (checkedId == R.id.actividad3){
                     sharedPreferences.setStringData("Ocupacion","Estudiante");
+                }else if (checkedId == R.id.actividad4){
+                    sharedPreferences.setStringData("Ocupacion","No aplica");
                 }
+
 
             }
 

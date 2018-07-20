@@ -120,7 +120,7 @@
 
             </LinearLayout>
 
-            <LinearLayout
+            <RelativeLayout
                 android:id="@+id/open"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -136,15 +136,28 @@
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
-                <TextView
+                <EditText
                     android:id="@+id/answer4"
                     android:layout_width="700dp"
-                    android:layout_height="30dp"
+                    android:layout_height="50dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:inputType="textCapCharacters"
+                    android:layout_below="@+id/question4"
                     android:textSize="20dp"
                     android:hint="dd/mm/aaaa" />
+
+                <ImageButton
+                    android:id="@+id/calendar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignTop="@+id/answer4"
+                    android:layout_marginEnd="188dp"
+                    android:background="@drawable/calendario"
+                    android:layout_marginRight="188dp"
+                    android:layout_alignParentRight="true" />
+
 
                 <TextView
                     android:id="@+id/question"
@@ -152,6 +165,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="10dp"
+                    android:layout_below="@+id/answer4"
                     android:text="6.- Estado de Nacimiento"
                     android:textSize="24sp"
                     android:textStyle="bold" />
@@ -162,6 +176,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
+                    android:layout_below="@+id/question"
                     android:inputType="textCapCharacters"
                     android:hint="Escribir respuesta aquí." />
 
@@ -172,12 +187,14 @@
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="30dp"
                     android:text="7.- Sexo"
+                    android:layout_below="@+id/answer"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
                 <Spinner
                     android:id="@+id/answer2"
                     android:layout_width="700dp"
+                    android:layout_below="@+id/question2"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
@@ -188,6 +205,7 @@
                     android:id="@+id/question3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/answer2"
                     android:layout_marginBottom="10dp"
                     android:text="8.-Nacionalidad de Origen"
                     android:layout_marginTop="30dp"
@@ -199,13 +217,14 @@
                     android:layout_width="700dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
+                    android:layout_below="@+id/question3"
                     android:layout_marginRight="20dp"
                     android:hint="Escribir respuesta aquí."
                     android:inputType="textCapCharacters"
 
                     />
 
-            </LinearLayout>
+            </RelativeLayout>
 
 
             <LinearLayout
