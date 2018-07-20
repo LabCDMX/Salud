@@ -27,6 +27,7 @@ import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.in
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.registros;
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.seguimiento;
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.sincronizacion;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Fragments.VisitasFragment.isSeguimiento;
 
 
 public class QuestionsAntecedentes extends Fragment {
@@ -88,6 +89,8 @@ public class QuestionsAntecedentes extends Fragment {
 
         questions2 = (TextView) getActivity().findViewById(R.id.question2);
 
+        TextView title = (TextView) getActivity().findViewById(R.id.title);
+
 
         abuelos = (CheckBox) getActivity().findViewById(R.id.abuelos);
         padres = (CheckBox) getActivity().findViewById(R.id.padres);
@@ -95,7 +98,9 @@ public class QuestionsAntecedentes extends Fragment {
         hermanos = (CheckBox) getActivity().findViewById(R.id.hermanos);
         ninguno = (CheckBox) getActivity().findViewById(R.id.ninguno);
 
-
+        if(isSeguimiento){
+            title.setText("DATOS DE CONTROL");
+        }
 
         next = (ImageButton) getActivity().findViewById(R.id.next);
         next.setOnClickListener(new View.OnClickListener() {
@@ -247,7 +252,16 @@ public class QuestionsAntecedentes extends Fragment {
                 if(count == 6){
                     isEnf = false;
                     count=0;
-                    ((MainActivity)getActivity()).questionsAntPersonales();
+
+                    if(isSeguimiento){
+                        ((MainActivity)getActivity()).questionInterrogatorio();
+
+
+                    }else{
+                        ((MainActivity)getActivity()).questionsAntPersonales();
+
+                    }
+
 
                 }
 

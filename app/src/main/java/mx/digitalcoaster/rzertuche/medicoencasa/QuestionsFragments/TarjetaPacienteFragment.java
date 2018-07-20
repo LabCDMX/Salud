@@ -179,31 +179,33 @@ public class TarjetaPacienteFragment extends Fragment {
                     addNewVisita();
                     ((MainActivity)getActivity()).succededClinica();
 
-                }
-
-
-                if(textViewFecha.getText().toString().equals("")){
-                    Toast.makeText(getActivity(),"Define la siguiente visita para poder avanzar", Toast.LENGTH_SHORT).show();
                 }else{
-                    if(textViewPeso.getText().toString().equals("")){
-                        Toast.makeText(getActivity(),"Define el nombre de quien realizó la historia para poder avanzar", Toast.LENGTH_SHORT).show();
+                    if(textViewFecha.getText().toString().equals("")){
+                        Toast.makeText(getActivity(),"Define la siguiente visita para poder avanzar", Toast.LENGTH_SHORT).show();
                     }else{
-                        if(isSinExp){
-                            if(textViewExpediente.getText().toString().equals("")){
-                                Toast.makeText(getActivity(),"Define un expediente para poder avanzar", Toast.LENGTH_SHORT).show();
+                        if(textViewPeso.getText().toString().equals("")){
+                            Toast.makeText(getActivity(),"Define el nombre de quien realizó la historia para poder avanzar", Toast.LENGTH_SHORT).show();
+                        }else{
+                            if(isSinExp){
+                                if(textViewExpediente.getText().toString().equals("")){
+                                    Toast.makeText(getActivity(),"Define un expediente para poder avanzar", Toast.LENGTH_SHORT).show();
+                                }else{
+                                    Toast.makeText(getActivity(),"TERMINASTE TUS FLUJILLOS Y SELLASTE EL CLIENTE", Toast.LENGTH_SHORT).show();
+                                    deleteUserSinExpediente(sharedPreferences.getStringData("curpItem"), sharedPreferences.getStringData("nameItem"));
+                                    ((MainActivity)getActivity()).succededClinica();
+                                }
+
                             }else{
-                                Toast.makeText(getActivity(),"TERMINASTE TUS FLUJILLOS Y SELLASTE EL CLIENTE", Toast.LENGTH_SHORT).show();
-                                deleteUserSinExpediente(sharedPreferences.getStringData("curpItem"), sharedPreferences.getStringData("nameItem"));
+                                deleteUser(sharedPreferences.getStringData("curpHistoric"));
                                 ((MainActivity)getActivity()).succededClinica();
                             }
 
-                        }else{
-                            deleteUser(sharedPreferences.getStringData("curpHistoric"));
-                            ((MainActivity)getActivity()).succededClinica();
                         }
-
                     }
                 }
+
+
+
 
 
             }
@@ -434,8 +436,8 @@ public class TarjetaPacienteFragment extends Fragment {
 
                 ContentValues values = new ContentValues();
 
-                values.put(DataBaseDB.PACIENTES_VISITA_NOMBRE,sharedPreferences.getStringData("nameSeguimiento"));
-                values.put(DataBaseDB.PACIENTES_VISITA_CURP, sharedPreferences.getStringData("curpSeguimiento"));
+                values.put(DataBaseDB.PACIENTES_VISITA_NOMBRE,sharedPreferences.getStringData("nameItem"));
+                values.put(DataBaseDB.PACIENTES_VISITA_CURP, sharedPreferences.getStringData("curpItem"));
                 values.put(DataBaseDB.PACIENTES_VISITA_DIRECCION, sharedPreferences.getStringData("EXPEDIENTE ASIGNADO"));
                 values.put(DataBaseDB.PACIENTES_VISITA_STATUS, sharedPreferences.getStringData("ImageItem"));
                 values.put(DataBaseDB.PACIENTES_VISITA_DIAGNOSTICO, sharedPreferences.getStringData("DiagnosticoGeneral"));
@@ -452,6 +454,54 @@ public class TarjetaPacienteFragment extends Fragment {
         }
 
         db.delete(DataBaseDB.TABLE_NAME_PACIENTES_SIN_EXPEDIENTE,DataBaseDB.PACIENTES_EXPEDIENTE_CURP + "=? AND "+ DataBaseDB.PACIENTES_EXPEDIENTE_NOMBRE + "=?",new String[]{CURP,name});
+
+        db.close();
+
+
+        db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE ,null);
+
+        /*------------------------- Revisar si existe ------------------------*/
+        c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SEGUIMIENTO, null);
+        try {
+            if(c.moveToFirst()) {
+
+                ContentValues values = new ContentValues();
+
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NOMBRE,sharedPreferences.getStringData("nameItem"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_CURP, sharedPreferences.getStringData("curpItem"));
+                //values.put(DataBaseDB.SEGUIMIENTO, sharedPreferences.getStringData("EXPEDIENTE ASIGNADO"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_STATUS, sharedPreferences.getStringData("ImageItem"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_DIAGNOSTICO, sharedPreferences.getStringData("DiagnosticoGeneral"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_FECHA, fecha);
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NUMERO, "1");
+
+
+
+                db.insert(DataBaseDB.TABLE_NAME_PACIENTES_SEGUIMIENTO, null, values);
+                System.out.println("Visita  insertada correctamente");
+            }
+            else {
+
+                ContentValues values = new ContentValues();
+
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NOMBRE,sharedPreferences.getStringData("nameItem"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_CURP, sharedPreferences.getStringData("curpItem"));
+                //values.put(DataBaseDB.SEGUIMIENTO, sharedPreferences.getStringData("EXPEDIENTE ASIGNADO"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_STATUS, sharedPreferences.getStringData("ImageItem"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_DIAGNOSTICO, sharedPreferences.getStringData("DiagnosticoGeneral"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_FECHA, fecha);
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NUMERO, "1");
+
+
+                db.insert(DataBaseDB.TABLE_NAME_PACIENTES_SEGUIMIENTO, null, values);
+                System.out.println("Sin expediente insertado correctamente");
+
+            }
+            c.close();
+        } catch (SQLException ex) {
+            System.out.println("Error al insertar productos: " + ex);
+        }
+
 
 
         db.close();
@@ -478,43 +528,44 @@ public class TarjetaPacienteFragment extends Fragment {
 
 
         String auxVisita = sharedPreferences.getStringData("numero_visita");
-        String numeroVisita = String.valueOf(Integer.valueOf(auxVisita)+1);
+        int numeroVisita = Integer.valueOf(auxVisita)+1;
 
         db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE ,null);
 
         /*------------------------- Revisar si existe ------------------------*/
-        c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_VISITAS, null);
+        c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SEGUIMIENTO, null);
         try {
             if(c.moveToFirst()) {
 
                 ContentValues values = new ContentValues();
 
-                values.put(DataBaseDB.PACIENTES_VISITA_NOMBRE,sharedPreferences.getStringData("nameItem"));
-                values.put(DataBaseDB.PACIENTES_VISITA_CURP, sharedPreferences.getStringData("curpItem"));
-                values.put(DataBaseDB.PACIENTES_VISITA_DIRECCION, sharedPreferences.getStringData("EXPEDIENTE ASIGNADO"));
-                values.put(DataBaseDB.PACIENTES_VISITA_STATUS, sharedPreferences.getStringData("ImageItem"));
-                values.put(DataBaseDB.PACIENTES_VISITA_DIAGNOSTICO, sharedPreferences.getStringData("DiagnosticoGeneral"));
-                values.put(DataBaseDB.PACIENTES_VISITA_FECHA, fecha);
-                values.put(DataBaseDB.PACIENTES_VISITA_NUMERO, numeroVisita );
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NOMBRE,sharedPreferences.getStringData("nameSeguimiento"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_CURP, sharedPreferences.getStringData("curpSeguimiento"));
+                //values.put(DataBaseDB.SEGUIMIENTO, sharedPreferences.getStringData("EXPEDIENTE ASIGNADO"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_STATUS, sharedPreferences.getStringData("ImageItem"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_DIAGNOSTICO, sharedPreferences.getStringData("DiagnosticoGeneral"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_FECHA, fecha);
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NUMERO, numeroVisita);
 
 
 
-                db.insert(DataBaseDB.TABLE_NAME_PACIENTES_VISITAS, null, values);
+                db.insert(DataBaseDB.TABLE_NAME_PACIENTES_SEGUIMIENTO, null, values);
                 System.out.println("Visita  insertada correctamente");
             }
             else {
 
                 ContentValues values = new ContentValues();
 
-                values.put(DataBaseDB.PACIENTES_VISITA_NOMBRE,sharedPreferences.getStringData("nameItem"));
-                values.put(DataBaseDB.PACIENTES_VISITA_CURP, sharedPreferences.getStringData("curpItem"));
-                values.put(DataBaseDB.PACIENTES_VISITA_DIRECCION, sharedPreferences.getStringData("EXPEDIENTE ASIGNADO"));
-                values.put(DataBaseDB.PACIENTES_VISITA_STATUS, sharedPreferences.getStringData("ImageItem"));
-                values.put(DataBaseDB.PACIENTES_VISITA_DIAGNOSTICO, sharedPreferences.getStringData("DiagnosticoGeneral"));
-                values.put(DataBaseDB.PACIENTES_VISITA_FECHA, fecha);
-                values.put(DataBaseDB.PACIENTES_VISITA_NUMERO, numeroVisita);
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NOMBRE,sharedPreferences.getStringData("nameSeguimiento"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_CURP, sharedPreferences.getStringData("curpSeguimiento"));
+                //values.put(DataBaseDB.SEGUIMIENTO, sharedPreferences.getStringData("EXPEDIENTE ASIGNADO"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_STATUS, sharedPreferences.getStringData("ImageItem"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_DIAGNOSTICO, sharedPreferences.getStringData("DiagnosticoGeneral"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_FECHA, fecha);
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NUMERO, numeroVisita);
 
-                db.insert(DataBaseDB.TABLE_NAME_PACIENTES_VISITAS, null, values);
+
+                db.insert(DataBaseDB.TABLE_NAME_PACIENTES_SEGUIMIENTO, null, values);
                 System.out.println("Sin expediente insertado correctamente");
 
             }
@@ -522,6 +573,7 @@ public class TarjetaPacienteFragment extends Fragment {
         } catch (SQLException ex) {
             System.out.println("Error al insertar productos: " + ex);
         }
+
 
 
         db.close();

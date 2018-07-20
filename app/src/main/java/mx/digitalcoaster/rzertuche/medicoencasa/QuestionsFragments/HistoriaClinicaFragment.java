@@ -32,6 +32,7 @@ import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.re
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.seguimiento;
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.sincronizacion;
 import static mx.digitalcoaster.rzertuche.medicoencasa.Fragments.PacientesFragment.isSinExp;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Fragments.VisitasFragment.isSeguimiento;
 import static mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsAntecedentes.listCardio;
 import static mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsAntecedentes.listDiabetes;
 import static mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsAntecedentes.listDis;
@@ -171,7 +172,9 @@ public class HistoriaClinicaFragment extends Fragment {
 
 
 
-        }else{
+        }
+
+        else{
 
             respiratorio.setText(sharedPreferences.getStringData("Respiratorio"));
             cardio.setText(sharedPreferences.getStringData("Cardio"));

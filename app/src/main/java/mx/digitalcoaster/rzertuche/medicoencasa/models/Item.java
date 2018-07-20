@@ -26,11 +26,11 @@ public class Item {
     public Item(String nombre, String curp, String numero_visita, String direccion, String status, Boolean makeHojaDiaria, Boolean checkHojaDiaria){
         this.nombre = nombre;
         this.curp = curp;
+        this.numero_visita = numero_visita;
         this.direccion = direccion;
         this.status = status;
         this.makeHojaDiaria = makeHojaDiaria;
         this.checkHojaDiaria = checkHojaDiaria;
-        this.numero_visita = numero_visita;
     }
 
 

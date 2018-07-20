@@ -141,8 +141,10 @@ public class VisitasFragment extends Fragment {
                     sharedPreferences.setStringData("Diagnostico",c.getString(2));
                     sharedPreferences.setStringData("Tratamiento",c.getString(3));
                     sharedPreferences.setStringData("Nombre",c.getString(1));
+                    sharedPreferences.setStringData("ImageItem",c.getString(7));
 
-                    items.add(new ItemVisita(c.getString(1), c.getString(2), c.getString(3), c.getString(4), c.getString(5), c.getString(5)));
+
+                    items.add(new ItemVisita(c.getString(1), c.getString(2), c.getString(3), c.getString(4), c.getString(5), c.getString(6)));
                 }while (c.moveToNext());
             } else {
                 System.out.println("No existen Visitas");
@@ -155,29 +157,6 @@ public class VisitasFragment extends Fragment {
         }
     }
 
-    private void getItemStatus() {
-
-
-        db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE, null);
-        try {
-            c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_VISITAS + " WHERE " +
-                    DataBaseDB.PACIENTES_VISITA_NOMBRE + " ='"+nombrePatient+"'", null);
-            if (c.moveToFirst()) {
-                do {
-
-                    sharedPreferences.setStringData("ImageItem",c.getString(5));
-
-                }while (c.moveToNext());
-            } else {
-                System.out.println("No existen Status");
-            }
-            c.close();
-        } catch (Exception ex) {
-            Log.e("Error", ex.toString());
-        } finally {
-            db.close();
-        }
-    }
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
