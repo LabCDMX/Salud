@@ -145,7 +145,6 @@ public class QuestionsExploracion extends Fragment {
 
                     tensionLayout2.setVisibility(View.GONE);
                     tallaLayout.setVisibility(View.VISIBLE);
-                    
                 }
 
                 if(count == 5){

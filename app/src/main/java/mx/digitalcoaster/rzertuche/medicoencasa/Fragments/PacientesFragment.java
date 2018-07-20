@@ -129,6 +129,7 @@ public class PacientesFragment extends Fragment {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> arg0, View v, int position, long arg3) {
+                isSinExp = false;
                 Item selectedUser = items2.get(position);
                 Log.d("User", "USERUUID:"+selectedUser.getNombre());
                 sharedPreferences.setStringData("nameItem",selectedUser.getNombre());
@@ -158,6 +159,7 @@ public class PacientesFragment extends Fragment {
                 sharedPreferences.setStringData("nameItem",selectedUser.getNombre());
                 sharedPreferences.setStringData("curpItem",selectedUser.getCurp());
 
+
                 isSinExp = true;
                 ((MainActivity)getActivity()).historiaClinicaFragment();
 
@@ -183,7 +185,13 @@ public class PacientesFragment extends Fragment {
             public void onItemClick(AdapterView<?> arg0, View v, int position, long arg3) {
                 Item selectedUser = items.get(position);
                 String nameUser = selectedUser.getNombre();
+                String curp = selectedUser.getCurp();
+                String numero_visita= selectedUser.getNumero_visita();
+
                 sharedPreferences.setStringData("nameSeguimiento", nameUser);
+                sharedPreferences.setStringData("curpSeguimiento", curp);
+                sharedPreferences.setStringData("numero_visita", numero_visita );
+
                 Log.e("TOUCHME",nameUser);
                 ((MainActivity)getActivity()).visitasFragment(nameUser);
 
@@ -201,7 +209,7 @@ public class PacientesFragment extends Fragment {
             c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_VISITAS, null);
             if (c.moveToFirst()) {
                 do {
-                    items.add(new Item(c.getString(1), c.getString(2), c.getString(3), c.getString(5),false,false));
+                    items.add(new Item(c.getString(1), c.getString(2), c.getString(4),c.getString(3), c.getString(5),false,false));
                 }while (c.moveToNext());
             } else {
                 System.out.println("No existen PACIENTES");

@@ -85,6 +85,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 DataBaseDB.PACIENTES_VISITA_NEUROLOGICA + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_GENITALES + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_NOTAS_DOC + " TEXT, " +
+                DataBaseDB.PACIENTES_VISITA_CHECK_HOJA_DIARIA + " TEXT, " +
+                DataBaseDB.PACIENTES_VISITA_MAKE_HOJA_DIARIA + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_PLANES + " TEXT); "
         );
         System.out.println(DataBaseDB.TABLE_NAME_PACIENTES_VISITAS + " Creada");
@@ -147,6 +149,23 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 DataBaseDB.PACIENTES_TRATAMIENTO + " TEXT); "
         );
         System.out.println(DataBaseDB.TABLE_NAME_PACIENTES_SIN_EXPEDIENTE + " Creada");
+
+
+
+        /*---------------------------- Creación de la table de session ---------------------------*/
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + DataBaseDB.TABLE_NAME_PACIENTES_SEGUIMIENTO + "(" +
+                "_id INTEGER PRIMARY KEY, " +
+                DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NOMBRE + " TEXT, " +
+                DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_CURP + " TEXT, " +
+                DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_DIAGNOSTICO + " TEXT, " +
+                DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_TRATAMIENTO + " TEXT, " +
+                DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_FECHA + " TEXT, " +
+                DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NUMERO + " TEXT, " +
+                DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_STATUS + " TEXT); "
+        );
+        System.out.println(DataBaseDB.TABLE_NAME_PACIENTES_SEGUIMIENTO + " Creada");
+
+
 
 
     }

@@ -8,18 +8,20 @@ public class ItemVisita {
     private String tratamiento;
     private String fecha_visita;
     private String numero_visita;
+    private String curp_visita;
 
 
     /*--------------------------------- Datos de la lista de agendados ---------------------------*/
 
 
     /**----------------------------- Contructor para inflar los clientes -------------------------*/
-    public ItemVisita(String nombre, String diagnostico, String tratamiento, String fecha_visita, String numero_visita){
+    public ItemVisita(String nombre, String curp_visita, String diagnostico, String tratamiento, String fecha_visita, String numero_visita){
         this.nombre = nombre;
         this.diagnostico = diagnostico;
         this.tratamiento = tratamiento;
         this.fecha_visita = fecha_visita;
         this.numero_visita = numero_visita;
+        this.curp_visita = curp_visita;
 
 
     }
@@ -40,6 +42,11 @@ public class ItemVisita {
     public String getNumero_visita() {
         return numero_visita;
     }
+    public String getCurp_visita() {
+        return curp_visita;
+    }
+
+
 
 
 }

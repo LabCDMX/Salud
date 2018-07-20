@@ -20,6 +20,7 @@ import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.re
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.seguimiento;
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.sincronizacion;
 import static mx.digitalcoaster.rzertuche.medicoencasa.Fragments.PacientesFragment.isSinExp;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Fragments.VisitasFragment.isSeguimiento;
 
 
 public class SuccededHistoriaFragment extends Fragment {
@@ -79,6 +80,12 @@ public class SuccededHistoriaFragment extends Fragment {
             isSinExp = false;
             fase.setText("EXPEDIENTE ASIGNADO");
             textoFase.setText("PACIENTE SELLADO");
+        }
+
+        if(isSeguimiento){
+            isSeguimiento = false;
+            fase.setText("VISITA AGREGADA");
+            textoFase.setText("¡GRACIAS POR USAR MEDICO EN TU CASA!");
         }
 
 

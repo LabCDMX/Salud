@@ -8,6 +8,7 @@ public class DataBaseDB {
     public static final String TABLE_NAME_PACIENTES = "table_name_pacientes";
     public static final String TABLE_NAME_PACIENTES_VISITAS = "table_name_pacientes_visitas";
     public static final String TABLE_NAME_PACIENTES_SIN_EXPEDIENTE = "table_name_pacientes_expediente";
+    public static final String TABLE_NAME_PACIENTES_SEGUIMIENTO = "table_name_pacientes_seguimiento";
 
 
 
@@ -140,6 +141,18 @@ public class DataBaseDB {
     public static final String PACIENTES_VISITA_GENITALES = "pacientes_visita_genitales";
     public static final String PACIENTES_VISITA_NOTAS_DOC = "pacientes_visita_notas_doc";
     public static final String PACIENTES_VISITA_PLANES = "pacientes_visita_planes";
+    public static final String PACIENTES_VISITA_CHECK_HOJA_DIARIA = "pacientes_visita_check_hoja_diaria";
+    public static final String PACIENTES_VISITA_MAKE_HOJA_DIARIA = "pacientes_visita_make_hoja_diaria";
+
+
+    public static final String PACIENTES_VISITA_SEGUIMIENTO_NOMBRE = "pacientes_visita_seguimiento_nombre";
+    public static final String PACIENTES_VISITA_SEGUIMIENTO_CURP = "pacientes_visita_seguimiento_curp";
+    public static final String PACIENTES_VISITA_SEGUIMIENTO_DIAGNOSTICO = "pacientes_visita_seguimiento_diagnostico";
+    public static final String PACIENTES_VISITA_SEGUIMIENTO_TRATAMIENTO = "pacientes_visita_seguimiento_tratamiento";
+    public static final String PACIENTES_VISITA_SEGUIMIENTO_FECHA= "pacientes_visita_seguimiento_fecha";
+    public static final String PACIENTES_VISITA_SEGUIMIENTO_NUMERO = "pacientes_visita_seguimiento_expediente";
+    public static final String PACIENTES_VISITA_SEGUIMIENTO_STATUS = "pacientes_visita_seguimiento_status";
+
 
 
 }

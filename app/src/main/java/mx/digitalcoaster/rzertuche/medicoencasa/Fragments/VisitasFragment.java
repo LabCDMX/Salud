@@ -133,20 +133,43 @@ public class VisitasFragment extends Fragment {
 
         db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE, null);
         try {
+            c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SEGUIMIENTO + " WHERE " +
+                    DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NOMBRE + " ='"+nombrePatient+"'", null);
+            if (c.moveToFirst()) {
+                do {
+
+                    sharedPreferences.setStringData("Diagnostico",c.getString(2));
+                    sharedPreferences.setStringData("Tratamiento",c.getString(3));
+                    sharedPreferences.setStringData("Nombre",c.getString(1));
+
+                    items.add(new ItemVisita(c.getString(1), c.getString(2), c.getString(3), c.getString(4), c.getString(5), c.getString(5)));
+                }while (c.moveToNext());
+            } else {
+                System.out.println("No existen Visitas");
+            }
+            c.close();
+        } catch (Exception ex) {
+            Log.e("Error", ex.toString());
+        } finally {
+            db.close();
+        }
+    }
+
+    private void getItemStatus() {
+
+
+        db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE, null);
+        try {
             c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_VISITAS + " WHERE " +
                     DataBaseDB.PACIENTES_VISITA_NOMBRE + " ='"+nombrePatient+"'", null);
             if (c.moveToFirst()) {
                 do {
 
                     sharedPreferences.setStringData("ImageItem",c.getString(5));
-                    sharedPreferences.setStringData("Diagnostico",c.getString(7));
-                    sharedPreferences.setStringData("Tratamiento",c.getString(8));
-                    sharedPreferences.setStringData("Nombre",c.getString(1));
 
-                    items.add(new ItemVisita(c.getString(1), c.getString(7), c.getString(8), c.getString(6), c.getString(4)));
                 }while (c.moveToNext());
             } else {
-                System.out.println("No existen Visitas");
+                System.out.println("No existen Status");
             }
             c.close();
         } catch (Exception ex) {
@@ -162,6 +185,8 @@ public class VisitasFragment extends Fragment {
             mListener.onFragmentInteraction(uri);
         }
     }
+
+
 
     @Override
     public void onAttach(Context context) {
