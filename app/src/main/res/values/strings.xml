@@ -32,7 +32,7 @@
     <string name="interrogatorio16">Inspeción, posición, dolor, deformaciones, disfunción, alineación, función, simetría, movimiento, flexión, extensión, rotación, lateralidad, curvaturas, lordosis, xifósis, escoliosis, masa musculares, lesiones, cutáneas.</string>
     <string name="interrogatorio17">Razonamiento, atención, memoria, ansiedad, depresión, alucinaciones, postura corporal, funciones motoras, movimientos corporales voluntarios e involuntarios, paresias, parálisis, marcha, equilibrio, pares, craneales, función sensorial.</string>
     <string name="interrogatorio18">Inspección, madurez, tacto vaginal, tacto rectal, secreciones, vesicular y úlceras, verrugas, condiomas, otras lesiones.</string>
-
+    <string name="interrogatorio19">Inspección forma volumen, simetría, tiros, red, venosa y puntos dolorosos, campos pulmonares, movimientos de amplexión y amplexación, vibraciones vocales, ganglios satélites, nódulos. Área precordial : Frecuencia cardiaca, ruidos cardiacos y soplos, mamas, forma, consistencia, tamaño, volumen, simetría, color, temperatura, secreciones, deformaciones del pezón, presencia de masas tumorales, dolor a la palpación, fijación, a planos profundos, retracción del pezón.</string>
 
 
 
@@ -55,6 +55,8 @@
     <string name="interrogatorio_title16">17.- Columna vertebral</string>
     <string name="interrogatorio_title17">18.- Exploración neurológica</string>
     <string name="interrogatorio_title18">19.- Genitales</string>
+    <string name="interrogatorio_title19">20.- Tórax</string>
+
 
 
 

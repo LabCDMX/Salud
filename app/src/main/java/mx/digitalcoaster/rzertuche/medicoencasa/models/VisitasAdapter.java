@@ -58,6 +58,8 @@ public class VisitasAdapter extends BaseAdapter {
         TextView direccion = (TextView) rowView.findViewById(R.id.tvDireccion);
         TextView tv_status = (TextView) rowView.findViewById(R.id.textView5);
         TextView status = (TextView) rowView.findViewById(R.id.textView3);
+        View palomitaView = (View) rowView.findViewById(R.id.palomitaView);
+
 
         Item item = this.items.get(position);
 
@@ -74,6 +76,15 @@ public class VisitasAdapter extends BaseAdapter {
             tv_status.setBackgroundColor(context.getResources().getColor(R.color.colorRojo));
             status.setBackgroundColor(context.getResources().getColor(R.color.colorRojo));
         }
+
+        if(item.getMakeHojaDiaria()){
+            palomitaView.setVisibility(View.VISIBLE);
+        }else if(item.getCheckHojaDiaria()){
+            palomitaView.setBackground(context.getResources().getDrawable(R.drawable.paloma2));
+        }else{
+            palomitaView.setVisibility(View.GONE);
+        }
+
 
 
 

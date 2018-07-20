@@ -201,7 +201,7 @@ public class PacientesFragment extends Fragment {
             c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_VISITAS, null);
             if (c.moveToFirst()) {
                 do {
-                    items.add(new Item(c.getString(1), c.getString(2), c.getString(3), c.getString(5)));
+                    items.add(new Item(c.getString(1), c.getString(2), c.getString(3), c.getString(5),false,false));
                 }while (c.moveToNext());
             } else {
                 System.out.println("No existen PACIENTES");

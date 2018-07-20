@@ -7,6 +7,8 @@ public class Item {
     private String curp;
     private String direccion;
     private String status;
+    private Boolean makeHojaDiaria;
+    private Boolean checkHojaDiaria;
 
 
     /*--------------------------------- Datos de la lista de agendados ---------------------------*/
@@ -19,13 +21,13 @@ public class Item {
         this.direccion = direccion;
     }
 
-    public Item(String nombre, String curp, String direccion, String status){
+    public Item(String nombre, String curp, String direccion, String status, Boolean makeHojaDiaria, Boolean checkHojaDiaria){
         this.nombre = nombre;
         this.curp = curp;
         this.direccion = direccion;
         this.status = status;
-
-
+        this.makeHojaDiaria = makeHojaDiaria;
+        this.checkHojaDiaria = checkHojaDiaria;
     }
 
 
@@ -38,12 +40,14 @@ public class Item {
     public String getDireccion() {
         return direccion;
     }
-
     public String getStatus() {
         return status;
     }
-
-
-
+    public Boolean getMakeHojaDiaria() {
+        return makeHojaDiaria;
+    }
+    public Boolean getCheckHojaDiaria() {
+        return checkHojaDiaria;
+    }
 
 }

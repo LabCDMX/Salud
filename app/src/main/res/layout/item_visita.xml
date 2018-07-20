@@ -5,12 +5,13 @@
     android:layout_height="wrap_content"
     android:background="#fff">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="420dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <LinearLayout
+            android:id="@+id/fotoUser"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="15dp"
@@ -48,10 +49,11 @@
 
 
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_toRightOf="@+id/fotoUser" >
 
 
 
@@ -63,9 +65,15 @@
                 android:textColor="#000"
                 android:text="Nombre:"
                 android:singleLine="true"
-                android:layout_toRightOf="@id/imgLogoCompany"
                 android:layout_marginTop="10dp" />
 
+            <View
+                android:id="@+id/palomitaView"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/paloma1"
+                android:layout_alignParentRight="true"
+                android:visibility="gone"/>
 
 
 
@@ -79,7 +87,6 @@
                 android:text="DATOS GENERALES"
                 android:layout_marginTop="10dp"
                 android:singleLine="true"
-                android:layout_toRightOf="@id/imgLogoCompany"
                 android:layout_below="@+id/tvNombre"/>
 
             <View
@@ -88,20 +95,31 @@
                 android:layout_width="300dp"
                 android:layout_height="2dp"
                 android:layout_marginTop="3dp"
-                android:layout_toRightOf="@id/imgLogoCompany"
                 android:background="#E91A8D" />
-
 
 
             <TextView
                 android:id="@+id/tvCurp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15dp"
+                android:textSize="12dp"
                 android:textColor="#000"
                 android:text="CURP:"
                 android:singleLine="true"
-                android:layout_toRightOf="@id/imgLogoCompany"
+                android:layout_below="@+id/divider"
+                android:layout_toRightOf="@+id/textViewCURP"
+                android:layout_marginTop="13dp"
+                android:layout_marginLeft="50dp"/>
+
+            <TextView
+                android:id="@+id/textViewCurp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:textColor="#000"
+                android:text="CURP:"
+                android:textStyle="bold"
+                android:singleLine="true"
                 android:layout_below="@+id/divider"
                 android:layout_marginTop="10dp" />
 
@@ -110,18 +128,30 @@
                 android:id="@+id/tvDireccion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:textColor="#000"
+                android:text="DIRECCIÓN:"
+                android:layout_below="@+id/tvCurp"
+                android:layout_toRightOf="@+id/textViewDireccion"
+                android:layout_marginTop="14dp"
+                android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:id="@+id/textViewDireccion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:textSize="15dp"
                 android:textColor="#000"
                 android:text="DIRECCIÓN:"
-                android:singleLine="true"
-                android:layout_toRightOf="@id/imgLogoCompany"
+                android:textStyle="bold"
                 android:layout_below="@+id/tvCurp"
                 android:layout_marginTop="10dp" />
 
 
 
-        </LinearLayout>
 
-    </LinearLayout>
+        </RelativeLayout>
+
+    </RelativeLayout>
 
 </LinearLayout>

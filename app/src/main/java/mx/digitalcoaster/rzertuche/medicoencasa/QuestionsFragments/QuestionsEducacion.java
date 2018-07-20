@@ -179,6 +179,9 @@ public class QuestionsEducacion extends Fragment {
                 }else if (checkedId == R.id.hora4){
                     sharedPreferences.setStringData("TiempoEscuela","Mas de 12 hrs");
 
+                }else if (checkedId == R.id.hora5){
+                    sharedPreferences.setStringData("TiempoEscuela","No aplica");
+
                 }
 
             }
@@ -200,6 +203,9 @@ public class QuestionsEducacion extends Fragment {
 
                 }else if (checkedId == R.id.transporte3){
                     sharedPreferences.setStringData("Transporte","Más de 3 horas");
+
+                }else if (checkedId == R.id.transporte4){
+                    sharedPreferences.setStringData("Transporte","No aplica");
 
                 }
             }

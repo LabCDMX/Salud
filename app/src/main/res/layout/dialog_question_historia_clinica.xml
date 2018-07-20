@@ -126,38 +126,43 @@
                 android:layout_gravity="center_horizontal"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/question"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:text="1.- Respiratorio"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/question2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:text="Obstrucción nasal disfonía, tos, expectoración, hemoptisis, dolor, cianosis, disnea.
+
+                    <TextView
+                        android:id="@+id/question"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:text="1.- Respiratorio"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/question2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:text="Obstrucción nasal disfonía, tos, expectoración, hemoptisis, dolor, cianosis, disnea.
 "
-                    android:textSize="20sp" />
+                        android:textSize="16sp" />
 
 
-                <EditText
-                    android:id="@+id/textArea_information"
-                    android:layout_width="750dp"
-                    android:layout_height="250dp"
-                    android:background="@drawable/cajas_texto"
-                    android:gravity="top|left"
-                    android:inputType="textMultiLine"
-                    android:lines="6"
-                    android:overScrollMode="always"
-                    android:scrollHorizontally="false"
-                    android:scrollbarStyle="insideInset"
-                    android:scrollbars="vertical"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <EditText
+                        android:id="@+id/textArea_information"
+                        android:layout_width="750dp"
+                        android:layout_height="250dp"
+                        android:background="@drawable/cajas_texto"
+                        android:gravity="top|left"
+                        android:inputType="textMultiLine"
+                        android:lines="6"
+                        android:paddingLeft="30dp"
+                        android:paddingTop="30dp"
+                        android:overScrollMode="always"
+                        android:scrollHorizontally="false"
+                        android:scrollbarStyle="insideInset"
+                        android:scrollbars="vertical"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
 
 
             </LinearLayout>

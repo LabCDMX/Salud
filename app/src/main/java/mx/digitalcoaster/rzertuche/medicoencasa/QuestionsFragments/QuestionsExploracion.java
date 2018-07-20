@@ -145,21 +145,15 @@ public class QuestionsExploracion extends Fragment {
 
                     tensionLayout2.setVisibility(View.GONE);
                     tallaLayout.setVisibility(View.VISIBLE);
-
-
+                    
                 }
 
                 if(count == 5){
                     sharedPreferences.setStringData("Talla", talla.getText().toString());
                     sharedPreferences.setStringData("Pulso", pulso.getText().toString());
 
-                    if(isSeguimiento){
-                        ((MainActivity)getActivity()).fragmentNotasHistoric();
 
-                    }else{
-                        ((MainActivity)getActivity()).questionAntecedentes();
-                    }
-
+                    ((MainActivity)getActivity()).questionAntecedentes();
 
 
                 }

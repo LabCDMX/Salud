@@ -133,7 +133,7 @@ public class QuestionsAlimentos extends Fragment {
                     isCere=false;
                     isPan = true;
                     radioAli.clearCheck();
-                    changeTitle.setText("Pan/Tortilla");
+                    changeTitle.setText("Pan/Tortilla \n Pieza");
 
                 }else if(count == 7){
                     isPan = false;
@@ -143,21 +143,21 @@ public class QuestionsAlimentos extends Fragment {
 
                 }else if(count == 8){
                     radioAli.clearCheck();
-                    changeTitle.setText("Agua");
+                    changeTitle.setText("Agua \n Litros");
 
                 }else if(count == 9){
                     isChatarra=false;
                     isCarne = true;
                     radioAli.clearCheck();
-                    changeTitle.setText("Carne");
+                    changeTitle.setText("Carne \n Pieza");
 
                 }else if(count == 10){
                     radioAli.clearCheck();
-                    changeTitle.setText("Pollo");
+                    changeTitle.setText("Pollo \n Pieza");
 
                 }else if(count == 11){
                     radioAli.clearCheck();
-                    changeTitle.setText("Pescado");
+                    changeTitle.setText("Pescado \n Pieza");
 
                 }else if(count == 12){
                     radioAli.clearCheck();
