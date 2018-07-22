@@ -57,8 +57,9 @@ public class HistoriaClinicaFragment extends Fragment {
     SharedPreferences sharedPreferences;
 
     EditText respiratorio, cardio, peso, estatura, HTA, cardioList, talla, pulso, hemotipo;
-    EditText digestivo,urinario,reproductor,hemo,endocrino,nervioso,piel,habitus,cabeza,cuello;
+    EditText digestivo,urinario,reproductor,hemo,endocrino,nervioso,piel,habitus,cabeza,cuello,torax,abdomen,ginecologica,extremidades,columna,neurologica,genitales;
     EditText diabetes,disli,obesidad,enf_cardio;
+    EditText tensionArt,frecuenciaCar,frecuenciaRes,glucemia,temperatura;
     TextView personales;
     ImageButton next;
 
@@ -111,12 +112,23 @@ public class HistoriaClinicaFragment extends Fragment {
         habitus = (EditText) getActivity().findViewById(R.id.textViewHabitus);
         cabeza = (EditText) getActivity().findViewById(R.id.textViewCabeza);
         cuello = (EditText) getActivity().findViewById(R.id.textViewCuello);
-
+        torax = (EditText) getActivity().findViewById(R.id.textViewTorax);
+        abdomen = (EditText) getActivity().findViewById(R.id.textViewAbdomen);
+        ginecologica = (EditText) getActivity().findViewById(R.id.textViewExploracionGinec);
+        extremidades = (EditText) getActivity().findViewById(R.id.textViewExtremidades);
+        columna = (EditText) getActivity().findViewById(R.id.textViewColumna);
+        neurologica = (EditText) getActivity().findViewById(R.id.textViewNeurologica);
+        genitales = (EditText) getActivity().findViewById(R.id.textViewGenitales);
 
 
 
         peso = (EditText) getActivity().findViewById(R.id.textViewPeso);
         estatura = (EditText) getActivity().findViewById(R.id.textViewEstatura);
+        tensionArt = (EditText) getActivity().findViewById(R.id.textViewTensionArterial);
+        frecuenciaCar = (EditText) getActivity().findViewById(R.id.textViewFrecuenciaCar);
+        frecuenciaRes = (EditText) getActivity().findViewById(R.id.textViewFrecuenciaRes);
+        glucemia = (EditText) getActivity().findViewById(R.id.textViewGlucemia);
+        temperatura = (EditText) getActivity().findViewById(R.id.textViewTemperatura);
 
         HTA = (EditText) getActivity().findViewById(R.id.textViewHTA);
         cardioList = (EditText) getActivity().findViewById(R.id.textViewCardioVas);
@@ -193,6 +205,20 @@ public class HistoriaClinicaFragment extends Fragment {
             hemotipo.setText(sharedPreferences.getStringData("Hemotipo"));
             talla.setText(sharedPreferences.getStringData("Talla"));
             pulso.setText(sharedPreferences.getStringData("Pulso"));
+            torax.setText(sharedPreferences.getStringData("Torax"));
+            abdomen.setText(sharedPreferences.getStringData("Abdomen"));
+            ginecologica.setText(sharedPreferences.getStringData("Ginecologica"));
+            extremidades.setText(sharedPreferences.getStringData("Extremidades"));
+            columna.setText(sharedPreferences.getStringData("Columna"));
+            neurologica.setText(sharedPreferences.getStringData("Neurologica"));
+            genitales.setText(sharedPreferences.getStringData("Genitales"));
+
+            tensionArt.setText(sharedPreferences.getStringData("Tension1") + sharedPreferences.getStringData("Tension2"));
+            frecuenciaCar.setText(sharedPreferences.getStringData("Frecuencia Cardiaca"));
+            frecuenciaRes.setText(sharedPreferences.getStringData("Frecuencia Respiratoria"));
+            glucemia.setText(sharedPreferences.getStringData("Glucemia"));
+            temperatura.setText(sharedPreferences.getStringData("Temperatura"));
+
 
 
 

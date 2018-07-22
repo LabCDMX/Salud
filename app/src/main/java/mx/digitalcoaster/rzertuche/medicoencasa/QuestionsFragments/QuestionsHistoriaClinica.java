@@ -157,36 +157,43 @@ public class QuestionsHistoriaClinica extends Fragment {
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio12));
                 }
                 if(count == 13){
+                    sharedPreferences.setStringData("Abdomen",textArea_information.getText().toString());
                     textArea_information.setText("");
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title20));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio13));
                 }
                 if(count == 14){
+                    sharedPreferences.setStringData("Ginecologica",textArea_information.getText().toString());
                     textArea_information.setText("");
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title14));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio14));
                 }
                 if(count == 15){
+                    sharedPreferences.setStringData("Extremidades",textArea_information.getText().toString());
                     textArea_information.setText("");
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title15));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio15));
                 }
                 if(count == 16){
+                    sharedPreferences.setStringData("Columna",textArea_information.getText().toString());
                     textArea_information.setText("");
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title16));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio16));
                 }
                 if(count == 17){
+                    sharedPreferences.setStringData("Neurologica",textArea_information.getText().toString());
                     textArea_information.setText("");
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title17));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio17));
                 }
                 if(count == 18){
+                    sharedPreferences.setStringData("Genitales",textArea_information.getText().toString());
                     textArea_information.setText("");
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title18));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio18));
                 }
                 if(count == 19){
+                    sharedPreferences.setStringData("Torax",textArea_information.getText().toString());
                     textArea_information.setText("");
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title19));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio19));

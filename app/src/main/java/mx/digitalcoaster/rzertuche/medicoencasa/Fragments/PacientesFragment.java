@@ -118,14 +118,10 @@ public class PacientesFragment extends Fragment {
         sharedPreferences = SharedPreferences.getInstance();
 
 
-
-
         GridView gridView = (GridView) view.findViewById(R.id.gridusers);
-
         items2 = new ArrayList<>();
         getPacientes();
         gridView.setAdapter(new ItemAdapter(getActivity().getApplicationContext(), items2));
-
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> arg0, View v, int position, long arg3) {
@@ -146,11 +142,9 @@ public class PacientesFragment extends Fragment {
 
 
         GridView gridView3 = (GridView) view.findViewById(R.id.gridviewSinExp);
-
         items3 = new ArrayList<>();
         getSinExpediente();
         gridView3.setAdapter(new ItemAdapter(getActivity().getApplicationContext(), items3));
-
         gridView3.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> arg0, View v, int position, long arg3) {
@@ -172,14 +166,8 @@ public class PacientesFragment extends Fragment {
 
         lista = (GridView) getActivity().findViewById(R.id.gridview);
         items = new ArrayList<>();
-
-
         getProductos();
         lista.setAdapter(new VisitasAdapter(getActivity().getApplicationContext(), items));
-
-
-
-
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> arg0, View v, int position, long arg3) {
