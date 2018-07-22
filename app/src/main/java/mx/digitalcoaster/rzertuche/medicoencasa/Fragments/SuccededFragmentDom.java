@@ -67,7 +67,7 @@ public class SuccededFragmentDom extends Fragment {
 
 
             }
-        }, 3000);
+        }, 2000);
 
         handler.postDelayed(new Runnable() {
             public void run() {

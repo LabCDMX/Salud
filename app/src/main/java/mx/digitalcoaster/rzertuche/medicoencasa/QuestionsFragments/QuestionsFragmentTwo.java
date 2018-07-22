@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -63,6 +65,11 @@ public class QuestionsFragmentTwo extends Fragment {
     private String date = "";
     private TextView text_date;
     private  Spinner sp;
+    private EditText edad;
+
+    RelativeLayout open, open1;
+
+    int count = 0;
 
 
 
@@ -90,9 +97,14 @@ public class QuestionsFragmentTwo extends Fragment {
 
 
         category = (TextView) view.findViewById(R.id.category);
-
-
         category.setText("Personales");
+
+        edad = view.findViewById(R.id.answer6);
+
+
+
+        open = view.findViewById(R.id.open);
+        open1 = view.findViewById(R.id.open1);
 
         sp= (Spinner) getActivity().findViewById(R.id.answer2);
 
@@ -104,8 +116,6 @@ public class QuestionsFragmentTwo extends Fragment {
 
 
         final TextView date = (TextView) getActivity().findViewById(R.id.answer4);
-        final EditText estadoNacimiento = (EditText) getActivity().findViewById(R.id.answer);
-        final EditText nacionalidad = (EditText) getActivity().findViewById(R.id.answer3);
 
 
         ImageButton next = (ImageButton) view.findViewById(R.id.next);
@@ -113,7 +123,25 @@ public class QuestionsFragmentTwo extends Fragment {
             @Override
             public void onClick(View v) {
 
-                String sexo = sp.getSelectedItem().toString();
+                count ++;
+
+
+                if(count == 1){
+
+                    open.setVisibility(View.GONE);
+                    open1.setVisibility(View.VISIBLE);
+
+                }
+
+                if(count == 2){
+
+                    ((MainActivity)getActivity()).questionDomTwo();
+
+
+                }
+
+
+                /*String sexo = sp.getSelectedItem().toString();
 
 
                 if(!date.getText().toString().equals("")){
@@ -143,10 +171,11 @@ public class QuestionsFragmentTwo extends Fragment {
                     }
                 }else{
                     date.setError("Campo requerido");
-                }
+                }*/
 
 
             }
+
         });
 
         final ImageButton calendario = (ImageButton) getActivity().findViewById(R.id.calendar);
@@ -171,6 +200,9 @@ public class QuestionsFragmentTwo extends Fragment {
                                 date .setText(dayOfMonth + "/"
                                         + (monthOfYear + 1) + "/" + year);
 
+                                edad.setText(String.valueOf(calcularEdad(year,monthOfYear,dayOfMonth)) + " años");
+                                edad.setEnabled(false);
+
                             }
                         }, mYear, mMonth, mDay);
                 datePickerDialog.getDatePicker().setSpinnersShown(true);
@@ -187,6 +219,22 @@ public class QuestionsFragmentTwo extends Fragment {
 
 
 
+    }
+
+
+    private int calcularEdad(int year, int month, int day) {
+        Calendar today = Calendar.getInstance();
+
+        int diff_year = today.get(Calendar.YEAR) -  year;
+        int diff_month = today.get(Calendar.MONTH) - month;
+        int diff_day = today.get(Calendar.DAY_OF_MONTH) - day;
+
+        //Si está en ese año pero todavía no los ha cumplido
+        if (diff_month < 0 || (diff_month == 0 && diff_day < 0)) {
+            diff_year = diff_year - 1; //no aparecían los dos guiones del postincremento :|
+        }
+
+        return diff_year;
     }
 
     public void getSpinnerOptions(){

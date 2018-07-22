@@ -214,7 +214,10 @@ public class QuestionDomFragment extends Fragment {
                     }else{
 
                         if(tipoVisita.equals("Desocupado") || tipoVisita.equals("Renuente") || tipoVisita.equals("No vivienda") || tipoVisita.equals("Ausente")){
+
                             ((MainActivity)getActivity()).domRegistrado();
+                            ((MainActivity)getActivity()).stopCronometro();
+
                         }else if (tipoVisita.equals("Censado")){
                             ((MainActivity)getActivity()).datosCensado();
                         }

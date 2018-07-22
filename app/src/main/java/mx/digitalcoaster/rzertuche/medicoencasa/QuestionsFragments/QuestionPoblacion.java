@@ -146,6 +146,7 @@ public class QuestionPoblacion extends Fragment {
 
                         if(tipoVisita.equals("IMSS") || tipoVisita.equals("ISSSTE")){
 
+                            ((MainActivity)getActivity()).stopCronometro();
                             ((MainActivity)getActivity()).domRegistrado();
 
                         }else{
@@ -171,6 +172,7 @@ public class QuestionPoblacion extends Fragment {
 
                         if(tipoVisita.equals("No")){
 
+                            ((MainActivity)getActivity()).stopCronometro();
                             ((MainActivity)getActivity()).domRegistrado();
 
                         }else if (tipoVisita.equals("Si")){

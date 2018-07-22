@@ -48,7 +48,7 @@ public class QuestionsExploracion extends Fragment {
     private ImageButton next;
     public static List<String> listElectro = new ArrayList<String>();
 
-    private LinearLayout pesoLayout,tipoSangre,tensionLayout, tallaLayout, tensionLayout2;
+    private LinearLayout pesoLayout,tipoSangre,tensionLayout, tallaLayout, tensionLayout2, temperaturaLayout;
     private TextView questions2,title;
     private int count = 0;
 
@@ -106,6 +106,7 @@ public class QuestionsExploracion extends Fragment {
         tensionLayout = (LinearLayout) getActivity().findViewById(R.id.questions2);
         tensionLayout2 = (LinearLayout) getActivity().findViewById(R.id.questions5);
         tallaLayout = (LinearLayout) getActivity().findViewById(R.id.questions6);
+        temperaturaLayout = (LinearLayout) getActivity().findViewById(R.id.questions12);
 
 
         radioSangre = (RadioGroup) getActivity().findViewById(R.id.radioSangre);
@@ -150,6 +151,16 @@ public class QuestionsExploracion extends Fragment {
                 if(count == 5){
                     sharedPreferences.setStringData("Talla", talla.getText().toString());
                     sharedPreferences.setStringData("Pulso", pulso.getText().toString());
+
+
+                    tallaLayout.setVisibility(View.GONE);
+                    temperaturaLayout.setVisibility(View.VISIBLE);
+
+
+                }
+
+                if(count == 6){
+                    //sharedPreferences.setStringData("Temperatura", temoera.getText().toString());
 
 
                     ((MainActivity)getActivity()).questionAntecedentes();

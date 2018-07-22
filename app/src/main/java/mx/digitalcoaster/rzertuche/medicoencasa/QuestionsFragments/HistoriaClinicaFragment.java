@@ -59,7 +59,7 @@ public class HistoriaClinicaFragment extends Fragment {
     EditText respiratorio, cardio, peso, estatura, HTA, cardioList, talla, pulso, hemotipo;
     EditText digestivo,urinario,reproductor,hemo,endocrino,nervioso,piel,habitus,cabeza,cuello;
     EditText diabetes,disli,obesidad,enf_cardio;
-    TextView cerebro;
+    TextView personales;
     ImageButton next;
 
     public static String cadenaCardio = new String();
@@ -127,7 +127,7 @@ public class HistoriaClinicaFragment extends Fragment {
         enf_cardio = (EditText) getActivity().findViewById(R.id.textViewCerebroVas);
 
 
-        cerebro = (TextView) getActivity().findViewById(R.id.tvCerebro);
+        personales = (TextView) getActivity().findViewById(R.id.tvCerebro);
 
         hemotipo = (EditText) getActivity().findViewById(R.id.textViewHemotipo);
         talla = (EditText) getActivity().findViewById(R.id.textViewTalla);
@@ -164,7 +164,7 @@ public class HistoriaClinicaFragment extends Fragment {
             pulso.setText(sharedPreferences.getStringData("Pulso"+name));
             cardioList.setText(sharedPreferences.getStringData("cadenaCardio"+name));
             HTA.setText(sharedPreferences.getStringData("cadenaHTA"+name));
-            cerebro.setText(sharedPreferences.getStringData("cadenaPersonales"+name));
+            personales.setText(sharedPreferences.getStringData("cadenaPersonales"+name));
             obesidad.setText(sharedPreferences.getStringData("cadenaObe"+name));
             diabetes.setText(sharedPreferences.getStringData("cadenaDiabetes"+name));
             disli.setText(sharedPreferences.getStringData("cadenaDis"+name));
@@ -228,7 +228,7 @@ public class HistoriaClinicaFragment extends Fragment {
 
             cardioList.setText(cadenaCardio);
             HTA.setText(cadenaHTA);
-            cerebro.setText(cadenaPersonales);
+            personales.setText(cadenaPersonales);
             obesidad.setText(cadenaObe);
             diabetes.setText(cadenaDiabetes);
             disli.setText(cadenaDis);

@@ -35,6 +35,17 @@
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/sedesa" />
 
+            <Chronometer
+                android:id="@+id/chronomether"
+                android:layout_width="150dp"
+                android:layout_height="100dp"
+                android:layout_toLeftOf="@id/imageView6"
+                android:textAlignment="center"
+                android:textSize="45dp"
+                android:textColor="@color/colorWhite"
+                android:visibility="gone"
+                android:text="00"/>
+
             <ImageView
                 android:id="@+id/imageView6"
                 android:layout_width="150dp"

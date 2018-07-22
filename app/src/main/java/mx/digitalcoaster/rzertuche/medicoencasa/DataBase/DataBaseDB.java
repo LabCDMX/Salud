@@ -9,11 +9,18 @@ public class DataBaseDB {
     public static final String TABLE_NAME_PACIENTES_VISITAS = "table_name_pacientes_visitas";
     public static final String TABLE_NAME_PACIENTES_SIN_EXPEDIENTE = "table_name_pacientes_expediente";
     public static final String TABLE_NAME_PACIENTES_SEGUIMIENTO = "table_name_pacientes_seguimiento";
+    public static final String TABLE_NAME_CODIGOS_POSTALES = "table_name_codigos_postales";
+
 
 
 
     public static int VERSION = 1;
 
+
+    public static final String CODIGO_POSTAL = "codigo_postal";
+    public static final String COLONIA = "colonia";
+    public static final String MUNICIPIO = "municipio";
+    public static final String ESTADO = "estado";
 
     public static final String PACIENTES_NOMBRE = "pacientes_nombre";
     public static final String PACIENTES_CURP = "pacientes_curp";

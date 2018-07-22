@@ -40,7 +40,7 @@ public class QuestionsAntecedentesPersonales extends Fragment {
     private TextView questions2;
     private int count = 0;
 
-    private CheckBox enf_cerebro,sobrepeso,tabaquismo,vih,enf_cardiovascular,sedentarismo,tuberculosis;
+    private CheckBox enf_cerebro,sobrepeso,tabaquismo,vih,enf_cardiovascular,sedentarismo,tuberculosis,ninguno;
 
     public static List<String> listPersonales = new ArrayList<String>();
 
@@ -77,6 +77,8 @@ public class QuestionsAntecedentesPersonales extends Fragment {
         sedentarismo = (CheckBox) getActivity().findViewById(R.id.sedentarismo);
         tuberculosis = (CheckBox) getActivity().findViewById(R.id.tuberculosis);
         enf_cardiovascular = (CheckBox) getActivity().findViewById(R.id.enf_cardiovascular);
+        ninguno = (CheckBox) getActivity().findViewById(R.id.ninguno);
+
 
 
 
@@ -110,10 +112,10 @@ public class QuestionsAntecedentesPersonales extends Fragment {
                     if (enf_cardiovascular.isChecked()) {
                         listPersonales.add("Enfermedad Cardiovascular");
                     }
+                    if (ninguno.isChecked()) {
+                        listPersonales.add("Ninguno");
+                    }
                 }
-
-
-
 
                 ((MainActivity)getActivity()).questionInterrogatorio();
             }

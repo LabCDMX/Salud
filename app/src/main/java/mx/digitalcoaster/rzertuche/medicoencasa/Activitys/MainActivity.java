@@ -1,11 +1,14 @@
 package mx.digitalcoaster.rzertuche.medicoencasa.Activitys;
 
 import android.app.Dialog;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.SystemClock;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -17,10 +20,25 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.util.Iterator;
+
+import cz.msebera.android.httpclient.Header;
+import cz.msebera.android.httpclient.HttpEntity;
+import cz.msebera.android.httpclient.entity.StringEntity;
 import io.realm.Realm;
 import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseDB;
 import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseHelper;
@@ -58,6 +76,7 @@ import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsFrag
 import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsHistoriaClinica;
 import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.TarjetaPacienteFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.R;
+import mx.digitalcoaster.rzertuche.medicoencasa.Utils.SharedPreferences;
 import mx.digitalcoaster.rzertuche.medicoencasa.models.HistoriaClinica;
 
 public class MainActivity extends AppCompatActivity implements
@@ -98,11 +117,14 @@ public class MainActivity extends AppCompatActivity implements
     public static ImageView inicio, registros, seguimiento, sincronizacion;
     public static Context appContext;
     public static Boolean notListerners=false;
+    public static Chronometer cronometro;
 
     /*---------------------------------- Objetos de Base de Datos --------------------------------*/
     private SQLiteDatabase db = null;      // Objeto para utilizar la base de datos
     private DataBaseHelper sqliteHelper;   // Objeto para abrir la base de Datos
     private Cursor c = null;
+    private JSONObject respuestaJSON;
+    private SharedPreferences sharedPreferences;
 
 
 
@@ -115,7 +137,8 @@ public class MainActivity extends AppCompatActivity implements
         appContext = getApplicationContext();
 
         // Initialize Realm
-        Realm.init(this);
+        //Realm.init(this);
+
 
 
         //Initialize ImageView to set change with onclick
@@ -124,10 +147,15 @@ public class MainActivity extends AppCompatActivity implements
         seguimiento = (ImageView) findViewById(R.id.imageButton3);
         sincronizacion = (ImageView) findViewById(R.id.imageButton4);
 
+        cronometro = findViewById(R.id.chronomether);
+
 
         sqliteHelper = new DataBaseHelper(this, DataBaseDB.DB_NAME, null, DataBaseDB.VERSION);
         db = sqliteHelper.getWritableDatabase();
         db.close();
+
+        sharedPreferences = SharedPreferences.getInstance();
+        getPostalCode();
 
         //Home Fragment
         InicioFragmentMain fragment = new InicioFragmentMain();
@@ -168,6 +196,7 @@ public class MainActivity extends AppCompatActivity implements
                         @Override
                         public void onClick(View v) {
                             notListerners = false;
+                            stopCronometro();
                             dialog.dismiss();
 
                             fragmentDomiciliarios();
@@ -180,9 +209,7 @@ public class MainActivity extends AppCompatActivity implements
                     dialog.show();
                 }else{
                     Log.e("BLOCK","Bloqueado alv");
-
                     fragmentDomiciliarios();
-
                     restartImageButtons();
                     registros.setImageDrawable(getResources().getDrawable(R.drawable.nuevo_pink));
                 }
@@ -293,6 +320,7 @@ public class MainActivity extends AppCompatActivity implements
                         @Override
                         public void onClick(View v) {
                             notListerners = false;
+                            stopCronometro();
                             dialog.dismiss();
 
                             PacientesFragment fragment = new PacientesFragment();
@@ -325,6 +353,22 @@ public class MainActivity extends AppCompatActivity implements
             }
         });
 
+    }
+
+
+    public static void startCronometro(){
+        cronometro.setVisibility(View.VISIBLE);
+        cronometro.setBase(SystemClock.elapsedRealtime());
+        cronometro.start();
+    }
+
+
+    public void stopCronometro(){
+        cronometro.stop();
+        cronometro.getText().toString();
+        sharedPreferences.setStringData("TiempoEncuesta",cronometro.getText().toString());
+        Log.e("Tiempo Tardanza", sharedPreferences.getStringData("TiempoEncuesta"));
+        cronometro.setVisibility(View.GONE);
     }
 
     @Override
@@ -363,11 +407,14 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     public void domiciliarios(View v){
+
         QuestionDomFragment fragment = new QuestionDomFragment();
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.fragmentHolder, fragment);
         transaction.commit();
+
+        startCronometro();
 
         restartImageButtons();
         registros.setImageDrawable(getResources().getDrawable(R.drawable.nuevo_pink));
@@ -628,6 +675,8 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     public void fragmentDomiciliarios(){
+        startCronometro();
+
         QuestionDomFragment fragment = new QuestionDomFragment();
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
@@ -697,4 +746,97 @@ public class MainActivity extends AppCompatActivity implements
     public void onFragmentInteraction(Uri uri) {
 
     }
+
+
+    public  void getPostalCode(){
+
+
+
+        final AsyncHttpClient client = new AsyncHttpClient();
+        client.setMaxRetriesAndTimeout(3,30000);
+        client.setTimeout(30000);
+        client.get(appContext,"http://187.210.47.140:9999/api/admin/api/codigospostales", new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                // If the response is JSONObject instead of expected JSONArray
+                try {
+                    respuestaJSON = new JSONObject(response.toString());
+                    JSONArray parentesco = respuestaJSON.getJSONArray("codigospostales");
+
+                    String codigo_postal;
+                    String colonia;
+                    String municipio;
+                    String estado;
+
+                    db = openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE, null);
+                    for (int i = 0; i < parentesco.length(); i++) {
+
+                        codigo_postal = parentesco.getJSONObject(i).getString("CodigoPostal");
+                        colonia = parentesco.getJSONObject(i).getString("Colonia");
+                        municipio = parentesco.getJSONObject(i).getString("Municipio");
+                        estado = parentesco.getJSONObject(i).getString("Estado");
+
+
+                        System.out.println("CODIGO_POSTAL: " + codigo_postal);
+                        System.out.println("COLONIA: " + colonia);
+                        System.out.println("MUNICIPIO: " + municipio);
+                        System.out.println("ESTADO: " + estado);
+
+                        /*------------------------- Revisar si existe ------------------------*/
+                        c = db.rawQuery("SELECT " + DataBaseDB.CODIGO_POSTAL +
+                                " FROM " + DataBaseDB.TABLE_NAME_CODIGOS_POSTALES +
+                                " WHERE " + DataBaseDB.CODIGO_POSTAL + "='" + codigo_postal + "'", null);
+                        try {
+                            if (c.moveToFirst()) {
+                                System.out.print("Codigo existente: ");
+                                ContentValues update = new ContentValues();
+
+                                update.put(DataBaseDB.CODIGO_POSTAL, codigo_postal);
+                                update.put(DataBaseDB.COLONIA, colonia);
+                                update.put(DataBaseDB.MUNICIPIO, municipio);
+                                update.put(DataBaseDB.ESTADO, estado);
+
+                                db.update(DataBaseDB.TABLE_NAME_CODIGOS_POSTALES, update, DataBaseDB.CODIGO_POSTAL + "='" + codigo_postal + "'", null);
+                                System.out.println("Codigo actualizado correctamente");
+
+                            } else {
+                                ContentValues values = new ContentValues();
+
+                                values.put(DataBaseDB.CODIGO_POSTAL, codigo_postal);
+                                values.put(DataBaseDB.COLONIA, colonia);
+                                values.put(DataBaseDB.MUNICIPIO, municipio);
+                                values.put(DataBaseDB.ESTADO, estado);
+
+                                db.insert(DataBaseDB.TABLE_NAME_CODIGOS_POSTALES, null, values);
+                                System.out.println("Codigo postal insertado correctamente");
+                            }
+                            c.close();
+                        } catch (SQLException ex) {
+                            System.out.println("Error al insertar codigo postal: " + ex);
+                        }
+                    }
+                    db.close();
+                } catch (JSONException e1) {
+                    e1.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+            }
+
+        });
+    }
+
 }

@@ -166,6 +166,18 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         System.out.println(DataBaseDB.TABLE_NAME_PACIENTES_SEGUIMIENTO + " Creada");
 
 
+        /*---------------------------- Creación de la table de session ---------------------------*/
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + DataBaseDB.TABLE_NAME_CODIGOS_POSTALES + "(" +
+                "_id INTEGER PRIMARY KEY, " +
+                DataBaseDB.CODIGO_POSTAL + " TEXT, " +
+                DataBaseDB.COLONIA + " TEXT, " +
+                DataBaseDB.MUNICIPIO + " TEXT, " +
+                DataBaseDB.ESTADO + " TEXT); "
+        );
+        System.out.println(DataBaseDB.TABLE_NAME_CODIGOS_POSTALES + " Creada");
+
+
+
 
 
     }
