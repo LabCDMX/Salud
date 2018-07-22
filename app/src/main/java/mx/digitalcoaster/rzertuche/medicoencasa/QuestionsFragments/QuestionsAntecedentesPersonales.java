@@ -90,7 +90,7 @@ public class QuestionsAntecedentesPersonales extends Fragment {
             public void onClick(View v) {
 
                 if(enf_cerebro.isChecked() || vih.isChecked() || sobrepeso.isChecked() || tabaquismo.isChecked() || sedentarismo.isChecked()
-                        || tuberculosis.isChecked() || enf_cardiovascular.isChecked()) {
+                        || tuberculosis.isChecked() || enf_cardiovascular.isChecked() || ninguno.isChecked()) {
                     if (enf_cerebro.isChecked()) {
                         listPersonales.add("Enfermedad Cerebrovascular");
                     }

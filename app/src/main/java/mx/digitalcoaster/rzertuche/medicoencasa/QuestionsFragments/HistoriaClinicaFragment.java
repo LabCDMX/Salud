@@ -212,8 +212,7 @@ public class HistoriaClinicaFragment extends Fragment {
             columna.setText(sharedPreferences.getStringData("Columna"));
             neurologica.setText(sharedPreferences.getStringData("Neurologica"));
             genitales.setText(sharedPreferences.getStringData("Genitales"));
-
-            tensionArt.setText(sharedPreferences.getStringData("Tension1") + sharedPreferences.getStringData("Tension2"));
+            tensionArt.setText(sharedPreferences.getStringData("Tension1") + "/" +sharedPreferences.getStringData("Tension2"));
             frecuenciaCar.setText(sharedPreferences.getStringData("Frecuencia Cardiaca"));
             frecuenciaRes.setText(sharedPreferences.getStringData("Frecuencia Respiratoria"));
             glucemia.setText(sharedPreferences.getStringData("Glucemia"));
@@ -249,7 +248,6 @@ public class HistoriaClinicaFragment extends Fragment {
             for (String object: listEnf) {
                 cadenaEnf+= "-" + object + "\n";
             }
-
 
 
             cardioList.setText(cadenaCardio);

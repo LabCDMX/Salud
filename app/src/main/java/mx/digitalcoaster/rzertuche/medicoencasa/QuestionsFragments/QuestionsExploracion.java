@@ -34,6 +34,7 @@ import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.no
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.registros;
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.seguimiento;
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.sincronizacion;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Fragments.PacientesFragment.isSinExp;
 import static mx.digitalcoaster.rzertuche.medicoencasa.Fragments.VisitasFragment.isSeguimiento;
 
 
@@ -177,7 +178,17 @@ public class QuestionsExploracion extends Fragment {
                 if(count == 6){
 
                     sharedPreferences.setStringData("Temperatura", temperatura.getText().toString());
-                    ((MainActivity)getActivity()).questionAntecedentes();
+
+                    if(isSinExp || isSeguimiento){
+
+                        ((MainActivity)getActivity()).questionInterrogatorio();
+
+                    }else{
+
+                        ((MainActivity)getActivity()).questionAntecedentes();
+
+                    }
+
 
 
                 }

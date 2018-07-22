@@ -150,6 +150,8 @@ public class DataBaseDB {
     public static final String PACIENTES_VISITA_PLANES = "pacientes_visita_planes";
     public static final String PACIENTES_VISITA_CHECK_HOJA_DIARIA = "pacientes_visita_check_hoja_diaria";
     public static final String PACIENTES_VISITA_MAKE_HOJA_DIARIA = "pacientes_visita_make_hoja_diaria";
+    public static final String PACIENTES_VISITA_ELABORO = "pacientes_visita_elaboro";
+    public static final String PACIENTES_VISITA_SIGUIENTE_VISITA = "pacientes_visita_siguiente_visita";
 
 
     public static final String PACIENTES_VISITA_SEGUIMIENTO_NOMBRE = "pacientes_visita_seguimiento_nombre";

@@ -50,6 +50,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 DataBaseDB.PACIENTES_VISITA_STATUS + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_FECHA + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_DIAGNOSTICO + " TEXT, " +
+                DataBaseDB.PACIENTES_VISITA_TRATAMIENTO + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_EXPEDIENTE + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_HEMOTIPO + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_PESO + " TEXT, " +
@@ -87,6 +88,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 DataBaseDB.PACIENTES_VISITA_NOTAS_DOC + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_CHECK_HOJA_DIARIA + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_MAKE_HOJA_DIARIA + " TEXT, " +
+                DataBaseDB.PACIENTES_VISITA_ELABORO + " TEXT, " +
+                DataBaseDB.PACIENTES_VISITA_SIGUIENTE_VISITA + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_PLANES + " TEXT); "
         );
         System.out.println(DataBaseDB.TABLE_NAME_PACIENTES_VISITAS + " Creada");

@@ -65,7 +65,7 @@ public class TarjetaPacienteFragment extends Fragment {
     TextView tvNombreItem, tvCurpItem, tvDireccionItem,textViewFecha;
     ImageButton next;
     ImageView status;
-    EditText diagnostico, tratamiento,textViewPeso,textViewExpediente;
+    EditText diagnostico, tratamiento,nombreMedico,textViewExpediente;
 
     private DatePickerDialog datePickerDialog;
     private SimpleDateFormat dateFormatter;
@@ -107,12 +107,29 @@ public class TarjetaPacienteFragment extends Fragment {
         tvCurpItem = (TextView) getActivity().findViewById(R.id.tvCurpItem);
         tvDireccionItem = (TextView) getActivity().findViewById(R.id.tvDireccionItem);
         textViewFecha = (TextView) getActivity().findViewById(R.id.textViewFecha);
-        textViewPeso = (EditText) getActivity().findViewById(R.id.textViewPeso);
+        nombreMedico = (EditText) getActivity().findViewById(R.id.textViewPeso);
         textViewExpediente = (EditText) getActivity().findViewById(R.id.textViewExpediente);
 
+        status = (ImageView) getActivity().findViewById(R.id.status);
+        tratamiento = (EditText) getActivity().findViewById(R.id.textViewTratamiento);
+        diagnostico = (EditText) getActivity().findViewById(R.id.textViewDiagnostico);
 
 
         if(isSinExp){
+            getDatosSinExp();
+            String name = sharedPreferences.getStringData("nameItem");
+
+            nombreMedico.setText(sharedPreferences.getStringData("Elaboro"+name));
+            textViewFecha.setText(sharedPreferences.getStringData("Siguiente Visita"+name));
+            tratamiento.setText(sharedPreferences.getStringData("Tratamiento"+name));
+            diagnostico.setText(sharedPreferences.getStringData("Diagnostico"+name));
+
+
+            nombreMedico.setEnabled(false);
+            textViewFecha.setEnabled(false);
+
+
+
             textViewExpediente.setVisibility(View.VISIBLE);
             textViewExpediente.setHint("Ingresa numero de expediente");
             textViewExpediente.setEnabled(true);
@@ -120,10 +137,6 @@ public class TarjetaPacienteFragment extends Fragment {
 
 
 
-            status = (ImageView) getActivity().findViewById(R.id.status);
-
-        tratamiento = (EditText) getActivity().findViewById(R.id.textViewTratamiento);
-        diagnostico = (EditText) getActivity().findViewById(R.id.textViewDiagnostico);
 
         tvNombreItem.setText(sharedPreferences.getStringData("nameHistoric"));
         tvCurpItem.setText(sharedPreferences.getStringData("curpHistoric"));
@@ -131,27 +144,21 @@ public class TarjetaPacienteFragment extends Fragment {
 
 
         sharedPreferences.setStringData("DiagnosticoGeneral",sharedPreferences.getStringData("Diagnostico1") + "\n"+
-                sharedPreferences.getStringData("Diagnostico2" + "\n") +
+                sharedPreferences.getStringData("Diagnostico2") + "\n"+
                 sharedPreferences.getStringData("Diagnostico3"));
 
         sharedPreferences.setStringData("TratamientoGeneral",sharedPreferences.getStringData("Tratamiento1") + "\n"+
-                sharedPreferences.getStringData("Tratamiento2" + "\n") +
+                sharedPreferences.getStringData("Tratamiento2") +"\n"+
                 sharedPreferences.getStringData("Tratamiento3"));
 
 
 
         //Diagnostico
-        diagnostico.setText(sharedPreferences.getStringData("Diagnostico1") + "\n"+
-                sharedPreferences.getStringData("Diagnostico2") + "\n" +
-                sharedPreferences.getStringData("Diagnostico3")
-        );
+        diagnostico.setText(sharedPreferences.getStringData("DiagnosticoGeneral"));
 
 
         //Tratamiento
-        tratamiento.setText(sharedPreferences.getStringData("Tratamiento1") + "\n"+
-                sharedPreferences.getStringData("Tratamiento2") + "\n" +
-                sharedPreferences.getStringData("Tratamiento3")
-        );
+        tratamiento.setText(sharedPreferences.getStringData("TratamientoGeneral"));
 
 
         String statusImage = sharedPreferences.getStringData("ImageItem");
@@ -183,14 +190,15 @@ public class TarjetaPacienteFragment extends Fragment {
                     if(textViewFecha.getText().toString().equals("")){
                         Toast.makeText(getActivity(),"Define la siguiente visita para poder avanzar", Toast.LENGTH_SHORT).show();
                     }else{
-                        if(textViewPeso.getText().toString().equals("")){
+                        if(nombreMedico.getText().toString().equals("")){
                             Toast.makeText(getActivity(),"Define el nombre de quien realizó la historia para poder avanzar", Toast.LENGTH_SHORT).show();
                         }else{
                             if(isSinExp){
                                 if(textViewExpediente.getText().toString().equals("")){
                                     Toast.makeText(getActivity(),"Define un expediente para poder avanzar", Toast.LENGTH_SHORT).show();
                                 }else{
-                                    Toast.makeText(getActivity(),"TERMINASTE TUS FLUJILLOS Y SELLASTE EL CLIENTE", Toast.LENGTH_SHORT).show();
+                                    //Toast.makeText(getActivity(),"TERMINASTE TUS FLUJILLOS Y SELLASTE EL CLIENTE", Toast.LENGTH_SHORT).show();
+
                                     deleteUserSinExpediente(sharedPreferences.getStringData("curpItem"), sharedPreferences.getStringData("nameItem"));
                                     ((MainActivity)getActivity()).succededClinica();
                                 }
@@ -282,15 +290,9 @@ public class TarjetaPacienteFragment extends Fragment {
     private void deleteUser(String CURP){
 
         Date myDate = new Date();
-        System.out.println(myDate);
-        System.out.println(new SimpleDateFormat("yyyy-MM-dd").format(myDate));
-
         String siguienteVisita = textViewFecha.getText().toString();
         String fechaActual = siguienteVisita;
-
-        String nombreDoctor = textViewPeso.getText().toString();
-
-
+        String nombreDoctor = nombreMedico.getText().toString();
         Log.e("NOMBRE HISTORIA CLINICA",sharedPreferences.getStringData("nameHistoric"));
 
         db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE ,null);
@@ -577,6 +579,39 @@ public class TarjetaPacienteFragment extends Fragment {
 
 
         db.close();
+    }
+
+
+    public void getDatosSinExp(){
+
+        db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE, null);
+        try {
+            c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SIN_EXPEDIENTE + " WHERE "
+                    + DataBaseDB.PACIENTES_EXPEDIENTE_NOMBRE + " = '" + sharedPreferences.getStringData("nameItem") + "' AND "
+                    + DataBaseDB.PACIENTES_EXPEDIENTE_CURP + " = '" + sharedPreferences.getStringData("curpItem")+"'", null);
+            if (c.moveToFirst()) {
+                do {
+                    String name = sharedPreferences.getStringData("nameItem");
+
+
+                    sharedPreferences.setStringData("Elaboro"+name,c.getString(5));
+                    sharedPreferences.setStringData("Siguiente Visita"+name,c.getString(6));
+                    sharedPreferences.setStringData("Diagnostico"+name,c.getString(51));
+                    sharedPreferences.setStringData("Tratamiento"+name,c.getString(52));
+
+
+                }while (c.moveToNext());
+            } else {
+                System.out.println("No existen PACIENTES");
+            }
+            c.close();
+        } catch (Exception ex) {
+            Log.e("Error", ex.toString());
+        } finally {
+            db.close();
+        }
+
+
     }
 
 
