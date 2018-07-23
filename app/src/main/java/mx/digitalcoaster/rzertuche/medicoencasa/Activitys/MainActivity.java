@@ -157,7 +157,7 @@ public class MainActivity extends AppCompatActivity implements
         db.close();
 
         sharedPreferences = SharedPreferences.getInstance();
-        //getPostalCode();
+        getPostalCode();
 
         //Home Fragment
         InicioFragmentMain fragment = new InicioFragmentMain();
@@ -761,10 +761,10 @@ public class MainActivity extends AppCompatActivity implements
 
     public  void getPostalCode(){
 
-        String url = "http://187.210.47.140:9999";
+        String url = "https://medico.digitalcoaster.mx";
 
         final AsyncHttpClient client = new AsyncHttpClient();
-        //client.setTimeout(10000000);
+        client.setTimeout(100000);
         client.get(getApplicationContext(), url + "/api/admin/api/codigospostales", new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {

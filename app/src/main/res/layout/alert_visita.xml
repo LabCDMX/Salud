@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:id="@+id/cuerpo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/textViewGestorInformacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="15sp"
+                android:text="Hoja Diaria"/>
+
+            <View
+                android:id="@+id/divider"
+                android:layout_below="@id/textViewGestorInformacion"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
+                android:background="#ff7a1a" />
+
+
+
+            <TextView
+                android:id="@+id/tvContacto"
+                android:layout_marginTop="2dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewGestorInformacion"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="15sp"
+                android:text="Exploración Fisica"/>
+
+            <View
+                android:id="@+id/viewContacto"
+                android:layout_below="@id/tvContacto"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
+                android:background="#ff7a1a" />
+
+            <TextView
+                android:id="@+id/tvNombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/viewContacto"
+                android:layout_marginTop="5dp"
+                android:textSize="12sp"
+                android:text=""
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/textViewNombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/viewContacto"
+                android:layout_marginTop="5dp"
+                android:textSize="12sp"
+                android:text="@string/info_recibio"
+                android:textColor="@android:color/black"
+                android:layout_toRightOf="@+id/tvComentario"
+                android:layout_toEndOf="@+id/tvComentario"
+                android:layout_marginLeft="13dp"
+                android:layout_marginStart="13dp" />
+
+
+
+            <TextView
+                android:id="@+id/tvLatitud"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewNombre"
+                android:layout_marginTop="5dp"
+                android:textSize="12sp"
+                android:text="@string/latitud"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/textViewLatitud"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewNombre"
+                android:layout_marginTop="5dp"
+                android:textSize="12sp"
+                android:text="@string/latitud"
+                android:textColor="@android:color/black"
+                android:layout_toRightOf="@+id/tvComentario"
+                android:layout_toEndOf="@+id/tvComentario"
+                android:layout_marginLeft="13dp"
+                android:layout_marginStart="13dp" />
+
+            <TextView
+                android:id="@+id/tvLongitud"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewLatitud"
+                android:textSize="12sp"
+                android:text="@string/longitud"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/textViewLongitud"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewLatitud"
+                android:textSize="12sp"
+                android:text="@string/longitud"
+                android:textColor="@android:color/black"
+                android:layout_toRightOf="@+id/tvComentario"
+                android:layout_toEndOf="@+id/tvComentario"
+                android:layout_marginLeft="13dp"
+                android:layout_marginStart="13dp" />
+
+            <TextView
+                android:id="@+id/tvComentario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewLongitud"
+                android:layout_marginTop="5dp"
+                android:textSize="12sp"
+                android:text="@string/comentario"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/textViewComentario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewLongitud"
+                android:layout_marginTop="5dp"
+                android:textSize="12sp"
+                android:text="@string/comentario"
+                android:textColor="@android:color/black"
+                android:layout_toRightOf="@+id/tvComentario"
+                android:layout_toEndOf="@+id/tvComentario"
+                android:layout_marginLeft="13dp"
+                android:layout_marginStart="13dp" />
+
+
+
+            <TextView
+                android:id="@+id/tvDescripcion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewComentario"
+                android:layout_marginTop="5dp"
+                android:textSize="12sp"
+                android:text="@string/info_descripcion"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/textViewDescripcion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewComentario"
+                android:layout_marginTop="5dp"
+                android:textSize="12sp"
+                android:text="@string/info_descripcion"
+                android:textColor="@android:color/black"
+                android:layout_toRightOf="@+id/tvComentario"
+                android:layout_toEndOf="@+id/tvComentario"
+                android:layout_marginLeft="13dp"
+                android:layout_marginStart="13dp" />
+
+
+            <TextView
+                android:id="@+id/tvNotas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewDescripcion"
+                android:layout_marginTop="5dp"
+                android:textSize="12sp"
+                android:text="@string/info_notas"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/textViewNotas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewDescripcion"
+                android:layout_marginTop="5dp"
+                android:textSize="12sp"
+                android:text="@string/info_notas"
+                android:textColor="@android:color/black"
+                android:layout_toRightOf="@+id/tvComentario"
+                android:layout_toEndOf="@+id/tvComentario"
+                android:layout_marginLeft="13dp"
+                android:layout_marginStart="13dp" />
+
+
+
+
+
+
+            <TextView
+                android:id="@+id/tvFotos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvNotas"
+                android:layout_marginTop="15dp"
+                android:textSize="12sp"
+                android:text="@string/fotos"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/textViewFotos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewNotas"
+                android:layout_marginTop="15dp"
+                android:textSize="12sp"
+                android:text="@string/fotos"
+                android:textColor="@android:color/black"
+                android:layout_toRightOf="@+id/tvFotos"
+                android:layout_toEndOf="@+id/tvFotos"
+                android:layout_marginLeft="13dp"
+                android:layout_marginStart="13dp" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

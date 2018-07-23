@@ -183,7 +183,6 @@ public class HistoriaClinicaFragment extends Fragment {
             enf_cardio.setText(sharedPreferences.getStringData("cadenaEnf"+name));
 
 
-
         }
 
         else{
