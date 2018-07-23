@@ -52,7 +52,7 @@ public class DiagnosticoFragment extends Fragment {
     ImageButton next;
 
     EditText et_tratamiento, et_tratamiento1, et_tratamiento2 , et_diagnostico,et_diagnostico1,et_diagnostico2;
-    TextView uno,dos,tres;
+    TextView uno,dos,tres,uno_tratamiento,dos_tratamiento,tres_tratamiento;
 
     private SQLiteDatabase db = null;      // Objeto para utilizar la base de datos
     private DataBaseHelper sqliteHelper;   // Objeto para abrir la base de Datos
@@ -103,9 +103,13 @@ public class DiagnosticoFragment extends Fragment {
         et_diagnostico1 = (EditText) getActivity().findViewById(R.id.et_diagnostico1);
         et_diagnostico2 = (EditText) getActivity().findViewById(R.id.et_diagnostico2);
 
-        uno = (EditText) getActivity().findViewById(R.id.uno);
-        dos = (EditText) getActivity().findViewById(R.id.dos);
-        tres = (EditText) getActivity().findViewById(R.id.tres);
+        uno = (TextView) getActivity().findViewById(R.id.uno);
+        dos = (TextView) getActivity().findViewById(R.id.dos);
+        tres = (TextView) getActivity().findViewById(R.id.tres);
+
+        uno_tratamiento = (TextView) getActivity().findViewById(R.id.uno_tratamiento);
+        dos_tratamiento = (TextView) getActivity().findViewById(R.id.dos_tratamiento);
+        tres_tratamiento = (TextView) getActivity().findViewById(R.id.tres_tratamiento);
 
 
         if(isSinExp) {
@@ -267,6 +271,10 @@ public class DiagnosticoFragment extends Fragment {
         uno.setVisibility(View.GONE);
         dos.setVisibility(View.GONE);
         tres.setVisibility(View.GONE);
+
+        uno_tratamiento.setVisibility(View.GONE);
+        dos_tratamiento.setVisibility(View.GONE);
+        tres_tratamiento.setVisibility(View.GONE);
     }
 
 }

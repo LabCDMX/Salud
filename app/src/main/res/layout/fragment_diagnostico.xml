@@ -176,6 +176,7 @@
                 android:textColor="@android:color/black" />
 
             <TextView
+                android:id="@+id/uno_tratamiento"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tvRespiratorio"
@@ -204,6 +205,7 @@
             </android.support.design.widget.TextInputLayout>
 
             <TextView
+                android:id="@+id/dos_tratamiento"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/layout_tratamiento"
@@ -232,6 +234,7 @@
             </android.support.design.widget.TextInputLayout>
 
             <TextView
+                android:id="@+id/tres_tratamiento"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/layout_tratamiento1"
