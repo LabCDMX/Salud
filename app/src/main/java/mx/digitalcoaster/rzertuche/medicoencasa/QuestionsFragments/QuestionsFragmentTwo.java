@@ -65,7 +65,7 @@ public class QuestionsFragmentTwo extends Fragment {
     private String date = "";
     private TextView text_date;
     private  Spinner sp;
-    private EditText edad;
+    private EditText edad, estadoNacimiento, nacionalidad;
 
     RelativeLayout open, open1;
 
@@ -108,10 +108,11 @@ public class QuestionsFragmentTwo extends Fragment {
 
         sp= (Spinner) getActivity().findViewById(R.id.answer2);
 
+        estadoNacimiento = view.findViewById(R.id.answer);
+        nacionalidad = view.findViewById(R.id.answer3);
 
 
         sharedPreferences = SharedPreferences.getInstance();
-
 
 
 
@@ -128,12 +129,18 @@ public class QuestionsFragmentTwo extends Fragment {
 
                 if(count == 1){
 
+                    String sexo = sp.getSelectedItem().toString();
+                    sharedPreferences.setStringData("FechaNac",date.getText().toString());
+                    sharedPreferences.setStringData("Sexo",sexo);
+
                     open.setVisibility(View.GONE);
                     open1.setVisibility(View.VISIBLE);
 
                 }
 
                 if(count == 2){
+                    sharedPreferences.setStringData("EstadoNac",estadoNacimiento.getText().toString());
+                    sharedPreferences.setStringData("Nac",nacionalidad.getText().toString());
 
                     ((MainActivity)getActivity()).questionDomTwo();
 

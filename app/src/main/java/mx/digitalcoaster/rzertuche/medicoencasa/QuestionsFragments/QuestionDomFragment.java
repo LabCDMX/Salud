@@ -46,7 +46,7 @@ public class QuestionDomFragment extends Fragment {
     TextView question,question2,question3;
     TextView title;
     TextView category;
-    EditText answer,answer2,answer3;
+    EditText answer,answer2,answer3,answer4,answer5,answer6;
 
     LinearLayout multiple;
     LinearLayout open,open2, open3,open4;
@@ -123,6 +123,10 @@ public class QuestionDomFragment extends Fragment {
         answer = (EditText) view.findViewById(R.id.answer);
         answer2 = (EditText) view.findViewById(R.id.answer2);
         answer3 = (EditText) view.findViewById(R.id.answer3);
+        answer4 = (EditText) view.findViewById(R.id.answer4);
+        answer5 = (EditText) view.findViewById(R.id.answer5);
+        answer6 = (EditText) view.findViewById(R.id.answer6);
+
 
         category = (TextView) view.findViewById(R.id.category);
 
@@ -187,12 +191,22 @@ public class QuestionDomFragment extends Fragment {
                     open2.setVisibility(View.VISIBLE);
 
                 }else if(count == 3){
+                    sharedPreferences.setStringData("Estado", answer4.getText().toString());
+                    sharedPreferences.setStringData("No Ext.", answer5.getText().toString());
+                    sharedPreferences.setStringData("No int", answer6.getText().toString());
+
+
+
                     open2.setVisibility(View.GONE);
                     open.setVisibility(View.VISIBLE);
 
 
 
                 }else if(count == 4){
+                    sharedPreferences.setStringData("Localidad", answer3.getText().toString());
+                    sharedPreferences.setStringData("Municipio.", answer2.getText().toString());
+                    sharedPreferences.setStringData("Estado", answer.getText().toString());
+
 
                     open.setVisibility(View.GONE);
                     open3.setVisibility(View.VISIBLE);

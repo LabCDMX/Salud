@@ -1,6 +1,8 @@
 package mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -20,6 +22,7 @@ import java.util.List;
 import java.util.Set;
 
 import mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity;
+import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseHelper;
 import mx.digitalcoaster.rzertuche.medicoencasa.R;
 import mx.digitalcoaster.rzertuche.medicoencasa.Utils.SharedPreferences;
 
@@ -45,6 +48,14 @@ public class ContextoSocialFragment extends Fragment {
 
     EditText nombre, apellidoP, estado, municipio, transporte, recreacion, estres, caracteristicas, piso, techo,verduras, fruta, leguminosa,carne,cereal,pan,chatarra;
     ImageButton btnedit,btnedit1,btnedit3,btnedit4,next;
+
+    private SQLiteDatabase db = null;      // Objeto para utilizar la base de datos
+    private DataBaseHelper sqliteHelper;   // Objeto para abrir la base de Datos
+    private Cursor c = null;
+
+
+
+
 
 
 
@@ -289,6 +300,7 @@ public class ContextoSocialFragment extends Fragment {
             public void onClick(View v) {
 
                 ((MainActivity)getActivity()).stopCronometro();
+                saveToSend();
                 ((MainActivity)getActivity()).fragmentSucceded();
             }
         });
@@ -364,5 +376,9 @@ public class ContextoSocialFragment extends Fragment {
         registros.setEnabled(false);
         seguimiento.setEnabled(false);
         sincronizacion.setEnabled(false);
+    }
+
+    public void saveToSend(){
+
     }
 }

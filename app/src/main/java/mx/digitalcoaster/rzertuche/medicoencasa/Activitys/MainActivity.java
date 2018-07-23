@@ -155,7 +155,7 @@ public class MainActivity extends AppCompatActivity implements
         db.close();
 
         sharedPreferences = SharedPreferences.getInstance();
-        getPostalCode();
+        //getPostalCode();
 
         //Home Fragment
         InicioFragmentMain fragment = new InicioFragmentMain();
@@ -750,12 +750,11 @@ public class MainActivity extends AppCompatActivity implements
 
     public  void getPostalCode(){
 
-
+        String url = "http://187.210.47.140:9999";
 
         final AsyncHttpClient client = new AsyncHttpClient();
-        client.setMaxRetriesAndTimeout(3,30000);
-        client.setTimeout(30000);
-        client.get(appContext,"http://187.210.47.140:9999/api/admin/api/codigospostales", new JsonHttpResponseHandler() {
+        //client.setTimeout(10000000);
+        client.get(getApplicationContext(), url + "/api/admin/api/codigospostales", new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 // If the response is JSONObject instead of expected JSONArray

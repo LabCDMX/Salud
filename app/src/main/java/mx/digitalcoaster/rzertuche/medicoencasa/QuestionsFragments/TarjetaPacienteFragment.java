@@ -125,53 +125,75 @@ public class TarjetaPacienteFragment extends Fragment {
             diagnostico.setText(sharedPreferences.getStringData("Diagnostico"+name));
 
 
+            tvNombreItem.setText(sharedPreferences.getStringData("nameItem"));
+            tvCurpItem.setText(sharedPreferences.getStringData("curpItem"));
+            tvDireccionItem.setText(sharedPreferences.getStringData("direccionItem"));
+
             nombreMedico.setEnabled(false);
             textViewFecha.setEnabled(false);
-
-
 
             textViewExpediente.setVisibility(View.VISIBLE);
             textViewExpediente.setHint("Ingresa numero de expediente");
             textViewExpediente.setEnabled(true);
-        }
 
 
 
+            String statusImage = sharedPreferences.getStringData("ImageItem");
 
-        tvNombreItem.setText(sharedPreferences.getStringData("nameHistoric"));
-        tvCurpItem.setText(sharedPreferences.getStringData("curpHistoric"));
-        tvDireccionItem.setText(sharedPreferences.getStringData("direccionHistoric"));
+            if(statusImage.equals("Sano")){
+                status.setBackground(getResources().getDrawable(R.drawable.status_green));
 
-
-        sharedPreferences.setStringData("DiagnosticoGeneral",sharedPreferences.getStringData("Diagnostico1") + "\n"+
-                sharedPreferences.getStringData("Diagnostico2") + "\n"+
-                sharedPreferences.getStringData("Diagnostico3"));
-
-        sharedPreferences.setStringData("TratamientoGeneral",sharedPreferences.getStringData("Tratamiento1") + "\n"+
-                sharedPreferences.getStringData("Tratamiento2") +"\n"+
-                sharedPreferences.getStringData("Tratamiento3"));
+            }else if(statusImage.equals("Sobrepeso")){
+                status.setBackground(getResources().getDrawable(R.drawable.status_ambar));
 
 
-
-        //Diagnostico
-        diagnostico.setText(sharedPreferences.getStringData("DiagnosticoGeneral"));
-
-
-        //Tratamiento
-        tratamiento.setText(sharedPreferences.getStringData("TratamientoGeneral"));
+            }else if(statusImage.equals("Obeso")){
+                status.setBackground(getResources().getDrawable(R.drawable.status_red));
 
 
-        String statusImage = sharedPreferences.getStringData("ImageItem");
-
-        if(statusImage.equals("Sano")){
-            status.setBackground(getResources().getDrawable(R.drawable.status_green));
-
-        }else if(statusImage.equals("Sobrepeso")){
-            status.setBackground(getResources().getDrawable(R.drawable.status_ambar));
+            }
 
 
-        }else if(statusImage.equals("Obeso")){
-            status.setBackground(getResources().getDrawable(R.drawable.status_red));
+        }else{
+
+
+            tvNombreItem.setText(sharedPreferences.getStringData("nameHistoric"));
+            tvCurpItem.setText(sharedPreferences.getStringData("curpHistoric"));
+            tvDireccionItem.setText(sharedPreferences.getStringData("direccionHistoric"));
+
+
+            sharedPreferences.setStringData("DiagnosticoGeneral",sharedPreferences.getStringData("Diagnostico1") + "\n"+
+                    sharedPreferences.getStringData("Diagnostico2") + "\n"+
+                    sharedPreferences.getStringData("Diagnostico3"));
+
+            sharedPreferences.setStringData("TratamientoGeneral",sharedPreferences.getStringData("Tratamiento1") + "\n"+
+                    sharedPreferences.getStringData("Tratamiento2") +"\n"+
+                    sharedPreferences.getStringData("Tratamiento3"));
+
+
+
+            //Diagnostico
+            diagnostico.setText(sharedPreferences.getStringData("DiagnosticoGeneral"));
+
+
+            //Tratamiento
+            tratamiento.setText(sharedPreferences.getStringData("TratamientoGeneral"));
+
+
+            String statusImage = sharedPreferences.getStringData("ImageItem");
+
+            if(statusImage.equals("Sano")){
+                status.setBackground(getResources().getDrawable(R.drawable.status_green));
+
+            }else if(statusImage.equals("Sobrepeso")){
+                status.setBackground(getResources().getDrawable(R.drawable.status_ambar));
+
+
+            }else if(statusImage.equals("Obeso")){
+                status.setBackground(getResources().getDrawable(R.drawable.status_red));
+
+
+            }
 
 
         }

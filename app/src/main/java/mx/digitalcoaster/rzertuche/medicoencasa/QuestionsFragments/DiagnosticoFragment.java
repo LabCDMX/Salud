@@ -1,6 +1,8 @@
 package mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
@@ -8,16 +10,20 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.io.ObjectStreamException;
 
 import mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity;
+import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseDB;
+import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseHelper;
 import mx.digitalcoaster.rzertuche.medicoencasa.R;
 import mx.digitalcoaster.rzertuche.medicoencasa.Utils.SharedPreferences;
 
@@ -25,6 +31,7 @@ import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.in
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.registros;
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.seguimiento;
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.sincronizacion;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Fragments.PacientesFragment.isSinExp;
 
 ;
 
@@ -45,6 +52,14 @@ public class DiagnosticoFragment extends Fragment {
     ImageButton next;
 
     EditText et_tratamiento, et_tratamiento1, et_tratamiento2 , et_diagnostico,et_diagnostico1,et_diagnostico2;
+    TextView uno,dos,tres;
+
+    private SQLiteDatabase db = null;      // Objeto para utilizar la base de datos
+    private DataBaseHelper sqliteHelper;   // Objeto para abrir la base de Datos
+    private Cursor c = null;
+
+
+
 
 
 
@@ -70,6 +85,9 @@ public class DiagnosticoFragment extends Fragment {
 
 
 
+        //Obtencion de datos del sharedPreferences
+        sharedPreferences = SharedPreferences.getInstance();
+
 
         next = (ImageButton) getActivity().findViewById(R.id.next);
 
@@ -85,11 +103,29 @@ public class DiagnosticoFragment extends Fragment {
         et_diagnostico1 = (EditText) getActivity().findViewById(R.id.et_diagnostico1);
         et_diagnostico2 = (EditText) getActivity().findViewById(R.id.et_diagnostico2);
 
+        uno = (EditText) getActivity().findViewById(R.id.uno);
+        dos = (EditText) getActivity().findViewById(R.id.dos);
+        tres = (EditText) getActivity().findViewById(R.id.tres);
+
+
+        if(isSinExp) {
+            getDatosSinExp();
+            String name = sharedPreferences.getStringData("nameItem");
+            et_tratamiento.setText(sharedPreferences.getStringData("Tratamiento"+name));
+            et_tratamiento1.setVisibility(View.GONE);
+            et_tratamiento2.setVisibility(View.GONE);
+            hideNumbers();
+
+            et_diagnostico.setText(sharedPreferences.getStringData("Diagnostico"+name));
+            et_diagnostico1.setVisibility(View.GONE);
+            et_diagnostico2.setVisibility(View.GONE);
+            hideNumbers();
+
+        }
 
 
 
-        //Obtencion de datos del sharedPreferences
-        sharedPreferences = SharedPreferences.getInstance();
+
 
         sano.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -192,6 +228,45 @@ public class DiagnosticoFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+
+    public void getDatosSinExp(){
+
+        db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE, null);
+        try {
+            c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SIN_EXPEDIENTE + " WHERE "
+                    + DataBaseDB.PACIENTES_EXPEDIENTE_NOMBRE + " = '" + sharedPreferences.getStringData("nameItem") + "' AND "
+                    + DataBaseDB.PACIENTES_EXPEDIENTE_CURP + " = '" + sharedPreferences.getStringData("curpItem")+"'", null);
+            if (c.moveToFirst()) {
+                do {
+                    String name = sharedPreferences.getStringData("nameItem");
+
+
+                    //sharedPreferences.setStringData("Elaboro"+name,c.getString(5));
+                    //sharedPreferences.setStringData("Siguiente Visita"+name,c.getString(6));
+                    sharedPreferences.setStringData("Diagnostico"+name,c.getString(51));
+                    sharedPreferences.setStringData("Tratamiento"+name,c.getString(52));
+
+
+                }while (c.moveToNext());
+            } else {
+                System.out.println("No existen PACIENTES");
+            }
+            c.close();
+        } catch (Exception ex) {
+            Log.e("Error", ex.toString());
+        } finally {
+            db.close();
+        }
+
+
+    }
+
+    public void hideNumbers(){
+        uno.setVisibility(View.GONE);
+        dos.setVisibility(View.GONE);
+        tres.setVisibility(View.GONE);
     }
 
 }

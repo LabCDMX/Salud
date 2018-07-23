@@ -52,6 +52,7 @@
                 android:background="#E91A8D" />
 
             <TextView
+                android:id="@+id/uno"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/divider"
@@ -79,6 +80,7 @@
             </android.support.design.widget.TextInputLayout>
 
             <TextView
+                android:id="@+id/dos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/layout_diagnostico"
@@ -108,6 +110,7 @@
             </android.support.design.widget.TextInputLayout>
 
             <TextView
+                android:id="@+id/tres"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/layout_diagnostico1"
