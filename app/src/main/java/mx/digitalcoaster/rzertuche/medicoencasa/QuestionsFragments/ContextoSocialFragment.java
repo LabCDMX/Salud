@@ -135,10 +135,6 @@ public class ContextoSocialFragment extends Fragment {
 
 
         String cadena = new String();
-        String listElectroAux= borrarRepetidos(listElectro).toString().replace("[","").replace("]","").replace(",","\n");
-
-
-
         for (String object: listElectro) {
             cadena+= "-" + object + "\n";
         }
@@ -156,138 +152,25 @@ public class ContextoSocialFragment extends Fragment {
                 btnEditar(nombre);
             }
         });
-        nombre.setOnKeyListener(new View.OnKeyListener()
-        {
-            public boolean onKey(View v, int keyCode, KeyEvent event)
-            {
-                if (event.getAction() == KeyEvent.ACTION_DOWN)
-                {
-                    switch (keyCode)
-                    {
-                        case KeyEvent.KEYCODE_DPAD_CENTER:
-                        case KeyEvent.KEYCODE_ENTER:
-                            Log.e("DETECTAR ENTER", "Works super cute");
-                            nombre.setEnabled(false);
-                            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                            imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
-
-                            return true;
-                        default:
-                            break;
-                    }
-                }
-                return false;
-            }
-        });
-
-
         btnedit1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                apellidoP.setText("");
-                apellidoP.setEnabled(true);
-                apellidoP.requestFocus();
-                InputMethodManager imm = (InputMethodManager) // con esto abres el teclado despues de ubicar el foco en tu editText
-                        getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.showSoftInput(apellidoP, InputMethodManager.SHOW_IMPLICIT);
+                btnEditar(apellidoP);
             }
         });
-        apellidoP.setOnKeyListener(new View.OnKeyListener()
-        {
-            public boolean onKey(View v, int keyCode, KeyEvent event)
-            {
-                if (event.getAction() == KeyEvent.ACTION_DOWN)
-                {
-                    switch (keyCode)
-                    {
-                        case KeyEvent.KEYCODE_DPAD_CENTER:
-                        case KeyEvent.KEYCODE_ENTER:
-                            Log.e("DETECTAR ENTER", "Works super cute");
-                            apellidoP.setEnabled(false);
-                            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                            imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
-
-                            return true;
-                        default:
-                            break;
-                    }
-                }
-                return false;
-            }
-        });
-
-
-
         btnedit3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                estado.setText("");
-                estado.setEnabled(true);
-                estado.requestFocus();
-                InputMethodManager imm = (InputMethodManager) // con esto abres el teclado despues de ubicar el foco en tu editText
-                        getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.showSoftInput(estado, InputMethodManager.SHOW_IMPLICIT);
+
             }
         });
-        estado.setOnKeyListener(new View.OnKeyListener()
-        {
-            public boolean onKey(View v, int keyCode, KeyEvent event)
-            {
-                if (event.getAction() == KeyEvent.ACTION_DOWN)
-                {
-                    switch (keyCode)
-                    {
-                        case KeyEvent.KEYCODE_DPAD_CENTER:
-                        case KeyEvent.KEYCODE_ENTER:
-                            Log.e("DETECTAR ENTER", "Works super cute");
-                            estado.setEnabled(false);
-                            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                            imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
-
-                            return true;
-                        default:
-                            break;
-                    }
-                }
-                return false;
-            }
-        });
-
-
         btnedit4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                municipio.setText("");
-                municipio.setEnabled(true);
-                municipio.requestFocus();
-                InputMethodManager imm = (InputMethodManager) // con esto abres el teclado despues de ubicar el foco en tu editText
-                        getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.showSoftInput(municipio, InputMethodManager.SHOW_IMPLICIT);
-            }
-        });
-        municipio.setOnKeyListener(new View.OnKeyListener()
-        {
-            public boolean onKey(View v, int keyCode, KeyEvent event)
-            {
-                if (event.getAction() == KeyEvent.ACTION_DOWN)
-                {
-                    switch (keyCode)
-                    {
-                        case KeyEvent.KEYCODE_DPAD_CENTER:
-                        case KeyEvent.KEYCODE_ENTER:
-                            Log.e("DETECTAR ENTER", "Works super cute");
-                            municipio.setEnabled(false);
-                            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                            imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
 
-                            return true;
-                        default:
-                            break;
-                    }
-                }
-                return false;
             }
         });
+
 
 
         next.setOnClickListener(new View.OnClickListener() {
@@ -355,15 +238,6 @@ public class ContextoSocialFragment extends Fragment {
         municipio.setEnabled(true);
     }
 
-    public List<String> borrarRepetidos(List<String> arraycar){
-        Set<String> hs = new HashSet<>();
-        hs.addAll(arraycar);
-        arraycar.clear();
-        arraycar.addAll(hs);
-
-        return arraycar;
-
-    }
 
     public void blockListeners(){
         inicio.setEnabled(false);

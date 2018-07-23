@@ -164,7 +164,8 @@ public class DataBaseDB {
     public static final String PACIENTES_VISITA_SEGUIMIENTO_DIAGNOSTICO = "pacientes_visita_seguimiento_diagnostico";
     public static final String PACIENTES_VISITA_SEGUIMIENTO_TRATAMIENTO = "pacientes_visita_seguimiento_tratamiento";
     public static final String PACIENTES_VISITA_SEGUIMIENTO_FECHA= "pacientes_visita_seguimiento_fecha";
-    public static final String PACIENTES_VISITA_SEGUIMIENTO_NUMERO = "pacientes_visita_seguimiento_expediente";
+    public static final String PACIENTES_VISITA_SEGUIMIENTO_NUMERO = "pacientes_visita_seguimiento_numero";
+    public static final String PACIENTES_VISITA_SEGUIMIENTO_EXPEDIENTE = "pacientes_visita_seguimiento_expediente";
     public static final String PACIENTES_VISITA_SEGUIMIENTO_STATUS = "pacientes_visita_seguimiento_status";
 
 

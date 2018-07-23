@@ -57,7 +57,7 @@ public class VisitasFragment extends Fragment {
     public static Boolean isSeguimiento=false;
     SharedPreferences sharedPreferences;
     public static String nombrePatient;
-    private TextView nombre, diagnostico, tratamiento;
+    private TextView nombre, diagnostico, tratamiento,expediente;
     ImageView status;
 
 
@@ -82,11 +82,13 @@ public class VisitasFragment extends Fragment {
 
         sharedPreferences = SharedPreferences.getInstance();
         nombrePatient = sharedPreferences.getStringData("nameSeguimiento");
+
         status = (ImageView) getActivity().findViewById(R.id.status);
 
         nombre = (TextView) getActivity().findViewById(R.id.tvNombreItem);
         diagnostico = (TextView) getActivity().findViewById(R.id.textViewDiagnostico);
         tratamiento = (TextView) getActivity().findViewById(R.id.textViewTratamiento);
+        expediente = (TextView) getActivity().findViewById(R.id.expediente);
 
 
         getProductos();
@@ -98,6 +100,7 @@ public class VisitasFragment extends Fragment {
         nombre.setText(sharedPreferences.getStringData("Nombre"));
         diagnostico.setText(sharedPreferences.getStringData("Diagnostico"));
         tratamiento.setText(sharedPreferences.getStringData("Tratamiento"));
+        expediente.setText(sharedPreferences.getStringData("Expediente"));
 
 
         if(statusImage.equals("Sano")){
@@ -141,10 +144,11 @@ public class VisitasFragment extends Fragment {
                     sharedPreferences.setStringData("Diagnostico",c.getString(2));
                     sharedPreferences.setStringData("Tratamiento",c.getString(3));
                     sharedPreferences.setStringData("Nombre",c.getString(1));
-                    sharedPreferences.setStringData("ImageItem",c.getString(7));
+                    sharedPreferences.setStringData("ImageItem",c.getString(8));
+                    sharedPreferences.setStringData("Expediente",c.getString(7));
 
 
-                    items.add(new ItemVisita(c.getString(1), c.getString(2), c.getString(3), c.getString(4), c.getString(5), c.getString(6)));
+                    items.add(new ItemVisita(c.getString(1), c.getString(2), c.getString(3), c.getString(4), c.getString(5), c.getString(6), c.getString(7)));
                 }while (c.moveToNext());
             } else {
                 System.out.println("No existen Visitas");

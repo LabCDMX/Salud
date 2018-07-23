@@ -220,7 +220,7 @@ public class TarjetaPacienteFragment extends Fragment {
                                     Toast.makeText(getActivity(),"Define un expediente para poder avanzar", Toast.LENGTH_SHORT).show();
                                 }else{
                                     //Toast.makeText(getActivity(),"TERMINASTE TUS FLUJILLOS Y SELLASTE EL CLIENTE", Toast.LENGTH_SHORT).show();
-
+                                    sharedPreferences.setStringData("Expediente", textViewExpediente.getText().toString());
                                     deleteUserSinExpediente(sharedPreferences.getStringData("curpItem"), sharedPreferences.getStringData("nameItem"));
                                     ((MainActivity)getActivity()).succededClinica();
                                 }
@@ -445,9 +445,9 @@ public class TarjetaPacienteFragment extends Fragment {
 
                 values.put(DataBaseDB.PACIENTES_VISITA_NOMBRE,sharedPreferences.getStringData("nameItem"));
                 values.put(DataBaseDB.PACIENTES_VISITA_CURP, sharedPreferences.getStringData("curpItem"));
-                values.put(DataBaseDB.PACIENTES_VISITA_DIRECCION, sharedPreferences.getStringData("EXPEDIENTE ASIGNADO"));
                 values.put(DataBaseDB.PACIENTES_VISITA_STATUS, sharedPreferences.getStringData("ImageItem"));
                 values.put(DataBaseDB.PACIENTES_VISITA_DIAGNOSTICO, sharedPreferences.getStringData("DiagnosticoGeneral"));
+                values.put(DataBaseDB.PACIENTES_VISITA_EXPEDIENTE, sharedPreferences.getStringData("Expediente"));
                 values.put(DataBaseDB.PACIENTES_VISITA_FECHA, fecha);
                 values.put(DataBaseDB.PACIENTES_VISITA_NUMERO, "1");
 
@@ -462,9 +462,9 @@ public class TarjetaPacienteFragment extends Fragment {
 
                 values.put(DataBaseDB.PACIENTES_VISITA_NOMBRE,sharedPreferences.getStringData("nameItem"));
                 values.put(DataBaseDB.PACIENTES_VISITA_CURP, sharedPreferences.getStringData("curpItem"));
-                values.put(DataBaseDB.PACIENTES_VISITA_DIRECCION, sharedPreferences.getStringData("EXPEDIENTE ASIGNADO"));
                 values.put(DataBaseDB.PACIENTES_VISITA_STATUS, sharedPreferences.getStringData("ImageItem"));
                 values.put(DataBaseDB.PACIENTES_VISITA_DIAGNOSTICO, sharedPreferences.getStringData("DiagnosticoGeneral"));
+                values.put(DataBaseDB.PACIENTES_VISITA_EXPEDIENTE, sharedPreferences.getStringData("Expediente"));
                 values.put(DataBaseDB.PACIENTES_VISITA_FECHA, fecha);
                 values.put(DataBaseDB.PACIENTES_VISITA_NUMERO, "1");
 

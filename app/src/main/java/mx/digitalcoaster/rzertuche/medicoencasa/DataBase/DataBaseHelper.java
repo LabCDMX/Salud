@@ -167,6 +167,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_TRATAMIENTO + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_FECHA + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NUMERO + " TEXT, " +
+                DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_EXPEDIENTE + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_STATUS + " TEXT); "
         );
         System.out.println(DataBaseDB.TABLE_NAME_PACIENTES_SEGUIMIENTO + " Creada");

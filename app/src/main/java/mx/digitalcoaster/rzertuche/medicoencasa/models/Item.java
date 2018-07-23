@@ -10,6 +10,7 @@ public class Item {
     private Boolean makeHojaDiaria;
     private Boolean checkHojaDiaria;
     private String numero_visita;
+    private String expediente;
 
 
 
@@ -23,7 +24,7 @@ public class Item {
         this.direccion = direccion;
     }
 
-    public Item(String nombre, String curp, String numero_visita, String direccion, String status, Boolean makeHojaDiaria, Boolean checkHojaDiaria){
+    public Item(String nombre, String curp, String numero_visita, String direccion, String status, Boolean makeHojaDiaria, Boolean checkHojaDiaria, String expediente){
         this.nombre = nombre;
         this.curp = curp;
         this.numero_visita = numero_visita;
@@ -31,6 +32,8 @@ public class Item {
         this.status = status;
         this.makeHojaDiaria = makeHojaDiaria;
         this.checkHojaDiaria = checkHojaDiaria;
+        this.expediente = expediente;
+
     }
 
 
@@ -54,6 +57,9 @@ public class Item {
     }
     public String getNumero_visita() {
         return numero_visita;
+    }
+    public String getExpediente() {
+        return expediente;
     }
 
 }

@@ -54,6 +54,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/datosVisita"
             android:layout_toRightOf="@+id/photho"
             android:layout_below="@+id/status"
             android:layout_width="wrap_content"
@@ -118,6 +119,25 @@
                 android:singleLine="true"
                 android:layout_below="@+id/tvDireccionItem"
                 android:layout_marginTop="10dp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/datosVisita"
+            android:layout_below="@+id/status"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="150dp">
+
+            <TextView
+                android:id="@+id/expediente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NO EXPEDIENTE"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="30dp"/>
 
         </RelativeLayout>
 
