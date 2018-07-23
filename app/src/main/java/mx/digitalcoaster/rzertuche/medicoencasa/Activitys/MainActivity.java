@@ -59,6 +59,7 @@ import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.ContextoSocia
 import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.DatosGeneralesFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.DiagnosticoFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.HistoriaClinicaFragment;
+import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.NotasEnfermeria;
 import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.NotasHistoric;
 import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionCuidador;
 import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionDomFragment;
@@ -111,7 +112,8 @@ public class MainActivity extends AppCompatActivity implements
         VisitasFragment.OnFragmentInteractionListener,
         SuccededFragmentDom.OnFragmentInteractionListener,
         DatosCensado.OnFragmentInteractionListener,
-        QuestionCuidador.OnFragmentInteractionListener{
+        QuestionCuidador.OnFragmentInteractionListener,
+        NotasEnfermeria.OnFragmentInteractionListener{
 
     public String patientID;
     public static ImageView inicio, registros, seguimiento, sincronizacion;
@@ -454,6 +456,15 @@ public class MainActivity extends AppCompatActivity implements
 
     public void datosCensado(){
         DatosCensado fragment = new DatosCensado();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.fragmentHolder, fragment);
+        transaction.commit();
+
+    }
+
+    public void notasEnfermeria(){
+        NotasEnfermeria fragment = new NotasEnfermeria();
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.fragmentHolder, fragment);

@@ -179,15 +179,9 @@ public class QuestionsExploracion extends Fragment {
 
                     sharedPreferences.setStringData("Temperatura", temperatura.getText().toString());
 
-                    if(isSinExp || isSeguimiento){
+                    ((MainActivity)getActivity()).notasEnfermeria();
 
-                        ((MainActivity)getActivity()).questionInterrogatorio();
 
-                    }else{
-
-                        ((MainActivity)getActivity()).questionAntecedentes();
-
-                    }
 
 
 

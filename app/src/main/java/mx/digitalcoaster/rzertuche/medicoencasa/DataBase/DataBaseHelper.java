@@ -37,7 +37,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 DataBaseDB.PACIENTES_EMAIL + " TEXT, " +
                 DataBaseDB.PACIENTES_CREATED_BY + " TEXT, " +
                 DataBaseDB.PACIENTES_CODIGO + " TEXT, " +
-                DataBaseDB.PACIENTES_POBLACION + " TEXT); "
+                DataBaseDB.PACIENTES_POBLACION + " TEXT, " +
+                DataBaseDB.PACIENTES_TIEMPO_ENCUESTA + " TEXT); "
         );
         System.out.println(DataBaseDB.TABLE_NAME_PACIENTES + " Creada");
 

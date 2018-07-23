@@ -153,12 +153,7 @@ public class ContextoSocialFragment extends Fragment {
         btnedit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                nombre.setText("");
-                nombre.setEnabled(true);
-                nombre.requestFocus();
-                InputMethodManager imm = (InputMethodManager) // con esto abres el teclado despues de ubicar el foco en tu editText
-                        getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.showSoftInput(nombre, InputMethodManager.SHOW_IMPLICIT);
+                btnEditar(nombre);
             }
         });
         nombre.setOnKeyListener(new View.OnKeyListener()
@@ -376,6 +371,22 @@ public class ContextoSocialFragment extends Fragment {
         seguimiento.setEnabled(false);
         sincronizacion.setEnabled(false);
     }
+
+    public void btnEditar(final EditText nombre){
+
+        nombre.setText("");
+        nombre.setEnabled(true);
+        nombre.requestFocus();
+        InputMethodManager imm = (InputMethodManager) // con esto abres el teclado despues de ubicar el foco en tu editText
+                getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.showSoftInput(nombre, InputMethodManager.SHOW_IMPLICIT);
+
+        final InputMethodManager hideKeyboard = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        hideKeyboard.hideSoftInputFromWindow(getView().getWindowToken(), 0);
+
+    }
+
+
 
 
 }

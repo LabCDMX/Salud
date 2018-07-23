@@ -44,6 +44,7 @@ public class DataBaseDB {
     public static final String PACIENTES_CREATED_BY = "pacientes_created_by";
     public static final String PACIENTES_POBLACION = "pacientes_poblacion";
     public static final String PACIENTES_CODIGO = "pacientes_codigo";
+    public static final String PACIENTES_TIEMPO_ENCUESTA = "pacientes_tiempo_encuesta";
 
 
 
