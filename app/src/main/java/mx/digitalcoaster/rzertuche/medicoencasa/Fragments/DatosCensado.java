@@ -86,7 +86,6 @@ public class DatosCensado extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         sharedPreferences = SharedPreferences.getInstance();
-        sharedPreferences.clearPreferences();
 
         restartListeners();
 

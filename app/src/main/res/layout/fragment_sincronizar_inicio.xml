@@ -39,7 +39,6 @@
             android:layout_height="400dp"
             android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:onClick="seguimiento"
             android:padding="30dp"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/imageButton2"

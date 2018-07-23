@@ -1,14 +1,34 @@
 package mx.digitalcoaster.rzertuche.medicoencasa.Fragments;
 
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.Toast;
 
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.Arrays;
+
+import cz.msebera.android.httpclient.Header;
+import cz.msebera.android.httpclient.HttpEntity;
+import cz.msebera.android.httpclient.conn.ConnectTimeoutException;
+import cz.msebera.android.httpclient.entity.StringEntity;
+import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseDB;
+import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseHelper;
 import mx.digitalcoaster.rzertuche.medicoencasa.Utils.SharedPreferences;
 import mx.digitalcoaster.rzertuche.medicoencasa.R;
 
@@ -33,6 +53,14 @@ public class InicioFragmentMain extends Fragment {
 
     private OnFragmentInteractionListener mListener;
     SharedPreferences sharedPreferences;
+    ImageButton imageButton3;
+    private ProgressDialog progress;
+    private SQLiteDatabase db = null;      // Objeto para utilizar la base de datos
+    private DataBaseHelper sqliteHelper;   // Objeto para abrir la base de Datos
+    private Cursor c = null;
+
+
+
 
     public InicioFragmentMain() {
         // Required empty public constructor
@@ -76,8 +104,48 @@ public class InicioFragmentMain extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        progress = new ProgressDialog(getActivity());
+        progress.setMessage("Cargando...");
+        progress.setIndeterminate(false);
+        progress.setCancelable(false);
+
+
         sharedPreferences = SharedPreferences.getInstance();
         sharedPreferences.clearPreferences();
+
+        imageButton3 = getActivity().findViewById(R.id.imageButton3);
+        imageButton3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                progress.show();
+
+                db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE ,null);
+
+                try {
+                    c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES, null);
+                    if (c.moveToFirst()) {
+                        do {
+
+                            sendData(c.getString(2),c.getString(4),c.getString(5),c.getString(1),c.getString(6),c.getString(7),c.getString(8),
+                                    c.getString(9),c.getString(10), c.getString(11),c.getString(21),c.getString(22),c.getString(12),"Calle",
+                                    c.getString(13), c.getString(14),c.getString(15),c.getString(17),c.getString(18),c.getString(19));
+
+                        }while (c.moveToNext());
+                    } else {
+                        Toast.makeText(getActivity(),"No hay clientes a sincronizar",Toast.LENGTH_LONG).show();
+                        System.out.println("No existen PACIENTES");
+                    }
+                    c.close();
+                } catch (Exception ex) {
+                    Log.e("Error", ex.toString());
+                } finally {
+                    db.close();
+                }
+
+                progress.dismiss();
+
+            }
+        });
 
 
 
@@ -122,4 +190,78 @@ public class InicioFragmentMain extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+
+    public void sendData(String curp,String a_pa,String a_ma,String nombre,String fechaNac,String estadoNac,String sexo,String nac,String estadoRes,
+                         String municipio,String cp,String poblacion,String colonia,String nombreCalle,String edo_civil,String ocupacion,String derecho,
+                         String telFijo,String telCel,String correo){
+
+
+        final AsyncHttpClient client = new AsyncHttpClient();
+        HttpEntity entity;
+
+        String json = "" +
+                "{\"curp\":\""+curp+"\"," +
+                "\"apellidoPaterno\":\""+a_pa+"\"," +
+                "\"apellidoMaterno\":" + a_ma + "," +
+                "\"nombre\":\""+nombre+"\"," +
+                "\"fechadeNacimiento\":"+fechaNac+"," +
+                "\"estadodeNacimiento\":\""+estadoNac+"\"," +
+                "\"sexo\":\""+sexo+"\"," +
+                "\"nacionalidadOrigen\":\""+nac+"\"," +
+                "\"estadoResidencia\":\""+estadoRes+"\"," +
+                "\"municipio\":\""+municipio+"\"," +
+                "\"cp\":\""+cp+"\"," +
+                "\"pob_vul\":\""+poblacion+"\"," +
+                "\"colonia\":"+colonia+"," +
+                "\"nombreCalle\":"+nombreCalle+"," +
+                "\"estadoCivil\":"+edo_civil+"," +
+                "\"ocupacion\":"+ocupacion+"," +
+                "\"derechoHabiencia\":\""+derecho+"\"," +
+                "\"telFijo\":\""+telFijo+"\"," +
+                "\"telCelular\":\""+telCel+"\"," +
+                "\"correoElectronico\":\""+correo+"\"," +
+                "}";
+
+
+        entity = new StringEntity(json, "UTF-8");
+        Log.d("JSON EMV", json);
+        client.post(getActivity(), "http://187.210.47.140:9999/api/admin/api/paciente", entity, "application/json", new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+
+                Log.e("Response Service", response.toString());
+
+            }
+
+            public void onFailure(Throwable error, String content) {
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+
+            }
+
+        });
+
+
+
+
+
+
+
+    }
+
+
 }

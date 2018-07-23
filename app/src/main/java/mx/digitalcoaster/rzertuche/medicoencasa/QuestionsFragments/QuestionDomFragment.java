@@ -120,6 +120,7 @@ public class QuestionDomFragment extends Fragment {
         question2 = (TextView) view.findViewById(R.id.question2);
         question3 = (TextView) view.findViewById(R.id.question3);
         title = (TextView) view.findViewById(R.id.title);
+
         answer = (EditText) view.findViewById(R.id.answer);
         answer2 = (EditText) view.findViewById(R.id.answer2);
         answer3 = (EditText) view.findViewById(R.id.answer3);
@@ -145,18 +146,6 @@ public class QuestionDomFragment extends Fragment {
         final EditText cp  = getActivity().findViewById(R.id.answer7);
 
         sharedPreferences = SharedPreferences.getInstance();
-
-
-        String sharedNombre = sharedPreferences.getStringData("Estado");
-        String sharedApellidoP = sharedPreferences.getStringData("Municipio");
-        final String sharedApellidoM = sharedPreferences.getStringData("Localidad");
-
-
-        if(!sharedNombre.isEmpty() && !sharedApellidoM.isEmpty() && !sharedApellidoM.isEmpty() ){
-            answer.setText(sharedNombre);
-            answer2.setText(sharedApellidoP);
-            answer3.setText(sharedApellidoM);
-        }
 
 
         ImageButton next = (ImageButton) view.findViewById(R.id.next);
@@ -187,11 +176,14 @@ public class QuestionDomFragment extends Fragment {
 
 
                 }else if(count == 2){
+
+
                     open4.setVisibility(View.GONE);
                     open2.setVisibility(View.VISIBLE);
 
                 }else if(count == 3){
-                    sharedPreferences.setStringData("Estado", answer4.getText().toString());
+
+                    sharedPreferences.setStringData("Calle", answer4.getText().toString());
                     sharedPreferences.setStringData("No Ext.", answer5.getText().toString());
                     sharedPreferences.setStringData("No int", answer6.getText().toString());
 
@@ -203,8 +195,10 @@ public class QuestionDomFragment extends Fragment {
 
 
                 }else if(count == 4){
+
+
                     sharedPreferences.setStringData("Localidad", answer3.getText().toString());
-                    sharedPreferences.setStringData("Municipio.", answer2.getText().toString());
+                    sharedPreferences.setStringData("Municipio", answer2.getText().toString());
                     sharedPreferences.setStringData("Estado", answer.getText().toString());
 
 

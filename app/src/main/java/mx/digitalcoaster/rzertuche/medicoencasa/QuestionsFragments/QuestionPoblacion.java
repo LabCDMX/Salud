@@ -115,6 +115,7 @@ public class QuestionPoblacion extends Fragment {
 
         final RadioGroup radioVisita = getActivity().findViewById(R.id.radioCandidato);
         final RadioGroup radioDerecho = getActivity().findViewById(R.id.radioDerechohabiencia);
+        final RadioGroup radioPoblacion = getActivity().findViewById(R.id.radioPoblacion);
 
 
 
@@ -267,6 +268,36 @@ public class QuestionPoblacion extends Fragment {
             }
 
         });
+
+        radioPoblacion.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
+
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                // TODO Auto-generated method stub
+                if (checkedId == R.id.discapacidad){
+                    sharedPreferences.setStringData("Poblacion","Discapacidad");
+                }else if (checkedId == R.id.postrada){
+                    sharedPreferences.setStringData("Poblacion","Postrada");
+                }else if (checkedId == R.id.adulto){
+                    sharedPreferences.setStringData("Poblacion","Adulto mayor sin posibilidad de trasladarse");
+                }else if (checkedId == R.id.situacion){
+                    sharedPreferences.setStringData("Poblacion","Situación Abandono");
+                }else if (checkedId == R.id.enf_terminal){
+                    sharedPreferences.setStringData("Poblacion","Enf. Terminal");
+                }else if (checkedId == R.id.embarazada){
+                    sharedPreferences.setStringData("Poblacion","Embarazada");
+                }else if (checkedId == R.id.embarazada_sin){
+                    sharedPreferences.setStringData("Poblacion","Embarazada sin control prenatal");
+                }
+
+            }
+
+        });
+
+
+
+
+
 
 
 

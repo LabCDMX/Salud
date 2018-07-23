@@ -42,6 +42,10 @@ public class DataBaseDB {
     public static final String PACIENTES_CEL = "pacientes_cel";
     public static final String PACIENTES_EMAIL = "pacientes_email";
     public static final String PACIENTES_CREATED_BY = "pacientes_created_by";
+    public static final String PACIENTES_POBLACION = "pacientes_poblacion";
+    public static final String PACIENTES_CODIGO = "pacientes_codigo";
+
+
 
 
 

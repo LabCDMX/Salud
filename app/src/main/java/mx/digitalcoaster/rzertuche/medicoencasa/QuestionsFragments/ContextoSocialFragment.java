@@ -300,7 +300,6 @@ public class ContextoSocialFragment extends Fragment {
             public void onClick(View v) {
 
                 ((MainActivity)getActivity()).stopCronometro();
-                saveToSend();
                 ((MainActivity)getActivity()).fragmentSucceded();
             }
         });
@@ -378,7 +377,5 @@ public class ContextoSocialFragment extends Fragment {
         sincronizacion.setEnabled(false);
     }
 
-    public void saveToSend(){
 
-    }
 }

@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity implements
         //Initialize ImageView to set change with onclick
         inicio = (ImageView) findViewById(R.id.imageButton);
         registros = (ImageView) findViewById(R.id.imageButton2);
-        seguimiento = (ImageView) findViewById(R.id.imageButton3);
+        seguimiento = (ImageView) findViewById(R.id.pacientesButton);
         sincronizacion = (ImageView) findViewById(R.id.imageButton4);
 
         cronometro = findViewById(R.id.chronomether);
