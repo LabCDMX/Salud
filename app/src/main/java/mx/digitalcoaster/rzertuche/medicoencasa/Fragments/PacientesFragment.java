@@ -180,10 +180,10 @@ public class PacientesFragment extends Fragment {
                 sharedPreferences.setStringData("nameSeguimiento", nameUser);
                 sharedPreferences.setStringData("curpSeguimiento", curp);
                 sharedPreferences.setStringData("numero_visita", numero_visita );
-                sharedPreferences.setStringData("Expediente", numero_visita );
+                sharedPreferences.setStringData("Expediente", expediente);
 
 
-                Log.e("TOUCHME",nameUser);
+                Log.e("TOUCHME",expediente);
                 ((MainActivity)getActivity()).visitasFragment(nameUser);
 
             }
@@ -200,7 +200,7 @@ public class PacientesFragment extends Fragment {
             c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_VISITAS, null);
             if (c.moveToFirst()) {
                 do {
-                    items.add(new Item(c.getString(1), c.getString(2), c.getString(4),c.getString(3), c.getString(5),false,false,c.getString(9)));
+                    items.add(new Item(c.getString(1), c.getString(2), c.getString(4), "- - - - - -", c.getString(5),false,false,c.getString(9)));
                 }while (c.moveToNext());
             } else {
                 System.out.println("No existen PACIENTES");

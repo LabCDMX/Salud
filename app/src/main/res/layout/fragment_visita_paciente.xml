@@ -135,9 +135,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="NO EXPEDIENTE"
+                android:textColor="#000"
                 android:gravity="center"
                 android:textStyle="bold"
-                android:textSize="30dp"/>
+                android:textSize="15dp"/>
 
         </RelativeLayout>
 

@@ -100,7 +100,7 @@ public class VisitasFragment extends Fragment {
         nombre.setText(sharedPreferences.getStringData("Nombre"));
         diagnostico.setText(sharedPreferences.getStringData("Diagnostico"));
         tratamiento.setText(sharedPreferences.getStringData("Tratamiento"));
-        expediente.setText(sharedPreferences.getStringData("Expediente"));
+        expediente.setText("No. Expediente \n" + sharedPreferences.getStringData("Expediente"));
 
 
         if(statusImage.equals("Sano")){
@@ -145,7 +145,6 @@ public class VisitasFragment extends Fragment {
                     sharedPreferences.setStringData("Tratamiento",c.getString(3));
                     sharedPreferences.setStringData("Nombre",c.getString(1));
                     sharedPreferences.setStringData("ImageItem",c.getString(8));
-                    sharedPreferences.setStringData("Expediente",c.getString(7));
 
 
                     items.add(new ItemVisita(c.getString(1), c.getString(2), c.getString(3), c.getString(4), c.getString(5), c.getString(6), c.getString(7)));

@@ -397,14 +397,5 @@ public class HistoriaClinicaFragment extends Fragment {
         void onFragmentInteraction(Uri uri);
     }
 
-    public List<String> borrarRepetidos(List<String> arraycar){
-        Set<String> hs = new HashSet<>();
-        hs.addAll(arraycar);
-        arraycar.clear();
-        arraycar.addAll(hs);
-
-        return arraycar;
-
-    }
 
 }
