@@ -6,6 +6,7 @@ public class DataBaseDB {
     public static final String DB_NAME = "database_medicoentucasa";    // Nombre de la base de datos
 
     public static final String TABLE_NAME_PACIENTES = "table_name_pacientes";
+    public static final String TABLE_NAME_PACIENTES_SINCRONIZAR = "table_name_pacientes_sincronizar";
     public static final String TABLE_NAME_PACIENTES_VISITAS = "table_name_pacientes_visitas";
     public static final String TABLE_NAME_PACIENTES_SIN_EXPEDIENTE = "table_name_pacientes_expediente";
     public static final String TABLE_NAME_PACIENTES_SEGUIMIENTO = "table_name_pacientes_seguimiento";
@@ -45,6 +46,32 @@ public class DataBaseDB {
     public static final String PACIENTES_POBLACION = "pacientes_poblacion";
     public static final String PACIENTES_CODIGO = "pacientes_codigo";
     public static final String PACIENTES_TIEMPO_ENCUESTA = "pacientes_tiempo_encuesta";
+
+
+    public static final String PACIENTES_SINCRONIZAR_NOMBRE = "pacientes_sincronizar_nombre";
+    public static final String PACIENTES_SINCRONIZAR_CURP = "pacientes_sincronizar_curp";
+    public static final String PACIENTES_SINCRONIZAR_CALLE = "pacientes_sincronizar_calle";
+    public static final String PACIENTES_SINCRONIZAR_AP_PATERNO = "pacientes__sincronizarap_paterno";
+    public static final String PACIENTES_SINCRONIZAR_AP_MATERNO = "pacientes__sincronizarap_materno";
+    public static final String PACIENTES_SINCRONIZAR_FECHA_NACIMIENTO = "pacientes__sincronizarfecha_nacimiento";
+    public static final String PACIENTES_SINCRONIZAR_ESTADO_NACIMIENTO = "pacientes__sincronizarestado_nacimiento";
+    public static final String PACIENTES_SINCRONIZAR_SEXO = "pacientes__sincronizarsexo";
+    public static final String PACIENTES_SINCRONIZAR_NACIONALIDAD = "pacientes__sincronizarnacionalidad";
+    public static final String PACIENTES_SINCRONIZAR_ESTADO = "pacientes__sincronizarestado";
+    public static final String PACIENTES_SINCRONIZAR_MUNICIPIO = "pacientes__sincronizarmunicipio";
+    public static final String PACIENTES_SINCRONIZAR_COLONIA = "pacientes__sincronizarcolonia";
+    public static final String PACIENTES_SINCRONIZAR_ESTADO_CIVIL = "pacientes__sincronizarestado_civil";
+    public static final String PACIENTES_SINCRONIZAR_OCUPACION = "pacientes__sincronizarocupacion";
+    public static final String PACIENTES_SINCRONIZAR_DERECHO = "pacientes__sincronizarderecho";
+    public static final String PACIENTES_SINCRONIZAR_FOLIO_DERECHO = "pacientes__sincronizarfolio_derecho";
+    public static final String PACIENTES_SINCRONIZAR_TEL_FIJO = "pacientes__sincronizar_tel_fijo";
+    public static final String PACIENTES_SINCRONIZAR_CEL = "pacientes__sincronizar_cel";
+    public static final String PACIENTES_SINCRONIZAR_EMAIL = "pacientes_sincronizar_email";
+    public static final String PACIENTES_SINCRONIZAR_CREATED_BY = "pacientes_sincronizar_created_by";
+    public static final String PACIENTES_SINCRONIZAR_POBLACION = "pacientes_sincronizar_poblacion";
+    public static final String PACIENTES_SINCRONIZAR_CODIGO = "pacientes_sincronizar_codigo";
+    public static final String PACIENTES_SINCRONIZAR_TIEMPO_ENCUESTA = "pacientes_sincronizar_tiempo_encuesta";
+
 
 
 

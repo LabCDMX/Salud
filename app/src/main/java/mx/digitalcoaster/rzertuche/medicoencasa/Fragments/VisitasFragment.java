@@ -132,8 +132,6 @@ public class VisitasFragment extends Fragment {
 
 
     private void getProductos() {
-
-
         db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE, null);
         try {
             c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SEGUIMIENTO + " WHERE " +

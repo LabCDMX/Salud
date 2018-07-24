@@ -2,23 +2,675 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#ffffff"
-    android:orientation="vertical" >
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/textViewDatosGenerales"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:textSize="30dp"
+        android:layout_marginTop="40dp"
+        android:text="HOJA DE CONTROL"/>
+
 
     <ScrollView
         android:id="@+id/cuerpo"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_height="400dp"
+        android:layout_below="@+id/textViewDatosGenerales"
+        android:layout_marginLeft="50dp">
+
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            //EXPLORACION FISICA
+
+
+            <TextView
+                android:id="@+id/tvExploracion"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewGenitales"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:textSize="30sp"
+                android:text="Exploración Física"/>
+
+            <View
+                android:id="@+id/divider4"
+                android:layout_below="@id/tvExploracion"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
+                android:background="#E91A8D" />
+            <TextView
+                android:id="@+id/tvPeso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvExploracion"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="1. Peso:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewPeso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvExploracion"
+                android:textSize="20sp"
+                android:text="Peso"
+                android:inputType="textCapCharacters"
+                android:background="#00000000"
+                android:layout_marginTop="20dp"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@+id/tvPeso"/>
+
+
+
+
+            <TextView
+                android:id="@+id/tvEstatura"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewPeso"
+                android:textSize="20sp"
+                android:text="2. Estatura:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewEstatura"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewPeso"
+                android:textSize="20sp"
+                android:text="Municipio"
+                android:background="#00000000"
+                android:inputType="textCapCharacters"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="120dp"/>
+
+
+            //Hemotipo
+            <TextView
+                android:id="@+id/tvHemotipo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewEstatura"
+                android:textSize="20sp"
+                android:text="3. Hemotipo:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewHemotipo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewEstatura"
+                android:textSize="20sp"
+                android:text="Municipio"
+                android:background="#00000000"
+                android:inputType="textCapCharacters"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="140dp"/>
+
+            //Talla
+
+
+            <TextView
+                android:id="@+id/tvTalla"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewHemotipo"
+                android:textSize="20sp"
+                android:text="4. Talla:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewTalla"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewHemotipo"
+                android:textSize="20sp"
+                android:text="Municipio"
+                android:background="#00000000"
+                android:inputType="textCapCharacters"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="90dp"/>
+
+
+
+            //Pulso
+
+
+            <TextView
+                android:id="@+id/tvPulso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewTalla"
+                android:textSize="20sp"
+                android:text="5. Pulso:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewPulso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewTalla"
+                android:textSize="20sp"
+                android:background="#00000000"
+                android:inputType="textCapCharacters"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="90dp"/>
+
+
+
+            //TensionArterial
+            <TextView
+                android:id="@+id/tvTensionArterial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewPulso"
+                android:textSize="20sp"
+                android:text="6. Tensión arterial:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewTensionArterial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewPulso"
+                android:textSize="20sp"
+                android:background="#00000000"
+                android:inputType="textCapCharacters"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="190dp"/>
+
+            //TensionArterial
+            <TextView
+                android:id="@+id/tvFrecuenciaCar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvTensionArterial"
+                android:textSize="20sp"
+                android:text="7. Frecuencia cardiaca:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewFrecuenciaCar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvTensionArterial"
+                android:textSize="20sp"
+                android:background="#00000000"
+                android:inputType="textCapCharacters"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="230dp"/>
+
+            //FrecuenciaRespiratoria
+            <TextView
+                android:id="@+id/tvFrecuenciaRes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvFrecuenciaCar"
+                android:textSize="20sp"
+                android:text="8. Frecuencia respiratoria:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewFrecuenciaRes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvFrecuenciaCar"
+                android:textSize="20sp"
+                android:background="#00000000"
+                android:inputType="textCapCharacters"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="250dp"/>
+
+            //Glucemia
+            <TextView
+                android:id="@+id/tvGlucemia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvFrecuenciaRes"
+                android:textSize="20sp"
+                android:text="9. Glucemia:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewGlucemia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvFrecuenciaRes"
+                android:textSize="20sp"
+                android:background="#00000000"
+                android:inputType="textCapCharacters"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="130dp"/>
+
+            //Temoeratura
+            <TextView
+                android:id="@+id/tvTemoeratura"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvGlucemia"
+                android:textSize="20sp"
+                android:text="10. Temperatura:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewTemperatura"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvGlucemia"
+                android:textSize="20sp"
+                android:background="#00000000"
+                android:inputType="textCapCharacters"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="180dp"/>
+
+
+
+
+            //NOTAS DE ENFERMERIA
+
+
+            <TextView
+                android:id="@+id/textNota"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvTemoeratura"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:textSize="30sp"
+                android:text="Notas de enfermería"/>
+
+            <View
+                android:id="@+id/divider5"
+                android:layout_below="@id/textNota"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
+                android:background="#E91A8D" />
+
+            <TextView
+                android:id="@+id/tvNotasMedicas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/divider5"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="Notas Médicas:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/etNotasMedicas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvNotasMedicas"
+                android:textSize="20sp"
+                android:text="Peso"
+                android:inputType="textCapCharacters"
+                android:background="#00000000"
+                android:layout_marginTop="20dp"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@+id/tvPeso"/>
+
+
+
+
+
+            //NOTAS MEDICAS S(Subjetivo)O(Objetivo)A(Análisis)P(Plan)
+
+            <TextView
+                android:id="@+id/textNotasMedicas"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvTemoeratura"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:textSize="30sp"
+                android:text="Notas medicas"/>
+
+            <View
+                android:id="@+id/divider6"
+                android:layout_below="@id/textNotasMedicas"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
+                android:background="#E91A8D" />
+
+                //Subjetivo
+
+            <TextView
+                android:id="@+id/tvSubjetivo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/divider6"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="Subjetivo:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/etSubjetivo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvSubjetivo"
+                android:textSize="20sp"
+                android:text="Peso"
+                android:inputType="textCapCharacters"
+                android:background="#00000000"
+                android:layout_marginTop="20dp"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@+id/tvPeso"/>
+
+
+             //Objetivo
+
+            <TextView
+                android:id="@+id/tvObjetivo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/etSubjetivo"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="Objetivo:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/etObjetivo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvObjetivo"
+                android:textSize="20sp"
+                android:text="Peso"
+                android:inputType="textCapCharacters"
+                android:background="#00000000"
+                android:layout_marginTop="20dp"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@+id/tvPeso"/>
+
+
+                //Analisis
+
+            <TextView
+                android:id="@+id/tvAnalisis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/etObjetivo"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="Análisis:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/etAnalisis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvAnalisis"
+                android:textSize="20sp"
+                android:text="Peso"
+                android:inputType="textCapCharacters"
+                android:background="#00000000"
+                android:layout_marginTop="20dp"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@+id/tvPeso"/>
+
+                //Plan
+
+            <TextView
+                android:id="@+id/tvPlan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/etAnalisis"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="Plan:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/etPlan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvPlan"
+                android:textSize="20sp"
+                android:text="Peso"
+                android:inputType="textCapCharacters"
+                android:background="#00000000"
+                android:layout_marginTop="20dp"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@+id/tvPeso"/>
+
+
+            //Diagnostico
+
+            <TextView
+                android:id="@+id/tvDiagnostico"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/etPlan"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:textSize="30sp"
+                android:text="Diagnóstico"/>
+
+            <View
+                android:id="@+id/divider7"
+                android:layout_below="@id/tvDiagnostico"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
+                android:background="#E91A8D" />
+
+            <TextView
+                android:id="@+id/textDiagnostico"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/divider7"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="Diagnóstico:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/etDiagnostico"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textDiagnostico"
+                android:textSize="20sp"
+                android:text="Peso"
+                android:inputType="textCapCharacters"
+                android:background="#00000000"
+                android:layout_marginTop="20dp"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@+id/tvPeso"/>
+
+            //Tratamiento
+
+
+            <TextView
+                android:id="@+id/tvTratamiento"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/etDiagnostico"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:textSize="30sp"
+                android:text="Tratamiento"/>
+
+            <View
+                android:id="@+id/divider8"
+                android:layout_below="@id/tvTratamiento"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
+                android:background="#E91A8D" />
+
+            <TextView
+                android:id="@+id/textTratamiento"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/divider8"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="Tratamiento:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/etTratamiento"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textTratamiento"
+                android:textSize="20sp"
+                android:text="Peso"
+                android:inputType="textCapCharacters"
+                android:background="#00000000"
+                android:layout_marginTop="20dp"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@+id/tvPeso"/>
+
+
+            //AgendaVisita
+
+
+            <TextView
+                android:id="@+id/tvSiguienteVisita"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/etTratamiento"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:textSize="30sp"
+                android:text="Siguiente Visita"/>
+
+            <View
+                android:id="@+id/divider9"
+                android:layout_below="@id/tvSiguienteVisita"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
+                android:background="#E91A8D" />
+
+            <TextView
+                android:id="@+id/textSiguienteVisita"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/divider9"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="Siguiente Visita:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/edSiguienteVisita"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textSiguienteVisita"
+                android:textSize="20sp"
+                android:text="Peso"
+                android:inputType="textCapCharacters"
+                android:background="#00000000"
+                android:layout_marginTop="20dp"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@+id/tvPeso"/>
+
+
+
+
+
+
 
 
         </RelativeLayout>
+
     </ScrollView>
 
+
+
 </RelativeLayout>
+

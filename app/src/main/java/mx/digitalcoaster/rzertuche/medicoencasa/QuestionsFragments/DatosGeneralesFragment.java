@@ -345,6 +345,75 @@ public class DatosGeneralesFragment extends Fragment {
                     System.out.println("Error al insertar productos: " + ex);
                 }
 
+
+
+                /*------------------------- Revisar si existe ------------------------*/
+                c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR, null);
+                try {
+                    if(c.moveToFirst()) {
+                        ContentValues values = new ContentValues();
+
+
+                        values.put(DataBaseDB.PACIENTES_SINCRONIZAR_CURP, curp);
+                        values.put(DataBaseDB.PACIENTES_SINCRONIZAR_AP_PATERNO, sharedPreferences.getStringData("ApellidoP"));
+                        values.put(DataBaseDB.PACIENTES_SINCRONIZAR_AP_MATERNO, sharedPreferences.getStringData("ApellidoM"));
+                        values.put(DataBaseDB.PACIENTES_SINCRONIZAR_NOMBRE, sharedPreferences.getStringData("NombrePatient"));
+                        values.put(DataBaseDB.PACIENTES_SINCRONIZAR_FECHA_NACIMIENTO, sharedPreferences.getStringData("FechaNac"));
+                        values.put(DataBaseDB.PACIENTES_SINCRONIZAR_ESTADO_NACIMIENTO, sharedPreferences.getStringData("EstadoNac"));
+                        values.put(DataBaseDB.PACIENTES_SINCRONIZAR_SEXO, sharedPreferences.getStringData("Sexo"));
+                        values.put(DataBaseDB.PACIENTES_SINCRONIZAR_CALLE, sharedPreferences.getStringData("Calle")+sharedPreferences.getStringData("No Ext.")+sharedPreferences.getStringData("No int"));
+                        values.put(DataBaseDB.PACIENTES_SINCRONIZAR_NACIONALIDAD, sharedPreferences.getStringData("Nac"));
+                        values.put(DataBaseDB.PACIENTES_SINCRONIZAR_ESTADO, sharedPreferences.getStringData("Estado"));
+                        values.put(DataBaseDB.PACIENTES_SINCRONIZAR_MUNICIPIO, sharedPreferences.getStringData("Municipio"));
+                        values.put(DataBaseDB.PACIENTES_SINCRONIZAR_POBLACION, sharedPreferences.getStringData("Poblacion"));
+                        values.put(DataBaseDB.PACIENTES_SINCRONIZAR_COLONIA, sharedPreferences.getStringData("Localidad"));
+                        values.put(DataBaseDB.PACIENTES_SINCRONIZAR_ESTADO_CIVIL, sharedPreferences.getStringData("EstadoCiv"));
+                        values.put(DataBaseDB.PACIENTES_SINCRONIZAR_OCUPACION, sharedPreferences.getStringData("Ocupacion"));
+                        values.put(DataBaseDB.PACIENTES_SINCRONIZAR_DERECHO, sharedPreferences.getStringData("DerechoHabi"));
+                        values.put(DataBaseDB.PACIENTES_SINCRONIZAR_TEL_FIJO, sharedPreferences.getStringData("TelFijo"));
+                        values.put(DataBaseDB.PACIENTES_SINCRONIZAR_CEL, sharedPreferences.getStringData("TelCel"));
+                        values.put(DataBaseDB.PACIENTES_SINCRONIZAR_EMAIL, sharedPreferences.getStringData("Email"));
+
+
+                        db.insert(DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR, null, values);
+                        System.out.println("Productos insertados correctamente");
+                    }
+                    else {
+                        ContentValues values = new ContentValues();
+
+
+
+                        values.put(DataBaseDB.PACIENTES_SINCRONIZAR_CURP, curp);
+                        values.put(DataBaseDB.PACIENTES_SINCRONIZAR_AP_PATERNO, sharedPreferences.getStringData("ApellidoP"));
+                        values.put(DataBaseDB.PACIENTES_SINCRONIZAR_AP_MATERNO, sharedPreferences.getStringData("ApellidoM"));
+                        values.put(DataBaseDB.PACIENTES_SINCRONIZAR_NOMBRE, sharedPreferences.getStringData("NombrePatient"));
+                        values.put(DataBaseDB.PACIENTES_SINCRONIZAR_FECHA_NACIMIENTO, sharedPreferences.getStringData("FechaNac"));
+                        values.put(DataBaseDB.PACIENTES_SINCRONIZAR_ESTADO_NACIMIENTO, sharedPreferences.getStringData("EstadoNac"));
+                        values.put(DataBaseDB.PACIENTES_SINCRONIZAR_SEXO, sharedPreferences.getStringData("Sexo"));
+                        values.put(DataBaseDB.PACIENTES_SINCRONIZAR_CALLE, sharedPreferences.getStringData("Calle")+sharedPreferences.getStringData("No Ext.")+sharedPreferences.getStringData("No int"));
+                        values.put(DataBaseDB.PACIENTES_SINCRONIZAR_NACIONALIDAD, sharedPreferences.getStringData("Nac"));
+                        values.put(DataBaseDB.PACIENTES_SINCRONIZAR_ESTADO, sharedPreferences.getStringData("Estado"));
+                        values.put(DataBaseDB.PACIENTES_SINCRONIZAR_MUNICIPIO, sharedPreferences.getStringData("Municipio"));
+                        values.put(DataBaseDB.PACIENTES_SINCRONIZAR_POBLACION, sharedPreferences.getStringData("Poblacion"));
+                        values.put(DataBaseDB.PACIENTES_SINCRONIZAR_COLONIA, sharedPreferences.getStringData("Localidad"));
+                        values.put(DataBaseDB.PACIENTES_SINCRONIZAR_ESTADO_CIVIL, sharedPreferences.getStringData("EstadoCiv"));
+                        values.put(DataBaseDB.PACIENTES_SINCRONIZAR_OCUPACION, sharedPreferences.getStringData("Ocupacion"));
+                        values.put(DataBaseDB.PACIENTES_SINCRONIZAR_DERECHO, sharedPreferences.getStringData("DerechoHabi"));
+                        values.put(DataBaseDB.PACIENTES_SINCRONIZAR_TEL_FIJO, sharedPreferences.getStringData("TelFijo"));
+                        values.put(DataBaseDB.PACIENTES_SINCRONIZAR_CEL, sharedPreferences.getStringData("TelCel"));
+                        values.put(DataBaseDB.PACIENTES_SINCRONIZAR_EMAIL, sharedPreferences.getStringData("Email"));
+
+
+                        db.insert(DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR, null, values);
+
+                        System.out.println("Productos insertados correctamente");
+
+                    }
+                    c.close();
+                } catch (SQLException ex) {
+                    System.out.println("Error al insertar productos: " + ex);
+                }
+
                 db.close();
 
 

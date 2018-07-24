@@ -42,8 +42,38 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         );
         System.out.println(DataBaseDB.TABLE_NAME_PACIENTES + " Creada");
 
+        /*---------------------------- Creación de la table de session ---------------------------*/
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR + "(" +
+                "_id INTEGER PRIMARY KEY, " +
+                DataBaseDB.PACIENTES_SINCRONIZAR_NOMBRE + " TEXT, " +
+                DataBaseDB.PACIENTES_SINCRONIZAR_CURP + " TEXT, " +
+                DataBaseDB.PACIENTES_SINCRONIZAR_CALLE + " TEXT, " +
+                DataBaseDB.PACIENTES_SINCRONIZAR_AP_PATERNO + " TEXT, " +
+                DataBaseDB.PACIENTES_SINCRONIZAR_AP_MATERNO + " TEXT, " +
+                DataBaseDB.PACIENTES_SINCRONIZAR_FECHA_NACIMIENTO + " TEXT, " +
+                DataBaseDB.PACIENTES_SINCRONIZAR_ESTADO_NACIMIENTO + " TEXT, " +
+                DataBaseDB.PACIENTES_SINCRONIZAR_SEXO + " TEXT, " +
+                DataBaseDB.PACIENTES_SINCRONIZAR_NACIONALIDAD + " TEXT, " +
+                DataBaseDB.PACIENTES_SINCRONIZAR_ESTADO + " TEXT, " +
+                DataBaseDB.PACIENTES_SINCRONIZAR_MUNICIPIO + " TEXT, " +
+                DataBaseDB.PACIENTES_SINCRONIZAR_COLONIA + " TEXT, " +
+                DataBaseDB.PACIENTES_SINCRONIZAR_ESTADO_CIVIL + " TEXT, " +
+                DataBaseDB.PACIENTES_SINCRONIZAR_OCUPACION + " TEXT, " +
+                DataBaseDB.PACIENTES_SINCRONIZAR_DERECHO + " TEXT, " +
+                DataBaseDB.PACIENTES_SINCRONIZAR_FOLIO_DERECHO + " TEXT, " +
+                DataBaseDB.PACIENTES_SINCRONIZAR_TEL_FIJO + " TEXT, " +
+                DataBaseDB.PACIENTES_SINCRONIZAR_CEL + " TEXT, " +
+                DataBaseDB.PACIENTES_SINCRONIZAR_EMAIL + " TEXT, " +
+                DataBaseDB.PACIENTES_SINCRONIZAR_CREATED_BY + " TEXT, " +
+                DataBaseDB.PACIENTES_SINCRONIZAR_CODIGO + " TEXT, " +
+                DataBaseDB.PACIENTES_SINCRONIZAR_POBLACION + " TEXT, " +
+                DataBaseDB.PACIENTES_SINCRONIZAR_TIEMPO_ENCUESTA + " TEXT); "
+        );
+        System.out.println(DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR + " Creada");
 
-           /*---------------------------- Creación de la table de session ---------------------------*/
+
+
+        /*---------------------------- Creación de la table de session ---------------------------*/
         db.execSQL("CREATE TABLE IF NOT EXISTS " + DataBaseDB.TABLE_NAME_PACIENTES_VISITAS + "(" +
                 "_id INTEGER PRIMARY KEY, " +
                 DataBaseDB.PACIENTES_VISITA_NOMBRE + " TEXT, " +
