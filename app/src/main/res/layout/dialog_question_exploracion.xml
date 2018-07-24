@@ -329,7 +329,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="30dp"
-                    android:text="7.- Talla"
+                    android:text="7.- Índice Circunferencia de Cintura"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
@@ -381,7 +381,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:hint="Ej. 105 mg/DI"
-                    android:inputType="numberSigned" />>
+                    android:inputType="textAutoComplete" />>
 
 
 

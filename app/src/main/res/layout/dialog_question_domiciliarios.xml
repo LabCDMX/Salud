@@ -392,6 +392,7 @@
                         android:scaleType="fitXY"
                         app:srcCompat="@drawable/siguiente" />
 
+
                 </LinearLayout>
 
                 <LinearLayout

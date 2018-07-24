@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -36,14 +37,15 @@ public class QuestionsAntecedentesPersonales extends Fragment {
     private CheckBox estufa,refrigerador,lavadora,telefono,horno,televisor;
     private ImageButton next;
 
-    private LinearLayout questions,questions3,questions4;
+    private LinearLayout personales, antecedentes;
     private TextView questions2;
     private int count = 0;
 
     private CheckBox enf_cerebro,sobrepeso,tabaquismo,vih,enf_cardiovascular,sedentarismo,tuberculosis,ninguno;
 
     public static List<String> listPersonales = new ArrayList<String>();
-
+    private TextView category, bodyCheckBox;
+    private EditText textArea_information;
 
 
 
@@ -70,6 +72,9 @@ public class QuestionsAntecedentesPersonales extends Fragment {
 
         questions2 = (TextView) getActivity().findViewById(R.id.question2);
 
+        category = (TextView) getActivity().findViewById(R.id.category);
+        bodyCheckBox = (TextView) getActivity().findViewById(R.id.titleAntecedentes);
+
         enf_cerebro = (CheckBox) getActivity().findViewById(R.id.enf_cerebro);
         vih = (CheckBox) getActivity().findViewById(R.id.vih);
         sobrepeso = (CheckBox) getActivity().findViewById(R.id.sobrepeso);
@@ -79,15 +84,61 @@ public class QuestionsAntecedentesPersonales extends Fragment {
         enf_cardiovascular = (CheckBox) getActivity().findViewById(R.id.enf_cardiovascular);
         ninguno = (CheckBox) getActivity().findViewById(R.id.ninguno);
 
+        personales = (LinearLayout) getActivity().findViewById(R.id.questions);
+        antecedentes = (LinearLayout) getActivity().findViewById(R.id.questions2);
+        textArea_information = getActivity().findViewById(R.id.textArea_information);
 
-
-
+        category.setText(getActivity().getResources().getString(R.string.antecedentes_title));
+        bodyCheckBox.setText(getActivity().getResources().getString(R.string.antecedentes_body));
 
 
         next = (ImageButton) getActivity().findViewById(R.id.next);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                count ++;
+
+
+                if(count == 1){
+                    category.setText(getActivity().getResources().getString(R.string.antecedentes_personales));
+                    antecedentes.setVisibility(View.GONE);
+                    personales.setVisibility(View.VISIBLE);
+                }
+
+                if(count == 2){
+                    textArea_information.setText("");
+                    category.setText(getActivity().getResources().getString(R.string.antecedentes_title2));
+                    bodyCheckBox.setText(getActivity().getResources().getString(R.string.antecedentes_body2));
+
+
+                    antecedentes.setVisibility(View.VISIBLE);
+                    personales.setVisibility(View.GONE);
+                }
+
+                if(count == 3){
+                    textArea_information.setText("");
+                    category.setText(getActivity().getResources().getString(R.string.antecedentes_title3));
+                    bodyCheckBox.setText(getActivity().getResources().getString(R.string.antecedentes_body3));
+
+
+                }
+
+                if(count == 4){
+                    textArea_information.setText("");
+                    category.setText(getActivity().getResources().getString(R.string.antecedentes_title4));
+                    bodyCheckBox.setText(getActivity().getResources().getString(R.string.antecedentes_body4));
+
+
+                }
+
+                if(count == 5){
+                    textArea_information.setText("");
+
+                    ((MainActivity)getActivity()).questionInterrogatorio();
+
+                }
+
 
                 if(enf_cerebro.isChecked() || vih.isChecked() || sobrepeso.isChecked() || tabaquismo.isChecked() || sedentarismo.isChecked()
                         || tuberculosis.isChecked() || enf_cardiovascular.isChecked() || ninguno.isChecked()) {
@@ -117,26 +168,11 @@ public class QuestionsAntecedentesPersonales extends Fragment {
                     }
                 }
 
-                ((MainActivity)getActivity()).questionInterrogatorio();
             }
         });
 
-
-
-
-
         sharedPreferences = SharedPreferences.getInstance();
 
-    }
-
-
-
-
-    public void blockListeners(){
-        inicio.setEnabled(false);
-        registros.setEnabled(false);
-        seguimiento.setEnabled(false);
-        sincronizacion.setEnabled(false);
     }
 
 
@@ -178,4 +214,6 @@ public class QuestionsAntecedentesPersonales extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+
 }

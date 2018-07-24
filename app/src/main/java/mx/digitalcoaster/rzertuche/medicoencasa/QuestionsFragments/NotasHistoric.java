@@ -37,7 +37,7 @@ public class NotasHistoric extends Fragment {
     private OnFragmentInteractionListener mListener;
     SharedPreferences sharedPreferences;
 
-    EditText textArea_information, textArea_information2, textArea_information3, textArea_information4;
+    EditText textArea_information;
     ImageButton next;
 
 
@@ -69,16 +69,11 @@ public class NotasHistoric extends Fragment {
 
         ImageButton next = (ImageButton) getActivity().findViewById(R.id.next);
         textArea_information = getActivity().findViewById(R.id.textArea_information);
-        textArea_information2 = getActivity().findViewById(R.id.textArea_information2);
-        textArea_information3 = getActivity().findViewById(R.id.textArea_information3);
-        textArea_information4 = getActivity().findViewById(R.id.textArea_information4);
 
         if(isSinExp){
             String name = sharedPreferences.getStringData("nameItem");
             textArea_information.setText(sharedPreferences.getStringData("SubjetivoNotas"+name));
-            textArea_information2.setText(sharedPreferences.getStringData("ObjetivoNotas"+name));
-            textArea_information3.setText(sharedPreferences.getStringData("AdjetivoNotas"+name));
-            textArea_information4.setText(sharedPreferences.getStringData("PlaneacionNotas"+name));
+
         }
 
 
@@ -111,9 +106,7 @@ public class NotasHistoric extends Fragment {
         String name = sharedPreferences.getStringData("nameHistoric");
 
         sharedPreferences.setStringData("SubjetivoNotas"+name,textArea_information.getText().toString());
-        sharedPreferences.setStringData("ObjetivoNotas"+name,textArea_information2.getText().toString());
-        sharedPreferences.setStringData("AdjetivoNotas"+name,textArea_information3.getText().toString());
-        sharedPreferences.setStringData("PlaneacionNotas"+name,textArea_information4.getText().toString());
+
     }
 
     public void blockListeners(){

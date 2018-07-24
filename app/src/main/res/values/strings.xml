@@ -49,16 +49,23 @@
     <string name="interrogatorio_title10">11.- Habitus exterior</string>
     <string name="interrogatorio_title11">12.- Cabeza</string>
     <string name="interrogatorio_title12">13.- Cuello</string>
-    <string name="interrogatorio_title20">14.- Abdomen</string>
-    <string name="interrogatorio_title14">15.- Exploración ginecológica</string>
-    <string name="interrogatorio_title15">16.- Extremidades superiores e inferiores</string>
-    <string name="interrogatorio_title16">17.- Columna vertebral</string>
-    <string name="interrogatorio_title17">18.- Exploración neurológica</string>
-    <string name="interrogatorio_title18">19.- Genitales</string>
-    <string name="interrogatorio_title19">20.- Tórax</string>
+    <string name="interrogatorio_title20">15.- Abdomen</string>
+    <string name="interrogatorio_title14">16.- Exploración ginecológica</string>
+    <string name="interrogatorio_title15">17.- Extremidades superiores e inferiores</string>
+    <string name="interrogatorio_title16">18.- Columna vertebral</string>
+    <string name="interrogatorio_title17">19.- Exploración neurológica</string>
+    <string name="interrogatorio_title18">20.- Genitales</string>
+    <string name="interrogatorio_title19">14.- Tórax</string>
 
+    <string name="antecedentes_title">Antecedentes heredofamiliares</string>
+    <string name="antecedentes_title2">Antecedentes personales no patológicos</string>
+    <string name="antecedentes_title3">Antecedentes personales patológicos</string>
+    <string name="antecedentes_title4">Antecedentes personales gineco obstéricos</string>
 
-
+    <string name="antecedentes_body">Causas de muerte, malfromaciones, congénitas, diabetes,cardiopatías, hipertensión arterial, infartos, ateroescierosis,accidentes vasculares, neuropatías, tuberculosis, alergías,artropatías, hemopatías, consanguinidad, infecciones, sida,sifilis, neoplasias, convulsiones, alcoholismo, toxicomanías</string>
+    <string name="antecedentes_body2">Peso al nacer anomarlidades perinatales, desarrollo físico y mental, esquema básico de vacunación, higiene, alimentación, deportes, integración familiar, lugar de residencia, escolaridad, ocupación habitacional, grupo sanguíneo y factor RH.</string>
+    <string name="antecedentes_body3">Enfermedades de la infancia y adolescencia, ateroescierosis, accidentes vasculares, hipertensión arterial, fiebre reumática, cardiopatías, varices, fiebitis, padecimientos respiratorios, obesidad, gota, dislipidemias, infecciones, parasitosis, hepatitis, hemorroides, úlcera péptica, padecimientos neurológicos, cuadros neuróticos y psicóticos, traumáticos, alérgicos, tabaquismo, alcoholismo, drogas.</string>
+    <string name="antecedentes_body4">Menarca, FUR, ritmo, inicio de vida sexual, número de parejas sexuales, gestaciones, partos, abortos, cesáreas, métodos anticonceptivos, papanicolaou, enfermedades de transmisión sexual, alteraciones de mama, lactancia, dispereunia.</string>
 
 
 
