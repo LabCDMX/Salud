@@ -225,14 +225,6 @@
                 android:textColor="@android:color/black"
                 android:layout_marginLeft="50dp" />
 
-            <ImageButton
-                android:id="@+id/btn_edit"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_below="@+id/divider"
-                android:layout_marginLeft="600dp"
-                android:background="#FFF"
-                app:srcCompat="@drawable/pencil_pink"/>
 
 
             <TextView
@@ -260,14 +252,7 @@
                 android:layout_marginStart="50dp"
                 android:textColor="@android:color/black" />
 
-            <ImageButton
-                android:id="@+id/btn_edit2"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="600dp"
-                android:background="#FFF"
-                android:layout_below="@+id/btn_edit"
-                app:srcCompat="@drawable/pencil_pink"/>
+
 
 
             <TextView
@@ -317,14 +302,6 @@
                 android:textColor="@android:color/black"
                 android:layout_marginLeft="50dp" />
 
-            <ImageButton
-                android:id="@+id/btn_edit4"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="600dp"
-                android:background="#FFF"
-                android:layout_below="@+id/divider2"
-                app:srcCompat="@drawable/pencil_pink"/>
 
 
             //Cardio
@@ -353,15 +330,6 @@
                 android:textColor="@android:color/black"
                 android:layout_marginLeft="50dp"/>
 
-            <ImageButton
-                android:id="@+id/btn_edit5"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="600dp"
-                android:background="#FFF"
-                android:layout_marginTop="30dp"
-                android:layout_below="@+id/btn_edit4"
-                app:srcCompat="@drawable/pencil_pink"/>
 
             //Digestivo
 
@@ -388,16 +356,6 @@
                 android:inputType="textCapCharacters"
                 android:textColor="@android:color/black"
                 android:layout_marginLeft="50dp"/>
-
-            <ImageButton
-                android:id="@+id/btn_edit6"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="600dp"
-                android:background="#FFF"
-                android:layout_marginTop="30dp"
-                android:layout_below="@+id/btn_edit5"
-                app:srcCompat="@drawable/pencil_pink"/>
 
 
             //Urinario
@@ -426,16 +384,6 @@
                 android:textColor="@android:color/black"
                 android:layout_marginLeft="50dp"/>
 
-            <ImageButton
-                android:id="@+id/btn_edit7"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="600dp"
-                android:background="#FFF"
-                android:layout_marginTop="30dp"
-                android:layout_below="@+id/btn_edit6"
-                app:srcCompat="@drawable/pencil_pink"/>
-
             //Reproductor
 
             <TextView
@@ -462,15 +410,6 @@
                 android:textColor="@android:color/black"
                 android:layout_marginLeft="50dp"/>
 
-            <ImageButton
-                android:id="@+id/btn_edit8"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="600dp"
-                android:background="#FFF"
-                android:layout_marginTop="30dp"
-                android:layout_below="@+id/btn_edit7"
-                app:srcCompat="@drawable/pencil_pink"/>
 
             //Hemolinfatico
 
@@ -498,15 +437,6 @@
                 android:textColor="@android:color/black"
                 android:layout_marginLeft="50dp"/>
 
-            <ImageButton
-                android:id="@+id/btn_edit9"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="600dp"
-                android:background="#FFF"
-                android:layout_marginTop="30dp"
-                android:layout_below="@+id/btn_edit8"
-                app:srcCompat="@drawable/pencil_pink"/>
 
             //Endocrino
 
@@ -534,15 +464,7 @@
                 android:textColor="@android:color/black"
                 android:layout_marginLeft="50dp"/>
 
-            <ImageButton
-                android:id="@+id/btn_edit10"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="600dp"
-                android:background="#FFF"
-                android:layout_marginTop="30dp"
-                android:layout_below="@+id/btn_edit9"
-                app:srcCompat="@drawable/pencil_pink"/>
+
 
             //Nervioso
 
@@ -570,15 +492,7 @@
                 android:textColor="@android:color/black"
                 android:layout_marginLeft="50dp"/>
 
-            <ImageButton
-                android:id="@+id/btn_edit11"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="600dp"
-                android:background="#FFF"
-                android:layout_marginTop="30dp"
-                android:layout_below="@+id/btn_edit10"
-                app:srcCompat="@drawable/pencil_pink"/>
+
 
             //Piel
 
@@ -606,15 +520,7 @@
                 android:textColor="@android:color/black"
                 android:layout_marginLeft="50dp"/>
 
-            <ImageButton
-                android:id="@+id/btn_edit12"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="600dp"
-                android:background="#FFF"
-                android:layout_marginTop="30dp"
-                android:layout_below="@+id/btn_edit11"
-                app:srcCompat="@drawable/pencil_pink"/>
+
 
             //HabitusEx
 
@@ -642,15 +548,7 @@
                 android:textColor="@android:color/black"
                 android:layout_marginLeft="50dp"/>
 
-            <ImageButton
-                android:id="@+id/btn_edit13"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="600dp"
-                android:background="#FFF"
-                android:layout_marginTop="30dp"
-                android:layout_below="@+id/btn_edit12"
-                app:srcCompat="@drawable/pencil_pink"/>
+
 
             //Cabeza
 
@@ -678,15 +576,7 @@
                 android:textColor="@android:color/black"
                 android:layout_marginLeft="50dp"/>
 
-            <ImageButton
-                android:id="@+id/btn_edit14"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="600dp"
-                android:background="#FFF"
-                android:layout_marginTop="30dp"
-                android:layout_below="@+id/btn_edit13"
-                app:srcCompat="@drawable/pencil_pink"/>
+
 
             //Cuello
             <TextView
@@ -712,15 +602,7 @@
                 android:textColor="@android:color/black"
                 android:layout_marginLeft="50dp"/>
 
-            <ImageButton
-                android:id="@+id/btn_edit15"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="600dp"
-                android:background="#FFF"
-                android:layout_marginTop="30dp"
-                android:layout_below="@+id/btn_edit14"
-                app:srcCompat="@drawable/pencil_pink"/>
+
 
             //Torax
             <TextView
@@ -746,15 +628,6 @@
                 android:textColor="@android:color/black"
                 android:layout_marginLeft="50dp"/>
 
-            <ImageButton
-                android:id="@+id/btn_edit16"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="600dp"
-                android:background="#FFF"
-                android:layout_marginTop="30dp"
-                android:layout_below="@+id/btn_edit15"
-                app:srcCompat="@drawable/pencil_pink"/>
 
 
             //Abdomen
@@ -781,15 +654,7 @@
                 android:textColor="@android:color/black"
                 android:layout_marginLeft="50dp"/>
 
-            <ImageButton
-                android:id="@+id/btn_edit17"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="600dp"
-                android:background="#FFF"
-                android:layout_marginTop="30dp"
-                android:layout_below="@+id/btn_edit16"
-                app:srcCompat="@drawable/pencil_pink"/>
+
 
             //Exploracion ginecologica
             <TextView
@@ -815,16 +680,6 @@
                 android:textColor="@android:color/black"
                 android:layout_marginLeft="50dp"/>
 
-            <ImageButton
-                android:id="@+id/btn_edit18"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="600dp"
-                android:background="#FFF"
-                android:layout_marginTop="30dp"
-                android:layout_below="@+id/btn_edit17"
-                app:srcCompat="@drawable/pencil_pink"/>
-
             //Extremidades
             <TextView
                 android:id="@+id/tvExtremidades"
@@ -849,15 +704,7 @@
                 android:textColor="@android:color/black"
                 android:layout_marginLeft="50dp"/>
 
-            <ImageButton
-                android:id="@+id/btn_edit19"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="600dp"
-                android:background="#FFF"
-                android:layout_marginTop="30dp"
-                android:layout_below="@+id/btn_edit18"
-                app:srcCompat="@drawable/pencil_pink"/>
+
 
             //Columna
             <TextView
@@ -883,15 +730,7 @@
                 android:textColor="@android:color/black"
                 android:layout_marginLeft="50dp"/>
 
-            <ImageButton
-                android:id="@+id/btn_edit20"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="600dp"
-                android:background="#FFF"
-                android:layout_marginTop="30dp"
-                android:layout_below="@+id/btn_edit19"
-                app:srcCompat="@drawable/pencil_pink"/>
+
 
             //Neurologica
             <TextView
@@ -917,15 +756,6 @@
                 android:textColor="@android:color/black"
                 android:layout_marginLeft="50dp"/>
 
-            <ImageButton
-                android:id="@+id/btn_edit21"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="600dp"
-                android:background="#FFF"
-                android:layout_marginTop="30dp"
-                android:layout_below="@+id/btn_edit20"
-                app:srcCompat="@drawable/pencil_pink"/>
 
             //Genitales
             <TextView
@@ -951,15 +781,6 @@
                 android:textColor="@android:color/black"
                 android:layout_marginLeft="50dp"/>
 
-            <ImageButton
-                android:id="@+id/btn_edit22"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="600dp"
-                android:background="#FFF"
-                android:layout_marginTop="30dp"
-                android:layout_below="@+id/btn_edit21"
-                app:srcCompat="@drawable/pencil_pink"/>
 
 
 
@@ -972,7 +793,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/btn_edit22"
+                android:layout_below="@id/textViewGenitales"
                 android:textStyle="bold"
                 android:textColor="@android:color/black"
                 android:textSize="30sp"
