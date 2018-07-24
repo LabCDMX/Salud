@@ -20,6 +20,7 @@ import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.re
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.seguimiento;
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.sincronizacion;
 import static mx.digitalcoaster.rzertuche.medicoencasa.Fragments.PacientesFragment.isSinExp;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Fragments.VisitasFragment.isSeguimiento;
 
 ;
 
@@ -86,9 +87,19 @@ public class NotasHistoric extends Fragment {
             @Override
             public void onClick(View v) {
 
-                saveAllData();
-                ((MainActivity)getActivity()).fragmentDiagnostico();
+                if(isSeguimiento){
+                    saveAllData();
+                    ((MainActivity)getActivity()).notasHojaDiaria();
 
+
+                }else{
+
+
+                    saveAllData();
+                    ((MainActivity)getActivity()).fragmentDiagnostico();
+
+
+                }
             }
         });
 

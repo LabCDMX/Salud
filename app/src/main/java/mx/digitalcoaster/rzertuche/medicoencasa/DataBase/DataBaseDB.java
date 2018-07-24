@@ -194,6 +194,21 @@ public class DataBaseDB {
     public static final String PACIENTES_VISITA_SEGUIMIENTO_NUMERO = "pacientes_visita_seguimiento_numero";
     public static final String PACIENTES_VISITA_SEGUIMIENTO_EXPEDIENTE = "pacientes_visita_seguimiento_expediente";
     public static final String PACIENTES_VISITA_SEGUIMIENTO_STATUS = "pacientes_visita_seguimiento_status";
+    public static final String PACIENTES_VISITA_SEGUIMIENTO_NOTAS_ENFERMERIA = "pacientes_visita_seguimiento_notas_enfermeria";
+    public static final String PACIENTES_VISITA_SEGUIMIENTO_SUBJETIVO = "pacientes_visita_seguimiento_subjetivo";
+    public static final String PACIENTES_VISITA_SEGUIMIENTO_OBJETIVO = "pacientes_visita_seguimiento_objetivo";
+    public static final String PACIENTES_VISITA_SEGUIMIENTO_ANALISIS = "pacientes_visita_seguimiento_analisis";
+    public static final String PACIENTES_VISITA_SEGUIMIENTO_PLAN = "pacientes_visita_seguimiento_plan";
+    public static final String PACIENTES_VISITA_SEGUIMIENTO_HEMOTIPO = "pacientes_visita_seguimiento_hemotipo";
+    public static final String PACIENTES_VISITA_SEGUIMIENTO_PESO = "pacientes_visita_seguimiento_peso";
+    public static final String PACIENTES_VISITA_SEGUIMIENTO_ESTATURA = "pacientes_visita_seguimiento_estatura";
+    public static final String PACIENTES_VISITA_SEGUIMIENTO_TENSION_ARTERIAL = "pacientes_visita_seguimiento_tension";
+    public static final String PACIENTES_VISITA_SEGUIMIENTO_FRECUENCIA_CARDIACA = "pacientes_visita_seguimiento_frecuencia_cardiaca";
+    public static final String PACIENTES_VISITA_SEGUIMIENTO_FRECUENCIA_RESPIRATORIA = "pacientes_visita_seguimiento_frecuencia_respiratoria";
+    public static final String PACIENTES_VISITA_SEGUIMIENTO_TALLA = "pacientes_visita_seguimiento_talla";
+    public static final String PACIENTES_VISITA_SEGUIMIENTO_PULSO = "pacientes_visita_seguimiento_pulso";
+    public static final String PACIENTES_VISITA_SEGUIMIENTO_GLUCEMIA = "pacientes_visita_seguimiento_glucemia";
+    public static final String PACIENTES_VISITA_SEGUIMIENTO_TEMPERATURA = "pacientes_visita_seguimiento_temperatura";
 
 
 

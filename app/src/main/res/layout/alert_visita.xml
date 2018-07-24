@@ -350,7 +350,7 @@
                 android:layout_marginStart="10dp"
                 android:textColor="@android:color/black" />
 
-            <EditText
+            <TextView
                 android:id="@+id/etNotasMedicas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -405,7 +405,7 @@
                 android:layout_marginStart="10dp"
                 android:textColor="@android:color/black" />
 
-            <EditText
+            <TextView
                 android:id="@+id/etSubjetivo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -435,7 +435,7 @@
                 android:layout_marginStart="10dp"
                 android:textColor="@android:color/black" />
 
-            <EditText
+            <TextView
                 android:id="@+id/etObjetivo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -465,7 +465,7 @@
                 android:layout_marginStart="10dp"
                 android:textColor="@android:color/black" />
 
-            <EditText
+            <TextView
                 android:id="@+id/etAnalisis"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -494,7 +494,7 @@
                 android:layout_marginStart="10dp"
                 android:textColor="@android:color/black" />
 
-            <EditText
+            <TextView
                 android:id="@+id/etPlan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -544,7 +544,7 @@
                 android:layout_marginStart="10dp"
                 android:textColor="@android:color/black" />
 
-            <EditText
+            <TextView
                 android:id="@+id/etDiagnostico"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -594,7 +594,7 @@
                 android:layout_marginStart="10dp"
                 android:textColor="@android:color/black" />
 
-            <EditText
+            <TextView
                 android:id="@+id/etTratamiento"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -645,7 +645,7 @@
                 android:layout_marginStart="10dp"
                 android:textColor="@android:color/black" />
 
-            <EditText
+            <TextView
                 android:id="@+id/edSiguienteVisita"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

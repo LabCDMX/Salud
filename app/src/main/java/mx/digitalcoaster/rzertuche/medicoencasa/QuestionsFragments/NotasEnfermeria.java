@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity;
+import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseDB;
 import mx.digitalcoaster.rzertuche.medicoencasa.R;
 import mx.digitalcoaster.rzertuche.medicoencasa.Utils.SharedPreferences;
 
@@ -69,9 +70,6 @@ public class NotasEnfermeria extends Fragment {
 
         ImageButton next = (ImageButton) getActivity().findViewById(R.id.next);
         textArea_information = getActivity().findViewById(R.id.textArea_information);
-        textArea_information2 = getActivity().findViewById(R.id.textArea_information2);
-        textArea_information3 = getActivity().findViewById(R.id.textArea_information3);
-        textArea_information4 = getActivity().findViewById(R.id.textArea_information4);
 
 
 
@@ -79,11 +77,19 @@ public class NotasEnfermeria extends Fragment {
             @Override
             public void onClick(View v) {
 
-                if(isSinExp || isSeguimiento){
+                sharedPreferences.setStringData("NotasEnfermeria", textArea_information.getText().toString());
+
+
+                if(isSinExp){
 
                     ((MainActivity)getActivity()).questionInterrogatorio();
 
-                }else{
+                }else if(isSeguimiento){
+
+                    ((MainActivity)getActivity()).fragmentNotasHistoric();
+
+                }
+                else{
 
                     ((MainActivity)getActivity()).questionAntecedentes();
 

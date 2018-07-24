@@ -1,6 +1,8 @@
 package mx.digitalcoaster.rzertuche.medicoencasa.Fragments;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
@@ -25,6 +27,7 @@ import java.util.List;
 
 import mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity;
 import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseDB;
+import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseHelper;
 import mx.digitalcoaster.rzertuche.medicoencasa.R;
 import mx.digitalcoaster.rzertuche.medicoencasa.Utils.SharedPreferences;
 import mx.digitalcoaster.rzertuche.medicoencasa.models.Item;
@@ -51,8 +54,10 @@ public class VisitasFragment extends Fragment {
     public GridView lista;
     private List<ItemVisita> items = null;
 
-    private SQLiteDatabase db = null;   // Objeto para usar la base de datos local
-    private Cursor c = null;            // Objeto para hacer consultas a la base de datos
+    private SQLiteDatabase db = null;      // Objeto para utilizar la base de datos
+    private DataBaseHelper sqliteHelper;   // Objeto para abrir la base de Datos
+    private Cursor c = null;
+
     private TextView title;
     public static Boolean isSeguimiento=false;
     SharedPreferences sharedPreferences;
@@ -73,13 +78,6 @@ public class VisitasFragment extends Fragment {
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
-        lista = (GridView) getActivity().findViewById(R.id.gridview);
-
-        items = new ArrayList<>();
-        lista.setAdapter(new ItemVisitaAdapter(getActivity().getApplicationContext(), items));
-
-
         sharedPreferences = SharedPreferences.getInstance();
         nombrePatient = sharedPreferences.getStringData("nameSeguimiento");
 
@@ -91,7 +89,6 @@ public class VisitasFragment extends Fragment {
         expediente = (TextView) getActivity().findViewById(R.id.expediente);
 
 
-        getProductos();
 
 
 
@@ -126,6 +123,19 @@ public class VisitasFragment extends Fragment {
         });
 
 
+        lista = (GridView) getActivity().findViewById(R.id.gridview);
+        items = new ArrayList<>();
+        getProductos();
+        lista.setAdapter(new ItemVisitaAdapter(getActivity().getApplicationContext(), items));
+        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View v, int position, long arg3) {
+
+                viewAlertDialog();
+
+            }
+        });
+
     }
 
 
@@ -143,6 +153,7 @@ public class VisitasFragment extends Fragment {
                     sharedPreferences.setStringData("Tratamiento",c.getString(3));
                     sharedPreferences.setStringData("Nombre",c.getString(1));
                     sharedPreferences.setStringData("ImageItem",c.getString(8));
+
 
 
                     items.add(new ItemVisita(c.getString(1), c.getString(2), c.getString(3), c.getString(4), c.getString(5), c.getString(6), c.getString(7)));
@@ -198,5 +209,63 @@ public class VisitasFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+
+
+
+    private void viewAlertDialog() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setCancelable(false);
+        final LayoutInflater inflater = getActivity().getLayoutInflater();
+        View view = inflater.inflate(R.layout.alert_visita, null);
+
+        db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, android.content.Context.MODE_PRIVATE, null);
+        //-------------------------- Obtener información del cliente ---------------------
+        try {
+            c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SEGUIMIENTO + " WHERE " +
+                    DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NOMBRE + " ='"+nombrePatient+"'", null);
+
+
+            if (c.moveToFirst()) {
+
+                ((TextView) view.findViewById(R.id.textViewPeso)).setText(c.getString(15));
+                ((TextView) view.findViewById(R.id.textViewEstatura)).setText(c.getString(16));
+                ((TextView) view.findViewById(R.id.textViewHemotipo)).setText(c.getString(14));
+                ((TextView) view.findViewById(R.id.textViewPulso)).setText(c.getString(21));
+                ((TextView) view.findViewById(R.id.textViewTensionArterial)).setText(c.getString(17));
+                ((TextView) view.findViewById(R.id.textViewFrecuenciaCar)).setText(c.getString(18));
+                ((TextView) view.findViewById(R.id.textViewFrecuenciaRes)).setText(c.getString(19));
+                ((TextView) view.findViewById(R.id.textViewGlucemia)).setText(c.getString(22));
+                ((TextView) view.findViewById(R.id.textViewTemperatura)).setText(c.getString(23));
+                ((TextView) view.findViewById(R.id.etNotasMedicas)).setText(c.getString(9));
+                ((TextView) view.findViewById(R.id.etSubjetivo)).setText(c.getString(10));
+                ((TextView) view.findViewById(R.id.etObjetivo)).setText(c.getString(11));
+                ((TextView) view.findViewById(R.id.etAnalisis)).setText(c.getString(12));
+                ((TextView) view.findViewById(R.id.etPlan)).setText(c.getString(13));
+                ((TextView) view.findViewById(R.id.etDiagnostico)).setText(c.getString(3));
+                ((TextView) view.findViewById(R.id.etTratamiento)).setText(c.getString(4));
+                ((TextView) view.findViewById(R.id.edSiguienteVisita)).setText(c.getString(5));
+
+
+            } else {
+                System.out.println("No existe información del cliente");
+            }
+            c.close();
+        } catch (Exception ex) {
+            System.out.println("Exception: " + ex);
+        }
+
+
+
+        builder.setPositiveButton("ACEPTAR", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+            }
+        });
+
+        builder.setView(view);
+        builder.show();
     }
 }

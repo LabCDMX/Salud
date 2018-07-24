@@ -61,6 +61,7 @@ import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.DiagnosticoFr
 import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.HistoriaClinicaFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.NotasEnfermeria;
 import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.NotasHistoric;
+import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.NotasHojaDiaria;
 import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionCuidador;
 import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionDomFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionPoblacion;
@@ -113,7 +114,8 @@ public class MainActivity extends AppCompatActivity implements
         SuccededFragmentDom.OnFragmentInteractionListener,
         DatosCensado.OnFragmentInteractionListener,
         QuestionCuidador.OnFragmentInteractionListener,
-        NotasEnfermeria.OnFragmentInteractionListener{
+        NotasEnfermeria.OnFragmentInteractionListener,
+        NotasHojaDiaria.OnFragmentInteractionListener{
 
     public String patientID;
     public static ImageView inicio, registros, seguimiento, sincronizacion;
@@ -585,6 +587,14 @@ public class MainActivity extends AppCompatActivity implements
 
     }
 
+    public void notasHojaDiaria(){
+        NotasHojaDiaria fragment = new NotasHojaDiaria();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.fragmentHolder, fragment);
+        transaction.commit();
+
+    }
 
 
     public void questionAntecedentes(){

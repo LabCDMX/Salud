@@ -494,11 +494,27 @@ public class TarjetaPacienteFragment extends Fragment {
 
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NOMBRE,sharedPreferences.getStringData("nameItem"));
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_CURP, sharedPreferences.getStringData("curpItem"));
-                //values.put(DataBaseDB.SEGUIMIENTO, sharedPreferences.getStringData("EXPEDIENTE ASIGNADO"));
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_STATUS, sharedPreferences.getStringData("ImageItem"));
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_DIAGNOSTICO, sharedPreferences.getStringData("DiagnosticoGeneral"));
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_FECHA, fecha);
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NUMERO, "1");
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_EXPEDIENTE, sharedPreferences.getStringData("Expediente"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NOTAS_ENFERMERIA, sharedPreferences.getStringData("NotasEnfermeria"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_SUBJETIVO, sharedPreferences.getStringData("Subjetivo"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_OBJETIVO, sharedPreferences.getStringData("Objetivo"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_ANALISIS, sharedPreferences.getStringData("Analisis"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_PLAN, sharedPreferences.getStringData("Plan"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_HEMOTIPO, sharedPreferences.getStringData("Hemotipo"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_PESO, sharedPreferences.getStringData("Peso"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_ESTATURA, sharedPreferences.getStringData("Estatura"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_TENSION_ARTERIAL, sharedPreferences.getStringData("Tension 1") + sharedPreferences.getStringData("Tension 2"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_FRECUENCIA_CARDIACA, sharedPreferences.getStringData("Frecuencia Cardiaca"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_FRECUENCIA_RESPIRATORIA, sharedPreferences.getStringData("Frecuencia Respiratoria"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_TALLA, sharedPreferences.getStringData("Talla"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_PULSO, sharedPreferences.getStringData("Pulso"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_GLUCEMIA, sharedPreferences.getStringData("Glucemia"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_TEMPERATURA, sharedPreferences.getStringData("Temperatura"));
+
 
 
 
@@ -511,11 +527,26 @@ public class TarjetaPacienteFragment extends Fragment {
 
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NOMBRE,sharedPreferences.getStringData("nameItem"));
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_CURP, sharedPreferences.getStringData("curpItem"));
-                //values.put(DataBaseDB.SEGUIMIENTO, sharedPreferences.getStringData("EXPEDIENTE ASIGNADO"));
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_STATUS, sharedPreferences.getStringData("ImageItem"));
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_DIAGNOSTICO, sharedPreferences.getStringData("DiagnosticoGeneral"));
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_FECHA, fecha);
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NUMERO, "1");
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_EXPEDIENTE, sharedPreferences.getStringData("Expediente"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NOTAS_ENFERMERIA, sharedPreferences.getStringData("NotasEnfermeria"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_SUBJETIVO, sharedPreferences.getStringData("Subjetivo"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_OBJETIVO, sharedPreferences.getStringData("Objetivo"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_ANALISIS, sharedPreferences.getStringData("Analisis"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_PLAN, sharedPreferences.getStringData("Plan"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_HEMOTIPO, sharedPreferences.getStringData("Hemotipo"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_PESO, sharedPreferences.getStringData("Peso"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_ESTATURA, sharedPreferences.getStringData("Estatura"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_TENSION_ARTERIAL, sharedPreferences.getStringData("Tension 1") + sharedPreferences.getStringData("Tension 2"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_FRECUENCIA_CARDIACA, sharedPreferences.getStringData("Frecuencia Cardiaca"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_FRECUENCIA_RESPIRATORIA, sharedPreferences.getStringData("Frecuencia Respiratoria"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_TALLA, sharedPreferences.getStringData("Talla"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_PULSO, sharedPreferences.getStringData("Pulso"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_GLUCEMIA, sharedPreferences.getStringData("Glucemia"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_TEMPERATURA, sharedPreferences.getStringData("Temperatura"));
 
 
                 db.insert(DataBaseDB.TABLE_NAME_PACIENTES_SEGUIMIENTO, null, values);
@@ -566,11 +597,26 @@ public class TarjetaPacienteFragment extends Fragment {
 
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NOMBRE,sharedPreferences.getStringData("nameSeguimiento"));
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_CURP, sharedPreferences.getStringData("curpSeguimiento"));
-                //values.put(DataBaseDB.SEGUIMIENTO, sharedPreferences.getStringData("EXPEDIENTE ASIGNADO"));
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_STATUS, sharedPreferences.getStringData("ImageItem"));
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_DIAGNOSTICO, sharedPreferences.getStringData("DiagnosticoGeneral"));
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_FECHA, fecha);
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NUMERO, numeroVisita);
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_EXPEDIENTE, sharedPreferences.getStringData("Expediente"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NOTAS_ENFERMERIA, sharedPreferences.getStringData("NotasEnfermeria"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_SUBJETIVO, sharedPreferences.getStringData("Subjetivo"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_OBJETIVO, sharedPreferences.getStringData("Objetivo"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_ANALISIS, sharedPreferences.getStringData("Analisis"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_PLAN, sharedPreferences.getStringData("Plan"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_HEMOTIPO, sharedPreferences.getStringData("Hemotipo"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_PESO, sharedPreferences.getStringData("Peso"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_ESTATURA, sharedPreferences.getStringData("Estatura"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_TENSION_ARTERIAL, sharedPreferences.getStringData("Tension 1") + sharedPreferences.getStringData("Tension 2"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_FRECUENCIA_CARDIACA, sharedPreferences.getStringData("Frecuencia Cardiaca"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_FRECUENCIA_RESPIRATORIA, sharedPreferences.getStringData("Frecuencia Respiratoria"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_TALLA, sharedPreferences.getStringData("Talla"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_PULSO, sharedPreferences.getStringData("Pulso"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_GLUCEMIA, sharedPreferences.getStringData("Glucemia"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_TEMPERATURA, sharedPreferences.getStringData("Temperatura"));
 
 
 
@@ -586,8 +632,25 @@ public class TarjetaPacienteFragment extends Fragment {
                 //values.put(DataBaseDB.SEGUIMIENTO, sharedPreferences.getStringData("EXPEDIENTE ASIGNADO"));
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_STATUS, sharedPreferences.getStringData("ImageItem"));
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_DIAGNOSTICO, sharedPreferences.getStringData("DiagnosticoGeneral"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_TRATAMIENTO, sharedPreferences.getStringData("TratamientoGeneral"));
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_FECHA, fecha);
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NUMERO, numeroVisita);
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_EXPEDIENTE, sharedPreferences.getStringData("Expediente"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NOTAS_ENFERMERIA, sharedPreferences.getStringData("NotasEnfermeria"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_SUBJETIVO, sharedPreferences.getStringData("Subjetivo"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_OBJETIVO, sharedPreferences.getStringData("Objetivo"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_ANALISIS, sharedPreferences.getStringData("Analisis"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_PLAN, sharedPreferences.getStringData("Plan"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_HEMOTIPO, sharedPreferences.getStringData("Hemotipo"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_PESO, sharedPreferences.getStringData("Peso"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_ESTATURA, sharedPreferences.getStringData("Estatura"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_TENSION_ARTERIAL, sharedPreferences.getStringData("Tension 1") + sharedPreferences.getStringData("Tension 2"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_FRECUENCIA_CARDIACA, sharedPreferences.getStringData("Frecuencia Cardiaca"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_FRECUENCIA_RESPIRATORIA, sharedPreferences.getStringData("Frecuencia Respiratoria"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_TALLA, sharedPreferences.getStringData("Talla"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_PULSO, sharedPreferences.getStringData("Pulso"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_GLUCEMIA, sharedPreferences.getStringData("Glucemia"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_TEMPERATURA, sharedPreferences.getStringData("Temperatura"));
 
 
                 db.insert(DataBaseDB.TABLE_NAME_PACIENTES_SEGUIMIENTO, null, values);
