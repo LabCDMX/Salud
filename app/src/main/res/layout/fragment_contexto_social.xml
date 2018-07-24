@@ -78,8 +78,8 @@
 
             <ImageButton
                 android:id="@+id/btn_edit"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_below="@+id/divider"
                 android:layout_marginLeft="600dp"
                 android:background="#fff"
@@ -116,8 +116,9 @@
 
             <ImageButton
                 android:id="@+id/btn_edit2"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginLeft="600dp"
                 android:background="#fff"
                 android:layout_below="@+id/btn_edit"
@@ -153,8 +154,9 @@
 
             <ImageButton
                 android:id="@+id/btn_edit3"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginLeft="600dp"
                 android:background="#fff"
                 android:layout_below="@+id/btn_edit2"
@@ -193,8 +195,9 @@
 
             <ImageButton
                 android:id="@+id/btn_edit8"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginLeft="600dp"
                 android:background="#fff"
                 android:layout_below="@+id/btn_edit3"
@@ -232,8 +235,9 @@
 
             <ImageButton
                 android:id="@+id/btn_edit9"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginLeft="600dp"
                 android:background="#fff"
                 android:layout_below="@+id/btn_edit8"
@@ -293,8 +297,9 @@
 
             <ImageButton
                 android:id="@+id/btn_edit4"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginLeft="600dp"
                 android:background="#fff"
                 android:layout_below="@+id/divider2"
@@ -331,11 +336,13 @@
 
             <ImageButton
                 android:id="@+id/btn_edit10"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="600dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="160dp"
                 android:background="#fff"
-                android:layout_below="@+id/btn_edit4"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/textViewCaracteristicas"
+                android:layout_below="@id/textViewEstado"
                 app:srcCompat="@drawable/pencil_pink"/>
 
             //PISO
@@ -368,9 +375,10 @@
 
             <ImageButton
                 android:id="@+id/btn_edit11"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_marginLeft="600dp"
+                android:layout_marginTop="10dp"
                 android:background="#fff"
                 android:layout_below="@+id/btn_edit10"
                 app:srcCompat="@drawable/pencil_pink"/>
@@ -405,8 +413,9 @@
 
             <ImageButton
                 android:id="@+id/btn_edit12"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginLeft="600dp"
                 android:background="#fff"
                 android:layout_below="@+id/btn_edit11"
@@ -465,8 +474,9 @@
 
             <ImageButton
                 android:id="@+id/btn_edit5"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginLeft="600dp"
                 android:background="#fff"
                 android:layout_below="@+id/divider4"
@@ -504,8 +514,9 @@
 
             <ImageButton
                 android:id="@+id/btn_edit13"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="18dp"
                 android:layout_marginLeft="600dp"
                 android:background="#fff"
                 android:layout_below="@+id/btn_edit5"
@@ -541,8 +552,9 @@
 
             <ImageButton
                 android:id="@+id/btn_edit14"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="18dp"
                 android:layout_marginLeft="600dp"
                 android:background="#fff"
                 android:layout_below="@+id/btn_edit13"
@@ -579,8 +591,9 @@
 
             <ImageButton
                 android:id="@+id/btn_edit15"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="18dp"
                 android:layout_marginLeft="600dp"
                 android:background="#fff"
                 android:layout_below="@+id/btn_edit14"
@@ -618,8 +631,9 @@
 
             <ImageButton
                 android:id="@+id/btn_edit16"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="18dp"
                 android:layout_marginLeft="600dp"
                 android:background="#fff"
                 android:layout_below="@+id/btn_edit15"
@@ -655,8 +669,9 @@
 
             <ImageButton
                 android:id="@+id/btn_edit17"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="18dp"
                 android:layout_marginLeft="600dp"
                 android:background="#fff"
                 android:layout_below="@+id/btn_edit16"
@@ -692,8 +707,9 @@
 
             <ImageButton
                 android:id="@+id/btn_edit18"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="18dp"
                 android:layout_marginLeft="600dp"
                 android:background="#fff"
                 android:layout_below="@+id/btn_edit17"
@@ -729,8 +745,9 @@
 
             <ImageButton
                 android:id="@+id/btn_edit19"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="18dp"
                 android:layout_marginLeft="600dp"
                 android:background="#fff"
                 android:layout_below="@+id/btn_edit18"

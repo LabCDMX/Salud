@@ -418,9 +418,6 @@ public class DatosGeneralesFragment extends Fragment {
                 getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.showSoftInput(nombre, InputMethodManager.SHOW_IMPLICIT);
 
-        final InputMethodManager hideKeyboard = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-        hideKeyboard.hideSoftInputFromWindow(getView().getWindowToken(), 0);
-
     }
 
 }

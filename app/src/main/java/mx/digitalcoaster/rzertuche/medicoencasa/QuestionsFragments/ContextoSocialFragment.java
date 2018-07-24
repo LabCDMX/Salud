@@ -47,7 +47,11 @@ public class ContextoSocialFragment extends Fragment {
     SharedPreferences sharedPreferences;
 
     EditText nombre, apellidoP, estado, municipio, transporte, recreacion, estres, caracteristicas, piso, techo,verduras, fruta, leguminosa,carne,cereal,pan,chatarra;
-    ImageButton btnedit,btnedit1,btnedit3,btnedit4,next;
+    ImageButton next;
+
+    ImageButton btnedit,btnedit1,btnedit2,btnedit3,btnedit4,btnedit5,btnedit6,btnedit7,btnedit8,btnedit9,btnedit10,btnedit11,btnedit12,btnedit13,btnedit14,btnedit15,btnedit16,btnedit17;
+    ImageButton btnedit18,btnedit19,btnedit20;
+
 
     private SQLiteDatabase db = null;      // Objeto para utilizar la base de datos
     private DataBaseHelper sqliteHelper;   // Objeto para abrir la base de Datos
@@ -86,7 +90,6 @@ public class ContextoSocialFragment extends Fragment {
         apellidoP = (EditText) getActivity().findViewById(R.id.textViewApellidoP);
         estado = (EditText) getActivity().findViewById(R.id.textViewEstado);
         municipio = (EditText) getActivity().findViewById(R.id.textCantidades);
-
         transporte = (EditText) getActivity().findViewById(R.id.textViewTransporte);
         recreacion = (EditText) getActivity().findViewById(R.id.textViewRecreacion);
         estres = (EditText) getActivity().findViewById(R.id.textViewEstres);
@@ -96,7 +99,6 @@ public class ContextoSocialFragment extends Fragment {
         verduras = (EditText) getActivity().findViewById(R.id.textViewVerduras);
         fruta = (EditText) getActivity().findViewById(R.id.textViewFruta);
         leguminosa = (EditText) getActivity().findViewById(R.id.textViewLeguminosas);
-
         carne = (EditText) getActivity().findViewById(R.id.textViewCarne);
         cereal = (EditText) getActivity().findViewById(R.id.textViewCereales);
         chatarra = (EditText) getActivity().findViewById(R.id.textViewChatarra);
@@ -105,8 +107,22 @@ public class ContextoSocialFragment extends Fragment {
 
         btnedit = (ImageButton) getActivity().findViewById(R.id.btn_edit);
         btnedit1 = (ImageButton) getActivity().findViewById(R.id.btn_edit2);
-        btnedit3 = (ImageButton) getActivity().findViewById(R.id.btn_edit4);
-        btnedit4 = (ImageButton) getActivity().findViewById(R.id.btn_edit5);
+        btnedit2 = (ImageButton) getActivity().findViewById(R.id.btn_edit3);
+        btnedit3 = (ImageButton) getActivity().findViewById(R.id.btn_edit8);
+        btnedit4 = (ImageButton) getActivity().findViewById(R.id.btn_edit9);
+        btnedit5 = (ImageButton) getActivity().findViewById(R.id.btn_edit4);
+        btnedit6 = (ImageButton) getActivity().findViewById(R.id.btn_edit10);
+        btnedit7 = (ImageButton) getActivity().findViewById(R.id.btn_edit11);
+        btnedit8 = (ImageButton) getActivity().findViewById(R.id.btn_edit12);
+        btnedit9 = (ImageButton) getActivity().findViewById(R.id.btn_edit5);
+        btnedit10 = (ImageButton) getActivity().findViewById(R.id.btn_edit13);
+        btnedit11 = (ImageButton) getActivity().findViewById(R.id.btn_edit14);
+        btnedit12 = (ImageButton) getActivity().findViewById(R.id.btn_edit15);
+        btnedit13 = (ImageButton) getActivity().findViewById(R.id.btn_edit16);
+        btnedit14 = (ImageButton) getActivity().findViewById(R.id.btn_edit17);
+        btnedit15 = (ImageButton) getActivity().findViewById(R.id.btn_edit18);
+        btnedit16 = (ImageButton) getActivity().findViewById(R.id.btn_edit19);
+
 
         next = (ImageButton) getActivity().findViewById(R.id.next);
 
@@ -117,7 +133,6 @@ public class ContextoSocialFragment extends Fragment {
 
         nombre.setText(sharedPreferences.getStringData("Escolaridad"));
         apellidoP.setText(sharedPreferences.getStringData("TiempoEscuela"));
-
         transporte.setText(sharedPreferences.getStringData("Transporte"));
         recreacion.setText(sharedPreferences.getStringData("Recreacion"));
         estres.setText(sharedPreferences.getStringData("Estres"));
@@ -158,18 +173,106 @@ public class ContextoSocialFragment extends Fragment {
                 btnEditar(apellidoP);
             }
         });
+        btnedit2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnEditar(transporte);
+
+            }
+        });
         btnedit3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                btnEditar(recreacion);
 
             }
         });
         btnedit4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                btnEditar(estres);
+            }
+        });
+        btnedit5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnEditar(estado);
+            }
+        });
+        btnedit6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnEditar(caracteristicas);
 
             }
         });
+        btnedit7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnEditar(piso);
+
+            }
+        });
+        btnedit8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnEditar(techo);
+            }
+        });
+        btnedit9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnEditar(municipio);
+            }
+        });
+        btnedit10.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnEditar(verduras);
+
+            }
+        });
+        btnedit11.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnEditar(fruta);
+
+            }
+        });
+        btnedit12.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnEditar(leguminosa);
+            }
+        });
+        btnedit13.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnEditar(cereal);
+            }
+        });
+        btnedit14.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnEditar(pan);
+
+            }
+        });
+        btnedit15.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnEditar(chatarra);
+
+            }
+        });
+        btnedit16.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnEditar(carne);
+            }
+        });
+
+
 
 
 
