@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#ffffff"
-    android:orientation="vertical">
+    android:orientation="horizontal">
 
 
     <TextView
@@ -338,23 +338,10 @@
                 android:background="#E91A8D" />
 
             <TextView
-                android:id="@+id/tvNotasMedicas"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/divider5"
-                android:layout_marginTop="20dp"
-                android:textSize="20sp"
-                android:text="Notas Médicas:"
-                android:textStyle="bold"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:textColor="@android:color/black" />
-
-            <TextView
                 android:id="@+id/etNotasMedicas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tvNotasMedicas"
+                android:layout_below="@id/divider5"
                 android:textSize="20sp"
                 android:text="Peso"
                 android:inputType="textCapCharacters"
@@ -390,26 +377,12 @@
                 android:layout_marginTop="3dp"
                 android:background="#E91A8D" />
 
-                //Subjetivo
-
-            <TextView
-                android:id="@+id/tvSubjetivo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/divider6"
-                android:layout_marginTop="20dp"
-                android:textSize="20sp"
-                android:text="Subjetivo:"
-                android:textStyle="bold"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:textColor="@android:color/black" />
 
             <TextView
                 android:id="@+id/etSubjetivo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tvSubjetivo"
+                android:layout_below="@id/divider6"
                 android:textSize="20sp"
                 android:text="Peso"
                 android:inputType="textCapCharacters"
@@ -418,96 +391,6 @@
                 android:textColor="@android:color/black"
                 android:layout_marginLeft="20dp"
                 android:layout_toRightOf="@+id/tvPeso"/>
-
-
-             //Objetivo
-
-            <TextView
-                android:id="@+id/tvObjetivo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/etSubjetivo"
-                android:layout_marginTop="20dp"
-                android:textSize="20sp"
-                android:text="Objetivo:"
-                android:textStyle="bold"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:textColor="@android:color/black" />
-
-            <TextView
-                android:id="@+id/etObjetivo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvObjetivo"
-                android:textSize="20sp"
-                android:text="Peso"
-                android:inputType="textCapCharacters"
-                android:background="#00000000"
-                android:layout_marginTop="20dp"
-                android:textColor="@android:color/black"
-                android:layout_marginLeft="20dp"
-                android:layout_toRightOf="@+id/tvPeso"/>
-
-
-                //Analisis
-
-            <TextView
-                android:id="@+id/tvAnalisis"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/etObjetivo"
-                android:layout_marginTop="20dp"
-                android:textSize="20sp"
-                android:text="Análisis:"
-                android:textStyle="bold"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:textColor="@android:color/black" />
-
-            <TextView
-                android:id="@+id/etAnalisis"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvAnalisis"
-                android:textSize="20sp"
-                android:text="Peso"
-                android:inputType="textCapCharacters"
-                android:background="#00000000"
-                android:layout_marginTop="20dp"
-                android:textColor="@android:color/black"
-                android:layout_marginLeft="20dp"
-                android:layout_toRightOf="@+id/tvPeso"/>
-
-                //Plan
-
-            <TextView
-                android:id="@+id/tvPlan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/etAnalisis"
-                android:layout_marginTop="20dp"
-                android:textSize="20sp"
-                android:text="Plan:"
-                android:textStyle="bold"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:textColor="@android:color/black" />
-
-            <TextView
-                android:id="@+id/etPlan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvPlan"
-                android:textSize="20sp"
-                android:text="Peso"
-                android:inputType="textCapCharacters"
-                android:background="#00000000"
-                android:layout_marginTop="20dp"
-                android:textColor="@android:color/black"
-                android:layout_marginLeft="20dp"
-                android:layout_toRightOf="@+id/tvPeso"/>
-
 
             //Diagnostico
 
@@ -516,7 +399,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/etPlan"
+                android:layout_below="@id/etSubjetivo"
                 android:textStyle="bold"
                 android:textColor="@android:color/black"
                 android:textSize="30sp"
@@ -658,13 +541,6 @@
                 android:textColor="@android:color/black"
                 android:layout_marginLeft="20dp"
                 android:layout_toRightOf="@+id/tvPeso"/>
-
-
-
-
-
-
-
 
         </RelativeLayout>
 

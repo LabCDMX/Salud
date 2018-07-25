@@ -103,9 +103,8 @@ public class NotasHistoric extends Fragment {
 
 
     public void saveAllData(){
-        String name = sharedPreferences.getStringData("nameHistoric");
 
-        sharedPreferences.setStringData("SubjetivoNotas"+name,textArea_information.getText().toString());
+        sharedPreferences.setStringData("SubjetivoNotas",textArea_information.getText().toString());
 
     }
 
