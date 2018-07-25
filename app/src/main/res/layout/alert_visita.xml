@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="600dp"
     android:background="#ffffff"
     android:orientation="horizontal">
 
@@ -62,9 +62,7 @@
                 android:textSize="20sp"
                 android:text="1. Peso:"
                 android:textStyle="bold"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:textColor="@android:color/black" />
+                 android:textColor="@android:color/black" />
 
             <TextView
                 android:id="@+id/textViewPeso"
@@ -91,8 +89,6 @@
                 android:textSize="20sp"
                 android:text="2. Estatura:"
                 android:textStyle="bold"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
                 android:textColor="@android:color/black" />
 
             <TextView
@@ -117,8 +113,6 @@
                 android:textSize="20sp"
                 android:text="3. Hemotipo:"
                 android:textStyle="bold"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
                 android:textColor="@android:color/black" />
 
             <TextView
@@ -144,8 +138,6 @@
                 android:textSize="20sp"
                 android:text="4. Talla:"
                 android:textStyle="bold"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
                 android:textColor="@android:color/black" />
 
             <TextView
@@ -173,8 +165,6 @@
                 android:textSize="20sp"
                 android:text="5. Pulso:"
                 android:textStyle="bold"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
                 android:textColor="@android:color/black" />
 
             <TextView
@@ -199,8 +189,6 @@
                 android:textSize="20sp"
                 android:text="6. Tensión arterial:"
                 android:textStyle="bold"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
                 android:textColor="@android:color/black" />
 
             <TextView
@@ -223,8 +211,6 @@
                 android:textSize="20sp"
                 android:text="7. Frecuencia cardiaca:"
                 android:textStyle="bold"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
                 android:textColor="@android:color/black" />
 
             <TextView
@@ -247,8 +233,6 @@
                 android:textSize="20sp"
                 android:text="8. Frecuencia respiratoria:"
                 android:textStyle="bold"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
                 android:textColor="@android:color/black" />
 
             <TextView
@@ -271,8 +255,6 @@
                 android:textSize="20sp"
                 android:text="9. Glucemia:"
                 android:textStyle="bold"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
                 android:textColor="@android:color/black" />
 
             <TextView
@@ -295,8 +277,6 @@
                 android:textSize="20sp"
                 android:text="10. Temperatura:"
                 android:textStyle="bold"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
                 android:textColor="@android:color/black" />
 
             <TextView
@@ -338,17 +318,16 @@
 
             <TextView
                 android:id="@+id/etNotasMedicas"
-                android:layout_width="wrap_content"
+                android:layout_width="500dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/divider5"
                 android:textSize="20sp"
                 android:text="Peso"
-                android:inputType="textCapCharacters"
+                android:singleLine="false"
+                android:inputType="textMultiLine"
                 android:background="#00000000"
                 android:layout_marginTop="20dp"
-                android:textColor="@android:color/black"
-                android:layout_marginLeft="20dp"
-                android:layout_toRightOf="@+id/tvPeso"/>
+                android:textColor="@android:color/black" />
 
 
 
@@ -379,17 +358,15 @@
 
             <TextView
                 android:id="@+id/etSubjetivo"
-                android:layout_width="wrap_content"
+                android:layout_width="500dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/divider6"
                 android:textSize="20sp"
                 android:text="Peso"
-                android:inputType="textCapCharacters"
+                android:inputType="textMultiLine"
                 android:background="#00000000"
                 android:layout_marginTop="20dp"
-                android:textColor="@android:color/black"
-                android:layout_marginLeft="20dp"
-                android:layout_toRightOf="@+id/tvPeso"/>
+                android:textColor="@android:color/black" />
 
             //Diagnostico
 
@@ -422,23 +399,19 @@
                 android:textSize="20sp"
                 android:text="Diagnóstico:"
                 android:textStyle="bold"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
                 android:textColor="@android:color/black" />
 
             <TextView
                 android:id="@+id/etDiagnostico"
-                android:layout_width="wrap_content"
+                android:layout_width="500dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textDiagnostico"
                 android:textSize="20sp"
                 android:text="Peso"
-                android:inputType="textCapCharacters"
+                android:inputType="textMultiLine"
                 android:background="#00000000"
                 android:layout_marginTop="20dp"
-                android:textColor="@android:color/black"
-                android:layout_marginLeft="20dp"
-                android:layout_toRightOf="@+id/tvPeso"/>
+                android:textColor="@android:color/black" />
 
             //Tratamiento
 
@@ -472,23 +445,19 @@
                 android:textSize="20sp"
                 android:text="Tratamiento:"
                 android:textStyle="bold"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
                 android:textColor="@android:color/black" />
 
             <TextView
                 android:id="@+id/etTratamiento"
-                android:layout_width="wrap_content"
+                android:layout_width="500dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textTratamiento"
                 android:textSize="20sp"
                 android:text="Peso"
-                android:inputType="textCapCharacters"
+                android:inputType="textMultiLine"
                 android:background="#00000000"
                 android:layout_marginTop="20dp"
-                android:textColor="@android:color/black"
-                android:layout_marginLeft="20dp"
-                android:layout_toRightOf="@+id/tvPeso"/>
+                android:textColor="@android:color/black" />
 
 
             //AgendaVisita
@@ -523,8 +492,6 @@
                 android:textSize="20sp"
                 android:text="Siguiente Visita:"
                 android:textStyle="bold"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
                 android:textColor="@android:color/black" />
 
             <TextView
@@ -537,9 +504,17 @@
                 android:inputType="textCapCharacters"
                 android:background="#00000000"
                 android:layout_marginTop="20dp"
-                android:textColor="@android:color/black"
-                android:layout_marginLeft="20dp"
-                android:layout_toRightOf="@+id/tvPeso"/>
+                android:textColor="@android:color/black" />
+
+            <View
+                android:id="@+id/divider10"
+                android:layout_below="@id/edSiguienteVisita"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginBottom="30dp"
+                android:layout_marginTop="3dp"
+                android:background="#E91A8D" />
+
 
         </RelativeLayout>
 
