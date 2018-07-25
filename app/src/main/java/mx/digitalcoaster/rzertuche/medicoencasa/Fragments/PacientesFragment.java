@@ -166,7 +166,7 @@ public class PacientesFragment extends Fragment {
 
         lista = (GridView) getActivity().findViewById(R.id.gridview);
         items = new ArrayList<>();
-        getProductos();
+        getPacientesSeguimiento();
         lista.setAdapter(new VisitasAdapter(getActivity().getApplicationContext(), items));
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -176,11 +176,14 @@ public class PacientesFragment extends Fragment {
                 String curp = selectedUser.getCurp();
                 String numero_visita= selectedUser.getNumero_visita();
                 String expediente= selectedUser.getExpediente();
+                String imageStatus = selectedUser.getStatus();
 
                 sharedPreferences.setStringData("nameSeguimiento", nameUser);
                 sharedPreferences.setStringData("curpSeguimiento", curp);
                 sharedPreferences.setStringData("numero_visita", numero_visita);
                 sharedPreferences.setStringData("Expediente", expediente);
+                sharedPreferences.setStringData("ImageStatus", imageStatus);
+
 
 
                 Log.e("TOUCHME",expediente);
@@ -193,7 +196,7 @@ public class PacientesFragment extends Fragment {
     }
 
 
-    private void getProductos() {
+    private void getPacientesSeguimiento() {
 
         db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE, null);
         try {

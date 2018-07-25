@@ -71,6 +71,10 @@ public class NotasEnfermeria extends Fragment {
         ImageButton next = (ImageButton) getActivity().findViewById(R.id.next);
         textArea_information = getActivity().findViewById(R.id.textArea_information);
 
+        if(isSinExp){
+            String name = sharedPreferences.getStringData("nameItem");
+            textArea_information.setText(sharedPreferences.getStringData("NotasEnfermeria"+name));
+        }
 
 
         next.setOnClickListener(new View.OnClickListener() {

@@ -107,8 +107,7 @@ public class VisitasFragment extends Fragment {
         });
 
 
-        String statusImage = sharedPreferences.getStringData("ImageItem");
-
+        String statusImage = sharedPreferences.getStringData("ImageStatus");
         nombre.setText(sharedPreferences.getStringData("Nombre"));
         diagnostico.setText(sharedPreferences.getStringData("Diagnostico"));
         tratamiento.setText(sharedPreferences.getStringData("Tratamiento"));
@@ -156,7 +155,7 @@ public class VisitasFragment extends Fragment {
                     sharedPreferences.setStringData("Diagnostico",c.getString(2));
                     sharedPreferences.setStringData("Tratamiento",c.getString(3));
                     sharedPreferences.setStringData("Nombre",c.getString(1));
-                    sharedPreferences.setStringData("ImageItem",c.getString(8));
+                    //sharedPreferences.setStringData("ImageItem",c.getString(8));
 
 
 

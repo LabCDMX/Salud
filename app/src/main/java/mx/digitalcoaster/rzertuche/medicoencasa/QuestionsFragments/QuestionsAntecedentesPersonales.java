@@ -15,7 +15,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity;
 import mx.digitalcoaster.rzertuche.medicoencasa.R;
@@ -213,6 +215,15 @@ public class QuestionsAntecedentesPersonales extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    public List<String> quitarRepedidos(List<String> repeditos){
+        Set<String> hs = new HashSet<>();
+        hs.addAll(repeditos);
+        repeditos.clear();
+        repeditos.addAll(hs);
+
+        return repeditos;
     }
 
 

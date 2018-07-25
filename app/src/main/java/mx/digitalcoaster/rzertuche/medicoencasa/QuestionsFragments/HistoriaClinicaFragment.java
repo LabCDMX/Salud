@@ -268,8 +268,8 @@ public class HistoriaClinicaFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                    saveAllDataPreferences();
-                    ((MainActivity)getActivity()).fragmentNotasHistoric();
+                saveAllDataPreferences();
+                ((MainActivity)getActivity()).fragmentNotasHistoric();
 
             }
         });
@@ -312,6 +312,8 @@ public class HistoriaClinicaFragment extends Fragment {
                     sharedPreferences.setStringData("cadenaDiabetes"+name,c.getString(21));
                     sharedPreferences.setStringData("cadenaDis"+name,c.getString(22));
                     sharedPreferences.setStringData("cadenaEnf"+name,c.getString(23));
+                    sharedPreferences.setStringData("NotasEnfermeria"+name,c.getString(17));
+                    sharedPreferences.setStringData("NotasMedicas"+name,c.getString(49));
 
 
                 }while (c.moveToNext());

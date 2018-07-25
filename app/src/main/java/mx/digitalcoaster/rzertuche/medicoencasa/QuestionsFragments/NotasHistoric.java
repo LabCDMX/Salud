@@ -72,7 +72,7 @@ public class NotasHistoric extends Fragment {
 
         if(isSinExp){
             String name = sharedPreferences.getStringData("nameItem");
-            textArea_information.setText(sharedPreferences.getStringData("SubjetivoNotas"+name));
+            textArea_information.setText(sharedPreferences.getStringData("NotasMedicas"+name));
 
         }
 

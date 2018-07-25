@@ -150,12 +150,12 @@ public class ContextoSocialFragment extends Fragment {
 
 
         String cadena = new String();
+        listElectro = quitarRepedidos(listElectro);
         for (String object: listElectro) {
             cadena+= "-" + object + "\n";
         }
 
 
-        Log.e("CADENA",cadena);
         estado.setText(cadena);
         municipio.setText(sharedPreferences.getStringData("Alimentos"));
 
@@ -281,6 +281,7 @@ public class ContextoSocialFragment extends Fragment {
             public void onClick(View v) {
 
                 ((MainActivity)getActivity()).stopCronometro();
+                sharedPreferences.clearPreferences();
                 ((MainActivity)getActivity()).fragmentSucceded();
             }
         });
@@ -361,6 +362,15 @@ public class ContextoSocialFragment extends Fragment {
         final InputMethodManager hideKeyboard = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
         hideKeyboard.hideSoftInputFromWindow(getView().getWindowToken(), 0);
 
+    }
+
+    public List<String> quitarRepedidos(List<String> repeditos){
+        Set<String> hs = new HashSet<>();
+        hs.addAll(repeditos);
+        repeditos.clear();
+        repeditos.addAll(hs);
+
+        return repeditos;
     }
 
 

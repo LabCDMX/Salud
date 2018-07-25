@@ -38,14 +38,18 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.Iterator;
+import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
 import cz.msebera.android.httpclient.HttpEntity;
+import cz.msebera.android.httpclient.NameValuePair;
 import cz.msebera.android.httpclient.entity.StringEntity;
 import io.realm.Realm;
 import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseDB;
@@ -790,6 +794,10 @@ public class MainActivity extends AppCompatActivity implements
             url = new URL(IPCodigos);
             conn = (HttpURLConnection) url.openConnection();
             conn.setRequestProperty("User-Agent", "Mozilla/5.0 (Linux; Android 1.5; es-ES) Ejemplo HTTP");
+            conn.setRequestMethod("POST");
+            conn.setDoInput(true);
+            conn.setDoOutput(true);
+
 
             int respuesta = conn.getResponseCode();
             StringBuilder result = new StringBuilder();
@@ -883,6 +891,5 @@ public class MainActivity extends AppCompatActivity implements
                         .penaltyLog()
                         .build());
     }
-
 
 }

@@ -1,11 +1,14 @@
 package mx.digitalcoaster.rzertuche.medicoencasa.Fragments;
 
 import android.app.ProgressDialog;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -19,8 +22,19 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Arrays;
 
 import cz.msebera.android.httpclient.Header;
@@ -58,6 +72,9 @@ public class InicioFragmentMain extends Fragment {
     private SQLiteDatabase db = null;      // Objeto para utilizar la base de datos
     private DataBaseHelper sqliteHelper;   // Objeto para abrir la base de Datos
     private Cursor c = null;
+    HttpURLConnection conn;
+    URL url; // URL de donde queremos obtener información
+    private JSONObject respuestaJSON;
 
 
 
@@ -261,6 +278,169 @@ public class InicioFragmentMain extends Fragment {
 
 
 
+    }
+
+
+
+    /*public void getPostal() {
+        try {
+
+            String IPCodigos = "https://medico.digitalcoaster.mx/api/admin/api/codigospostales";
+            System.out.println(IPCodigos);
+            url = new URL(IPCodigos);
+            conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestProperty("User-Agent", "Mozilla/5.0 (Linux; Android 1.5; es-ES) Ejemplo HTTP");
+
+            "{\"curp\":\""+curp+"\"," +
+                    "\"apellidoPaterno\":\""+a_pa+"\"," +
+                    "\"apellidoMaterno\":" + a_ma + "," +
+                    "\"nombre\":\""+nombre+"\"," +
+                    "\"fechadeNacimiento\":"+fechaNac+"," +
+                    "\"estadodeNacimiento\":\""+estadoNac+"\"," +
+                    "\"sexo\":\""+sexo+"\"," +
+                    "\"nacionalidadOrigen\":\""+nac+"\"," +
+                    "\"estadoResidencia\":\""+estadoRes+"\"," +
+                    "\"municipio\":\""+municipio+"\"," +
+                    "\"cp\":\""+cp+"\"," +
+                    "\"pob_vul\":\""+poblacion+"\"," +
+                    "\"colonia\":"+colonia+"," +
+                    "\"nombreCalle\":"+nombreCalle+"," +
+                    "\"estadoCivil\":"+edo_civil+"," +
+                    "\"ocupacion\":"+ocupacion+"," +
+                    "\"derechoHabiencia\":\""+derecho+"\"," +
+                    "\"telFijo\":\""+telFijo+"\"," +
+                    "\"telCelular\":\""+telCel+"\"," +
+                    "\"correoElectronico\":\""+correo+"\"," +
+                    "}";
+
+
+            Uri.Builder builder = new Uri.Builder()
+                    .appendQueryParameter("curp", curp)
+                    .appendQueryParameter("apellidoPaterno", paramValue2)
+                    .appendQueryParameter("nombre", paramValue3);
+                    .appendQueryParameter("nombre", paramValue3);
+                    .appendQueryParameter("nombre", paramValue3);
+                    .appendQueryParameter("nombre", paramValue3);
+                    .appendQueryParameter("nombre", paramValue3);
+                    .appendQueryParameter("nombre", paramValue3);
+                    .appendQueryParameter("nombre", paramValue3);
+                    .appendQueryParameter("nombre", paramValue3);
+                    .appendQueryParameter("nombre", paramValue3);
+                    .appendQueryParameter("nombre", paramValue3);
+                    .appendQueryParameter("nombre", paramValue3);
+                    .appendQueryParameter("nombre", paramValue3);
+                    .appendQueryParameter("nombre", paramValue3);
+                    .appendQueryParameter("nombre", paramValue3);
+
+
+
+
+
+
+
+            String query = builder.build().getEncodedQuery();
+
+            OutputStream os = conn.getOutputStream();
+            BufferedWriter writer = new BufferedWriter(
+                    new OutputStreamWriter(os, "UTF-8"));
+            writer.write(query);
+            writer.flush();
+            writer.close();
+            os.close();
+
+            conn.connect();
+
+            int respuesta = conn.getResponseCode();
+            StringBuilder result = new StringBuilder();
+
+            if (respuesta == HttpURLConnection.HTTP_OK) {
+
+                InputStream in = new BufferedInputStream(conn.getInputStream());
+                BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    result.append(line); // Pasar todas las entradas al StringBuilder
+                }
+
+                /*respuestaJSON = new JSONObject(result.toString());
+                JSONArray parentesco = respuestaJSON.getJSONArray("codigospostales");
+
+                String codigo_postal;
+                String colonia;
+                String municipio;
+                String estado;
+
+                db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE, null);
+                for (int i = 0; i < parentesco.length(); i++) {
+
+                    codigo_postal = parentesco.getJSONObject(i).getString("CodigoPostal");
+                    colonia = parentesco.getJSONObject(i).getString("Colonia");
+                    municipio = parentesco.getJSONObject(i).getString("Municipio");
+                    estado = parentesco.getJSONObject(i).getString("Estado");
+
+
+                    System.out.println("CODIGO_POSTAL: " + codigo_postal);
+                    System.out.println("COLONIA: " + colonia);
+                    System.out.println("MUNICIPIO: " + municipio);
+                    System.out.println("ESTADO: " + estado);
+
+                    /*------------------------- Revisar si existe ------------------------*/
+                    /*c = db.rawQuery("SELECT " + DataBaseDB.CODIGO_POSTAL +
+                            " FROM " + DataBaseDB.TABLE_NAME_CODIGOS_POSTALES +
+                            " WHERE " + DataBaseDB.CODIGO_POSTAL + "='" + codigo_postal + "'", null);
+                    try {
+                        if (c.moveToFirst()) {
+                            System.out.print("Codigo existente: ");
+                            ContentValues update = new ContentValues();
+
+                            update.put(DataBaseDB.CODIGO_POSTAL, codigo_postal);
+                            update.put(DataBaseDB.COLONIA, colonia);
+                            update.put(DataBaseDB.MUNICIPIO, municipio);
+                            update.put(DataBaseDB.ESTADO, estado);
+
+                            db.update(DataBaseDB.TABLE_NAME_CODIGOS_POSTALES, update, DataBaseDB.CODIGO_POSTAL + "='" + codigo_postal + "'", null);
+                            System.out.println("Codigo actualizado correctamente");
+
+                        } else {
+                            ContentValues values = new ContentValues();
+
+                            values.put(DataBaseDB.CODIGO_POSTAL, codigo_postal);
+                            values.put(DataBaseDB.COLONIA, colonia);
+                            values.put(DataBaseDB.MUNICIPIO, municipio);
+                            values.put(DataBaseDB.ESTADO, estado);
+
+                            db.insert(DataBaseDB.TABLE_NAME_CODIGOS_POSTALES, null, values);
+                            System.out.println("Codigo postal insertado correctamente");
+                        }
+                        c.close();
+                    } catch (SQLException ex) {
+                        System.out.println("Error al insertar codigo postal: " + ex);
+                    }
+                }
+                db.close();*/
+
+           // }
+
+
+        /*} catch (IOException e) {
+        } catch (JSONException e) {
+        }
+    }*/
+
+    public void enableStrictMode() {
+        StrictMode.setThreadPolicy(
+                new StrictMode.ThreadPolicy.Builder()
+                        .detectDiskReads()
+                        .detectDiskWrites()
+                        .detectNetwork()
+                        .penaltyLog()
+                        .build());
+        StrictMode.setVmPolicy(
+                new StrictMode.VmPolicy.Builder()
+                        .detectLeakedSqlLiteObjects()
+                        .penaltyLog()
+                        .build());
     }
 
 
