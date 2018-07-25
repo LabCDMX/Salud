@@ -3,6 +3,7 @@ package mx.digitalcoaster.rzertuche.medicoencasa.Fragments;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
@@ -62,6 +63,7 @@ public class VisitasFragment extends Fragment {
     public static Boolean isSeguimiento=false;
     SharedPreferences sharedPreferences;
     public static String nombrePatient;
+    public static String numeroVisita;
     private TextView nombre, diagnostico, tratamiento,expediente;
     ImageView status;
 
@@ -80,16 +82,29 @@ public class VisitasFragment extends Fragment {
 
         sharedPreferences = SharedPreferences.getInstance();
         nombrePatient = sharedPreferences.getStringData("nameSeguimiento");
+        numeroVisita = sharedPreferences.getStringData("numero_visita");
 
         status = (ImageView) getActivity().findViewById(R.id.status);
-
         nombre = (TextView) getActivity().findViewById(R.id.tvNombreItem);
         diagnostico = (TextView) getActivity().findViewById(R.id.textViewDiagnostico);
         tratamiento = (TextView) getActivity().findViewById(R.id.textViewTratamiento);
         expediente = (TextView) getActivity().findViewById(R.id.expediente);
 
 
+        lista = (GridView) getActivity().findViewById(R.id.gridview);
+        items = new ArrayList<>();
+        getProductos();
+        lista.setAdapter(new ItemVisitaAdapter(getActivity().getApplicationContext(), items));
+        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View v, int position, long arg3) {
+                ItemVisita selectedUser = items.get(position);
 
+                String numero_visita = selectedUser.getNumero_visita();
+                viewAlertDialog(numero_visita);
+
+            }
+        });
 
 
         String statusImage = sharedPreferences.getStringData("ImageItem");
@@ -123,18 +138,7 @@ public class VisitasFragment extends Fragment {
         });
 
 
-        lista = (GridView) getActivity().findViewById(R.id.gridview);
-        items = new ArrayList<>();
-        getProductos();
-        lista.setAdapter(new ItemVisitaAdapter(getActivity().getApplicationContext(), items));
-        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> arg0, View v, int position, long arg3) {
 
-                viewAlertDialog();
-
-            }
-        });
 
     }
 
@@ -214,7 +218,7 @@ public class VisitasFragment extends Fragment {
 
 
 
-    private void viewAlertDialog() {
+    private void viewAlertDialog(String numeroVisita) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setCancelable(false);
@@ -225,7 +229,8 @@ public class VisitasFragment extends Fragment {
         //-------------------------- Obtener información del cliente ---------------------
         try {
             c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SEGUIMIENTO + " WHERE " +
-                    DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NOMBRE + " ='"+nombrePatient+"'", null);
+                    DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NOMBRE + " ='"+nombrePatient+"' AND "+
+                    DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NUMERO+ " = '"+numeroVisita+"'", null);
 
 
             if (c.moveToFirst()) {
@@ -261,7 +266,6 @@ public class VisitasFragment extends Fragment {
                 dialog.cancel();
             }
         });
-
         builder.setView(view);
         builder.show();
     }

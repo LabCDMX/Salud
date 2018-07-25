@@ -8,6 +8,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.StrictMode;
 import android.os.SystemClock;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -32,8 +33,15 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
 import java.util.Iterator;
 
 import cz.msebera.android.httpclient.Header;
@@ -130,6 +138,11 @@ public class MainActivity extends AppCompatActivity implements
     private JSONObject respuestaJSON;
     private SharedPreferences sharedPreferences;
 
+    HttpURLConnection conn;
+    URL url; // URL de donde queremos obtener información
+
+
+
 
 
     @Override
@@ -139,7 +152,7 @@ public class MainActivity extends AppCompatActivity implements
 
         getSupportActionBar().setTitle("");
         appContext = getApplicationContext();
-
+        enableStrictMode();
         // Initialize Realm
         //Realm.init(this);
 
@@ -159,7 +172,7 @@ public class MainActivity extends AppCompatActivity implements
         db.close();
 
         sharedPreferences = SharedPreferences.getInstance();
-        getPostalCode();
+        //getPostal();
 
         //Home Fragment
         InicioFragmentMain fragment = new InicioFragmentMain();
@@ -769,94 +782,107 @@ public class MainActivity extends AppCompatActivity implements
     }
 
 
-    public  void getPostalCode(){
+    public void getPostal() {
+        try {
 
-        String url = "https://medico.digitalcoaster.mx";
+            String IPCodigos = "https://medico.digitalcoaster.mx/api/admin/api/codigospostales";
+            System.out.println(IPCodigos);
+            url = new URL(IPCodigos);
+            conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestProperty("User-Agent", "Mozilla/5.0 (Linux; Android 1.5; es-ES) Ejemplo HTTP");
 
-        final AsyncHttpClient client = new AsyncHttpClient();
-        client.setTimeout(100000);
-        client.get(getApplicationContext(), url + "/api/admin/api/codigospostales", new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                // If the response is JSONObject instead of expected JSONArray
-                try {
-                    respuestaJSON = new JSONObject(response.toString());
-                    JSONArray parentesco = respuestaJSON.getJSONArray("codigospostales");
+            int respuesta = conn.getResponseCode();
+            StringBuilder result = new StringBuilder();
 
-                    String codigo_postal;
-                    String colonia;
-                    String municipio;
-                    String estado;
+            if (respuesta == HttpURLConnection.HTTP_OK) {
 
-                    db = openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE, null);
-                    for (int i = 0; i < parentesco.length(); i++) {
+                InputStream in = new BufferedInputStream(conn.getInputStream());
+                BufferedReader reader = new BufferedReader(new InputStreamReader(in));
 
-                        codigo_postal = parentesco.getJSONObject(i).getString("CodigoPostal");
-                        colonia = parentesco.getJSONObject(i).getString("Colonia");
-                        municipio = parentesco.getJSONObject(i).getString("Municipio");
-                        estado = parentesco.getJSONObject(i).getString("Estado");
-
-
-                        System.out.println("CODIGO_POSTAL: " + codigo_postal);
-                        System.out.println("COLONIA: " + colonia);
-                        System.out.println("MUNICIPIO: " + municipio);
-                        System.out.println("ESTADO: " + estado);
-
-                        /*------------------------- Revisar si existe ------------------------*/
-                        c = db.rawQuery("SELECT " + DataBaseDB.CODIGO_POSTAL +
-                                " FROM " + DataBaseDB.TABLE_NAME_CODIGOS_POSTALES +
-                                " WHERE " + DataBaseDB.CODIGO_POSTAL + "='" + codigo_postal + "'", null);
-                        try {
-                            if (c.moveToFirst()) {
-                                System.out.print("Codigo existente: ");
-                                ContentValues update = new ContentValues();
-
-                                update.put(DataBaseDB.CODIGO_POSTAL, codigo_postal);
-                                update.put(DataBaseDB.COLONIA, colonia);
-                                update.put(DataBaseDB.MUNICIPIO, municipio);
-                                update.put(DataBaseDB.ESTADO, estado);
-
-                                db.update(DataBaseDB.TABLE_NAME_CODIGOS_POSTALES, update, DataBaseDB.CODIGO_POSTAL + "='" + codigo_postal + "'", null);
-                                System.out.println("Codigo actualizado correctamente");
-
-                            } else {
-                                ContentValues values = new ContentValues();
-
-                                values.put(DataBaseDB.CODIGO_POSTAL, codigo_postal);
-                                values.put(DataBaseDB.COLONIA, colonia);
-                                values.put(DataBaseDB.MUNICIPIO, municipio);
-                                values.put(DataBaseDB.ESTADO, estado);
-
-                                db.insert(DataBaseDB.TABLE_NAME_CODIGOS_POSTALES, null, values);
-                                System.out.println("Codigo postal insertado correctamente");
-                            }
-                            c.close();
-                        } catch (SQLException ex) {
-                            System.out.println("Error al insertar codigo postal: " + ex);
-                        }
-                    }
-                    db.close();
-                } catch (JSONException e1) {
-                    e1.printStackTrace();
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    result.append(line); // Pasar todas las entradas al StringBuilder
                 }
+
+                respuestaJSON = new JSONObject(result.toString());
+                JSONArray parentesco = respuestaJSON.getJSONArray("codigospostales");
+
+                String codigo_postal;
+                String colonia;
+                String municipio;
+                String estado;
+
+                db = openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE, null);
+                for (int i = 0; i < parentesco.length(); i++) {
+
+                    codigo_postal = parentesco.getJSONObject(i).getString("CodigoPostal");
+                    colonia = parentesco.getJSONObject(i).getString("Colonia");
+                    municipio = parentesco.getJSONObject(i).getString("Municipio");
+                    estado = parentesco.getJSONObject(i).getString("Estado");
+
+
+                    System.out.println("CODIGO_POSTAL: " + codigo_postal);
+                    System.out.println("COLONIA: " + colonia);
+                    System.out.println("MUNICIPIO: " + municipio);
+                    System.out.println("ESTADO: " + estado);
+
+                    /*------------------------- Revisar si existe ------------------------*/
+                    c = db.rawQuery("SELECT " + DataBaseDB.CODIGO_POSTAL +
+                            " FROM " + DataBaseDB.TABLE_NAME_CODIGOS_POSTALES +
+                            " WHERE " + DataBaseDB.CODIGO_POSTAL + "='" + codigo_postal + "'", null);
+                    try {
+                        if (c.moveToFirst()) {
+                            System.out.print("Codigo existente: ");
+                            ContentValues update = new ContentValues();
+
+                            update.put(DataBaseDB.CODIGO_POSTAL, codigo_postal);
+                            update.put(DataBaseDB.COLONIA, colonia);
+                            update.put(DataBaseDB.MUNICIPIO, municipio);
+                            update.put(DataBaseDB.ESTADO, estado);
+
+                            db.update(DataBaseDB.TABLE_NAME_CODIGOS_POSTALES, update, DataBaseDB.CODIGO_POSTAL + "='" + codigo_postal + "'", null);
+                            System.out.println("Codigo actualizado correctamente");
+
+                        } else {
+                            ContentValues values = new ContentValues();
+
+                            values.put(DataBaseDB.CODIGO_POSTAL, codigo_postal);
+                            values.put(DataBaseDB.COLONIA, colonia);
+                            values.put(DataBaseDB.MUNICIPIO, municipio);
+                            values.put(DataBaseDB.ESTADO, estado);
+
+                            db.insert(DataBaseDB.TABLE_NAME_CODIGOS_POSTALES, null, values);
+                            System.out.println("Codigo postal insertado correctamente");
+                        }
+                        c.close();
+                    } catch (SQLException ex) {
+                        System.out.println("Error al insertar codigo postal: " + ex);
+                    }
+                }
+                db.close();
+
             }
 
-            @Override
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                super.onFailure(statusCode, headers, responseString, throwable);
-            }
 
-            @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
-                super.onFailure(statusCode, headers, throwable, errorResponse);
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                super.onFailure(statusCode, headers, throwable, errorResponse);
-            }
-
-        });
+        } catch (IOException e) {
+        } catch (JSONException e) {
+        }
     }
+
+    public void enableStrictMode() {
+        StrictMode.setThreadPolicy(
+                new StrictMode.ThreadPolicy.Builder()
+                        .detectDiskReads()
+                        .detectDiskWrites()
+                        .detectNetwork()
+                        .penaltyLog()
+                        .build());
+        StrictMode.setVmPolicy(
+                new StrictMode.VmPolicy.Builder()
+                        .detectLeakedSqlLiteObjects()
+                        .penaltyLog()
+                        .build());
+    }
+
 
 }

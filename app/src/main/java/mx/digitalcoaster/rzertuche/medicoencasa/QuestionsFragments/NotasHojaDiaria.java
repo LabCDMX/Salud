@@ -167,21 +167,6 @@ public class NotasHojaDiaria extends Fragment {
 
     private void addNewVisita(){
 
-        /* Date myDate = new Date();
-        System.out.println(myDate);
-        System.out.println(new SimpleDateFormat("yyyy-MM-dd").format(myDate));
-
-        String siguienteVisita = textViewFecha.getText().toString();
-        String fechaActual = siguienteVisita;
-
-        String nombreDoctor = textViewPeso.getText().toString();
-        */
-        Date myDate = new Date();
-        System.out.println(myDate);
-        System.out.println(new SimpleDateFormat("yyyy-MM-dd").format(myDate));
-        String fecha= new SimpleDateFormat("yyyy-MM-dd").format(myDate);
-
-
         String auxVisita = sharedPreferences.getStringData("numero_visita");
         int numeroVisita = Integer.valueOf(auxVisita)+1;
 
@@ -201,21 +186,18 @@ public class NotasHojaDiaria extends Fragment {
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_EXPEDIENTE, sharedPreferences.getStringData("Expediente"));
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NOTAS_ENFERMERIA, sharedPreferences.getStringData("NotasEnfermeria"));
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_SUBJETIVO, sharedPreferences.getStringData("Subjetivo"));
-                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_OBJETIVO, sharedPreferences.getStringData("Objetivo"));
-                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_ANALISIS, sharedPreferences.getStringData("Analisis"));
-                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_PLAN, sharedPreferences.getStringData("Plan"));
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_HEMOTIPO, sharedPreferences.getStringData("Hemotipo"));
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_PESO, sharedPreferences.getStringData("Peso"));
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_ESTATURA, sharedPreferences.getStringData("Estatura"));
-                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_TENSION_ARTERIAL, sharedPreferences.getStringData("Tension 1") + sharedPreferences.getStringData("Tension 2"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_TENSION_ARTERIAL, sharedPreferences.getStringData("Tension1") + sharedPreferences.getStringData("Tension2"));
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_FRECUENCIA_CARDIACA, sharedPreferences.getStringData("Frecuencia Cardiaca"));
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_FRECUENCIA_RESPIRATORIA, sharedPreferences.getStringData("Frecuencia Respiratoria"));
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_TALLA, sharedPreferences.getStringData("Talla"));
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_PULSO, sharedPreferences.getStringData("Pulso"));
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_GLUCEMIA, sharedPreferences.getStringData("Glucemia"));
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_TEMPERATURA, sharedPreferences.getStringData("Temperatura"));
-                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_FECHA, fecha);
-                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NUMERO, numeroVisita);
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_FECHA, textViewFecha.getText().toString());
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NUMERO, String.valueOf(numeroVisita));
 
 
                 db.insert(DataBaseDB.TABLE_NAME_PACIENTES_SEGUIMIENTO, null, values);
@@ -245,8 +227,8 @@ public class NotasHojaDiaria extends Fragment {
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_PULSO, sharedPreferences.getStringData("Pulso"));
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_GLUCEMIA, sharedPreferences.getStringData("Glucemia"));
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_TEMPERATURA, sharedPreferences.getStringData("Temperatura"));
-                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_FECHA, fecha);
-                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NUMERO, numeroVisita);
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_FECHA, textViewFecha.getText().toString());
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NUMERO, String.valueOf(numeroVisita));
 
 
                 db.insert(DataBaseDB.TABLE_NAME_PACIENTES_SEGUIMIENTO, null, values);
@@ -257,8 +239,30 @@ public class NotasHojaDiaria extends Fragment {
         } catch (SQLException ex) {
             System.out.println("Error al insertar productos: " + ex);
         }
+        db.close();
+        //updateVisita(String.valueOf(numeroVisita), sharedPreferences.getStringData("Expediente"));
+    }
 
+    public void updateVisita(String numeroVisita, String expediente){
+        /*------------------------- Revisar si existe ------------------------*/
+        c = db.rawQuery("SELECT " + DataBaseDB.PACIENTES_VISITA_NUMERO +
+                " FROM " + DataBaseDB.TABLE_NAME_PACIENTES_VISITAS +
+                " WHERE " + DataBaseDB.PACIENTES_VISITA_EXPEDIENTE + "='" + expediente + "'", null);
+        try {
+            if(c.moveToFirst()) {
+                System.out.print("Visita existente: ");
+                ContentValues update = new ContentValues();
+                update.put(DataBaseDB.PACIENTES_VISITA_NUMERO, numeroVisita);
+                db.update(DataBaseDB.TABLE_NAME_PACIENTES_VISITAS, update,DataBaseDB.PACIENTES_VISITA_NUMERO + "='" + numeroVisita + "'", null);
+                System.out.println("Parentesco actualizado correctamente");
+            }
+            else {
 
+            }
+            c.close();
+        } catch (SQLException ex) {
+            System.out.println("Error al insertar parentesco: " + ex);
+        }
 
         db.close();
     }

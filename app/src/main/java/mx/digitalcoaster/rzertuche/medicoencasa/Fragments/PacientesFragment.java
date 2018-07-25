@@ -179,7 +179,7 @@ public class PacientesFragment extends Fragment {
 
                 sharedPreferences.setStringData("nameSeguimiento", nameUser);
                 sharedPreferences.setStringData("curpSeguimiento", curp);
-                sharedPreferences.setStringData("numero_visita", numero_visita );
+                sharedPreferences.setStringData("numero_visita", numero_visita);
                 sharedPreferences.setStringData("Expediente", expediente);
 
 
