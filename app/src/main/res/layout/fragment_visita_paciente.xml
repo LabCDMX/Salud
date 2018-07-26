@@ -153,6 +153,7 @@
                 android:id="@+id/historia_clinica"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:background="@drawable/engrane"
                 android:layout_toRightOf="@+id/datos_generales"
                 android:layout_marginLeft="20dp"/>
