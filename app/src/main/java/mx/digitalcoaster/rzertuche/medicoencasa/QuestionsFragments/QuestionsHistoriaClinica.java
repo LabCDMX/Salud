@@ -96,68 +96,68 @@ public class QuestionsHistoriaClinica extends Fragment {
                 }
 
                 if(count == 3){
-                    sharedPreferences.setStringData("Urinario",textArea_information.getText().toString());
+                    sharedPreferences.setStringData("Digestivo",textArea_information.getText().toString());
                     textArea_information.setText("");
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title3));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio3));
                 }
 
                 if(count == 4){
-                    sharedPreferences.setStringData("Reproductor",textArea_information.getText().toString());
+                    sharedPreferences.setStringData("Urinario",textArea_information.getText().toString());
                     textArea_information.setText("");
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title4));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio4));
                 }
                 if(count == 5){
-                    sharedPreferences.setStringData("Hemo",textArea_information.getText().toString());
+                    sharedPreferences.setStringData("Reproductor",textArea_information.getText().toString());
                     textArea_information.setText("");
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title5));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio5));
                 }
                 if(count == 6){
-                    sharedPreferences.setStringData("Endocrino",textArea_information.getText().toString());
+                    sharedPreferences.setStringData("Hemo",textArea_information.getText().toString());
                     textArea_information.setText("");
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title6));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio6));
                 }
                 if(count == 7){
-                    sharedPreferences.setStringData("Nervioso",textArea_information.getText().toString());
+                    sharedPreferences.setStringData("Endocrino",textArea_information.getText().toString());
                     textArea_information.setText("");
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title7));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio7));
                 }
                 if(count == 8){
-                    sharedPreferences.setStringData("Esqueletico",textArea_information.getText().toString());
+                    sharedPreferences.setStringData("Nervioso",textArea_information.getText().toString());
                     textArea_information.setText("");
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title8));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio8));
                 }
                 if(count == 9){
-                    sharedPreferences.setStringData("Piel",textArea_information.getText().toString());
+                    sharedPreferences.setStringData("Esqueletico",textArea_information.getText().toString());
                     textArea_information.setText("");
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title9));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio9));
                 }
                 if(count == 10){
-                    sharedPreferences.setStringData("Habitus",textArea_information.getText().toString());
+                    sharedPreferences.setStringData("Piel",textArea_information.getText().toString());
                     textArea_information.setText("");
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title10));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio10));
                 }
                 if(count == 11){
-                    sharedPreferences.setStringData("Cabeza",textArea_information.getText().toString());
+                    sharedPreferences.setStringData("Habitus",textArea_information.getText().toString());
                     textArea_information.setText("");
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title11));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio11));
                 }
                 if(count == 12){
-                    sharedPreferences.setStringData("Cuello",textArea_information.getText().toString());
+                    sharedPreferences.setStringData("Cabeza",textArea_information.getText().toString());
                     textArea_information.setText("");
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title12));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio12));
                 }
                 if(count == 13) {
-                    sharedPreferences.setStringData("Torax", textArea_information.getText().toString());
+                    sharedPreferences.setStringData("Cuello", textArea_information.getText().toString());
                     textArea_information.setText("");
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title19));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio19));
@@ -165,43 +165,44 @@ public class QuestionsHistoriaClinica extends Fragment {
                 }
                 if(count == 14){
 
-                    sharedPreferences.setStringData("Abdomen",textArea_information.getText().toString());
+                    sharedPreferences.setStringData("Torax",textArea_information.getText().toString());
                     textArea_information.setText("");
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title20));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio13));
                 }
                 if(count == 15){
-                    sharedPreferences.setStringData("Ginecologica",textArea_information.getText().toString());
+                    sharedPreferences.setStringData("Abdomen",textArea_information.getText().toString());
                     textArea_information.setText("");
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title14));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio14));
                 }
                 if(count == 16){
-                    sharedPreferences.setStringData("Extremidades",textArea_information.getText().toString());
+                    sharedPreferences.setStringData("Ginecologica",textArea_information.getText().toString());
                     textArea_information.setText("");
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title15));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio15));
                 }
                 if(count == 17){
-                    sharedPreferences.setStringData("Columna",textArea_information.getText().toString());
+                    sharedPreferences.setStringData("Extremidades",textArea_information.getText().toString());
                     textArea_information.setText("");
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title16));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio16));
                 }
                 if(count == 18){
-                    sharedPreferences.setStringData("Neurologica",textArea_information.getText().toString());
+                    sharedPreferences.setStringData("Columna",textArea_information.getText().toString());
                     textArea_information.setText("");
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title17));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio17));
                 }
                 if(count == 19){
-                    sharedPreferences.setStringData("Genitales",textArea_information.getText().toString());
+                    sharedPreferences.setStringData("Neurologica",textArea_information.getText().toString());
                     textArea_information.setText("");
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title18));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio18));
                 }
 
                 if(count == 20){
+                    sharedPreferences.setStringData("Genitales",textArea_information.getText().toString());
                     textArea_information.setText("");
                     count=0;
                     ((MainActivity)getActivity()).historiaClinicaFragment();

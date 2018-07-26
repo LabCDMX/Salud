@@ -382,6 +382,7 @@
                     android:layout_marginBottom="15dp"
                     android:orientation="horizontal">
 
+
                     <ImageButton
                         android:id="@+id/next"
                         android:layout_width="140dp"

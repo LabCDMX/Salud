@@ -71,6 +71,7 @@ public class QuestionDomFragment extends Fragment {
     Activity activity;
     View container;
     int count = 0;
+    int countAux = 0;
 
 
 
@@ -147,7 +148,6 @@ public class QuestionDomFragment extends Fragment {
 
         sharedPreferences = SharedPreferences.getInstance();
 
-
         ImageButton next = (ImageButton) view.findViewById(R.id.next);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -158,21 +158,15 @@ public class QuestionDomFragment extends Fragment {
                 count ++;
 
                 if(count == 1){
-
                     String conoceCurp = sharedPreferences.getStringData("ConoceCurp");
-                    if(!conoceCurp.equals("")){
-                        if(conoceCurp.equals("Si")){
-
-                            cp.setVisibility(View.VISIBLE);
-
-                        }else{
-                            cp.setVisibility(View.GONE);
-
-                        }
-                    }else{
+                    if(conoceCurp.equals("")){
                         count --;
                         Toast.makeText(getActivity(),"Selecciona una opción antes de continuar",Toast.LENGTH_SHORT).show();
+                    }else{
+
                     }
+
+
 
 
                 }else if(count == 2){
@@ -284,6 +278,7 @@ public class QuestionDomFragment extends Fragment {
             }
         });
 
+
         radioVisita.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
 
             @Override
@@ -312,8 +307,12 @@ public class QuestionDomFragment extends Fragment {
                 // TODO Auto-generated method stub
                 if (checkedId == R.id.si){
                     sharedPreferences.setStringData("ConoceCurp","Si");
+                    cp.setVisibility(View.VISIBLE);
+
                 }else if (checkedId == R.id.no){
                     sharedPreferences.setStringData("ConoceCurp","No");
+                    cp.setVisibility(View.GONE);
+
                 }
             }
 
