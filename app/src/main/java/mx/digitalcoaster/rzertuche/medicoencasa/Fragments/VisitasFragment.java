@@ -64,8 +64,11 @@ public class VisitasFragment extends Fragment {
     SharedPreferences sharedPreferences;
     public static String nombrePatient;
     public static String numeroVisita;
+    public static String curpPatient;
+
     private TextView nombre, diagnostico, tratamiento,expediente;
     ImageView status;
+    ImageButton datosGenerales, historiaClinica;
 
 
 
@@ -83,6 +86,7 @@ public class VisitasFragment extends Fragment {
         sharedPreferences = SharedPreferences.getInstance();
         nombrePatient = sharedPreferences.getStringData("nameSeguimiento");
         numeroVisita = sharedPreferences.getStringData("numero_visita");
+        curpPatient = sharedPreferences.getStringData("curpSeguimiento");
 
         status = (ImageView) getActivity().findViewById(R.id.status);
         nombre = (TextView) getActivity().findViewById(R.id.tvNombreItem);
@@ -90,6 +94,8 @@ public class VisitasFragment extends Fragment {
         tratamiento = (TextView) getActivity().findViewById(R.id.textViewTratamiento);
         expediente = (TextView) getActivity().findViewById(R.id.expediente);
 
+        datosGenerales = (ImageButton) getActivity().findViewById(R.id.datos_generales);
+        historiaClinica = (ImageButton) getActivity().findViewById(R.id.historia_clinica);
 
         lista = (GridView) getActivity().findViewById(R.id.gridview);
         items = new ArrayList<>();
@@ -99,7 +105,6 @@ public class VisitasFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> arg0, View v, int position, long arg3) {
                 ItemVisita selectedUser = items.get(position);
-
                 String numero_visita = selectedUser.getNumero_visita();
                 viewAlertDialog(numero_visita);
 
@@ -133,6 +138,26 @@ public class VisitasFragment extends Fragment {
             public void onClick(View view) {
                 isSeguimiento = true;
                 ((MainActivity)getActivity()).questionExploracion();
+            }
+        });
+
+        datosGenerales.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                viewAlertDialogDatos();
+
+
+            }
+        });
+
+        historiaClinica.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+               viewAlertDialogHistoria();
+
+
             }
         });
 
@@ -215,8 +240,6 @@ public class VisitasFragment extends Fragment {
     }
 
 
-
-
     private void viewAlertDialog(String numeroVisita) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -268,4 +291,127 @@ public class VisitasFragment extends Fragment {
         builder.setView(view);
         builder.show();
     }
+
+
+    private void viewAlertDialogDatos() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setCancelable(false);
+        final LayoutInflater inflater = getActivity().getLayoutInflater();
+        View view = inflater.inflate(R.layout.alert_datos_generales, null);
+
+        db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, android.content.Context.MODE_PRIVATE, null);
+        //-------------------------- Obtener información del cliente ---------------------
+        try {
+            c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR + " WHERE " +
+                    DataBaseDB.PACIENTES_SINCRONIZAR_NOMBRE + " ='"+nombrePatient+"' AND "+
+                    DataBaseDB.PACIENTES_SINCRONIZAR_CURP+ " = '"+curpPatient+"'", null);
+
+
+            if (c.moveToFirst()) {
+
+                ((TextView) view.findViewById(R.id.textViewCURP)).setText(c.getString(2));
+                ((TextView) view.findViewById(R.id.textViewNombre)).setText(c.getString(1));
+                ((TextView) view.findViewById(R.id.textViewApellidoP)).setText(c.getString(4));
+                ((TextView) view.findViewById(R.id.textViewApellidoM)).setText(c.getString(5));
+                ((TextView) view.findViewById(R.id.textViewEdad)).setText(c.getString(24));
+                ((TextView) view.findViewById(R.id.textViewFechaNac)).setText(c.getString(6));
+                ((TextView) view.findViewById(R.id.textViewEstadoNac)).setText(c.getString(7));
+                ((TextView) view.findViewById(R.id.textViewSexo)).setText(c.getString(8));
+                ((TextView) view.findViewById(R.id.textViewNacOrigen)).setText(c.getString(9));
+
+                //Domiciliarios
+                ((TextView) view.findViewById(R.id.textViewCP)).setText(c.getString(21));
+                ((TextView) view.findViewById(R.id.textViewEstado)).setText(c.getString(10));
+                ((TextView) view.findViewById(R.id.textViewMunicipio)).setText(c.getString(11));
+                ((TextView) view.findViewById(R.id.textViewLocalidad)).setText(c.getString(12));
+                ((TextView) view.findViewById(R.id.textViewEstadoCivil)).setText(c.getString(13));
+                ((TextView) view.findViewById(R.id.textViewOcupacion)).setText(c.getString(14));
+                ((TextView) view.findViewById(R.id.textViewTelefonoFijo)).setText(c.getString(17));
+                ((TextView) view.findViewById(R.id.textViewTelefonoCel)).setText(c.getString(18));
+                ((TextView) view.findViewById(R.id.textViewEmail)).setText(c.getString(19));
+
+
+            } else {
+                System.out.println("No existe información del cliente");
+            }
+            c.close();
+        } catch (Exception ex) {
+            System.out.println("Exception: " + ex);
+        }
+
+
+
+        builder.setPositiveButton("ACEPTAR", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+            }
+        });
+        builder.setView(view);
+        builder.show();
+    }
+
+
+    private void viewAlertDialogHistoria() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setCancelable(false);
+        final LayoutInflater inflater = getActivity().getLayoutInflater();
+        View view = inflater.inflate(R.layout.alert_historia_clinica, null);
+
+        db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, android.content.Context.MODE_PRIVATE, null);
+        //-------------------------- Obtener información del cliente ---------------------
+        try {
+            c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR + " WHERE " +
+                    DataBaseDB.PACIENTES_SINCRONIZAR_NOMBRE + " ='"+nombrePatient+"' AND "+
+                    DataBaseDB.PACIENTES_SINCRONIZAR_CURP+ " = '"+curpPatient+"'", null);
+
+
+            if (c.moveToFirst()) {
+
+                ((TextView) view.findViewById(R.id.textViewCURP)).setText(c.getString(2));
+                ((TextView) view.findViewById(R.id.textViewNombre)).setText(c.getString(1));
+                ((TextView) view.findViewById(R.id.textViewApellidoP)).setText(c.getString(4));
+                ((TextView) view.findViewById(R.id.textViewApellidoM)).setText(c.getString(5));
+                ((TextView) view.findViewById(R.id.textViewEdad)).setText(c.getString(24));
+                ((TextView) view.findViewById(R.id.textViewFechaNac)).setText(c.getString(6));
+                ((TextView) view.findViewById(R.id.textViewEstadoNac)).setText(c.getString(7));
+                ((TextView) view.findViewById(R.id.textViewSexo)).setText(c.getString(8));
+                ((TextView) view.findViewById(R.id.textViewNacOrigen)).setText(c.getString(9));
+
+                //Domiciliarios
+                ((TextView) view.findViewById(R.id.textViewCP)).setText(c.getString(21));
+                ((TextView) view.findViewById(R.id.textViewEstado)).setText(c.getString(10));
+                ((TextView) view.findViewById(R.id.textViewMunicipio)).setText(c.getString(11));
+                ((TextView) view.findViewById(R.id.textViewLocalidad)).setText(c.getString(12));
+                ((TextView) view.findViewById(R.id.textViewEstadoCivil)).setText(c.getString(13));
+                ((TextView) view.findViewById(R.id.textViewOcupacion)).setText(c.getString(14));
+                ((TextView) view.findViewById(R.id.textViewTelefonoFijo)).setText(c.getString(17));
+                ((TextView) view.findViewById(R.id.textViewTelefonoCel)).setText(c.getString(18));
+                ((TextView) view.findViewById(R.id.textViewEmail)).setText(c.getString(19));
+
+
+            } else {
+                System.out.println("No existe información del cliente");
+            }
+            c.close();
+        } catch (Exception ex) {
+            System.out.println("Exception: " + ex);
+        }
+
+
+
+        builder.setPositiveButton("ACEPTAR", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+            }
+        });
+        builder.setView(view);
+        builder.show();
+    }
+
+
+
+
+
 }

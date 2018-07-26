@@ -373,6 +373,8 @@ public class DatosGeneralesFragment extends Fragment {
                         values.put(DataBaseDB.PACIENTES_SINCRONIZAR_TEL_FIJO, sharedPreferences.getStringData("TelFijo"));
                         values.put(DataBaseDB.PACIENTES_SINCRONIZAR_CEL, sharedPreferences.getStringData("TelCel"));
                         values.put(DataBaseDB.PACIENTES_SINCRONIZAR_EMAIL, sharedPreferences.getStringData("Email"));
+                        values.put(DataBaseDB.PACIENTES_SINCRONIZAR_EDAD, sharedPreferences.getStringData("Edad"));
+
 
 
                         db.insert(DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR, null, values);
@@ -402,6 +404,7 @@ public class DatosGeneralesFragment extends Fragment {
                         values.put(DataBaseDB.PACIENTES_SINCRONIZAR_TEL_FIJO, sharedPreferences.getStringData("TelFijo"));
                         values.put(DataBaseDB.PACIENTES_SINCRONIZAR_CEL, sharedPreferences.getStringData("TelCel"));
                         values.put(DataBaseDB.PACIENTES_SINCRONIZAR_EMAIL, sharedPreferences.getStringData("Email"));
+                        values.put(DataBaseDB.PACIENTES_SINCRONIZAR_EDAD, sharedPreferences.getStringData("Edad"));
 
 
                         db.insert(DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR, null, values);
@@ -430,13 +433,6 @@ public class DatosGeneralesFragment extends Fragment {
 
     }
 
-
-    public void blockListeners(){
-        inicio.setEnabled(false);
-        registros.setEnabled(false);
-        seguimiento.setEnabled(false);
-        sincronizacion.setEnabled(false);
-    }
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

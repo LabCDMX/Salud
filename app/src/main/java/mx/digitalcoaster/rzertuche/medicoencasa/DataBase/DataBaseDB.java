@@ -5,11 +5,17 @@ public class DataBaseDB {
     /*-------------------------------- Datos de la base de datos ---------------------------------*/
     public static final String DB_NAME = "database_medicoentucasa";    // Nombre de la base de datos
 
+    //SE BORRAN
     public static final String TABLE_NAME_PACIENTES = "table_name_pacientes";
-    public static final String TABLE_NAME_PACIENTES_SINCRONIZAR = "table_name_pacientes_sincronizar";
-    public static final String TABLE_NAME_PACIENTES_VISITAS = "table_name_pacientes_visitas";
     public static final String TABLE_NAME_PACIENTES_SIN_EXPEDIENTE = "table_name_pacientes_expediente";
+
+    //NO SE BORRAN
+    public static final String TABLE_NAME_PACIENTES_VISITAS = "table_name_pacientes_visitas";
+    public static final String TABLE_NAME_PACIENTES_SINCRONIZAR = "table_name_pacientes_sincronizar";
+    public static final String TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC = "table_name_pacientes_sincronizar_historic";
     public static final String TABLE_NAME_PACIENTES_SEGUIMIENTO = "table_name_pacientes_seguimiento";
+
+    //DEPENDIENDO SI ES REQUERIDO POR CLIENTE
     public static final String TABLE_NAME_CODIGOS_POSTALES = "table_name_codigos_postales";
 
 
@@ -47,7 +53,6 @@ public class DataBaseDB {
     public static final String PACIENTES_CODIGO = "pacientes_codigo";
     public static final String PACIENTES_TIEMPO_ENCUESTA = "pacientes_tiempo_encuesta";
 
-
     public static final String PACIENTES_SINCRONIZAR_NOMBRE = "pacientes_sincronizar_nombre";
     public static final String PACIENTES_SINCRONIZAR_CURP = "pacientes_sincronizar_curp";
     public static final String PACIENTES_SINCRONIZAR_CALLE = "pacientes_sincronizar_calle";
@@ -71,13 +76,7 @@ public class DataBaseDB {
     public static final String PACIENTES_SINCRONIZAR_POBLACION = "pacientes_sincronizar_poblacion";
     public static final String PACIENTES_SINCRONIZAR_CODIGO = "pacientes_sincronizar_codigo";
     public static final String PACIENTES_SINCRONIZAR_TIEMPO_ENCUESTA = "pacientes_sincronizar_tiempo_encuesta";
-
-
-
-
-
-
-
+    public static final String PACIENTES_SINCRONIZAR_EDAD = "pacientes_sincronizar_edad";
 
     //EXPEDIENTE, HISTORIA CLINICA, SIGUIENTE VISITA
     public static final String PACIENTES_EXPEDIENTE_NOMBRE = "pacientes_expediente_nombre";
@@ -133,9 +132,6 @@ public class DataBaseDB {
     public static final String PACIENTES_IMPRESION_DIAGNOSTICA = "pacientes_impresion_diagnostica";
     public static final String PACIENTES_TRATAMIENTO = "pacientes_tratamiento";
 
-
-
-
     public static final String PACIENTES_VISITA_NOMBRE = "pacientes_visita_nombre";
     public static final String PACIENTES_VISITA_CURP = "pacientes_visita_curp";
     public static final String PACIENTES_VISITA_DIRECCION = "pacientes_visita_direccion";
@@ -185,7 +181,6 @@ public class DataBaseDB {
     public static final String PACIENTES_VISITA_ELABORO = "pacientes_visita_elaboro";
     public static final String PACIENTES_VISITA_SIGUIENTE_VISITA = "pacientes_visita_siguiente_visita";
 
-
     public static final String PACIENTES_VISITA_SEGUIMIENTO_NOMBRE = "pacientes_visita_seguimiento_nombre";
     public static final String PACIENTES_VISITA_SEGUIMIENTO_CURP = "pacientes_visita_seguimiento_curp";
     public static final String PACIENTES_VISITA_SEGUIMIENTO_DIAGNOSTICO = "pacientes_visita_seguimiento_diagnostico";
@@ -210,6 +205,58 @@ public class DataBaseDB {
     public static final String PACIENTES_VISITA_SEGUIMIENTO_GLUCEMIA = "pacientes_visita_seguimiento_glucemia";
     public static final String PACIENTES_VISITA_SEGUIMIENTO_TEMPERATURA = "pacientes_visita_seguimiento_temperatura";
 
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_NOMBRE = "pacientes_sincronizar_historic_nombre";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_CURP = "pacientes_sincronizar_historic_curp";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_STATUS = "pacientes_sincronizar_historicstatus";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_EXPEDIENTE = "pacientes_sincronizar_historic_expediente";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_ELABORO = "pacientes_sincronizar_historic_elaboro";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_SIGUIENTE_VISITA = "pacientes_sincronizar_historic_siguiente_visita";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_HEMOTIPO = "pacientes_sincronizar_historic_hemotipo";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_PESO = "pacientes_sincronizar_historic_peso";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_ESTATURA = "pacientes_sincronizar_historic_estatura";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_TENSION = "pacientes_sincronizar_historic_tension";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_CARDIACA = "pacientes_sincronizar_historic_cardiaca";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_RESPIRATORIA = "pacientes_sincronizar_historic_respiratoria";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_TALLA = "pacientes_sincronizar_historic_talla";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_PULSO = "pacientes_sincronizar_historic_pulso";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_GLUCEMIA = "pacientes_sincronizar_historic_glucemia";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_TEMPERATURA = "pacientes_sincronizar_historic_temperatura";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_ANTECEDENTES_HDA = "pacientes_sincronizar_historic_antecedentes_hda";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_ANTECEDENTES_CARDIO = "pacientes_sincronizar_historic_andecedentes_cardio";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_ANTECEDENTES_DIABETES = "pacientes_sincronizar_historic_antecedentes_diabetes";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_ANTECEDENTES_DISLEP = "pacientes_sincronizar_historic_antecedentes_dislep";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_ANTECEDENTES_OBESIDAD = "pacientes_sincronizar_historic_antecedentes_obesidad";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_ANTECEDENTES_CEREBRO = "pacientes_sincronizar_historic_antecedentes_cerebro";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_PADECIMIENTOS_ACTUALES = "pacientes_sincronizar_historic_padecimientos_actuales";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_PERSONALES_PATOLOGICOS = "pacientes_sincronizar_historic_personales_patologicos";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_PERSONALES_NO_PATOLOGICOS = "pacientes_sincronizar_historic_personales_no_patologicos";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_GINECOOBSTERICOS = "pacientes_sincronizar_historic_ginecoobstericos";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_ACTUALES = "pacientes_sincronizar_historic_actuales";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_GENERALES = "pacientes_sincronizar_historic_generales";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_RESPIRATORIO = "pacientes_sincronizar_historic_respiratorio";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_CARDIO = "pacientes_sincronizar_historic_cardio";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_DIGESTIVO = "pacientes_sincronizar_historic_digestivo";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_URINARIO = "pacientes_sincronizar_historic_urinario";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_REPRODUCTOR = "pacientes_sincronizar_historic_reproductor";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_HEMOLI = "pacientes_sincronizar_historic_hemoli";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_ENDOCRINO = "pacientes_sincronizar_historic_endocrino";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_NERVIOSO = "pacientes_sincronizar_historic_nervioso";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_ESQUELETICO = "pacientes_sincronizar_historic_esqueletico";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_PIEL = "pacientes_sincronizar_historic_piel";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_HABITUS = "pacientes_sincronizar_historic_habitus";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_CABEZA = "pacientes_sincronizar_historic_cabeza";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_CUELLO = "pacientes_sincronizar_historic_cuello";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_ABDOMEN = "pacientes_sincronizar_historic_abdomen";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_GINECOLOGICA = "pacientes_sincronizar_historic_ginecologica";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_EXTREMIDADES = "pacientes_sincronizar_historic_extremidades";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_COLUMNA = "pacientes_sincronizar_historic_columna";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_NEUROLOGICA = "pacientes_sincronizar_historic_neurologica";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_GENITALES = "pacientes_sincronizar_historic_genitales";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_NOTAS_ENFERMERIA = "pacientes_sincronizar_historic_notas_enfermeria";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_NOTAS_DOC = "pacientes_sincronizar_historic_notas_doc";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_PLANES = "pacientes_sincronizar_historic_planes";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_DIAGNOSTICO = "pacientes_sincronizar_historic_diagnostico";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_TRATAMIENTO = "pacientes_sincronizar_historic_tratamiento";
 
 
 }

@@ -67,7 +67,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 DataBaseDB.PACIENTES_SINCRONIZAR_CREATED_BY + " TEXT, " +
                 DataBaseDB.PACIENTES_SINCRONIZAR_CODIGO + " TEXT, " +
                 DataBaseDB.PACIENTES_SINCRONIZAR_POBLACION + " TEXT, " +
-                DataBaseDB.PACIENTES_SINCRONIZAR_TIEMPO_ENCUESTA + " TEXT); "
+                DataBaseDB.PACIENTES_SINCRONIZAR_TIEMPO_ENCUESTA + " TEXT, " +
+                DataBaseDB.PACIENTES_SINCRONIZAR_EDAD + " TEXT); "
         );
         System.out.println(DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR + " Creada");
 

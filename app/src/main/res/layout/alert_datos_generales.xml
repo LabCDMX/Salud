@@ -1,0 +1,638 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="600dp"
+    android:background="#ffffff"
+    android:orientation="horizontal">
+
+
+    <TextView
+        android:id="@+id/textViewDatosGenerales"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:textSize="30dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/hoja_control_generales"/>
+
+
+    <ScrollView
+        android:id="@+id/cuerpo"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_below="@+id/textViewDatosGenerales"
+        android:layout_marginLeft="50dp">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+
+            <TextView
+                android:id="@+id/textViewPersonales"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="10dp"
+                android:textSize="30sp"
+                android:text="Personales"/>
+
+            <View
+                android:id="@+id/divider"
+                android:layout_below="@id/textViewPersonales"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
+                android:background="#E91A8D" />
+
+            //CURP
+
+            <TextView
+                android:id="@+id/tv_CURP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textSize="20sp"
+                android:layout_below="@+id/divider"
+                android:text="CURP:"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/textViewCURP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:inputType="textCapCharacters"
+                android:textSize="20sp"
+                android:layout_marginLeft="75dp"
+                android:text="CURP"
+                android:layout_below="@+id/divider"
+                android:background="#00000000"
+                android:textColor="@android:color/black"/>
+
+
+            //NOMBRE
+
+            <TextView
+                android:id="@+id/tvNombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="20sp"
+                android:layout_below="@+id/tv_CURP"
+                android:text="Nombre:"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/textViewNombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:inputType="textCapCharacters"
+                android:textSize="20sp"
+                android:layout_marginLeft="100dp"
+                android:text="Nombre"
+                android:layout_below="@+id/textViewCURP"
+                android:background="#00000000"
+                android:textColor="@android:color/black"/>
+
+
+            //APELLIDO
+
+
+            <TextView
+                android:id="@+id/tvApellidoP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewNombre"
+                android:textSize="20sp"
+                android:text="Apellido Paterno:"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/textViewApellidoP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewNombre"
+                android:textSize="20sp"
+                android:text="Apellido Paterno"
+                android:layout_marginTop="10dp"
+                android:inputType="textCapCharacters"
+                android:background="#00000000"
+                android:layout_marginLeft="10dp"
+                android:textColor="@android:color/black"
+                android:layout_toRightOf="@+id/tvApellidoP"
+                android:layout_toEndOf="@+id/tvApellidoP" />
+
+
+            <TextView
+                android:id="@+id/tvApellidoM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewApellidoP"
+                android:textSize="20sp"
+                android:text="Apellido Materno:"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/textViewApellidoM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewApellidoP"
+                android:textSize="20sp"
+                android:inputType="textCapCharacters"
+                android:text="Apellido Materno"
+                android:layout_marginTop="10dp"
+                android:background="#00000000"
+                android:textColor="@android:color/black"
+                android:layout_toRightOf="@+id/tvApellidoM"
+                android:layout_toEndOf="@+id/tvApellidoM"
+                android:layout_marginLeft="10dp" />
+
+
+            <TextView
+                android:id="@+id/tvEdad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewApellidoM"
+                android:textSize="20sp"
+                android:text="Edad:"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/textViewEdad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewApellidoM"
+                android:textSize="20sp"
+                android:inputType="textCapCharacters"
+                android:text="Edad"
+                android:layout_marginTop="10dp"
+                android:background="#00000000"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="70dp" />
+
+
+
+            <TextView
+                android:id="@+id/fechaNac"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvEdad"
+                android:textSize="20sp"
+                android:text="Fecha de Nacimiento:"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/textViewFechaNac"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewEdad"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"
+                android:inputType="textCapCharacters"
+                android:text="Fecha de Nacimiento"
+                android:background="#00000000"
+                android:textColor="@android:color/black"
+                android:layout_toRightOf="@+id/tvApellidoM"
+                android:layout_toEndOf="@+id/tvApellidoM"
+                android:layout_marginLeft="40dp"
+                />
+
+            //ESTADO DE NACIMIENTO
+
+
+
+
+            <TextView
+                android:id="@+id/estadoNac"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/fechaNac"
+                android:textSize="20sp"
+                android:text="Estado de Nacimiento:"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/textViewEstadoNac"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewFechaNac"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"
+                android:inputType="textCapCharacters"
+                android:text="Estado de Nacimiento"
+                android:background="#00000000"
+                android:textColor="@android:color/black"
+                android:layout_toRightOf="@+id/tvApellidoM"
+                android:layout_toEndOf="@+id/tvApellidoM"
+                android:layout_marginLeft="50dp"
+                />
+
+            //SEXO
+
+            <TextView
+                android:id="@+id/sexo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/estadoNac"
+                android:textSize="20sp"
+                android:text="Sexo:"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/textViewSexo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewEstadoNac"
+                android:textSize="20sp"
+                android:inputType="textCapCharacters"
+                android:text="Sexo"
+                android:layout_marginTop="10dp"
+                android:background="#00000000"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="70dp"
+                />
+
+
+
+            //NACIONALIDAD DE ORIGEN
+
+
+            <TextView
+                android:id="@+id/nacOrigen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/sexo"
+                android:textSize="20sp"
+                android:text="Nacionalidad de origen:"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/textViewNacOrigen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewSexo"
+                android:textSize="20sp"
+                android:inputType="textCapCharacters"
+                android:text="Nacionalidad de origen"
+                android:background="#00000000"
+                android:layout_marginTop="10dp"
+                android:textColor="@android:color/black"
+                android:layout_toRightOf="@+id/tvApellidoM"
+                android:layout_toEndOf="@+id/tvApellidoM"
+                android:layout_marginLeft="60dp"
+                />
+
+
+            <TextView
+                android:id="@+id/tvDomiciliarios"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/nacOrigen"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:textSize="30sp"
+                android:text="Domiciliarios"/>
+
+            <View
+                android:id="@+id/divider2"
+                android:layout_below="@id/tvDomiciliarios"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
+                android:background="#E91A8D" />
+
+            //CP
+
+            <TextView
+                android:id="@+id/tvCP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/divider2"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="Codigo Postal:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/textViewCP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/divider2"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="codigo postal"
+                android:inputType="textCapCharacters"
+                android:background="#00000000"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="150dp" />
+
+            //Estado
+            <TextView
+                android:id="@+id/tvEstado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvCP"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="Estado:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/textViewEstado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvCP"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:text="Estado"
+                android:inputType="textCapCharacters"
+                android:background="#00000000"
+                android:textColor="@android:color/black"
+                android:layout_toRightOf="@+id/tvEstado"
+                android:layout_toEndOf="@+id/tvEstado"
+                android:layout_marginLeft="10dp" />
+
+
+            <TextView
+                android:id="@+id/tvMunicipio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewEstado"
+                android:textSize="20sp"
+                android:text="Municipio:"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/textViewMunicipio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewEstado"
+                android:textSize="20sp"
+                android:text="Municipio"
+                android:layout_marginTop="10dp"
+                android:background="#00000000"
+                android:inputType="textCapCharacters"
+                android:textColor="@android:color/black"
+                android:layout_toRightOf="@+id/tvMunicipio"
+                android:layout_toEndOf="@+id/tvMunicipio"
+                android:layout_marginLeft="10dp"/>
+
+
+            <TextView
+                android:id="@+id/tvLocalidad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewMunicipio"
+                android:textSize="20sp"
+                android:text="Localidad:"
+                android:layout_marginTop="10dp"
+
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/textViewLocalidad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewMunicipio"
+                android:textSize="20sp"
+                android:text="Localidad"
+                android:inputType="textCapCharacters"
+                android:background="#00000000"
+                android:layout_marginTop="10dp"
+                android:textColor="@android:color/black"
+                android:layout_toRightOf="@+id/tvMunicipio"
+                android:layout_toEndOf="@+id/tvMunicipio"
+                android:layout_marginLeft="10dp"/>
+
+
+
+            //ESTADO CIVIL
+
+
+            <TextView
+                android:id="@+id/tvEstadoCivil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvLocalidad"
+                android:textSize="20sp"
+                android:text="Estado civil:"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/textViewEstadoCivil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewLocalidad"
+                android:textSize="20sp"
+                android:text="Estado civil"
+                android:layout_marginTop="10dp"
+                android:inputType="textCapCharacters"
+                android:background="#00000000"
+                android:textColor="@android:color/black"
+                android:layout_toRightOf="@+id/tvMunicipio"
+                android:layout_toEndOf="@+id/tvMunicipio"
+                android:layout_marginLeft="20dp"/>
+
+
+            //OCUPACION
+
+
+            <TextView
+                android:id="@+id/tvOcupacion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvEstadoCivil"
+                android:textSize="20sp"
+                android:text="Ocupación:"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/textViewOcupacion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewEstadoCivil"
+                android:textSize="20sp"
+                android:text="Ocupacion"
+                android:layout_marginTop="10dp"
+                android:inputType="textCapCharacters"
+                android:background="#00000000"
+                android:textColor="@android:color/black"
+                android:layout_toRightOf="@+id/tvMunicipio"
+                android:layout_toEndOf="@+id/tvMunicipio"
+                android:layout_marginLeft="15dp"/>
+
+
+            //TELEFONO FIJO
+
+
+            <TextView
+                android:id="@+id/tvTelFijo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvOcupacion"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"
+                android:text="Telefono Fijo:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/textViewTelefonoFijo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewOcupacion"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"
+                android:text="Telefono Fijo"
+                android:inputType="textCapCharacters"
+                android:background="#00000000"
+                android:textColor="@android:color/black"
+                android:layout_toRightOf="@+id/tvMunicipio"
+                android:layout_toEndOf="@+id/tvMunicipio"
+                android:layout_marginLeft="40dp"/>
+
+
+            //TELEFONO CELULAR
+
+            <TextView
+                android:id="@+id/tvTelCel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvTelFijo"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"
+                android:text="Telefono Celular:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/textViewTelefonoCel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewTelefonoFijo"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"
+                android:text="Telefono Fijo"
+                android:inputType="textCapCharacters"
+                android:background="#00000000"
+                android:textColor="@android:color/black"
+                android:layout_toRightOf="@+id/tvMunicipio"
+                android:layout_toEndOf="@+id/tvMunicipio"
+                android:layout_marginLeft="70dp"/>
+
+                //EMAIL
+
+            <TextView
+                android:id="@+id/tvEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvTelCel"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"
+                android:text="Email:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/textViewEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewTelefonoCel"
+                android:textSize="20sp"
+                android:text="Email"
+                android:layout_marginTop="10dp"
+                android:inputType="textCapCharacters"
+                android:background="#00000000"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="70dp"/>
+
+
+            <View
+                android:id="@+id/divider3"
+                android:layout_below="@id/textViewEmail"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="8dp"
+                android:background="#E91A8D" />
+
+
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+
+
+</RelativeLayout>
+
