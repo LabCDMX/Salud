@@ -421,20 +421,118 @@ public class TarjetaPacienteFragment extends Fragment {
 
 
         db.close();
+
+
+        //TABLA ESPEJO PARA GUARDAR LA PRIMER HISTORIA CLINICA
+        // SUPER MEGA IMPORTANTEEEEEEEEE.......!!!!
+        
+
+        db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE ,null);
+
+        /*------------------------- Revisar si existe ------------------------*/
+        c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC, null);
+        try {
+            if(c.moveToFirst()) {
+
+                ContentValues values = new ContentValues();
+
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_NOMBRE,sharedPreferences.getStringData("nameHistoric"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_CURP, sharedPreferences.getStringData("curpHistoric"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_STATUS, sharedPreferences.getStringData("ImageItem"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_DIAGNOSTICO, sharedPreferences.getStringData("DiagnosticoGeneral"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_TRATAMIENTO, sharedPreferences.getStringData("TratamientoGeneral"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_SIGUIENTE_VISITA, fechaActual);
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_ELABORO, nombreDoctor);
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_RESPIRATORIO, sharedPreferences.getStringData("Respiratorio"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_CARDIO, sharedPreferences.getStringData("Cardio"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_DIGESTIVO, sharedPreferences.getStringData("Digestivo"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_URINARIO, sharedPreferences.getStringData("Urinario"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_REPRODUCTOR, sharedPreferences.getStringData("Reproductor"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_HEMOLI, sharedPreferences.getStringData("Hemo"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_ENDOCRINO, sharedPreferences.getStringData("Endocrino"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_NERVIOSO, sharedPreferences.getStringData("Nervioso"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_PIEL, sharedPreferences.getStringData("Piel"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_HABITUS, sharedPreferences.getStringData("Habitus"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_CABEZA, sharedPreferences.getStringData("Cabeza"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_CUELLO, sharedPreferences.getStringData("Cuello"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_PESO, sharedPreferences.getStringData("Peso"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_ESTATURA, sharedPreferences.getStringData("Estatura"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_HEMOTIPO, sharedPreferences.getStringData("Hemotipo"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_TALLA, sharedPreferences.getStringData("Talla"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_PULSO, sharedPreferences.getStringData("Pulso"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_ANTECEDENTES_CARDIO, sharedPreferences.getStringData("cadenaCardio"+name));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_ANTECEDENTES_HDA, sharedPreferences.getStringData("cadenaHTA"+name));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_PERSONALES_PATOLOGICOS, sharedPreferences.getStringData("cadenaPersonales"+name));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_ANTECEDENTES_OBESIDAD, sharedPreferences.getStringData("cadenaObe"+name));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_ANTECEDENTES_DIABETES, sharedPreferences.getStringData("cadenaDiabetes"+name));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_ANTECEDENTES_DISLEP, sharedPreferences.getStringData("cadenaDis"+name));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_ANTECEDENTES_CEREBRO, sharedPreferences.getStringData("cadenaEnf"+name));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_NOTAS_DOC, sharedPreferences.getStringData("SubjetivoNotas"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_NOTAS_ENFERMERIA, sharedPreferences.getStringData("NotasEnfermeria"));
+
+
+
+
+                db.insert(DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC, null, values);
+                System.out.println("Visita  insertada correctamente");
+            }
+            else {
+
+                ContentValues values = new ContentValues();
+
+
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_NOMBRE,sharedPreferences.getStringData("nameHistoric"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_CURP, sharedPreferences.getStringData("curpHistoric"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_STATUS, sharedPreferences.getStringData("ImageItem"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_DIAGNOSTICO, sharedPreferences.getStringData("DiagnosticoGeneral"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_TRATAMIENTO, sharedPreferences.getStringData("TratamientoGeneral"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_SIGUIENTE_VISITA, fechaActual);
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_ELABORO, nombreDoctor);
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_RESPIRATORIO, sharedPreferences.getStringData("Respiratorio"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_CARDIO, sharedPreferences.getStringData("Cardio"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_DIGESTIVO, sharedPreferences.getStringData("Digestivo"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_URINARIO, sharedPreferences.getStringData("Urinario"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_REPRODUCTOR, sharedPreferences.getStringData("Reproductor"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_HEMOLI, sharedPreferences.getStringData("Hemo"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_ENDOCRINO, sharedPreferences.getStringData("Endocrino"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_NERVIOSO, sharedPreferences.getStringData("Nervioso"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_PIEL, sharedPreferences.getStringData("Piel"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_HABITUS, sharedPreferences.getStringData("Habitus"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_CABEZA, sharedPreferences.getStringData("Cabeza"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_CUELLO, sharedPreferences.getStringData("Cuello"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_PESO, sharedPreferences.getStringData("Peso"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_ESTATURA, sharedPreferences.getStringData("Estatura"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_HEMOTIPO, sharedPreferences.getStringData("Hemotipo"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_TALLA, sharedPreferences.getStringData("Talla"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_PULSO, sharedPreferences.getStringData("Pulso"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_ANTECEDENTES_CARDIO, sharedPreferences.getStringData("cadenaCardio"+name));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_ANTECEDENTES_HDA, sharedPreferences.getStringData("cadenaHTA"+name));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_PERSONALES_PATOLOGICOS, sharedPreferences.getStringData("cadenaPersonales"+name));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_ANTECEDENTES_OBESIDAD, sharedPreferences.getStringData("cadenaObe"+name));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_ANTECEDENTES_DIABETES, sharedPreferences.getStringData("cadenaDiabetes"+name));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_ANTECEDENTES_DISLEP, sharedPreferences.getStringData("cadenaDis"+name));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_ANTECEDENTES_CEREBRO, sharedPreferences.getStringData("cadenaEnf"+name));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_NOTAS_DOC, sharedPreferences.getStringData("SubjetivoNotas"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_NOTAS_ENFERMERIA, sharedPreferences.getStringData("NotasEnfermeria"));
+
+
+
+
+                db.insert(DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC, null, values);
+                System.out.println("Sin expediente insertado correctamente");
+
+            }
+            c.close();
+        } catch (SQLException ex) {
+            System.out.println("Error al insertar productos: " + ex);
+        }
+
+        db.close();
     }
 
 
     private void deleteUserSinExpediente(String CURP,String name){
 
-        /* Date myDate = new Date();
-        System.out.println(myDate);
-        System.out.println(new SimpleDateFormat("yyyy-MM-dd").format(myDate));
-
-        String siguienteVisita = textViewFecha.getText().toString();
-        String fechaActual = siguienteVisita;
-
-        String nombreDoctor = textViewPeso.getText().toString();
-        */
         Date myDate = new Date();
         System.out.println(myDate);
         System.out.println(new SimpleDateFormat("yyyy-MM-dd").format(myDate));
@@ -559,9 +657,8 @@ public class TarjetaPacienteFragment extends Fragment {
             System.out.println("Error al insertar productos: " + ex);
         }
 
-
-
         db.close();
+
     }
 
 
