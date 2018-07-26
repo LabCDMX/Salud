@@ -100,6 +100,7 @@ public class VisitasFragment extends Fragment {
         lista = (GridView) getActivity().findViewById(R.id.gridview);
         items = new ArrayList<>();
         getProductos();
+        Log.e("SUPERMEGAVISITA",sharedPreferences.getStringData("numero_visita"));
         lista.setAdapter(new ItemVisitaAdapter(getActivity().getApplicationContext(), items));
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -180,7 +181,8 @@ public class VisitasFragment extends Fragment {
                     sharedPreferences.setStringData("Diagnostico",c.getString(2));
                     sharedPreferences.setStringData("Tratamiento",c.getString(3));
                     sharedPreferences.setStringData("Nombre",c.getString(1));
-                    //sharedPreferences.setStringData("ImageItem",c.getString(8));
+                    sharedPreferences.setStringData("Nombre",c.getString(1));
+                    sharedPreferences.setStringData("numero_visita",c.getString(6));
 
 
 

@@ -425,7 +425,7 @@ public class TarjetaPacienteFragment extends Fragment {
 
         //TABLA ESPEJO PARA GUARDAR LA PRIMER HISTORIA CLINICA
         // SUPER MEGA IMPORTANTEEEEEEEEE.......!!!!
-        
+
 
         db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE ,null);
 

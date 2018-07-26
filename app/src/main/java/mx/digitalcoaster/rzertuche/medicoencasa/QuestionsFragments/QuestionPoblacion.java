@@ -233,7 +233,6 @@ public class QuestionPoblacion extends Fragment {
         });
 
         radioVisita.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
-
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 // TODO Auto-generated method stub
