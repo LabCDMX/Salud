@@ -1,10 +1,13 @@
 package mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,6 +44,11 @@ public class NotasEnfermeria extends Fragment {
     EditText textArea_information, textArea_information2, textArea_information3, textArea_information4;
     ImageButton next;
 
+    private SQLiteDatabase db = null;   // Objeto para usar la base de datos local
+    private Cursor c = null;            // Objeto para hacer consultas a la base de datos
+
+
+
 
 
     @Override
@@ -74,6 +82,18 @@ public class NotasEnfermeria extends Fragment {
         if(isSinExp){
             String name = sharedPreferences.getStringData("nameItem");
             textArea_information.setText(sharedPreferences.getStringData("NotasEnfermeria"+name));
+        }
+
+        if(isSeguimiento){
+            String name = sharedPreferences.getStringData("nameSeguimiento");
+            String curpSeguimiento = sharedPreferences.getStringData("curpSeguimiento");
+            String numeroVisita = sharedPreferences.getStringData("numero_visita");
+
+            getNotas(name, curpSeguimiento,numeroVisita);
+
+            textArea_information.setText(sharedPreferences.getStringData("NotasEnfermeriaSegumiento"));
+
+
         }
 
 
@@ -134,6 +154,34 @@ public class NotasEnfermeria extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+
+    public void getNotas(String nombrePatient, String curpPatient, String numeroVisita){
+
+        db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE, null);
+        try {
+
+            c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SEGUIMIENTO + " WHERE " +
+                    DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NOMBRE + " ='"+nombrePatient+"' AND "+
+                    DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_CURP + " ='"+curpPatient+"' AND "+
+                    DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NUMERO+ " = '"+numeroVisita+"'", null);
+
+
+            if (c.moveToFirst()) {
+
+                sharedPreferences.setStringData("NotasEnfermeriaSegumiento",c.getString(9));
+
+            } else {
+                System.out.println("No existen PACIENTES");
+            }
+            c.close();
+        } catch (Exception ex) {
+            Log.e("Error", ex.toString());
+        } finally {
+            db.close();
+        }
+
     }
 
 }
