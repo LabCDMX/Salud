@@ -384,6 +384,17 @@
 
 
                     <ImageButton
+                        android:id="@+id/back"
+                        android:layout_width="140dp"
+                        android:layout_height="45dp"
+                        android:background="@android:color/transparent"
+                        android:padding="10dp"
+                        android:visibility="gone"
+                        android:scaleType="fitXY"
+                        app:srcCompat="@drawable/regresar" />
+
+
+                    <ImageButton
                         android:id="@+id/next"
                         android:layout_width="140dp"
                         android:layout_height="45dp"
@@ -392,6 +403,9 @@
                         android:padding="10dp"
                         android:scaleType="fitXY"
                         app:srcCompat="@drawable/siguiente" />
+
+
+
 
 
                 </LinearLayout>

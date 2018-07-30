@@ -148,6 +148,10 @@ public class QuestionDomFragment extends Fragment {
 
         sharedPreferences = SharedPreferences.getInstance();
 
+
+        final ImageButton back = (ImageButton) view.findViewById(R.id.back);
+
+
         ImageButton next = (ImageButton) view.findViewById(R.id.next);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -163,6 +167,8 @@ public class QuestionDomFragment extends Fragment {
                         count --;
                         Toast.makeText(getActivity(),"Selecciona una opción antes de continuar",Toast.LENGTH_SHORT).show();
                     }else{
+
+                        back.setVisibility(View.VISIBLE);
 
                     }
 
@@ -275,6 +281,20 @@ public class QuestionDomFragment extends Fragment {
 
 
 
+            }
+        });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                count --;
+
+                if(open2.getVisibility() == View.VISIBLE){
+
+                    open4.setVisibility(View.VISIBLE);
+                    open2.setVisibility(View.GONE);
+
+                }
             }
         });
 
