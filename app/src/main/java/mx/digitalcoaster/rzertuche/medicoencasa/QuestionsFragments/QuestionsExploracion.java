@@ -347,9 +347,10 @@ public class QuestionsExploracion extends Fragment {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 // TODO Auto-generated method stub
                 if (checkedId == R.id.tipoDesconocido){
-                    sharedPreferences.setStringData("Hemotipo","Tipo RH +");
                     radioSangre.clearCheck();
                     radioTipoSangre.clearCheck();
+
+                    sharedPreferences.setStringData("Hemotipo","Tipo RH +");
 
                 }
 

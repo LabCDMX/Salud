@@ -281,7 +281,6 @@ public class ContextoSocialFragment extends Fragment {
             public void onClick(View v) {
 
                 ((MainActivity)getActivity()).stopCronometro();
-                sharedPreferences.clearPreferences();
                 ((MainActivity)getActivity()).fragmentSucceded();
             }
         });

@@ -378,8 +378,6 @@ public class VisitasFragment extends Fragment {
                 ((TextView) view.findViewById(R.id.textViewObesidad)).setText(c.getString(21));
                 ((TextView) view.findViewById(R.id.textViewCerebroVas)).setText(c.getString(22));
                 ((TextView) view.findViewById(R.id.tvCerebro)).setText(c.getString(23));
-
-
                 //LA OTRA PARTE DEL MODAL
                 ((TextView) view.findViewById(R.id.textViewRespiratorio)).setText(c.getString(29));
                 ((TextView) view.findViewById(R.id.textViewCardio)).setText(c.getString(30));
