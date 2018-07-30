@@ -130,8 +130,9 @@ public class QuestionsFragmentTwo extends Fragment {
                 if(count == 1){
 
                     String sexo = sp.getSelectedItem().toString();
-                    sharedPreferences.setStringData("FechaNac",date.getText().toString());
                     sharedPreferences.setStringData("Sexo",sexo);
+                    sharedPreferences.setStringData("FechaNac",date.getText().toString());
+                    sharedPreferences.setStringData("Edad",edad.getText().toString());
 
                     open.setVisibility(View.GONE);
                     open1.setVisibility(View.VISIBLE);
@@ -144,41 +145,8 @@ public class QuestionsFragmentTwo extends Fragment {
 
                     ((MainActivity)getActivity()).questionDomTwo();
 
-
                 }
 
-
-                /*String sexo = sp.getSelectedItem().toString();
-
-
-                if(!date.getText().toString().equals("")){
-                    if(!sp.getSelectedItem().toString().equals("Selecciona uno")){
-                        if(!estadoNacimiento.getText().toString().isEmpty()){
-                            if(!sexo.isEmpty()){
-                                if(!nacionalidad.getText().toString().isEmpty()){
-
-                                    sharedPreferences.setStringData("FechaNac",date.getText().toString());
-                                    sharedPreferences.setStringData("EstadoNac",estadoNacimiento.getText().toString());
-                                    sharedPreferences.setStringData("Sexo",sexo);
-                                    sharedPreferences.setStringData("Nac",nacionalidad.getText().toString());
-
-                                    ((MainActivity)getActivity()).questionDomTwo();
-
-                                }else{
-                                    nacionalidad.setError("Campo requerido");
-                                }
-                            }else{
-                                Toast.makeText(getActivity(), "Selecciona los campos faltantes", Toast.LENGTH_LONG).show();
-                            }
-                        }else{
-                            estadoNacimiento.setError("Campo requerido");
-                        }
-                    }else{
-                        ((TextView)sp.getSelectedView()).setError("Selecciona uno para continuar");
-                    }
-                }else{
-                    date.setError("Campo requerido");
-                }*/
 
 
             }

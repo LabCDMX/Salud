@@ -69,6 +69,7 @@ public class QuestionsAntecedentesPersonales extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
+        sharedPreferences = SharedPreferences.getInstance();
 
 
 
@@ -174,7 +175,6 @@ public class QuestionsAntecedentesPersonales extends Fragment {
             }
         });
 
-        sharedPreferences = SharedPreferences.getInstance();
 
     }
 

@@ -374,6 +374,7 @@ public class DatosGeneralesFragment extends Fragment {
                         values.put(DataBaseDB.PACIENTES_SINCRONIZAR_CEL, sharedPreferences.getStringData("TelCel"));
                         values.put(DataBaseDB.PACIENTES_SINCRONIZAR_EMAIL, sharedPreferences.getStringData("Email"));
                         values.put(DataBaseDB.PACIENTES_SINCRONIZAR_EDAD, sharedPreferences.getStringData("Edad"));
+                        values.put(DataBaseDB.PACIENTES_SINCRONIZAR_CODIGO, sharedPreferences.getStringData("CP"));
 
 
 
@@ -405,6 +406,7 @@ public class DatosGeneralesFragment extends Fragment {
                         values.put(DataBaseDB.PACIENTES_SINCRONIZAR_CEL, sharedPreferences.getStringData("TelCel"));
                         values.put(DataBaseDB.PACIENTES_SINCRONIZAR_EMAIL, sharedPreferences.getStringData("Email"));
                         values.put(DataBaseDB.PACIENTES_SINCRONIZAR_EDAD, sharedPreferences.getStringData("Edad"));
+                        values.put(DataBaseDB.PACIENTES_SINCRONIZAR_CODIGO, sharedPreferences.getStringData("CP"));
 
 
                         db.insert(DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR, null, values);

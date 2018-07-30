@@ -57,7 +57,7 @@ public class QuestionDomFragment extends Fragment {
     ImageView imageLogo;
     ImageView imageIcon2;
 
-    RadioGroup radioCurp;
+    RadioGroup radioCP;
 
     String checking = "personales";
 
@@ -141,7 +141,7 @@ public class QuestionDomFragment extends Fragment {
 
 
         final RadioGroup radioVisita = getActivity().findViewById(R.id.radioVisita);
-        radioCurp = getActivity().findViewById(R.id.radioCP);
+        radioCP = getActivity().findViewById(R.id.radioCP);
 
 
         cp  = getActivity().findViewById(R.id.answer7);
@@ -162,11 +162,14 @@ public class QuestionDomFragment extends Fragment {
                 count ++;
 
                 if(count == 1){
-                    String conoceCurp = sharedPreferences.getStringData("ConoceCurp");
+                    String conoceCurp = sharedPreferences.getStringData("ConoceCP");
                     if(conoceCurp.equals("")){
                         count --;
                         Toast.makeText(getActivity(),"Selecciona una opción antes de continuar",Toast.LENGTH_SHORT).show();
                     }else{
+                        sharedPreferences.setStringData("CP",cp.getText().toString());
+
+
                         open4.setVisibility(View.GONE);
                         open2.setVisibility(View.VISIBLE);
 
@@ -289,17 +292,17 @@ public class QuestionDomFragment extends Fragment {
 
         });
 
-        radioCurp.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
+        radioCP.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
 
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 // TODO Auto-generated method stub
                 if (checkedId == R.id.si){
-                    sharedPreferences.setStringData("ConoceCurp","Si");
+                    sharedPreferences.setStringData("ConoceCP","Si");
                     cp.setVisibility(View.VISIBLE);
 
                 }else if (checkedId == R.id.no){
-                    sharedPreferences.setStringData("ConoceCurp","No");
+                    sharedPreferences.setStringData("ConoceCP","No");
                     cp.setVisibility(View.GONE);
 
                 }
