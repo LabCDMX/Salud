@@ -138,7 +138,7 @@ public class QuestionsAntecedentesPersonales extends Fragment {
                 if(count == 5){
                     textArea_information.setText("");
 
-                    listPersonales = quitarRepedidos(listPersonales);
+                    //listPersonales = quitarRepedidos(listPersonales);
                     ((MainActivity)getActivity()).questionInterrogatorio();
 
                 }

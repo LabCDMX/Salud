@@ -353,13 +353,18 @@ public class TarjetaPacienteFragment extends Fragment {
                 values.put(DataBaseDB.PACIENTES_PULSO, sharedPreferences.getStringData("Pulso"));
                 values.put(DataBaseDB.PACIENTES_ANTECEDENTES_CARDIO, sharedPreferences.getStringData("cadenaCardio"+name));
                 values.put(DataBaseDB.PACIENTES_ANTECEDENTES_HDA, sharedPreferences.getStringData("cadenaHTA"+name));
-                values.put(DataBaseDB.PACIENTES_PERSONALES_PATOLOGICOS, sharedPreferences.getStringData("cadenaPersonales"+name));
+                values.put(DataBaseDB.PACIENTES_PADECIMIENTOS_ACTUALES, sharedPreferences.getStringData("cadenaPersonales"+name));
                 values.put(DataBaseDB.PACIENTES_ANTECEDENTES_OBESIDAD, sharedPreferences.getStringData("cadenaObe"+name));
                 values.put(DataBaseDB.PACIENTES_ANTECEDENTES_DIABETES, sharedPreferences.getStringData("cadenaDiabetes"+name));
                 values.put(DataBaseDB.PACIENTES_ANTECEDENTES_DISLEP, sharedPreferences.getStringData("cadenaDis"+name));
                 values.put(DataBaseDB.PACIENTES_ANTECEDENTES_CEREBRO, sharedPreferences.getStringData("cadenaEnf"+name));
                 values.put(DataBaseDB.PACIENTES_NOTAS_DOC, sharedPreferences.getStringData("SubjetivoNotas"));
                 values.put(DataBaseDB.PACIENTES_NOTAS_ENFERMERIA, sharedPreferences.getStringData("NotasEnfermeria"));
+                values.put(DataBaseDB.PACIENTES_TENSION, sharedPreferences.getStringData("Tension1") + "/" +sharedPreferences.getStringData("Tension2"));
+                values.put(DataBaseDB.PACIENTES_GLUCEMIA, sharedPreferences.getStringData("Glucemia"));
+                values.put(DataBaseDB.PACIENTES_CARDIACA, sharedPreferences.getStringData("Frecuencia Cardiaca"));
+                values.put(DataBaseDB.PACIENTES_RESPIRATORIA, sharedPreferences.getStringData("Frecuencia Respiratoria"));
+                values.put(DataBaseDB.PACIENTES_TEMPERATURA, sharedPreferences.getStringData("Temperatura"));
 
 
 
@@ -397,13 +402,18 @@ public class TarjetaPacienteFragment extends Fragment {
                 values.put(DataBaseDB.PACIENTES_PULSO, sharedPreferences.getStringData("Pulso"));
                 values.put(DataBaseDB.PACIENTES_ANTECEDENTES_CARDIO, sharedPreferences.getStringData("cadenaCardio"+name));
                 values.put(DataBaseDB.PACIENTES_ANTECEDENTES_HDA, sharedPreferences.getStringData("cadenaHTA"+name));
-                values.put(DataBaseDB.PACIENTES_PERSONALES_PATOLOGICOS, sharedPreferences.getStringData("cadenaPersonales"+name));
+                values.put(DataBaseDB.PACIENTES_PADECIMIENTOS_ACTUALES, sharedPreferences.getStringData("cadenaPersonales"+name));
                 values.put(DataBaseDB.PACIENTES_ANTECEDENTES_OBESIDAD, sharedPreferences.getStringData("cadenaObe"+name));
                 values.put(DataBaseDB.PACIENTES_ANTECEDENTES_DIABETES, sharedPreferences.getStringData("cadenaDiabetes"+name));
                 values.put(DataBaseDB.PACIENTES_ANTECEDENTES_DISLEP, sharedPreferences.getStringData("cadenaDis"+name));
                 values.put(DataBaseDB.PACIENTES_ANTECEDENTES_CEREBRO, sharedPreferences.getStringData("cadenaEnf"+name));
                 values.put(DataBaseDB.PACIENTES_NOTAS_DOC, sharedPreferences.getStringData("SubjetivoNotas"));
                 values.put(DataBaseDB.PACIENTES_NOTAS_ENFERMERIA, sharedPreferences.getStringData("NotasEnfermeria"));
+                values.put(DataBaseDB.PACIENTES_TENSION, sharedPreferences.getStringData("Tension1") + "/" +sharedPreferences.getStringData("Tension2"));
+                values.put(DataBaseDB.PACIENTES_GLUCEMIA, sharedPreferences.getStringData("Glucemia"));
+                values.put(DataBaseDB.PACIENTES_CARDIACA, sharedPreferences.getStringData("Frecuencia Cardiaca"));
+                values.put(DataBaseDB.PACIENTES_RESPIRATORIA, sharedPreferences.getStringData("Frecuencia Respiratoria"));
+                values.put(DataBaseDB.PACIENTES_TEMPERATURA, sharedPreferences.getStringData("Temperatura"));
 
 
 

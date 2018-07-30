@@ -181,6 +181,11 @@ public class HistoriaClinicaFragment extends Fragment {
             diabetes.setText(sharedPreferences.getStringData("cadenaDiabetes"+name));
             disli.setText(sharedPreferences.getStringData("cadenaDis"+name));
             enf_cardio.setText(sharedPreferences.getStringData("cadenaEnf"+name));
+            tensionArt.setText(sharedPreferences.getStringData("Tension"+name));
+            frecuenciaCar.setText(sharedPreferences.getStringData("Frecuencia Cardiaca"+name));
+            frecuenciaRes.setText(sharedPreferences.getStringData("Frecuencia Respiratoria"+name));
+            glucemia.setText(sharedPreferences.getStringData("Glucemia"+name));
+            temperatura.setText(sharedPreferences.getStringData("Temperatura"+name));
 
 
         }
@@ -314,6 +319,12 @@ public class HistoriaClinicaFragment extends Fragment {
                     sharedPreferences.setStringData("cadenaEnf"+name,c.getString(23));
                     sharedPreferences.setStringData("NotasEnfermeria"+name,c.getString(17));
                     sharedPreferences.setStringData("NotasMedicas"+name,c.getString(49));
+                    sharedPreferences.setStringData("Tension"+name,c.getString(10));
+                    sharedPreferences.setStringData("Frecuencia Cardiaca"+name,c.getString(11));
+                    sharedPreferences.setStringData("Frecuencia Respiratoria"+name,c.getString(12));
+                    sharedPreferences.setStringData("Glucemia"+name,c.getString(15));
+                    sharedPreferences.setStringData("Temperatura"+name,c.getString(16));
+
 
 
                 }while (c.moveToNext());
