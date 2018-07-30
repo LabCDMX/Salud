@@ -194,7 +194,7 @@ public class NotasHojaDiaria extends Fragment {
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_HEMOTIPO, sharedPreferences.getStringData("Hemotipo"));
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_PESO, sharedPreferences.getStringData("Peso"));
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_ESTATURA, sharedPreferences.getStringData("Estatura"));
-                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_TENSION_ARTERIAL, sharedPreferences.getStringData("Tension1") + sharedPreferences.getStringData("Tension2"));
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_TENSION_ARTERIAL, sharedPreferences.getStringData("Tension1") +"/"+ sharedPreferences.getStringData("Tension2"));
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_FRECUENCIA_CARDIACA, sharedPreferences.getStringData("Frecuencia Cardiaca"));
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_FRECUENCIA_RESPIRATORIA, sharedPreferences.getStringData("Frecuencia Respiratoria"));
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_TALLA, sharedPreferences.getStringData("Talla"));

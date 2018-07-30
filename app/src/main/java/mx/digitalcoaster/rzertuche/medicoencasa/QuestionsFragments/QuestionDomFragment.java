@@ -46,7 +46,7 @@ public class QuestionDomFragment extends Fragment {
     TextView question,question2,question3;
     TextView title;
     TextView category;
-    EditText answer,answer2,answer3,answer4,answer5,answer6;
+    EditText answer,answer2,answer3,answer4,answer5,answer6,cp;
 
     LinearLayout multiple;
     LinearLayout open,open2, open3,open4;
@@ -141,10 +141,10 @@ public class QuestionDomFragment extends Fragment {
 
 
         final RadioGroup radioVisita = getActivity().findViewById(R.id.radioVisita);
-        RadioGroup radioCurp = getActivity().findViewById(R.id.radioCP);
+        radioCurp = getActivity().findViewById(R.id.radioCP);
 
 
-        final EditText cp  = getActivity().findViewById(R.id.answer7);
+        cp  = getActivity().findViewById(R.id.answer7);
 
         sharedPreferences = SharedPreferences.getInstance();
 
@@ -167,6 +167,8 @@ public class QuestionDomFragment extends Fragment {
                         count --;
                         Toast.makeText(getActivity(),"Selecciona una opción antes de continuar",Toast.LENGTH_SHORT).show();
                     }else{
+                        open4.setVisibility(View.GONE);
+                        open2.setVisibility(View.VISIBLE);
 
                         back.setVisibility(View.VISIBLE);
 
@@ -176,12 +178,6 @@ public class QuestionDomFragment extends Fragment {
 
 
                 }else if(count == 2){
-
-
-                    open4.setVisibility(View.GONE);
-                    open2.setVisibility(View.VISIBLE);
-
-                }else if(count == 3){
 
                     sharedPreferences.setStringData("Calle", answer4.getText().toString());
                     sharedPreferences.setStringData("No Ext.", answer5.getText().toString());
@@ -194,8 +190,8 @@ public class QuestionDomFragment extends Fragment {
 
 
 
-                }else if(count == 4){
 
+                }else if(count == 3){
 
                     sharedPreferences.setStringData("Localidad", answer3.getText().toString());
                     sharedPreferences.setStringData("Municipio", answer2.getText().toString());
@@ -212,8 +208,7 @@ public class QuestionDomFragment extends Fragment {
 
 
 
-                }else if(count ==5){
-
+                }else if(count == 4){
 
                     String tipoVisita = sharedPreferences.getStringData("Visita");
                     if(tipoVisita.equals("")){
@@ -233,50 +228,7 @@ public class QuestionDomFragment extends Fragment {
                     }
 
 
-
                 }
-
-
-
-
-                /*String nombre = answer.getText().toString();
-                String apeP = answer2.getText().toString();
-                String apeM = answer3.getText().toString();
-
-
-                if(checkName(nombre)){
-                    sharedPreferences.setStringData("Estado",nombre);
-                    if(checkAP(apeP)){
-                        sharedPreferences.setStringData("Municipio",apeP);
-                        if(checkAM(apeM)){
-                            sharedPreferences.setStringData("Localidad",apeM);
-                            sharedPreferences.setStringData("Direccion", nombre + " " +  apeP + " " + apeM);
-
-                            ((MainActivity)getActivity()).questionDomTwo();
-                        }else{
-                            answer3.setError("Campo faltante");
-                            answer3.requestFocus();
-                            InputMethodManager imm = (InputMethodManager) // con esto abres el teclado despues de ubicar el foco en tu editText
-                                    getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                            imm.showSoftInput(answer3, InputMethodManager.SHOW_IMPLICIT);
-                        }
-                    }else{
-                        answer2.setError("Campo faltante");
-                        answer2.requestFocus();
-                        InputMethodManager imm = (InputMethodManager) // con esto abres el teclado despues de ubicar el foco en tu editText
-                                getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                        imm.showSoftInput(answer2, InputMethodManager.SHOW_IMPLICIT);
-
-                    }
-                }else{
-
-                    answer.setError("Campo faltante");
-                    answer.requestFocus();
-                    InputMethodManager imm = (InputMethodManager) // con esto abres el teclado despues de ubicar el foco en tu editText
-                            getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.showSoftInput(answer, InputMethodManager.SHOW_IMPLICIT);
-
-                } */
 
 
 
@@ -294,7 +246,24 @@ public class QuestionDomFragment extends Fragment {
                     open4.setVisibility(View.VISIBLE);
                     open2.setVisibility(View.GONE);
 
+                    back.setVisibility(View.GONE);
+
                 }
+
+                if(open.getVisibility() == View.VISIBLE){
+
+                    open2.setVisibility(View.VISIBLE);
+                    open.setVisibility(View.GONE);
+
+
+                }
+                if(open3.getVisibility() == View.VISIBLE) {
+
+                    open.setVisibility(View.VISIBLE);
+                    open3.setVisibility(View.GONE);
+
+                }
+
             }
         });
 

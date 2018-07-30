@@ -122,6 +122,7 @@ public class QuestionPoblacion extends Fragment {
         sharedPreferences = SharedPreferences.getInstance();
 
 
+        final ImageButton back = (ImageButton) view.findViewById(R.id.back);
 
         ImageButton next = (ImageButton) view.findViewById(R.id.next);
         next.setOnClickListener(new View.OnClickListener() {
@@ -131,12 +132,18 @@ public class QuestionPoblacion extends Fragment {
                 count ++;
 
                 if(count == 1){
+                    back.setVisibility(View.VISIBLE);
+
                     open.setVisibility(View.GONE);
                     open2.setVisibility(View.VISIBLE);
 
                     icon3.setImageDrawable(getActivity().getResources().getDrawable(R.drawable.number_three_pink));
                     imageLogo.setImageDrawable(getActivity().getResources().getDrawable(R.drawable.icon_antecedentes));
                     category.setText("DERECHOHABIENCIA");
+
+
+
+                }else if(count == 2){
 
                     String tipoVisita = sharedPreferences.getStringData("DerechoHabi");
 
@@ -163,7 +170,9 @@ public class QuestionPoblacion extends Fragment {
 
                     }
 
-                }else if(count == 2){
+
+
+                }else if(count ==3){
 
                     String tipoVisita = sharedPreferences.getStringData("Candidato");
                     if(tipoVisita.equals("")){
@@ -186,48 +195,38 @@ public class QuestionPoblacion extends Fragment {
 
                 }
 
-
-                /*String nombre = answer.getText().toString();
-                String apeP = answer2.getText().toString();
-                String apeM = answer3.getText().toString();
-
-
-                if(checkName(nombre)){
-                    sharedPreferences.setStringData("Estado",nombre);
-                    if(checkAP(apeP)){
-                        sharedPreferences.setStringData("Municipio",apeP);
-                        if(checkAM(apeM)){
-                            sharedPreferences.setStringData("Localidad",apeM);
-                            sharedPreferences.setStringData("Direccion", nombre + " " +  apeP + " " + apeM);
-
-                            ((MainActivity)getActivity()).questionDomTwo();
-                        }else{
-                            answer3.setError("Campo faltante");
-                            answer3.requestFocus();
-                            InputMethodManager imm = (InputMethodManager) // con esto abres el teclado despues de ubicar el foco en tu editText
-                                    getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                            imm.showSoftInput(answer3, InputMethodManager.SHOW_IMPLICIT);
-                        }
-                    }else{
-                        answer2.setError("Campo faltante");
-                        answer2.requestFocus();
-                        InputMethodManager imm = (InputMethodManager) // con esto abres el teclado despues de ubicar el foco en tu editText
-                                getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                        imm.showSoftInput(answer2, InputMethodManager.SHOW_IMPLICIT);
-
-                    }
-                }else{
-
-                    answer.setError("Campo faltante");
-                    answer.requestFocus();
-                    InputMethodManager imm = (InputMethodManager) // con esto abres el teclado despues de ubicar el foco en tu editText
-                            getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.showSoftInput(answer, InputMethodManager.SHOW_IMPLICIT);
-
-                } */
+            }
+        });
 
 
 
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                count --;
+
+                if(open2.getVisibility() == View.VISIBLE){
+
+                    open.setVisibility(View.VISIBLE);
+                    open2.setVisibility(View.GONE);
+
+                    back.setVisibility(View.GONE);
+
+                }
+
+                if(open3.getVisibility() == View.VISIBLE){
+
+                    open2.setVisibility(View.VISIBLE);
+                    open3.setVisibility(View.GONE);
+
+                }
+
+                if(open3.getVisibility() == View.VISIBLE) {
+
+                    //open.setVisibility(View.VISIBLE);
+                    //open3.setVisibility(View.GONE);
+
+                }
 
             }
         });

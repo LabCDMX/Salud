@@ -85,9 +85,7 @@ public class QuestionsExploracion extends Fragment {
 
         title = (TextView) getActivity().findViewById(R.id.title);
 
-        if(isSeguimiento){
-            title.setText("DATOS DE CONTROL");
-        }
+
 
 
         estatura = (EditText) getActivity().findViewById(R.id.answer2);
@@ -96,7 +94,7 @@ public class QuestionsExploracion extends Fragment {
         imc = (EditText) getActivity().findViewById(R.id.answer3);
 
         peso = (EditText) getActivity().findViewById(R.id.answer);
-        //peso.addTextChangedListener(imcWatcher);
+        peso.addTextChangedListener(imcWatcherPeso);
 
 
         talla = (EditText) getActivity().findViewById(R.id.answers7);
@@ -121,6 +119,13 @@ public class QuestionsExploracion extends Fragment {
         radioTipoSangre = (RadioGroup) getActivity().findViewById(R.id.radioTipoSangre);
         radioDec = (RadioGroup) getActivity().findViewById(R.id.radioDec);
 
+        if(isSeguimiento){
+
+            title.setText("DATOS DE CONTROL");
+            tipoSangre.setVisibility(View.GONE);
+            pesoLayout.setVisibility(View.VISIBLE);
+
+        }
 
         next = (ImageButton) getActivity().findViewById(R.id.next);
         next.setOnClickListener(new View.OnClickListener() {
@@ -130,47 +135,131 @@ public class QuestionsExploracion extends Fragment {
                 count++;
 
                 if(count == 1){
-                    tipoSangre.setVisibility(View.GONE);
-                    pesoLayout.setVisibility(View.VISIBLE);
+                    if(isSeguimiento){
+                        sharedPreferences.setStringData("Peso", peso.getText().toString());
+                        sharedPreferences.setStringData("Estatura", estatura.getText().toString());
+
+
+                        pesoLayout.setVisibility(View.GONE);
+                        tensionLayout.setVisibility(View.VISIBLE);
+
+                    }else{
+
+                        tipoSangre.setVisibility(View.GONE);
+                        pesoLayout.setVisibility(View.VISIBLE);
+                    }
                 }
 
                 if(count == 2){
 
-                    sharedPreferences.setStringData("Peso", peso.getText().toString());
-                    sharedPreferences.setStringData("Estatura", estatura.getText().toString());
+
+                    if(isSeguimiento){
+
+                        sharedPreferences.setStringData("Tension1", tension1.getText().toString());
+                        sharedPreferences.setStringData("Tension2", tension2.getText().toString());
 
 
-                    pesoLayout.setVisibility(View.GONE);
-                    tensionLayout.setVisibility(View.VISIBLE);
+                        tensionLayout.setVisibility(View.GONE);
+                        tensionLayout2.setVisibility(View.VISIBLE);
+
+                    }else{
+
+                        sharedPreferences.setStringData("Peso", peso.getText().toString());
+                        sharedPreferences.setStringData("Estatura", estatura.getText().toString());
+
+
+                        pesoLayout.setVisibility(View.GONE);
+                        tensionLayout.setVisibility(View.VISIBLE);
+
+                    }
+
+
                 }
 
                 if(count == 3){
-                    sharedPreferences.setStringData("Tension1", tension1.getText().toString());
-                    sharedPreferences.setStringData("Tension2", tension2.getText().toString());
+
+                    if(isSeguimiento){
+
+                        sharedPreferences.setStringData("Frecuencia Cardiaca", frecuenciaCard.getText().toString());
+                        sharedPreferences.setStringData("Frecuencia Respiratoria", frecuenciaRes.getText().toString());
 
 
-                    tensionLayout.setVisibility(View.GONE);
-                    tensionLayout2.setVisibility(View.VISIBLE);
+                        tensionLayout2.setVisibility(View.GONE);
+                        tallaLayout.setVisibility(View.VISIBLE);
+
+
+                    }else{
+
+                        sharedPreferences.setStringData("Tension1", tension1.getText().toString());
+                        sharedPreferences.setStringData("Tension2", tension2.getText().toString());
+
+
+                        tensionLayout.setVisibility(View.GONE);
+                        tensionLayout2.setVisibility(View.VISIBLE);
+
+
+                    }
+
                 }
 
                 if(count == 4){
-                    sharedPreferences.setStringData("Frecuencia Cardiaca", frecuenciaCard.getText().toString());
-                    sharedPreferences.setStringData("Frecuencia Respiratoria", frecuenciaRes.getText().toString());
 
 
-                    tensionLayout2.setVisibility(View.GONE);
-                    tallaLayout.setVisibility(View.VISIBLE);
+
+                    if(isSeguimiento){
+
+                        sharedPreferences.setStringData("Talla", talla.getText().toString());
+                        sharedPreferences.setStringData("Pulso", pulso.getText().toString());
+                        sharedPreferences.setStringData("Glucemia", glucemia.getText().toString());
+
+
+                        tallaLayout.setVisibility(View.GONE);
+                        temperaturaLayout.setVisibility(View.VISIBLE);
+
+
+
+                    }else{
+
+                        sharedPreferences.setStringData("Frecuencia Cardiaca", frecuenciaCard.getText().toString());
+                        sharedPreferences.setStringData("Frecuencia Respiratoria", frecuenciaRes.getText().toString());
+
+
+                        tensionLayout2.setVisibility(View.GONE);
+                        tallaLayout.setVisibility(View.VISIBLE);
+
+                    }
+
+
+
+
+
+
                 }
 
                 if(count == 5){
-                    sharedPreferences.setStringData("Talla", talla.getText().toString());
-                    sharedPreferences.setStringData("Pulso", pulso.getText().toString());
-                    sharedPreferences.setStringData("Glucemia", glucemia.getText().toString());
+
+                    if(isSeguimiento){
+
+                        sharedPreferences.setStringData("Temperatura", temperatura.getText().toString());
+
+                        ((MainActivity)getActivity()).notasEnfermeria();
+
+
+                    }else{
+
+                        sharedPreferences.setStringData("Talla", talla.getText().toString());
+                        sharedPreferences.setStringData("Pulso", pulso.getText().toString());
+                        sharedPreferences.setStringData("Glucemia", glucemia.getText().toString());
 
 
 
-                    tallaLayout.setVisibility(View.GONE);
-                    temperaturaLayout.setVisibility(View.VISIBLE);
+                        tallaLayout.setVisibility(View.GONE);
+                        temperaturaLayout.setVisibility(View.VISIBLE);
+
+
+
+                    }
+
 
 
                 }
@@ -294,8 +383,12 @@ public class QuestionsExploracion extends Fragment {
                 pesoAux = Double.valueOf(peso.getText().toString());
             }
 
+            if(!estatura.getText().toString().isEmpty()){
+                estaturaAux = Integer.valueOf(estatura.getText().toString());
+            }
 
-            estaturaAux = Integer.valueOf(estatura.getText().toString());
+
+
             imcAux = (pesoAux / (estaturaAux * estaturaAux)*10000);
 
 
@@ -324,13 +417,67 @@ public class QuestionsExploracion extends Fragment {
                     imc.setText(df.format(imcAux) + " Sobrepeso Grado II");
                 }else if(imcAuxiliar >= 30 && imcAuxiliar <= 34.9){
                     imc.setText(df.format(imcAux) + " Obesidad Tipo I");
-                }else if(imcAuxiliar >= 35 && imcAuxiliar <= 34.9){
+                }else if(imcAuxiliar >= 35 && imcAuxiliar >= 34.9){
                     imc.setText(df.format(imcAux) + " Obesidad Tipo II");
                 }
 
             }
         }
     };
+
+
+    private final TextWatcher imcWatcherPeso = new TextWatcher() {
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+
+        }
+
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            imc.setVisibility(View.VISIBLE);
+            Double pesoAux = 0.0;
+            int estaturaAux = 0;
+
+
+            if(!estatura.getText().toString().isEmpty()){
+                estaturaAux = Integer.valueOf(estatura.getText().toString());
+            }
+
+            if(!peso.getText().toString().isEmpty()){
+                pesoAux = Double.valueOf(peso.getText().toString());
+            }
+
+            imcAux = (pesoAux / (estaturaAux * estaturaAux)*10000);
+
+        }
+
+        public void afterTextChanged(Editable s) {
+            if (s.length() == 0) {
+
+                imc.setVisibility(View.GONE);
+
+            }else if (!estatura.getText().toString().isEmpty()){
+                DecimalFormat df = new DecimalFormat("#.00");
+                Double imcAuxiliar = Double.valueOf(df.format(imcAux));
+
+
+                if(imcAuxiliar<18.5){
+                    imc.setText(df.format(imcAux) + " Peso Insuficiente");
+                }else if(imcAuxiliar >= 18.5 && imcAuxiliar <= 24.9){
+                    imc.setText(df.format(imcAux) + " Peso Normal");
+                }else if(imcAuxiliar >= 25 && imcAuxiliar <= 26.9){
+                    imc.setText(df.format(imcAux) + " Sobrepeso Grado I");
+                }else if(imcAuxiliar >= 27 && imcAuxiliar <= 29.9){
+                    imc.setText(df.format(imcAux) + " Sobrepeso Grado II");
+                }else if(imcAuxiliar >= 30 && imcAuxiliar <= 34.9){
+                    imc.setText(df.format(imcAux) + " Obesidad Tipo I");
+                }else if(imcAuxiliar >= 35 && imcAuxiliar >= 34.9){
+                    imc.setText(df.format(imcAux) + " Obesidad Tipo II");
+                }
+
+            }
+        }
+    };
+
 
 
     public void blockListeners(){
