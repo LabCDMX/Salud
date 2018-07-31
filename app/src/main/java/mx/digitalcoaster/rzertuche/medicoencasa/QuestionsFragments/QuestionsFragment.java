@@ -52,7 +52,7 @@ public class QuestionsFragment extends Fragment {
     LinearLayout review;
     LinearLayout checkCurp;
 
-    ImageButton next;
+    ImageButton next,back;
     ImageView imageLogo;
     ImageView imageIcon2;
 
@@ -166,7 +166,9 @@ public class QuestionsFragment extends Fragment {
 
 
 
-        ImageButton next = (ImageButton) view.findViewById(R.id.next);
+        next = (ImageButton) view.findViewById(R.id.next);
+
+        back = (ImageButton) view.findViewById(R.id.back);
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -177,6 +179,7 @@ public class QuestionsFragment extends Fragment {
 
                     }else if(desconoce.isChecked() || noesp.isChecked()){
                         count++;
+                        back.setVisibility(View.VISIBLE);
                         checkCurp.setVisibility(View.GONE);
                         open.setVisibility(View.VISIBLE);
                     }else{
@@ -224,6 +227,22 @@ public class QuestionsFragment extends Fragment {
 
                     }
 
+
+                }
+
+            }
+        });
+
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                count --;
+
+                if(open.getVisibility() == View.VISIBLE){
+                    back.setVisibility(View.GONE);
+                    checkCurp.setVisibility(View.VISIBLE);
+                    open.setVisibility(View.GONE);
 
                 }
 

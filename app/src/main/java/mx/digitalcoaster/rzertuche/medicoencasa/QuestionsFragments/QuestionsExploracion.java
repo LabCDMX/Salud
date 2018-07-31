@@ -49,7 +49,7 @@ public class QuestionsExploracion extends Fragment {
     private ImageButton next;
     public static List<String> listElectro = new ArrayList<String>();
 
-    private LinearLayout pesoLayout,tipoSangre,tensionLayout, tallaLayout, tensionLayout2, temperaturaLayout;
+    private LinearLayout pesoLayout,tipoSangre,tensionLayout, tallaLayout, tensionLayout2, temperaturaLayout, indicatorLayout;
     private TextView questions2,title;
     private int count = 0;
 
@@ -113,6 +113,10 @@ public class QuestionsExploracion extends Fragment {
         tensionLayout2 = (LinearLayout) getActivity().findViewById(R.id.questions5);
         tallaLayout = (LinearLayout) getActivity().findViewById(R.id.questions6);
         temperaturaLayout = (LinearLayout) getActivity().findViewById(R.id.questions12);
+        indicatorLayout = (LinearLayout) getActivity().findViewById(R.id.layout_indicator);
+
+
+
 
 
         radioSangre = (RadioGroup) getActivity().findViewById(R.id.radioSangre);
@@ -124,6 +128,7 @@ public class QuestionsExploracion extends Fragment {
             title.setText("DATOS DE CONTROL");
             tipoSangre.setVisibility(View.GONE);
             pesoLayout.setVisibility(View.VISIBLE);
+            indicatorLayout.setVisibility(View.GONE);
 
         }
 

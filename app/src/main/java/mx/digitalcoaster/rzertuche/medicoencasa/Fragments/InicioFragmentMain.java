@@ -243,7 +243,7 @@ public class InicioFragmentMain extends Fragment {
 
         entity = new StringEntity(json, "UTF-8");
         Log.d("JSON EMV", json);
-        client.post(getActivity(), "http://187.210.47.140:9999/api/admin/api/paciente", entity, "application/json", new JsonHttpResponseHandler() {
+        client.post(getActivity(), "https://medico.digitalcoaster.mx/api/admin/api/paciente", entity, "application/json", new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
 
