@@ -46,7 +46,7 @@ public class DatosGeneralesFragment extends Fragment {
     SharedPreferences sharedPreferences;
 
     EditText nombre, apellidoP, apellidoM, estado, municipio, localidad, fechaNac, estadoNac,sexo,nac,estadociv,ocupacion,telFijo,telCelular,email,curp;
-    ImageButton btnedit16, btnedit,btnedit2,btnedit3,btnedit4,btnedit5,btnedit6,btnedit7, btnedit8,next;
+    ImageButton btnedit16, btnedit,btnedit2,btnedit3,btnedit4,btnedit5,btnedit6,btnedit7, btnedit8,next,back;
     ImageButton btnedit9, btnedit10,btnedit11,btnedit12,btnedit13,btnedit14,btnedit15;
 
     private SQLiteDatabase db = null;      // Objeto para utilizar la base de datos
@@ -118,6 +118,7 @@ public class DatosGeneralesFragment extends Fragment {
 
 
         next = (ImageButton) getActivity().findViewById(R.id.next);
+        back = (ImageButton) getActivity().findViewById(R.id.back);
 
 
         nombre.setSingleLine(true);
@@ -433,7 +434,18 @@ public class DatosGeneralesFragment extends Fragment {
         });
 
 
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                ((MainActivity)getActivity()).questionDomThree();
+
+            }
+        });
+
+
     }
+
 
 
     // TODO: Rename method, update argument and hook method into UI event

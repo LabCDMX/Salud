@@ -39,7 +39,7 @@ public class QuestionsDomFragmentThree extends Fragment {
     SharedPreferences sharedPreferences;
     private RadioButton seguro,seguro2;
     private RadioGroup radioEsc;
-    private ImageButton next;
+    private ImageButton next,back;
     private RelativeLayout relativeSeguro;
     private EditText answer,answer2,answer3;
 
@@ -69,6 +69,8 @@ public class QuestionsDomFragmentThree extends Fragment {
 
 
         next = (ImageButton) getActivity().findViewById(R.id.next);
+        back = (ImageButton) getActivity().findViewById(R.id.back);
+
 
         answer = (EditText) getActivity().findViewById(R.id.answer);
         answer2 = (EditText) getActivity().findViewById(R.id.answer2);
@@ -77,7 +79,15 @@ public class QuestionsDomFragmentThree extends Fragment {
         sharedPreferences = SharedPreferences.getInstance();
 
 
+        if(!sharedPreferences.getStringData("TelFijo").isEmpty() && !sharedPreferences.getStringData("TelCel").isEmpty() && !sharedPreferences.getStringData("Email").isEmpty() ) {
 
+
+            answer.setText(sharedPreferences.getStringData("TelFijo"));
+            answer2.setText(sharedPreferences.getStringData("TelCel"));
+            answer3.setText(sharedPreferences.getStringData("Email"));
+
+
+        }
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,6 +100,19 @@ public class QuestionsDomFragmentThree extends Fragment {
                 ((MainActivity)getActivity()).fragmentDatosGenerales();
             }
         });
+
+
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                sharedPreferences.setBooleanData("BackToQuestionsDomThree",true);
+                ((MainActivity)getActivity()).questionDomTwo();
+
+            }
+        });
+
     }
 
 

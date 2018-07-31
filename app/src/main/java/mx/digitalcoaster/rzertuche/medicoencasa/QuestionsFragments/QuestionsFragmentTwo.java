@@ -132,6 +132,23 @@ public class QuestionsFragmentTwo extends Fragment {
         }
 
 
+        if(!sharedPreferences.getStringData("Sexo").isEmpty() && !sharedPreferences.getStringData("FechaNac").isEmpty()
+                && !sharedPreferences.getStringData("Edad").isEmpty() && !sharedPreferences.getStringData("EstadoNac").isEmpty()
+                && !sharedPreferences.getStringData("Nac").isEmpty()) {
+
+            String sexo = sharedPreferences.getStringData("Sexo");
+            if(sexo.equals("HOMBRE"))
+                sp.setSelection(1);
+            else
+                sp.setSelection(2);
+
+            date.setText(sharedPreferences.getStringData("FechaNac"));
+            edad.setText(sharedPreferences.getStringData("Edad"));
+            estadoNacimiento.setText(sharedPreferences.getStringData("EstadoNac"));
+            nacionalidad.setText(sharedPreferences.getStringData("Nac"));
+
+
+        }
 
 
 
@@ -220,7 +237,7 @@ public class QuestionsFragmentTwo extends Fragment {
                                 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                                 String strDate = format.format(selectedDate);
 
-                                date .setText(strDate);
+                                date.setText(strDate);
 
                                 edad.setText(String.valueOf(calcularEdad(year,monthOfYear,dayOfMonth)) + " años");
                                 edad.setEnabled(false);

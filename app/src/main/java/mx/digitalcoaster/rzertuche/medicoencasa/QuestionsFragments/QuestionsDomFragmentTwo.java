@@ -92,7 +92,18 @@ public class QuestionsDomFragmentTwo extends Fragment {
 
         sharedPreferences = SharedPreferences.getInstance();
 
+        if(sharedPreferences.getBooleanData("BackToQuestionsDomThree")){
 
+            sharedPreferences.setBooleanData("BackToQuestionsDomThree",false);
+
+            count=2;
+
+            questions2.setVisibility(View.GONE);
+            questions.setVisibility(View.GONE);
+
+
+            questions3.setVisibility(View.VISIBLE);
+        }
 
 
         next.setOnClickListener(new View.OnClickListener() {
