@@ -273,9 +273,13 @@ public class HistoriaClinicaFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                saveAllDataPreferences();
-                ((MainActivity)getActivity()).fragmentNotasHistoric();
-
+                if(isSinExp){
+                    saveAllDataPreferences();
+                    ((MainActivity)getActivity()).notasEnfermeria();
+                }else{
+                    saveAllDataPreferences();
+                    ((MainActivity)getActivity()).fragmentNotasHistoric();
+                }
             }
         });
 

@@ -257,6 +257,8 @@ public class DataBaseDB {
     public static final String PACIENTES_SINCRONIZAR_HISTORIC_PLANES = "pacientes_sincronizar_historic_planes";
     public static final String PACIENTES_SINCRONIZAR_HISTORIC_DIAGNOSTICO = "pacientes_sincronizar_historic_diagnostico";
     public static final String PACIENTES_SINCRONIZAR_HISTORIC_TRATAMIENTO = "pacientes_sincronizar_historic_tratamiento";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_ID = "pacientes_sincronizar_historic_id";
+
 
 
 }

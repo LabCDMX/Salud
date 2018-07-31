@@ -286,7 +286,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_NOTAS_DOC + " TEXT, " +
                 DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_PLANES + " TEXT, " +
                 DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_DIAGNOSTICO + " TEXT, " +
-                DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_TRATAMIENTO + " TEXT); "
+                DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_TRATAMIENTO + " TEXT, " +
+                DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_ID + " TEXT); "
         );
         System.out.println(DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC + " Creada");
 

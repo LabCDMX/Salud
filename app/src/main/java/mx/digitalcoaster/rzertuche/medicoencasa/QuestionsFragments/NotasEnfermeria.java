@@ -106,7 +106,7 @@ public class NotasEnfermeria extends Fragment {
 
                 if(isSinExp){
 
-                    ((MainActivity)getActivity()).questionInterrogatorio();
+                    ((MainActivity)getActivity()).fragmentNotasHistoric();
 
                 }else if(isSeguimiento){
 

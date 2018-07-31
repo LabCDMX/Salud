@@ -41,6 +41,7 @@ import cz.msebera.android.httpclient.Header;
 import cz.msebera.android.httpclient.HttpEntity;
 import cz.msebera.android.httpclient.conn.ConnectTimeoutException;
 import cz.msebera.android.httpclient.entity.StringEntity;
+import io.realm.internal.android.JsonUtils;
 import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseDB;
 import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseHelper;
 import mx.digitalcoaster.rzertuche.medicoencasa.Utils.SharedPreferences;
@@ -122,7 +123,7 @@ public class InicioFragmentMain extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         progress = new ProgressDialog(getActivity());
-        progress.setMessage("Cargando...");
+        progress.setMessage("Sincronizando datos...");
         progress.setIndeterminate(false);
         progress.setCancelable(false);
 
@@ -134,7 +135,6 @@ public class InicioFragmentMain extends Fragment {
         imageButton3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                progress.show();
 
                 db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE ,null);
 
@@ -156,10 +156,10 @@ public class InicioFragmentMain extends Fragment {
                 } catch (Exception ex) {
                     Log.e("Error", ex.toString());
                 } finally {
+
                     db.close();
                 }
 
-                progress.dismiss();
 
             }
         });
@@ -209,35 +209,44 @@ public class InicioFragmentMain extends Fragment {
     }
 
 
-    public void sendData(String curp,String a_pa,String a_ma,String nombre,String fechaNac,String estadoNac,String sexo,String nac,String estadoRes,
-                         String municipio,String cp,String poblacion,String colonia,String nombreCalle,String edo_civil,String ocupacion,String derecho,
-                         String telFijo,String telCel,String correo){
+    public void sendData(final String curp, String a_pa, String a_ma, final String nombre, String fechaNac, String estadoNac, String sexo, String nac, String estadoRes,
+                         String municipio, String cp, String poblacion, String colonia, String nombreCalle, String edo_civil, String ocupacion, String derecho,
+                         String telFijo, String telCel, String correo){
 
-
+        progress.show();
         final AsyncHttpClient client = new AsyncHttpClient();
         HttpEntity entity;
+
+       if(sexo.equals("Masculino")){
+           sexo = String.valueOf(0);
+       }else{
+           sexo = String.valueOf(1);
+       }
 
         String json = "" +
                 "{\"curp\":\""+curp+"\"," +
                 "\"apellidoPaterno\":\""+a_pa+"\"," +
-                "\"apellidoMaterno\":" + a_ma + "," +
+                "\"apellidoMaterno\":\""+a_ma+"\"," +
                 "\"nombre\":\""+nombre+"\"," +
-                "\"fechadeNacimiento\":"+fechaNac+"," +
+                "\"fechadeNacimiento\":\""+fechaNac+"\"," +
                 "\"estadodeNacimiento\":\""+estadoNac+"\"," +
-                "\"sexo\":\""+sexo+"\"," +
+                "\"sexo\":"+sexo+"," +
                 "\"nacionalidadOrigen\":\""+nac+"\"," +
                 "\"estadoResidencia\":\""+estadoRes+"\"," +
                 "\"municipio\":\""+municipio+"\"," +
                 "\"cp\":\""+cp+"\"," +
                 "\"pob_vul\":\""+poblacion+"\"," +
-                "\"colonia\":"+colonia+"," +
-                "\"nombreCalle\":"+nombreCalle+"," +
-                "\"estadoCivil\":"+edo_civil+"," +
-                "\"ocupacion\":"+ocupacion+"," +
+                "\"colonia\":\""+colonia+"\"," +
+                "\"nombreCalle\":\""+nombreCalle+"\"," +
+                "\"estadoCivil\":\""+edo_civil+"\"," +
+                "\"ocupacion\":\""+ocupacion+"\"," +
                 "\"derechoHabiencia\":\""+derecho+"\"," +
                 "\"telFijo\":\""+telFijo+"\"," +
                 "\"telCelular\":\""+telCel+"\"," +
                 "\"correoElectronico\":\""+correo+"\"," +
+                "\"folioDerechoHabiencia\": 0," +
+                "\"createdBy\": 0" +
+
                 "}";
 
 
@@ -247,27 +256,64 @@ public class InicioFragmentMain extends Fragment {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
 
-                Log.e("Response Service", response.toString());
+                Log.e("ResponseService", response.toString());
+
+                try {
+                    respuestaJSON = new JSONObject(response.toString());
+                    Boolean isSucceded = respuestaJSON.getBoolean("success");
+                    if(isSucceded){
+
+                        JSONObject user = respuestaJSON.getJSONObject("user");
+                        String idUser = user.getString("id");
+
+                        Log.e("IDUser", idUser);
+
+                        db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE ,null);
+
+                        try {
+
+                            ContentValues values = new ContentValues();
+                            values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_ID,idUser);
+                            values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_NOMBRE,nombre);
+                            values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_CURP,curp);
+
+                            db.insert(DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC, null, values);
+
+                            progress.dismiss();
+
+                        } catch (Exception ex) {
+                            Log.e("Error", ex.toString());
+                        } finally {
+                            db.close();
+                        }
+
+
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
 
             }
 
             public void onFailure(Throwable error, String content) {
-
+                progress.dismiss();
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-
+                progress.dismiss();
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
-
+                progress.dismiss();
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-
+                progress.dismiss();
             }
 
         });

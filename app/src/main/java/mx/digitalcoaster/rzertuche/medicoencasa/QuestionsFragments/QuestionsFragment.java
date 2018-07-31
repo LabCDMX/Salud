@@ -136,10 +136,8 @@ public class QuestionsFragment extends Fragment {
         desconoce = (RadioButton) view.findViewById(R.id.desconoce_curp);
         noesp = (RadioButton) view.findViewById(R.id.no_especifica_curp);
 
-
-
-
-
+        next = (ImageButton) view.findViewById(R.id.next);
+        back = (ImageButton) view.findViewById(R.id.back);
 
         imageLogo = (ImageView) view.findViewById(R.id.imageView8);
         imageIcon2 = (ImageView) view.findViewById(R.id.icon2);
@@ -150,6 +148,7 @@ public class QuestionsFragment extends Fragment {
 
         if(sharedPreferences.getBooleanData("BackToQuestionsTwo")){
             count=2;
+            back.setVisibility(View.VISIBLE);
             checkCurp.setVisibility(View.GONE);
             open.setVisibility(View.VISIBLE);
         }
@@ -166,9 +165,6 @@ public class QuestionsFragment extends Fragment {
 
 
 
-        next = (ImageButton) view.findViewById(R.id.next);
-
-        back = (ImageButton) view.findViewById(R.id.back);
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -201,6 +197,7 @@ public class QuestionsFragment extends Fragment {
                             sharedPreferences.setStringData("ApellidoP",apeP);
                             if(checkNull(apeM)){
                                 sharedPreferences.setStringData("ApellidoM",apeM);
+                                sharedPreferences.setBooleanData("BackToQuestionsTwo",false);
                                 ((MainActivity)getActivity()).questionFragmentTwo();
                             }else{
                                 answer3.setError("Campo faltante");

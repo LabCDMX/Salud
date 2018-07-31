@@ -42,7 +42,7 @@ public class QuestionsDomFragmentTwo extends Fragment {
     SharedPreferences sharedPreferences;
     private RadioButton seguro,seguro2;
     private RadioGroup radioEsc,radioAct,radioSeguro;
-    private ImageButton next;
+    private ImageButton next,back;
     private RelativeLayout relativeSeguro;
     private LinearLayout questions,questions2,questions3;
     private int count = 0;
@@ -80,6 +80,7 @@ public class QuestionsDomFragmentTwo extends Fragment {
 
 
         next = (ImageButton) getActivity().findViewById(R.id.next);
+        back = (ImageButton) getActivity().findViewById(R.id.back);
 
         relativeSeguro = (RelativeLayout) getActivity().findViewById(R.id.linearYes);
         questions = (LinearLayout) getActivity().findViewById(R.id.questions);
@@ -115,6 +116,34 @@ public class QuestionsDomFragmentTwo extends Fragment {
 
                 }
 
+
+
+            }
+        });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                count --;
+
+
+                if(questions2.getVisibility() == View.VISIBLE){
+
+                    questions.setVisibility(View.VISIBLE);
+                    questions2.setVisibility(View.GONE);
+
+                }else if(questions3.getVisibility() == View.VISIBLE){
+
+                    questions2.setVisibility(View.VISIBLE);
+                    questions3.setVisibility(View.GONE);
+
+                }else if(questions.getVisibility() == View.VISIBLE){
+
+                    sharedPreferences.setBooleanData("BackToQuestionsDomTwo",true);
+                    ((MainActivity)getActivity()).questionFragmentTwo();
+
+
+                }
 
 
             }

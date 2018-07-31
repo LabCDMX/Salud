@@ -218,6 +218,7 @@
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="30dp"
                     android:inputType="number"
+                    android:maxLength="5"
                     android:visibility="gone"
                     android:hint="Escribir respuesta aquí." />
 

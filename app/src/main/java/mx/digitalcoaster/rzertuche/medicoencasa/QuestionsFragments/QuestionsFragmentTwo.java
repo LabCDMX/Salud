@@ -66,6 +66,7 @@ public class QuestionsFragmentTwo extends Fragment {
     private TextView text_date;
     private  Spinner sp;
     private EditText edad, estadoNacimiento, nacionalidad;
+    private ImageButton back;
 
     RelativeLayout open, open1;
 
@@ -111,15 +112,30 @@ public class QuestionsFragmentTwo extends Fragment {
         estadoNacimiento = view.findViewById(R.id.answer);
         nacionalidad = view.findViewById(R.id.answer3);
 
+        back = (ImageButton) view.findViewById(R.id.back);
 
         sharedPreferences = SharedPreferences.getInstance();
 
 
 
         final TextView date = (TextView) getActivity().findViewById(R.id.answer4);
-
-
         ImageButton next = (ImageButton) view.findViewById(R.id.next);
+
+
+        if(sharedPreferences.getBooleanData("BackToQuestionsDomTwo")){
+
+            sharedPreferences.setBooleanData("BackToQuestionsDomTwo",false);
+
+            count=1;
+            open.setVisibility(View.GONE);
+            open1.setVisibility(View.VISIBLE);
+        }
+
+
+
+
+
+
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -140,9 +156,9 @@ public class QuestionsFragmentTwo extends Fragment {
                 }
 
                 if(count == 2){
+
                     sharedPreferences.setStringData("EstadoNac",estadoNacimiento.getText().toString());
                     sharedPreferences.setStringData("Nac",nacionalidad.getText().toString());
-
                     ((MainActivity)getActivity()).questionDomTwo();
 
                 }
@@ -153,13 +169,36 @@ public class QuestionsFragmentTwo extends Fragment {
 
         });
 
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                count --;
+
+                if(open1.getVisibility() == View.VISIBLE){
+
+                    open.setVisibility(View.VISIBLE);
+                    open1.setVisibility(View.GONE);
+
+                }else if(open.getVisibility() == View.VISIBLE){
+                    sharedPreferences.setBooleanData("BackToQuestionsTwo",true);
+                    ((MainActivity)getActivity()).activityRegistros();
+
+                }
+
+            }
+        });
+
+
+
+
         final ImageButton calendario = (ImageButton) getActivity().findViewById(R.id.calendar);
         calendario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // calender class's instance and get current date , month and year from calender
                 final Calendar c = Calendar.getInstance();
-                dateFormatter = new SimpleDateFormat("dd/MM/yyyy");
+                dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
 
                 int mYear = c.get(Calendar.YEAR); // current year
                 int mMonth = c.get(Calendar.MONTH); // current month
@@ -172,8 +211,16 @@ public class QuestionsFragmentTwo extends Fragment {
                             public void onDateSet(DatePicker view, int year,
                                                   int monthOfYear, int dayOfMonth) {
                                 // set day of month , month and year value in the edit text
-                                date .setText(dayOfMonth + "/"
-                                        + (monthOfYear + 1) + "/" + year);
+
+                                Calendar calander2 = Calendar.getInstance();
+                                calander2.setTimeInMillis(0);
+                                calander2.set(year, monthOfYear, dayOfMonth, 0, 0, 0);
+
+                                Date selectedDate = calander2.getTime();
+                                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                                String strDate = format.format(selectedDate);
+
+                                date .setText(strDate);
 
                                 edad.setText(String.valueOf(calcularEdad(year,monthOfYear,dayOfMonth)) + " años");
                                 edad.setEnabled(false);
