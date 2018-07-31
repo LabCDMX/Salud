@@ -1,10 +1,12 @@
 package mx.digitalcoaster.rzertuche.medicoencasa.Fragments;
 
 import android.app.AlertDialog;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Build;
@@ -13,15 +15,18 @@ import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -69,6 +74,7 @@ public class VisitasFragment extends Fragment {
     private TextView nombre, diagnostico, tratamiento,expediente;
     ImageView status;
     ImageButton datosGenerales, historiaClinica;
+
 
 
 
@@ -242,12 +248,18 @@ public class VisitasFragment extends Fragment {
     }
 
 
-    private void viewAlertDialog(String numeroVisita) {
+    private void viewAlertDialog(final String numeroVisita) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setCancelable(false);
         final LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.alert_visita, null);
+
+
+        ImageButton editNotasEnf = view.findViewById(R.id.btn_edit);
+        ImageButton editNotasDoc = view.findViewById(R.id.btn_edit2);
+        final TextView notasEnf = view.findViewById(R.id.etNotasMedicas);
+        final TextView notasDoc = view.findViewById(R.id.etSubjetivo);
 
         db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, android.content.Context.MODE_PRIVATE, null);
         //-------------------------- Obtener información del cliente ---------------------
@@ -268,8 +280,8 @@ public class VisitasFragment extends Fragment {
                 ((TextView) view.findViewById(R.id.textViewFrecuenciaRes)).setText(c.getString(19));
                 ((TextView) view.findViewById(R.id.textViewGlucemia)).setText(c.getString(22));
                 ((TextView) view.findViewById(R.id.textViewTemperatura)).setText(c.getString(23));
-                ((TextView) view.findViewById(R.id.etNotasMedicas)).setText(c.getString(9));
-                ((TextView) view.findViewById(R.id.etSubjetivo)).setText(c.getString(10));
+                notasEnf.setText(c.getString(9));
+                notasDoc.setText(c.getString(10));
                 ((TextView) view.findViewById(R.id.etDiagnostico)).setText(c.getString(3));
                 ((TextView) view.findViewById(R.id.etTratamiento)).setText(c.getString(4));
                 ((TextView) view.findViewById(R.id.edSiguienteVisita)).setText(c.getString(5));
@@ -290,6 +302,72 @@ public class VisitasFragment extends Fragment {
                 dialog.cancel();
             }
         });
+
+
+        editNotasEnf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                notasEnf.setEnabled(true);
+                notasEnf.requestFocus();
+                InputMethodManager imm = (InputMethodManager) // con esto abres el teclado despues de ubicar el foco en tu editText
+                        getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.showSoftInput(notasEnf, InputMethodManager.SHOW_IMPLICIT);
+                notasEnf.setOnKeyListener(new View.OnKeyListener() {
+                    public boolean onKey(View v, int keyCode, KeyEvent event) {
+                        // If the event is a key-down event on the "enter" button
+                        if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
+                                (keyCode == KeyEvent.KEYCODE_ENTER)) {
+
+                            notasEnf.setFocusable(false);
+                            final InputMethodManager hideKeyboard = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                            hideKeyboard.hideSoftInputFromWindow(getView().getWindowToken(), 0);
+                            updateDataBase(numeroVisita,notasEnf.getText().toString());
+
+
+
+                            return true;
+                        }
+                        return false;
+                    }
+                });
+
+            }
+        });
+
+
+        editNotasDoc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                notasDoc.setEnabled(true);
+                notasDoc.requestFocus();
+                InputMethodManager imm = (InputMethodManager) // con esto abres el teclado despues de ubicar el foco en tu editText
+                        getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.showSoftInput(notasDoc, InputMethodManager.SHOW_IMPLICIT);
+                notasDoc.setOnKeyListener(new View.OnKeyListener() {
+                    public boolean onKey(View v, int keyCode, KeyEvent event) {
+                        // If the event is a key-down event on the "enter" button
+                        if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
+                                (keyCode == KeyEvent.KEYCODE_ENTER)) {
+
+                            notasDoc.setFocusable(false);
+                            final InputMethodManager hideKeyboard = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                            hideKeyboard.hideSoftInputFromWindow(getView().getWindowToken(), 0);
+                            updateDataBaseDoc(numeroVisita,notasDoc.getText().toString());
+
+
+
+                            return true;
+                        }
+                        return false;
+                    }
+                });
+
+            }
+        });
+
+
         builder.setView(view);
         builder.show();
     }
@@ -341,8 +419,6 @@ public class VisitasFragment extends Fragment {
         } catch (Exception ex) {
             System.out.println("Exception: " + ex);
         }
-
-
 
         builder.setPositiveButton("ACEPTAR", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
@@ -408,16 +484,76 @@ public class VisitasFragment extends Fragment {
         }
 
 
-
         builder.setPositiveButton("ACEPTAR", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 dialog.cancel();
             }
         });
+
         builder.setView(view);
         builder.show();
     }
 
+
+
+    public void updateDataBase(String numeroVisita, String notasEnf){
+
+        db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE, null);
+
+   /*------------------------- Revisar si existe ------------------------*/
+        c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SEGUIMIENTO + " WHERE " +
+                DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NOMBRE + " ='"+nombrePatient+"' AND "+
+                DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NUMERO+ " = '"+numeroVisita+"'", null);
+
+        try {
+                if (c.moveToFirst()) {
+                    System.out.print("Codigo existente: ");
+                    ContentValues update = new ContentValues();
+
+                    update.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NOTAS_ENFERMERIA, notasEnf);
+
+                    db.update(DataBaseDB.TABLE_NAME_PACIENTES_SEGUIMIENTO, update, DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NOMBRE + "='" + nombrePatient + "'", null);
+                    System.out.println("Codigo actualizado correctamente");
+
+                }
+                c.close();
+            } catch (SQLException ex) {
+                System.out.println("Error al insertar codigo postal: " + ex);
+            }
+
+        db.close();
+
+    }
+
+
+    public void updateDataBaseDoc(String numeroVisita, String notasEnf){
+
+        db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE, null);
+
+        /*------------------------- Revisar si existe ------------------------*/
+        c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SEGUIMIENTO + " WHERE " +
+                DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NOMBRE + " ='"+nombrePatient+"' AND "+
+                DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NUMERO+ " = '"+numeroVisita+"'", null);
+
+        try {
+            if (c.moveToFirst()) {
+                System.out.print("Codigo existente: ");
+                ContentValues update = new ContentValues();
+
+                update.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_SUBJETIVO, notasEnf);
+
+                db.update(DataBaseDB.TABLE_NAME_PACIENTES_SEGUIMIENTO, update, DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NOMBRE + "='" + nombrePatient + "'", null);
+                System.out.println("Codigo actualizado correctamente");
+
+            }
+            c.close();
+        } catch (SQLException ex) {
+            System.out.println("Error al insertar codigo postal: " + ex);
+        }
+
+        db.close();
+
+    }
 
 
 

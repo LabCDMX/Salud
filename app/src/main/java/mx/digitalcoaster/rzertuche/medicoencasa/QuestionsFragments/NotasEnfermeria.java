@@ -42,7 +42,7 @@ public class NotasEnfermeria extends Fragment {
     SharedPreferences sharedPreferences;
 
     EditText textArea_information, textArea_information2, textArea_information3, textArea_information4;
-    ImageButton next;
+    ImageButton next,back;
 
     private SQLiteDatabase db = null;   // Objeto para usar la base de datos local
     private Cursor c = null;            // Objeto para hacer consultas a la base de datos
@@ -76,7 +76,9 @@ public class NotasEnfermeria extends Fragment {
         //Obtencion de datos del sharedPreferences
         sharedPreferences = SharedPreferences.getInstance();
 
-        ImageButton next = (ImageButton) getActivity().findViewById(R.id.next);
+        next = (ImageButton) getActivity().findViewById(R.id.next);
+        back = (ImageButton) getActivity().findViewById(R.id.back);
+
         textArea_information = getActivity().findViewById(R.id.textArea_information);
 
         if(isSinExp){
@@ -118,6 +120,16 @@ public class NotasEnfermeria extends Fragment {
                     ((MainActivity)getActivity()).questionAntecedentes();
 
                 }
+
+            }
+        });
+
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sharedPreferences.setBooleanData("BackToEnfermeria",true);
+                ((MainActivity)getActivity()).questionExploracion();
 
             }
         });

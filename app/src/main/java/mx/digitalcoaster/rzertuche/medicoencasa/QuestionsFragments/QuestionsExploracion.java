@@ -46,7 +46,7 @@ public class QuestionsExploracion extends Fragment {
     private OnFragmentInteractionListener mListener;
 
     SharedPreferences sharedPreferences;
-    private ImageButton next;
+    private ImageButton next,back;
     public static List<String> listElectro = new ArrayList<String>();
 
     private LinearLayout pesoLayout,tipoSangre,tensionLayout, tallaLayout, tensionLayout2, temperaturaLayout, indicatorLayout;
@@ -115,24 +115,35 @@ public class QuestionsExploracion extends Fragment {
         temperaturaLayout = (LinearLayout) getActivity().findViewById(R.id.questions12);
         indicatorLayout = (LinearLayout) getActivity().findViewById(R.id.layout_indicator);
 
-
-
-
-
         radioSangre = (RadioGroup) getActivity().findViewById(R.id.radioSangre);
         radioTipoSangre = (RadioGroup) getActivity().findViewById(R.id.radioTipoSangre);
         radioDec = (RadioGroup) getActivity().findViewById(R.id.radioDec);
 
+        next = (ImageButton) getActivity().findViewById(R.id.next);
+        back = (ImageButton) getActivity().findViewById(R.id.back);
+
         if(isSeguimiento){
 
             title.setText("DATOS DE CONTROL");
+
+            back.setVisibility(View.GONE);
             tipoSangre.setVisibility(View.GONE);
             pesoLayout.setVisibility(View.VISIBLE);
             indicatorLayout.setVisibility(View.GONE);
 
         }
 
-        next = (ImageButton) getActivity().findViewById(R.id.next);
+        if(sharedPreferences.getBooleanData("BackToEnfermeria")){
+
+            sharedPreferences.setBooleanData("BackToEnfermeria",false);
+
+            count=5;
+            tallaLayout.setVisibility(View.GONE);
+            temperaturaLayout.setVisibility(View.VISIBLE);
+
+
+        }
+
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -149,7 +160,7 @@ public class QuestionsExploracion extends Fragment {
                         tensionLayout.setVisibility(View.VISIBLE);
 
                     }else{
-
+                        back.setVisibility(View.VISIBLE);
                         tipoSangre.setVisibility(View.GONE);
                         pesoLayout.setVisibility(View.VISIBLE);
                     }
@@ -278,6 +289,43 @@ public class QuestionsExploracion extends Fragment {
 
 
 
+
+                }
+
+            }
+        });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                count --;
+
+                if(tipoSangre.getVisibility() == View.VISIBLE){
+                    back.setVisibility(View.GONE);
+
+                    tipoSangre.setVisibility(View.GONE);
+                    pesoLayout.setVisibility(View.VISIBLE);
+
+                }else if(tensionLayout.getVisibility() == View.VISIBLE){
+
+                    pesoLayout.setVisibility(View.VISIBLE);
+                    tensionLayout.setVisibility(View.GONE);
+
+                }else if(tensionLayout2.getVisibility() == View.VISIBLE){
+
+                    tensionLayout.setVisibility(View.VISIBLE);
+                    tensionLayout2.setVisibility(View.GONE);
+
+                }else if(tallaLayout.getVisibility() == View.VISIBLE){
+
+                    tensionLayout2.setVisibility(View.VISIBLE);
+                    tallaLayout.setVisibility(View.GONE);
+
+
+                }else if(temperaturaLayout.getVisibility() == View.VISIBLE){
+
+                    tallaLayout.setVisibility(View.VISIBLE);
+                    temperaturaLayout.setVisibility(View.GONE);
 
                 }
 
