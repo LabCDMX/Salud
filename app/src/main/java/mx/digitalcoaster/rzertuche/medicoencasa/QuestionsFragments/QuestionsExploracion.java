@@ -168,12 +168,10 @@ public class QuestionsExploracion extends Fragment {
 
                 if(count == 2){
 
-
                     if(isSeguimiento){
 
                         sharedPreferences.setStringData("Tension1", tension1.getText().toString());
                         sharedPreferences.setStringData("Tension2", tension2.getText().toString());
-
 
                         tensionLayout.setVisibility(View.GONE);
                         tensionLayout2.setVisibility(View.VISIBLE);
@@ -182,7 +180,6 @@ public class QuestionsExploracion extends Fragment {
 
                         sharedPreferences.setStringData("Peso", peso.getText().toString());
                         sharedPreferences.setStringData("Estatura", estatura.getText().toString());
-
 
                         pesoLayout.setVisibility(View.GONE);
                         tensionLayout.setVisibility(View.VISIBLE);
@@ -199,28 +196,20 @@ public class QuestionsExploracion extends Fragment {
                         sharedPreferences.setStringData("Frecuencia Cardiaca", frecuenciaCard.getText().toString());
                         sharedPreferences.setStringData("Frecuencia Respiratoria", frecuenciaRes.getText().toString());
 
-
                         tensionLayout2.setVisibility(View.GONE);
                         tallaLayout.setVisibility(View.VISIBLE);
-
 
                     }else{
 
                         sharedPreferences.setStringData("Tension1", tension1.getText().toString());
                         sharedPreferences.setStringData("Tension2", tension2.getText().toString());
 
-
                         tensionLayout.setVisibility(View.GONE);
                         tensionLayout2.setVisibility(View.VISIBLE);
-
-
                     }
-
                 }
 
                 if(count == 4){
-
-
 
                     if(isSeguimiento){
 
@@ -228,27 +217,18 @@ public class QuestionsExploracion extends Fragment {
                         sharedPreferences.setStringData("Pulso", pulso.getText().toString());
                         sharedPreferences.setStringData("Glucemia", glucemia.getText().toString());
 
-
                         tallaLayout.setVisibility(View.GONE);
                         temperaturaLayout.setVisibility(View.VISIBLE);
-
-
 
                     }else{
 
                         sharedPreferences.setStringData("Frecuencia Cardiaca", frecuenciaCard.getText().toString());
                         sharedPreferences.setStringData("Frecuencia Respiratoria", frecuenciaRes.getText().toString());
 
-
                         tensionLayout2.setVisibility(View.GONE);
                         tallaLayout.setVisibility(View.VISIBLE);
 
                     }
-
-
-
-
-
 
                 }
 
@@ -260,23 +240,16 @@ public class QuestionsExploracion extends Fragment {
 
                         ((MainActivity)getActivity()).notasEnfermeria();
 
-
                     }else{
 
                         sharedPreferences.setStringData("Talla", talla.getText().toString());
                         sharedPreferences.setStringData("Pulso", pulso.getText().toString());
                         sharedPreferences.setStringData("Glucemia", glucemia.getText().toString());
 
-
-
                         tallaLayout.setVisibility(View.GONE);
                         temperaturaLayout.setVisibility(View.VISIBLE);
 
-
-
                     }
-
-
 
                 }
 
@@ -285,10 +258,6 @@ public class QuestionsExploracion extends Fragment {
                     sharedPreferences.setStringData("Temperatura", temperatura.getText().toString());
 
                     ((MainActivity)getActivity()).notasEnfermeria();
-
-
-
-
 
                 }
 

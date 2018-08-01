@@ -19,9 +19,11 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -74,6 +76,8 @@ public class VisitasFragment extends Fragment {
     private TextView nombre, diagnostico, tratamiento,expediente;
     ImageView status;
     ImageButton datosGenerales, historiaClinica;
+    Boolean firstPickNotasEnf = true;
+    Boolean firstPickNotasMed = true;
 
 
 
@@ -256,10 +260,10 @@ public class VisitasFragment extends Fragment {
         View view = inflater.inflate(R.layout.alert_visita, null);
 
 
-        ImageButton editNotasEnf = view.findViewById(R.id.btn_edit);
-        ImageButton editNotasDoc = view.findViewById(R.id.btn_edit2);
-        final TextView notasEnf = view.findViewById(R.id.etNotasMedicas);
-        final TextView notasDoc = view.findViewById(R.id.etSubjetivo);
+        final ImageButton editNotasEnf = view.findViewById(R.id.btn_edit);
+        final ImageButton editNotasDoc = view.findViewById(R.id.btn_edit2);
+        final EditText notasEnf = view.findViewById(R.id.etNotasMedicas);
+        final EditText notasDoc = view.findViewById(R.id.etSubjetivo);
 
         db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, android.content.Context.MODE_PRIVATE, null);
         //-------------------------- Obtener información del cliente ---------------------
@@ -308,29 +312,26 @@ public class VisitasFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                notasEnf.setEnabled(true);
-                notasEnf.requestFocus();
-                InputMethodManager imm = (InputMethodManager) // con esto abres el teclado despues de ubicar el foco en tu editText
-                        getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.showSoftInput(notasEnf, InputMethodManager.SHOW_IMPLICIT);
-                notasEnf.setOnKeyListener(new View.OnKeyListener() {
-                    public boolean onKey(View v, int keyCode, KeyEvent event) {
-                        // If the event is a key-down event on the "enter" button
-                        if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
-                                (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                if(firstPickNotasEnf){
 
-                            notasEnf.setFocusable(false);
-                            final InputMethodManager hideKeyboard = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                            hideKeyboard.hideSoftInputFromWindow(getView().getWindowToken(), 0);
-                            updateDataBase(numeroVisita,notasEnf.getText().toString());
+                    firstPickNotasEnf =false;
+                    editNotasEnf.setImageDrawable(getActivity().getResources().getDrawable(R.drawable.paloma2));
+                    notasEnf.setEnabled(true);
+                    notasEnf.requestFocus();
+                    InputMethodManager imm = (InputMethodManager) // con esto abres el teclado despues de ubicar el foco en tu editText
+                            getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.showSoftInput(notasEnf, InputMethodManager.SHOW_IMPLICIT);
 
+                }else{
+                    editNotasEnf.setImageDrawable(getActivity().getResources().getDrawable(R.drawable.pencil_pink));
+                    firstPickNotasEnf =true;
+                    notasEnf.setEnabled(false);
+                    updateDataBase(numeroVisita,notasEnf.getText().toString());
+                    InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(getActivity().INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
 
+                }
 
-                            return true;
-                        }
-                        return false;
-                    }
-                });
 
             }
         });
@@ -340,37 +341,35 @@ public class VisitasFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                notasDoc.setEnabled(true);
-                notasDoc.requestFocus();
-                InputMethodManager imm = (InputMethodManager) // con esto abres el teclado despues de ubicar el foco en tu editText
-                        getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.showSoftInput(notasDoc, InputMethodManager.SHOW_IMPLICIT);
-                notasDoc.setOnKeyListener(new View.OnKeyListener() {
-                    public boolean onKey(View v, int keyCode, KeyEvent event) {
-                        // If the event is a key-down event on the "enter" button
-                        if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
-                                (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                if(firstPickNotasMed){
 
-                            notasDoc.setFocusable(false);
-                            final InputMethodManager hideKeyboard = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                            hideKeyboard.hideSoftInputFromWindow(getView().getWindowToken(), 0);
-                            updateDataBaseDoc(numeroVisita,notasDoc.getText().toString());
+                    firstPickNotasMed =false;
+                    editNotasDoc.setImageDrawable(getActivity().getResources().getDrawable(R.drawable.paloma2));
+                    notasDoc.setEnabled(true);
+                    notasDoc.requestFocus();
+                    InputMethodManager imm = (InputMethodManager) // con esto abres el teclado despues de ubicar el foco en tu editText
+                            getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.showSoftInput(notasDoc, InputMethodManager.SHOW_IMPLICIT);
 
+                }else{
+                    editNotasDoc.setImageDrawable(getActivity().getResources().getDrawable(R.drawable.pencil_pink));
+                    firstPickNotasMed =true;
+                    notasDoc.setEnabled(false);
+                    updateDataBaseDoc(numeroVisita,notasDoc.getText().toString());
+                    InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(getActivity().INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
 
-
-                            return true;
-                        }
-                        return false;
-                    }
-                });
-
+                }
             }
         });
+
 
 
         builder.setView(view);
         builder.show();
     }
+
+
 
 
     private void viewAlertDialogDatos() {

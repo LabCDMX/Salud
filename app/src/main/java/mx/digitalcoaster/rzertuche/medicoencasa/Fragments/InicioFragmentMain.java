@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +29,7 @@ import org.json.JSONObject;
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -35,7 +37,14 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Hashtable;
+
+import javax.net.ssl.HttpsURLConnection;
 
 import cz.msebera.android.httpclient.Header;
 import cz.msebera.android.httpclient.HttpEntity;
@@ -211,11 +220,9 @@ public class InicioFragmentMain extends Fragment {
 
     public void sendData(final String curp, String a_pa, String a_ma, final String nombre, String fechaNac, String estadoNac, String sexo, String nac, String estadoRes,
                          String municipio, String cp, String poblacion, String colonia, String nombreCalle, String edo_civil, String ocupacion, String derecho,
-                         String telFijo, String telCel, String correo){
+                         String telFijo, String telCel, String correo) throws JSONException, ParseException {
 
-        progress.show();
-        final AsyncHttpClient client = new AsyncHttpClient();
-        HttpEntity entity;
+
 
        if(sexo.equals("Masculino")){
            sexo = String.valueOf(0);
@@ -223,7 +230,8 @@ public class InicioFragmentMain extends Fragment {
            sexo = String.valueOf(1);
        }
 
-        String json = "" +
+
+        /*String json = "" +
                 "{\"curp\":\""+curp+"\"," +
                 "\"apellidoPaterno\":\""+a_pa+"\"," +
                 "\"apellidoMaterno\":\""+a_ma+"\"," +
@@ -247,12 +255,43 @@ public class InicioFragmentMain extends Fragment {
                 "\"folioDerechoHabiencia\": 0," +
                 "\"createdBy\": 0" +
 
-                "}";
+                "}";*/
 
 
-        entity = new StringEntity(json, "UTF-8");
-        Log.d("JSON EMV", json);
-        client.post(getActivity(), "https://medico.digitalcoaster.mx/api/admin/api/paciente", entity, "application/json", new JsonHttpResponseHandler() {
+
+        JSONObject jsonParams = new JSONObject();
+        jsonParams.put("curp",curp);
+        jsonParams.put("apellidoPaterno",a_pa);
+        jsonParams.put("apellidoMaterno",a_ma);
+        jsonParams.put("nombre",nombre);
+        jsonParams.put("fechadeNacimiento",fechaNac);
+        jsonParams.put("estadodeNacimiento",estadoNac);
+        jsonParams.put("sexo",sexo);
+        jsonParams.put("nacionalidadOrigen",nac);
+        jsonParams.put("estadoResidencia",estadoRes);
+        jsonParams.put("municipio",municipio);
+        jsonParams.put("cp",cp);
+        jsonParams.put("pob_vul",poblacion);
+        jsonParams.put("colonia",colonia);
+        jsonParams.put("nombreCalle",nombreCalle);
+        jsonParams.put("estadoCivil",edo_civil);
+        jsonParams.put("ocupacion",ocupacion);
+        jsonParams.put("derechoHabiencia",derecho);
+        jsonParams.put("telFijo",telFijo);
+        jsonParams.put("telCelular",telCel);
+        jsonParams.put("correoElectronico",correo);
+        jsonParams.put("folioDerechoHabiencia","0");
+        jsonParams.put("createdBy","0");
+
+
+
+        //entity = new StringEntity(json, "UTF-8");
+        Log.d("JSON EMV", jsonParams.toString());
+
+        connectPostWithCookies("https://medico.digitalcoaster.mx/api/admin/api/paciente",jsonParams.toString());
+
+
+        /*client.post(getActivity(), "https://medico.digitalcoaster.mx/api/admin/api/paciente", entity, "application/json", new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
 
@@ -316,14 +355,77 @@ public class InicioFragmentMain extends Fragment {
                 progress.dismiss();
             }
 
-        });
+        });*/
+
+
+    }
 
 
 
 
+    public String connectPostWithCookies(String url1, String params){
+        try {
+            progress.show();
+            URL url = new URL(url1);
+            HttpsURLConnection urlConnection = (HttpsURLConnection) url.openConnection();
+
+            urlConnection.setConnectTimeout(10000);
+            urlConnection.setRequestMethod("POST");
+            urlConnection.setDoInput(true);
+            urlConnection.setDoOutput(true);
+            urlConnection.setRequestProperty("Content-type", "application/json");
 
 
+            //urlConnection.setSSLSocketFactory(getCertificates().getSocketFactory());
 
+            DataOutputStream wr = new DataOutputStream(urlConnection.getOutputStream());
+
+            wr.write(params.getBytes());
+            wr.flush();
+            wr.close();
+
+            int responseCode = urlConnection.getResponseCode();
+
+            if(responseCode == 200){
+
+                BufferedReader in = new BufferedReader(
+                        new InputStreamReader(urlConnection.getInputStream()));
+                String inputLine;
+                StringBuffer response = new StringBuffer();
+
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+                in.close();
+
+                Log.e("URL", url1);
+                Log.e("cadenaRespuesta", response.toString());
+
+                progress.dismiss();
+                return response.toString();
+            }else{
+
+                //JsonArray response2 = new JsonParser().parse(new InputStreamReader(urlConnection.getErrorStream())).getAsJsonArray();
+                //JSONObject response2 = new JsonParser().parse(new InputStreamReader(urlConnection.getErrorStream())).getAsJsonObject();
+
+
+                 /*if (response2 instanceof JsonObject) {
+                    JsonObject  responseJsonObject = new JsonParser().parse(new InputStreamReader(urlConnection.getErrorStream())).getAsJsonObject();
+                    return responseJsonObject.toString();
+                }else if (responseArray instanceof JsonArray) {
+                    JsonArray  responseArrayObject =  new JsonParser().parse(new InputStreamReader(urlConnection.getErrorStream())).getAsJsonArray();
+                    return responseArrayObject.toString();
+                }*/
+
+                    Log.e("URL", url1);
+
+
+                return "false";
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            return "";
+        }
     }
 
 
