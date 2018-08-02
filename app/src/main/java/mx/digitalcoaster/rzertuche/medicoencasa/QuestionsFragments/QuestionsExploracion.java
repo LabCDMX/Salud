@@ -138,6 +138,8 @@ public class QuestionsExploracion extends Fragment {
             sharedPreferences.setBooleanData("BackToEnfermeria",false);
 
             count=5;
+
+            tipoSangre.setVisibility(View.GONE);
             tallaLayout.setVisibility(View.GONE);
             temperaturaLayout.setVisibility(View.VISIBLE);
 

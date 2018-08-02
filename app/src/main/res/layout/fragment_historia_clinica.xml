@@ -253,14 +253,121 @@
                 android:textColor="@android:color/black" />
 
 
+            //HEREDO FAMILIARES
 
+            <TextView
+                android:id="@+id/tvHeredoFam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvCerebro"
+                android:textSize="20sp"
+                android:text="3.- Heredofamiliares:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/textViewHeredoFam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvHeredoFam"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginStart="50dp"
+                android:textColor="@android:color/black" />
+
+
+            //Antecedentes personales no patológicos
+
+            <TextView
+                android:id="@+id/tvPersonalesNoPato"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewHeredoFam"
+                android:textSize="20sp"
+                android:text="4.- Personales no patológicos:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/textViewPersonalesNoPato"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvPersonalesNoPato"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginStart="50dp"
+                android:textColor="@android:color/black" />
+
+            //Antecedentes personales patológicos
+
+            <TextView
+                android:id="@+id/tvPersonalesPato"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewPersonalesNoPato"
+                android:textSize="20sp"
+                android:text="5.- Personales patológicos:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/textViewPersonalesPato"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvPersonalesPato"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginStart="50dp"
+                android:textColor="@android:color/black" />
+
+
+            //Antecedentes personales gineco obstéricos
+
+            <TextView
+                android:id="@+id/tvPersonalesGineco"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewPersonalesPato"
+                android:textSize="20sp"
+                android:text="6.- Personales Gineco Obstéricos:"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/textViewPersonalesGineco"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvPersonalesGineco"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginStart="50dp"
+                android:textColor="@android:color/black" />
+
+
+            //Interrogatorio por sistemas
 
             <TextView
                 android:id="@+id/tvInterrogatorio"
                 android:layout_marginTop="40dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tvCerebro"
+                android:layout_below="@id/textViewPersonalesGineco"
                 android:textStyle="bold"
                 android:textColor="@android:color/black"
                 android:textSize="30sp"

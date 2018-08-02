@@ -60,7 +60,7 @@ public class HistoriaClinicaFragment extends Fragment {
     EditText digestivo,urinario,reproductor,hemo,endocrino,nervioso,piel,habitus,cabeza,cuello,torax,abdomen,ginecologica,extremidades,columna,neurologica,genitales;
     EditText diabetes,disli,obesidad,enf_cardio;
     EditText tensionArt,frecuenciaCar,frecuenciaRes,glucemia,temperatura;
-    TextView personales;
+    TextView personales,personalesHeredo,personalesNoPato,personalesPato,personalesGineco;
     ImageButton next;
 
     public static String cadenaCardio = new String();
@@ -121,7 +121,6 @@ public class HistoriaClinicaFragment extends Fragment {
         genitales = (EditText) getActivity().findViewById(R.id.textViewGenitales);
 
 
-
         peso = (EditText) getActivity().findViewById(R.id.textViewPeso);
         estatura = (EditText) getActivity().findViewById(R.id.textViewEstatura);
         tensionArt = (EditText) getActivity().findViewById(R.id.textViewTensionArterial);
@@ -140,6 +139,11 @@ public class HistoriaClinicaFragment extends Fragment {
 
 
         personales = (TextView) getActivity().findViewById(R.id.tvCerebro);
+        personalesHeredo = (TextView) getActivity().findViewById(R.id.textViewHeredoFam);
+        personalesNoPato = (TextView) getActivity().findViewById(R.id.textViewPersonalesNoPato);
+        personalesPato = (TextView) getActivity().findViewById(R.id.textViewPersonalesPato);
+        personalesGineco = (TextView) getActivity().findViewById(R.id.textViewPersonalesGineco);
+
 
         hemotipo = (EditText) getActivity().findViewById(R.id.textViewHemotipo);
         talla = (EditText) getActivity().findViewById(R.id.textViewTalla);
@@ -222,6 +226,11 @@ public class HistoriaClinicaFragment extends Fragment {
             glucemia.setText(sharedPreferences.getStringData("Glucemia"));
             temperatura.setText(sharedPreferences.getStringData("Temperatura"));
 
+            //Nuevos Agregados
+            personalesHeredo.setText(sharedPreferences.getStringData("Heredofamiliares"));
+            personalesNoPato.setText(sharedPreferences.getStringData("NoPatologicos"));
+            personalesPato.setText(sharedPreferences.getStringData("Patologicos"));
+            personalesGineco.setText(sharedPreferences.getStringData("Ginecologicos"));
 
 
 

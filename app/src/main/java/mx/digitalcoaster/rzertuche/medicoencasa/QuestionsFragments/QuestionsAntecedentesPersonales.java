@@ -104,6 +104,7 @@ public class QuestionsAntecedentesPersonales extends Fragment {
 
 
                 if(count == 1){
+                    sharedPreferences.setStringData("Heredofamiliares", textArea_information.getText().toString());
                     category.setText(getActivity().getResources().getString(R.string.antecedentes_personales));
                     antecedentes.setVisibility(View.GONE);
                     personales.setVisibility(View.VISIBLE);
@@ -120,6 +121,7 @@ public class QuestionsAntecedentesPersonales extends Fragment {
                 }
 
                 if(count == 3){
+                    sharedPreferences.setStringData("NoPatologicos", textArea_information.getText().toString());
                     textArea_information.setText("");
                     category.setText(getActivity().getResources().getString(R.string.antecedentes_title3));
                     bodyCheckBox.setText(getActivity().getResources().getString(R.string.antecedentes_body3));
@@ -128,6 +130,7 @@ public class QuestionsAntecedentesPersonales extends Fragment {
                 }
 
                 if(count == 4){
+                    sharedPreferences.setStringData("Patologicos", textArea_information.getText().toString());
                     textArea_information.setText("");
                     category.setText(getActivity().getResources().getString(R.string.antecedentes_title4));
                     bodyCheckBox.setText(getActivity().getResources().getString(R.string.antecedentes_body4));
@@ -136,6 +139,7 @@ public class QuestionsAntecedentesPersonales extends Fragment {
                 }
 
                 if(count == 5){
+                    sharedPreferences.setStringData("Ginecologicos", textArea_information.getText().toString());
                     textArea_information.setText("");
 
                     //listPersonales = quitarRepedidos(listPersonales);
