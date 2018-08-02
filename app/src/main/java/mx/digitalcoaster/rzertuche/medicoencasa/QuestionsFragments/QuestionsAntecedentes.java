@@ -102,6 +102,17 @@ public class QuestionsAntecedentes extends Fragment {
             title.setText("DATOS DE CONTROL");
         }
 
+
+        if(sharedPreferences.getBooleanData("BackToAntecedentesPersonales")){
+            sharedPreferences.setBooleanData("BackToAntecedentesPersonales",false);
+
+            count=5;
+            questions2.setText("f) Enfermedades Cerebrovascular");
+
+
+        }
+
+
         next = (ImageButton) getActivity().findViewById(R.id.next);
         back = (ImageButton) getActivity().findViewById(R.id.back);
 
@@ -277,7 +288,7 @@ public class QuestionsAntecedentes extends Fragment {
                 count --;
 
                 if(questions2.getText().toString().equals(("a) Enfermedad cardiovascular"))){
-
+                    sharedPreferences.setBooleanData("BackToAntecedentes",true);
                     ((MainActivity)getActivity()).notasEnfermeria();
 
                 }

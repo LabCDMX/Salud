@@ -97,11 +97,14 @@ public class NotasEnfermeria extends Fragment {
 
         }
 
-        if(!sharedPreferences.getStringData("NotasEnfermeria").isEmpty()){
+        if(!sharedPreferences.getStringData("NotasEnfermeria").isEmpty() && sharedPreferences.getBooleanData("BackToAntecedentes")){
 
+            sharedPreferences.setBooleanData("BackToAntecedentes",false);
             textArea_information.setText(sharedPreferences.getStringData("NotasEnfermeria"));
 
         }
+
+
 
 
         next.setOnClickListener(new View.OnClickListener() {

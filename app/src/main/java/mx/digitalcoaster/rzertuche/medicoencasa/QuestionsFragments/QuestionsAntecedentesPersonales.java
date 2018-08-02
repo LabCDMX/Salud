@@ -37,7 +37,7 @@ public class QuestionsAntecedentesPersonales extends Fragment {
 
     SharedPreferences sharedPreferences;
     private CheckBox estufa,refrigerador,lavadora,telefono,horno,televisor;
-    private ImageButton next;
+    private ImageButton next,back;
 
     private LinearLayout personales, antecedentes;
     private TextView questions2;
@@ -96,6 +96,23 @@ public class QuestionsAntecedentesPersonales extends Fragment {
 
 
         next = (ImageButton) getActivity().findViewById(R.id.next);
+        back = (ImageButton) getActivity().findViewById(R.id.back);
+
+
+
+        if(sharedPreferences.getBooleanData("BackToInterrogatorio")){
+
+            sharedPreferences.setBooleanData("BackToInterrogatorio",false);
+
+            count=5;
+
+            category.setText(getActivity().getResources().getString(R.string.antecedentes_title4));
+            bodyCheckBox.setText(getActivity().getResources().getString(R.string.antecedentes_body4));
+
+
+        }
+
+
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,6 +123,8 @@ public class QuestionsAntecedentesPersonales extends Fragment {
                 if(count == 1){
                     sharedPreferences.setStringData("Heredofamiliares", textArea_information.getText().toString());
                     category.setText(getActivity().getResources().getString(R.string.antecedentes_personales));
+
+
                     antecedentes.setVisibility(View.GONE);
                     personales.setVisibility(View.VISIBLE);
                 }
@@ -174,6 +193,17 @@ public class QuestionsAntecedentesPersonales extends Fragment {
                     listPersonales.clear();
                     listPersonales.add("Ninguno");
                 }
+
+
+            }
+        });
+
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //count --;
 
 
             }
