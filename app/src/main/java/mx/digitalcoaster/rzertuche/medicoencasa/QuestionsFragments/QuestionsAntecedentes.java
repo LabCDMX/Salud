@@ -38,7 +38,7 @@ public class QuestionsAntecedentes extends Fragment {
 
     SharedPreferences sharedPreferences;
     private CheckBox estufa,refrigerador,lavadora,telefono,horno,televisor;
-    private ImageButton next;
+    private ImageButton next,back;
     public static List<String> listCardio = new ArrayList<String>();
     public static List<String> listHTA = new ArrayList<String>();
     public static List<String> listDiabetes = new ArrayList<String>();
@@ -103,6 +103,8 @@ public class QuestionsAntecedentes extends Fragment {
         }
 
         next = (ImageButton) getActivity().findViewById(R.id.next);
+        back = (ImageButton) getActivity().findViewById(R.id.back);
+
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -262,6 +264,68 @@ public class QuestionsAntecedentes extends Fragment {
 
                     }
 
+
+                }
+
+            }
+        });
+
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                count --;
+
+                if(questions2.getText().toString().equals(("a) Enfermedad cardiovascular"))){
+
+                    ((MainActivity)getActivity()).notasEnfermeria();
+
+                }
+
+                if(questions2.getText().toString().equals(("b) HTA"))){
+
+                    isCardio = true;
+                    isHTA = false;
+                    clearCheckBox();
+                    questions2.setText("a) Enfermedad cardiovascular");
+
+                }
+
+                if(questions2.getText().toString().equals(("c) Diabetes"))){
+
+                    isHTA=true;
+                    isDiabetes = false;
+                    clearCheckBox();
+                    questions2.setText("b) HTA");
+
+                }
+
+                if(questions2.getText().toString().equals(("d) Dislipidemias"))){
+
+                    isDiabetes = true;
+                    isDis=false;
+                    clearCheckBox();
+
+                    questions2.setText("c) Diabetes");
+
+                }
+
+                if(questions2.getText().toString().equals(("e) Obesidad"))){
+
+                    isDis=true;
+                    isObe = false;
+                    clearCheckBox();
+
+                    questions2.setText("d) Dislipidemias");
+
+                }
+
+                if(questions2.getText().toString().equals(("f) Enfermedades Cerebrovascular"))){
+
+                    isObe=true;
+                    isEnf = false;
+                    clearCheckBox();
+                    questions2.setText("e) Obesidad");
 
                 }
 

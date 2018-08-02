@@ -95,6 +95,11 @@ public class NotasEnfermeria extends Fragment {
 
             textArea_information.setText(sharedPreferences.getStringData("NotasEnfermeriaSegumiento"));
 
+        }
+
+        if(!sharedPreferences.getStringData("NotasEnfermeria").isEmpty()){
+
+            textArea_information.setText(sharedPreferences.getStringData("NotasEnfermeria"));
 
         }
 

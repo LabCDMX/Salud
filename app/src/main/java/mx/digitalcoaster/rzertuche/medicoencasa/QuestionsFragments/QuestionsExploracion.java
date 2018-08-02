@@ -85,9 +85,6 @@ public class QuestionsExploracion extends Fragment {
 
         title = (TextView) getActivity().findViewById(R.id.title);
 
-
-
-
         estatura = (EditText) getActivity().findViewById(R.id.answer2);
         estatura.addTextChangedListener(imcWatcher);
 
