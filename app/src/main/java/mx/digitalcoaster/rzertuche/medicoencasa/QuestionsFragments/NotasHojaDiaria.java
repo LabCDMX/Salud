@@ -127,6 +127,7 @@ public class NotasHojaDiaria extends Fragment {
 
                 saveAllData();
                 addNewVisita();
+                ((MainActivity)getActivity()).stopCronometro();
                 ((MainActivity)getActivity()).succededClinica();
 
             }

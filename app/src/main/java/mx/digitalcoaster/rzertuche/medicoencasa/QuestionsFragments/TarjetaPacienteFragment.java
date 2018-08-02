@@ -204,6 +204,8 @@ public class TarjetaPacienteFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+                ((MainActivity)getActivity()).stopCronometro();
+
                 if(isSeguimiento){
                     addNewVisita();
                     ((MainActivity)getActivity()).succededClinica();

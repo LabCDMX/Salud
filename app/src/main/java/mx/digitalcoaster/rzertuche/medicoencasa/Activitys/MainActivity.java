@@ -587,6 +587,7 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     public void questionExploracion(){
+        startCronometro();
         QuestionsExploracion fragment = new QuestionsExploracion();
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
