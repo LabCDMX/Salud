@@ -39,13 +39,10 @@ public class QuestionsContextElectro extends Fragment {
     private CheckBox estufa,refrigerador,lavadora,telefono,horno,televisor, boiler, radio, tv,lap,internet,auto;
     private ImageButton next;
     public static List<String> listElectro = new ArrayList<String>();
-    private LinearLayout questions2,questions3,questions4;
+    private LinearLayout questions2,questions3,questions4,questions5,questions6,questions7,questions8,questions10;
     private RelativeLayout questions;
     private int count = 0;
-    private RadioGroup radioVivienda,radioPiso, radioTecho;
-
-
-
+    private RadioGroup radioVivienda,radioPiso, radioTecho,radioContactAni;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -86,6 +83,17 @@ public class QuestionsContextElectro extends Fragment {
         questions3 = (LinearLayout) getActivity().findViewById(R.id.questions3);
         questions4 = (LinearLayout) getActivity().findViewById(R.id.questions4);
 
+        questions5 = (LinearLayout) getActivity().findViewById(R.id.questions5);
+        questions6 = (LinearLayout) getActivity().findViewById(R.id.questions6);
+        questions7 = (LinearLayout) getActivity().findViewById(R.id.questions7);
+        questions8 = (LinearLayout) getActivity().findViewById(R.id.questions8);
+
+        questions10 = (LinearLayout) getActivity().findViewById(R.id.questions11);
+
+
+
+
+        radioContactAni = (RadioGroup) getActivity().findViewById(R.id.radioContactAni);
         radioVivienda = (RadioGroup) getActivity().findViewById(R.id.radioEsc);
         radioPiso = (RadioGroup) getActivity().findViewById(R.id.radioPiso);
         radioTecho = (RadioGroup) getActivity().findViewById(R.id.radioTecho);
@@ -159,7 +167,32 @@ public class QuestionsContextElectro extends Fragment {
                     questions4.setVisibility(View.VISIBLE);
 
                 }
+
                 if(count == 4){
+                    questions4.setVisibility(View.GONE);
+                    questions5.setVisibility(View.VISIBLE);
+
+                }
+
+                if(count == 5){
+                    questions5.setVisibility(View.GONE);
+                    questions6.setVisibility(View.VISIBLE);
+
+                }
+
+                if(count == 6){
+                    questions6.setVisibility(View.GONE);
+                    questions7.setVisibility(View.VISIBLE);
+
+                }
+
+                if(count == 7){
+                    questions7.setVisibility(View.GONE);
+                    questions8.setVisibility(View.VISIBLE);
+
+                }
+
+                if(count == 8){
                     count=0;
                     ((MainActivity)getActivity()).fragmentQuestionsAlimentos();
 
@@ -190,6 +223,27 @@ public class QuestionsContextElectro extends Fragment {
                     sharedPreferences.setStringData("Caracteristicas","Duplex");
                 }else if (checkedId == R.id.multifamiliar){
                     sharedPreferences.setStringData("Caracteristicas","MultiFamiliar");
+                }
+
+            }
+
+        });
+
+        radioContactAni.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
+
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                // TODO Auto-generated method stub
+                if (checkedId == R.id.siContact){
+
+                    questions10.setVisibility(View.VISIBLE);
+
+
+                }else if (checkedId == R.id.noContact){
+
+                    questions10.setVisibility(View.GONE);
+
+
                 }
 
             }

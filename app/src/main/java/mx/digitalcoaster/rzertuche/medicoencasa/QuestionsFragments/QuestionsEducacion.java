@@ -39,9 +39,9 @@ public class QuestionsEducacion extends Fragment {
 
     SharedPreferences sharedPreferences;
     private RadioButton primaria,secundaria,preparatoria,licenciatura,posgrado,sinEsc;
-    private RadioGroup radioEsc,radioTiempo,radioTransporte, radioRecre,radioEstres;
+    private RadioGroup radioEsc,radioTiempo,radioTransporte, radioRecre,radioEstres,radioAccepted,radioAcceptedHrs,radioActividad;
     private ImageButton next;
-    private LinearLayout questions,questions2,questions3,questions4,questions5;
+    private LinearLayout questions,questions2,questions3,questions4,questions5,questions6,questions6_1,questions6_2,questions7,questions8;
     private int count = 0;
 
 
@@ -85,6 +85,10 @@ public class QuestionsEducacion extends Fragment {
         radioEstres = (RadioGroup) getActivity().findViewById(R.id.radioEstres);
         radioTransporte = (RadioGroup) getActivity().findViewById(R.id.radioTrans);
 
+        radioAccepted = (RadioGroup) getActivity().findViewById(R.id.radioAccepted);
+        radioAcceptedHrs = (RadioGroup) getActivity().findViewById(R.id.radioAcceptedHrs);
+        radioActividad = (RadioGroup) getActivity().findViewById(R.id.radioActividad);
+
 
 
         next = (ImageButton) getActivity().findViewById(R.id.next);
@@ -97,6 +101,16 @@ public class QuestionsEducacion extends Fragment {
         questions3 = (LinearLayout) getActivity().findViewById(R.id.questions3);
         questions4 = (LinearLayout) getActivity().findViewById(R.id.questions4);
         questions5 = (LinearLayout) getActivity().findViewById(R.id.questions5);
+        questions6 = (LinearLayout) getActivity().findViewById(R.id.questions6);
+
+        questions6_1 = (LinearLayout) getActivity().findViewById(R.id.questionsYesActiv);
+        questions6_2 = (LinearLayout) getActivity().findViewById(R.id.questionsYesActivHrs);
+
+        questions7 = (LinearLayout) getActivity().findViewById(R.id.questions7);
+        questions8 = (LinearLayout) getActivity().findViewById(R.id.questions8);
+
+
+
 
 
         next.setOnClickListener(new View.OnClickListener() {
@@ -122,10 +136,25 @@ public class QuestionsEducacion extends Fragment {
 
                 if(count == 4){
                     questions4.setVisibility(View.GONE);
-                    questions5.setVisibility(View.VISIBLE);
+                    questions6.setVisibility(View.VISIBLE);
                 }
 
                 if(count == 5){
+                    questions6.setVisibility(View.GONE);
+                    questions5.setVisibility(View.VISIBLE);
+                }
+
+                if(count == 6){
+                    questions5.setVisibility(View.GONE);
+                    questions7.setVisibility(View.VISIBLE);
+                }
+
+                if(count == 7){
+                    questions7.setVisibility(View.GONE);
+                    questions8.setVisibility(View.VISIBLE);
+                }
+
+                if(count == 8){
                     ((MainActivity)getActivity()).fragmentContextElectro();
 
                 }
@@ -208,6 +237,28 @@ public class QuestionsEducacion extends Fragment {
                     sharedPreferences.setStringData("Transporte","No aplica");
 
                 }
+            }
+
+        });
+
+
+        radioActividad.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
+
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                // TODO Auto-generated method stub
+                if (checkedId == R.id.aceptedFisica){
+                    //sharedPreferences.setStringData("Transporte","Menos de 1 hora");
+                    questions6_1.setVisibility(View.VISIBLE);
+                    questions6_2.setVisibility(View.VISIBLE);
+
+                }else if (checkedId == R.id.declinedFisica){
+                    //sharedPreferences.setStringData("Transporte","1 hora a 3 horas");
+                    questions6_1.setVisibility(View.GONE);
+                    questions6_2.setVisibility(View.GONE);
+
+                }
+
             }
 
         });
