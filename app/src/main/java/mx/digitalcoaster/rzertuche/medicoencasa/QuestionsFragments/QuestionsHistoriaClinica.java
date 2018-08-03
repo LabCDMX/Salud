@@ -269,114 +269,133 @@ public class QuestionsHistoriaClinica extends Fragment {
                 count --;
 
                 if(question.getText().toString().equals(getActivity().getResources().getString(R.string.interrogatorio_title18))){
+                    sharedPreferences.setStringData("Genitales",textArea_information.getText().toString());
 
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title17));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio17));
                     textArea_information.setText(sharedPreferences.getStringData("Neurologica"));
 
                 }else if(question.getText().toString().equals(getActivity().getResources().getString(R.string.interrogatorio_title17))){
+                    sharedPreferences.setStringData("Neurologica",textArea_information.getText().toString());
 
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title16));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio16));
                     textArea_information.setText(sharedPreferences.getStringData("Columna"));
 
                 }else if(question.getText().toString().equals(getActivity().getResources().getString(R.string.interrogatorio_title16))){
+                    sharedPreferences.setStringData("Columna",textArea_information.getText().toString());
 
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title15));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio15));
                     textArea_information.setText(sharedPreferences.getStringData("Extremidades"));
 
                 }else if(question.getText().toString().equals(getActivity().getResources().getString(R.string.interrogatorio_title15))){
+                    sharedPreferences.setStringData("Extremidades",textArea_information.getText().toString());
 
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title14));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio14));
                     textArea_information.setText(sharedPreferences.getStringData("Ginecologica"));
 
                 }else if(question.getText().toString().equals(getActivity().getResources().getString(R.string.interrogatorio_title14))){
+                    sharedPreferences.setStringData("Ginecologica",textArea_information.getText().toString());
 
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title20));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio13));
                     textArea_information.setText(sharedPreferences.getStringData("Abdomen"));
 
                 }else if(question.getText().toString().equals(getActivity().getResources().getString(R.string.interrogatorio_title20))){
+                    sharedPreferences.setStringData("Abdomen",textArea_information.getText().toString());
 
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title19));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio19));
                     textArea_information.setText(sharedPreferences.getStringData("Torax"));
 
                 }else if(question.getText().toString().equals(getActivity().getResources().getString(R.string.interrogatorio_title19))){
+                    sharedPreferences.setStringData("Torax",textArea_information.getText().toString());
 
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title12));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio12));
                     textArea_information.setText(sharedPreferences.getStringData("Cuello"));
 
                 }else if(question.getText().toString().equals(getActivity().getResources().getString(R.string.interrogatorio_title12))){
+                    sharedPreferences.setStringData("Cuello",textArea_information.getText().toString());
 
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title11));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio11));
                     textArea_information.setText(sharedPreferences.getStringData("Cabeza"));
 
                 }else if(question.getText().toString().equals(getActivity().getResources().getString(R.string.interrogatorio_title11))){
+                    sharedPreferences.setStringData("Cabeza",textArea_information.getText().toString());
 
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title10));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio10));
                     textArea_information.setText(sharedPreferences.getStringData("Habitus"));
 
                 }else if(question.getText().toString().equals(getActivity().getResources().getString(R.string.interrogatorio_title10))){
+                    sharedPreferences.setStringData("Habitus",textArea_information.getText().toString());
 
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title9));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio9));
                     textArea_information.setText(sharedPreferences.getStringData("Piel"));
 
                 }else if(question.getText().toString().equals(getActivity().getResources().getString(R.string.interrogatorio_title9))){
+                    sharedPreferences.setStringData("Piel",textArea_information.getText().toString());
 
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title8));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio8));
                     textArea_information.setText(sharedPreferences.getStringData("Esqueletico"));
 
                 }else if(question.getText().toString().equals(getActivity().getResources().getString(R.string.interrogatorio_title8))){
+                    sharedPreferences.setStringData("Esqueletico",textArea_information.getText().toString());
 
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title7));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio7));
                     textArea_information.setText(sharedPreferences.getStringData("Nervioso"));
 
                 }else if(question.getText().toString().equals(getActivity().getResources().getString(R.string.interrogatorio_title7))){
+                    sharedPreferences.setStringData("Nervioso",textArea_information.getText().toString());
 
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title6));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio6));
                     textArea_information.setText(sharedPreferences.getStringData("Endocrino"));
 
                 }else if(question.getText().toString().equals(getActivity().getResources().getString(R.string.interrogatorio_title6))){
+                    sharedPreferences.setStringData("Endocrino",textArea_information.getText().toString());
 
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title5));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio5));
                     textArea_information.setText(sharedPreferences.getStringData("Hemo"));
 
                 }else if(question.getText().toString().equals(getActivity().getResources().getString(R.string.interrogatorio_title5))){
+                    sharedPreferences.setStringData("Hemo",textArea_information.getText().toString());
 
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title4));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio4));
                     textArea_information.setText(sharedPreferences.getStringData("Reproductor"));
 
                 }else if(question.getText().toString().equals(getActivity().getResources().getString(R.string.interrogatorio_title4))){
+                    sharedPreferences.setStringData("Reproductor",textArea_information.getText().toString());
 
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title3));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio3));
                     textArea_information.setText(sharedPreferences.getStringData("Urinario"));
 
                 }else if(question.getText().toString().equals(getActivity().getResources().getString(R.string.interrogatorio_title3))){
+                    sharedPreferences.setStringData("Urinario",textArea_information.getText().toString());
 
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title2));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio2));
                     textArea_information.setText(sharedPreferences.getStringData("Digestivo"));
 
                 }else if(question.getText().toString().equals(getActivity().getResources().getString(R.string.interrogatorio_title2))){
+                    sharedPreferences.setStringData("Digestivo",textArea_information.getText().toString());
 
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title1));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio1));
                     textArea_information.setText(sharedPreferences.getStringData("Cardio"));
 
                 }else if(question.getText().toString().equals(getActivity().getResources().getString(R.string.interrogatorio_title1))){
+                    sharedPreferences.setStringData("Cardio",textArea_information.getText().toString());
 
                     question.setText("1.- Respiratorio");
                     question2.setText("Obstrucción nasal disfonía, tos, expectoración, hemoptisis, dolor, cianosis, disnea.");

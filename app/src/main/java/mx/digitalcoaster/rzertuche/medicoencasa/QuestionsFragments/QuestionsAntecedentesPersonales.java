@@ -100,6 +100,13 @@ public class QuestionsAntecedentesPersonales extends Fragment {
 
 
 
+        if(sharedPreferences.getStringData("Heredofamiliares") != null && !sharedPreferences.getStringData("Heredofamiliares").isEmpty() && !sharedPreferences.getBooleanData("BackToInterrogatorio")){
+
+            textArea_information.setText(sharedPreferences.getStringData("Heredofamiliares"));
+
+
+        }
+
         if(sharedPreferences.getBooleanData("BackToInterrogatorio")){
 
             sharedPreferences.setBooleanData("BackToInterrogatorio",false);
@@ -112,14 +119,6 @@ public class QuestionsAntecedentesPersonales extends Fragment {
 
 
         }
-
-        if(sharedPreferences.getStringData("Heredofamiliares") != null && !sharedPreferences.getStringData("Heredofamiliares").isEmpty()){
-
-            textArea_information.setText(sharedPreferences.getStringData("Heredofamiliares"));
-
-
-        }
-
 
 
         next.setOnClickListener(new View.OnClickListener() {
