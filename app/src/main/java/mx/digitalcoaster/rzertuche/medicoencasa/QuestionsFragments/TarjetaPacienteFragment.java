@@ -368,6 +368,18 @@ public class TarjetaPacienteFragment extends Fragment {
                 values.put(DataBaseDB.PACIENTES_RESPIRATORIA, sharedPreferences.getStringData("Frecuencia Respiratoria"));
                 values.put(DataBaseDB.PACIENTES_TEMPERATURA, sharedPreferences.getStringData("Temperatura"));
 
+                values.put(DataBaseDB.PACIENTES_PERSONALES_HEREDO, sharedPreferences.getStringData("Heredofamiliares"));
+                values.put(DataBaseDB.PACIENTES_PERSONALES_NO_PATOLOGICOS, sharedPreferences.getStringData("NoPatologicos"));
+                values.put(DataBaseDB.PACIENTES_PERSONALES_PATOLOGICOS, sharedPreferences.getStringData("Patologicos"));
+                values.put(DataBaseDB.PACIENTES_GINECOOBSTERICOS, sharedPreferences.getStringData("Ginecologicos"));
+                values.put(DataBaseDB.PACIENTES_TORAX, sharedPreferences.getStringData("Torax"));
+                values.put(DataBaseDB.PACIENTES_ABDOMEN, sharedPreferences.getStringData("Abdomen"));
+                values.put(DataBaseDB.PACIENTES_GINECOLOGICA, sharedPreferences.getStringData("Ginecologica"));
+                values.put(DataBaseDB.PACIENTES_EXTREMIDADES, sharedPreferences.getStringData("Extremidades"));
+                values.put(DataBaseDB.PACIENTES_COLUMNA, sharedPreferences.getStringData("Columna"));
+                values.put(DataBaseDB.PACIENTES_NEUROLOGICA, sharedPreferences.getStringData("Neurologica"));
+                values.put(DataBaseDB.PACIENTES_GENITALES, sharedPreferences.getStringData("Genitales"));
+
 
 
 
@@ -416,6 +428,19 @@ public class TarjetaPacienteFragment extends Fragment {
                 values.put(DataBaseDB.PACIENTES_CARDIACA, sharedPreferences.getStringData("Frecuencia Cardiaca"));
                 values.put(DataBaseDB.PACIENTES_RESPIRATORIA, sharedPreferences.getStringData("Frecuencia Respiratoria"));
                 values.put(DataBaseDB.PACIENTES_TEMPERATURA, sharedPreferences.getStringData("Temperatura"));
+
+
+                values.put(DataBaseDB.PACIENTES_PERSONALES_HEREDO, sharedPreferences.getStringData("Heredofamiliares"));
+                values.put(DataBaseDB.PACIENTES_PERSONALES_NO_PATOLOGICOS, sharedPreferences.getStringData("NoPatologicos"));
+                values.put(DataBaseDB.PACIENTES_PERSONALES_PATOLOGICOS, sharedPreferences.getStringData("Patologicos"));
+                values.put(DataBaseDB.PACIENTES_GINECOOBSTERICOS, sharedPreferences.getStringData("Ginecologicos"));
+                values.put(DataBaseDB.PACIENTES_TORAX, sharedPreferences.getStringData("Torax"));
+                values.put(DataBaseDB.PACIENTES_ABDOMEN, sharedPreferences.getStringData("Abdomen"));
+                values.put(DataBaseDB.PACIENTES_GINECOLOGICA, sharedPreferences.getStringData("Ginecologica"));
+                values.put(DataBaseDB.PACIENTES_EXTREMIDADES, sharedPreferences.getStringData("Extremidades"));
+                values.put(DataBaseDB.PACIENTES_COLUMNA, sharedPreferences.getStringData("Columna"));
+                values.put(DataBaseDB.PACIENTES_NEUROLOGICA, sharedPreferences.getStringData("Neurologica"));
+                values.put(DataBaseDB.PACIENTES_GENITALES, sharedPreferences.getStringData("Genitales"));
 
 
 
@@ -482,6 +507,19 @@ public class TarjetaPacienteFragment extends Fragment {
                 values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_NOTAS_ENFERMERIA, sharedPreferences.getStringData("NotasEnfermeria"));
 
 
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_PERSONALES_HEREDO, sharedPreferences.getStringData("Heredofamiliares"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_PERSONALES_NO_PATOLOGICOS, sharedPreferences.getStringData("NoPatologicos"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_PERSONALES_PATOLOGICOS, sharedPreferences.getStringData("Patologicos"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_GINECOOBSTERICOS, sharedPreferences.getStringData("Ginecologicos"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_TORAX, sharedPreferences.getStringData("Torax"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_ABDOMEN, sharedPreferences.getStringData("Abdomen"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_GINECOLOGICA, sharedPreferences.getStringData("Ginecologica"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_EXTREMIDADES, sharedPreferences.getStringData("Extremidades"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_COLUMNA, sharedPreferences.getStringData("Columna"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_NEUROLOGICA, sharedPreferences.getStringData("Neurologica"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_GENITALES, sharedPreferences.getStringData("Genitales"));
+
+
 
 
                 db.insert(DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC, null, values);
@@ -526,6 +564,17 @@ public class TarjetaPacienteFragment extends Fragment {
                 values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_NOTAS_DOC, sharedPreferences.getStringData("SubjetivoNotas"));
                 values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_NOTAS_ENFERMERIA, sharedPreferences.getStringData("NotasEnfermeria"));
 
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_PERSONALES_HEREDO, sharedPreferences.getStringData("Heredofamiliares"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_PERSONALES_NO_PATOLOGICOS, sharedPreferences.getStringData("NoPatologicos"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_PERSONALES_PATOLOGICOS, sharedPreferences.getStringData("Patologicos"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_GINECOOBSTERICOS, sharedPreferences.getStringData("Ginecologicos"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_TORAX, sharedPreferences.getStringData("Torax"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_ABDOMEN, sharedPreferences.getStringData("Abdomen"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_GINECOLOGICA, sharedPreferences.getStringData("Ginecologica"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_EXTREMIDADES, sharedPreferences.getStringData("Extremidades"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_COLUMNA, sharedPreferences.getStringData("Columna"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_NEUROLOGICA, sharedPreferences.getStringData("Neurologica"));
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_GENITALES, sharedPreferences.getStringData("Genitales"));
 
 
 

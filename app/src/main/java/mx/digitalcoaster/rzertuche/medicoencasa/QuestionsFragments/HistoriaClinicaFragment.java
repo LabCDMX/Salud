@@ -160,6 +160,8 @@ public class HistoriaClinicaFragment extends Fragment {
         if(isSinExp){
 
             getDatosExp();
+
+
             String name = sharedPreferences.getStringData("nameItem");
             respiratorio.setText(sharedPreferences.getStringData("Respiratorio"+name));
             cardio.setText(sharedPreferences.getStringData("Cardio"+name));
@@ -190,6 +192,19 @@ public class HistoriaClinicaFragment extends Fragment {
             frecuenciaRes.setText(sharedPreferences.getStringData("Frecuencia Respiratoria"+name));
             glucemia.setText(sharedPreferences.getStringData("Glucemia"+name));
             temperatura.setText(sharedPreferences.getStringData("Temperatura"+name));
+
+            personalesHeredo.setText(sharedPreferences.getStringData("Heredo"+name));
+            personalesNoPato.setText(sharedPreferences.getStringData("NoPato"+name));
+            personalesPato.setText(sharedPreferences.getStringData("Pato"+name));
+            personalesGineco.setText(sharedPreferences.getStringData("Ginecobstericos"+name));
+            torax.setText(sharedPreferences.getStringData("Torax"+name));
+            abdomen.setText(sharedPreferences.getStringData("Abdomen"+name));
+            ginecologica.setText(sharedPreferences.getStringData("Ginecologica"+name));
+            extremidades.setText(sharedPreferences.getStringData("Extremidades"+name));
+            columna.setText(sharedPreferences.getStringData("Columna"+name));
+            neurologica.setText(sharedPreferences.getStringData("Neuro"+name));
+            genitales.setText(sharedPreferences.getStringData("Genitales"+name));
+
 
 
         }
@@ -337,6 +352,21 @@ public class HistoriaClinicaFragment extends Fragment {
                     sharedPreferences.setStringData("Frecuencia Respiratoria"+name,c.getString(12));
                     sharedPreferences.setStringData("Glucemia"+name,c.getString(15));
                     sharedPreferences.setStringData("Temperatura"+name,c.getString(16));
+
+                    sharedPreferences.setStringData("Heredo"+name,c.getString(54));
+                    sharedPreferences.setStringData("NoPato"+name,c.getString(26));
+                    sharedPreferences.setStringData("Pato"+name,c.getString(25));
+                    sharedPreferences.setStringData("Ginecobstericos"+name,c.getString(27));
+                    sharedPreferences.setStringData("Torax"+name,c.getString(53));
+                    sharedPreferences.setStringData("Abdomen"+name,c.getString(43));
+                    sharedPreferences.setStringData("Ginecologica"+name,c.getString(44));
+                    sharedPreferences.setStringData("Extremidades"+name,c.getString(15));
+                    sharedPreferences.setStringData("Columna"+name,c.getString(46));
+                    sharedPreferences.setStringData("Neuro"+name,c.getString(47));
+                    sharedPreferences.setStringData("Genitales"+name,c.getString(48));
+
+
+
 
 
 

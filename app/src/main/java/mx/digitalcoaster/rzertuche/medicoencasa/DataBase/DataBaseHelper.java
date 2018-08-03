@@ -183,7 +183,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 DataBaseDB.PACIENTES_NOTAS_DOC + " TEXT, " +
                 DataBaseDB.PACIENTES_PLANES + " TEXT, " +
                 DataBaseDB.PACIENTES_IMPRESION_DIAGNOSTICA + " TEXT, " +
-                DataBaseDB.PACIENTES_TRATAMIENTO + " TEXT); "
+                DataBaseDB.PACIENTES_TRATAMIENTO + " TEXT, " +
+                DataBaseDB.PACIENTES_TORAX + " TEXT, " +
+                DataBaseDB.PACIENTES_PERSONALES_HEREDO + " TEXT); "
         );
         System.out.println(DataBaseDB.TABLE_NAME_PACIENTES_SIN_EXPEDIENTE + " Creada");
 
@@ -287,7 +289,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_PLANES + " TEXT, " +
                 DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_DIAGNOSTICO + " TEXT, " +
                 DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_TRATAMIENTO + " TEXT, " +
-                DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_ID + " TEXT); "
+                DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_ID + " TEXT, " +
+                DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_TORAX + " TEXT, " +
+                DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_PERSONALES_HEREDO + " TEXT); "
+
         );
         System.out.println(DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC + " Creada");
 

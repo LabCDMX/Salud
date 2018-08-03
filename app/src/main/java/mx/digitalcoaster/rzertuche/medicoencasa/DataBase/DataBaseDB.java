@@ -131,6 +131,9 @@ public class DataBaseDB {
     public static final String PACIENTES_PLANES = "pacientes_planes";
     public static final String PACIENTES_IMPRESION_DIAGNOSTICA = "pacientes_impresion_diagnostica";
     public static final String PACIENTES_TRATAMIENTO = "pacientes_tratamiento";
+    public static final String PACIENTES_PERSONALES_HEREDO = "pacientes_personales_heredo";
+    public static final String PACIENTES_TORAX = "pacientes_torax";
+
 
     public static final String PACIENTES_VISITA_NOMBRE = "pacientes_visita_nombre";
     public static final String PACIENTES_VISITA_CURP = "pacientes_visita_curp";
@@ -258,6 +261,8 @@ public class DataBaseDB {
     public static final String PACIENTES_SINCRONIZAR_HISTORIC_DIAGNOSTICO = "pacientes_sincronizar_historic_diagnostico";
     public static final String PACIENTES_SINCRONIZAR_HISTORIC_TRATAMIENTO = "pacientes_sincronizar_historic_tratamiento";
     public static final String PACIENTES_SINCRONIZAR_HISTORIC_ID = "pacientes_sincronizar_historic_id";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_PERSONALES_HEREDO = "pacientes_sincronizar_historic_personales_heredo";
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_TORAX = "pacientes_sincronizar_historic_torax";
 
 
 
