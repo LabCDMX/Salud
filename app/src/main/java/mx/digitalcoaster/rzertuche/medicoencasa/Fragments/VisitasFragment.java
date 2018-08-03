@@ -446,6 +446,7 @@ public class VisitasFragment extends Fragment {
 
             if (c.moveToFirst()) {
 
+
                 ((TextView) view.findViewById(R.id.textViewCardioVas)).setText(c.getString(17));
                 ((TextView) view.findViewById(R.id.textViewHTA)).setText(c.getString(18));
                 ((TextView) view.findViewById(R.id.textViewDiabetes)).setText(c.getString(19));

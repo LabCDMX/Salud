@@ -174,39 +174,10 @@ public class QuestionsAntecedentesPersonales extends Fragment {
                 if(count == 5){
                     sharedPreferences.setStringData("Ginecobstericos", textArea_information.getText().toString());
                     //textArea_information.setText("");
-                    //listPersonales = quitarRepedidos(listPersonales);
+                    listPersonales = quitarRepedidos(listPersonales);
                     ((MainActivity)getActivity()).questionInterrogatorio();
 
                 }
-
-
-
-                if (enf_cerebro.isChecked()) {
-                    listPersonales.add("Enfermedad Cerebrovascular");
-                }
-                if (vih.isChecked()) {
-                    listPersonales.add("VIH");
-                }
-                if (sobrepeso.isChecked()) {
-                    listPersonales.add("Sobrepeso");
-                }
-                if (tabaquismo.isChecked()) {
-                    listPersonales.add("Tabaquismo");
-                }
-                if (sedentarismo.isChecked()) {
-                    listPersonales.add("Sedentarismo");
-                }
-                if (tuberculosis.isChecked()) {
-                    listPersonales.add("Tuberculosis");
-                }
-                if (enf_cardiovascular.isChecked()) {
-                    listPersonales.add("Enfermedad Cardiovascular");
-                }
-                if (ninguno.isChecked()) {
-                    listPersonales.clear();
-                    listPersonales.add("Ninguno");
-                }
-
 
             }
         });
@@ -222,6 +193,32 @@ public class QuestionsAntecedentesPersonales extends Fragment {
             }
         });
 
+
+        if (enf_cerebro.isChecked()) {
+            listPersonales.add("Enfermedad Cerebrovascular");
+        }
+        if (vih.isChecked()) {
+            listPersonales.add("VIH");
+        }
+        if (sobrepeso.isChecked()) {
+            listPersonales.add("Sobrepeso");
+        }
+        if (tabaquismo.isChecked()) {
+            listPersonales.add("Tabaquismo");
+        }
+        if (sedentarismo.isChecked()) {
+            listPersonales.add("Sedentarismo");
+        }
+        if (tuberculosis.isChecked()) {
+            listPersonales.add("Tuberculosis");
+        }
+        if (enf_cardiovascular.isChecked()) {
+            listPersonales.add("Enfermedad Cardiovascular");
+        }
+        if (ninguno.isChecked()) {
+            listPersonales.clear();
+            listPersonales.add("Ninguno");
+        }
 
     }
 
