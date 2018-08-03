@@ -466,7 +466,7 @@ public class VisitasFragment extends Fragment {
                 ((TextView) view.findViewById(R.id.textViewHabitus)).setText(c.getString(39));
                 ((TextView) view.findViewById(R.id.textViewCabeza)).setText(c.getString(40));
                 ((TextView) view.findViewById(R.id.textViewCuello)).setText(c.getString(41));
-                ((TextView) view.findViewById(R.id.textViewTorax)).setText("");
+                ((TextView) view.findViewById(R.id.textViewTorax)).setText(c.getString(54));
                 ((TextView) view.findViewById(R.id.textViewAbdomen)).setText(c.getString(42));
                 ((TextView) view.findViewById(R.id.textViewExploracionGinec)).setText(c.getString(43));
                 ((TextView) view.findViewById(R.id.textViewExtremidades)).setText(c.getString(44));

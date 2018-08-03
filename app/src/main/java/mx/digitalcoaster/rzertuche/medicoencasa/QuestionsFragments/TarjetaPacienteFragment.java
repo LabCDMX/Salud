@@ -367,7 +367,6 @@ public class TarjetaPacienteFragment extends Fragment {
                 values.put(DataBaseDB.PACIENTES_CARDIACA, sharedPreferences.getStringData("Frecuencia Cardiaca"));
                 values.put(DataBaseDB.PACIENTES_RESPIRATORIA, sharedPreferences.getStringData("Frecuencia Respiratoria"));
                 values.put(DataBaseDB.PACIENTES_TEMPERATURA, sharedPreferences.getStringData("Temperatura"));
-
                 values.put(DataBaseDB.PACIENTES_PERSONALES_HEREDO, sharedPreferences.getStringData("Heredofamiliares"));
                 values.put(DataBaseDB.PACIENTES_PERSONALES_NO_PATOLOGICOS, sharedPreferences.getStringData("NoPatologicos"));
                 values.put(DataBaseDB.PACIENTES_PERSONALES_PATOLOGICOS, sharedPreferences.getStringData("Patologicos"));
@@ -428,8 +427,6 @@ public class TarjetaPacienteFragment extends Fragment {
                 values.put(DataBaseDB.PACIENTES_CARDIACA, sharedPreferences.getStringData("Frecuencia Cardiaca"));
                 values.put(DataBaseDB.PACIENTES_RESPIRATORIA, sharedPreferences.getStringData("Frecuencia Respiratoria"));
                 values.put(DataBaseDB.PACIENTES_TEMPERATURA, sharedPreferences.getStringData("Temperatura"));
-
-
                 values.put(DataBaseDB.PACIENTES_PERSONALES_HEREDO, sharedPreferences.getStringData("Heredofamiliares"));
                 values.put(DataBaseDB.PACIENTES_PERSONALES_NO_PATOLOGICOS, sharedPreferences.getStringData("NoPatologicos"));
                 values.put(DataBaseDB.PACIENTES_PERSONALES_PATOLOGICOS, sharedPreferences.getStringData("Patologicos"));
