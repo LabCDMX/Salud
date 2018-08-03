@@ -104,7 +104,7 @@ public class QuestionsAntecedentesPersonales extends Fragment {
 
             sharedPreferences.setBooleanData("BackToInterrogatorio",false);
 
-            count=5;
+            count=4;
 
             category.setText(getActivity().getResources().getString(R.string.antecedentes_title4));
             bodyCheckBox.setText(getActivity().getResources().getString(R.string.antecedentes_body4));

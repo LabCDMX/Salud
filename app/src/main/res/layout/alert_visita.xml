@@ -307,8 +307,8 @@
             <ImageButton
                 android:id="@+id/btn_edit"
                 android:layout_marginTop="15dp"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
                 android:layout_below="@+id/divider5"
                 android:layout_toRightOf="@+id/etNotasMedicas"
                 android:background="#FFF"
@@ -357,8 +357,8 @@
             <ImageButton
                 android:id="@+id/btn_edit2"
                 android:layout_marginTop="15dp"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
                 android:layout_below="@+id/divider6"
                 android:layout_toRightOf="@+id/etSubjetivo"
                 android:background="#FFF"
