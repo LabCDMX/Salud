@@ -151,6 +151,8 @@ public class QuestionsExploracion extends Fragment {
 
                 if(count == 1){
                     if(isSeguimiento){
+                        back.setVisibility(View.VISIBLE);
+
                         sharedPreferences.setStringData("Peso", peso.getText().toString());
                         sharedPreferences.setStringData("Estatura", estatura.getText().toString());
 
@@ -268,35 +270,66 @@ public class QuestionsExploracion extends Fragment {
             public void onClick(View view) {
                 count --;
 
-                if(tipoSangre.getVisibility() == View.VISIBLE){
-                    back.setVisibility(View.GONE);
+                if(isSeguimiento){
 
-                    tipoSangre.setVisibility(View.GONE);
-                    pesoLayout.setVisibility(View.VISIBLE);
+                    if(tensionLayout.getVisibility() == View.VISIBLE){
 
-                }else if(tensionLayout.getVisibility() == View.VISIBLE){
+                        back.setVisibility(View.GONE);
+                        pesoLayout.setVisibility(View.VISIBLE);
+                        tensionLayout.setVisibility(View.GONE);
 
-                    pesoLayout.setVisibility(View.VISIBLE);
-                    tensionLayout.setVisibility(View.GONE);
+                    }else if(tensionLayout2.getVisibility() == View.VISIBLE){
 
-                }else if(tensionLayout2.getVisibility() == View.VISIBLE){
+                        tensionLayout.setVisibility(View.VISIBLE);
+                        tensionLayout2.setVisibility(View.GONE);
 
-                    tensionLayout.setVisibility(View.VISIBLE);
-                    tensionLayout2.setVisibility(View.GONE);
+                    }else if(tallaLayout.getVisibility() == View.VISIBLE){
 
-                }else if(tallaLayout.getVisibility() == View.VISIBLE){
-
-                    tensionLayout2.setVisibility(View.VISIBLE);
-                    tallaLayout.setVisibility(View.GONE);
+                        tensionLayout2.setVisibility(View.VISIBLE);
+                        tallaLayout.setVisibility(View.GONE);
 
 
-                }else if(temperaturaLayout.getVisibility() == View.VISIBLE){
+                    }else if(temperaturaLayout.getVisibility() == View.VISIBLE){
 
-                    tallaLayout.setVisibility(View.VISIBLE);
-                    temperaturaLayout.setVisibility(View.GONE);
+                        tallaLayout.setVisibility(View.VISIBLE);
+                        temperaturaLayout.setVisibility(View.GONE);
+
+                    }
+
+                }else{
+
+
+                    if(tipoSangre.getVisibility() == View.VISIBLE){
+                        back.setVisibility(View.GONE);
+
+                        tipoSangre.setVisibility(View.GONE);
+                        pesoLayout.setVisibility(View.VISIBLE);
+
+                    }else if(tensionLayout.getVisibility() == View.VISIBLE){
+
+                        pesoLayout.setVisibility(View.VISIBLE);
+                        tensionLayout.setVisibility(View.GONE);
+
+                    }else if(tensionLayout2.getVisibility() == View.VISIBLE){
+
+                        tensionLayout.setVisibility(View.VISIBLE);
+                        tensionLayout2.setVisibility(View.GONE);
+
+                    }else if(tallaLayout.getVisibility() == View.VISIBLE){
+
+                        tensionLayout2.setVisibility(View.VISIBLE);
+                        tallaLayout.setVisibility(View.GONE);
+
+
+                    }else if(temperaturaLayout.getVisibility() == View.VISIBLE){
+
+                        tallaLayout.setVisibility(View.VISIBLE);
+                        temperaturaLayout.setVisibility(View.GONE);
+
+                    }
+
 
                 }
-
             }
         });
 
