@@ -108,9 +108,18 @@ public class QuestionsAntecedentesPersonales extends Fragment {
 
             category.setText(getActivity().getResources().getString(R.string.antecedentes_title4));
             bodyCheckBox.setText(getActivity().getResources().getString(R.string.antecedentes_body4));
+            textArea_information.setText(sharedPreferences.getStringData("Ginecobstericos") != null && !sharedPreferences.getStringData("Ginecobstericos").isEmpty() ? sharedPreferences.getStringData("Ginecobstericos"): "");
 
 
         }
+
+        if(sharedPreferences.getStringData("Heredofamiliares") != null && !sharedPreferences.getStringData("Heredofamiliares").isEmpty()){
+
+            textArea_information.setText(sharedPreferences.getStringData("Heredofamiliares"));
+
+
+        }
+
 
 
         next.setOnClickListener(new View.OnClickListener() {
@@ -130,7 +139,9 @@ public class QuestionsAntecedentesPersonales extends Fragment {
                 }
 
                 if(count == 2){
-                    textArea_information.setText("");
+
+                    textArea_information.setText(sharedPreferences.getStringData("NoPatologicos") != null && !sharedPreferences.getStringData("NoPatologicos").isEmpty() ? sharedPreferences.getStringData("NoPatologicos"): "");
+
                     category.setText(getActivity().getResources().getString(R.string.antecedentes_title2));
                     bodyCheckBox.setText(getActivity().getResources().getString(R.string.antecedentes_body2));
 
@@ -141,7 +152,9 @@ public class QuestionsAntecedentesPersonales extends Fragment {
 
                 if(count == 3){
                     sharedPreferences.setStringData("NoPatologicos", textArea_information.getText().toString());
-                    textArea_information.setText("");
+
+                    textArea_information.setText(sharedPreferences.getStringData("Patologicos") != null && !sharedPreferences.getStringData("Patologicos").isEmpty() ? sharedPreferences.getStringData("Patologicos"): "");
+
                     category.setText(getActivity().getResources().getString(R.string.antecedentes_title3));
                     bodyCheckBox.setText(getActivity().getResources().getString(R.string.antecedentes_body3));
 
@@ -150,7 +163,9 @@ public class QuestionsAntecedentesPersonales extends Fragment {
 
                 if(count == 4){
                     sharedPreferences.setStringData("Patologicos", textArea_information.getText().toString());
-                    textArea_information.setText("");
+
+                    textArea_information.setText(sharedPreferences.getStringData("Ginecobstericos") != null && !sharedPreferences.getStringData("Ginecobstericos").isEmpty() ? sharedPreferences.getStringData("Ginecobstericos"): "");
+
                     category.setText(getActivity().getResources().getString(R.string.antecedentes_title4));
                     bodyCheckBox.setText(getActivity().getResources().getString(R.string.antecedentes_body4));
 
@@ -158,9 +173,8 @@ public class QuestionsAntecedentesPersonales extends Fragment {
                 }
 
                 if(count == 5){
-                    sharedPreferences.setStringData("Ginecologicos", textArea_information.getText().toString());
-                    textArea_information.setText("");
-
+                    sharedPreferences.setStringData("Ginecobstericos", textArea_information.getText().toString());
+                    //textArea_information.setText("");
                     //listPersonales = quitarRepedidos(listPersonales);
                     ((MainActivity)getActivity()).questionInterrogatorio();
 

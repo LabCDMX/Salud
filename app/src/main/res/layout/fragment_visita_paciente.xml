@@ -147,7 +147,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/engrane"
                 android:layout_toRightOf="@+id/expediente"
-                android:layout_marginLeft="90dp"/>
+                android:layout_marginLeft="30dp"/>
 
             <ImageButton
                 android:id="@+id/historia_clinica"
@@ -155,7 +155,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/person"
                 android:layout_toRightOf="@+id/datos_generales"
-                android:layout_marginLeft="40dp"/>
+                android:layout_marginLeft="10dp"/>
 
 
         </RelativeLayout>

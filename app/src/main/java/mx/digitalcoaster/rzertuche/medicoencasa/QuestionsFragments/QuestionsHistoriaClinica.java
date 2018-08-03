@@ -94,82 +94,108 @@ public class QuestionsHistoriaClinica extends Fragment {
 
                 if(count == 1){
                     sharedPreferences.setStringData("Respiratorio",textArea_information.getText().toString());
-                    textArea_information.setText("");
+
+                    textArea_information.setText(sharedPreferences.getStringData("Cardio") != null && !sharedPreferences.getStringData("Cardio").isEmpty() ? sharedPreferences.getStringData("Cardio"): "");
+
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title1));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio1));
                 }
 
                 if(count == 2){
                     sharedPreferences.setStringData("Cardio",textArea_information.getText().toString());
-                    textArea_information.setText("");
+
+                    textArea_information.setText(sharedPreferences.getStringData("Digestivo") != null && !sharedPreferences.getStringData("Digestivo").isEmpty() ? sharedPreferences.getStringData("Digestivo"): "");
+
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title2));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio2));
                 }
 
                 if(count == 3){
                     sharedPreferences.setStringData("Digestivo",textArea_information.getText().toString());
-                    textArea_information.setText("");
+
+                    textArea_information.setText(sharedPreferences.getStringData("Urinario") != null && !sharedPreferences.getStringData("Urinario").isEmpty() ? sharedPreferences.getStringData("Urinario"): "");
+
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title3));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio3));
                 }
 
                 if(count == 4){
                     sharedPreferences.setStringData("Urinario",textArea_information.getText().toString());
-                    textArea_information.setText("");
+
+                    textArea_information.setText(sharedPreferences.getStringData("Reproductor") != null && !sharedPreferences.getStringData("Reproductor").isEmpty() ? sharedPreferences.getStringData("Reproductor"): "");
+
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title4));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio4));
                 }
                 if(count == 5){
                     sharedPreferences.setStringData("Reproductor",textArea_information.getText().toString());
-                    textArea_information.setText("");
+
+                    textArea_information.setText(sharedPreferences.getStringData("Hemo") != null && !sharedPreferences.getStringData("Hemo").isEmpty() ? sharedPreferences.getStringData("Hemo"): "");
+
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title5));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio5));
                 }
                 if(count == 6){
                     sharedPreferences.setStringData("Hemo",textArea_information.getText().toString());
-                    textArea_information.setText("");
+
+                    textArea_information.setText(sharedPreferences.getStringData("Endocrino") != null && !sharedPreferences.getStringData("Endocrino").isEmpty() ? sharedPreferences.getStringData("Endocrino"): "");
+
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title6));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio6));
                 }
                 if(count == 7){
                     sharedPreferences.setStringData("Endocrino",textArea_information.getText().toString());
-                    textArea_information.setText("");
+
+                    textArea_information.setText(sharedPreferences.getStringData("Nervioso") != null && !sharedPreferences.getStringData("Nervioso").isEmpty() ? sharedPreferences.getStringData("Nervioso"): "");
+
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title7));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio7));
                 }
                 if(count == 8){
                     sharedPreferences.setStringData("Nervioso",textArea_information.getText().toString());
-                    textArea_information.setText("");
+
+                    textArea_information.setText(sharedPreferences.getStringData("Esqueletico") != null && !sharedPreferences.getStringData("Esqueletico").isEmpty() ? sharedPreferences.getStringData("Esqueletico"): "");
+
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title8));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio8));
                 }
                 if(count == 9){
                     sharedPreferences.setStringData("Esqueletico",textArea_information.getText().toString());
-                    textArea_information.setText("");
+
+                    textArea_information.setText(sharedPreferences.getStringData("Piel") != null && !sharedPreferences.getStringData("Piel").isEmpty() ? sharedPreferences.getStringData("Piel"): "");
+
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title9));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio9));
                 }
                 if(count == 10){
                     sharedPreferences.setStringData("Piel",textArea_information.getText().toString());
-                    textArea_information.setText("");
+
+                    textArea_information.setText(sharedPreferences.getStringData("Habitus") != null && !sharedPreferences.getStringData("Habitus").isEmpty() ? sharedPreferences.getStringData("Habitus"): "");
+
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title10));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio10));
                 }
                 if(count == 11){
                     sharedPreferences.setStringData("Habitus",textArea_information.getText().toString());
-                    textArea_information.setText("");
+
+                    textArea_information.setText(sharedPreferences.getStringData("Cabeza") != null && !sharedPreferences.getStringData("Cabeza").isEmpty() ? sharedPreferences.getStringData("Cabeza"): "");
+
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title11));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio11));
                 }
                 if(count == 12){
                     sharedPreferences.setStringData("Cabeza",textArea_information.getText().toString());
-                    textArea_information.setText("");
+
+                    textArea_information.setText(sharedPreferences.getStringData("Cuello") != null && !sharedPreferences.getStringData("Cuello").isEmpty() ? sharedPreferences.getStringData("Cuello"): "");
+
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title12));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio12));
                 }
                 if(count == 13) {
                     sharedPreferences.setStringData("Cuello", textArea_information.getText().toString());
-                    textArea_information.setText("");
+
+                    textArea_information.setText(sharedPreferences.getStringData("Torax") != null && !sharedPreferences.getStringData("Torax").isEmpty() ? sharedPreferences.getStringData("Torax"): "");
+
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title19));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio19));
 
@@ -177,37 +203,49 @@ public class QuestionsHistoriaClinica extends Fragment {
                 if(count == 14){
 
                     sharedPreferences.setStringData("Torax",textArea_information.getText().toString());
-                    textArea_information.setText("");
+
+                    textArea_information.setText(sharedPreferences.getStringData("Abdomen") != null && !sharedPreferences.getStringData("Abdomen").isEmpty() ? sharedPreferences.getStringData("Abdomen"): "");
+
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title20));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio13));
                 }
                 if(count == 15){
                     sharedPreferences.setStringData("Abdomen",textArea_information.getText().toString());
-                    textArea_information.setText("");
+
+                    textArea_information.setText(sharedPreferences.getStringData("Ginecologica") != null && !sharedPreferences.getStringData("Ginecologica").isEmpty() ? sharedPreferences.getStringData("Ginecologica"): "");
+
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title14));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio14));
                 }
                 if(count == 16){
                     sharedPreferences.setStringData("Ginecologica",textArea_information.getText().toString());
-                    textArea_information.setText("");
+
+                    textArea_information.setText(sharedPreferences.getStringData("Extremidades") != null && !sharedPreferences.getStringData("Extremidades").isEmpty() ? sharedPreferences.getStringData("Extremidades"): "");
+
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title15));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio15));
                 }
                 if(count == 17){
                     sharedPreferences.setStringData("Extremidades",textArea_information.getText().toString());
-                    textArea_information.setText("");
+
+                    textArea_information.setText(sharedPreferences.getStringData("Columna") != null && !sharedPreferences.getStringData("Columna").isEmpty() ? sharedPreferences.getStringData("Columna"): "");
+
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title16));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio16));
                 }
                 if(count == 18){
                     sharedPreferences.setStringData("Columna",textArea_information.getText().toString());
-                    textArea_information.setText("");
+
+                    textArea_information.setText(sharedPreferences.getStringData("Neurologica") != null && !sharedPreferences.getStringData("Neurologica").isEmpty() ? sharedPreferences.getStringData("Neurologica"): "");
+
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title17));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio17));
                 }
                 if(count == 19){
                     sharedPreferences.setStringData("Neurologica",textArea_information.getText().toString());
-                    textArea_information.setText("");
+
+                    textArea_information.setText(sharedPreferences.getStringData("Genitales") != null && !sharedPreferences.getStringData("Genitales").isEmpty() ? sharedPreferences.getStringData("Genitales"): "");
+
                     question.setText(getActivity().getResources().getString(R.string.interrogatorio_title18));
                     question2.setText(getActivity().getResources().getString(R.string.interrogatorio18));
                 }

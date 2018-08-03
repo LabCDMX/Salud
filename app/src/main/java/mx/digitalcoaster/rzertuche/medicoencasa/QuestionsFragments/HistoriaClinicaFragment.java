@@ -245,7 +245,7 @@ public class HistoriaClinicaFragment extends Fragment {
             personalesHeredo.setText(sharedPreferences.getStringData("Heredofamiliares"));
             personalesNoPato.setText(sharedPreferences.getStringData("NoPatologicos"));
             personalesPato.setText(sharedPreferences.getStringData("Patologicos"));
-            personalesGineco.setText(sharedPreferences.getStringData("Ginecologicos"));
+            personalesGineco.setText(sharedPreferences.getStringData("Ginecobstericos"));
 
 
 
