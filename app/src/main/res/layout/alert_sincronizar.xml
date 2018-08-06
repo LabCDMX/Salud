@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="600dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#ffffff"
+    android:orientation="horizontal">
+
+
+    <TextView
+        android:id="@+id/textViewDatosGenerales"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:textSize="30dp"
+        android:layout_marginTop="40dp"
+        android:text="SINCRONIZAR"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewDatosGenerales">
+
+
+        <TextView
+            android:id="@+id/tv_generales"
+            android:layout_width="500dp"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:textSize="30dp"
+            android:layout_marginTop="40dp"
+            android:text="DATOS GENERALES"/>
+
+
+        <ImageButton
+            android:id="@+id/btn_edit"
+            android:layout_marginTop="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_toRightOf="@+id/tv_generales"
+            android:background="#FFF"
+            app:srcCompat="@drawable/seleccionar"/>
+
+
+        <TextView
+            android:id="@+id/tv_historic"
+            android:layout_width="500dp"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:layout_below="@id/tv_generales"
+            android:textColor="@android:color/black"
+            android:textSize="30dp"
+            android:layout_marginTop="40dp"
+            android:text="HISTORIA CLINICA"/>
+
+
+        <ImageButton
+            android:id="@+id/btn_edit2"
+            android:layout_marginTop="49dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/btn_edit"
+            android:layout_toRightOf="@+id/tv_generales"
+            android:background="#FFF"
+            app:srcCompat="@drawable/seleccionar"/>
+
+
+        <TextView
+            android:id="@+id/tv_visitas"
+            android:layout_width="500dp"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:layout_below="@id/tv_historic"
+            android:textColor="@android:color/black"
+            android:textSize="30dp"
+            android:layout_marginTop="40dp"
+            android:text="VISITAS MEDICAS"/>
+
+
+        <ImageButton
+            android:id="@+id/btn_edit3"
+            android:layout_marginTop="60dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/btn_edit2"
+            android:layout_toRightOf="@+id/tv_visitas"
+            android:background="#FFF"
+            app:srcCompat="@drawable/seleccionar"/>
+
+    </RelativeLayout>
+
+
+
+
+</RelativeLayout>
+
