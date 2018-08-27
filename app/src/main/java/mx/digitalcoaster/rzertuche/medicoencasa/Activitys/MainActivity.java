@@ -1,6 +1,7 @@
 package mx.digitalcoaster.rzertuche.medicoencasa.Activitys;
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -26,8 +27,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -47,10 +46,6 @@ import java.net.URLEncoder;
 import java.util.Iterator;
 import java.util.List;
 
-import cz.msebera.android.httpclient.Header;
-import cz.msebera.android.httpclient.HttpEntity;
-import cz.msebera.android.httpclient.NameValuePair;
-import cz.msebera.android.httpclient.entity.StringEntity;
 import io.realm.Realm;
 import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseDB;
 import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseHelper;
@@ -786,6 +781,95 @@ public class MainActivity extends AppCompatActivity implements
 
     }
 
+    public void getPreguntas() {
+        try {
+
+            String IPCodigos = "https://medico.digitalcoaster.mx/api/admin/api/preguntas";
+            System.out.println(IPCodigos);
+            url = new URL(IPCodigos);
+            conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestProperty("User-Agent", "Mozilla/5.0 (Linux; Android 1.5; es-ES) Ejemplo HTTP");
+            conn.setRequestMethod("POST");
+            conn.setDoInput(true);
+            conn.setDoOutput(true);
+
+
+            int respuesta = conn.getResponseCode();
+            StringBuilder result = new StringBuilder();
+
+            if (respuesta == HttpURLConnection.HTTP_OK) {
+
+                InputStream in = new BufferedInputStream(conn.getInputStream());
+                BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    result.append(line); // Pasar todas las entradas al StringBuilder
+                }
+
+                respuestaJSON = new JSONObject(result.toString());
+                Log.e("Preguntas", respuestaJSON.toString());
+                /*String codigo_postal;
+                String colonia;
+                String municipio;
+                String estado;
+
+                db = openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE, null);
+                for (int i = 0; i < parentesco.length(); i++) {
+
+                    codigo_postal = parentesco.getJSONObject(i).getString("CodigoPostal");
+                    colonia = parentesco.getJSONObject(i).getString("Colonia");
+                    municipio = parentesco.getJSONObject(i).getString("Municipio");
+                    estado = parentesco.getJSONObject(i).getString("Estado");
+
+
+                    System.out.println("CODIGO_POSTAL: " + codigo_postal);
+                    System.out.println("COLONIA: " + colonia);
+                    System.out.println("MUNICIPIO: " + municipio);
+                    System.out.println("ESTADO: " + estado);
+
+                    /*------------------------- Revisar si existe ------------------------*/
+                    /*c = db.rawQuery("SELECT " + DataBaseDB.CODIGO_POSTAL +
+                            " FROM " + DataBaseDB.TABLE_NAME_CODIGOS_POSTALES +
+                            " WHERE " + DataBaseDB.CODIGO_POSTAL + "='" + codigo_postal + "'", null);
+                    try {
+                        if (c.moveToFirst()) {
+                            System.out.print("Codigo existente: ");
+                            ContentValues update = new ContentValues();
+
+                            update.put(DataBaseDB.CODIGO_POSTAL, codigo_postal);
+                            update.put(DataBaseDB.COLONIA, colonia);
+                            update.put(DataBaseDB.MUNICIPIO, municipio);
+                            update.put(DataBaseDB.ESTADO, estado);
+
+                            db.update(DataBaseDB.TABLE_NAME_CODIGOS_POSTALES, update, DataBaseDB.CODIGO_POSTAL + "='" + codigo_postal + "'", null);
+                            System.out.println("Codigo actualizado correctamente");
+
+                        } else {
+                            ContentValues values = new ContentValues();
+
+                            values.put(DataBaseDB.CODIGO_POSTAL, codigo_postal);
+                            values.put(DataBaseDB.COLONIA, colonia);
+                            values.put(DataBaseDB.MUNICIPIO, municipio);
+                            values.put(DataBaseDB.ESTADO, estado);
+
+                            db.insert(DataBaseDB.TABLE_NAME_CODIGOS_POSTALES, null, values);
+                            System.out.println("Codigo postal insertado correctamente");
+                        }
+                        c.close();
+                    } catch (SQLException ex) {
+                        System.out.println("Error al insertar codigo postal: " + ex);
+                    }
+                }
+                db.close();
+*/
+            }
+
+
+        } catch (IOException e) {
+        } catch (JSONException e) {
+        }
+    }
 
     public void getPostal() {
         try {
@@ -892,5 +976,17 @@ public class MainActivity extends AppCompatActivity implements
                         .penaltyLog()
                         .build());
     }
+
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+        //create a dialog to ask yes no question whether or not the user wants to exit
+    }
+
+
+
+
+
+
 
 }

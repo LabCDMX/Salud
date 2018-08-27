@@ -36,14 +36,23 @@
             android:text="DATOS GENERALES"/>
 
 
-        <ImageButton
+        <TextView
             android:id="@+id/btn_edit"
+            android:layout_marginTop="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_toRightOf="@+id/tv_generales"
+            android:textSize="20dp"
+            android:text="0/0"/>
+
+        <ImageButton
+            android:id="@+id/btn_generales"
             android:layout_marginTop="40dp"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_toRightOf="@+id/tv_generales"
-            android:background="#FFF"
-            app:srcCompat="@drawable/seleccionar"/>
+            android:layout_toRightOf="@+id/btn_edit"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/icon_siguiente"/>
 
 
         <TextView
@@ -59,15 +68,25 @@
             android:text="HISTORIA CLINICA"/>
 
 
-        <ImageButton
+        <TextView
             android:id="@+id/btn_edit2"
             android:layout_marginTop="49dp"
-            android:layout_width="30dp"
+            android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_below="@+id/btn_edit"
             android:layout_toRightOf="@+id/tv_generales"
-            android:background="#FFF"
-            app:srcCompat="@drawable/seleccionar"/>
+            android:textSize="20dp"
+            android:text="0/0"/>
+
+        <ImageButton
+            android:id="@+id/btn_historic"
+            android:layout_marginTop="50dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_toRightOf="@+id/btn_edit2"
+            android:layout_below="@+id/btn_edit"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/icon_siguiente"/>
 
 
         <TextView
@@ -83,15 +102,26 @@
             android:text="VISITAS MEDICAS"/>
 
 
-        <ImageButton
+        <TextView
             android:id="@+id/btn_edit3"
             android:layout_marginTop="60dp"
-            android:layout_width="30dp"
+            android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_below="@+id/btn_edit2"
             android:layout_toRightOf="@+id/tv_visitas"
-            android:background="#FFF"
-            app:srcCompat="@drawable/seleccionar"/>
+            android:textSize="20dp"
+            android:text="0/0"/>
+
+        <ImageButton
+            android:id="@+id/btn_visitas"
+            android:layout_marginTop="60dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_toRightOf="@+id/btn_edit3"
+            android:layout_below="@+id/btn_edit2"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/icon_siguiente"/>
+
 
     </RelativeLayout>
 

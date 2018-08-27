@@ -260,12 +260,16 @@ public class PacientesFragment extends Fragment {
 
 
 
-    // TODO: Rename method, update argument and hook method into UI event
+
     public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+        callParentMethod();
     }
+
+
+    public void callParentMethod(){
+        getActivity().onBackPressed();
+    }
+
 
     @Override
     public void onAttach(Context context) {

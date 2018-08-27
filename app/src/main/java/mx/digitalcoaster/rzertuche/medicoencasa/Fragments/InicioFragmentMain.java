@@ -24,9 +24,6 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.JsonHttpResponseHandler;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -51,10 +48,6 @@ import java.util.Hashtable;
 
 import javax.net.ssl.HttpsURLConnection;
 
-import cz.msebera.android.httpclient.Header;
-import cz.msebera.android.httpclient.HttpEntity;
-import cz.msebera.android.httpclient.conn.ConnectTimeoutException;
-import cz.msebera.android.httpclient.entity.StringEntity;
 import io.realm.internal.android.JsonUtils;
 import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseDB;
 import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseHelper;
@@ -195,11 +188,14 @@ public class InicioFragmentMain extends Fragment {
 
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
+
     public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+        callParentMethod();
+    }
+
+
+    public void callParentMethod(){
+        getActivity().onBackPressed();
     }
 
     @Override
@@ -239,6 +235,7 @@ public class InicioFragmentMain extends Fragment {
                          String municipio, String cp, String poblacion, String colonia, String nombreCalle, String edo_civil, String ocupacion, String derecho,
                          String telFijo, String telCel, String correo) throws JSONException, ParseException {
 
+        progress.show();
 
 
        if(sexo.equals("Masculino")){
@@ -366,6 +363,7 @@ public class InicioFragmentMain extends Fragment {
                         db.update(DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC, updates, DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_NOMBRE + "='" + nombre +
                                 "' AND " + DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_CURP+ "='"+curp+"'", null);
 
+                        db.delete(DataBaseDB.TABLE_NAME_PACIENTES_SEGUIMIENTO,DataBaseDB.PACIENTES_EXPEDIENTE_CURP + "=? AND "+ DataBaseDB.PACIENTES_EXPEDIENTE_NOMBRE + "=?",new String[]{curp,nombre});
 
                         progress.dismiss();
                     }catch(Exception e){
@@ -375,6 +373,7 @@ public class InicioFragmentMain extends Fragment {
 
 
                 progress.dismiss();
+
             }else{
 
                 //JsonArray response2 = new JsonParser().parse(new InputStreamReader(urlConnection.getErrorStream())).getAsJsonArray();
@@ -478,6 +477,7 @@ public class InicioFragmentMain extends Fragment {
                                  String notas_doc, String plan, String impresion_diag, String tratamiento) throws JSONException, ParseException {
 
 
+        progress.show();
 
 
         if(no_expediente == null || no_expediente.equals("") ){
@@ -488,45 +488,45 @@ public class InicioFragmentMain extends Fragment {
         JSONObject jsonParams = new JSONObject();
         jsonParams.put("id_usuario",id);
         jsonParams.put("no_expediente",no_expediente);
-        jsonParams.put("hemo",hemo);
-        jsonParams.put("peso",peso);
-        jsonParams.put("estatura",estatura);
+        jsonParams.put("6",hemo);
+        jsonParams.put("7",peso);
+        jsonParams.put("8",estatura);
         jsonParams.put("tensión",tension);
-        jsonParams.put("frecuencia_car",frecuencia_car);
-        jsonParams.put("frecuencia_resp",frecuencia_resp);
-        jsonParams.put("talla",talla);
-        jsonParams.put("pulso",pulso);
-        jsonParams.put("glucemia",glucemia);
-        jsonParams.put("temp",temp);
+        jsonParams.put("10",frecuencia_car);
+        jsonParams.put("11",frecuencia_resp);
+        jsonParams.put("12",talla);
+        jsonParams.put("13",pulso);
+        jsonParams.put("14",glucemia);
+        jsonParams.put("15",temp);
         jsonParams.put("notas_enf",notas_enf);
         jsonParams.put("ant_personales","");
         jsonParams.put("ant_patologicos",ant_patologicos);
         jsonParams.put("ant_obstericos",ant_obstericos);
-        jsonParams.put("padecimiento_actual",padecimiento_actual);
-        jsonParams.put("sistemas_generales",sistemas_generales);
-        jsonParams.put("respiratorio",respiratorio);
-        jsonParams.put("cardio",cardio);
-        jsonParams.put("digestivo",digestivo);
-        jsonParams.put("urinario",urinario);
-        jsonParams.put("hemolin",hemolin);
-        jsonParams.put("endo",endo);
-        jsonParams.put("s_nervioso",s_nervioso);
-        jsonParams.put("esqueletico",esqueletico);
-        jsonParams.put("piel",piel);
-        jsonParams.put("habitus",habitus);
-        jsonParams.put("cabeza",cabeza);
-        jsonParams.put("cuello",cuello);
-        jsonParams.put("torax",torax);
-        jsonParams.put("abdomen",abdomen);
-        jsonParams.put("gine",gine);
-        jsonParams.put("extremidades",extremidades);
-        jsonParams.put("c_vertebral",c_vertebral);
+        jsonParams.put("19",padecimiento_actual);
+        jsonParams.put("27",sistemas_generales);
+        jsonParams.put("28",respiratorio);
+        jsonParams.put("29",cardio);
+        jsonParams.put("30",digestivo);
+        jsonParams.put("32",urinario);
+        jsonParams.put("33",hemolin);
+        jsonParams.put("34",endo);
+        jsonParams.put("36",s_nervioso);
+        jsonParams.put("37",esqueletico);
+        jsonParams.put("38",piel);
+        jsonParams.put("39",habitus);
+        jsonParams.put("40",cabeza);
+        jsonParams.put("41",cuello);
+        jsonParams.put("42",torax);
+        jsonParams.put("43",abdomen);
+        jsonParams.put("44",gine);
+        jsonParams.put("45",extremidades);
+        jsonParams.put("46",c_vertebral);
         jsonParams.put("neuro",neuro);
-        jsonParams.put("genitales",genitales);
-        jsonParams.put("notas_doc",notas_doc);
+        jsonParams.put("48",genitales);
+        jsonParams.put("49",notas_doc);
         jsonParams.put("plan",plan);
-        jsonParams.put("impresion_diag",impresion_diag);
-        jsonParams.put("tratamiento",tratamiento);
+        jsonParams.put("51",impresion_diag);
+        jsonParams.put("52",tratamiento);
         jsonParams.put("no_visita","1");
 
 
@@ -864,18 +864,32 @@ public class InicioFragmentMain extends Fragment {
         View view = inflater.inflate(R.layout.alert_sincronizar, null);
 
 
-        final ImageButton sincronizar_generales = view.findViewById(R.id.btn_edit);
-        final ImageButton sincronizar_historic = view.findViewById(R.id.btn_edit2);
-        final ImageButton sincronizar_visitas = view.findViewById(R.id.btn_edit3);
+        final TextView sincronizar_generales = view.findViewById(R.id.btn_edit);
+        final TextView sincronizar_historic = view.findViewById(R.id.btn_edit2);
+        final TextView sincronizar_visitas = view.findViewById(R.id.btn_edit3);
+
+
+        final ImageButton btn_generales = view.findViewById(R.id.btn_generales);
+        final ImageButton btn_historic = view.findViewById(R.id.btn_historic);
+        final ImageButton btn_visitas = view.findViewById(R.id.btn_visitas);
+
+
+        String countGenerales= String.valueOf(getCountDatos("Generales"));
+        String countHistoric= String.valueOf(getCountDatos("Historic"));
+        String countVisitas= String.valueOf(getCountDatos("Visitas"));
+
+        sincronizar_generales.setText(countGenerales + "/" + countGenerales);
+        sincronizar_historic.setText(countHistoric + "/" + countHistoric);
+        sincronizar_visitas.setText(countVisitas + "/" + countVisitas);
 
 
 
-        sincronizar_generales.setOnClickListener(new View.OnClickListener() {
+        btn_generales.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sendPacientes = true;
+                progress.show();
 
-                 db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE ,null);
+                db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE ,null);
 
                 try {
                     c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR, null);
@@ -888,7 +902,8 @@ public class InicioFragmentMain extends Fragment {
 
                         }while (c.moveToNext());
                     } else {
-                        Toast.makeText(getActivity(),"No hay clientes a sincronizar",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(),"No hay pacientes a sincronizar",Toast.LENGTH_LONG).show();
+                        progress.dismiss();
                         System.out.println("No existen PACIENTES");
                     }
                     c.close();
@@ -897,61 +912,57 @@ public class InicioFragmentMain extends Fragment {
                 } finally {
 
                     db.close();
+
+
                 }
 
             }
         });
 
 
-        sincronizar_historic.setOnClickListener(new View.OnClickListener() {
+        btn_historic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(sendPacientes){
-                    sendPacientes = false;
 
-                    db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE ,null);
 
-                    try {
-                        c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC+ " WHERE "+ DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_ID +
-                                " != ''", null);
-                        if (c.moveToFirst()) {
-                            do {
+                db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE ,null);
 
-                                sendDataHistoric(c.getString(53),c.getString(4),c.getString(7),c.getString(8),c.getString(9),c.getString(10),c.getString(11),
-                                        c.getString(12),c.getString(13), c.getString(14),c.getString(15),c.getString(16),c.getString(48),"",
-                                        c.getString(24), c.getString(26),c.getString(23),c.getString(28),c.getString(29),c.getString(30),c.getString(31),c.getString(32),c.getString(33),c.getString(34),
-                                        c.getString(35),c.getString(36),c.getString(37),c.getString(38),c.getString(39),c.getString(40),c.getString(41),c.getString(54),c.getString(42),c.getString(43),c.getString(44),
-                                        c.getString(45),c.getString(46),c.getString(47),c.getString(49),c.getString(50),c.getString(51),c.getString(52));
+                try {
+                    c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC+ " WHERE "+ DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_ID +
+                            " != ''", null);
+                    if (c.moveToFirst()) {
+                        do {
 
+                            sendDataHistoric(c.getString(53),c.getString(4),c.getString(7),c.getString(8),c.getString(9),c.getString(10),c.getString(11),
+                                    c.getString(12),c.getString(13), c.getString(14),c.getString(15),c.getString(16),c.getString(48),"",
+                                    c.getString(24), c.getString(26),c.getString(23),c.getString(28),c.getString(29),c.getString(30),c.getString(31),c.getString(32),c.getString(33),c.getString(34),
+                                    c.getString(35),c.getString(36),c.getString(37),c.getString(38),c.getString(39),c.getString(40),c.getString(41),c.getString(54),c.getString(42),c.getString(43),c.getString(44),
+                                    c.getString(45),c.getString(46),c.getString(47),c.getString(49),c.getString(50),c.getString(51),c.getString(52));
 
 
 
 
 
-                            }while (c.moveToNext());
-                        } else {
-                            Toast.makeText(getActivity(),"No hay clientes a sincronizar",Toast.LENGTH_LONG).show();
-                            System.out.println("No existen PACIENTES");
-                        }
-                        c.close();
-                    } catch (Exception ex) {
-                        Log.e("Error", ex.toString());
-                    } finally {
 
-                        db.close();
+                        }while (c.moveToNext());
+                    } else {
+                        Toast.makeText(getActivity(),"No hay pacientes a sincronizar",Toast.LENGTH_LONG).show();
+                        progress.dismiss();
+                        System.out.println("No existen PACIENTES");
                     }
+                    c.close();
+                } catch (Exception ex) {
+                    Log.e("Error", ex.toString());
+                } finally {
 
+                    db.close();
 
-                }else{
-                    Toast.makeText(getActivity(),"Primero sincroniza pacientes :D",Toast.LENGTH_SHORT).show();
                 }
-
-
 
             }
         });
 
-        sincronizar_visitas.setOnClickListener(new View.OnClickListener() {
+        btn_visitas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -959,7 +970,6 @@ public class InicioFragmentMain extends Fragment {
 
             }
         });
-
 
 
         builder.setView(view);
@@ -968,6 +978,38 @@ public class InicioFragmentMain extends Fragment {
 
 
     }
+
+    public int getCountDatos(String datosCount){
+
+        db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE ,null);
+        String tableName = null;
+        if(datosCount.equals("Generales")){
+            tableName = DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR;
+        }else if(datosCount.equals("Historic")){
+            tableName = DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC;
+
+        }else if(datosCount.equals("Visitas")){
+            tableName = DataBaseDB.TABLE_NAME_PACIENTES_VISITAS;
+        }
+
+        try {
+            c = db.rawQuery("SELECT * FROM " + tableName, null);
+            if (c.moveToFirst()) {
+                return c.getCount();
+            } else {
+                return 0;
+            }
+        } catch (Exception ex) {
+            Log.e("Error", ex.toString());
+        } finally {
+
+            db.close();
+
+
+        }
+        return 0;
+    }
+
 
 
 }
