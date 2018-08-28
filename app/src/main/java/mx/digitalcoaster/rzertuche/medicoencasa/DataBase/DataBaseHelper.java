@@ -298,6 +298,41 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         System.out.println(DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC + " Creada");
 
 
+        /*---------------------------- Creación de la table de session ---------------------------*/
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + DataBaseDB.TABLE_NAME_PREGUNTAS + "(" +
+                "_id INTEGER PRIMARY KEY, " +
+                DataBaseDB.PREGUNTAS_ID + " TEXT, " +
+                DataBaseDB.PREGUNTAS_TIPO + " TEXT, " +
+                DataBaseDB.PREGUNTAS_CATEGORIA + " TEXT, " +
+                DataBaseDB.PREGUNTAS_TITULO + " TEXT, " +
+                DataBaseDB.PREGUNTAS_DESCRIPTION + " TEXT, " +
+                DataBaseDB.PREGUNTAS_HINT + " TEXT); "
+        );
+        System.out.println(DataBaseDB.TABLE_NAME_PREGUNTAS + " Creada");
+
+        /*---------------------------- Creación de la table de session ---------------------------*/
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + DataBaseDB.TABLE_NAME_RESPUESTAS + "(" +
+                "_id INTEGER PRIMARY KEY, " +
+                DataBaseDB.RESPUESTAS_ID + " TEXT, " +
+                DataBaseDB.RESPUESTAS_DESCRIPTION + " TEXT, " +
+                DataBaseDB.RESPUESTAS_CATEGORIA + " TEXT); "
+        );
+        System.out.println(DataBaseDB.TABLE_NAME_RESPUESTAS + " Creada");
+
+        /*---------------------------- Creación de la table de session ---------------------------*/
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + DataBaseDB.TABLE_NAME_RESPUESTAS_RADIO + "(" +
+                "_id INTEGER PRIMARY KEY, " +
+                DataBaseDB.RESPUESTAS_ID_RADIO + " TEXT, " +
+                DataBaseDB.RESPUESTAS_DESCRIPTION_RADIO + " TEXT, " +
+                DataBaseDB.RESPUESTAS_CATEGORIA_RADIO + " TEXT, " +
+                DataBaseDB.RESPUESTAS_RADIO1 + " TEXT, " +
+                DataBaseDB.RESPUESTAS_RADIO2 + " TEXT, " +
+                DataBaseDB.RESPUESTAS_RADIO3 + " TEXT, " +
+                DataBaseDB.RESPUESTAS_RADIO4 + " TEXT, " +
+                DataBaseDB.RESPUESTAS_RADIO5 + " TEXT, " +
+                DataBaseDB.RESPUESTAS_RADIO6 + " TEXT); "
+        );
+        System.out.println(DataBaseDB.TABLE_NAME_RESPUESTAS_RADIO + " Creada");
 
 
 

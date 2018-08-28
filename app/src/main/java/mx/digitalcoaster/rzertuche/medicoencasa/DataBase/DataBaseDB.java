@@ -19,6 +19,12 @@ public class DataBaseDB {
     public static final String TABLE_NAME_CODIGOS_POSTALES = "table_name_codigos_postales";
 
 
+    //PREGUNTAS
+    public static final String TABLE_NAME_PREGUNTAS = "table_name_preguntas";
+
+    //RESPUESTAS
+    public static final String TABLE_NAME_RESPUESTAS = "table_name_respuestas";
+    public static final String TABLE_NAME_RESPUESTAS_RADIO = "table_name_respuestas_radio";
 
 
     public static int VERSION = 1;
@@ -265,6 +271,32 @@ public class DataBaseDB {
     public static final String PACIENTES_SINCRONIZAR_HISTORIC_ID = "pacientes_sincronizar_historic_id";
     public static final String PACIENTES_SINCRONIZAR_HISTORIC_PERSONALES_HEREDO = "pacientes_sincronizar_historic_personales_heredo";
     public static final String PACIENTES_SINCRONIZAR_HISTORIC_TORAX = "pacientes_sincronizar_historic_torax";
+
+
+    //PREGUNTAS
+    public static final String PREGUNTAS_ID = "preguntas_id";
+    public static final String PREGUNTAS_TIPO = "preguntas_tipo";
+    public static final String PREGUNTAS_CATEGORIA = "preguntas_categoria";
+    public static final String PREGUNTAS_TITULO = "preguntas_titulo";
+    public static final String PREGUNTAS_DESCRIPTION = "preguntas_description";
+    public static final String PREGUNTAS_HINT = "preguntas_hint";
+
+
+    //RESPUESTAS RADIO BUTTONS
+    public static final String RESPUESTAS_ID_RADIO = "respuestas_id_radio";
+    public static final String RESPUESTAS_DESCRIPTION_RADIO = "respuestas_description_radio";
+    public static final String RESPUESTAS_CATEGORIA_RADIO = "respuestas_categoria_radio";
+    public static final String RESPUESTAS_RADIO1 = "respuestas_radio1";
+    public static final String RESPUESTAS_RADIO2 = "respuestas_radio2";
+    public static final String RESPUESTAS_RADIO3 = "respuestas_radio3";
+    public static final String RESPUESTAS_RADIO4 = "respuestas_radio4";
+    public static final String RESPUESTAS_RADIO5 = "respuestas_radio5";
+    public static final String RESPUESTAS_RADIO6 = "respuestas_radio6";
+
+    //RESPUESTAS GENERAL
+    public static final String RESPUESTAS_ID = "respuestas_id";
+    public static final String RESPUESTAS_DESCRIPTION = "respuestas_description";
+    public static final String RESPUESTAS_CATEGORIA = "respuestas_categoria";
 
 
 
