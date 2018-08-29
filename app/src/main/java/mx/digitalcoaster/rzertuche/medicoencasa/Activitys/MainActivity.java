@@ -171,7 +171,7 @@ public class MainActivity extends AppCompatActivity implements
         db.close();
 
         sharedPreferences = SharedPreferences.getInstance();
-        //getPostal();
+        getPreguntas();
 
         //Home Fragment
         InicioFragmentMain fragment = new InicioFragmentMain();
@@ -789,9 +789,7 @@ public class MainActivity extends AppCompatActivity implements
             url = new URL(IPCodigos);
             conn = (HttpURLConnection) url.openConnection();
             conn.setRequestProperty("User-Agent", "Mozilla/5.0 (Linux; Android 1.5; es-ES) Ejemplo HTTP");
-            conn.setRequestMethod("POST");
-            conn.setDoInput(true);
-            conn.setDoOutput(true);
+            conn.setRequestMethod("GET");
 
 
             int respuesta = conn.getResponseCode();
@@ -809,51 +807,64 @@ public class MainActivity extends AppCompatActivity implements
 
                 respuestaJSON = new JSONObject(result.toString());
                 Log.e("Preguntas", respuestaJSON.toString());
-                /*String codigo_postal;
-                String colonia;
-                String municipio;
-                String estado;
+
+                String pregunta;
+                String categoria;
+                String hint;
+                String id;
 
                 db = openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE, null);
-                for (int i = 0; i < parentesco.length(); i++) {
+                for (int i = 0; i < respuestaJSON.length(); i++) {
 
-                    codigo_postal = parentesco.getJSONObject(i).getString("CodigoPostal");
-                    colonia = parentesco.getJSONObject(i).getString("Colonia");
-                    municipio = parentesco.getJSONObject(i).getString("Municipio");
-                    estado = parentesco.getJSONObject(i).getString("Estado");
+                    JSONObject pregunta1 = respuestaJSON.getJSONObject("4");
+                    JSONObject preguntas = pregunta1.getJSONObject("pregunta");
+
+                    JSONArray preguntas2 = respuestaJSON.getJSONArray("5");
+                    JSONArray preguntas3 = respuestaJSON.getJSONArray("60");
+                    JSONArray preguntas4 = respuestaJSON.getJSONArray("61");
+                    JSONArray preguntas5 = respuestaJSON.getJSONArray("62");
+                    JSONArray preguntas6 = respuestaJSON.getJSONArray("63");
+                    JSONArray preguntas7 = respuestaJSON.getJSONArray("65");
 
 
-                    System.out.println("CODIGO_POSTAL: " + codigo_postal);
-                    System.out.println("COLONIA: " + colonia);
-                    System.out.println("MUNICIPIO: " + municipio);
-                    System.out.println("ESTADO: " + estado);
+                    pregunta = preguntas.getString("titulo");
+                    categoria = preguntas.getString("categoria_preguntas_id");
+                    hint = preguntas.getString("categoria_preguntas_id");
+                    id = preguntas.getString("id");
+
+
+                    System.out.println("PREGUNTA: " + pregunta);
+                    System.out.println("CATEGORIA: " + categoria);
+                    System.out.println("HINT: " + hint);
+                    System.out.println("id: " + hint);
+
+
 
                     /*------------------------- Revisar si existe ------------------------*/
-                    /*c = db.rawQuery("SELECT " + DataBaseDB.CODIGO_POSTAL +
-                            " FROM " + DataBaseDB.TABLE_NAME_CODIGOS_POSTALES +
-                            " WHERE " + DataBaseDB.CODIGO_POSTAL + "='" + codigo_postal + "'", null);
+                    c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PREGUNTAS, null);
                     try {
                         if (c.moveToFirst()) {
-                            System.out.print("Codigo existente: ");
+
                             ContentValues update = new ContentValues();
 
-                            update.put(DataBaseDB.CODIGO_POSTAL, codigo_postal);
-                            update.put(DataBaseDB.COLONIA, colonia);
-                            update.put(DataBaseDB.MUNICIPIO, municipio);
-                            update.put(DataBaseDB.ESTADO, estado);
+                            update.put(DataBaseDB.PREGUNTAS_ID, id);
+                            update.put(DataBaseDB.PREGUNTAS_TITULO, pregunta);
+                            update.put(DataBaseDB.PREGUNTAS_CATEGORIA, categoria);
+                            update.put(DataBaseDB.PREGUNTAS_HINT, hint);
 
-                            db.update(DataBaseDB.TABLE_NAME_CODIGOS_POSTALES, update, DataBaseDB.CODIGO_POSTAL + "='" + codigo_postal + "'", null);
+                            db.update(DataBaseDB.TABLE_NAME_PREGUNTAS, update, DataBaseDB.PREGUNTAS_ID + "='" + id + "'", null);
                             System.out.println("Codigo actualizado correctamente");
 
                         } else {
                             ContentValues values = new ContentValues();
 
-                            values.put(DataBaseDB.CODIGO_POSTAL, codigo_postal);
-                            values.put(DataBaseDB.COLONIA, colonia);
-                            values.put(DataBaseDB.MUNICIPIO, municipio);
-                            values.put(DataBaseDB.ESTADO, estado);
+                            values.put(DataBaseDB.PREGUNTAS_ID, id);
+                            values.put(DataBaseDB.PREGUNTAS_TITULO, pregunta);
+                            values.put(DataBaseDB.PREGUNTAS_CATEGORIA, categoria);
+                            values.put(DataBaseDB.PREGUNTAS_HINT, hint);
 
-                            db.insert(DataBaseDB.TABLE_NAME_CODIGOS_POSTALES, null, values);
+
+                            db.insert(DataBaseDB.TABLE_NAME_PREGUNTAS, null, values);
                             System.out.println("Codigo postal insertado correctamente");
                         }
                         c.close();
@@ -862,7 +873,7 @@ public class MainActivity extends AppCompatActivity implements
                     }
                 }
                 db.close();
-*/
+
             }
 
 

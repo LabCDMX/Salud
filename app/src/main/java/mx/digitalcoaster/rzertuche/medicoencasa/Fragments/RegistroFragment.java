@@ -116,7 +116,6 @@ public class RegistroFragment extends Fragment {
                 Item selectedUser = items.get(position);
                 String nameUser = selectedUser.getNombre();
                 sharedPreferences.setStringData("nameSeguimiento", nameUser);
-                Log.e("TOUCHME",nameUser);
                 ((MainActivity)getActivity()).visitasFragment(nameUser);
 
             }
@@ -136,7 +135,7 @@ public class RegistroFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> arg0, View v, int position, long arg3) {
                 Item selectedUser = items.get(position);
-                Log.d("User", "USERUUID:"+selectedUser.getNombre());
+
                 sharedPreferences.setStringData("nameHistoric", selectedUser.getNombre());
                 sharedPreferences.setStringData("curpHistoric", selectedUser.getCurp());
                 sharedPreferences.setStringData("direccionHistoric", selectedUser.getDireccion());
