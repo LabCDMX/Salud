@@ -1,10 +1,26 @@
 package mx.digitalcoaster.rzertuche.medicoencasa.DataBase;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+
+import com.google.gson.JsonObject;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
+
+    //DATABASE....
+    private SQLiteDatabase db = null;      // Objeto para utilizar la base de datos
+    private DataBaseHelper sqliteHelper;   // Objeto para abrir la base de Datos
+    private Cursor c = null;
+
+    String pregunta;
+    String categoria;
+    String hint;
+    String id;
 
     public DataBaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
@@ -336,6 +352,75 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
 
 
+
+    }
+
+    public void addDataDB(JsonObject respuestaJSON){
+
+        db = this.getWritableDatabase();
+        for (int i = 0; i < respuestaJSON.size(); i++) {
+
+            JsonObject pregunta1 = respuestaJSON.getAsJsonObject("4");
+            JsonObject preguntas = pregunta1.getAsJsonObject("pregunta");
+
+            JsonObject preguntas2 = respuestaJSON.getAsJsonObject("5");
+            JsonObject preguntas3 = respuestaJSON.getAsJsonObject("60");
+            JsonObject preguntas4 = respuestaJSON.getAsJsonObject("61");
+            JsonObject preguntas5 = respuestaJSON.getAsJsonObject("62");
+            JsonObject preguntas6 = respuestaJSON.getAsJsonObject("63");
+            JsonObject preguntas7 = respuestaJSON.getAsJsonObject("65");
+
+
+            pregunta = preguntas.get("titulo").toString();
+            categoria = preguntas.get("categoria_preguntas_id").toString();
+            hint = preguntas.get("categoria_preguntas_id").toString();
+            id = preguntas.get("id").toString();
+
+
+            Log.d("response_data","PREGUNTA: " + pregunta);
+            Log.d("response_data","CATEGORIA: " + categoria);
+            Log.d("response_data","HINT: " + hint);
+            Log.d("response_data","id: " + hint);
+
+
+
+            /*------------------------- Revisar si existe ------------------------*/
+            Cursor c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PREGUNTAS, null);
+            try {
+                if (c.moveToFirst()) {
+
+                    ContentValues update = new ContentValues();
+
+                    update.put(DataBaseDB.PREGUNTAS_ID, id);
+                    update.put(DataBaseDB.PREGUNTAS_TITULO, pregunta);
+                    update.put(DataBaseDB.PREGUNTAS_CATEGORIA, categoria);
+                    update.put(DataBaseDB.PREGUNTAS_HINT, hint);
+
+                    db.update(DataBaseDB.TABLE_NAME_PREGUNTAS, update, DataBaseDB.PREGUNTAS_ID + "='" + id + "'", null);
+                    Log.d("response_data","Codigo actualizado correctamente");
+
+                } else {
+                    ContentValues values = new ContentValues();
+
+                    values.put(DataBaseDB.PREGUNTAS_ID, id);
+                    values.put(DataBaseDB.PREGUNTAS_TITULO, pregunta);
+                    values.put(DataBaseDB.PREGUNTAS_CATEGORIA, categoria);
+                    values.put(DataBaseDB.PREGUNTAS_HINT, hint);
+
+
+                    db.insert(DataBaseDB.TABLE_NAME_PREGUNTAS, null, values);
+                    Log.d("response_data","Codigo postal insertado correctamente");
+                    c.close();
+
+                }
+            } catch (SQLException ex) {
+                Log.d("response_data","Error al insertar codigo postal: " + ex);
+            }
+        }
+        db.close();
+    }
+
+    public void printAllDB(){
 
     }
 

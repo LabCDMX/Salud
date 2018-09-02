@@ -103,7 +103,7 @@ public class InicioFragmentMain extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d(TAG,"Init.....");
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -126,6 +126,7 @@ public class InicioFragmentMain extends Fragment {
         progress.setMessage("Sincronizando datos...");
         progress.setIndeterminate(false);
         progress.setCancelable(false);
+
 
         sharedPreferences = SharedPreferences.getInstance();
         sharedPreferences.clearPreferences();
@@ -299,26 +300,7 @@ public class InicioFragmentMain extends Fragment {
         try {
             progress.show();
 
-            ApiInterface getDataPaciente = MedicalService.getMedicalApiData().create(ApiInterface.class);
-            Call<JSONObject> call = getDataPaciente.loadPaciente();
 
-            call.enqueue(new Callback<JSONObject>() {
-                @Override
-                public void onResponse(Call<JSONObject> call, Response<JSONObject> response) {
-
-                    Log.d("response_data","print::: " + response.body());
-                    progress.dismiss();
-
-                }
-
-                @Override
-                public void onFailure(Call<JSONObject> call, Throwable t) {
-
-                    t.printStackTrace();
-                    progress.dismiss();
-
-                }
-            });
             /*URL url = new URL("https://medico.digitalcoaster.mx/api/admin/api/paciente");
             HttpsURLConnection urlConnection = (HttpsURLConnection) url.openConnection();
 
@@ -949,6 +931,10 @@ public class InicioFragmentMain extends Fragment {
                                     c.getString(24), c.getString(26),c.getString(23),c.getString(28),c.getString(29),c.getString(30),c.getString(31),c.getString(32),c.getString(33),c.getString(34),
                                     c.getString(35),c.getString(36),c.getString(37),c.getString(38),c.getString(39),c.getString(40),c.getString(41),c.getString(54),c.getString(42),c.getString(43),c.getString(44),
                                     c.getString(45),c.getString(46),c.getString(47),c.getString(49),c.getString(50),c.getString(51),c.getString(52));
+
+
+
+
 
 
                         }while (c.moveToNext());

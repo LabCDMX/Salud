@@ -1,31 +1,36 @@
 package mx.digitalcoaster.rzertuche.medicoencasa.api;
 
 
-import org.json.JSONObject;
+import com.google.gson.JsonObject;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
 public interface ApiInterface {
 
     @GET("/api/admin/api/preguntas")
-    Call<JSONObject> loadPreguntas();
+    Call<JsonObject> loadPreguntas();
+    //DATA
+    @GET("/users/defunkt")
+    Call<JsonObject> loadGit();
+
 
     @GET("/api/admin/api/paciente/")
-    Call<JSONObject> loadPaciente();
+    Call<JsonObject> loadPaciente();
 
     @GET("/api/admin/api/localidades")
-    Call<JSONObject> loadLocalidades();
+    Call<JsonObject> loadLocalidades();
 
     @GET("/api/admin/api/codigospostales")
-    Call<JSONObject> loadCodigosPostales();
+    Call<JsonObject> loadCodigosPostales();
 
     @GET("/api/admin/api/categorias")
-    Call<JSONObject> loadCategorias();
+    Call<JsonObject> loadCategorias();
 
     @POST("/api/admin/api/paciente")
-    Call<JSONObject> sendPaciente(@Body JSONObject Paciente);
+    Call<JsonObject> sendPaciente(@Body JsonObject Paciente);
 
 }

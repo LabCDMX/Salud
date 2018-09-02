@@ -42,9 +42,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
-import java.net.URLEncoder;
-import java.util.Iterator;
-import java.util.List;
 
 import io.realm.Realm;
 import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseDB;
@@ -173,7 +170,6 @@ public class MainActivity extends AppCompatActivity implements
         transaction.replace(R.id.fragmentHolder, fragment);
         transaction.commit();
 
-
         registros.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -224,8 +220,6 @@ public class MainActivity extends AppCompatActivity implements
                 }
             }
         });
-
-
 
         inicio.setOnClickListener(new View.OnClickListener() {
             @Override
