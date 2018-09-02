@@ -310,8 +310,6 @@ public class QuestionDomFragment extends Fragment {
 
         });
 
-
-
     }
 
 

@@ -140,10 +140,6 @@ public class MainActivity extends AppCompatActivity implements
     HttpURLConnection conn;
     URL url; // URL de donde queremos obtener información
 
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -155,16 +151,13 @@ public class MainActivity extends AppCompatActivity implements
         // Initialize Realm
         //Realm.init(this);
 
-
-
         //Initialize ImageView to set change with onclick
-        inicio = (ImageView) findViewById(R.id.imageButton);
-        registros = (ImageView) findViewById(R.id.imageButton2);
-        seguimiento = (ImageView) findViewById(R.id.pacientesButton);
-        sincronizacion = (ImageView) findViewById(R.id.imageButton4);
+        inicio = findViewById(R.id.imageButton);
+        registros = findViewById(R.id.imageButton2);
+        seguimiento = findViewById(R.id.pacientesButton);
+        sincronizacion = findViewById(R.id.imageButton4);
 
         cronometro = findViewById(R.id.chronomether);
-
 
         sqliteHelper = new DataBaseHelper(this, DataBaseDB.DB_NAME, null, DataBaseDB.VERSION);
         db = sqliteHelper.getWritableDatabase();
@@ -229,8 +222,6 @@ public class MainActivity extends AppCompatActivity implements
                     restartImageButtons();
                     registros.setImageDrawable(getResources().getDrawable(R.drawable.nuevo_pink));
                 }
-
-
             }
         });
 

@@ -4,55 +4,42 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.database.Cursor;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.text.TextUtils;
+//import android.telecom.Call;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Hashtable;
-
 import javax.net.ssl.HttpsURLConnection;
 
-import io.realm.internal.android.JsonUtils;
 import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseDB;
 import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseHelper;
 import mx.digitalcoaster.rzertuche.medicoencasa.Utils.SharedPreferences;
 import mx.digitalcoaster.rzertuche.medicoencasa.R;
+import mx.digitalcoaster.rzertuche.medicoencasa.api.ApiInterface;
+import mx.digitalcoaster.rzertuche.medicoencasa.api.MedicalService;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 /**
@@ -64,6 +51,9 @@ import mx.digitalcoaster.rzertuche.medicoencasa.R;
  * create an instance of this fragment.
  */
 public class InicioFragmentMain extends Fragment {
+
+    public static String TAG = InicioFragment.class.getSimpleName();
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -113,10 +103,12 @@ public class InicioFragmentMain extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(TAG,"Init.....");
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
@@ -134,7 +126,6 @@ public class InicioFragmentMain extends Fragment {
         progress.setMessage("Sincronizando datos...");
         progress.setIndeterminate(false);
         progress.setCancelable(false);
-
 
         sharedPreferences = SharedPreferences.getInstance();
         sharedPreferences.clearPreferences();
@@ -307,7 +298,28 @@ public class InicioFragmentMain extends Fragment {
 
         try {
             progress.show();
-            URL url = new URL("https://medico.digitalcoaster.mx/api/admin/api/paciente");
+
+            ApiInterface getDataPaciente = MedicalService.getMedicalApiData().create(ApiInterface.class);
+            Call<JSONObject> call = getDataPaciente.loadPaciente();
+
+            call.enqueue(new Callback<JSONObject>() {
+                @Override
+                public void onResponse(Call<JSONObject> call, Response<JSONObject> response) {
+
+                    Log.d("response_data","print::: " + response.body());
+                    progress.dismiss();
+
+                }
+
+                @Override
+                public void onFailure(Call<JSONObject> call, Throwable t) {
+
+                    t.printStackTrace();
+                    progress.dismiss();
+
+                }
+            });
+            /*URL url = new URL("https://medico.digitalcoaster.mx/api/admin/api/paciente");
             HttpsURLConnection urlConnection = (HttpsURLConnection) url.openConnection();
 
             urlConnection.setConnectTimeout(10000);
@@ -369,12 +381,11 @@ public class InicioFragmentMain extends Fragment {
                     }catch(Exception e){
 
                     }
-                }
+                }*/
 
 
-                progress.dismiss();
 
-            }else{
+            /*}else{
 
                 //JsonArray response2 = new JsonParser().parse(new InputStreamReader(urlConnection.getErrorStream())).getAsJsonArray();
                 //JSONObject response2 = new JsonParser().parse(new InputStreamReader(urlConnection.getErrorStream())).getAsJsonObject();
@@ -387,11 +398,11 @@ public class InicioFragmentMain extends Fragment {
                     JsonArray  responseArrayObject =  new JsonParser().parse(new InputStreamReader(urlConnection.getErrorStream())).getAsJsonArray();
                     return responseArrayObject.toString();
                 }*/
-
+                /*
                 Log.e("URL", "https://medico.digitalcoaster.mx/api/admin/api/paciente");
 
 
-            }
+            }*/
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -938,10 +949,6 @@ public class InicioFragmentMain extends Fragment {
                                     c.getString(24), c.getString(26),c.getString(23),c.getString(28),c.getString(29),c.getString(30),c.getString(31),c.getString(32),c.getString(33),c.getString(34),
                                     c.getString(35),c.getString(36),c.getString(37),c.getString(38),c.getString(39),c.getString(40),c.getString(41),c.getString(54),c.getString(42),c.getString(43),c.getString(44),
                                     c.getString(45),c.getString(46),c.getString(47),c.getString(49),c.getString(50),c.getString(51),c.getString(52));
-
-
-
-
 
 
                         }while (c.moveToNext());
