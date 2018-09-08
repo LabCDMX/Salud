@@ -1,23 +1,14 @@
 package mx.digitalcoaster.rzertuche.medicoencasa.Activitys;
 
-import android.content.ContentValues;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
-import android.database.Cursor;
-import android.database.SQLException;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
 import android.widget.ProgressBar;
 
 
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-
-import org.json.JSONObject;
 
 import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseDB;
 import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseHelper;
@@ -42,11 +33,10 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         progress = findViewById(R.id.pb_loading);
 
-        //ADD QUESTIONS...
+        //load questions...
         loadQuestions();
 
-        //loadMedicalHistory();
-        loadMedicalHistory();
+
     }
 
     public void loadQuestions(){
@@ -57,14 +47,20 @@ public class SplashScreenActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
                 //Log.d("response_data_questions","body..." + response.body());
-                dataBaseDBH.addDataDB(response.body());
+
+
+                dataBaseDBH.addQuestionsDB(response.body());
+
+
+
                 progress.setVisibility(View.GONE);
                 //startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
+                loadMedicalHistory();
             }
 
             @Override
             public void onFailure(Call<JsonObject> call, Throwable t) {
-                Log.d("response_data_questions",t.toString());
+                Log.d("rd_questions",t.toString());
             }
         });
     }
@@ -74,13 +70,40 @@ public class SplashScreenActivity extends AppCompatActivity {
         getMedicalHistory.loadPaciente().enqueue(new Callback<JsonObject>() {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-                Log.d("response_data_history",response.body().toString());
+                Log.d("rd_data_history",response.body().toString());
+                
+                loadCodePostal();
+            }
+
+            @Override
+            public void onFailure(Call<JsonObject> call, Throwable t) {
+                Log.d("rd_data_history",t.toString());
+
+            }
+        });
+    }
+
+    public void loadCodePostal(){
+
+        dataBaseDBH = new DataBaseHelper(this, DataBaseDB.DB_NAME, null, DataBaseDB.VERSION);
+
+        ApiInterface getMedicalHistory = MedicalService.getMedicalApiData().create(ApiInterface.class);
+        getMedicalHistory.loadCodigosPostales().enqueue(new Callback<JsonObject>() {
+            @Override
+            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                //Add cp_data...
+
+
+                //dataBaseDBH.addCodePostalDB(response.body());
+
+
+                startActivity(new Intent(SplashScreenActivity.this,MainActivity.class));
 
             }
 
             @Override
             public void onFailure(Call<JsonObject> call, Throwable t) {
-                Log.d("response_data_history",t.toString());
+                Log.d("rd_cp",t.toString());
 
             }
         });

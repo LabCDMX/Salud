@@ -71,10 +71,10 @@ public class QuestionsHistoriaClinica extends Fragment {
         question = getActivity().findViewById(R.id.question);
 
 
-        textArea_information = (EditText) getActivity().findViewById(R.id.textArea_information);
+        textArea_information = getActivity().findViewById(R.id.textArea_information);
 
-        next = (ImageButton) getActivity().findViewById(R.id.next);
-        back = (ImageButton) getActivity().findViewById(R.id.back);
+        next = getActivity().findViewById(R.id.next);
+        back = getActivity().findViewById(R.id.back);
 
         sharedPreferences = SharedPreferences.getInstance();
 

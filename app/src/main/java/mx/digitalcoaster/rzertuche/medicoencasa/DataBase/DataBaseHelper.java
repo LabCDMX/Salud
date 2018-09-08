@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
@@ -56,7 +57,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 DataBaseDB.PACIENTES_POBLACION + " TEXT, " +
                 DataBaseDB.PACIENTES_TIEMPO_ENCUESTA + " TEXT); "
         );
-        System.out.println(DataBaseDB.TABLE_NAME_PACIENTES + " Creada");
+        Log.d("DB_CREATE",DataBaseDB.TABLE_NAME_PACIENTES + " Creada");
 
         /*---------------------------- Creación de la table de session ---------------------------*/
         db.execSQL("CREATE TABLE IF NOT EXISTS " + DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR + "(" +
@@ -86,7 +87,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 DataBaseDB.PACIENTES_SINCRONIZAR_TIEMPO_ENCUESTA + " TEXT, " +
                 DataBaseDB.PACIENTES_SINCRONIZAR_EDAD + " TEXT); "
         );
-        System.out.println(DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR + " Creada");
+        Log.d("DB_CREATE",DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR + " Creada");
 
 
 
@@ -142,7 +143,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 DataBaseDB.PACIENTES_VISITA_SIGUIENTE_VISITA + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_PLANES + " TEXT); "
         );
-        System.out.println(DataBaseDB.TABLE_NAME_PACIENTES_VISITAS + " Creada");
+        Log.d("DB_CREATE",DataBaseDB.TABLE_NAME_PACIENTES_VISITAS + " Creada");
 
 
         /*---------------------------- Creación de la table de session ---------------------------*/
@@ -203,7 +204,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 DataBaseDB.PACIENTES_TORAX + " TEXT, " +
                 DataBaseDB.PACIENTES_PERSONALES_HEREDO + " TEXT); "
         );
-        System.out.println(DataBaseDB.TABLE_NAME_PACIENTES_SIN_EXPEDIENTE + " Creada");
+        Log.d("DB_CREATE",DataBaseDB.TABLE_NAME_PACIENTES_SIN_EXPEDIENTE + " Creada");
 
 
 
@@ -236,7 +237,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_ID + " TEXT); "
 
         );
-        System.out.println(DataBaseDB.TABLE_NAME_PACIENTES_SEGUIMIENTO + " Creada");
+        Log.d("DB_CREATE",DataBaseDB.TABLE_NAME_PACIENTES_SEGUIMIENTO + " Creada");
 
 
         /*---------------------------- Creación de la table de session ---------------------------*/
@@ -247,7 +248,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 DataBaseDB.MUNICIPIO + " TEXT, " +
                 DataBaseDB.ESTADO + " TEXT); "
         );
-        System.out.println(DataBaseDB.TABLE_NAME_CODIGOS_POSTALES + " Creada");
+        Log.d("DB_CREATE",DataBaseDB.TABLE_NAME_CODIGOS_POSTALES + " Creada");
 
 
 
@@ -311,7 +312,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_PERSONALES_HEREDO + " TEXT); "
 
         );
-        System.out.println(DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC + " Creada");
+        Log.d("DB_CREATE",DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC + " Creada");
 
 
         /*---------------------------- Creación de la table de session ---------------------------*/
@@ -324,7 +325,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 DataBaseDB.PREGUNTAS_DESCRIPTION + " TEXT, " +
                 DataBaseDB.PREGUNTAS_HINT + " TEXT); "
         );
-        System.out.println(DataBaseDB.TABLE_NAME_PREGUNTAS + " Creada");
+        Log.d("DB_CREATE",DataBaseDB.TABLE_NAME_PREGUNTAS + " Creada");
 
         /*---------------------------- Creación de la table de session ---------------------------*/
         db.execSQL("CREATE TABLE IF NOT EXISTS " + DataBaseDB.TABLE_NAME_RESPUESTAS + "(" +
@@ -333,7 +334,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 DataBaseDB.RESPUESTAS_DESCRIPTION + " TEXT, " +
                 DataBaseDB.RESPUESTAS_CATEGORIA + " TEXT); "
         );
-        System.out.println(DataBaseDB.TABLE_NAME_RESPUESTAS + " Creada");
+        Log.d("DB_CREATE",DataBaseDB.TABLE_NAME_RESPUESTAS + " Creada");
 
         /*---------------------------- Creación de la table de session ---------------------------*/
         db.execSQL("CREATE TABLE IF NOT EXISTS " + DataBaseDB.TABLE_NAME_RESPUESTAS_RADIO + "(" +
@@ -348,14 +349,14 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 DataBaseDB.RESPUESTAS_RADIO5 + " TEXT, " +
                 DataBaseDB.RESPUESTAS_RADIO6 + " TEXT); "
         );
-        System.out.println(DataBaseDB.TABLE_NAME_RESPUESTAS_RADIO + " Creada");
+        Log.d("DB_CREATE",DataBaseDB.TABLE_NAME_RESPUESTAS_RADIO + " Creada");
 
 
 
 
     }
 
-    public void addDataDB(JsonObject respuestaJSON){
+    public void addQuestionsDB(JsonObject respuestaJSON){
 
         db = this.getWritableDatabase();
         for (int i = 0; i < respuestaJSON.size(); i++) {
@@ -377,10 +378,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             id = preguntas.get("id").toString();
 
 
-            Log.d("response_data","PREGUNTA: " + pregunta);
-            Log.d("response_data","CATEGORIA: " + categoria);
-            Log.d("response_data","HINT: " + hint);
-            Log.d("response_data","id: " + hint);
+            Log.d("response_data_db","PREGUNTA: " + pregunta);
+            Log.d("response_data_db","CATEGORIA: " + categoria);
+            Log.d("response_data_db","HINT: " + hint);
+            Log.d("response_data_db","id: " + id);
 
 
 
@@ -414,10 +415,81 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
                 }
             } catch (SQLException ex) {
-                Log.d("response_data","Error al insertar codigo postal: " + ex);
+                Log.d("response_data_db","Error al insertar codigo postal: " + ex);
             }
         }
         db.close();
+    }
+
+    public void addHistoryMedicDB(JsonObject responseMH){
+        Cursor c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC,null);
+    }
+
+    public void addCodePostalDB(JsonObject responseCP){
+        try {
+            db = this.getWritableDatabase();
+
+            JsonArray parentesco = responseCP.getAsJsonArray("codigospostales");
+
+                String codigo_postal;
+                String colonia;
+                String municipio;
+                String estado;
+
+                for (int i = 0; i < parentesco.size(); i++) {
+
+                    codigo_postal = parentesco.get(i).getAsJsonObject().get("CodigoPostal").getAsString();
+                    colonia       = parentesco.get(i).getAsJsonObject().get("Colonia").getAsString();
+                    municipio     = parentesco.get(i).getAsJsonObject().get("Municipio").getAsString();
+                    estado        = parentesco.get(i).getAsJsonObject().get("Estado").getAsString();
+
+
+                    Log.d("","CODIGO_POSTAL: " + codigo_postal);
+                    System.out.println("COLONIA: " + colonia);
+                    System.out.println("MUNICIPIO: " + municipio);
+                    System.out.println("ESTADO: " + estado);
+
+                    /*------------------------- Revisar si existe ------------------------*/
+                    Cursor c = db.rawQuery("SELECT " + DataBaseDB.CODIGO_POSTAL +
+                            " FROM " + DataBaseDB.TABLE_NAME_CODIGOS_POSTALES +
+                            " WHERE " + DataBaseDB.CODIGO_POSTAL + "='" + codigo_postal + "'", null);
+                    try {
+                        if (c.moveToFirst()) {
+                            Log.d("response_data_cp_db","Codigo existente: ");
+                            ContentValues update = new ContentValues();
+
+                            update.put(DataBaseDB.CODIGO_POSTAL, codigo_postal);
+                            update.put(DataBaseDB.COLONIA, colonia);
+                            update.put(DataBaseDB.MUNICIPIO, municipio);
+                            update.put(DataBaseDB.ESTADO, estado);
+
+                            db.update(DataBaseDB.TABLE_NAME_CODIGOS_POSTALES, update, DataBaseDB.CODIGO_POSTAL + "='" + codigo_postal + "'", null);
+                            Log.d("response_data_cp_db","Codigo actualizado correctamente");
+
+                        } else {
+                            ContentValues values = new ContentValues();
+
+                            values.put(DataBaseDB.CODIGO_POSTAL, codigo_postal);
+                            values.put(DataBaseDB.COLONIA, colonia);
+                            values.put(DataBaseDB.MUNICIPIO, municipio);
+                            values.put(DataBaseDB.ESTADO, estado);
+
+                            db.insert(DataBaseDB.TABLE_NAME_CODIGOS_POSTALES, null, values);
+                            Log.d("response_data_cp_db","Codigo postal insertado correctamente");
+                        }
+                        c.close();
+                    } catch (SQLException ex) {
+                        Log.d("response_data_cp_db","Error al insertar codigo postal: " + ex);
+                    }
+                }
+                db.close();
+
+
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void printAllDB(){

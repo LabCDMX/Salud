@@ -58,11 +58,6 @@ public class DiagnosticoFragment extends Fragment {
     private DataBaseHelper sqliteHelper;   // Objeto para abrir la base de Datos
     private Cursor c = null;
 
-
-
-
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

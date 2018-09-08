@@ -11,6 +11,8 @@ public class MedicalService {
     private static Retrofit retrofit;
 
     public static final String BASE_URL = "http://187.210.47.140:9999";
+    //https://medico.digitalcoaster.mx
+    //http://187.210.47.140:9999
     public static final String BASE_URL_BETA = "https://api.github.com";
     public static Retrofit getMedicalApiData(){
 

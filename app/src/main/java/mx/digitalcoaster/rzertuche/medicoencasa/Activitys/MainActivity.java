@@ -135,7 +135,6 @@ public class MainActivity extends AppCompatActivity implements
     private SharedPreferences sharedPreferences;
 
     HttpURLConnection conn;
-    URL url; // URL de donde queremos obtener información
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -161,7 +160,6 @@ public class MainActivity extends AppCompatActivity implements
         db.close();
 
         sharedPreferences = SharedPreferences.getInstance();
-        getPreguntas();
 
         //Home Fragment
         InicioFragmentMain fragment = new InicioFragmentMain();
@@ -300,13 +298,13 @@ public class MainActivity extends AppCompatActivity implements
                     dialog.setCancelable(false);
                     dialog.setContentView(R.layout.layout_alert);
 
-                    TextView txtTitle = (TextView) dialog.findViewById(R.id.lblTitle);
+                    TextView txtTitle =  dialog.findViewById(R.id.lblTitle);
                     txtTitle.setText("ALERTA");
 
-                    TextView txtMessage = (TextView) dialog.findViewById(R.id.lblMessage);
+                    TextView txtMessage = dialog.findViewById(R.id.lblMessage);
                     txtMessage.setText("Si sales perderas toda la información del usuario hasta el momento");
 
-                    Button btnCancelar = (Button) dialog.findViewById(R.id.btnCancel);
+                    Button btnCancelar = dialog.findViewById(R.id.btnCancel);
                     btnCancelar.setText("Cancelar");
                     btnCancelar.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -315,7 +313,7 @@ public class MainActivity extends AppCompatActivity implements
                         }
                     });
 
-                    Button btnAceptar = (Button) dialog.findViewById(R.id.btnAccept);
+                    Button btnAceptar = dialog.findViewById(R.id.btnAccept);
                     btnAceptar.setText("Aceptar");
                     btnAceptar.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -764,198 +762,6 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     public void onFragmentInteraction(Uri uri) {
 
-    }
-
-    public void getPreguntas() {
-        try {
-
-            String IPCodigos = "https://medico.digitalcoaster.mx/api/admin/api/preguntas";
-            System.out.println(IPCodigos);
-            url = new URL(IPCodigos);
-            conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestProperty("User-Agent", "Mozilla/5.0 (Linux; Android 1.5; es-ES) Ejemplo HTTP");
-            conn.setRequestMethod("GET");
-
-
-            int respuesta = conn.getResponseCode();
-            StringBuilder result = new StringBuilder();
-
-            if (respuesta == HttpURLConnection.HTTP_OK) {
-
-                InputStream in = new BufferedInputStream(conn.getInputStream());
-                BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    result.append(line); // Pasar todas las entradas al StringBuilder
-                }
-
-                respuestaJSON = new JSONObject(result.toString());
-                Log.e("Preguntas", respuestaJSON.toString());
-
-                String pregunta;
-                String categoria;
-                String hint;
-                String id;
-
-                db = openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE, null);
-                for (int i = 0; i < respuestaJSON.length(); i++) {
-
-                    JSONObject pregunta1 = respuestaJSON.getJSONObject("4");
-                    JSONObject preguntas = pregunta1.getJSONObject("pregunta");
-
-                    JSONArray preguntas2 = respuestaJSON.getJSONArray("5");
-                    JSONArray preguntas3 = respuestaJSON.getJSONArray("60");
-                    JSONArray preguntas4 = respuestaJSON.getJSONArray("61");
-                    JSONArray preguntas5 = respuestaJSON.getJSONArray("62");
-                    JSONArray preguntas6 = respuestaJSON.getJSONArray("63");
-                    JSONArray preguntas7 = respuestaJSON.getJSONArray("65");
-
-
-                    pregunta = preguntas.getString("titulo");
-                    categoria = preguntas.getString("categoria_preguntas_id");
-                    hint = preguntas.getString("categoria_preguntas_id");
-                    id = preguntas.getString("id");
-
-
-                    System.out.println("PREGUNTA: " + pregunta);
-                    System.out.println("CATEGORIA: " + categoria);
-                    System.out.println("HINT: " + hint);
-                    System.out.println("id: " + hint);
-
-
-
-                    /*------------------------- Revisar si existe ------------------------*/
-                    c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PREGUNTAS, null);
-                    try {
-                        if (c.moveToFirst()) {
-
-                            ContentValues update = new ContentValues();
-
-                            update.put(DataBaseDB.PREGUNTAS_ID, id);
-                            update.put(DataBaseDB.PREGUNTAS_TITULO, pregunta);
-                            update.put(DataBaseDB.PREGUNTAS_CATEGORIA, categoria);
-                            update.put(DataBaseDB.PREGUNTAS_HINT, hint);
-
-                            db.update(DataBaseDB.TABLE_NAME_PREGUNTAS, update, DataBaseDB.PREGUNTAS_ID + "='" + id + "'", null);
-                            System.out.println("Codigo actualizado correctamente");
-
-                        } else {
-                            ContentValues values = new ContentValues();
-
-                            values.put(DataBaseDB.PREGUNTAS_ID, id);
-                            values.put(DataBaseDB.PREGUNTAS_TITULO, pregunta);
-                            values.put(DataBaseDB.PREGUNTAS_CATEGORIA, categoria);
-                            values.put(DataBaseDB.PREGUNTAS_HINT, hint);
-
-
-                            db.insert(DataBaseDB.TABLE_NAME_PREGUNTAS, null, values);
-                            System.out.println("Codigo postal insertado correctamente");
-                        }
-                        c.close();
-                    } catch (SQLException ex) {
-                        System.out.println("Error al insertar codigo postal: " + ex);
-                    }
-                }
-                db.close();
-
-            }
-
-
-        } catch (IOException e) {
-        } catch (JSONException e) {
-        }
-    }
-
-    public void getPostal() {
-        try {
-
-            String IPCodigos = "https://medico.digitalcoaster.mx/api/admin/api/codigospostales";
-            System.out.println(IPCodigos);
-            url = new URL(IPCodigos);
-            conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestProperty("User-Agent", "Mozilla/5.0 (Linux; Android 1.5; es-ES) Ejemplo HTTP");
-            conn.setRequestMethod("POST");
-            conn.setDoInput(true);
-            conn.setDoOutput(true);
-
-
-            int respuesta = conn.getResponseCode();
-            StringBuilder result = new StringBuilder();
-
-            if (respuesta == HttpURLConnection.HTTP_OK) {
-
-                InputStream in = new BufferedInputStream(conn.getInputStream());
-                BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    result.append(line); // Pasar todas las entradas al StringBuilder
-                }
-
-                respuestaJSON = new JSONObject(result.toString());
-                JSONArray parentesco = respuestaJSON.getJSONArray("codigospostales");
-
-                String codigo_postal;
-                String colonia;
-                String municipio;
-                String estado;
-
-                db = openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE, null);
-                for (int i = 0; i < parentesco.length(); i++) {
-
-                    codigo_postal = parentesco.getJSONObject(i).getString("CodigoPostal");
-                    colonia = parentesco.getJSONObject(i).getString("Colonia");
-                    municipio = parentesco.getJSONObject(i).getString("Municipio");
-                    estado = parentesco.getJSONObject(i).getString("Estado");
-
-
-                    System.out.println("CODIGO_POSTAL: " + codigo_postal);
-                    System.out.println("COLONIA: " + colonia);
-                    System.out.println("MUNICIPIO: " + municipio);
-                    System.out.println("ESTADO: " + estado);
-
-                    /*------------------------- Revisar si existe ------------------------*/
-                    c = db.rawQuery("SELECT " + DataBaseDB.CODIGO_POSTAL +
-                            " FROM " + DataBaseDB.TABLE_NAME_CODIGOS_POSTALES +
-                            " WHERE " + DataBaseDB.CODIGO_POSTAL + "='" + codigo_postal + "'", null);
-                    try {
-                        if (c.moveToFirst()) {
-                            System.out.print("Codigo existente: ");
-                            ContentValues update = new ContentValues();
-
-                            update.put(DataBaseDB.CODIGO_POSTAL, codigo_postal);
-                            update.put(DataBaseDB.COLONIA, colonia);
-                            update.put(DataBaseDB.MUNICIPIO, municipio);
-                            update.put(DataBaseDB.ESTADO, estado);
-
-                            db.update(DataBaseDB.TABLE_NAME_CODIGOS_POSTALES, update, DataBaseDB.CODIGO_POSTAL + "='" + codigo_postal + "'", null);
-                            System.out.println("Codigo actualizado correctamente");
-
-                        } else {
-                            ContentValues values = new ContentValues();
-
-                            values.put(DataBaseDB.CODIGO_POSTAL, codigo_postal);
-                            values.put(DataBaseDB.COLONIA, colonia);
-                            values.put(DataBaseDB.MUNICIPIO, municipio);
-                            values.put(DataBaseDB.ESTADO, estado);
-
-                            db.insert(DataBaseDB.TABLE_NAME_CODIGOS_POSTALES, null, values);
-                            System.out.println("Codigo postal insertado correctamente");
-                        }
-                        c.close();
-                    } catch (SQLException ex) {
-                        System.out.println("Error al insertar codigo postal: " + ex);
-                    }
-                }
-                db.close();
-
-            }
-
-
-        } catch (IOException e) {
-        } catch (JSONException e) {
-        }
     }
 
     public void enableStrictMode() {
