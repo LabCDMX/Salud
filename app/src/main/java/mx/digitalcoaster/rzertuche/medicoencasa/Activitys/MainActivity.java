@@ -59,28 +59,28 @@ import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.SuccededFragmentDom;
 import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.SuccededHistoriaFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.VisitaFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.VisitasFragment;
-import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.ContextoSocialFragment;
-import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.DatosGeneralesFragment;
-import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.DiagnosticoFragment;
-import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.HistoriaClinicaFragment;
-import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.NotasEnfermeria;
-import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.NotasHistoric;
-import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.NotasHojaDiaria;
-import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionCuidador;
-import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionDomFragment;
-import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionPoblacion;
-import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsAlimentos;
-import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsAntecedentes;
-import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsAntecedentesPersonales;
-import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsContextElectro;
-import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsDomFragmentThree;
-import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsDomFragmentTwo;
-import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsEducacion;
-import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsExploracion;
-import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsFragment;
-import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsFragmentTwo;
-import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsHistoriaClinica;
-import mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.TarjetaPacienteFragment;
+import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments.ContextoSocialFragment;
+import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments.DatosGeneralesFragment;
+import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments.DiagnosticoFragment;
+import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments.HistoriaClinicaFragment;
+import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments.NotasEnfermeria;
+import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments.NotasHistoric;
+import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments.NotasHojaDiaria;
+import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments.QuestionCuidador;
+import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments.QuestionDomFragment;
+import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments.QuestionPoblacion;
+import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments.QuestionsAlimentos;
+import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments.QuestionsAntecedentes;
+import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments.QuestionsAntecedentesPersonales;
+import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments.QuestionsContextElectro;
+import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments.QuestionsDomFragmentThree;
+import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments.QuestionsDomFragmentTwo;
+import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments.QuestionsEducacion;
+import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments.QuestionsExploracion;
+import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments.QuestionsFragment;
+import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments.QuestionsFragmentTwo;
+import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments.QuestionsHistoriaClinica;
+import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments.TarjetaPacienteFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.R;
 import mx.digitalcoaster.rzertuche.medicoencasa.Utils.SharedPreferences;
 import mx.digitalcoaster.rzertuche.medicoencasa.models.HistoriaClinica;
@@ -139,6 +139,14 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
+                .detectLeakedSqlLiteObjects()
+                .detectLeakedClosableObjects()
+                .penaltyLog()
+                .penaltyDeath()
+                .build());
+
         setContentView(R.layout.activity_main);
 
         getSupportActionBar().setTitle("");

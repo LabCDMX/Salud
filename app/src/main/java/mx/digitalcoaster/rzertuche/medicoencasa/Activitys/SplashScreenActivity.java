@@ -32,9 +32,11 @@ public class SplashScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
 
         progress = findViewById(R.id.pb_loading);
-
         //load questions...
-        loadQuestions();
+        //loadQuestions();
+        startActivity(new Intent(SplashScreenActivity.this,MainActivity.class));
+
+        progress.setVisibility(View.GONE);
 
 
     }
@@ -49,9 +51,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                 //Log.d("response_data_questions","body..." + response.body());
 
 
-                dataBaseDBH.addQuestionsDB(response.body());
-
-
+                //dataBaseDBH.addQuestionsDB(response.body());
 
                 progress.setVisibility(View.GONE);
                 //startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));

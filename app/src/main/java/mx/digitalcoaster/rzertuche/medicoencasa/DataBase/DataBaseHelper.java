@@ -13,6 +13,7 @@ import com.google.gson.JsonObject;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
 
+    private String TAG = getClass().getSimpleName();
     //DATABASE....
     private SQLiteDatabase db = null;      // Objeto para utilizar la base de datos
     private DataBaseHelper sqliteHelper;   // Objeto para abrir la base de Datos
@@ -206,8 +207,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         );
         Log.d("DB_CREATE",DataBaseDB.TABLE_NAME_PACIENTES_SIN_EXPEDIENTE + " Creada");
 
-
-
         /*---------------------------- Creación de la table de session ---------------------------*/
         db.execSQL("CREATE TABLE IF NOT EXISTS " + DataBaseDB.TABLE_NAME_PACIENTES_SEGUIMIENTO + "(" +
                 "_id INTEGER PRIMARY KEY, " +
@@ -378,10 +377,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             id = preguntas.get("id").toString();
 
 
-            Log.d("response_data_db","PREGUNTA: " + pregunta);
-            Log.d("response_data_db","CATEGORIA: " + categoria);
-            Log.d("response_data_db","HINT: " + hint);
-            Log.d("response_data_db","id: " + id);
+            Log.d(TAG,"PREGUNTA: " + pregunta);
+            Log.d(TAG,"CATEGORIA: " + categoria);
+            Log.d(TAG,"HINT: " + hint);
+            Log.d(TAG,"id: " + id);
 
 
 
@@ -421,10 +420,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void addHistoryMedicDB(JsonObject responseMH){
-        Cursor c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC,null);
-    }
-
     public void addCodePostalDB(JsonObject responseCP){
         try {
             db = this.getWritableDatabase();
@@ -444,10 +439,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                     estado        = parentesco.get(i).getAsJsonObject().get("Estado").getAsString();
 
 
-                    Log.d("","CODIGO_POSTAL: " + codigo_postal);
-                    System.out.println("COLONIA: " + colonia);
-                    System.out.println("MUNICIPIO: " + municipio);
-                    System.out.println("ESTADO: " + estado);
+                    Log.d(TAG,"CODIGO_POSTAL: " + codigo_postal);
+                    Log.d(TAG,"COLONIA: " + colonia);
+                    Log.d(TAG,"MUNICIPIO: " + municipio);
+                    Log.d(TAG,"ESTADO: " + estado);
 
                     /*------------------------- Revisar si existe ------------------------*/
                     Cursor c = db.rawQuery("SELECT " + DataBaseDB.CODIGO_POSTAL +
@@ -484,14 +479,190 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 }
                 db.close();
 
-
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    public void addPaicentesDB(JsonObject responsePacientes){
+        try{
+            db = this.getWritableDatabase();
+            JsonArray pacientes = responsePacientes.getAsJsonArray("pacientes");
+
+            String  no_expediente,
+                    fecha,
+                    curp,
+                    apellidoPaterno,
+                    apellidoMaterno,
+                    nombre,
+                    fechadeNacimiento,
+                    estadodeNacimiento;
+
+            Integer sexo;
+
+            String nacionalidadOrigen,
+                    estadoResidencia,
+                    municipio,
+                    cp,
+                    visita,
+                    pob_vul,
+                    colonia,
+                    nombreCalle,
+                    estadoCivil,
+                    ocupacion,
+                    derechoHabiencia,
+                    telFijo,
+                    telCelular,
+                    correoElectronico;
+
+            Integer createdBy;
+
+            String  created_at,
+                    updated_at;
+
+            String  hemo,
+                    peso,
+                    estatura,
+                    tension, //el que tiene ' ' '
+                    frecuencia_car,
+                    frecuencia_resp,
+                    talla,
+                    pulso,
+                    glucemia,
+                    temp,
+                    ant_personales,
+                    ant_patologicos,
+                    ant_obstericos,
+                    padecimiento_actual,
+                    sistemas_generales,
+                    respiratorio,
+                    cardio,
+                    digestivo,
+                    urinario,
+                    repro,
+                    hemolin,
+                    endo,
+                    s_nervioso,
+                    esqueletico,
+                    piel,
+                    habitus,
+                    cabeza,
+                    cuello,
+                    torax,
+                    abdomen,
+                    gine,
+                    extremidades,
+                    c_vertebral,
+                    neuro,
+                    genitales,
+                    notas_doc,
+                    plan,
+                    impresion_diag,
+                    tratamiento;
+
+            for(int i = 0 ; i < pacientes.size() ; i++){
+                no_expediente     = pacientes.get(i).getAsJsonObject().get("no_expediente").getAsString();
+                fecha             = pacientes.get(i).getAsJsonObject().get("fecha").getAsString();
+                curp              = pacientes.get(i).getAsJsonObject().get("curp").getAsString();
+                apellidoPaterno   = pacientes.get(i).getAsJsonObject().get("apellidoPaterno").getAsString();
+                apellidoMaterno   = pacientes.get(i).getAsJsonObject().get("apellidoMaterno").getAsString();
+                nombre            = pacientes.get(i).getAsJsonObject().get("nombre").getAsString();
+                fechadeNacimiento  = pacientes.get(i).getAsJsonObject().get("fechadeNacimiento").getAsString();
+                estadodeNacimiento = pacientes.get(i).getAsJsonObject().get("estadodeNacimiento").getAsString();
+
+                sexo = pacientes.get(i).getAsJsonObject().get("sexo").getAsInt();
+
+                nacionalidadOrigen = pacientes.get(i).getAsJsonObject().get("nacionalidadOrigen").getAsString();
+                estadoResidencia   = pacientes.get(i).getAsJsonObject().get("estadoResidencia").getAsString();
+                municipio          = pacientes.get(i).getAsJsonObject().get("municipio").getAsString();
+                cp                 = pacientes.get(i).getAsJsonObject().get("cp").getAsString();
+                visita             = pacientes.get(i).getAsJsonObject().get("visita").getAsString();
+                pob_vul            = pacientes.get(i).getAsJsonObject().get("pob_vul").getAsString();
+                colonia            = pacientes.get(i).getAsJsonObject().get("colonia").getAsString();
+                nombreCalle        = pacientes.get(i).getAsJsonObject().get("nombreCalle").getAsString();
+                estadoCivil        = pacientes.get(i).getAsJsonObject().get("estadoCivil").getAsString();
+                ocupacion          = pacientes.get(i).getAsJsonObject().get("ocupacion").getAsString();
+                derechoHabiencia   = pacientes.get(i).getAsJsonObject().get("derechoHabiencia").getAsString();
+                telFijo            = pacientes.get(i).getAsJsonObject().get("telFijo").getAsString();
+                telCelular         = pacientes.get(i).getAsJsonObject().get("telCelular").getAsString();
+
+                createdBy         = pacientes.get(i).getAsJsonObject().get("createdBy").getAsInt();
+
+                created_at        = pacientes.get(i).getAsJsonObject().get("created_at").getAsString();
+                updated_at        = pacientes.get(i).getAsJsonObject().get("updated_at").getAsString();
+
+                hemo = pacientes.get(i).getAsJsonObject().get("hemo").getAsString();
+                peso = pacientes.get(i).getAsJsonObject().get("peso").getAsString();
+                estatura = pacientes.get(i).getAsJsonObject().get("estatura").getAsString();
+                tension = pacientes.get(i).getAsJsonObject().get("tensión").getAsString();
+                frecuencia_car = pacientes.get(i).getAsJsonObject().get("frecuencia_car").getAsString();
+                frecuencia_resp = pacientes.get(i).getAsJsonObject().get("frecuencia_resp").getAsString();
+                talla = pacientes.get(i).getAsJsonObject().get("talla").getAsString();
+                pulso = pacientes.get(i).getAsJsonObject().get("pulso").getAsString();
+                glucemia = pacientes.get(i).getAsJsonObject().get("glucemia").getAsString();
+                temp = pacientes.get(i).getAsJsonObject().get("temp").getAsString();
+                ant_personales = pacientes.get(i).getAsJsonObject().get("ant_personales").getAsString();
+                ant_patologicos = pacientes.get(i).getAsJsonObject().get("ant_patologicos").getAsString();
+                ant_obstericos = pacientes.get(i).getAsJsonObject().get("ant_obstericos").getAsString();
+                padecimiento_actual = pacientes.get(i).getAsJsonObject().get("padecimiento_actual").getAsString();
+                sistemas_generales = pacientes.get(i).getAsJsonObject().get("sistemas_generales").getAsString();
+                respiratorio = pacientes.get(i).getAsJsonObject().get("respiratorio").getAsString();
+                cardio = pacientes.get(i).getAsJsonObject().get("cardio").getAsString();
+                digestivo = pacientes.get(i).getAsJsonObject().get("digestivo").getAsString();
+                urinario = pacientes.get(i).getAsJsonObject().get("urinario").getAsString();
+                repro = pacientes.get(i).getAsJsonObject().get("repro").getAsString();
+                hemolin = pacientes.get(i).getAsJsonObject().get("hemolin").getAsString();
+                endo = pacientes.get(i).getAsJsonObject().get("endo").getAsString();
+                s_nervioso = pacientes.get(i).getAsJsonObject().get("s_nervioso").getAsString();
+                esqueletico = pacientes.get(i).getAsJsonObject().get("esqueletico").getAsString();
+                piel = pacientes.get(i).getAsJsonObject().get("piel").getAsString();
+                habitus = pacientes.get(i).getAsJsonObject().get("habitus").getAsString();
+                cabeza = pacientes.get(i).getAsJsonObject().get("cabeza").getAsString();
+                cuello = pacientes.get(i).getAsJsonObject().get("cuello").getAsString();
+                torax = pacientes.get(i).getAsJsonObject().get("torax").getAsString();
+                abdomen = pacientes.get(i).getAsJsonObject().get("abdomen").getAsString();
+                gine = pacientes.get(i).getAsJsonObject().get("gine").getAsString();
+                extremidades = pacientes.get(i).getAsJsonObject().get("extremidades").getAsString();
+                c_vertebral = pacientes.get(i).getAsJsonObject().get("c_vertebral").getAsString();
+                neuro = pacientes.get(i).getAsJsonObject().get("neuro").getAsString();
+                genitales = pacientes.get(i).getAsJsonObject().get("genitales").getAsString();
+                notas_doc = pacientes.get(i).getAsJsonObject().get("notas_doc").getAsString();
+                plan = pacientes.get(i).getAsJsonObject().get("plan").getAsString();
+                impresion_diag = pacientes.get(i).getAsJsonObject().get("impresion_diag").getAsString();
+                tratamiento= pacientes.get(i).getAsJsonObject().get("tratamiento").getAsString();
+
+
+
+                Cursor c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC,null);
+
+                if(c.moveToFirst()){
+                    ContentValues update = new ContentValues();
+
+                    update.put(DataBaseDB.PACIENTES_EXPEDIENTE   , no_expediente);
+                    update.put(DataBaseDB.PACIENTES_VISITA_FECHA , fecha);
+                    update.put(DataBaseDB.PACIENTES_CURP         , curp);
+                    update.put(DataBaseDB.PACIENTES_AP_PATERNO   , apellidoPaterno);
+                    update.put(DataBaseDB.PACIENTES_AP_MATERNO   , apellidoMaterno);
+                    update.put(DataBaseDB.PACIENTES_NOMBRE       , nombre);
+                    update.put(DataBaseDB.PACIENTES_FECHA_NACIMIENTO,fechadeNacimiento);
+                    update.put(DataBaseDB.PACIENTES_ESTADO_NACIMIENTO,estadodeNacimiento);
+
+                    update.put(DataBaseDB.PACIENTES_SEXO         , sexo);
+
+                    update.put(DataBaseDB.PACIENTES_NACIONALIDAD ,nacionalidadOrigen);
+                    //update.put(DataBaseDB.PACIENTES_ESTADORES);
+
+                    //update.put(DataBaseDB.PACIENTES_EXPEDIENTE);
+                }else{
+
+                }
+            }
+            db.close();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+    }
     public void printAllDB(){
 
     }

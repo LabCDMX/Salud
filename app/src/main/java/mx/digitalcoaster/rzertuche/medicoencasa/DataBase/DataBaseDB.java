@@ -18,7 +18,6 @@ public class DataBaseDB {
     //DEPENDIENDO SI ES REQUERIDO POR CLIENTE
     public static final String TABLE_NAME_CODIGOS_POSTALES = "table_name_codigos_postales";
 
-
     //PREGUNTAS
     public static final String TABLE_NAME_PREGUNTAS = "table_name_preguntas";
 
@@ -26,9 +25,7 @@ public class DataBaseDB {
     public static final String TABLE_NAME_RESPUESTAS = "table_name_respuestas";
     public static final String TABLE_NAME_RESPUESTAS_RADIO = "table_name_respuestas_radio";
 
-
     public static int VERSION = 1;
-
 
     public static final String CODIGO_POSTAL = "codigo_postal";
     public static final String COLONIA = "colonia";

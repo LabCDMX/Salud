@@ -1,4 +1,4 @@
-package mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments;
+package mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments;
 
 import android.content.Context;
 import android.net.Uri;
@@ -126,8 +126,6 @@ public class QuestionsDomFragmentTwo extends Fragment {
                     ((MainActivity)getActivity()).questionDomThree();
 
                 }
-
-
 
             }
         });

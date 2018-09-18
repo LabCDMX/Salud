@@ -1,4 +1,4 @@
-package mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments;
+package mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments;
 
 import android.app.DatePickerDialog;
 import android.content.ContentValues;
@@ -39,13 +39,13 @@ import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.se
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.sincronizacion;
 import static mx.digitalcoaster.rzertuche.medicoencasa.Fragments.PacientesFragment.isSinExp;
 import static mx.digitalcoaster.rzertuche.medicoencasa.Fragments.VisitasFragment.isSeguimiento;
-import static mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.HistoriaClinicaFragment.cadenaCardio;
-import static mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.HistoriaClinicaFragment.cadenaDiabetes;
-import static mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.HistoriaClinicaFragment.cadenaDis;
-import static mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.HistoriaClinicaFragment.cadenaEnf;
-import static mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.HistoriaClinicaFragment.cadenaHTA;
-import static mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.HistoriaClinicaFragment.cadenaObe;
-import static mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.HistoriaClinicaFragment.cadenaPersonales;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments.HistoriaClinicaFragment.cadenaCardio;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments.HistoriaClinicaFragment.cadenaDiabetes;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments.HistoriaClinicaFragment.cadenaDis;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments.HistoriaClinicaFragment.cadenaEnf;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments.HistoriaClinicaFragment.cadenaHTA;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments.HistoriaClinicaFragment.cadenaObe;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments.HistoriaClinicaFragment.cadenaPersonales;
 
 
 

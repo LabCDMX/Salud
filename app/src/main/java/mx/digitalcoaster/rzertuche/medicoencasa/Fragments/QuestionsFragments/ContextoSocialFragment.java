@@ -1,4 +1,4 @@
-package mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments;
+package mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -30,7 +30,7 @@ import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.in
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.registros;
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.seguimiento;
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.sincronizacion;
-import static mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsContextElectro.listElectro;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments.QuestionsContextElectro.listElectro;
 
 
 public class ContextoSocialFragment extends Fragment {

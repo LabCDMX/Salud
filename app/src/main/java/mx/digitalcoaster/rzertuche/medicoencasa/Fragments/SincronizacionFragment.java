@@ -8,7 +8,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.annotation.Nullable;
+import android.support.v4.BuildConfig;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -84,10 +86,7 @@ public class SincronizacionFragment extends Fragment {
     private Boolean sendHistoric = false;
     static ProgressDialog mProgressDialog;
 
-
     private OnFragmentInteractionListener mListener;
-
-
 
     public SincronizacionFragment() {
         // Required empty public constructor
@@ -131,6 +130,8 @@ public class SincronizacionFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        turnOnStrictMode();
+
         String totalPatients = String.valueOf(getTotalDB());
 
         total = view.findViewById(R.id.total);
@@ -154,10 +155,7 @@ public class SincronizacionFragment extends Fragment {
             }
         });
 
-
     }
-
-
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -401,8 +399,6 @@ public class SincronizacionFragment extends Fragment {
         jsonParams.addProperty("folioDerechoHabiencia","0");
         jsonParams.addProperty("createdBy","0");
 
-
-
         //entity = new StringEntity(json, "UTF-8");
         Log.d("JSON EMV", jsonParams.toString());
 
@@ -421,13 +417,13 @@ public class SincronizacionFragment extends Fragment {
 
                     JsonObject responsePaciente = new JsonObject();
                     responsePaciente = response.body();
-                    Boolean isSucceded = responsePaciente.getAsJsonObject("success").getAsBoolean();
+                    Boolean isSucceded = responsePaciente.get("success").getAsBoolean();
 
 
                     if (isSucceded) {
 
-                        JsonObject user = responsePaciente.getAsJsonObject("user");
-                        String idUser = user.getAsJsonObject("id").getAsString();
+                        String idUser = responsePaciente.get("user").getAsString();
+                        //String  = user.get("id").getAsString();
 
                         Log.e("IDUser", idUser);
 
@@ -437,16 +433,18 @@ public class SincronizacionFragment extends Fragment {
 
                             ContentValues updates = new ContentValues();
                             updates.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_ID, idUser);
-                            updates.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_NOMBRE, nombre);
+
+                            //updates.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_NOMBRE, nombre);
                             updates.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_CURP, curp);
 
-                            db.update(DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC, updates, DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_NOMBRE + "='" + nombre +
-                                    "' AND " + DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_CURP+ "='"+curp+"'", null);
+                            db.update(DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC, updates, DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_CURP+ "='"+curp+"'", null);
 
                             db.delete(DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR,DataBaseDB.PACIENTES_SINCRONIZAR_CURP + "=? AND "+ DataBaseDB.PACIENTES_SINCRONIZAR_NOMBRE + "=?",new String[]{curp,nombre});
 
                         }catch(Exception e){
                             e.printStackTrace();
+                        }finally {
+                            getFragmentManager().beginTransaction().detach(SincronizacionFragment.this).attach(SincronizacionFragment.this).commit();
                         }
                     }
                 }
@@ -462,11 +460,6 @@ public class SincronizacionFragment extends Fragment {
             hideActivityIndicator();
 
         }
-
-
-
-
-
 
         /*client.post(getActivity(), "https://medico.digitalcoaster.mx/api/admin/api/paciente", entity, "application/json", new JsonHttpResponseHandler() {
             @Override
@@ -543,13 +536,9 @@ public class SincronizacionFragment extends Fragment {
                                  String habitus, String cabeza, String cuello, String torax, String abdomen, String gine, String extremidades, String c_vertebral, String neuro, String genitales,
                                  String notas_doc, String plan, String impresion_diag, String tratamiento) throws JSONException, ParseException {
 
-
-
-
         if(no_expediente == null || no_expediente.equals("") ){
             no_expediente = "";
         }
-
 
         JsonObject jsonParams = new JsonObject();
         jsonParams.addProperty("id_usuario",id);
@@ -596,11 +585,7 @@ public class SincronizacionFragment extends Fragment {
         jsonParams.addProperty("no_visita","1");
 
 
-
-
-
         Log.d("JSON EMV", jsonParams.toString());
-
 
 
         try {
@@ -652,10 +637,6 @@ public class SincronizacionFragment extends Fragment {
         }catch (Exception e){
             e.printStackTrace();
         }
-
-
-
-
 
     }
 
@@ -716,4 +697,20 @@ public class SincronizacionFragment extends Fragment {
     }
 
 
+    private void turnOnStrictMode() {
+        if (BuildConfig.DEBUG) {
+            StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+                    .detectDiskReads()
+                    .detectDiskWrites()
+                    .detectNetwork()   // or .detectAll() for all detectable problems
+                    .penaltyLog()
+                    .build());
+            StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
+                    .detectLeakedSqlLiteObjects()
+                    .detectLeakedClosableObjects()
+                    .penaltyLog()
+                    .detectActivityLeaks()
+                    .build());
+        }
+    }
 }

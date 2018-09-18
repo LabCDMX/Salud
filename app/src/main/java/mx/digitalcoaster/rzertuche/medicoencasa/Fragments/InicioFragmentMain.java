@@ -109,6 +109,13 @@ public class InicioFragmentMain extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
+        StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
+                .detectLeakedSqlLiteObjects()
+                .detectLeakedClosableObjects()
+                .penaltyLog()
+                .penaltyDeath()
+                .build());
+
     }
 
     @Override
@@ -899,14 +906,11 @@ public class InicioFragmentMain extends Fragment {
                         progress.dismiss();
                         System.out.println("No existen PACIENTES");
                     }
-                    c.close();
                 } catch (Exception ex) {
                     Log.e("Error", ex.toString());
                 } finally {
-
+                    c.close();
                     db.close();
-
-
                 }
 
             }
@@ -977,12 +981,17 @@ public class InicioFragmentMain extends Fragment {
         db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE ,null);
         String tableName = null;
         if(datosCount.equals("Generales")){
+
             tableName = DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR;
+
         }else if(datosCount.equals("Historic")){
+
             tableName = DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC;
 
         }else if(datosCount.equals("Visitas")){
+
             tableName = DataBaseDB.TABLE_NAME_PACIENTES_VISITAS;
+
         }
 
         try {
