@@ -33,7 +33,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         progress = findViewById(R.id.pb_loading);
         //load questions...
-        //loadQuestions();
+        loadQuestions();
         startActivity(new Intent(SplashScreenActivity.this,MainActivity.class));
 
         progress.setVisibility(View.GONE);

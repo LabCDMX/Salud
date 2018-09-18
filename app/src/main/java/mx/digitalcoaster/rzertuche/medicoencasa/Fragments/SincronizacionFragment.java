@@ -1,6 +1,8 @@
 package mx.digitalcoaster.rzertuche.medicoencasa.Fragments;
 
 import android.app.AlertDialog;
+import android.app.DialogFragment;
+import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Context;
@@ -12,6 +14,7 @@ import android.os.StrictMode;
 import android.support.annotation.Nullable;
 import android.support.v4.BuildConfig;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,16 +37,13 @@ import java.text.ParseException;
 
 import javax.net.ssl.HttpsURLConnection;
 
-import io.realm.Realm;
-import io.realm.RealmResults;
 import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseDB;
 import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseHelper;
+import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.dialog.CustomDialog;
 import mx.digitalcoaster.rzertuche.medicoencasa.R;
 import mx.digitalcoaster.rzertuche.medicoencasa.Utils.SharedPreferences;
 import mx.digitalcoaster.rzertuche.medicoencasa.api.ApiInterface;
 import mx.digitalcoaster.rzertuche.medicoencasa.api.MedicalService;
-import mx.digitalcoaster.rzertuche.medicoencasa.models.Item;
-import mx.digitalcoaster.rzertuche.medicoencasa.models.User;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -88,6 +88,8 @@ public class SincronizacionFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
+    private android.support.v4.app.DialogFragment mDialog;
+    private FragmentTransaction ft;
     public SincronizacionFragment() {
         // Required empty public constructor
     }
@@ -123,6 +125,11 @@ public class SincronizacionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
+        mDialog = new CustomDialog();
+        ft = getFragmentManager().beginTransaction();
+
+
         return inflater.inflate(R.layout.fragment_registros, container, false);
     }
 
@@ -235,9 +242,9 @@ public class SincronizacionFragment extends Fragment {
         final ImageButton btn_visitas = view.findViewById(R.id.btn_visitas);
 
 
-        String countGenerales= String.valueOf(getCountDatos("Generales"));
-        String countHistoric= String.valueOf(getCountDatos("Historic"));
-        String countVisitas= String.valueOf(getCountDatos("Visitas"));
+        String countGenerales = String.valueOf(getCountDatos("Generales"));
+        String countHistoric  = String.valueOf(getCountDatos("Historic"));
+        String countVisitas   = String.valueOf(getCountDatos("Visitas"));
 
         sincronizar_generales.setText(countGenerales + "/" + countGenerales);
         sincronizar_historic.setText(countHistoric + "/" + countHistoric);
@@ -247,6 +254,8 @@ public class SincronizacionFragment extends Fragment {
         btn_generales.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                mDialog.show(ft,"mDialog");
 
                 db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE ,null);
                 showActivityIndicator("Aviso","Sincronizando datos");
@@ -283,7 +292,9 @@ public class SincronizacionFragment extends Fragment {
             public void onClick(View view) {
 
 
-                    db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE ,null);
+                mDialog.show(ft,"mDialog");
+
+                db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE ,null);
 
                     try {
                         c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC+ " WHERE "+ DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_ID +
@@ -459,73 +470,9 @@ public class SincronizacionFragment extends Fragment {
             e.printStackTrace();
             hideActivityIndicator();
 
+        }finally {
+            mDialog.dismiss();
         }
-
-        /*client.post(getActivity(), "https://medico.digitalcoaster.mx/api/admin/api/paciente", entity, "application/json", new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-
-                Log.e("ResponseService", response.toString());
-
-                try {
-                    respuestaJSON = new JSONObject(response.toString());
-                    Boolean isSucceded = respuestaJSON.getBoolean("success");
-                    if(isSucceded){
-
-                        JSONObject user = respuestaJSON.getJSONObject("user");
-                        String idUser = user.getString("id");
-
-                        Log.e("IDUser", idUser);
-
-                        db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE ,null);
-
-                        try {
-
-                            ContentValues values = new ContentValues();
-                            values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_ID,idUser);
-                            values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_NOMBRE,nombre);
-                            values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_CURP,curp);
-
-                            db.insert(DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC, null, values);
-
-                            progress.dismiss();
-
-                        } catch (Exception ex) {
-                            Log.e("Error", ex.toString());
-                        } finally {
-                            db.close();
-                        }
-
-
-                    }
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-
-            }
-
-            public void onFailure(Throwable error, String content) {
-                progress.dismiss();
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                progress.dismiss();
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
-                progress.dismiss();
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                progress.dismiss();
-            }
-
-        });*/
 
 
     }
@@ -625,17 +572,20 @@ public class SincronizacionFragment extends Fragment {
                 Log.e("cadenaRespuesta", response.toString());
                 hideActivityIndicator();
 
-
-                }else{
-
-
+            }else{
 
                 Log.e("URL", "https://medico.digitalcoaster.mx/api/admin/api/pacienteResultados");
 
-
             }
+
         }catch (Exception e){
+
             e.printStackTrace();
+
+        }finally {
+
+            mDialog.dismiss();
+
         }
 
     }
@@ -662,12 +612,13 @@ public class SincronizacionFragment extends Fragment {
             }
         } catch (Exception ex) {
             Log.e("Error", ex.toString());
+            mDialog.dismiss();
+
         } finally {
-
+            c.close();
             db.close();
-
-
         }
+
         return 0;
     }
 
