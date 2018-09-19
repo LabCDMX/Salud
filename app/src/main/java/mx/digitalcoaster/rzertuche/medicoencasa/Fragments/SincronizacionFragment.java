@@ -127,6 +127,7 @@ public class SincronizacionFragment extends Fragment {
         // Inflate the layout for this fragment
 
         mDialog = new CustomDialog();
+
         ft = getFragmentManager().beginTransaction();
 
 
@@ -146,10 +147,10 @@ public class SincronizacionFragment extends Fragment {
         amarillo =  view.findViewById(R.id.amarillo);
         rojo = view.findViewById(R.id.rojo);
         sincronizar = view.findViewById(R.id.imageButton6);
-        progress = new ProgressDialog(getActivity());
-        progress.setMessage("Sincronizando datos...");
-        progress.setIndeterminate(false);
-        progress.setCancelable(false);
+        //progress = new ProgressDialog(getActivity());
+        //progress.setMessage("Sincronizando datos...");
+        //progress.setIndeterminate(false);
+        //progress.setCancelable(false);
 
 
         total.setText(totalPatients);
@@ -255,7 +256,7 @@ public class SincronizacionFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                mDialog.show(ft,"mDialog");
+                if(mDialog.isVisible()) mDialog.dismiss();
 
                 db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE ,null);
                 showActivityIndicator("Aviso","Sincronizando datos");
@@ -264,6 +265,9 @@ public class SincronizacionFragment extends Fragment {
                     c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR, null);
                     if (c.moveToFirst()) {
                         do {
+
+                            mDialog.show(ft,"mDialog");
+
                             sendDataGenerales(c.getString(2),c.getString(4),c.getString(5),c.getString(1),c.getString(6),c.getString(7),c.getString(8),
                                     c.getString(9),c.getString(10), c.getString(11),c.getString(21),c.getString(22),c.getString(12),c.getString(3),
                                     c.getString(13), c.getString(14),c.getString(15),c.getString(17),c.getString(18),c.getString(19));
@@ -291,8 +295,7 @@ public class SincronizacionFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-
-                mDialog.show(ft,"mDialog");
+                if(mDialog.isVisible()) mDialog.dismiss();
 
                 db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE ,null);
 
@@ -301,6 +304,8 @@ public class SincronizacionFragment extends Fragment {
                                 " != ''", null);
                         if (c.moveToFirst()) {
                             do {
+
+                                mDialog.show(ft,"mDialog");
 
                                 sendDataHistoric(c.getString(53),c.getString(4),c.getString(7),c.getString(8),c.getString(9),c.getString(10),c.getString(11),
                                         c.getString(12),c.getString(13), c.getString(14),c.getString(15),c.getString(16),c.getString(48),"",
@@ -329,7 +334,8 @@ public class SincronizacionFragment extends Fragment {
         btn_visitas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                if(mDialog.isVisible()) mDialog.dismiss();
+                mDialog.show(ft,"mDialog");
 
 
             }
@@ -351,7 +357,7 @@ public class SincronizacionFragment extends Fragment {
 
 
 
-        if(sexo.equals("Masculino")){
+        if(sexo.equals("Masculino") || sexo.equals("HOMBRE")){
             sexo = String.valueOf(0);
         }else{
             sexo = String.valueOf(1);

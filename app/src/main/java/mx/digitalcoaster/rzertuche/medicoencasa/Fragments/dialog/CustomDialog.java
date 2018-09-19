@@ -27,15 +27,8 @@ public class CustomDialog extends android.support.v4.app.DialogFragment{
         tv_dialog = mView.findViewById(R.id.tv_dialog);
         pb_dialog = mView.findViewById(R.id.pb_dialog);
 
+        tv_dialog.setText("Sincronizando datos...");
         return mView;
     }
 
-    public void textDataLogind(String textDialog){
-        if (mView != null) tv_dialog.setText(textDialog);
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-    }
 }
