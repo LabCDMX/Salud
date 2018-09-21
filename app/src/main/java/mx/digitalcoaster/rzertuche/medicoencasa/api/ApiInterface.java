@@ -11,12 +11,12 @@ import retrofit2.http.POST;
 
 public interface ApiInterface {
 
+    //GET...
     @GET("/api/admin/api/preguntas")
     Call<JsonObject> loadPreguntas();
     //DATA
     @GET("/users/defunkt")
     Call<JsonObject> loadGit();
-
 
     @GET("/api/admin/api/paciente/")
     Call<JsonObject> loadPaciente();
@@ -30,7 +30,11 @@ public interface ApiInterface {
     @GET("/api/admin/api/categorias")
     Call<JsonObject> loadCategorias();
 
+    //POST!!!....
     @POST("/api/admin/api/paciente")
-    Call<JsonObject> sendPaciente(@Body JsonObject Paciente);
+    Call<JsonObject> sendPaciente(@Body JsonObject paciente);
+
+    @POST("/api/admin/api/pacienteResultados")
+    Call<JsonObject> sendPacienteResultados(@Body JsonObject pacienteResultados);
 
 }

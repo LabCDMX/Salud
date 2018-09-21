@@ -540,59 +540,31 @@ public class SincronizacionFragment extends Fragment {
 
         Log.d("JSON EMV", jsonParams.toString());
 
-
         try {
-            URL url = new URL("https://medico.digitalcoaster.mx/api/admin/api/pacienteResultados");
-            HttpsURLConnection urlConnection = (HttpsURLConnection) url.openConnection();
 
-            urlConnection.setConnectTimeout(10000);
-            urlConnection.setRequestMethod("POST");
-            urlConnection.setDoInput(true);
-            urlConnection.setDoOutput(true);
-            urlConnection.setRequestProperty("Content-type", "application/json");
+            ApiInterface getDataQuestions = MedicalService.getMedicalApiData().create(ApiInterface.class);
+            getDataQuestions.sendPacienteResultados(jsonParams).enqueue(new Callback<JsonObject>() {
+                @Override
+                public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                    Log.d("data",response.body().toString());
+                    //hideActivityIndicator();
 
-
-            //urlConnection.setSSLSocketFactory(getCertificates().getSocketFactory());
-
-            DataOutputStream wr = new DataOutputStream(urlConnection.getOutputStream());
-
-            wr.write(jsonParams.toString().getBytes());
-            wr.flush();
-            wr.close();
-
-            int responseCode = urlConnection.getResponseCode();
-
-            if(responseCode == 200) {
-
-                BufferedReader in = new BufferedReader(
-                        new InputStreamReader(urlConnection.getInputStream()));
-                String inputLine;
-                StringBuffer response = new StringBuffer();
-
-                while ((inputLine = in.readLine()) != null) {
-                    response.append(inputLine);
                 }
-                in.close();
 
-                Log.e("URL", "https://medico.digitalcoaster.mx/api/admin/api/pacienteResultados");
-                Log.e("cadenaRespuesta", response.toString());
-                hideActivityIndicator();
-
-            }else{
-
-                Log.e("URL", "https://medico.digitalcoaster.mx/api/admin/api/pacienteResultados");
-
-            }
+                @Override
+                public void onFailure(Call<JsonObject> call, Throwable t) {
+                    t.printStackTrace();
+                }
+            });
 
         }catch (Exception e){
 
             e.printStackTrace();
 
-        }finally {
-
+        } finally {
             mDialog.dismiss();
-
         }
+
 
     }
 
