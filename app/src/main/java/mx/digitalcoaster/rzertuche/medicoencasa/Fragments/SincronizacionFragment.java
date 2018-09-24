@@ -1,8 +1,6 @@
 package mx.digitalcoaster.rzertuche.medicoencasa.Fragments;
 
 import android.app.AlertDialog;
-import android.app.DialogFragment;
-import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Context;
@@ -11,6 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.os.Vibrator;
 import android.support.annotation.Nullable;
 import android.support.v4.BuildConfig;
 import android.support.v4.app.Fragment;
@@ -20,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,19 +27,13 @@ import com.google.gson.JsonObject;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.ParseException;
 
-import javax.net.ssl.HttpsURLConnection;
 
 import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseDB;
 import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseHelper;
-import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.dialog.CustomDialog;
 import mx.digitalcoaster.rzertuche.medicoencasa.R;
 import mx.digitalcoaster.rzertuche.medicoencasa.Utils.SharedPreferences;
 import mx.digitalcoaster.rzertuche.medicoencasa.api.ApiInterface;
@@ -88,8 +82,11 @@ public class SincronizacionFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    private android.support.v4.app.DialogFragment mDialog;
     private FragmentTransaction ft;
+
+
+
+
     public SincronizacionFragment() {
         // Required empty public constructor
     }
@@ -126,8 +123,6 @@ public class SincronizacionFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        mDialog = new CustomDialog();
-
         ft = getFragmentManager().beginTransaction();
 
 
@@ -147,6 +142,9 @@ public class SincronizacionFragment extends Fragment {
         amarillo =  view.findViewById(R.id.amarillo);
         rojo = view.findViewById(R.id.rojo);
         sincronizar = view.findViewById(R.id.imageButton6);
+
+
+
         //progress = new ProgressDialog(getActivity());
         //progress.setMessage("Sincronizando datos...");
         //progress.setIndeterminate(false);
@@ -232,7 +230,6 @@ public class SincronizacionFragment extends Fragment {
         final LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.alert_sincronizar, null);
 
-
         final TextView sincronizar_generales = view.findViewById(R.id.btn_edit);
         final TextView sincronizar_historic = view.findViewById(R.id.btn_edit2);
         final TextView sincronizar_visitas = view.findViewById(R.id.btn_edit3);
@@ -256,7 +253,6 @@ public class SincronizacionFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                if(mDialog.isVisible()) mDialog.dismiss();
 
                 db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE ,null);
                 showActivityIndicator("Aviso","Sincronizando datos");
@@ -264,10 +260,11 @@ public class SincronizacionFragment extends Fragment {
                 try {
                     c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR, null);
                     if (c.moveToFirst()) {
+
+
+
+
                         do {
-
-                            mDialog.show(ft,"mDialog");
-
                             sendDataGenerales(c.getString(2),c.getString(4),c.getString(5),c.getString(1),c.getString(6),c.getString(7),c.getString(8),
                                     c.getString(9),c.getString(10), c.getString(11),c.getString(21),c.getString(22),c.getString(12),c.getString(3),
                                     c.getString(13), c.getString(14),c.getString(15),c.getString(17),c.getString(18),c.getString(19));
@@ -295,7 +292,6 @@ public class SincronizacionFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                if(mDialog.isVisible()) mDialog.dismiss();
 
                 db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE ,null);
 
@@ -303,9 +299,10 @@ public class SincronizacionFragment extends Fragment {
                         c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC+ " WHERE "+ DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_ID +
                                 " != ''", null);
                         if (c.moveToFirst()) {
-                            do {
 
-                                mDialog.show(ft,"mDialog");
+
+
+                            do {
 
                                 sendDataHistoric(c.getString(53),c.getString(4),c.getString(7),c.getString(8),c.getString(9),c.getString(10),c.getString(11),
                                         c.getString(12),c.getString(13), c.getString(14),c.getString(15),c.getString(16),c.getString(48),"",
@@ -334,8 +331,8 @@ public class SincronizacionFragment extends Fragment {
         btn_visitas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(mDialog.isVisible()) mDialog.dismiss();
-                mDialog.show(ft,"mDialog");
+
+
 
 
             }
@@ -476,8 +473,6 @@ public class SincronizacionFragment extends Fragment {
             e.printStackTrace();
             hideActivityIndicator();
 
-        }finally {
-            mDialog.dismiss();
         }
 
 
@@ -562,7 +557,9 @@ public class SincronizacionFragment extends Fragment {
             e.printStackTrace();
 
         } finally {
-            mDialog.dismiss();
+
+
+
         }
 
 
@@ -590,7 +587,6 @@ public class SincronizacionFragment extends Fragment {
             }
         } catch (Exception ex) {
             Log.e("Error", ex.toString());
-            mDialog.dismiss();
 
         } finally {
             c.close();
