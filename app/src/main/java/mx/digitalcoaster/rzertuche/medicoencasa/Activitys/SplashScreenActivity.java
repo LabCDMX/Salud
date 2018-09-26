@@ -14,6 +14,7 @@ import com.google.gson.JsonObject;
 import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseDB;
 import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseHelper;
 import mx.digitalcoaster.rzertuche.medicoencasa.R;
+import mx.digitalcoaster.rzertuche.medicoencasa.Utils.IsOnline;
 import mx.digitalcoaster.rzertuche.medicoencasa.api.ApiInterface;
 import mx.digitalcoaster.rzertuche.medicoencasa.api.MedicalService;
 
@@ -26,6 +27,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 
     ProgressBar progress;
     DataBaseHelper dataBaseDBH;
+    IsOnline online;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,9 +35,14 @@ public class SplashScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
 
         progress = findViewById(R.id.pb_loading);
+        online = new IsOnline();
         //load questions...
-        loadQuestions();
-        startActivity(new Intent(SplashScreenActivity.this,MainActivity.class));
+
+
+        if (online.validateOnline(getApplicationContext()))
+            loadQuestions();
+        else
+            startActivity(new Intent(SplashScreenActivity.this,MainActivity.class));
 
         progress.setVisibility(View.GONE);
 

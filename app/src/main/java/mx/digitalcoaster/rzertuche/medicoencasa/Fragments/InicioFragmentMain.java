@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.os.Vibrator;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 //import android.telecom.Call;
@@ -17,8 +18,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.gson.JsonObject;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -76,6 +81,7 @@ public class InicioFragmentMain extends Fragment {
     private Boolean sendPacientes = false;
     private Boolean sendHistoric = false;
 
+    Vibrator vibrateClick;
 
 
     public InicioFragmentMain() {
@@ -485,49 +491,49 @@ public class InicioFragmentMain extends Fragment {
         }
 
 
-        JSONObject jsonParams = new JSONObject();
-        jsonParams.put("id_usuario",id);
-        jsonParams.put("no_expediente",no_expediente);
-        jsonParams.put("6",hemo);
-        jsonParams.put("7",peso);
-        jsonParams.put("8",estatura);
-        jsonParams.put("tensión",tension);
-        jsonParams.put("10",frecuencia_car);
-        jsonParams.put("11",frecuencia_resp);
-        jsonParams.put("12",talla);
-        jsonParams.put("13",pulso);
-        jsonParams.put("14",glucemia);
-        jsonParams.put("15",temp);
-        jsonParams.put("notas_enf",notas_enf);
-        jsonParams.put("ant_personales","");
-        jsonParams.put("ant_patologicos",ant_patologicos);
-        jsonParams.put("ant_obstericos",ant_obstericos);
-        jsonParams.put("19",padecimiento_actual);
-        jsonParams.put("27",sistemas_generales);
-        jsonParams.put("28",respiratorio);
-        jsonParams.put("29",cardio);
-        jsonParams.put("30",digestivo);
-        jsonParams.put("32",urinario);
-        jsonParams.put("33",hemolin);
-        jsonParams.put("34",endo);
-        jsonParams.put("36",s_nervioso);
-        jsonParams.put("37",esqueletico);
-        jsonParams.put("38",piel);
-        jsonParams.put("39",habitus);
-        jsonParams.put("40",cabeza);
-        jsonParams.put("41",cuello);
-        jsonParams.put("42",torax);
-        jsonParams.put("43",abdomen);
-        jsonParams.put("44",gine);
-        jsonParams.put("45",extremidades);
-        jsonParams.put("46",c_vertebral);
-        jsonParams.put("neuro",neuro);
-        jsonParams.put("48",genitales);
-        jsonParams.put("49",notas_doc);
-        jsonParams.put("plan",plan);
-        jsonParams.put("51",impresion_diag);
-        jsonParams.put("52",tratamiento);
-        jsonParams.put("no_visita","1");
+        JsonObject jsonParams = new JsonObject();
+        jsonParams.addProperty("id_usuario",id);
+        jsonParams.addProperty("no_expediente",no_expediente);
+        jsonParams.addProperty("6",hemo);
+        jsonParams.addProperty("7",peso);
+        jsonParams.addProperty("8",estatura);
+        jsonParams.addProperty("tensión",tension);
+        jsonParams.addProperty("10",frecuencia_car);
+        jsonParams.addProperty("11",frecuencia_resp);
+        jsonParams.addProperty("12",talla);
+        jsonParams.addProperty("13",pulso);
+        jsonParams.addProperty("14",glucemia);
+        jsonParams.addProperty("15",temp);
+        jsonParams.addProperty("notas_enf",notas_enf);
+        jsonParams.addProperty("ant_personales","");
+        jsonParams.addProperty("ant_patologicos",ant_patologicos);
+        jsonParams.addProperty("ant_obstericos",ant_obstericos);
+        jsonParams.addProperty("19",padecimiento_actual);
+        jsonParams.addProperty("27",sistemas_generales);
+        jsonParams.addProperty("28",respiratorio);
+        jsonParams.addProperty("29",cardio);
+        jsonParams.addProperty("30",digestivo);
+        jsonParams.addProperty("32",urinario);
+        jsonParams.addProperty("33",hemolin);
+        jsonParams.addProperty("34",endo);
+        jsonParams.addProperty("36",s_nervioso);
+        jsonParams.addProperty("37",esqueletico);
+        jsonParams.addProperty("38",piel);
+        jsonParams.addProperty("39",habitus);
+        jsonParams.addProperty("40",cabeza);
+        jsonParams.addProperty("41",cuello);
+        jsonParams.addProperty("42",torax);
+        jsonParams.addProperty("43",abdomen);
+        jsonParams.addProperty("44",gine);
+        jsonParams.addProperty("45",extremidades);
+        jsonParams.addProperty("46",c_vertebral);
+        jsonParams.addProperty("neuro",neuro);
+        jsonParams.addProperty("48",genitales);
+        jsonParams.addProperty("49",notas_doc);
+        jsonParams.addProperty("plan",plan);
+        jsonParams.addProperty("51",impresion_diag);
+        jsonParams.addProperty("52",tratamiento);
+        jsonParams.addProperty("no_visita","1");
 
 
 
@@ -537,8 +543,7 @@ public class InicioFragmentMain extends Fragment {
 
 
 
-        try {
-            progress.show();
+       /* try {
             URL url = new URL("https://medico.digitalcoaster.mx/api/admin/api/pacienteResultados");
             HttpsURLConnection urlConnection = (HttpsURLConnection) url.openConnection();
 
@@ -580,17 +585,43 @@ public class InicioFragmentMain extends Fragment {
                 progress.dismiss();
             }else{
 
-
-
                 Log.e("URL", "https://medico.digitalcoaster.mx/api/admin/api/pacienteResultados");
-
 
             }
         }catch (Exception e){
             e.printStackTrace();
+        }finally {
+            loading.setVisibility(View.GONE);
+            sync_data.setVisibility(View.VISIBLE);
+        }*/
+
+
+        try {
+
+            ApiInterface getDataQuestions = MedicalService.getMedicalApiData().create(ApiInterface.class);
+            getDataQuestions.sendPacienteResultados(jsonParams).enqueue(new Callback<JsonObject>() {
+                @Override
+                public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                    Log.d("data_-",response.body().toString());
+                    //hideActivityIndicator();
+
+                }
+
+                @Override
+                public void onFailure(Call<JsonObject> call, Throwable t) {
+                    t.printStackTrace();
+                }
+            });
+
+        }catch (Exception e){
+
+            e.printStackTrace();
+
+        } finally {
+
+
+
         }
-
-
 
 
 
@@ -856,6 +887,9 @@ public class InicioFragmentMain extends Fragment {
     }
 
 
+    LinearLayout loading;
+    RelativeLayout sync_data;
+
     private void viewAlertSincronizar() {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -882,18 +916,27 @@ public class InicioFragmentMain extends Fragment {
         sincronizar_historic.setText(countHistoric + "/" + countHistoric);
         sincronizar_visitas.setText(countVisitas + "/" + countVisitas);
 
+        vibrateClick = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
 
+        loading = view.findViewById(R.id.loading);
+        sync_data = view.findViewById(R.id.sync_data);
 
         btn_generales.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                progress.show();
+
+                vibrateClick.vibrate(100);
+
 
                 db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE ,null);
 
                 try {
                     c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR, null);
                     if (c.moveToFirst()) {
+
+                        loading.setVisibility(View.VISIBLE);
+                        sync_data.setVisibility(View.GONE);
+
                         do {
 
                             sendDataGenerales(c.getString(2),c.getString(4),c.getString(5),c.getString(1),c.getString(6),c.getString(7),c.getString(8),
@@ -921,6 +964,7 @@ public class InicioFragmentMain extends Fragment {
             @Override
             public void onClick(View view) {
 
+                vibrateClick.vibrate(100);
 
                 db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE ,null);
 
@@ -928,6 +972,10 @@ public class InicioFragmentMain extends Fragment {
                     c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC+ " WHERE "+ DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_ID +
                             " != ''", null);
                     if (c.moveToFirst()) {
+
+                        loading.setVisibility(View.VISIBLE);
+                        sync_data.setVisibility(View.GONE);
+
                         do {
 
                             sendDataHistoric(c.getString(53),c.getString(4),c.getString(7),c.getString(8),c.getString(9),c.getString(10),c.getString(11),
@@ -935,9 +983,6 @@ public class InicioFragmentMain extends Fragment {
                                     c.getString(24), c.getString(26),c.getString(23),c.getString(28),c.getString(29),c.getString(30),c.getString(31),c.getString(32),c.getString(33),c.getString(34),
                                     c.getString(35),c.getString(36),c.getString(37),c.getString(38),c.getString(39),c.getString(40),c.getString(41),c.getString(54),c.getString(42),c.getString(43),c.getString(44),
                                     c.getString(45),c.getString(46),c.getString(47),c.getString(49),c.getString(50),c.getString(51),c.getString(52));
-
-
-
 
 
 
@@ -959,12 +1004,15 @@ public class InicioFragmentMain extends Fragment {
             }
         });
 
+
         btn_visitas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-
-
+                vibrateClick.vibrate(5000);
+                Toast.makeText(getContext(),"VIBRATE",Toast.LENGTH_SHORT).show();
+                //loading.setVisibility(View.VISIBLE);
+                //sync_data.setVisibility(View.GONE);
             }
         });
 
@@ -979,6 +1027,7 @@ public class InicioFragmentMain extends Fragment {
     public int getCountDatos(String datosCount){
 
         db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE ,null);
+
         String tableName = null;
         if(datosCount.equals("Generales")){
 
@@ -1004,12 +1053,13 @@ public class InicioFragmentMain extends Fragment {
         } catch (Exception ex) {
             Log.e("Error", ex.toString());
         } finally {
-
+            c.close();
             db.close();
 
 
         }
         return 0;
+
     }
 
 

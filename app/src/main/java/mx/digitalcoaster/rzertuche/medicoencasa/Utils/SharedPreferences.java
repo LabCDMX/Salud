@@ -151,7 +151,6 @@ public class SharedPreferences {
     }
 
     public void clearPreferences(){
-
         android.content.SharedPreferences settings =  MainActivity.appContext.getSharedPreferences("MedicoPreferences", Context.MODE_PRIVATE);
         settings.edit().clear().commit();
     }

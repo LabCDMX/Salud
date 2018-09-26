@@ -19,13 +19,11 @@
         android:text="SINCRONIZAR"/>
 
     <RelativeLayout
+        android:id="@+id/sync_data"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textViewDatosGenerales">
 
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -128,8 +126,36 @@
                 android:layout_marginLeft="30dp"
                 android:background="@drawable/icon_siguiente"/>
             </RelativeLayout>
-        </HorizontalScrollView>
+
+
     </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/loading"
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:id="@+id/pb_dialog"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:gravity="center|left"
+            android:id="@+id/tv_dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:text="Sincronizar datos"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
 
 </RelativeLayout>
 

@@ -65,6 +65,12 @@ public class SincronizacionFragment extends Fragment {
     public TextView verde;
     public TextView amarillo;
     public TextView rojo;
+
+    TextView sincronizar_generales,
+             sincronizar_historic,
+             sincronizar_visitas;
+
+    View view;
     public int totalPatient;
     private ImageButton sincronizar;
     SharedPreferences sharedPreferences;
@@ -223,16 +229,17 @@ public class SincronizacionFragment extends Fragment {
     }
 
 
+
+
+
     private void viewAlertSincronizar() {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setCancelable(false);
         final LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.alert_sincronizar, null);
+        view = inflater.inflate(R.layout.alert_sincronizar, null);
 
-        final TextView sincronizar_generales = view.findViewById(R.id.btn_edit);
-        final TextView sincronizar_historic = view.findViewById(R.id.btn_edit2);
-        final TextView sincronizar_visitas = view.findViewById(R.id.btn_edit3);
+         update();
 
 
         final ImageButton btn_generales = view.findViewById(R.id.btn_generales);
@@ -240,13 +247,7 @@ public class SincronizacionFragment extends Fragment {
         final ImageButton btn_visitas = view.findViewById(R.id.btn_visitas);
 
 
-        String countGenerales = String.valueOf(getCountDatos("Generales"));
-        String countHistoric  = String.valueOf(getCountDatos("Historic"));
-        String countVisitas   = String.valueOf(getCountDatos("Visitas"));
 
-        sincronizar_generales.setText(countGenerales + "/" + countGenerales);
-        sincronizar_historic.setText(countHistoric + "/" + countHistoric);
-        sincronizar_visitas.setText(countVisitas + "/" + countVisitas);
 
 
         btn_generales.setOnClickListener(new View.OnClickListener() {
@@ -260,9 +261,6 @@ public class SincronizacionFragment extends Fragment {
                 try {
                     c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR, null);
                     if (c.moveToFirst()) {
-
-
-
 
                         do {
                             sendDataGenerales(c.getString(2),c.getString(4),c.getString(5),c.getString(1),c.getString(6),c.getString(7),c.getString(8),
@@ -332,9 +330,6 @@ public class SincronizacionFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-
-
-
             }
         });
 
@@ -386,7 +381,6 @@ public class SincronizacionFragment extends Fragment {
                 "\"createdBy\": 0" +
 
                 "}";*/
-
 
 
         JsonObject jsonParams = new JsonObject();
@@ -458,7 +452,7 @@ public class SincronizacionFragment extends Fragment {
                         }catch(Exception e){
                             e.printStackTrace();
                         }finally {
-                            getFragmentManager().beginTransaction().detach(SincronizacionFragment.this).attach(SincronizacionFragment.this).commit();
+                            update();
                         }
                     }
                 }
@@ -558,11 +552,26 @@ public class SincronizacionFragment extends Fragment {
 
         } finally {
 
-
+            update();
 
         }
 
 
+    }
+
+    public void update(){
+
+        sincronizar_generales = view.findViewById(R.id.btn_edit);
+        sincronizar_historic = view.findViewById(R.id.btn_edit2);
+        sincronizar_visitas = view.findViewById(R.id.btn_edit3);
+
+        String countGenerales = String.valueOf(getCountDatos("Generales"));
+        String countHistoric  = String.valueOf(getCountDatos("Historic"));
+        String countVisitas   = String.valueOf(getCountDatos("Visitas"));
+
+        sincronizar_generales.setText(countGenerales + "/" + countGenerales);
+        sincronizar_historic.setText(countHistoric + "/" + countHistoric);
+        sincronizar_visitas.setText(countVisitas + "/" + countVisitas);
     }
 
     public int getCountDatos(String datosCount){

@@ -140,12 +140,6 @@ public class MainActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
-                .detectLeakedSqlLiteObjects()
-                .detectLeakedClosableObjects()
-                .penaltyLog()
-                .penaltyDeath()
-                .build());
 
         setContentView(R.layout.activity_main);
 
@@ -163,9 +157,16 @@ public class MainActivity extends AppCompatActivity implements
 
         cronometro = findViewById(R.id.chronomether);
 
-        sqliteHelper = new DataBaseHelper(this, DataBaseDB.DB_NAME, null, DataBaseDB.VERSION);
-        db = sqliteHelper.getWritableDatabase();
-        db.close();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                sqliteHelper = new DataBaseHelper(getApplication(), DataBaseDB.DB_NAME, null, DataBaseDB.VERSION);
+                db = sqliteHelper.getWritableDatabase();
+                db.close();
+
+            }
+        }).start();
 
         sharedPreferences = SharedPreferences.getInstance();
 
