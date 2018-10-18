@@ -81,7 +81,6 @@ public class InicioFragmentMain extends Fragment {
     private Boolean sendPacientes = false;
     private Boolean sendHistoric = false;
 
-    Vibrator vibrateClick;
 
 
     public InicioFragmentMain() {
@@ -539,7 +538,7 @@ public class InicioFragmentMain extends Fragment {
 
 
 
-        Log.d("JSON EMV", jsonParams.toString());
+        Log.d("JSON xx", jsonParams.toString());
 
 
 
@@ -622,7 +621,6 @@ public class InicioFragmentMain extends Fragment {
 
 
         }
-
 
 
     }
@@ -916,7 +914,6 @@ public class InicioFragmentMain extends Fragment {
         sincronizar_historic.setText(countHistoric + "/" + countHistoric);
         sincronizar_visitas.setText(countVisitas + "/" + countVisitas);
 
-        vibrateClick = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
 
         loading = view.findViewById(R.id.loading);
         sync_data = view.findViewById(R.id.sync_data);
@@ -924,9 +921,6 @@ public class InicioFragmentMain extends Fragment {
         btn_generales.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                vibrateClick.vibrate(100);
-
 
                 db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE ,null);
 
@@ -946,8 +940,6 @@ public class InicioFragmentMain extends Fragment {
                         }while (c.moveToNext());
                     } else {
                         Toast.makeText(getActivity(),"No hay pacientes a sincronizar",Toast.LENGTH_LONG).show();
-                        progress.dismiss();
-                        System.out.println("No existen PACIENTES");
                     }
                 } catch (Exception ex) {
                     Log.e("Error", ex.toString());
@@ -964,7 +956,6 @@ public class InicioFragmentMain extends Fragment {
             @Override
             public void onClick(View view) {
 
-                vibrateClick.vibrate(100);
 
                 db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE ,null);
 
@@ -1009,7 +1000,6 @@ public class InicioFragmentMain extends Fragment {
             @Override
             public void onClick(View view) {
 
-                vibrateClick.vibrate(5000);
                 Toast.makeText(getContext(),"VIBRATE",Toast.LENGTH_SHORT).show();
                 //loading.setVisibility(View.VISIBLE);
                 //sync_data.setVisibility(View.GONE);

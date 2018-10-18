@@ -103,16 +103,16 @@ public class TarjetaPacienteFragment extends Fragment {
         //Obtencion de datos del sharedPreferences
         sharedPreferences = SharedPreferences.getInstance();
 
-        tvNombreItem = (TextView) getActivity().findViewById(R.id.tvNombreItem);
-        tvCurpItem = (TextView) getActivity().findViewById(R.id.tvCurpItem);
-        tvDireccionItem = (TextView) getActivity().findViewById(R.id.tvDireccionItem);
-        textViewFecha = (TextView) getActivity().findViewById(R.id.textViewFecha);
-        nombreMedico = (EditText) getActivity().findViewById(R.id.textViewPeso);
-        textViewExpediente = (EditText) getActivity().findViewById(R.id.textViewExpediente);
+        tvNombreItem = getActivity().findViewById(R.id.tvNombreItem);
+        tvCurpItem =  getActivity().findViewById(R.id.tvCurpItem);
+        tvDireccionItem =  getActivity().findViewById(R.id.tvDireccionItem);
+        textViewFecha = getActivity().findViewById(R.id.textViewFecha);
+        nombreMedico = getActivity().findViewById(R.id.textViewPeso);
+        textViewExpediente = getActivity().findViewById(R.id.textViewExpediente);
 
-        status = (ImageView) getActivity().findViewById(R.id.status);
-        tratamiento = (EditText) getActivity().findViewById(R.id.textViewTratamiento);
-        diagnostico = (EditText) getActivity().findViewById(R.id.textViewDiagnostico);
+        status = getActivity().findViewById(R.id.status);
+        tratamiento = getActivity().findViewById(R.id.textViewTratamiento);
+        diagnostico = getActivity().findViewById(R.id.textViewDiagnostico);
 
 
         if(isSinExp){
@@ -383,7 +383,7 @@ public class TarjetaPacienteFragment extends Fragment {
 
 
                 db.insert(DataBaseDB.TABLE_NAME_PACIENTES_SIN_EXPEDIENTE, null, values);
-                System.out.println("Visita  insertada correctamente");
+                Log.d("sp_","Visita  insertada correctamente y se limpia sp");
             }
             else {
 
@@ -442,7 +442,9 @@ public class TarjetaPacienteFragment extends Fragment {
 
 
                 db.insert(DataBaseDB.TABLE_NAME_PACIENTES_SIN_EXPEDIENTE, null, values);
-                System.out.println("Sin expediente insertado correctamente");
+                Log.d("sp_","Sin expediente insertado correctamente y se limpia sp");
+                sharedPreferences.clearPreferences();
+
 
             }
             c.close();
@@ -520,9 +522,9 @@ public class TarjetaPacienteFragment extends Fragment {
 
 
                 db.insert(DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC, null, values);
-                System.out.println("Visita  insertada correctamente");
-            }
-            else {
+                Log.d("sp_","Visita  insertada correctamente y se limpia sp");
+                sharedPreferences.clearPreferences();
+            } else {
 
                 ContentValues values = new ContentValues();
 
@@ -576,7 +578,9 @@ public class TarjetaPacienteFragment extends Fragment {
 
 
                 db.insert(DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC, null, values);
-                System.out.println("Sin expediente insertado correctamente");
+                Log.d("sp_","Sin expediente insertado correctamente");
+                sharedPreferences.clearPreferences();
+
 
             }
             c.close();
@@ -615,7 +619,7 @@ public class TarjetaPacienteFragment extends Fragment {
 
 
                 db.insert(DataBaseDB.TABLE_NAME_PACIENTES_VISITAS, null, values);
-                System.out.println("Visita  insertada correctamente");
+                Log.d("sp_","Visita  insertada correctamente y se limpian sp");
             }
             else {
 
@@ -630,7 +634,7 @@ public class TarjetaPacienteFragment extends Fragment {
                 values.put(DataBaseDB.PACIENTES_VISITA_NUMERO, "1");
 
                 db.insert(DataBaseDB.TABLE_NAME_PACIENTES_VISITAS, null, values);
-                System.out.println("Sin expediente insertado correctamente");
+                Log.d("sp_","Sin expediente insertado correctamente y se limpia sp");
 
             }
             c.close();
@@ -673,11 +677,10 @@ public class TarjetaPacienteFragment extends Fragment {
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_GLUCEMIA, sharedPreferences.getStringData("Glucemia"));
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_TEMPERATURA, sharedPreferences.getStringData("Temperatura"));
 
-
-
-
                 db.insert(DataBaseDB.TABLE_NAME_PACIENTES_SEGUIMIENTO, null, values);
-                System.out.println("Visita  insertada correctamente");
+                Log.d("sp_","Visita  insertada correctamente");
+                sharedPreferences.clearPreferences();
+
             }
             else {
 
@@ -706,7 +709,8 @@ public class TarjetaPacienteFragment extends Fragment {
 
 
                 db.insert(DataBaseDB.TABLE_NAME_PACIENTES_SEGUIMIENTO, null, values);
-                System.out.println("Sin expediente insertado correctamente");
+                Log.d("sp_","Sin expediente insertado correctamente");
+                sharedPreferences.clearPreferences();
 
             }
             c.close();
@@ -774,7 +778,9 @@ public class TarjetaPacienteFragment extends Fragment {
 
 
                 db.insert(DataBaseDB.TABLE_NAME_PACIENTES_SEGUIMIENTO, null, values);
-                System.out.println("Visita  insertada correctamente");
+                Log.d("sp_","Visita  insertada correctamente y se limpia SP");
+                sharedPreferences.clearPreferences();
+
             }
             else {
 
@@ -804,7 +810,8 @@ public class TarjetaPacienteFragment extends Fragment {
 
 
                 db.insert(DataBaseDB.TABLE_NAME_PACIENTES_SEGUIMIENTO, null, values);
-                System.out.println("Sin expediente insertado correctamente");
+                Log.d("sp_","Sin expediente insertado correctamente y se elimina SP");
+                sharedPreferences.clearPreferences();
 
             }
             c.close();

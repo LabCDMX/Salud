@@ -156,7 +156,6 @@ public class QuestionsExploracion extends Fragment {
                         sharedPreferences.setStringData("Peso", peso.getText().toString());
                         sharedPreferences.setStringData("Estatura", estatura.getText().toString());
 
-
                         pesoLayout.setVisibility(View.GONE);
                         tensionLayout.setVisibility(View.VISIBLE);
 
@@ -181,6 +180,9 @@ public class QuestionsExploracion extends Fragment {
 
                         sharedPreferences.setStringData("Peso", peso.getText().toString());
                         sharedPreferences.setStringData("Estatura", estatura.getText().toString());
+
+                        sharedPreferences.getStringData("Peso");
+                        sharedPreferences.getStringData("Estatura");
 
                         pesoLayout.setVisibility(View.GONE);
                         tensionLayout.setVisibility(View.VISIBLE);
@@ -370,7 +372,6 @@ public class QuestionsExploracion extends Fragment {
                 }else if (checkedId == R.id.tipoDesconocido){
                     radioDec.clearCheck();
                     sharedPreferences.setStringData("Hemotipo","Desconocido");
-
                 }
 
             }

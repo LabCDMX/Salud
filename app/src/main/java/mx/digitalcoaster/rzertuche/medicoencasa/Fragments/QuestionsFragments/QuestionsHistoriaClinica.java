@@ -93,7 +93,10 @@ public class QuestionsHistoriaClinica extends Fragment {
 
 
                 if(count == 1){
+
                     sharedPreferences.setStringData("Respiratorio",textArea_information.getText().toString());
+
+                    sharedPreferences.getStringData("Respiratorio");
 
                     textArea_information.setText(sharedPreferences.getStringData("Cardio") != null && !sharedPreferences.getStringData("Cardio").isEmpty() ? sharedPreferences.getStringData("Cardio"): "");
 
@@ -103,6 +106,8 @@ public class QuestionsHistoriaClinica extends Fragment {
 
                 if(count == 2){
                     sharedPreferences.setStringData("Cardio",textArea_information.getText().toString());
+
+                    sharedPreferences.getStringData("Cardio");
 
                     textArea_information.setText(sharedPreferences.getStringData("Digestivo") != null && !sharedPreferences.getStringData("Digestivo").isEmpty() ? sharedPreferences.getStringData("Digestivo"): "");
 

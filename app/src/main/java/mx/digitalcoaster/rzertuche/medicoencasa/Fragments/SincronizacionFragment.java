@@ -229,8 +229,9 @@ public class SincronizacionFragment extends Fragment {
     }
 
 
-
-
+     ImageButton btn_generales;
+     ImageButton btn_historic;
+     ImageButton btn_visitas;
 
     private void viewAlertSincronizar() {
 
@@ -242,13 +243,9 @@ public class SincronizacionFragment extends Fragment {
          update();
 
 
-        final ImageButton btn_generales = view.findViewById(R.id.btn_generales);
-        final ImageButton btn_historic = view.findViewById(R.id.btn_historic);
-        final ImageButton btn_visitas = view.findViewById(R.id.btn_visitas);
-
-
-
-
+         btn_generales = view.findViewById(R.id.btn_generales);
+         btn_historic = view.findViewById(R.id.btn_historic);
+         btn_visitas = view.findViewById(R.id.btn_visitas);
 
         btn_generales.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -268,16 +265,15 @@ public class SincronizacionFragment extends Fragment {
                                     c.getString(13), c.getString(14),c.getString(15),c.getString(17),c.getString(18),c.getString(19));
 
                         }while (c.moveToNext());
-                        hideActivityIndicator();
                     } else {
                         Toast.makeText(getActivity(),"No hay pacientes a sincronizar",Toast.LENGTH_LONG).show();
-                        hideActivityIndicator();
                         System.out.println("No existen PACIENTES");
                     }
                     c.close();
                 } catch (Exception ex) {
                     Log.e("Error", ex.toString());
                 } finally {
+                    hideActivityIndicator();
                     db.close();
 
                 }
@@ -292,6 +288,7 @@ public class SincronizacionFragment extends Fragment {
 
 
                 db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE ,null);
+                showActivityIndicator("Aviso","Sincronizando datos");
 
                     try {
                         c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC+ " WHERE "+ DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_ID +
@@ -318,6 +315,7 @@ public class SincronizacionFragment extends Fragment {
                     } catch (Exception ex) {
                         Log.e("Error", ex.toString());
                     } finally {
+                        hideActivityIndicator();
 
                         db.close();
 
