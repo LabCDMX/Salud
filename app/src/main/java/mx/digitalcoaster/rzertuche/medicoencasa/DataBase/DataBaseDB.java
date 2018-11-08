@@ -11,8 +11,10 @@ public class DataBaseDB {
 
     //NO SE BORRAN
     public static final String TABLE_NAME_PACIENTES_VISITAS = "table_name_pacientes_visitas";
+
     public static final String TABLE_NAME_PACIENTES_SINCRONIZAR = "table_name_pacientes_sincronizar";
     public static final String TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC = "table_name_pacientes_sincronizar_historic";
+
     public static final String TABLE_NAME_PACIENTES_SEGUIMIENTO = "table_name_pacientes_seguimiento";
 
     //DEPENDIENDO SI ES REQUERIDO POR CLIENTE

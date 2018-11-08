@@ -256,7 +256,7 @@ public class SincronizacionFragment extends Fragment {
                 showActivityIndicator("Aviso","Sincronizando datos");
 
                 try {
-                    c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR, null);
+                    c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC, null);
                     if (c.moveToFirst()) {
 
                         do {
@@ -286,19 +286,16 @@ public class SincronizacionFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-
-                db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE ,null);
                 showActivityIndicator("Aviso","Sincronizando datos");
+                Toast.makeText(getContext(),"cargando...",Toast.LENGTH_SHORT).show();
+                db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE ,null);
 
                     try {
-                        c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC+ " WHERE "+ DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_ID +
+                        c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR+ " WHERE "+ DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_ID +
                                 " != ''", null);
                         if (c.moveToFirst()) {
 
-
-
                             do {
-
                                 sendDataHistoric(c.getString(53),c.getString(4),c.getString(7),c.getString(8),c.getString(9),c.getString(10),c.getString(11),
                                         c.getString(12),c.getString(13), c.getString(14),c.getString(15),c.getString(16),c.getString(48),"",
                                         c.getString(24), c.getString(26),c.getString(23),c.getString(28),c.getString(29),c.getString(30),c.getString(31),c.getString(32),c.getString(33),c.getString(34),
@@ -309,14 +306,13 @@ public class SincronizacionFragment extends Fragment {
                         } else {
                             Toast.makeText(getActivity(),"No hay pacientes a sincronizar",Toast.LENGTH_LONG).show();
                             progress.dismiss();
-                            System.out.println("No existen PACIENTES");
+                            Log.d("sp_","No existen PACIENTES");
                         }
                         c.close();
                     } catch (Exception ex) {
                         Log.e("Error", ex.toString());
                     } finally {
                         hideActivityIndicator();
-
                         db.close();
 
                     }
@@ -421,7 +417,7 @@ public class SincronizacionFragment extends Fragment {
                     Log.e("URL", "https://medico.digitalcoaster.mx/api/admin/api/paciente");
                     Log.e("cadenaRespuesta ", response.body().toString());
 
-                    JsonObject responsePaciente = new JsonObject();
+                    JsonObject responsePaciente;
                     responsePaciente = response.body();
                     Boolean isSucceded = responsePaciente.get("success").getAsBoolean();
 
@@ -444,7 +440,6 @@ public class SincronizacionFragment extends Fragment {
                             updates.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_CURP, curp);
 
                             db.update(DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC, updates, DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_CURP+ "='"+curp+"'", null);
-
                             db.delete(DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR,DataBaseDB.PACIENTES_SINCRONIZAR_CURP + "=? AND "+ DataBaseDB.PACIENTES_SINCRONIZAR_NOMBRE + "=?",new String[]{curp,nombre});
 
                         }catch(Exception e){
@@ -463,8 +458,6 @@ public class SincronizacionFragment extends Fragment {
 
         }catch (Exception e){
             e.printStackTrace();
-            hideActivityIndicator();
-
         }
 
 
@@ -533,8 +526,36 @@ public class SincronizacionFragment extends Fragment {
             getDataQuestions.sendPacienteResultados(jsonParams).enqueue(new Callback<JsonObject>() {
                 @Override
                 public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-                    Log.d("data",response.body().toString());
+                    Log.d("historic_response",response.body().toString());
                     //hideActivityIndicator();
+
+                    /**
+                     * if (isSucceded) {
+
+                        String idUser = responsePaciente.get("user").getAsString();
+                        //String  = user.get("id").getAsString();
+
+                        Log.e("IDUser", idUser);
+
+                        db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE, null);
+
+                        try {
+
+                            ContentValues updates = new ContentValues();
+                            updates.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_ID, idUser);
+
+                            //updates.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_NOMBRE, nombre);
+                            updates.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_CURP, curp);
+
+                            db.update(DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC, updates, DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_CURP+ "='"+curp+"'", null);
+                            db.delete(DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR,DataBaseDB.PACIENTES_SINCRONIZAR_CURP + "=? AND "+ DataBaseDB.PACIENTES_SINCRONIZAR_NOMBRE + "=?",new String[]{curp,nombre});
+
+                        }catch(Exception e){
+                            e.printStackTrace();
+                        }finally {
+                            update();
+                        }
+                    }*/
 
                 }
 
@@ -549,7 +570,7 @@ public class SincronizacionFragment extends Fragment {
             e.printStackTrace();
 
         } finally {
-
+            hideActivityIndicator();
             update();
 
         }
@@ -604,6 +625,7 @@ public class SincronizacionFragment extends Fragment {
     }
 
     public void showActivityIndicator(String strTitle, String strMessage) {
+        Log.d("show","show_indicator");
         try {
             if (mProgressDialog != null) {
                 hideActivityIndicator();
@@ -623,9 +645,11 @@ public class SincronizacionFragment extends Fragment {
 
 
     public static void hideActivityIndicator() {
-        if(mProgressDialog != null){
+        Log.d("show","hide_indicator");
+
+        //if(mProgressDialog != null){
             mProgressDialog.dismiss();
-        }
+        //}
     }
 
 

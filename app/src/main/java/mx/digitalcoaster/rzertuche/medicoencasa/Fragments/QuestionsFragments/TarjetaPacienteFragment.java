@@ -518,10 +518,13 @@ public class TarjetaPacienteFragment extends Fragment {
                 values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_NEUROLOGICA, sharedPreferences.getStringData("Neurologica"));
                 values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_GENITALES, sharedPreferences.getStringData("Genitales"));
 
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_ID,"NOT_ID");
+
 
 
 
                 db.insert(DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC, null, values);
+
                 Log.d("sp_","Visita  insertada correctamente y se limpia sp");
                 sharedPreferences.clearPreferences();
             } else {
