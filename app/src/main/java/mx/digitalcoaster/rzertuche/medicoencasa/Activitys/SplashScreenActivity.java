@@ -38,7 +38,6 @@ public class SplashScreenActivity extends AppCompatActivity {
         online = new IsOnline();
         //load questions...
 
-        //TODO("Terminar esta madre... y quitarlo!")
         if (online.validateOnline(getApplicationContext()))
             loadQuestions();
         else

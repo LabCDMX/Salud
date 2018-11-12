@@ -9,17 +9,16 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.os.Vibrator;
 import android.support.annotation.Nullable;
 import android.support.v4.BuildConfig;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +33,7 @@ import java.text.ParseException;
 
 import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseDB;
 import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseHelper;
+import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.SyncData.SyncDataFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.R;
 import mx.digitalcoaster.rzertuche.medicoencasa.Utils.SharedPreferences;
 import mx.digitalcoaster.rzertuche.medicoencasa.api.ApiInterface;
@@ -87,12 +87,6 @@ public class SincronizacionFragment extends Fragment {
     static ProgressDialog mProgressDialog;
 
     private OnFragmentInteractionListener mListener;
-
-    private FragmentTransaction ft;
-
-
-
-
     public SincronizacionFragment() {
         // Required empty public constructor
     }
@@ -129,9 +123,6 @@ public class SincronizacionFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        ft = getFragmentManager().beginTransaction();
-
-
         return inflater.inflate(R.layout.fragment_registros, container, false);
     }
 
@@ -147,14 +138,7 @@ public class SincronizacionFragment extends Fragment {
         verde = view.findViewById(R.id.verde);
         amarillo =  view.findViewById(R.id.amarillo);
         rojo = view.findViewById(R.id.rojo);
-        sincronizar = view.findViewById(R.id.imageButton6);
-
-
-
-        //progress = new ProgressDialog(getActivity());
-        //progress.setMessage("Sincronizando datos...");
-        //progress.setIndeterminate(false);
-        //progress.setCancelable(false);
+        sincronizar = view.findViewById(R.id.but_image_sync);
 
 
         total.setText(totalPatients);
@@ -162,7 +146,8 @@ public class SincronizacionFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                viewAlertSincronizar();
+               // viewAlertSincronizar();
+                syncDataFragment();
 
             }
         });
@@ -234,7 +219,7 @@ public class SincronizacionFragment extends Fragment {
      ImageButton btn_visitas;
 
     private void viewAlertSincronizar() {
-
+        //TODO("QUITAR TODA ESTA MADRE RARA....")
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setCancelable(false);
         final LayoutInflater inflater = getActivity().getLayoutInflater();
@@ -668,5 +653,14 @@ public class SincronizacionFragment extends Fragment {
                     .detectActivityLeaks()
                     .build());
         }
+    }
+
+    private void syncDataFragment(){
+        SyncDataFragment fragment = new SyncDataFragment();
+        FragmentManager manager = getFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.fragmentHolder, fragment);
+        transaction.addToBackStack(SyncDataFragment.TAG);
+        transaction.commit();
     }
 }

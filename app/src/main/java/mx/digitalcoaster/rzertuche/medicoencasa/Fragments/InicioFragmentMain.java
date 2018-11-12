@@ -177,14 +177,6 @@ public class InicioFragmentMain extends Fragment {
 
             }
 
-
-
-
-
-
-
-
-
         });
 
 
@@ -496,7 +488,7 @@ public class InicioFragmentMain extends Fragment {
                 public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
                     Log.d("data_-",response.body().toString());
                     //hideActivityIndicator();
-
+                    progress.hide();
                 }
 
                 @Override
@@ -506,13 +498,10 @@ public class InicioFragmentMain extends Fragment {
             });
 
         }catch (Exception e){
-
             e.printStackTrace();
-
+            progress.hide();
         } finally {
-
-
-
+            progress.hide();
         }
 
 
@@ -580,14 +569,15 @@ public class InicioFragmentMain extends Fragment {
 
                         db.insert(DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC, null, values);
 
-                        progress.dismiss();
+                        progress.hide();
                     }catch(Exception e){
 
                     }
                 }
 
 
-                        progress.dismiss();
+                    progress.hide();
+
                 return response.toString();
             }else{
 
