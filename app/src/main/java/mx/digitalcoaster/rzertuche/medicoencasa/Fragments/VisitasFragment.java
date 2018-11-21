@@ -174,10 +174,7 @@ public class VisitasFragment extends Fragment {
 
 
 
-
     }
-
-
 
 
     private void getProductos() {
@@ -201,10 +198,10 @@ public class VisitasFragment extends Fragment {
             } else {
                 System.out.println("No existen Visitas");
             }
-            c.close();
         } catch (Exception ex) {
             Log.e("Error", ex.toString());
         } finally {
+            c.close();
             db.close();
         }
     }
@@ -294,10 +291,13 @@ public class VisitasFragment extends Fragment {
             } else {
                 System.out.println("No existe información del cliente");
             }
-            c.close();
         } catch (Exception ex) {
-            System.out.println("Exception: " + ex);
+            Log.d("Visitas","Exception: " + ex);
+        }finally {
+            c.close();
+            db.close();
         }
+
 
 
 
@@ -414,9 +414,11 @@ public class VisitasFragment extends Fragment {
             } else {
                 System.out.println("No existe información del cliente");
             }
-            c.close();
         } catch (Exception ex) {
             System.out.println("Exception: " + ex);
+        }finally {
+            c.close();
+            db.close();
         }
 
         builder.setPositiveButton("ACEPTAR", new DialogInterface.OnClickListener() {
@@ -478,9 +480,11 @@ public class VisitasFragment extends Fragment {
             } else {
                 System.out.println("No existe información del cliente");
             }
-            c.close();
         } catch (Exception ex) {
-            System.out.println("Exception: " + ex);
+            Log.d("Visitas","Exception: " + ex);
+        }finally {
+            c.close();
+            db.close();
         }
 
 
@@ -516,12 +520,14 @@ public class VisitasFragment extends Fragment {
                     System.out.println("Codigo actualizado correctamente");
 
                 }
-                c.close();
             } catch (SQLException ex) {
                 System.out.println("Error al insertar codigo postal: " + ex);
+            }finally {
+            db.close();
+            c.close();
+
             }
 
-        db.close();
 
     }
 
@@ -546,12 +552,13 @@ public class VisitasFragment extends Fragment {
                 System.out.println("Codigo actualizado correctamente");
 
             }
-            c.close();
         } catch (SQLException ex) {
             System.out.println("Error al insertar codigo postal: " + ex);
+        }finally {
+            db.close();
+            c.close();
         }
 
-        db.close();
 
     }
 

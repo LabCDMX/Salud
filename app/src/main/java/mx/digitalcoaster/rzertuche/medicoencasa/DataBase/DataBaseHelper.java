@@ -86,7 +86,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 DataBaseDB.PACIENTES_SINCRONIZAR_CODIGO + " TEXT, " +
                 DataBaseDB.PACIENTES_SINCRONIZAR_POBLACION + " TEXT, " +
                 DataBaseDB.PACIENTES_SINCRONIZAR_TIEMPO_ENCUESTA + " TEXT, " +
-                DataBaseDB.PACIENTES_SINCRONIZAR_EDAD + " TEXT); "
+                DataBaseDB.PACIENTES_SINCRONIZAR_EDAD + " TEXT," +
+                DataBaseDB.PACIENTES_SINCRONIZAR_ID + " TEXT); "
+
         );
         Log.d("DB_CREATE",DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR + " Creada");
 
@@ -306,10 +308,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_PLANES + " TEXT, " +
                 DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_DIAGNOSTICO + " TEXT, " +
                 DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_TRATAMIENTO + " TEXT, " +
-                DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_ID + " TEXT, " +
+                DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_ID + " TEXT, " + //53 -:::
                 DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_TORAX + " TEXT, " +
-                DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_PERSONALES_HEREDO + " TEXT); "
-
+                DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_PERSONALES_HEREDO + " TEXT, " +
+                DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_SEND_SUCCESS + " TEXT ); "
         );
         Log.d("DB_CREATE",DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC + " Creada");
 

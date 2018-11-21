@@ -1,6 +1,9 @@
 package mx.digitalcoaster.rzertuche.medicoencasa.Activitys;
 
+import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
@@ -45,6 +48,8 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         progress.setVisibility(View.GONE);
 
+        //loadTableTest();
+
 
     }
 
@@ -77,7 +82,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         getMedicalHistory.loadPaciente().enqueue(new Callback<JsonObject>() {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-                Log.d("rd_data_history",response.body().toString());
+                Log.d("rd_data_history",response.toString());
                 
                 loadCodePostal();
             }
@@ -114,9 +119,45 @@ public class SplashScreenActivity extends AppCompatActivity {
 
             }
         });
+
     }
 
 
+    /*public void loadTableTest(){
+        //TODO("SE TIENE QUE REMOVER EL CÓDIGO PARA PRODUCCIÓN!!")
+        SQLiteDatabase db = this.openOrCreateDatabase(DataBaseDB.DB_NAME,Context.MODE_PRIVATE,null);
+
+        ContentValues addTestPaciente = new ContentValues();
+
+        addTestPaciente.put(DataBaseDB.PACIENTES_SINCRONIZAR_NOMBRE,"UserTest_");
+        addTestPaciente.put(DataBaseDB.PACIENTES_SINCRONIZAR_CURP ,"BAJO890612HTNL07_");
+        addTestPaciente.put(DataBaseDB.PACIENTES_SINCRONIZAR_CALLE,"CALLE_1_");
+        addTestPaciente.put(DataBaseDB.PACIENTES_SINCRONIZAR_AP_PATERNO,"PATERNO_1_");
+        addTestPaciente.put(DataBaseDB.PACIENTES_SINCRONIZAR_AP_MATERNO ,"MATERNO_TEST_");
+        addTestPaciente.put(DataBaseDB.PACIENTES_SINCRONIZAR_FECHA_NACIMIENTO,"10/05/");
+        addTestPaciente.put(DataBaseDB.PACIENTES_SINCRONIZAR_SEXO,"SEXO");
+        addTestPaciente.put(DataBaseDB.PACIENTES_SINCRONIZAR_NACIONALIDAD,"NACIONALIDAD_");
+        addTestPaciente.put(DataBaseDB.PACIENTES_SINCRONIZAR_ESTADO,"ESTADO_TEST");
+        addTestPaciente.put(DataBaseDB.PACIENTES_SINCRONIZAR_MUNICIPIO,"MUNICIPIO_TEST_");
+        addTestPaciente.put(DataBaseDB.PACIENTES_SINCRONIZAR_COLONIA,"COLONIA_TEST");
+        addTestPaciente.put(DataBaseDB.PACIENTES_SINCRONIZAR_ESTADO_CIVIL,"CIVIL_TEST");
+        addTestPaciente.put(DataBaseDB.PACIENTES_SINCRONIZAR_OCUPACION,"OCUPACION_TEST");
+        addTestPaciente.put(DataBaseDB.PACIENTES_SINCRONIZAR_DERECHO ,"DERECHO_TEST");
+        addTestPaciente.put(DataBaseDB.PACIENTES_SINCRONIZAR_FOLIO_DERECHO,"FOLIO_DERECHO");
+        addTestPaciente.put(DataBaseDB.PACIENTES_SINCRONIZAR_TEL_FIJO,"TEL_FIJO_TEST");
+        addTestPaciente.put(DataBaseDB.PACIENTES_SINCRONIZAR_CEL,"CEL_TEST_");
+        addTestPaciente.put(DataBaseDB.PACIENTES_SINCRONIZAR_EMAIL,"TEST@HOT.COM_");
+        addTestPaciente.put(DataBaseDB.PACIENTES_SINCRONIZAR_CREATED_BY,"CREATE....TEST_");
+        addTestPaciente.put(DataBaseDB.PACIENTES_SINCRONIZAR_CODIGO,"CODIGO_TEST");
+        addTestPaciente.put(DataBaseDB.PACIENTES_SINCRONIZAR_POBLACION,"POBLACIÓN..._TEST");
+        addTestPaciente.put(DataBaseDB.PACIENTES_SINCRONIZAR_TIEMPO_ENCUESTA,"10_HRS_test");
+        addTestPaciente.put(DataBaseDB.PACIENTES_SINCRONIZAR_EDAD,"23");
+
+        db.insert(DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR,null,addTestPaciente);
+
+
+        db.close();
+    }*/
 
 }
 

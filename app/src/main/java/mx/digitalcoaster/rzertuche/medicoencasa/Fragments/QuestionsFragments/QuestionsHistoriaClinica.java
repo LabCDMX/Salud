@@ -43,10 +43,6 @@ public class QuestionsHistoriaClinica extends Fragment {
     private EditText textArea_information;
     private int count = 0;
 
-
-
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -411,25 +407,16 @@ public class QuestionsHistoriaClinica extends Fragment {
                     sharedPreferences.setBooleanData("BackToInterrogatorio",true);
                     ((MainActivity)getActivity()).questionsAntPersonales();
 
-
                 }
-
 
             }
         });
 
-
-
     }
-
 
     public void blockListeners(){
         notListerners = true;
     }
-
-
-
-
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
