@@ -99,49 +99,50 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 "_id INTEGER PRIMARY KEY, " +
                 DataBaseDB.PACIENTES_VISITA_NOMBRE + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_CURP + " TEXT, " +
+
                 DataBaseDB.PACIENTES_VISITA_DIRECCION + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_NUMERO + " TEXT," +
-                DataBaseDB.PACIENTES_VISITA_STATUS + " TEXT, " +
+                DataBaseDB.PACIENTES_VISITA_STATUS + " TEXT, " + //5
                 DataBaseDB.PACIENTES_VISITA_FECHA + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_DIAGNOSTICO + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_TRATAMIENTO + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_EXPEDIENTE + " TEXT, " +
-                DataBaseDB.PACIENTES_VISITA_HEMOTIPO + " TEXT, " +
+                DataBaseDB.PACIENTES_VISITA_HEMOTIPO + " TEXT, " +//10
                 DataBaseDB.PACIENTES_VISITA_PESO + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_ESTATURA + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_TENSION + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_CARDIACA + " TEXT, " +
-                DataBaseDB.PACIENTES_VISITA_RESPIRATORIA + " TEXT, " +
+                DataBaseDB.PACIENTES_VISITA_RESPIRATORIA + " TEXT, " +//15
                 DataBaseDB.PACIENTES_VISITA_TALLA + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_PULSO + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_GLUCEMIA + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_TEMPERATURA + " TEXT, " +
-                DataBaseDB.PACIENTES_VISITA_NOTAS_ENFERMERIA + " TEXT, " +
+                DataBaseDB.PACIENTES_VISITA_NOTAS_ENFERMERIA + " TEXT, " +//20
                 DataBaseDB.PACIENTES_VISITA_GINECOOBSTERICOS + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_ACTUALES + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_GENERALES + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_RESPIRATORIO + " TEXT, " +
-                DataBaseDB.PACIENTES_VISITA_CARDIO + " TEXT, " +
+                DataBaseDB.PACIENTES_VISITA_CARDIO + " TEXT, " +//25
                 DataBaseDB.PACIENTES_VISITA_DIGESTIVO + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_URINARIO + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_REPRODUCTOR + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_HEMOLI + " TEXT, " +
-                DataBaseDB.PACIENTES_VISITA_ENDOCRINO + " TEXT, " +
+                DataBaseDB.PACIENTES_VISITA_ENDOCRINO + " TEXT, " +//30
                 DataBaseDB.PACIENTES_VISITA_NERVIOSO + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_ESQUELETICO + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_PIEL + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_HABITUS + " TEXT, " +
-                DataBaseDB.PACIENTES_VISITA_CABEZA + " TEXT, " +
+                DataBaseDB.PACIENTES_VISITA_CABEZA + " TEXT, " +//35
                 DataBaseDB.PACIENTES_VISITA_CUELLO + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_ABDOMEN + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_GINECOLOGICA + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_EXTREMIDADES + " TEXT, " +
-                DataBaseDB.PACIENTES_VISITA_COLUMNA + " TEXT, " +
+                DataBaseDB.PACIENTES_VISITA_COLUMNA + " TEXT, " +//40
                 DataBaseDB.PACIENTES_VISITA_NEUROLOGICA + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_GENITALES + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_NOTAS_DOC + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_CHECK_HOJA_DIARIA + " TEXT, " +
-                DataBaseDB.PACIENTES_VISITA_MAKE_HOJA_DIARIA + " TEXT, " +
+                DataBaseDB.PACIENTES_VISITA_MAKE_HOJA_DIARIA + " TEXT, " +//45
                 DataBaseDB.PACIENTES_VISITA_ELABORO + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_SIGUIENTE_VISITA + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_PLANES + " TEXT); "
@@ -154,6 +155,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 "_id INTEGER PRIMARY KEY, " +
                 DataBaseDB.PACIENTES_EXPEDIENTE_NOMBRE + " TEXT, " +
                 DataBaseDB.PACIENTES_EXPEDIENTE_CURP + " TEXT, " +
+
                 DataBaseDB.PACIENTES_STATUS + " TEXT, " +
                 DataBaseDB.PACIENTES_EXPEDIENTE + " TEXT, " +
                 DataBaseDB.PACIENTES_ELABORO + " TEXT, " +
@@ -428,58 +430,58 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
             JsonArray parentesco = responseCP.getAsJsonArray("codigospostales");
 
-                String codigo_postal;
-                String colonia;
-                String municipio;
-                String estado;
+            String codigo_postal;
+            String colonia;
+            String municipio;
+            String estado;
 
-                for (int i = 0; i < parentesco.size(); i++) {
+            for (int i = 0; i < parentesco.size(); i++) {
 
-                    codigo_postal = parentesco.get(i).getAsJsonObject().get("CodigoPostal").getAsString();
-                    colonia       = parentesco.get(i).getAsJsonObject().get("Colonia").getAsString();
-                    municipio     = parentesco.get(i).getAsJsonObject().get("Municipio").getAsString();
-                    estado        = parentesco.get(i).getAsJsonObject().get("Estado").getAsString();
+                codigo_postal = parentesco.get(i).getAsJsonObject().get("CodigoPostal").getAsString();
+                colonia       = parentesco.get(i).getAsJsonObject().get("Colonia").getAsString();
+                municipio     = parentesco.get(i).getAsJsonObject().get("Municipio").getAsString();
+                estado        = parentesco.get(i).getAsJsonObject().get("Estado").getAsString();
 
 
-                    Log.d(TAG,"CODIGO_POSTAL: " + codigo_postal);
-                    Log.d(TAG,"COLONIA: " + colonia);
-                    Log.d(TAG,"MUNICIPIO: " + municipio);
-                    Log.d(TAG,"ESTADO: " + estado);
+                Log.d(TAG,"CODIGO_POSTAL: " + codigo_postal);
+                Log.d(TAG,"COLONIA: " + colonia);
+                Log.d(TAG,"MUNICIPIO: " + municipio);
+                Log.d(TAG,"ESTADO: " + estado);
 
-                    /*------------------------- Revisar si existe ------------------------*/
-                    Cursor c = db.rawQuery("SELECT " + DataBaseDB.CODIGO_POSTAL +
-                            " FROM " + DataBaseDB.TABLE_NAME_CODIGOS_POSTALES +
-                            " WHERE " + DataBaseDB.CODIGO_POSTAL + "='" + codigo_postal + "'", null);
-                    try {
-                        if (c.moveToFirst()) {
-                            Log.d("response_data_cp_db","Codigo existente: ");
-                            ContentValues update = new ContentValues();
+                /*------------------------- Revisar si existe ------------------------*/
+                Cursor c = db.rawQuery("SELECT " + DataBaseDB.CODIGO_POSTAL +
+                        " FROM " + DataBaseDB.TABLE_NAME_CODIGOS_POSTALES +
+                        " WHERE " + DataBaseDB.CODIGO_POSTAL + "='" + codigo_postal + "'", null);
+                try {
+                    if (c.moveToFirst()) {
+                        Log.d("response_data_cp_db","Codigo existente: ");
+                        ContentValues update = new ContentValues();
 
-                            update.put(DataBaseDB.CODIGO_POSTAL, codigo_postal);
-                            update.put(DataBaseDB.COLONIA, colonia);
-                            update.put(DataBaseDB.MUNICIPIO, municipio);
-                            update.put(DataBaseDB.ESTADO, estado);
+                        update.put(DataBaseDB.CODIGO_POSTAL, codigo_postal);
+                        update.put(DataBaseDB.COLONIA, colonia);
+                        update.put(DataBaseDB.MUNICIPIO, municipio);
+                        update.put(DataBaseDB.ESTADO, estado);
 
-                            db.update(DataBaseDB.TABLE_NAME_CODIGOS_POSTALES, update, DataBaseDB.CODIGO_POSTAL + "='" + codigo_postal + "'", null);
-                            Log.d("response_data_cp_db","Codigo actualizado correctamente");
+                        db.update(DataBaseDB.TABLE_NAME_CODIGOS_POSTALES, update, DataBaseDB.CODIGO_POSTAL + "='" + codigo_postal + "'", null);
+                        Log.d("response_data_cp_db","Codigo actualizado correctamente");
 
-                        } else {
-                            ContentValues values = new ContentValues();
+                    } else {
+                        ContentValues values = new ContentValues();
 
-                            values.put(DataBaseDB.CODIGO_POSTAL, codigo_postal);
-                            values.put(DataBaseDB.COLONIA, colonia);
-                            values.put(DataBaseDB.MUNICIPIO, municipio);
-                            values.put(DataBaseDB.ESTADO, estado);
+                        values.put(DataBaseDB.CODIGO_POSTAL, codigo_postal);
+                        values.put(DataBaseDB.COLONIA, colonia);
+                        values.put(DataBaseDB.MUNICIPIO, municipio);
+                        values.put(DataBaseDB.ESTADO, estado);
 
-                            db.insert(DataBaseDB.TABLE_NAME_CODIGOS_POSTALES, null, values);
-                            Log.d("response_data_cp_db","Codigo postal insertado correctamente");
-                        }
-                        c.close();
-                    } catch (SQLException ex) {
-                        Log.d("response_data_cp_db","Error al insertar codigo postal: " + ex);
+                        db.insert(DataBaseDB.TABLE_NAME_CODIGOS_POSTALES, null, values);
+                        Log.d("response_data_cp_db","Codigo postal insertado correctamente");
                     }
+                    c.close();
+                } catch (SQLException ex) {
+                    Log.d("response_data_cp_db","Error al insertar codigo postal: " + ex);
                 }
-                db.close();
+            }
+            db.close();
 
         } catch (Exception e) {
             e.printStackTrace();

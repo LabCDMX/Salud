@@ -51,16 +51,96 @@ public class SyncDataDB {
         showCountDataSync();
     }
 
+    public void initSyncVisitas(){
+
+        db = activity.openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE ,null);
+
+        try{
+            c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_VISITAS, null);
+            Log.d(TAG,"count visitas::: " + c.getCount());
+
+            if(c.moveToFirst()){
+
+                do{
+                    sendDataVisitas(
+                            c.getString(11),
+                            c.getString(12),
+                            c.getString(16),
+                            c.getString(17),
+                            c.getString(13),
+                            c.getString(14),
+                            c.getString(15),
+                            c.getString(18),
+                            c.getString(19),
+                            c.getString(20),
+                            c.getString(43),
+                            c.getString(7),
+                            c.getString(47),
+                            "siguiente_visita"
+                    );
+                    //11,12,16,17,
+                      //      13,14,15,18,
+                        //    19,20,43,7,47,"siguiente_visita"
+
+                }while (c.moveToNext());
+
+                //-------------------------- Obtener información del cliente ---------------------
+                /*try {
+                    c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SEGUIMIENTO + " WHERE " +
+                            DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NOMBRE + " ='"+nombrePatient+"' AND "+
+                            DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NUMERO+ " = '"+numeroVisita+"'", null);
+
+
+                    if (c.moveToFirst()) {
+
+
+                        ((TextView) view.findViewById(R.id.textViewPeso)).setText(c.getString(15));
+                        ((TextView) view.findViewById(R.id.textViewEstatura)).setText(c.getString(16));
+                        ((TextView) view.findViewById(R.id.textViewTalla)).setText(c.getString(20));
+                        ((TextView) view.findViewById(R.id.textViewPulso)).setText(c.getString(21));
+                        ((TextView) view.findViewById(R.id.textViewTensionArterial)).setText(c.getString(17));
+                        ((TextView) view.findViewById(R.id.textViewFrecuenciaCar)).setText(c.getString(18));
+                        ((TextView) view.findViewById(R.id.textViewFrecuenciaRes)).setText(c.getString(19));
+                        ((TextView) view.findViewById(R.id.textViewGlucemia)).setText(c.getString(22));
+                        ((TextView) view.findViewById(R.id.textViewTemperatura)).setText(c.getString(23));
+                        notasEnf.setText(c.getString(9));
+                        notasDoc.setText(c.getString(10));
+                        ((TextView) view.findViewById(R.id.etDiagnostico)).setText(c.getString(3));
+                        ((TextView) view.findViewById(R.id.etTratamiento)).setText(c.getString(4));
+                        ((TextView) view.findViewById(R.id.edSiguienteVisita)).setText(c.getString(5));
+
+
+                    } else {
+                        System.out.println("No existe información del cliente");
+                    }
+                } catch (Exception ex) {
+                    Log.d("Visitas","Exception: " + ex);
+                }finally {
+                    c.close();
+                    db.close();
+                }*/
+            }else {
+                Toast.makeText(activity,"No hay visitas a sincronizar",Toast.LENGTH_LONG).show();
+                //DataBaseDB.TABLE_NAME_PACIENTES_VISITAS;
+
+            }
+
+        }catch (Exception e){
+            Log.e(TAG, "error::" + e);
+        }finally {
+            db.close();
+        }
+
+    }
+
     public void initSyncGeneralesData(){
-        if(c != null && !c.isClosed())
-            c.close();
 
         db = activity.openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE ,null);
 
         try {
             c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR, null);
 
-            Log.d(TAG,"count::: " + c.getCount());
+            Log.d(TAG,"count pacientes::: " + c.getCount());
 
             if (c.moveToFirst()) {
 
@@ -89,6 +169,7 @@ public class SyncDataDB {
         try {
 
             c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC + " WHERE " + DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_SEND_SUCCESS + " == 'NOT_SYNC' ", null);
+            Log.d(TAG,"count historic::: " + c.getCount());
 
             if (c.moveToFirst()) {
 
@@ -110,10 +191,6 @@ public class SyncDataDB {
             db.close();
             c.close();
         }
-    }
-
-    public void initSyncVisitas(){
-
     }
 
     public void sendDataGenerales(final String curp, String a_pa, String a_ma, final String nombre, String fechaNac, String estadoNac, String sexo, String nac, String estadoRes,
@@ -165,8 +242,8 @@ public class SyncDataDB {
                 @Override
                 public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
 
-                    Log.e(TAG, "https://medico.digitalcoaster.mx/api/admin/api/paciente");
-                    Log.e( TAG, response.body().toString());
+                    Log.d(TAG, "https://medico.digitalcoaster.mx/api/admin/api/paciente");
+                    Log.d( TAG, response.body().toString());
 
                     JsonObject responsePaciente;
                     responsePaciente = response.body();
@@ -249,7 +326,7 @@ public class SyncDataDB {
         jsonParams.addProperty("14",glucemia);
         jsonParams.addProperty("15",temp);
         jsonParams.addProperty("notas_enf",notas_enf);
-        jsonParams.addProperty("ant_personales","");
+        jsonParams.addProperty("ant_personales",ant_personales);
         jsonParams.addProperty("ant_patologicos",ant_patologicos);
         jsonParams.addProperty("ant_obstericos",ant_obstericos);
         jsonParams.addProperty("19",padecimiento_actual);
@@ -350,6 +427,44 @@ public class SyncDataDB {
 
 
     }
+
+    public void sendDataVisitas(String peso, String estatura, String talla, String pulso, String tensionsArterial, String frecuenciaCar, String frecuenciaRes, String glucemia, String temperatura, String notasEnf, String notasDoc, String diagnostico, String siguienteVisita, String no_visita){
+
+        JsonObject jsonParams = new JsonObject();
+
+        jsonParams.addProperty("7",peso);
+        jsonParams.addProperty("8",estatura);
+        jsonParams.addProperty("12",talla);
+        jsonParams.addProperty("13",pulso);
+        jsonParams.addProperty("tensión",tensionsArterial);
+        jsonParams.addProperty("10",frecuenciaCar);
+        jsonParams.addProperty("11",frecuenciaRes);
+        jsonParams.addProperty("14",glucemia);
+        jsonParams.addProperty("15",temperatura);
+        jsonParams.addProperty("notas_enf",notasEnf);
+        jsonParams.addProperty("51",diagnostico);
+        jsonParams.addProperty("69",siguienteVisita);
+        jsonParams.addProperty("no_visita",no_visita);
+
+        try {
+            ApiInterface postDataVisits = MedicalService.getMedicalApiData().create(ApiInterface.class);
+            postDataVisits.sendPaciente(jsonParams).enqueue(new Callback<JsonObject>() {
+                @Override
+                public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                    Log.d( TAG, response.body().toString());
+
+                }
+
+                @Override
+                public void onFailure(Call<JsonObject> call, Throwable t) {
+                    Log.e(TAG,"POST_VISITAS ERROR ::: " + t);
+                }
+            });
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
 
     public int getCountData(String datosCount){
 

@@ -37,4 +37,5 @@ public interface ApiInterface {
     @POST("/api/admin/api/pacienteResultados")
     Call<JsonObject> sendPacienteResultados(@Body JsonObject pacienteResultados);
 
+
 }
