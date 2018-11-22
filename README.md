@@ -20,6 +20,20 @@ La aplicación se conecta a un Backend para enviar los resultados de cada uno de
 
 El BackEnd provee a la aplicación de preguntas y posibles respuestas para cada pregunta. 
 
+## Backend 
+
+El backend contiene 5 tablas importantes para la sincronización con la APP, 
+
+* Preguntas
+* Preguntas-Respuestas
+* Respuestas 
+* Respuestas
+* DatosGeneralesPaciente
+
+Este backend se alimenta vía un GUI y provee la información a la aplicación vía WebServices
+
+## Aplicación
+
 El proyecto esta dividido en Fragmentos los cuales reciclan las vistas para evitar el uso de vistas repetitivas, el target para la 
 aplicación es con buildTools 24, para correr en tablets con Android 4.4, al usar Android 4.4 por convencion global se tiene que usar 
 una configuracion especial para el TSL, sin esta configuracion ningun endPoint dentro de la app podra consumirse.
@@ -59,7 +73,9 @@ Se propone solo ciertos módulos de preguntas dentro la app hacerlos sincronizab
 TODO
 --------------
 Normalización y estandarización de base de datos SQL lite en Android
-~Sincronización Completa de Datos del Paciente~
+
+~~Sincronización Completa de Datos del Paciente~~
+
 Actualización de vista de Visitas 
-Sincronización de preguntas hacia la tablet
+
 Sincronización de pacientes hacia la tablet
