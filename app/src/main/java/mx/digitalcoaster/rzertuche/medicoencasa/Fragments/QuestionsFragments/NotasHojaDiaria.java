@@ -176,6 +176,15 @@ public class NotasHojaDiaria extends Fragment {
         String auxVisita = sharedPreferences.getStringData("numero_visita");
         int numeroVisita = Integer.valueOf(auxVisita)+1;
 
+        //SEARCH ID....
+        Cursor cursorId;
+        db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE ,null);
+
+        cursorId = db.rawQuery("SELECT " + DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_ID + " FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC + " WHERE " + DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_CURP + " = ? AND " + DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_NOMBRE + " = ? ",new String[] {sharedPreferences.getStringData("curpSeguimiento"),sharedPreferences.getStringData("nameSeguimiento")});
+        db.close();
+        cursorId.close();
+        //CLOSE....
+
         db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE ,null);
 
         /*------------------------- Revisar si existe ------------------------*/

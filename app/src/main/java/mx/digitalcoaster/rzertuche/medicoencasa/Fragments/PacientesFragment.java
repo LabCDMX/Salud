@@ -160,7 +160,7 @@ public class PacientesFragment extends Fragment {
             }
         });
 
-        lista = getActivity().findViewById(R.id.gridview);
+        lista = getActivity().findViewById(R.id.gridSeguimiento);
         items = new ArrayList<>();
         getPacientesSeguimiento();
         lista.setAdapter(new VisitasAdapter(getActivity().getApplicationContext(), items));
@@ -168,6 +168,7 @@ public class PacientesFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> arg0, View v, int position, long arg3) {
                 Item selectedUser = items.get(position);
+
                 String nameUser = selectedUser.getNombre();
                 String curp = selectedUser.getCurp();
                 String numero_visita= selectedUser.getNumero_visita();
@@ -179,8 +180,6 @@ public class PacientesFragment extends Fragment {
                 sharedPreferences.setStringData("numero_visita", numero_visita);
                 sharedPreferences.setStringData("Expediente", expediente);
                 sharedPreferences.setStringData("ImageStatus", imageStatus);
-
-
 
                 Log.e("TOUCHME",expediente);
                 ((MainActivity)getActivity()).visitasFragment(nameUser);
@@ -251,10 +250,6 @@ public class PacientesFragment extends Fragment {
             db.close();
         }
     }
-
-
-
-
 
     public void onButtonPressed(Uri uri) {
         callParentMethod();

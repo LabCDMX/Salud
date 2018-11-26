@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
@@ -424,13 +425,20 @@ public class SincronizacionFragment extends Fragment {
                             //updates.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_NOMBRE, nombre);
                             updates.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_CURP, curp);
 
-                            db.update(DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC, updates, DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_CURP+ "='"+curp+"'", null);
+                            String[] args = new String[]{curp, nombre};
+                            db.update(DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC, updates, DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_CURP + " =? AND " + DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_NOMBRE, args);
+
                             db.delete(DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR,DataBaseDB.PACIENTES_SINCRONIZAR_CURP + "=? AND "+ DataBaseDB.PACIENTES_SINCRONIZAR_NOMBRE + "=?",new String[]{curp,nombre});
+
 
                         }catch(Exception e){
                             e.printStackTrace();
                         }finally {
+                            c.close();
+                            db.close();
+
                             update();
+
                         }
                     }
                 }

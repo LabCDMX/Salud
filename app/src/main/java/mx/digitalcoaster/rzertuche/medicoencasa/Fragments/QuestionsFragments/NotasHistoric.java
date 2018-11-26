@@ -48,10 +48,6 @@ public class NotasHistoric extends Fragment {
     private Cursor c = null;            // Objeto para hacer consultas a la base de datos
 
 
-
-
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,8 +67,6 @@ public class NotasHistoric extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-
 
         //Obtencion de datos del sharedPreferences
         sharedPreferences = SharedPreferences.getInstance();

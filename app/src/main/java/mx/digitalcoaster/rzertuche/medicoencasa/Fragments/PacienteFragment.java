@@ -82,16 +82,15 @@ public class PacienteFragment extends Fragment {
 
                 Visita visita = (Visita) visitas.get(0);
 
-                TextView nota = (TextView) view.findViewById(R.id.textView8);
+                TextView nota = view.findViewById(R.id.textView8);
                 nota.setText(visita.getNota());
 
-                TextView tratamineto = (TextView) view.findViewById(R.id.textView12);
+                TextView tratamineto = view.findViewById(R.id.textView12);
                 tratamineto.setText(visita.getTratamiento());
 
-                LinearLayout visitasLayout = (LinearLayout) view.findViewById(R.id.visitasLayout);
+                LinearLayout visitasLayout = view.findViewById(R.id.visitasLayout);
 
-                for( int i = 1; i < visitas.size(); i++ )
-                        {
+                for( int i = 1; i < visitas.size(); i++ ) {
                             Visita visitaLoop = (Visita) visitas.get(i);
 
                             LinearLayout horizontal = new LinearLayout(getActivity());

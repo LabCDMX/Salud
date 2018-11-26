@@ -99,8 +99,7 @@ public class HistoriaClinicaFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-
-        respiratorio = (EditText) getActivity().findViewById(R.id.textViewRespiratorio);
+        respiratorio = getActivity().findViewById(R.id.textViewRespiratorio);
         cardio = (EditText) getActivity().findViewById(R.id.textViewCardio);
         digestivo = (EditText) getActivity().findViewById(R.id.textViewDigestivo);
         urinario = (EditText) getActivity().findViewById(R.id.textViewUrinario);

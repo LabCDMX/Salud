@@ -121,6 +121,7 @@ public class MainActivity extends AppCompatActivity implements
         NotasEnfermeria.OnFragmentInteractionListener,
         NotasHojaDiaria.OnFragmentInteractionListener{
 
+    public String TAG = MainActivity.this.getClass().getSimpleName();
     public String patientID;
     public static ImageView inicio, registros, seguimiento, sincronizacion;
     public static Context appContext;
@@ -583,7 +584,7 @@ public class MainActivity extends AppCompatActivity implements
 
     }
 
-    public void visitasFragment(String nameUser){
+    public void visitasFragment(String id){
         VisitasFragment fragment = new VisitasFragment();
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
@@ -652,6 +653,7 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     public void visita(View v){
+        Log.d(TAG,"Entrando en visita...");
         VisitaFragment fragment = new VisitaFragment();
         fragment.userID = patientID;
         FragmentManager manager = getSupportFragmentManager();
