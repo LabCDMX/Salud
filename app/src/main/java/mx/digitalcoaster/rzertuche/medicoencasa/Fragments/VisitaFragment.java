@@ -36,6 +36,7 @@ import mx.digitalcoaster.rzertuche.medicoencasa.models.Visita;
 
 public class VisitaFragment extends Fragment {
 
+    private String TAG = VisitaFragment.this.getClass().getSimpleName();
     Question currentQuestion;
 
     TextView question;
@@ -61,8 +62,6 @@ public class VisitaFragment extends Fragment {
     ImageButton next;
     ImageView imageLogo;
     ImageView imageIcon2;
-
-
 
     String checking = "visita";
 
@@ -162,27 +161,27 @@ public class VisitaFragment extends Fragment {
         this.activity = getActivity();
         this.container = view;
 
-        open = (LinearLayout) view.findViewById(R.id.open);
-        multiple = (LinearLayout) view.findViewById(R.id.multiple);
-        finish = (LinearLayout) view.findViewById(R.id.finishLayout);
-        review = (LinearLayout) view.findViewById(R.id.ReviewLayout);
+        open = view.findViewById(R.id.open);
+        multiple = view.findViewById(R.id.multiple);
+        finish = view.findViewById(R.id.finishLayout);
+        review = view.findViewById(R.id.ReviewLayout);
 
 
-        question = (TextView) view.findViewById(R.id.question);
-        title = (TextView) view.findViewById(R.id.title);
-        answer = (EditText) view.findViewById(R.id.answer);
-        category = (TextView) view.findViewById(R.id.category);
-        multiple1 = (RadioButton) view.findViewById(R.id.multiple1);
-        multiple2 = (RadioButton) view.findViewById(R.id.multiple2);
-        multiple3 = (RadioButton) view.findViewById(R.id.multiple3);
-        multiple4 = (RadioButton) view.findViewById(R.id.multiple4);
-        multiple5 = (RadioButton) view.findViewById(R.id.multiple5);
-        multiple6 = (RadioButton) view.findViewById(R.id.multiple6);
-        multiple7 = (RadioButton) view.findViewById(R.id.multiple7);
-        multiple8 = (RadioButton) view.findViewById(R.id.multiple8);
+        question = view.findViewById(R.id.question);
+        title = view.findViewById(R.id.title);
+        answer = view.findViewById(R.id.answer);
+        category = view.findViewById(R.id.category);
+        multiple1 = view.findViewById(R.id.multiple1);
+        multiple2 = view.findViewById(R.id.multiple2);
+        multiple3 = view.findViewById(R.id.multiple3);
+        multiple4 = view.findViewById(R.id.multiple4);
+        multiple5 = view.findViewById(R.id.multiple5);
+        multiple6 = view.findViewById(R.id.multiple6);
+        multiple7 = view.findViewById(R.id.multiple7);
+        multiple8 = view.findViewById(R.id.multiple8);
 
-        multiples1 = (RadioGroup) view.findViewById(R.id.multiples1);
-        multiples2 = (RadioGroup) view.findViewById(R.id.multiples2);
+        multiples1 = view.findViewById(R.id.multiples1);
+        multiples2 = view.findViewById(R.id.multiples2);
         multiples1.clearCheck(); // this is so we can start fresh, with no selection on both RadioGroups
         multiples2.clearCheck();
         multiples1.setOnCheckedChangeListener(listener1);
@@ -190,11 +189,11 @@ public class VisitaFragment extends Fragment {
 
         loadQuestion();
 
-        next = (ImageButton) view.findViewById(R.id.next);
+        next = view.findViewById(R.id.next);
         next.setOnClickListener(nextOnClickListener);
 
-        imageLogo = (ImageView) view.findViewById(R.id.imageView8);
-        imageIcon2 = (ImageView) view.findViewById(R.id.icon2);
+        imageLogo = view.findViewById(R.id.imageView8);
+        imageIcon2 = view.findViewById(R.id.icon2);
 
         category.setText("Visita Médica");
     }
@@ -226,6 +225,8 @@ public class VisitaFragment extends Fragment {
     private View.OnClickListener nextOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+
+            Log.d(TAG, "print_index" + indexCurrentQuestion);
 
             if (indexCurrentQuestion==0){visita.setPeso(answer.getText().toString());}
             if (indexCurrentQuestion==1){visita.setEstatura(answer.getText().toString());}
@@ -263,7 +264,6 @@ public class VisitaFragment extends Fragment {
 
                 finish.setVisibility(View.VISIBLE);
             }
-
 
         }
     };
@@ -307,9 +307,6 @@ public class VisitaFragment extends Fragment {
         }
     }
 
-    public void saveGenerales(){
-
-    }
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

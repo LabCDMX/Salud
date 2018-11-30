@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
@@ -96,8 +97,8 @@ public class TarjetaPacienteFragment extends Fragment {
         //Obtencion de datos del sharedPreferences
         sharedPreferences = SharedPreferences.getInstance();
 
-        tvNombreItem = (TextView) getActivity().findViewById(R.id.tvNombreItem);
-        tvCurpItem = (TextView) getActivity().findViewById(R.id.tvCurpItem);
+        tvNombreItem = getActivity().findViewById(R.id.tvNombreItem);
+        tvCurpItem = getActivity().findViewById(R.id.tvCurpItem);
         tvDireccionItem = (TextView) getActivity().findViewById(R.id.tvDireccionItem);
         textViewFecha = (TextView) getActivity().findViewById(R.id.textViewFecha);
         nombreMedico = (EditText) getActivity().findViewById(R.id.textViewPeso);
@@ -218,6 +219,19 @@ public class TarjetaPacienteFragment extends Fragment {
                                     sharedPreferences.setStringData("Expediente", textViewExpediente.getText().toString());
                                     deleteUserSinExpediente(sharedPreferences.getStringData("curpItem"), sharedPreferences.getStringData("nameItem"));
                                     ((MainActivity)getActivity()).succededClinica();
+
+                                    ContentValues updateSyn = new ContentValues();
+                                    updateSyn.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_EXPEDIENTE, textViewExpediente.getText().toString());
+
+                                    db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE ,null);
+                                    db.update(DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC,updateSyn,DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_NOMBRE + " = ? AND " + DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_CURP + " = ? ",new String[]{sharedPreferences.getStringData("nameItem"),sharedPreferences.getStringData("curpItem")});
+
+                                        Cursor cursor = db.rawQuery(" SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC,null);
+                                        Log.d("::: tag_",DatabaseUtils.dumpCursorToString(cursor));
+
+                                    cursor.close();
+                                    db.close();
+
                                 }
 
                             }else{
@@ -302,7 +316,6 @@ public class TarjetaPacienteFragment extends Fragment {
 
     private void deleteUser(String CURP){
 
-        Date myDate = new Date();
         String siguienteVisita = textViewFecha.getText().toString();
         String fechaActual = siguienteVisita;
         String nombreDoctor = nombreMedico.getText().toString();
@@ -310,6 +323,10 @@ public class TarjetaPacienteFragment extends Fragment {
         Log.e("NOMBRE HISTORIA CLINICA",sharedPreferences.getStringData("nameHistoric"));
 
         db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE ,null);
+
+        Cursor otherData = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC,null);
+        Log.d("c_sync_historic ::: ", DatabaseUtils.dumpCursorToString(otherData));
+        otherData.close();
 
         /*------------------------- Revisar si existe ------------------------*/
         c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SIN_EXPEDIENTE, null);
@@ -579,6 +596,7 @@ public class TarjetaPacienteFragment extends Fragment {
 
     private void deleteUserSinExpediente(String CURP,String name){
 
+
         Date myDate = new Date();
         System.out.println(myDate);
         System.out.println(new SimpleDateFormat("yyyy-MM-dd").format(myDate));
@@ -636,6 +654,8 @@ public class TarjetaPacienteFragment extends Fragment {
 
         /*------------------------- Revisar si existe ------------------------*/
         c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SEGUIMIENTO, null);
+
+
         try {
             if(c.moveToFirst()) {
 
@@ -662,7 +682,8 @@ public class TarjetaPacienteFragment extends Fragment {
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_GLUCEMIA, sharedPreferences.getStringData("Glucemia"));
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_TEMPERATURA, sharedPreferences.getStringData("Temperatura"));
 
-
+                //values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_ID, );
+                //values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_SEND_SUCCESS, "NOT_SYNC");
 
 
                 db.insert(DataBaseDB.TABLE_NAME_PACIENTES_SEGUIMIENTO, null, values);
@@ -692,6 +713,8 @@ public class TarjetaPacienteFragment extends Fragment {
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_GLUCEMIA, sharedPreferences.getStringData("Glucemia"));
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_TEMPERATURA, sharedPreferences.getStringData("Temperatura"));
 
+                //values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_ID, );
+                //values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_SEND_SUCCESS, "NOT_SYNC");
 
                 db.insert(DataBaseDB.TABLE_NAME_PACIENTES_SEGUIMIENTO, null, values);
                 System.out.println("Sin expediente insertado correctamente");
@@ -730,6 +753,10 @@ public class TarjetaPacienteFragment extends Fragment {
         int numeroVisita = Integer.valueOf(auxVisita)+1;
 
         db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE ,null);
+
+        Cursor otherData = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC,null);
+        Log.d("c_sync_historic ::: ", DatabaseUtils.dumpCursorToString(otherData));
+        otherData.close();
 
         /*------------------------- Revisar si existe ------------------------*/
         c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SEGUIMIENTO, null);
@@ -832,10 +859,6 @@ public class TarjetaPacienteFragment extends Fragment {
         } finally {
             db.close();
         }
-
-
     }
-
-
 
 }

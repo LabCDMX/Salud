@@ -116,7 +116,7 @@
                 android:background="#b60065" />
 
             <GridView
-                android:id="@+id/gridview"
+                android:id="@+id/gridSeguimiento"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:columnWidth="100dp"

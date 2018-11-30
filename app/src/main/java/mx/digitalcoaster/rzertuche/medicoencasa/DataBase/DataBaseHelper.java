@@ -3,6 +3,7 @@ package mx.digitalcoaster.rzertuche.medicoencasa.DataBase;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -62,7 +63,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         /*---------------------------- Creación de la table de session ---------------------------*/
         db.execSQL("CREATE TABLE IF NOT EXISTS " + DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR + "(" +
-                "_id INTEGER PRIMARY KEY, " +
+                "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 DataBaseDB.PACIENTES_SINCRONIZAR_NOMBRE + " TEXT, " +
                 DataBaseDB.PACIENTES_SINCRONIZAR_CURP + " TEXT, " +
                 DataBaseDB.PACIENTES_SINCRONIZAR_CALLE + " TEXT, " +
@@ -152,7 +153,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         /*---------------------------- Creación de la table de session ---------------------------*/
         db.execSQL("CREATE TABLE IF NOT EXISTS " + DataBaseDB.TABLE_NAME_PACIENTES_SIN_EXPEDIENTE + "(" +
-                "_id INTEGER PRIMARY KEY, " +
+                "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 DataBaseDB.PACIENTES_EXPEDIENTE_NOMBRE + " TEXT, " +
                 DataBaseDB.PACIENTES_EXPEDIENTE_CURP + " TEXT, " +
 
@@ -213,31 +214,32 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         /*---------------------------- Creación de la table de session ---------------------------*/
         db.execSQL("CREATE TABLE IF NOT EXISTS " + DataBaseDB.TABLE_NAME_PACIENTES_SEGUIMIENTO + "(" +
-                "_id INTEGER PRIMARY KEY, " +
+                "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NOMBRE + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_CURP + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_DIAGNOSTICO + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_TRATAMIENTO + " TEXT, " +
-                DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_FECHA + " TEXT, " +
+                DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_FECHA + " TEXT, " +//5
                 DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NUMERO + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_EXPEDIENTE + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_STATUS + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NOTAS_ENFERMERIA + " TEXT, " +
-                DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_SUBJETIVO + " TEXT, " +
+                DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_SUBJETIVO + " TEXT, " +//10
                 DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_OBJETIVO + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_ANALISIS + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_PLAN + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_HEMOTIPO + " TEXT, " +
-                DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_PESO + " TEXT, " +
+                DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_PESO + " TEXT, " +//15
                 DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_ESTATURA + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_TENSION_ARTERIAL + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_FRECUENCIA_CARDIACA + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_FRECUENCIA_RESPIRATORIA + " TEXT, " +
-                DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_TALLA + " TEXT, " +
+                DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_TALLA + " TEXT, " +//20
                 DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_PULSO + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_GLUCEMIA + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_TEMPERATURA + " TEXT, " +
-                DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_ID + " TEXT); "
+                DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_ID + " TEXT, " +
+                DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_SYNC + " TEXT); "//25
 
         );
         Log.d("DB_CREATE",DataBaseDB.TABLE_NAME_PACIENTES_SEGUIMIENTO + " Creada");
@@ -257,7 +259,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         /*---------------------------- Creación de la table de session ---------------------------*/
         db.execSQL("CREATE TABLE IF NOT EXISTS " + DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC + "(" +
-                "_id INTEGER PRIMARY KEY, " +
+                "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_NOMBRE + " TEXT, " +
                 DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_CURP + " TEXT, " +
                 DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_STATUS + " TEXT, " +
@@ -313,8 +315,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_ID + " TEXT, " + //53 -:::
                 DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_TORAX + " TEXT, " +
                 DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_PERSONALES_HEREDO + " TEXT, " +
+
                 DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_SEND_SUCCESS + " TEXT ); "
+
         );
+
+
         Log.d("DB_CREATE",DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC + " Creada");
 
 
@@ -353,9 +359,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 DataBaseDB.RESPUESTAS_RADIO6 + " TEXT); "
         );
         Log.d("DB_CREATE",DataBaseDB.TABLE_NAME_RESPUESTAS_RADIO + " Creada");
-
-
-
 
     }
 

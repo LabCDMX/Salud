@@ -46,6 +46,8 @@ import mx.digitalcoaster.rzertuche.medicoencasa.models.VisitasAdapter;
 
 
 public class VisitasFragment extends Fragment {
+
+    private String TAG = VisitasFragment.this.getClass().getSimpleName();
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -85,6 +87,7 @@ public class VisitasFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        Log.d(TAG,"Create view visitas fragment...");
         return inflater.inflate(R.layout.fragment_visita_paciente, container, false);
     }
 
@@ -143,8 +146,8 @@ public class VisitasFragment extends Fragment {
 
         }
 
-        ImageButton next = (ImageButton) getActivity().findViewById(R.id.next);
-        next.setOnClickListener(new View.OnClickListener() {
+        ImageButton addVisitas = getActivity().findViewById(R.id.addVisitas);
+        addVisitas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 isSeguimiento = true;
@@ -195,7 +198,7 @@ public class VisitasFragment extends Fragment {
                     items.add(new ItemVisita(c.getString(1), c.getString(2), c.getString(3), c.getString(4), c.getString(5), c.getString(6), c.getString(7)));
                 }while (c.moveToNext());
             } else {
-                System.out.println("No existen Visitas");
+                Log.d(TAG,"No existen Visitas");
             }
         } catch (Exception ex) {
             Log.e("Error", ex.toString());

@@ -214,6 +214,7 @@ public class DataBaseDB {
     public static final String PACIENTES_VISITA_SEGUIMIENTO_GLUCEMIA = "pacientes_visita_seguimiento_glucemia";
     public static final String PACIENTES_VISITA_SEGUIMIENTO_TEMPERATURA = "pacientes_visita_seguimiento_temperatura";
     public static final String PACIENTES_VISITA_SEGUIMIENTO_ID = "pacientes_visita_seguimiento_id";
+    public static final String PACIENTES_VISITA_SEGUIMIENTO_SYNC = "pacientes_visita_seguimiento_sync";
 
 
     public static final String PACIENTES_SINCRONIZAR_HISTORIC_NOMBRE = "pacientes_sincronizar_historic_nombre";

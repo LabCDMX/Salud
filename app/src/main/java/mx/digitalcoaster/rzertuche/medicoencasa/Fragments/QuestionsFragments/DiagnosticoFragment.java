@@ -183,7 +183,7 @@ public class DiagnosticoFragment extends Fragment {
                 sharedPreferences.setStringData("Tratamiento3", et_tratamiento2.getText().toString());
 
 
-                ((MainActivity)getActivity()).fragmentTarjetaPaciente();
+                ((MainActivity)getActivity()).fragmentTarjetaPaciente( );
 
 
             }

@@ -31,6 +31,7 @@ import mx.digitalcoaster.rzertuche.medicoencasa.models.User;
  * create an instance of this fragment.
  */
 public class SeguimientoFragment extends Fragment {
+    public String TAG = SeguimientoFragment.this.getClass().getSimpleName();
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -78,6 +79,7 @@ public class SeguimientoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        Log.d(TAG,"Create view... seguimiento");
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_seguimiento, container, false);
     }
@@ -86,7 +88,7 @@ public class SeguimientoFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        GridView gridView = (GridView) view.findViewById(R.id.gridusers);
+        GridView gridView = view.findViewById(R.id.gridusers);
 
         Realm realm = Realm.getDefaultInstance();
         RealmResults<User> users = realm.where(User.class).findAll();
@@ -96,7 +98,7 @@ public class SeguimientoFragment extends Fragment {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> arg0, View v, int position, long arg3) {
-                selectedUser = (User) usersArray.get(position);
+                selectedUser = usersArray.get(position);
                 Log.d("User", "USERUUID:"+selectedUser.getUserUUID());
                 ((MainActivity)getActivity()).paciente(selectedUser.getUserUUID());
             }
