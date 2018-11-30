@@ -214,11 +214,12 @@ public class NotasHojaDiaria extends Fragment {
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_FECHA, textViewFecha.getText().toString());
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NUMERO, String.valueOf(numeroVisita));
 
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_SYNC, "NOT_SYNC");
 
                 db.insert(DataBaseDB.TABLE_NAME_PACIENTES_SEGUIMIENTO, null, values);
                 System.out.println("Visita  insertada correctamente");
-            }
-            else {
+
+            } else {
 
                 ContentValues values = new ContentValues();
 
@@ -242,6 +243,7 @@ public class NotasHojaDiaria extends Fragment {
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_FECHA, textViewFecha.getText().toString());
                 values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NUMERO, String.valueOf(numeroVisita));
 
+                values.put(DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_SYNC, "NOT_SYNC");
 
                 db.insert(DataBaseDB.TABLE_NAME_PACIENTES_SEGUIMIENTO, null, values);
                 System.out.println("Sin expediente insertado correctamente");

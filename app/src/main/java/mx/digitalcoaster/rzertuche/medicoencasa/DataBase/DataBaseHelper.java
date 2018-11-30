@@ -214,7 +214,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         /*---------------------------- Creación de la table de session ---------------------------*/
         db.execSQL("CREATE TABLE IF NOT EXISTS " + DataBaseDB.TABLE_NAME_PACIENTES_SEGUIMIENTO + "(" +
-                "_id INTEGER PRIMARY KEY, " +
+                "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_NOMBRE + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_CURP + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_DIAGNOSTICO + " TEXT, " +
@@ -238,8 +238,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_PULSO + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_GLUCEMIA + " TEXT, " +
                 DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_TEMPERATURA + " TEXT, " +
-                DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_ID + " TEXT, " + //24
-                DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_SYNC + " TEXT); "
+                DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_ID + " TEXT, " +
+                DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_SYNC + " TEXT); "//25
 
         );
         Log.d("DB_CREATE",DataBaseDB.TABLE_NAME_PACIENTES_SEGUIMIENTO + " Creada");
@@ -315,6 +315,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_ID + " TEXT, " + //53 -:::
                 DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_TORAX + " TEXT, " +
                 DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_PERSONALES_HEREDO + " TEXT, " +
+
                 DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_SEND_SUCCESS + " TEXT ); "
 
         );

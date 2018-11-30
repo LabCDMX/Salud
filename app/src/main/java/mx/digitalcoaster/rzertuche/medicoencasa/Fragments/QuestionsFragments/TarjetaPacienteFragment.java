@@ -224,10 +224,11 @@ public class TarjetaPacienteFragment extends Fragment {
                                     updateSyn.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_EXPEDIENTE, textViewExpediente.getText().toString());
 
                                     db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE ,null);
-                                    db.update(DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC,updateSyn,DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_NOMBRE + " = ? AND " + DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_CURP + " = ? ",null);
+                                    db.update(DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC,updateSyn,DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_NOMBRE + " = ? AND " + DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_CURP + " = ? ",new String[]{sharedPreferences.getStringData("nameItem"),sharedPreferences.getStringData("curpItem")});
 
-                                    Cursor cursor = db.rawQuery(" SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC,null);
-                                    Log.d("::: tag_",DatabaseUtils.dumpCursorToString(cursor));
+                                        Cursor cursor = db.rawQuery(" SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC,null);
+                                        Log.d("::: tag_",DatabaseUtils.dumpCursorToString(cursor));
+
                                     cursor.close();
                                     db.close();
 
