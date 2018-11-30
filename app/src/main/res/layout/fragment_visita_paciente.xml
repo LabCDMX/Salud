@@ -195,7 +195,7 @@
                 android:layout_height="45dp"
                 android:background="@android:color/transparent"
                 android:padding="10dp"
-                android:layout_marginLeft="770dp"
+                android:layout_alignParentRight="true"
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/anadir" />
 

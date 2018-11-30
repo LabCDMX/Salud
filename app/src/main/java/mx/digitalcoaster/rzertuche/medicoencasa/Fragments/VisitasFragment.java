@@ -98,16 +98,16 @@ public class VisitasFragment extends Fragment {
         numeroVisita = sharedPreferences.getStringData("numero_visita");
         curpPatient = sharedPreferences.getStringData("curpSeguimiento");
 
-        status = (ImageView) getActivity().findViewById(R.id.status);
-        nombre = (TextView) getActivity().findViewById(R.id.tvNombreItem);
-        diagnostico = (TextView) getActivity().findViewById(R.id.textViewDiagnostico);
-        tratamiento = (TextView) getActivity().findViewById(R.id.textViewTratamiento);
-        expediente = (TextView) getActivity().findViewById(R.id.expediente);
+        status =  getActivity().findViewById(R.id.status);
+        nombre =  getActivity().findViewById(R.id.tvNombreItem);
+        diagnostico =  getActivity().findViewById(R.id.textViewDiagnostico);
+        tratamiento =  getActivity().findViewById(R.id.textViewTratamiento);
+        expediente =  getActivity().findViewById(R.id.expediente);
 
-        datosGenerales = (ImageButton) getActivity().findViewById(R.id.datos_generales);
-        historiaClinica = (ImageButton) getActivity().findViewById(R.id.historia_clinica);
+        datosGenerales =  getActivity().findViewById(R.id.datos_generales);
+        historiaClinica =  getActivity().findViewById(R.id.historia_clinica);
 
-        lista = (GridView) getActivity().findViewById(R.id.gridview);
+        lista = getActivity().findViewById(R.id.gridview);
         items = new ArrayList<>();
         getProductos();
         Log.e("SUPERMEGAVISITA",sharedPreferences.getStringData("numero_visita"));
@@ -174,10 +174,7 @@ public class VisitasFragment extends Fragment {
 
 
 
-
     }
-
-
 
 
     private void getProductos() {
@@ -191,7 +188,6 @@ public class VisitasFragment extends Fragment {
                     sharedPreferences.setStringData("Diagnostico",c.getString(2));
                     sharedPreferences.setStringData("Tratamiento",c.getString(3));
                     sharedPreferences.setStringData("Nombre",c.getString(1));
-                    sharedPreferences.setStringData("Nombre",c.getString(1));
                     sharedPreferences.setStringData("numero_visita",c.getString(6));
 
 
@@ -201,10 +197,10 @@ public class VisitasFragment extends Fragment {
             } else {
                 System.out.println("No existen Visitas");
             }
-            c.close();
         } catch (Exception ex) {
             Log.e("Error", ex.toString());
         } finally {
+            c.close();
             db.close();
         }
     }
@@ -294,12 +290,12 @@ public class VisitasFragment extends Fragment {
             } else {
                 System.out.println("No existe información del cliente");
             }
-            c.close();
         } catch (Exception ex) {
-            System.out.println("Exception: " + ex);
+            Log.d("Visitas","Exception: " + ex);
+        }finally {
+            c.close();
+            db.close();
         }
-
-
 
         builder.setPositiveButton("ACEPTAR", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
@@ -414,9 +410,11 @@ public class VisitasFragment extends Fragment {
             } else {
                 System.out.println("No existe información del cliente");
             }
-            c.close();
         } catch (Exception ex) {
             System.out.println("Exception: " + ex);
+        }finally {
+            c.close();
+            db.close();
         }
 
         builder.setPositiveButton("ACEPTAR", new DialogInterface.OnClickListener() {
@@ -478,9 +476,11 @@ public class VisitasFragment extends Fragment {
             } else {
                 System.out.println("No existe información del cliente");
             }
-            c.close();
         } catch (Exception ex) {
-            System.out.println("Exception: " + ex);
+            Log.d("Visitas","Exception: " + ex);
+        }finally {
+            c.close();
+            db.close();
         }
 
 
@@ -516,12 +516,14 @@ public class VisitasFragment extends Fragment {
                     System.out.println("Codigo actualizado correctamente");
 
                 }
-                c.close();
             } catch (SQLException ex) {
                 System.out.println("Error al insertar codigo postal: " + ex);
+            }finally {
+            db.close();
+            c.close();
+
             }
 
-        db.close();
 
     }
 
@@ -546,12 +548,13 @@ public class VisitasFragment extends Fragment {
                 System.out.println("Codigo actualizado correctamente");
 
             }
-            c.close();
         } catch (SQLException ex) {
             System.out.println("Error al insertar codigo postal: " + ex);
+        }finally {
+            db.close();
+            c.close();
         }
 
-        db.close();
 
     }
 

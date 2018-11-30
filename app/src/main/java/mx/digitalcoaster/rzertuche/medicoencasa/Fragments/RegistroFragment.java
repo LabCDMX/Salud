@@ -123,9 +123,7 @@ public class RegistroFragment extends Fragment {
 
 
 
-
-
-        GridView gridView = (GridView) view.findViewById(R.id.gridusers);
+        GridView gridView = view.findViewById(R.id.gridusers);
 
         items = new ArrayList<>();
         getProductos();

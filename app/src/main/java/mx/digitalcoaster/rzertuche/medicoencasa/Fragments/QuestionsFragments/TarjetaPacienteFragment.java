@@ -1,4 +1,4 @@
-package mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments;
+package mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments;
 
 import android.app.DatePickerDialog;
 import android.content.ContentValues;
@@ -39,13 +39,6 @@ import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.se
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.sincronizacion;
 import static mx.digitalcoaster.rzertuche.medicoencasa.Fragments.PacientesFragment.isSinExp;
 import static mx.digitalcoaster.rzertuche.medicoencasa.Fragments.VisitasFragment.isSeguimiento;
-import static mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.HistoriaClinicaFragment.cadenaCardio;
-import static mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.HistoriaClinicaFragment.cadenaDiabetes;
-import static mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.HistoriaClinicaFragment.cadenaDis;
-import static mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.HistoriaClinicaFragment.cadenaEnf;
-import static mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.HistoriaClinicaFragment.cadenaHTA;
-import static mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.HistoriaClinicaFragment.cadenaObe;
-import static mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.HistoriaClinicaFragment.cadenaPersonales;
 
 
 
@@ -236,10 +229,6 @@ public class TarjetaPacienteFragment extends Fragment {
                     }
                 }
 
-
-
-
-
             }
         });
 
@@ -367,6 +356,7 @@ public class TarjetaPacienteFragment extends Fragment {
                 values.put(DataBaseDB.PACIENTES_CARDIACA, sharedPreferences.getStringData("Frecuencia Cardiaca"));
                 values.put(DataBaseDB.PACIENTES_RESPIRATORIA, sharedPreferences.getStringData("Frecuencia Respiratoria"));
                 values.put(DataBaseDB.PACIENTES_TEMPERATURA, sharedPreferences.getStringData("Temperatura"));
+
                 values.put(DataBaseDB.PACIENTES_PERSONALES_HEREDO, sharedPreferences.getStringData("Heredofamiliares"));
                 values.put(DataBaseDB.PACIENTES_PERSONALES_NO_PATOLOGICOS, sharedPreferences.getStringData("NoPatologicos"));
                 values.put(DataBaseDB.PACIENTES_PERSONALES_PATOLOGICOS, sharedPreferences.getStringData("Patologicos"));
@@ -378,9 +368,6 @@ public class TarjetaPacienteFragment extends Fragment {
                 values.put(DataBaseDB.PACIENTES_COLUMNA, sharedPreferences.getStringData("Columna"));
                 values.put(DataBaseDB.PACIENTES_NEUROLOGICA, sharedPreferences.getStringData("Neurologica"));
                 values.put(DataBaseDB.PACIENTES_GENITALES, sharedPreferences.getStringData("Genitales"));
-
-
-
 
                 db.insert(DataBaseDB.TABLE_NAME_PACIENTES_SIN_EXPEDIENTE, null, values);
                 System.out.println("Visita  insertada correctamente");
@@ -427,6 +414,8 @@ public class TarjetaPacienteFragment extends Fragment {
                 values.put(DataBaseDB.PACIENTES_CARDIACA, sharedPreferences.getStringData("Frecuencia Cardiaca"));
                 values.put(DataBaseDB.PACIENTES_RESPIRATORIA, sharedPreferences.getStringData("Frecuencia Respiratoria"));
                 values.put(DataBaseDB.PACIENTES_TEMPERATURA, sharedPreferences.getStringData("Temperatura"));
+
+
                 values.put(DataBaseDB.PACIENTES_PERSONALES_HEREDO, sharedPreferences.getStringData("Heredofamiliares"));
                 values.put(DataBaseDB.PACIENTES_PERSONALES_NO_PATOLOGICOS, sharedPreferences.getStringData("NoPatologicos"));
                 values.put(DataBaseDB.PACIENTES_PERSONALES_PATOLOGICOS, sharedPreferences.getStringData("Patologicos"));
@@ -516,10 +505,10 @@ public class TarjetaPacienteFragment extends Fragment {
                 values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_NEUROLOGICA, sharedPreferences.getStringData("Neurologica"));
                 values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_GENITALES, sharedPreferences.getStringData("Genitales"));
 
-
-
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_SEND_SUCCESS, "NOT_SYNC");
 
                 db.insert(DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC, null, values);
+
                 System.out.println("Visita  insertada correctamente");
             }
             else {
@@ -573,7 +562,7 @@ public class TarjetaPacienteFragment extends Fragment {
                 values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_NEUROLOGICA, sharedPreferences.getStringData("Neurologica"));
                 values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_GENITALES, sharedPreferences.getStringData("Genitales"));
 
-
+                values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_SEND_SUCCESS, "NOT_SYNC");
 
                 db.insert(DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC, null, values);
                 System.out.println("Sin expediente insertado correctamente");
@@ -583,7 +572,7 @@ public class TarjetaPacienteFragment extends Fragment {
         } catch (SQLException ex) {
             System.out.println("Error al insertar productos: " + ex);
         }
-
+        sharedPreferences.clearPreferences();
         db.close();
     }
 
@@ -678,8 +667,7 @@ public class TarjetaPacienteFragment extends Fragment {
 
                 db.insert(DataBaseDB.TABLE_NAME_PACIENTES_SEGUIMIENTO, null, values);
                 System.out.println("Visita  insertada correctamente");
-            }
-            else {
+            } else {
 
                 ContentValues values = new ContentValues();
 
@@ -811,8 +799,6 @@ public class TarjetaPacienteFragment extends Fragment {
         } catch (SQLException ex) {
             System.out.println("Error al insertar productos: " + ex);
         }
-
-
 
         db.close();
     }

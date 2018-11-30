@@ -1,4 +1,4 @@
-package mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments;
+package mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments;
 
 import android.app.DatePickerDialog;
 import android.content.ContentValues;

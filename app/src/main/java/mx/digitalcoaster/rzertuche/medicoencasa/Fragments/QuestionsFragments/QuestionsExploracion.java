@@ -1,4 +1,4 @@
-package mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments;
+package mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments;
 
 import android.content.Context;
 import android.net.Uri;
@@ -80,44 +80,44 @@ public class QuestionsExploracion extends Fragment {
         sharedPreferences = SharedPreferences.getInstance();
         String name = sharedPreferences.getStringData("nameHistoric");
 
-        TextView title2 = (TextView) getActivity().findViewById(R.id.title2);
+        TextView title2 = getActivity().findViewById(R.id.title2);
         title2.setText(name);
 
-        title = (TextView) getActivity().findViewById(R.id.title);
+        title = getActivity().findViewById(R.id.title);
 
-        estatura = (EditText) getActivity().findViewById(R.id.answer2);
+        estatura =  getActivity().findViewById(R.id.answer2);
         estatura.addTextChangedListener(imcWatcher);
 
-        imc = (EditText) getActivity().findViewById(R.id.answer3);
+        imc = getActivity().findViewById(R.id.answer3);
 
-        peso = (EditText) getActivity().findViewById(R.id.answer);
+        peso = getActivity().findViewById(R.id.answer);
         peso.addTextChangedListener(imcWatcherPeso);
 
 
-        talla = (EditText) getActivity().findViewById(R.id.answers7);
-        pulso = (EditText) getActivity().findViewById(R.id.answers8);
-        tension1 = (EditText) getActivity().findViewById(R.id.answers2);
-        tension2 = (EditText) getActivity().findViewById(R.id.answersDiasto);
-        frecuenciaCard= (EditText) getActivity().findViewById(R.id.answers3);
-        frecuenciaRes= (EditText) getActivity().findViewById(R.id.answers4);
-        glucemia= (EditText) getActivity().findViewById(R.id.answers9);
-        temperatura= (EditText) getActivity().findViewById(R.id.answers10);
+        talla = getActivity().findViewById(R.id.answers7);
+        pulso = getActivity().findViewById(R.id.answers8);
+        tension1 = getActivity().findViewById(R.id.answers2);
+        tension2 = getActivity().findViewById(R.id.answersDiasto);
+        frecuenciaCard = getActivity().findViewById(R.id.answers3);
+        frecuenciaRes = getActivity().findViewById(R.id.answers4);
+        glucemia = getActivity().findViewById(R.id.answers9);
+        temperatura= getActivity().findViewById(R.id.answers10);
 
 
-        pesoLayout = (LinearLayout) getActivity().findViewById(R.id.questions);
-        tipoSangre = (LinearLayout) getActivity().findViewById(R.id.questionsHemotipo);
-        tensionLayout = (LinearLayout) getActivity().findViewById(R.id.questions2);
-        tensionLayout2 = (LinearLayout) getActivity().findViewById(R.id.questions5);
-        tallaLayout = (LinearLayout) getActivity().findViewById(R.id.questions6);
-        temperaturaLayout = (LinearLayout) getActivity().findViewById(R.id.questions12);
-        indicatorLayout = (LinearLayout) getActivity().findViewById(R.id.layout_indicator);
+        pesoLayout = getActivity().findViewById(R.id.questions);
+        tipoSangre = getActivity().findViewById(R.id.questionsHemotipo);
+        tensionLayout = getActivity().findViewById(R.id.questions2);
+        tensionLayout2 = getActivity().findViewById(R.id.questions5);
+        tallaLayout = getActivity().findViewById(R.id.questions6);
+        temperaturaLayout = getActivity().findViewById(R.id.questions12);
+        indicatorLayout = getActivity().findViewById(R.id.layout_indicator);
 
-        radioSangre = (RadioGroup) getActivity().findViewById(R.id.radioSangre);
-        radioTipoSangre = (RadioGroup) getActivity().findViewById(R.id.radioTipoSangre);
-        radioDec = (RadioGroup) getActivity().findViewById(R.id.radioDec);
+        radioSangre = getActivity().findViewById(R.id.radioSangre);
+        radioTipoSangre = getActivity().findViewById(R.id.radioTipoSangre);
+        radioDec = getActivity().findViewById(R.id.radioDec);
 
-        next = (ImageButton) getActivity().findViewById(R.id.next);
-        back = (ImageButton) getActivity().findViewById(R.id.back);
+        next = getActivity().findViewById(R.id.next);
+        back = getActivity().findViewById(R.id.back);
 
         if(isSeguimiento){
 
@@ -156,7 +156,6 @@ public class QuestionsExploracion extends Fragment {
                         sharedPreferences.setStringData("Peso", peso.getText().toString());
                         sharedPreferences.setStringData("Estatura", estatura.getText().toString());
 
-
                         pesoLayout.setVisibility(View.GONE);
                         tensionLayout.setVisibility(View.VISIBLE);
 
@@ -181,6 +180,9 @@ public class QuestionsExploracion extends Fragment {
 
                         sharedPreferences.setStringData("Peso", peso.getText().toString());
                         sharedPreferences.setStringData("Estatura", estatura.getText().toString());
+
+                        sharedPreferences.getStringData("Peso");
+                        sharedPreferences.getStringData("Estatura");
 
                         pesoLayout.setVisibility(View.GONE);
                         tensionLayout.setVisibility(View.VISIBLE);
@@ -270,6 +272,8 @@ public class QuestionsExploracion extends Fragment {
             public void onClick(View view) {
                 count --;
 
+                Log.d("p_back ","isSeguimiento... " + isSeguimiento);
+
                 if(isSeguimiento){
 
                     if(tensionLayout.getVisibility() == View.VISIBLE){
@@ -307,7 +311,7 @@ public class QuestionsExploracion extends Fragment {
 
                     }else if(tensionLayout.getVisibility() == View.VISIBLE){
 
-                        pesoLayout.setVisibility(View.VISIBLE);
+                        tipoSangre.setVisibility(View.VISIBLE);
                         tensionLayout.setVisibility(View.GONE);
 
                     }else if(tensionLayout2.getVisibility() == View.VISIBLE){
@@ -368,7 +372,6 @@ public class QuestionsExploracion extends Fragment {
                 }else if (checkedId == R.id.tipoDesconocido){
                     radioDec.clearCheck();
                     sharedPreferences.setStringData("Hemotipo","Desconocido");
-
                 }
 
             }
@@ -411,10 +414,6 @@ public class QuestionsExploracion extends Fragment {
             }
 
         });
-
-
-
-
 
     }
 

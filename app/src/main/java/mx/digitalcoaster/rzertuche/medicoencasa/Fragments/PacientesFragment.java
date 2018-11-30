@@ -118,7 +118,7 @@ public class PacientesFragment extends Fragment {
         sharedPreferences = SharedPreferences.getInstance();
 
 
-        GridView gridView = (GridView) view.findViewById(R.id.gridusers);
+        GridView gridView = view.findViewById(R.id.gridusers);
         items2 = new ArrayList<>();
         getPacientes();
         gridView.setAdapter(new ItemAdapter(getActivity().getApplicationContext(), items2));
@@ -141,7 +141,7 @@ public class PacientesFragment extends Fragment {
         });
 
 
-        GridView gridView3 = (GridView) view.findViewById(R.id.gridviewSinExp);
+        GridView gridView3 = view.findViewById(R.id.gridviewSinExp);
         items3 = new ArrayList<>();
         getSinExpediente();
         gridView3.setAdapter(new ItemAdapter(getActivity().getApplicationContext(), items3));
@@ -160,11 +160,7 @@ public class PacientesFragment extends Fragment {
             }
         });
 
-
-
-
-
-        lista = (GridView) getActivity().findViewById(R.id.gridview);
+        lista = getActivity().findViewById(R.id.gridview);
         items = new ArrayList<>();
         getPacientesSeguimiento();
         lista.setAdapter(new VisitasAdapter(getActivity().getApplicationContext(), items));
@@ -191,7 +187,6 @@ public class PacientesFragment extends Fragment {
 
             }
         });
-
 
     }
 
@@ -226,7 +221,7 @@ public class PacientesFragment extends Fragment {
                     items2.add(new Item(c.getString(1), c.getString(2), c.getString(3)));
                 }while (c.moveToNext());
             } else {
-                System.out.println("No existen PACIENTES");
+                Log.d("PACIENTES...","No existen PACIENTES");
             }
             c.close();
         } catch (Exception ex) {

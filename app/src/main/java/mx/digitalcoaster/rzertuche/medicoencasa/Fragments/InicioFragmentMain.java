@@ -4,55 +4,47 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.database.Cursor;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.os.Vibrator;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.text.TextUtils;
+//import android.telecom.Call;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.json.JSONArray;
+import com.google.gson.JsonObject;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Hashtable;
-
 import javax.net.ssl.HttpsURLConnection;
 
-import io.realm.internal.android.JsonUtils;
 import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseDB;
 import mx.digitalcoaster.rzertuche.medicoencasa.DataBase.DataBaseHelper;
 import mx.digitalcoaster.rzertuche.medicoencasa.Utils.SharedPreferences;
 import mx.digitalcoaster.rzertuche.medicoencasa.R;
+import mx.digitalcoaster.rzertuche.medicoencasa.api.ApiInterface;
+import mx.digitalcoaster.rzertuche.medicoencasa.api.MedicalService;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 /**
@@ -64,6 +56,9 @@ import mx.digitalcoaster.rzertuche.medicoencasa.R;
  * create an instance of this fragment.
  */
 public class InicioFragmentMain extends Fragment {
+
+    public static String TAG = InicioFragment.class.getSimpleName();
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -92,6 +87,7 @@ public class InicioFragmentMain extends Fragment {
         // Required empty public constructor
     }
 
+
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -113,10 +109,19 @@ public class InicioFragmentMain extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
+                .detectLeakedSqlLiteObjects()
+                .detectLeakedClosableObjects()
+                .penaltyLog()
+                .penaltyDeath()
+                .build());
+
     }
 
     @Override
@@ -173,14 +178,6 @@ public class InicioFragmentMain extends Fragment {
 
             }
 
-
-
-
-
-
-
-
-
         });
 
 
@@ -235,7 +232,7 @@ public class InicioFragmentMain extends Fragment {
                          String municipio, String cp, String poblacion, String colonia, String nombreCalle, String edo_civil, String ocupacion, String derecho,
                          String telFijo, String telCel, String correo) throws JSONException, ParseException {
 
-        progress.show();
+        //progress.show();
 
 
        if(sexo.equals("Masculino")){
@@ -273,29 +270,29 @@ public class InicioFragmentMain extends Fragment {
 
 
 
-        JSONObject jsonParams = new JSONObject();
-        jsonParams.put("curp",curp);
-        jsonParams.put("apellidoPaterno",a_pa);
-        jsonParams.put("apellidoMaterno",a_ma);
-        jsonParams.put("nombre",nombre);
-        jsonParams.put("fechadeNacimiento",fechaNac);
-        jsonParams.put("estadodeNacimiento",estadoNac);
-        jsonParams.put("sexo",sexo);
-        jsonParams.put("nacionalidadOrigen",nac);
-        jsonParams.put("estadoResidencia",estadoRes);
-        jsonParams.put("municipio",municipio);
-        jsonParams.put("cp",cp);
-        jsonParams.put("pob_vul",poblacion);
-        jsonParams.put("colonia",colonia);
-        jsonParams.put("nombreCalle",nombreCalle);
-        jsonParams.put("estadoCivil",edo_civil);
-        jsonParams.put("ocupacion",ocupacion);
-        jsonParams.put("derechoHabiencia",derecho);
-        jsonParams.put("telFijo",telFijo);
-        jsonParams.put("telCelular",telCel);
-        jsonParams.put("correoElectronico",correo);
-        jsonParams.put("folioDerechoHabiencia","0");
-        jsonParams.put("createdBy","0");
+        JsonObject jsonParams = new JsonObject();
+        jsonParams.addProperty("curp",curp);
+        jsonParams.addProperty("apellidoPaterno",a_pa);
+        jsonParams.addProperty("apellidoMaterno",a_ma);
+        jsonParams.addProperty("nombre",nombre);
+        jsonParams.addProperty("fechadeNacimiento",fechaNac);
+        jsonParams.addProperty("estadodeNacimiento",estadoNac);
+        jsonParams.addProperty("sexo",sexo);
+        jsonParams.addProperty("nacionalidadOrigen",nac);
+        jsonParams.addProperty("estadoResidencia",estadoRes);
+        jsonParams.addProperty("municipio",municipio);
+        jsonParams.addProperty("cp",cp);
+        jsonParams.addProperty("pob_vul",poblacion);
+        jsonParams.addProperty("colonia",colonia);
+        jsonParams.addProperty("nombreCalle",nombreCalle);
+        jsonParams.addProperty("estadoCivil",edo_civil);
+        jsonParams.addProperty("ocupacion",ocupacion);
+        jsonParams.addProperty("derechoHabiencia",derecho);
+        jsonParams.addProperty("telFijo",telFijo);
+        jsonParams.addProperty("telCelular",telCel);
+        jsonParams.addProperty("correoElectronico",correo);
+        jsonParams.addProperty("folioDerechoHabiencia","0");
+        jsonParams.addProperty("createdBy","0");
 
 
 
@@ -304,168 +301,62 @@ public class InicioFragmentMain extends Fragment {
 
         //connectPostWithCookies("https://medico.digitalcoaster.mx/api/admin/api/paciente",jsonParams.toString());
 
-
         try {
-            progress.show();
-            URL url = new URL("https://medico.digitalcoaster.mx/api/admin/api/paciente");
-            HttpsURLConnection urlConnection = (HttpsURLConnection) url.openConnection();
 
-            urlConnection.setConnectTimeout(10000);
-            urlConnection.setRequestMethod("POST");
-            urlConnection.setDoInput(true);
-            urlConnection.setDoOutput(true);
-            urlConnection.setRequestProperty("Content-type", "application/json");
+            ApiInterface getDataQuestions = MedicalService.getMedicalApiData().create(ApiInterface.class);
+            getDataQuestions.sendPaciente(jsonParams).enqueue(new Callback<JsonObject>() {
+                @Override
+                public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                    loading.setVisibility(View.VISIBLE);
+
+                    Log.e("URL", "https://medico.digitalcoaster.mx/api/admin/api/paciente");
+                    Log.e("cadenaRespuesta ", response.body().toString());
+
+                    JsonObject responsePaciente;
+                    responsePaciente = response.body();
+                    Boolean isSucceded = responsePaciente.get("success").getAsBoolean();
 
 
-            //urlConnection.setSSLSocketFactory(getCertificates().getSocketFactory());
+                    if (isSucceded) {
 
-            DataOutputStream wr = new DataOutputStream(urlConnection.getOutputStream());
+                        String idUser = responsePaciente.get("user").getAsString();
+                        //String  = user.get("id").getAsString();
 
-            wr.write(jsonParams.toString().getBytes());
-            wr.flush();
-            wr.close();
+                        Log.e("IDUser", idUser);
 
-            int responseCode = urlConnection.getResponseCode();
+                        db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE, null);
 
-            if(responseCode == 200) {
+                        try {
 
-                BufferedReader in = new BufferedReader(
-                        new InputStreamReader(urlConnection.getInputStream()));
-                String inputLine;
-                StringBuffer response = new StringBuffer();
+                            ContentValues updates = new ContentValues();
+                            updates.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_ID, idUser);
 
-                while ((inputLine = in.readLine()) != null) {
-                    response.append(inputLine);
-                }
-                in.close();
+                            //updates.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_NOMBRE, nombre);
+                            updates.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_CURP, curp);
 
-                Log.e("URL", "https://medico.digitalcoaster.mx/api/admin/api/paciente");
-                Log.e("cadenaRespuesta", response.toString());
+                            db.update(DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC, updates, DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_CURP+ "='"+curp+"'", null);
+                            db.delete(DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR,DataBaseDB.PACIENTES_SINCRONIZAR_CURP + "=? AND "+ DataBaseDB.PACIENTES_SINCRONIZAR_NOMBRE + "=?",new String[]{curp,nombre});
 
-                respuestaJSON = new JSONObject(response.toString());
-                Boolean isSucceded = respuestaJSON.getBoolean("success");
-                if (isSucceded) {
+                        }catch(Exception e){
+                            e.printStackTrace();
+                        }finally {
+                            loading.setVisibility(View.GONE);
 
-                    JSONObject user = respuestaJSON.getJSONObject("user");
-                    String idUser = user.getString("id");
-
-                    Log.e("IDUser", idUser);
-
-                    db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE, null);
-
-                    try {
-
-                        ContentValues updates = new ContentValues();
-                        updates.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_ID, idUser);
-                        updates.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_NOMBRE, nombre);
-                        updates.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_CURP, curp);
-
-                        db.update(DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC, updates, DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_NOMBRE + "='" + nombre +
-                                "' AND " + DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_CURP+ "='"+curp+"'", null);
-
-                        db.delete(DataBaseDB.TABLE_NAME_PACIENTES_SEGUIMIENTO,DataBaseDB.PACIENTES_EXPEDIENTE_CURP + "=? AND "+ DataBaseDB.PACIENTES_EXPEDIENTE_NOMBRE + "=?",new String[]{curp,nombre});
-
-                        progress.dismiss();
-                    }catch(Exception e){
-
+                            //update();
+                        }
                     }
                 }
 
+                @Override
+                public void onFailure(Call<JsonObject> call, Throwable t) {
+                    t.printStackTrace();
+                }
+            });
 
-                progress.dismiss();
-
-            }else{
-
-                //JsonArray response2 = new JsonParser().parse(new InputStreamReader(urlConnection.getErrorStream())).getAsJsonArray();
-                //JSONObject response2 = new JsonParser().parse(new InputStreamReader(urlConnection.getErrorStream())).getAsJsonObject();
-
-
-                 /*if (response2 instanceof JsonObject) {
-                    JsonObject  responseJsonObject = new JsonParser().parse(new InputStreamReader(urlConnection.getErrorStream())).getAsJsonObject();
-                    return responseJsonObject.toString();
-                }else if (responseArray instanceof JsonArray) {
-                    JsonArray  responseArrayObject =  new JsonParser().parse(new InputStreamReader(urlConnection.getErrorStream())).getAsJsonArray();
-                    return responseArrayObject.toString();
-                }*/
-
-                Log.e("URL", "https://medico.digitalcoaster.mx/api/admin/api/paciente");
-
-
-            }
         }catch (Exception e){
             e.printStackTrace();
         }
 
-
-
-
-
-
-        /*client.post(getActivity(), "https://medico.digitalcoaster.mx/api/admin/api/paciente", entity, "application/json", new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-
-                Log.e("ResponseService", response.toString());
-
-                try {
-                    respuestaJSON = new JSONObject(response.toString());
-                    Boolean isSucceded = respuestaJSON.getBoolean("success");
-                    if(isSucceded){
-
-                        JSONObject user = respuestaJSON.getJSONObject("user");
-                        String idUser = user.getString("id");
-
-                        Log.e("IDUser", idUser);
-
-                        db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE ,null);
-
-                        try {
-
-                            ContentValues values = new ContentValues();
-                            values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_ID,idUser);
-                            values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_NOMBRE,nombre);
-                            values.put(DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_CURP,curp);
-
-                            db.insert(DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC, null, values);
-
-                            progress.dismiss();
-
-                        } catch (Exception ex) {
-                            Log.e("Error", ex.toString());
-                        } finally {
-                            db.close();
-                        }
-
-
-                    }
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-
-            }
-
-            public void onFailure(Throwable error, String content) {
-                progress.dismiss();
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                progress.dismiss();
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
-                progress.dismiss();
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                progress.dismiss();
-            }
-
-        });*/
 
 
     }
@@ -485,60 +376,59 @@ public class InicioFragmentMain extends Fragment {
         }
 
 
-        JSONObject jsonParams = new JSONObject();
-        jsonParams.put("id_usuario",id);
-        jsonParams.put("no_expediente",no_expediente);
-        jsonParams.put("6",hemo);
-        jsonParams.put("7",peso);
-        jsonParams.put("8",estatura);
-        jsonParams.put("tensión",tension);
-        jsonParams.put("10",frecuencia_car);
-        jsonParams.put("11",frecuencia_resp);
-        jsonParams.put("12",talla);
-        jsonParams.put("13",pulso);
-        jsonParams.put("14",glucemia);
-        jsonParams.put("15",temp);
-        jsonParams.put("notas_enf",notas_enf);
-        jsonParams.put("ant_personales","");
-        jsonParams.put("ant_patologicos",ant_patologicos);
-        jsonParams.put("ant_obstericos",ant_obstericos);
-        jsonParams.put("19",padecimiento_actual);
-        jsonParams.put("27",sistemas_generales);
-        jsonParams.put("28",respiratorio);
-        jsonParams.put("29",cardio);
-        jsonParams.put("30",digestivo);
-        jsonParams.put("32",urinario);
-        jsonParams.put("33",hemolin);
-        jsonParams.put("34",endo);
-        jsonParams.put("36",s_nervioso);
-        jsonParams.put("37",esqueletico);
-        jsonParams.put("38",piel);
-        jsonParams.put("39",habitus);
-        jsonParams.put("40",cabeza);
-        jsonParams.put("41",cuello);
-        jsonParams.put("42",torax);
-        jsonParams.put("43",abdomen);
-        jsonParams.put("44",gine);
-        jsonParams.put("45",extremidades);
-        jsonParams.put("46",c_vertebral);
-        jsonParams.put("neuro",neuro);
-        jsonParams.put("48",genitales);
-        jsonParams.put("49",notas_doc);
-        jsonParams.put("plan",plan);
-        jsonParams.put("51",impresion_diag);
-        jsonParams.put("52",tratamiento);
-        jsonParams.put("no_visita","1");
+        JsonObject jsonParams = new JsonObject();
+        jsonParams.addProperty("id_usuario",id);
+        jsonParams.addProperty("no_expediente",no_expediente);
+        jsonParams.addProperty("6",hemo);
+        jsonParams.addProperty("7",peso);
+        jsonParams.addProperty("8",estatura);
+        jsonParams.addProperty("tensión",tension);
+        jsonParams.addProperty("10",frecuencia_car);
+        jsonParams.addProperty("11",frecuencia_resp);
+        jsonParams.addProperty("12",talla);
+        jsonParams.addProperty("13",pulso);
+        jsonParams.addProperty("14",glucemia);
+        jsonParams.addProperty("15",temp);
+        jsonParams.addProperty("notas_enf",notas_enf);
+        jsonParams.addProperty("ant_personales","");
+        jsonParams.addProperty("ant_patologicos",ant_patologicos);
+        jsonParams.addProperty("ant_obstericos",ant_obstericos);
+        jsonParams.addProperty("19",padecimiento_actual);
+        jsonParams.addProperty("27",sistemas_generales);
+        jsonParams.addProperty("28",respiratorio);
+        jsonParams.addProperty("29",cardio);
+        jsonParams.addProperty("30",digestivo);
+        jsonParams.addProperty("32",urinario);
+        jsonParams.addProperty("33",hemolin);
+        jsonParams.addProperty("34",endo);
+        jsonParams.addProperty("36",s_nervioso);
+        jsonParams.addProperty("37",esqueletico);
+        jsonParams.addProperty("38",piel);
+        jsonParams.addProperty("39",habitus);
+        jsonParams.addProperty("40",cabeza);
+        jsonParams.addProperty("41",cuello);
+        jsonParams.addProperty("42",torax);
+        jsonParams.addProperty("43",abdomen);
+        jsonParams.addProperty("44",gine);
+        jsonParams.addProperty("45",extremidades);
+        jsonParams.addProperty("46",c_vertebral);
+        jsonParams.addProperty("neuro",neuro);
+        jsonParams.addProperty("48",genitales);
+        jsonParams.addProperty("49",notas_doc);
+        jsonParams.addProperty("plan",plan);
+        jsonParams.addProperty("51",impresion_diag);
+        jsonParams.addProperty("52",tratamiento);
+        jsonParams.addProperty("no_visita","1");
 
 
 
 
 
-        Log.d("JSON EMV", jsonParams.toString());
+        Log.d("JSON xx", jsonParams.toString());
 
 
 
-        try {
-            progress.show();
+       /* try {
             URL url = new URL("https://medico.digitalcoaster.mx/api/admin/api/pacienteResultados");
             HttpsURLConnection urlConnection = (HttpsURLConnection) url.openConnection();
 
@@ -580,18 +470,40 @@ public class InicioFragmentMain extends Fragment {
                 progress.dismiss();
             }else{
 
-
-
                 Log.e("URL", "https://medico.digitalcoaster.mx/api/admin/api/pacienteResultados");
-
 
             }
         }catch (Exception e){
             e.printStackTrace();
+        }finally {
+            loading.setVisibility(View.GONE);
+            sync_data.setVisibility(View.VISIBLE);
+        }*/
+
+
+        try {
+
+            ApiInterface getDataQuestions = MedicalService.getMedicalApiData().create(ApiInterface.class);
+            getDataQuestions.sendPacienteResultados(jsonParams).enqueue(new Callback<JsonObject>() {
+                @Override
+                public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                    Log.d("data_-",response.body().toString());
+                    //hideActivityIndicator();
+                    progress.hide();
+                }
+
+                @Override
+                public void onFailure(Call<JsonObject> call, Throwable t) {
+                    t.printStackTrace();
+                }
+            });
+
+        }catch (Exception e){
+            e.printStackTrace();
+            progress.hide();
+        } finally {
+            progress.hide();
         }
-
-
-
 
 
     }
@@ -658,14 +570,15 @@ public class InicioFragmentMain extends Fragment {
 
                         db.insert(DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC, null, values);
 
-                        progress.dismiss();
+                        progress.hide();
                     }catch(Exception e){
 
                     }
                 }
 
 
-                        progress.dismiss();
+                    progress.hide();
+
                 return response.toString();
             }else{
 
@@ -856,6 +769,9 @@ public class InicioFragmentMain extends Fragment {
     }
 
 
+    LinearLayout loading;
+    RelativeLayout sync_data;
+
     private void viewAlertSincronizar() {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -883,17 +799,20 @@ public class InicioFragmentMain extends Fragment {
         sincronizar_visitas.setText(countVisitas + "/" + countVisitas);
 
 
+        loading = view.findViewById(R.id.loading);
+        sync_data = view.findViewById(R.id.sync_data);
 
         btn_generales.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                progress.show();
 
                 db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE ,null);
 
                 try {
                     c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR, null);
                     if (c.moveToFirst()) {
+
+
                         do {
 
                             sendDataGenerales(c.getString(2),c.getString(4),c.getString(5),c.getString(1),c.getString(6),c.getString(7),c.getString(8),
@@ -903,17 +822,13 @@ public class InicioFragmentMain extends Fragment {
                         }while (c.moveToNext());
                     } else {
                         Toast.makeText(getActivity(),"No hay pacientes a sincronizar",Toast.LENGTH_LONG).show();
-                        progress.dismiss();
-                        System.out.println("No existen PACIENTES");
                     }
-                    c.close();
                 } catch (Exception ex) {
                     Log.e("Error", ex.toString());
                 } finally {
 
+                    c.close();
                     db.close();
-
-
                 }
 
             }
@@ -931,6 +846,10 @@ public class InicioFragmentMain extends Fragment {
                     c = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC+ " WHERE "+ DataBaseDB.PACIENTES_SINCRONIZAR_HISTORIC_ID +
                             " != ''", null);
                     if (c.moveToFirst()) {
+
+                        loading.setVisibility(View.VISIBLE);
+                        sync_data.setVisibility(View.GONE);
+
                         do {
 
                             sendDataHistoric(c.getString(53),c.getString(4),c.getString(7),c.getString(8),c.getString(9),c.getString(10),c.getString(11),
@@ -938,9 +857,6 @@ public class InicioFragmentMain extends Fragment {
                                     c.getString(24), c.getString(26),c.getString(23),c.getString(28),c.getString(29),c.getString(30),c.getString(31),c.getString(32),c.getString(33),c.getString(34),
                                     c.getString(35),c.getString(36),c.getString(37),c.getString(38),c.getString(39),c.getString(40),c.getString(41),c.getString(54),c.getString(42),c.getString(43),c.getString(44),
                                     c.getString(45),c.getString(46),c.getString(47),c.getString(49),c.getString(50),c.getString(51),c.getString(52));
-
-
-
 
 
 
@@ -954,7 +870,7 @@ public class InicioFragmentMain extends Fragment {
                 } catch (Exception ex) {
                     Log.e("Error", ex.toString());
                 } finally {
-
+                    loading.setVisibility(View.GONE);
                     db.close();
 
                 }
@@ -962,12 +878,14 @@ public class InicioFragmentMain extends Fragment {
             }
         });
 
+
         btn_visitas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-
-
+                Toast.makeText(getContext(),"VIBRATE",Toast.LENGTH_SHORT).show();
+                //loading.setVisibility(View.VISIBLE);
+                //sync_data.setVisibility(View.GONE);
             }
         });
 
@@ -982,14 +900,20 @@ public class InicioFragmentMain extends Fragment {
     public int getCountDatos(String datosCount){
 
         db = getActivity().openOrCreateDatabase(DataBaseDB.DB_NAME, Context.MODE_PRIVATE ,null);
+
         String tableName = null;
         if(datosCount.equals("Generales")){
+
             tableName = DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR;
+
         }else if(datosCount.equals("Historic")){
+
             tableName = DataBaseDB.TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC;
 
         }else if(datosCount.equals("Visitas")){
+
             tableName = DataBaseDB.TABLE_NAME_PACIENTES_VISITAS;
+
         }
 
         try {
@@ -1002,13 +926,15 @@ public class InicioFragmentMain extends Fragment {
         } catch (Exception ex) {
             Log.e("Error", ex.toString());
         } finally {
-
+            c.close();
             db.close();
 
 
         }
         return 0;
+
     }
+
 
 
 

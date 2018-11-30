@@ -9,7 +9,9 @@
     android:descendantFocusability="blocksDescendants"
     android:orientation="vertical">
 
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
         <LinearLayout
             android:id="@+id/general_layout"
             android:layout_width="match_parent"
@@ -41,5 +43,7 @@
 
 
         </LinearLayout>
-    </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
 

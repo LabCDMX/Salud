@@ -1,4 +1,4 @@
-package mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments;
+package mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -33,15 +33,15 @@ import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.se
 import static mx.digitalcoaster.rzertuche.medicoencasa.Activitys.MainActivity.sincronizacion;
 import static mx.digitalcoaster.rzertuche.medicoencasa.Fragments.PacientesFragment.isSinExp;
 import static mx.digitalcoaster.rzertuche.medicoencasa.Fragments.VisitasFragment.isSeguimiento;
-import static mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsAntecedentes.listCardio;
-import static mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsAntecedentes.listDiabetes;
-import static mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsAntecedentes.listDis;
-import static mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsAntecedentes.listEnf;
-import static mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsAntecedentes.listHTA;
-import static mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsAntecedentes.listObe;
-import static mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsAntecedentesPersonales.listPersonales;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments.QuestionsAntecedentes.listCardio;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments.QuestionsAntecedentes.listDiabetes;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments.QuestionsAntecedentes.listDis;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments.QuestionsAntecedentes.listEnf;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments.QuestionsAntecedentes.listHTA;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments.QuestionsAntecedentes.listObe;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments.QuestionsAntecedentesPersonales.listPersonales;
 
-import static mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments.QuestionsContextElectro.listElectro;
+import static mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments.QuestionsContextElectro.listElectro;
 
 
 public class HistoriaClinicaFragment extends Fragment {

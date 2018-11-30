@@ -1,4 +1,4 @@
-package mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments;
+package mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments;
 
 import android.content.Context;
 import android.net.Uri;
@@ -43,10 +43,6 @@ public class QuestionsHistoriaClinica extends Fragment {
     private EditText textArea_information;
     private int count = 0;
 
-
-
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,10 +67,10 @@ public class QuestionsHistoriaClinica extends Fragment {
         question = getActivity().findViewById(R.id.question);
 
 
-        textArea_information = (EditText) getActivity().findViewById(R.id.textArea_information);
+        textArea_information = getActivity().findViewById(R.id.textArea_information);
 
-        next = (ImageButton) getActivity().findViewById(R.id.next);
-        back = (ImageButton) getActivity().findViewById(R.id.back);
+        next = getActivity().findViewById(R.id.next);
+        back = getActivity().findViewById(R.id.back);
 
         sharedPreferences = SharedPreferences.getInstance();
 
@@ -93,7 +89,10 @@ public class QuestionsHistoriaClinica extends Fragment {
 
 
                 if(count == 1){
+
                     sharedPreferences.setStringData("Respiratorio",textArea_information.getText().toString());
+
+                    sharedPreferences.getStringData("Respiratorio");
 
                     textArea_information.setText(sharedPreferences.getStringData("Cardio") != null && !sharedPreferences.getStringData("Cardio").isEmpty() ? sharedPreferences.getStringData("Cardio"): "");
 
@@ -103,6 +102,8 @@ public class QuestionsHistoriaClinica extends Fragment {
 
                 if(count == 2){
                     sharedPreferences.setStringData("Cardio",textArea_information.getText().toString());
+
+                    sharedPreferences.getStringData("Cardio");
 
                     textArea_information.setText(sharedPreferences.getStringData("Digestivo") != null && !sharedPreferences.getStringData("Digestivo").isEmpty() ? sharedPreferences.getStringData("Digestivo"): "");
 
@@ -406,25 +407,16 @@ public class QuestionsHistoriaClinica extends Fragment {
                     sharedPreferences.setBooleanData("BackToInterrogatorio",true);
                     ((MainActivity)getActivity()).questionsAntPersonales();
 
-
                 }
-
 
             }
         });
 
-
-
     }
-
 
     public void blockListeners(){
         notListerners = true;
     }
-
-
-
-
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

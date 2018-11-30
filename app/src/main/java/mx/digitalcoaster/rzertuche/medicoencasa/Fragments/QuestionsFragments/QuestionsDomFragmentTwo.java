@@ -1,4 +1,4 @@
-package mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments;
+package mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments;
 
 import android.content.Context;
 import android.net.Uri;
@@ -68,24 +68,22 @@ public class QuestionsDomFragmentTwo extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        seguro = getActivity().findViewById(R.id.seguro);
+        seguro2 = getActivity().findViewById(R.id.seguro2);
 
-
-        seguro = (RadioButton) getActivity().findViewById(R.id.seguro);
-        seguro2 = (RadioButton) getActivity().findViewById(R.id.seguro2);
-
-        radioEsc = (RadioGroup) getActivity().findViewById(R.id.radioEsc);
-        radioAct = (RadioGroup) getActivity().findViewById(R.id.radioAct);
-        radioSeguro = (RadioGroup) getActivity().findViewById(R.id.radioSeguro);
+        radioEsc = getActivity().findViewById(R.id.radioEsc);
+        radioAct = getActivity().findViewById(R.id.radioAct);
+        radioSeguro =  getActivity().findViewById(R.id.radioSeguro);
 
 
 
-        next = (ImageButton) getActivity().findViewById(R.id.next);
-        back = (ImageButton) getActivity().findViewById(R.id.back);
+        next = getActivity().findViewById(R.id.next);
+        back = getActivity().findViewById(R.id.back);
 
-        relativeSeguro = (RelativeLayout) getActivity().findViewById(R.id.linearYes);
-        questions = (LinearLayout) getActivity().findViewById(R.id.questions);
-        questions2 = (LinearLayout) getActivity().findViewById(R.id.questions2);
-        questions3 = (LinearLayout) getActivity().findViewById(R.id.questions3);
+        relativeSeguro = getActivity().findViewById(R.id.linearYes);
+        questions = getActivity().findViewById(R.id.questions);
+        questions2 = getActivity().findViewById(R.id.questions2);
+        questions3 = getActivity().findViewById(R.id.questions3);
 
 
 
@@ -126,8 +124,6 @@ public class QuestionsDomFragmentTwo extends Fragment {
                     ((MainActivity)getActivity()).questionDomThree();
 
                 }
-
-
 
             }
         });

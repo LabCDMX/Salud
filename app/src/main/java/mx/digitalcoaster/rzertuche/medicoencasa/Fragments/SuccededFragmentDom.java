@@ -55,8 +55,8 @@ public class SuccededFragmentDom extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        final LinearLayout loader = (LinearLayout) getActivity().findViewById(R.id.loader);
-        final LinearLayout finish = (LinearLayout) getActivity().findViewById(R.id.completed);
+        final LinearLayout loader = getActivity().findViewById(R.id.loader);
+        final LinearLayout finish = getActivity().findViewById(R.id.completed);
 
 
         Handler handler = new Handler();
@@ -72,15 +72,17 @@ public class SuccededFragmentDom extends Fragment {
         handler.postDelayed(new Runnable() {
             public void run() {
 
+                try {
 
+                    InicioFragment fragment = new InicioFragment();
+                    FragmentManager manager = getActivity().getSupportFragmentManager();
+                    FragmentTransaction transaction = manager.beginTransaction();
+                    transaction.replace(R.id.fragmentHolder, fragment);
+                    transaction.commit();
 
-                InicioFragment fragment = new InicioFragment();
-                FragmentManager manager = getActivity().getSupportFragmentManager();
-                FragmentTransaction transaction = manager.beginTransaction();
-                transaction.replace(R.id.fragmentHolder, fragment);
-                transaction.commit();
-
-
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
 
             }
         }, 5000);

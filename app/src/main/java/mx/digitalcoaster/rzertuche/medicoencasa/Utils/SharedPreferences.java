@@ -1,6 +1,7 @@
 package mx.digitalcoaster.rzertuche.medicoencasa.Utils;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -151,7 +152,7 @@ public class SharedPreferences {
     }
 
     public void clearPreferences(){
-
+        Log.d("sp_", "CLEAR!!!");
         android.content.SharedPreferences settings =  MainActivity.appContext.getSharedPreferences("MedicoPreferences", Context.MODE_PRIVATE);
         settings.edit().clear().commit();
     }

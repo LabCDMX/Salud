@@ -1,4 +1,4 @@
-package mx.digitalcoaster.rzertuche.medicoencasa.QuestionsFragments;
+package mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -57,11 +57,6 @@ public class DiagnosticoFragment extends Fragment {
     private SQLiteDatabase db = null;      // Objeto para utilizar la base de datos
     private DataBaseHelper sqliteHelper;   // Objeto para abrir la base de Datos
     private Cursor c = null;
-
-
-
-
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

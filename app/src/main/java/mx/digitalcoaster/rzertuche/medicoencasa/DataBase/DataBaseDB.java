@@ -11,13 +11,14 @@ public class DataBaseDB {
 
     //NO SE BORRAN
     public static final String TABLE_NAME_PACIENTES_VISITAS = "table_name_pacientes_visitas";
+
     public static final String TABLE_NAME_PACIENTES_SINCRONIZAR = "table_name_pacientes_sincronizar";
     public static final String TABLE_NAME_PACIENTES_SINCRONIZAR_HISTORIC = "table_name_pacientes_sincronizar_historic";
+
     public static final String TABLE_NAME_PACIENTES_SEGUIMIENTO = "table_name_pacientes_seguimiento";
 
     //DEPENDIENDO SI ES REQUERIDO POR CLIENTE
     public static final String TABLE_NAME_CODIGOS_POSTALES = "table_name_codigos_postales";
-
 
     //PREGUNTAS
     public static final String TABLE_NAME_PREGUNTAS = "table_name_preguntas";
@@ -26,9 +27,7 @@ public class DataBaseDB {
     public static final String TABLE_NAME_RESPUESTAS = "table_name_respuestas";
     public static final String TABLE_NAME_RESPUESTAS_RADIO = "table_name_respuestas_radio";
 
-
     public static int VERSION = 1;
-
 
     public static final String CODIGO_POSTAL = "codigo_postal";
     public static final String COLONIA = "colonia";
@@ -83,6 +82,7 @@ public class DataBaseDB {
     public static final String PACIENTES_SINCRONIZAR_CODIGO = "pacientes_sincronizar_codigo";
     public static final String PACIENTES_SINCRONIZAR_TIEMPO_ENCUESTA = "pacientes_sincronizar_tiempo_encuesta";
     public static final String PACIENTES_SINCRONIZAR_EDAD = "pacientes_sincronizar_edad";
+    public static final String PACIENTES_SINCRONIZAR_ID = "pacientes_sincronizar_id";
 
     //EXPEDIENTE, HISTORIA CLINICA, SIGUIENTE VISITA
     public static final String PACIENTES_EXPEDIENTE_NOMBRE = "pacientes_expediente_nombre";
@@ -271,7 +271,7 @@ public class DataBaseDB {
     public static final String PACIENTES_SINCRONIZAR_HISTORIC_ID = "pacientes_sincronizar_historic_id";
     public static final String PACIENTES_SINCRONIZAR_HISTORIC_PERSONALES_HEREDO = "pacientes_sincronizar_historic_personales_heredo";
     public static final String PACIENTES_SINCRONIZAR_HISTORIC_TORAX = "pacientes_sincronizar_historic_torax";
-
+    public static final String PACIENTES_SINCRONIZAR_HISTORIC_SEND_SUCCESS = "pacientes_sincronizar_send_succes";
 
     //PREGUNTAS
     public static final String PREGUNTAS_ID = "preguntas_id";
