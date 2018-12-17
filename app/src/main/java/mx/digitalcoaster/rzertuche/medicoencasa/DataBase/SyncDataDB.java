@@ -112,6 +112,8 @@ public class SyncDataDB {
         }catch (Exception e){
             Log.e(TAG, "error::" + e);
         }finally {
+            cursorVisit.close();
+            dbVisitas.close();
         }
 
     }
@@ -540,14 +542,13 @@ public class SyncDataDB {
                 }while (c_count.moveToNext());
 
         }else if(datosCount.equals("Visitas")){
-            c_count = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SEGUIMIENTO + " WHERE " + DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_SYNC + " = 'NOT_SYNC' ", null);
+            c_count = db.rawQuery("SELECT * FROM " + DataBaseDB.TABLE_NAME_PACIENTES_SEGUIMIENTO + " WHERE " + DataBaseDB.PACIENTES_VISITA_SEGUIMIENTO_SYNC + " != 'OK_SYNC' " ,null);
 
             c_seguimiento = db.query(DataBaseDB.TABLE_NAME_PACIENTES_SEGUIMIENTO,null,null,null,null,null,null);;
             Log.d("::: seguimiento", DatabaseUtils.dumpCursorToString(c_seguimiento));
             c_seguimiento.close();
 
         }
-        db.close();
 
 
         try {
@@ -560,6 +561,7 @@ public class SyncDataDB {
             Log.e(TAG, "ERROR: " + ex.toString());
 
         } finally {
+            db.close();
             c_count.close();
         }
 

@@ -53,10 +53,10 @@ import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.PacienteFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.PacientesFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.RegistroFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.SeguimientoFragment;
-import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.SincronizacionFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.SuccededFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.SuccededFragmentDom;
 import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.SuccededHistoriaFragment;
+import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.SyncData.SyncDataFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.VisitaFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.VisitasFragment;
 import mx.digitalcoaster.rzertuche.medicoencasa.Fragments.QuestionsFragments.ContextoSocialFragment;
@@ -89,7 +89,6 @@ public class MainActivity extends AppCompatActivity implements
         InicioFragment.OnFragmentInteractionListener,
         SeguimientoFragment.OnFragmentInteractionListener,
         QuestionsFragment.OnFragmentInteractionListener,
-        SincronizacionFragment.OnFragmentInteractionListener,
         PacienteFragment.OnFragmentInteractionListener,
         VisitaFragment.OnFragmentInteractionListener,
         InicioFragmentMain.OnFragmentInteractionListener,
@@ -177,6 +176,7 @@ public class MainActivity extends AppCompatActivity implements
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.fragmentHolder, fragment);
         transaction.commit();
+
 
         registros.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -664,23 +664,30 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     public void sincronizacion(View v){
-        SincronizacionFragment fragment = new SincronizacionFragment();
+        SyncDataFragment fragment = new SyncDataFragment();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.fragmentHolder, fragment);
+        transaction.addToBackStack(SyncDataFragment.TAG);
+        transaction.commit();
+
+        /*SincronizacionFragment fragment = new SincronizacionFragment();
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.fragmentHolder, fragment);
         transaction.commit();
 
         restartImageButtons();
-        sincronizacion.setImageDrawable(getResources().getDrawable(R.drawable.registros_pink));
+        sincronizacion.setImageDrawable(getResources().getDrawable(R.drawable.registros_pink));*/
 
     }
 
     public void activitySincronizacion(){
-        SincronizacionFragment fragment = new SincronizacionFragment();
+        /*SincronizacionFragment fragment = new SincronizacionFragment();
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.fragmentHolder, fragment);
-        transaction.commit();
+        transaction.commit();*/
     }
 
 
